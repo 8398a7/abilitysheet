@@ -1,0 +1,25 @@
+h2
+  | Sign up
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+  = devise_error_messages!
+  .form-group
+    = f.label :username, 'ユーザ名', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.text_field :username, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :password, 'パスワード', class: 'col-md-4 control-label'
+    - if @validatable
+      em
+        | (
+        = @minimum_password_length
+        |  文字以内)
+    .col-md-5
+      = f.password_field :password, autocomplete: 'off', class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, 'パスワード(確認)', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+  .form-group
+    .col-md-2
+      = f.submit '登録', class: 'btn btn-primary form-control'
+= render 'devise/shared/links'

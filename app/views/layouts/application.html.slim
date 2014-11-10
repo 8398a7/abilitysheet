@@ -1,0 +1,66 @@
+doctype html
+html lang="ja"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    title= content_for?(:title) ? yield(:title) : "AbilitysheetIidx"
+    = csrf_meta_tags
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
+    = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
+    = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
+    = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    = javascript_include_tag "application"
+
+
+
+  body
+    .modal-form
+    .navbar.navbar-default.navbar-fixed-top
+      .navbar-header
+        a.navbar-brand href="/" AbilitysheetIidx
+      .nav-collapse.collapse.navbar-responsive-collapse
+        ul.nav.navbar-nav
+          li = link_to 'Link 1', '/path1'
+          li = link_to 'Link 2', '/path2'
+          li = link_to 'Link 3', '/path3'
+        - if user_signed_in?
+        - else
+          = form_for :user, url: { controller: 'devise/sessions', action: 'new' }, html: { class: 'navbar-form navbar-right' } do |f|
+            .form-group
+              .col-md-2
+                = f.text_field :username, autoforcus: true, class: 'form-control', placeholder: 'アカウント名'
+            .form-group
+              .col-md-2
+                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード'
+            .form-group
+              = f.submit 'ログイン', class: 'btn btn-info'
+              | &nbsp;&nbsp;
+              = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
+              | &nbsp;&nbsp;
+    br
+    br
+    br
+    .container
+      .row
+        .col-lg-12
+          = bootstrap_flash
+          - if notice
+            p.alert.alert-success
+              = notice
+          - if alert
+            p.alert.alert-danger
+              = alert
+          = yield
+      br
+      footer align="right"
+        small &copy; IIDX☆12参考表 by839 2014
+        br
+        - if Rails.env != 'production'
+          .revision.btn.btn-info rev.#{ AbilitysheetIidx::Application.config.git_revision }
