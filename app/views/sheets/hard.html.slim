@@ -16,7 +16,7 @@ table.table.table-responsive border=1
         - (1..5).each do |i|
           - if cnt < @sheets.size && ab == @sheets[cnt].h_ability
             td width=width height=height align="center"
-              = link_to @sheets[cnt].title, hard_sheets_path(@sheets[cnt].id, 1), remote: true
+              = link_to @sheets[cnt].title, scores_path(@sheets[cnt].id, 1), remote: true
             - cnt += 1
           - else
             td

@@ -1,0 +1,22 @@
+meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+= form_for @score, html: { class: 'form-horizontal' }, remote: true do |f|
+  - modal_body = capture do
+    /.form-group
+      = f.label :title, '曲名', class: 'col-md-4 control-label'
+      .col-md-5
+        = f.text_field :title, readonly: true, class: 'form-control', value: Sheet.find_by(id: @score.sheet_id).title
+    /.form-group
+      = f.label :h_ability, 'ハード地力', class: 'col-md-4 control-label'
+      .col-md-5
+        = f.select :h_ability, Sheet.power, { selected: data.h_ability }, { class: 'form-control' }
+    /.form-group
+      = f.label :comment, '一言コメント(60文字以内)', class: 'col-md-4 control-label'
+      .col-md-5
+        = f.text_field :comment, autofocus: true, class: 'form-control'
+    /= f.hidden_field :state, value: params[:format]
+  - modal_footer = capture do
+    = f.submit '更新', class: 'btn btn-primary'
+    = content_tag :button, 'キャンセル', class: 'btn btn-default', 'data-dismiss' => 'modal'
+
+  - modal_dialog :id => 'modal-form', :header => { :show_close => true, :dismiss => 'modal', :title => 'クリア情報更新' }, body: modal_body, :footer => modal_footer
