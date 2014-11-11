@@ -13,9 +13,9 @@ table.datatable.table
     - @users.each do |user|
       tr
         td = user.id
-        td = user.djname
-        td = user.grade
-        td = user.pref
+        td = link_to user.djname, clear_sheets_path(user.iidxid)
+        td = user.dan
+        td = user.belongs
         td
         td
         td

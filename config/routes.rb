@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
   get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets
 
-  get '/scores/:id' => 'scores#attribute', as: :scores
+  get '/scores/:id.:format' => 'scores#attribute', as: :scores
+  post '/scores/:id' => 'scores#update', as: :score
+  patch '/scores/:id' => 'scores#update'
 end
