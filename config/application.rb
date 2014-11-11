@@ -27,5 +27,8 @@ module AbilitysheetIidx
 
     # Current git revision
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
+
+    # Current IIDX version
+    config.iidx_version = 22
   end
 end

@@ -6,7 +6,7 @@ class CreateScores < ActiveRecord::Migration
       t.integer :bp
       t.integer :sheet_id, null: false
       t.integer :user_id, null: false
-      t.integer :version, null: false, default: 22
+      t.integer :version, null: false
 
       t.timestamps
     end

@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20141111002700) do
   enable_extension "plpgsql"
 
   create_table "scores", force: true do |t|
-    t.integer  "state",      default: 7,  null: false
+    t.integer  "state",      default: 7, null: false
     t.integer  "score"
     t.integer  "bp"
-    t.integer  "sheet_id",                null: false
-    t.integer  "user_id",                 null: false
-    t.integer  "version",    default: 22, null: false
+    t.integer  "sheet_id",               null: false
+    t.integer  "user_id",                null: false
+    t.integer  "version",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
