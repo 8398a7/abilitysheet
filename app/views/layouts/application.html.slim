@@ -27,10 +27,13 @@ html lang="ja"
         a.navbar-brand href="/" AbilitysheetIidx
       .nav-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
-          li = link_to 'Link 1', '/path1'
+          li = link_to 'ユーザ一覧', list_welcomes_path
           li = link_to 'Link 2', '/path2'
           li = link_to 'Link 3', '/path3'
         - if user_signed_in?
+          ul.nav.navbar-nav.navbar-right
+            li = link_to '編集', edit_user_registration_path, class: 'btn btn-success'
+            li = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-danger'
         - else
           = form_for :user, url: { controller: 'devise/sessions', action: 'new' }, html: { class: 'navbar-form navbar-right' } do |f|
             .form-group

@@ -1,0 +1,24 @@
+h2 ユーザ一覧
+
+table.datatable.table
+  thead
+    th No
+    th DJNAME
+    th 段位
+    th 所属
+    th 最終更新日
+    th 最終更新楽曲
+    th ランプ情報
+  tbody
+    - @users.each do |user|
+      tr
+        td = user.id
+        td = user.djname
+        td = user.grade
+        td = user.pref
+        td
+        td
+        td
+coffee:
+  $ ->
+    $('.datatable').dataTable()

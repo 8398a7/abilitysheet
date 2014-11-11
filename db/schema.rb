@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141110224245) do
     t.integer  "version",                default: 22, null: false
     t.string   "djname",                              null: false
     t.integer  "grade"
+    t.integer  "pref",                                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

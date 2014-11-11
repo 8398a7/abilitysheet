@@ -24,6 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :version, default: 22, null: false
       t.string :djname, null: false
       t.integer :grade
+      t.integer :pref, null: false
 
       ## Confirmable
       # t.string   :confirmation_token
