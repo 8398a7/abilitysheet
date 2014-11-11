@@ -1,0 +1,24 @@
+- width , height = 150, 50
+table.table.table-responsive
+  thead
+    th colspan=5 align="center"
+      | ハード地力表&nbsp;&nbsp;
+      = link_to 'ノマゲ地力表', clear_sheets_path
+  tbody
+    - cnt = 0
+    - (0..19).each do |ab|
+      tr
+        - if cnt < @sheets.size && @sheets[cnt].h_ability == ab
+          th colspan=5 height=10 bgcolor="#f5deb3"
+            center = @power[ab][0]
+      - while cnt < @sheets.size && ab == @sheets[cnt].h_ability
+        tr
+        - (1..5).each do |i|
+          - if cnt < @sheets.size && ab == @sheets[cnt].h_ability
+            td width=width height=height align="center"
+              = link_to @sheets[cnt].title, hard_sheets_path(@sheets[cnt].id, 1), remote: true
+            - cnt += 1
+          - else
+            td
+          - if cnt == @sheets.size
+            - break

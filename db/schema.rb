@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110224245) do
+ActiveRecord::Schema.define(version: 20141111002700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "scores", force: true do |t|
+    t.integer  "state",      default: 7,  null: false
+    t.integer  "score"
+    t.integer  "bp"
+    t.integer  "sheet_id",                null: false
+    t.integer  "user_id",                 null: false
+    t.integer  "version",    default: 22, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",               default: "", null: false

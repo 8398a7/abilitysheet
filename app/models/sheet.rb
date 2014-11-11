@@ -1,4 +1,5 @@
 class Sheet < ActiveRecord::Base
+  has_many :scores
   establish_connection(
     adapter:  'postgresql',
     host:     'localhost',
