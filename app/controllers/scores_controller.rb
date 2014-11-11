@@ -18,14 +18,6 @@ class ScoresController < ApplicationController
     score.sheet_id = params[:score][:sheet_id]
     score.state = params[:score][:state]
     score.save
-    @root = root_decide
-    render :reload, locals: { root: @root }
-  end
-
-  private
-
-  def root_decide
-    type = %w(clear hard)
-    %(/sheets/#{ current_user.iidxid }/#{ type[params[:format].to_i] })
+    render :reload
   end
 end
