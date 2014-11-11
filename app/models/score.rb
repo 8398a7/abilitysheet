@@ -27,5 +27,15 @@ class Score < ActiveRecord::Base
         'ASSIST CLEAR' => 5, FAILED: 6, 'NO PLAY' => 7
       }
     end
+
+    def update(current_user, params, version)
+      score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:score][:sheet_id], version: version)
+      score = Score.new if score.nil?
+      score.user_id = current_user.id
+      score.sheet_id = params[:score][:sheet_id]
+      score.state = params[:score][:state]
+      score.version = version
+      score.save
+    end
   end
 end

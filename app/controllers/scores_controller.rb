@@ -13,13 +13,7 @@ class ScoresController < ApplicationController
   end
 
   def update
-    score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:score][:sheet_id], version: @version)
-    score = Score.new if score.nil?
-    score.user_id = current_user.id
-    score.sheet_id = params[:score][:sheet_id]
-    score.state = params[:score][:state]
-    score.version = @version
-    score.save
+    Score.update(current_user, params, @version)
     render :reload
   end
 
