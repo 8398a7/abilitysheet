@@ -10,6 +10,24 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :iidxid
   validates_presence_of :username, :djname, :iidxid, :grade, :pref
 
+  validates :iidxid, format: {
+    with: /\d{4}-\d{4}/,
+    message: 'が正しくありません。'
+  }, length: {
+    is: 9
+  }
+  validates :grade, numericality: {
+    only_integer: true
+  }, inclusion: {
+    in: 0..17, message: 'のパラメタが異常です。'
+  }
+  validates :pref, numericality: {
+    only_integer: true
+  }, inclusion: {
+    in: 0..47, message: 'のパラメタが異常です。'
+  }
+  validates :djname, length: { maximum: 6 }
+  validates :username, length: { minimum: 3, maximum: 8 }
   @pref_all = %w(
     海外
     北海道 青森県   岩手県 宮城県
