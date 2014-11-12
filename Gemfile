@@ -19,6 +19,10 @@ gem 'jquery-datatables-rails'
 # 実行途中でpryの実行
 gem 'pry-byebug'
 
+# スクレイプ用
+gem 'nokogiri'
+gem 'mechanize'
+
 # debug関係
 group :development do
   gem 'rack-mini-profiler', require: false

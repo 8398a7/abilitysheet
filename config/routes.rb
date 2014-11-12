@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   root 'welcomes#index'
-  get '/users/list' => 'welcomes#list', as: :list_welcomes
+  get '/users/list' => 'welcomes#list', as: :list_welcome
+  get '/users/test' => 'welcomes#test', as: :test_welcome
 
   get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
   get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets

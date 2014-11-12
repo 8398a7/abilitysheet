@@ -1,4 +1,9 @@
 - width , height = 150, 50
+.center
+  p.btn.btn-danger HARD
+  p version
+  - @versions.each do |v|
+    = link_to v[0], { version: v[1] }, { class: v[2] }
 table.table.table-responsive border=1
   thead
     th colspan=5 align="center"
