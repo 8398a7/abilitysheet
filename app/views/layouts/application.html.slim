@@ -31,8 +31,8 @@ html lang="ja"
       .nav-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
           li = link_to 'ユーザ一覧', list_welcome_path
-          li = link_to 'テスト', test_welcome_path
-          li = link_to 'Link 3', '/path3'
+          li = link_to 'テスト', '/'
+          li = link_to 'Link 3', '/'
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open

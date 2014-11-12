@@ -7,6 +7,22 @@ h2
     .col-md-5
       = f.text_field :username, autofocus: true, class: 'form-control'
   .form-group
+    = f.label :djname, 'DJNAME', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.text_field :djname, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :iidxid, 'IIDXID(半角数字，利用者が変更できないので正確に)', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.text_field :iidxid, autofocus: true, class: 'form-control', placeholder: 'ex. ＊＊＊＊－＊＊＊＊'
+  .form-group
+    = f.label :grade, '段位', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.select :grade, User.dan, {}, { class: 'form-control' }
+  .form-group
+    = f.label :pref, '所属', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.select :pref, User.belongs, {}, { class: 'form-control' }
+  .form-group
     = f.label :password, 'パスワード', class: 'col-md-4 control-label'
     - if @validatable
       em
