@@ -40,7 +40,7 @@ table.datatable.table
                 - break
             - unless flag
               = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
-          - elsif user.id != current_user.id
+          - elsif user_signed_in? && user.id != current_user.id
             = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
 coffee:
   $ ->

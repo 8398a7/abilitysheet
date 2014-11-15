@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'sheets/show'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
 
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
