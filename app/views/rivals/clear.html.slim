@@ -1,6 +1,15 @@
 .center
   p.btn.btn-primary CLEAR
   = link_to 'HARD', hard_rival_path(params[:id]), { class: 'btn btn-danger' }
+  br
+  br
+  = link_to 'Win', { condition: 'win' }, { class: 'btn btn-primary' }
+  | &nbsp;&nbsp;
+  = link_to 'Even', { condition: 'even' }, { class: 'btn btn-warning' }
+  | &nbsp;&nbsp;
+  = link_to 'Lose', { condition: 'lose' }, { class: 'btn btn-danger' }
+  br
+  br
 - width, height, diff = 150, 50, 20
 table.table.table-responsive border=1
   thead
