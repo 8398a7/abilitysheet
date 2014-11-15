@@ -40,7 +40,7 @@ ja:
       confirmed: 'アカウントを登録しました。'
 #      confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      signed_up: 'アカウント登録を受け付けました。確認のメールをお送りします。'
+      signed_up: 'アカウント登録を受け付けました。'
 #      signed_up: 'You have signed up successfully. If enabled, a confirmation was sent to your e-mail.'
       updated: 'アカウントを更新しました。'
 #      updated: 'You updated your account successfully.'
