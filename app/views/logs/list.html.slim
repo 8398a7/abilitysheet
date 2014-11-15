@@ -1,0 +1,11 @@
+table.datatable
+  thead
+    th 更新日付
+    th 更新個数
+  tbody
+    - @logs.each do |log|
+      tr
+        td = link_to log, show_log_path(current_user.iidxid, log)
+        td
+coffee:
+  $('.datatable').dataTable()
