@@ -87,16 +87,6 @@ class User < ActiveRecord::Base
     array
   end
 
-  # usernameを利用してログインする
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions).where(['username = :value', { value: username }]).first
-    else
-      where(conditions).first
-    end
-  end
-
   # 登録時にemailを不要とする
   def email_required?
     false
