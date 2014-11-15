@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   patch '/scores/:id' => 'scores#update'
 
   get '/logs/:iidxid/list' => 'logs#list', as: :list_logs
+  get '/logs/:iidxid/sheet' => 'logs#sheet', as: :sheet_log
   get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
 end

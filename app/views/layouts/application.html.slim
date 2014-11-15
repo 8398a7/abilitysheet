@@ -39,8 +39,8 @@ html lang="ja"
               ul.dropdown-menu
                 li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
                 li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
-                li = link_to '更新履歴', list_logs_path(current_user.iidxid)
-          li = link_to 'Link 3', '/'
+                li = link_to '更新データ', list_logs_path(current_user.iidxid)
+          li = link_to 'ライバル', '/'
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open
