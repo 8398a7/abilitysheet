@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   }, inclusion: {
     in: 0..47, message: 'のパラメタが異常です。'
   }
-  validates :djname, length: { maximum: 6 }, format: { with: /\A[a-z0-9]+\z/i }
-  validates :username, length: { minimum: 3, maximum: 10 }, format: { with: /\A[a-z0-9]+\z/i }
+  validates :djname, length: { maximum: 6 }, format: { with: /\A[a-z0-9]+\z/, message: 'は半角英数字で記入して下さい' }
+  validates :username, length: { minimum: 3, maximum: 10 }, format: { with: /\A[a-z0-9]+\z/, message: 'は半角英数字で記入して下さい' }
   @pref_all = %w(
     海外
     北海道 青森県   岩手県 宮城県
