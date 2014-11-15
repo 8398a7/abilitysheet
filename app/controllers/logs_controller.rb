@@ -1,6 +1,11 @@
 class LogsController < ApplicationController
   before_filter :authenticate_user!
 
+  def sheet
+    @sheets = Sheet.order(:title)
+    @color = Score.list_color
+  end
+
   def list
     @logs = Log.pluck(:created_at).uniq
   end
