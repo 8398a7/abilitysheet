@@ -1,0 +1,26 @@
+.center
+  p.btn.btn-danger HARD
+  = link_to 'CLEAR', clear_rival_path(params[:id]), { class: 'btn btn-primary' }
+- width, height, diff = 150, 50, 20
+table.table.table-responsive border=1
+  thead
+  tbody
+    - cnt = 0
+    - (0..19).each do |ab|
+      tr
+        - if cnt < @sheets.size && @sheets[cnt].h_ability == ab
+          th colspan=10 height=10 bgcolor="#f5deb3"
+            center = @power[ab][0]
+      - while cnt < @sheets.size && ab == @sheets[cnt].h_ability
+        tr
+        - (1..5).each do |i|
+          - s = @sheets[cnt]
+          - if cnt < @sheets.size && ab == s.h_ability
+            td width=width-diff height=height align="center" bgcolor=@my_color[s.id]
+              = s.title
+            td width=diff height=height bgcolor=@rival_color[s.id]
+            - cnt += 1
+          - else
+            td
+            td
+          - if cnt == @sheets.size
