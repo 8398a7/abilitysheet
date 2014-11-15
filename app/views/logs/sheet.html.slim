@@ -1,0 +1,27 @@
+table.datatable
+  thead
+    th TITLE
+    th bgcolor=@color[4] EASY CLEAR
+    th bgcolor=@color[3] CLEAR
+    th bgcolor=@color[2] HARD CLEAR
+    th bgcolor=@color[1] EXH CLEAR
+    th bgcolor=@color[0] FULL COMBO
+  tbody
+    - @sheets.each do |s|
+      - logs = s.logs.where(user_id: current_user.id)
+      - e = logs.find_by(new_state: 4).created_at if logs && logs.exists?(new_state: 4)
+      - c = logs.find_by(new_state: 3).created_at if logs && logs.exists?(new_state: 3)
+      - h = logs.find_by(new_state: 2).created_at if logs && logs.exists?(new_state: 2)
+      - ex = logs.find_by(new_state: 1).created_at if logs && logs.exists?(new_state: 1)
+      - f = logs.find_by(new_state: 0).created_at if logs && logs.exists?(new_state: 0)
+      tr
+        td = s.title
+        td bgcolor=@color[4] = e
+        td bgcolor=@color[3] = c
+        td bgcolor=@color[2] = h
+        td bgcolor=@color[1] = ex
+        td bgcolor=@color[0] = f
+coffee:
+  $('.datatable').dataTable(
+    aLengthMenu: [157]
+  )
