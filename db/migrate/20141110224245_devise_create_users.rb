@@ -25,6 +25,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :djname, null: false
       t.integer :grade
       t.integer :pref, null: false
+      t.text :rival
 
       ## Confirmable
       # t.string   :confirmation_token

@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20141115070915) do
     t.string   "djname",                              null: false
     t.integer  "grade"
     t.integer  "pref",                                null: false
+    t.text     "rival"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

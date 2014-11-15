@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :scores
   has_many :logs
+  serialize :rival
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,8 +27,8 @@ class User < ActiveRecord::Base
   }, inclusion: {
     in: 0..47, message: 'のパラメタが異常です。'
   }
-  validates :djname, length: { maximum: 6 }
-  validates :username, length: { minimum: 3, maximum: 8 }
+  validates :djname, length: { maximum: 6 }, format: { with: /\A[a-z0-9]+\z/i }
+  validates :username, length: { minimum: 3, maximum: 10 }, format: { with: /\A[a-z0-9]+\z/i }
   @pref_all = %w(
     海外
     北海道 青森県   岩手県 宮城県
