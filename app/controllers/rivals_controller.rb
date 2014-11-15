@@ -3,6 +3,7 @@ class RivalsController < ApplicationController
 
   def clear
     @sheets = Sheet.order(:ability, :title)
+    condition if params[:condition]
   end
 
   def hard
@@ -41,6 +42,19 @@ class RivalsController < ApplicationController
   end
 
   private
+
+  def condition
+    copy = @sheets
+    @sheets = []
+    rival_id = User.find_by(iidxid: params[:id]).id
+    copy.each do |s|
+      m = s.scores.find_by(user_id: current_user.id)
+      r = s.scores.find_by(user_id: rival_id)
+      @sheets.push(s) if params[:condition] == 'win' && m.state < r.state
+      @sheets.push(s) if params[:condition] == 'even' && m.state == r.state
+      @sheets.push(s) if params[:condition] == 'lose' && m.state > r.state
+    end
+  end
 
   def rival_overlap(rival)
     rival.each { |r| return false if r == params[:id] }
