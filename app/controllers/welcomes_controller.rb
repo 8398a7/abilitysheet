@@ -1,6 +1,6 @@
 class WelcomesController < ApplicationController
   def list
-    @users = User.preload(:scores)
+    @users = User.all
     @color = %w(
       #ff8c00
       #fffacd
