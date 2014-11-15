@@ -2,18 +2,18 @@
   h1 ☆12参考表サイト
   p このサイトは☆12の難易度を参考にする表をシステム化したものです。
   p 2chのスレッドで議論された参考表を反映しています。
-  p align="center" = link_to '登録', new_user_registration_path, class: 'btn btn-primary btn-lg'
+  p クリアランプの管理などがグラフなどで可視化できるシステムです。
+  - unless user_signed_in?
+    p align="center" = link_to '登録', new_user_registration_path, class: 'btn btn-primary btn-lg'
 .col-lg-6
   .panel.panel-danger
     .panel-heading
-      h3
+      h3 更新履歴
     .panel-body
-      p
-      p
+      p 2014-11-11 開発開始
 .col-lg-6
  .panel.panel-primary
     .panel-heading
-      h3
+      h3 お知らせ
     .panel-body
-      p
-      p
+      p 特にありません。

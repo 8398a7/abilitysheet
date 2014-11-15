@@ -1,6 +1,8 @@
 .center
   p.btn.btn-primary CLEAR
   br
+  - @versions.each do |v|
+    = link_to v[0], { version: v[1] }, { class: v[2] }
   table.table align="center" style="width:1000px; height:0px; margin-bottom:0px;"
     - noc = 0
     tr
@@ -28,14 +30,9 @@
         = link_to "MY PAGE", player_path, { class: "btn btn-success" }
       /td
         = link_to "index", root_path, { class: "btn btn-warning" }
-  - @versions.each do |v|
-    = link_to v[0], { version: v[1] }, { class: v[2] }
 - width , height = 150, 50
 table.table.table-responsive border=1
   thead
-    th colspan=5 align="center"
-      | ノマゲ地力表&nbsp;&nbsp;
-      = link_to 'ハード地力表', hard_sheets_path
   tbody
     - cnt = 0
     - (0..19).each do |ab|
