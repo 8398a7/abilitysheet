@@ -57,10 +57,12 @@ class Score < ActiveRecord::Base
       }
     end
 
-    def update(current_user, params, version)
-      score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:score][:sheet_id], version: version)
+    def update(id, params)
+      version = AbilitysheetIidx::Application.config.iidx_version
+      score = User.find_by(id: id).scores.find_by(sheet_id: params[:score][:sheet_id], version: version)
+      Log.data_create(id, params)
       score = Score.new if score.nil?
-      score.user_id = current_user.id
+      score.user_id = id
       score.sheet_id = params[:score][:sheet_id]
       score.state = params[:score][:state]
       score.version = version

@@ -1,0 +1,13 @@
+table.datatable
+  thead
+    th 楽曲名
+    th 旧ランプ
+    th 新ランプ
+  tbody
+    - @logs.each do |log|
+      tr
+        td = log.sheet.title
+        td bgcolor=@color[log.pre_state]
+        td bgcolor=@color[log.new_state]
+coffee:
+  $('.datatable').dataTable()
