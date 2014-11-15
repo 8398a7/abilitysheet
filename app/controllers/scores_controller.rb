@@ -13,7 +13,7 @@ class ScoresController < ApplicationController
   end
 
   def update
-    Score.update(current_user, params, @version)
+    Score.update(current_user.id, params)
     render :reload
   end
 

@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   get '/scores/:id.:format' => 'scores#attribute', as: :scores
   post '/scores/:id' => 'scores#update', as: :score
   patch '/scores/:id' => 'scores#update'
+
+  get '/logs/:iidxid/list' => 'logs#list', as: :list_logs
+  get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
 end

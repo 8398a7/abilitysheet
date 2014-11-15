@@ -31,7 +31,15 @@ html lang="ja"
       .nav-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
           li = link_to 'ユーザ一覧', list_welcome_path
-          li = link_to 'テスト', '/'
+          - if user_signed_in?
+            li.dropdown-open
+              a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
+                | マイページ
+                b.caret
+              ul.dropdown-menu
+                li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
+                li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
+                li = link_to '更新履歴', list_logs_path(current_user.iidxid)
           li = link_to 'Link 3', '/'
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
