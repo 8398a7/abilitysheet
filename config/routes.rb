@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
 
+  get '/rival/clear/:id' => 'rivals#clear', as: :clear_rival
+  get '/rival/hard/:id' => 'rivals#hard', as: :hard_rival
+  post '/rival/remove/:id' => 'rivals#remove', as: :remove_rival
+  post '/rival/register/:id' => 'rivals#register', as: :register_rival
+
   get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
   get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets
 
