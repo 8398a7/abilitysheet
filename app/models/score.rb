@@ -2,7 +2,36 @@ class Score < ActiveRecord::Base
   belongs_to :sheet
   belongs_to :user
 
+  def lamp_string
+    str = %w(FC EXH H C E A F N)
+    str[state]
+  end
+
   class << self
+    def stat_info(scores)
+      hash = { 'FC' => 0, 'EXH' => 0, 'H' => 0, 'C' => 0, 'E' => 0, 'A' => 0, 'F' => 0, 'N' => 0 }
+      count = 0
+      scores.each do |s|
+        hash[s.lamp_string] += 1
+        count += 1
+      end
+      hash['N'] += Sheet.count - count
+      hash
+    end
+
+    def list_color
+      %w(
+        #ff8c00
+        #fffacd
+        #ff6347
+        #afeeee
+        #98fb98
+        #9595ff
+        #c0c0c0
+        #ffffff
+      )
+    end
+
     def convert_color(scores)
       color = %w(
         #ff8c00

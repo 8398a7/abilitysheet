@@ -17,6 +17,8 @@ class SheetsController < ApplicationController
     @power = Sheet.power
     s = User.find_by(iidxid: params[:iidxid]).scores
     @color = Score.convert_color(s)
+    @list_color = Score.list_color
+    @stat = Score.stat_info(s)
     @versions = [['5',    5,  'btn btn-link'],
                  ['6',    6,  'btn btn-link'],
                  ['7',    7,  'btn btn-link'],
