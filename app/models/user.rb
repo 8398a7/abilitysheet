@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :djname, :iidxid, :grade, :pref
 
   validates :iidxid, format: {
-    with: /\d{4}-\d{4}/,
+    with: /\A\d{4}-\d{4}\z/,
     message: 'が正しくありません。'
   }, length: {
     is: 9
