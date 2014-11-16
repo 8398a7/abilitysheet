@@ -1,7 +1,7 @@
 class WelcomesController < ApplicationController
   def index
-    @update_logs = Notice.where(state: 0, active: true).limit(5).order(:created_at)
-    @notices = Notice.where(state: 1, active: true).limit(5).order(:created_at)
+    @update_logs = Notice.where(state: 0, active: true).limit(5).order(created_at: :desc)
+    @notices = Notice.where(state: 1, active: true).limit(5).order(created_at: :desc)
   end
 
   def list

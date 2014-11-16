@@ -20,7 +20,7 @@ html lang="ja"
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand href="/" ☆12参考表
+        = link_to '☆12参考表', root_path, class: 'navbar-brand'
       .nav-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
           li = link_to 'ユーザ一覧', list_welcome_path
