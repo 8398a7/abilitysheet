@@ -2,6 +2,21 @@ class AdminsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :white_list
 
+  def index
+    @message = Message.exists?(state: false)
+  end
+
+  def message_list
+    @messages = Message.all
+  end
+
+  def message_change
+    message = Message.find_by(id: params[:id])
+    message.state = message.state ? false : true
+    message.save
+    redirect_to message_list_admins_path
+  end
+
   def new_notice
     @elem = Notice.new
   end

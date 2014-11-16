@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   # all visitor
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
+  get '/messages' => 'welcomes#message', as: :message_welcome
+  post '/messages' => 'welcomes#create_message', as: :create_message_welcome
 
   # admin
   get '/admins' => 'admins#index', as: :index_admins
+  get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
+  post '/admins/message/:id' => 'admins#message_change', as: :message_change_admins
   get '/admins/register' => 'admins#new_sheet', as: :new_sheet_admins
   post '/admins/register' => 'admins#create_sheet', as: :create_sheet_admins
   get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins

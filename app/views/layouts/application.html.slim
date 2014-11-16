@@ -42,6 +42,7 @@ html lang="ja"
                 li = link_to '逆ライバル一覧', reverse_list_rival_path
           - if user_signed_in? && current_user.admin?
             li = link_to '管理者用', index_admins_path
+          li = link_to '連絡フォーム', message_welcome_path
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open
