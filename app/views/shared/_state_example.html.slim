@@ -1,0 +1,11 @@
+- width, height = 150, 50
+tr
+  - ex_cnt = 0
+  - @state_examples.each do |key, value|
+      - ex_cnt += 1
+      - if ex_cnt%5 == 1 && ex_cnt != 1
+        tr
+      td width=width height=height align="center" bgcolor=value
+        = key
+  td
+  td

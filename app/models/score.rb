@@ -39,6 +39,19 @@ class Score < ActiveRecord::Base
       )
     end
 
+    def list_name
+      [
+        'FULL COMBO',
+        'EXH CLEAR',
+        'HARD CLEAR',
+        'CLEAR',
+        'EASY CLEAR',
+        'ASSIST CLEAR',
+        'FAILED',
+        'NO PLAY'
+      ]
+    end
+
     def convert_color(scores)
       color = %w(
         #ff8c00
