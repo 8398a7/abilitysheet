@@ -10,10 +10,20 @@
     .panel-heading
       h3 更新履歴
     .panel-body
-      p 2014-11-11 開発開始
+      - @update_logs.each do |u|
+        p
+          = u.created_at
+          | &nbsp;
+          = u.body
 .col-lg-6
  .panel.panel-primary
     .panel-heading
       h3 お知らせ
     .panel-body
-      p 特にありません。
+      - @notices.each do |n|
+        p
+          = n.created_at
+          | &nbsp;
+          = n.body
+      - if @notices.count == 0
+        p 特にありません。

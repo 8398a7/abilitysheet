@@ -38,8 +38,10 @@ gem 'lazy_high_charts'
 # crontab管理
 gem 'whenever', require: false
 
-# devise
+# User管理
 gem 'devise'
+gem 'rails_admin'
+gem 'cancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'

@@ -1,0 +1,13 @@
+h2 Notice作成用ページ
+
+= form_for @elem, url: create_notice_admins_path do |f|
+  .form-group
+    = f.label :body, '内容', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_field :body, class: 'form-control'
+  .form-group
+    = f.label :state, '種類', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.select :state, [['更新履歴', 0], ['お知らせ', 1]], { selected: 0 }, { class: 'form-control' }
+  .form-group
+    = f.submit '登録', class: 'btn btn-primary'

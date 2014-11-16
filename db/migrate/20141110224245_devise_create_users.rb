@@ -27,6 +27,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :pref, null: false
       t.text :rival
       t.text :reverse_rival
+      t.boolean :admin, default: false, null: false
 
       ## Confirmable
       # t.string   :confirmation_token
