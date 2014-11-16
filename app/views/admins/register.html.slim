@@ -1,0 +1,21 @@
+h2 新規楽曲追加用ページ
+
+= form_for @sheet, url: create_sheet_admins_path do |f|
+  .form-group
+    = f.label :title, '曲名', class: 'col-md-4 control-label'
+    .col-md-8
+      = f.text_field :title, class: 'form-control'
+  .form-group
+    = f.label :ability, 'ノマゲ地力', class: 'col-md-4 control-label'
+    .col-md-8
+      = f.select :ability, Sheet.power, { selected: 19 }, { class: 'form-control' }
+  .form-group
+    = f.label :h_ability, 'ハード地力', class: 'col-md-4 control-label'
+    .col-md-8
+      = f.select :h_ability, Sheet.power, { selected: 19 }, { class: 'form-control' }
+  .form-group
+    = f.label :version, 'バージョン', class: 'col-md-4 control-label'
+    .col-md-8
+      = f.select :version, @versions, { selected: 22 }, { class: 'form-control' }
+  .form-group
+    = f.submit '登録', class: 'btn btn-primary'

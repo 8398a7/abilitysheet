@@ -39,7 +39,8 @@ class SheetsController < ApplicationController
                  ['RA',   18, 'btn btn-warning'],
                  ['Lin',  19, 'btn btn-default'],
                  ['tri',  20, 'btn btn-primary'],
-                 ['SPD',  21, 'btn btn-danger'],
+                 ['SPD',  21, 'btn btn-warning'],
+                 ['PEN',  22, 'btn btn-danger'],
                  ['ALL',  0,  'btn btn-success']]
   end
 end

@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << [:username, :iidxid, :djname, :grade, :pref]
     devise_parameter_sanitizer.for(:account_update) << [:djname, :grade, :pref]
   end
+
+  def white_list
+    return true if current_user.id == 1
+    flash[:alert] = '許可されていないページです'
+    redirect_to root_path
+  end
 end
