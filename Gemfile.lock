@@ -69,6 +69,7 @@ GEM
     execjs (2.2.2)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
+    google-analytics-rails (0.0.6)
     haml (4.0.5)
       tilt
     hash-deep-merge (0.1.1)
@@ -246,6 +247,7 @@ DEPENDENCIES
   coffee-rails
   devise
   font-awesome-rails
+  google-analytics-rails
   jbuilder (~> 2.0)
   jquery-datatables-rails
   jquery-rails
