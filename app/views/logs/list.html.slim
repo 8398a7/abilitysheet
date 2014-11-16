@@ -9,6 +9,8 @@ table.datatable
     - @logs.each do |log|
       tr
         td = link_to log, show_log_path(current_user.iidxid, log)
-        td
+        td = Log.where(created_at: log).count
 coffee:
-  $('.datatable').dataTable()
+  $('.datatable').dataTable(
+    order: [0, 'desc']
+  )
