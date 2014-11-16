@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
 
+  get '/rival/list' => 'rivals#list', as: :list_rival
   get '/rival/clear/:id' => 'rivals#clear', as: :clear_rival
   get '/rival/hard/:id' => 'rivals#hard', as: :hard_rival
   post '/rival/remove/:id' => 'rivals#remove', as: :remove_rival

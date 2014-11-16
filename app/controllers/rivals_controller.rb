@@ -1,6 +1,12 @@
 class RivalsController < ApplicationController
   before_action :set_sheet, only: [:clear, :hard]
 
+  def list
+    rivals = User.find_by(id: current_user.id).rival
+    @users = User.where(iidxid: rivals)
+    @color = Score.list_color
+  end
+
   def clear
     @sheets = Sheet.order(:ability, :title)
     return if params[:condition] == 'all'

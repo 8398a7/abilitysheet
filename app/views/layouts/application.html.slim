@@ -40,7 +40,12 @@ html lang="ja"
                 li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
                 li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
                 li = link_to '更新データ', list_logs_path(current_user.iidxid)
-          li = link_to 'ライバル', '/'
+            li.dropdown-open
+              a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
+                | ライバル
+                b.caret
+              ul.dropdown-menu
+                li = link_to 'ライバル一覧', list_rival_path
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open
