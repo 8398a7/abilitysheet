@@ -42,6 +42,7 @@ gem 'whenever', require: false
 gem 'devise'
 gem 'rails_admin'
 gem 'cancan'
+gem 'google-analytics-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
