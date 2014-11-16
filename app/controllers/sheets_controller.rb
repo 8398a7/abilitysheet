@@ -14,6 +14,8 @@ class SheetsController < ApplicationController
   private
 
   def set_sheet
+    flash[:alert] = '曲名をクリックすると状態を更新できます。' unless User.find_by(id: current_user.id).scores.exists?(state: 0..6)
+    flash[:notice] = 'versionを選択すると絞り込みができます。' unless User.find_by(id: current_user.id).scores.exists?(state: 0..6)
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
     @power = Sheet.power
