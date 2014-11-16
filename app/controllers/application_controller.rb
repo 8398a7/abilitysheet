@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def white_list
-    return true if current_user.id == 1
+    return true if current_user.admin?
     flash[:alert] = '許可されていないページです'
     redirect_to root_path
   end

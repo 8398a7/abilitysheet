@@ -1,0 +1,129 @@
+ja:
+  admin:
+    home:
+      name: "ホーム"
+    pagination:
+      previous: "&laquo; 前"
+      next: "次 &raquo;"
+      truncate: "…"
+    misc:
+      filter_date_format: "yy/mm/dd" # a combination of 'dd', 'mm' and 'yy' with any delimiter. No other interpolation will be done!
+      search: "検索"
+      filter: "検索"
+      refresh: "更新"
+      show_all: "すべて表示"
+      add_filter: "絞り込む..."
+      bulk_menu_title: "選択項目を..."
+      remove: "削除"
+      add_new: "新規作成"
+      chosen: "選択された%{name}"
+      chose_all: "すべて選択"
+      clear_all: "選択解除"
+      up: "上"
+      down: "下"
+      navigation: "ナビゲーション"
+      log_out: "ログアウト"
+      ago: "前"
+    flash:
+      successful: "%{name}の%{action}に成功しました"
+      error: "%{name}の%{action}に失敗しました"
+      noaction: "操作を取り消しました"
+      model_not_found: "モデル'%{model}'はありません"
+      object_not_found: "'ID:%{id}'の%{model}はありません"
+    table_headers:
+      model_name: "モデル名"
+      last_used: "最終アクセス日"
+      records: "レコード数"
+      username: "ユーザ"
+      changes: "変更"
+      created_at: "日時"
+      item: "アイテム"
+      message: "メッセージ"
+    actions:
+      dashboard:
+        title: "サイト管理"
+        menu: "ダッシュボード"
+        breadcrumb: "ダッシュボード"
+      index:
+        title: "%{model_label_plural}の一覧"
+        menu: "一覧"
+        breadcrumb: "%{model_label_plural}"
+      show:
+        title: "%{model_label} '%{object_label}'の詳細"
+        menu: "詳細"
+        breadcrumb: "%{object_label}"
+      show_in_app:
+        menu: "表示"
+      new:
+        title: "新規%{model_label}"
+        menu: "新規作成"
+        breadcrumb: "新規"
+        link: "新規%{model_label}追加"
+        done: "作成"
+      edit:
+        title: "%{model_label} '%{object_label}'を編集"
+        menu: "編集"
+        breadcrumb: "編集"
+        link: "この%{model_label}を編集"
+        done: "更新"
+      delete:
+        title: "%{model_label} '%{object_label}'を削除"
+        menu: "削除"
+        breadcrumb: "削除"
+        link: "'%{object_label}'削除"
+        done: "削除"
+      bulk_delete:
+        title: "%{model_label_plural}を一括削除"
+        menu: "一括削除"
+        breadcrumb: "一括削除"
+        bulk_link: "選択した%{model_label_plural}を削除"
+      export:
+        title: "%{model_label}をエクスポート"
+        menu: "エクスポート"
+        breadcrumb: "エクスポート"
+        link: "%{model_label_plural}をエクスポート"
+        bulk_link: "選択した%{model_label_plural}をエクスポート"
+        done: "エクスポート"
+      history_index:
+        title: "%{model_label_plural}の更新履歴"
+        menu: "履歴"
+        breadcrumb: "履歴"
+      history_show:
+        title: "%{model_label} '%{object_label}'の履歴"
+        menu: "履歴"
+        breadcrumb: "履歴"
+    form:
+      cancel: "キャンセル"
+      basic_info: "基本情報"
+      required: "必須"
+      optional: "オプション"
+      one_char: "文字"
+      char_length_up_to: "最大文字数:"
+      char_length_of: "文字数:"
+      save: "保存"
+      save_and_add_another: "保存して次へ"
+      save_and_edit: "保存して編集"
+      all_of_the_following_related_items_will_be_deleted: "を削除してよろしいですか? 以下の項目が削除され、もしくは関係を失います:"
+      are_you_sure_you_want_to_delete_the_object: "%{model_name}の項目"
+      confirmation: "実行する"
+      bulk_delete: "以下の項目が削除され、それによって関連する項目が削除され、もしくは関係を失います:"
+      new_model: "%{name} (新規)"
+    export:
+      confirmation: "%{name}としてエクスポート"
+      select: "エクスポートするフィールドを選択してください"
+      fields_from: "%{name}のフィールド"
+      fields_from_associated: "関連する%{name}のフィールド"
+      display: "カラム:%{name} 型:%{type}"
+      options_for: "%{name}の出力オプション"
+      empty_value_for_associated_objects: "<empty>"
+      click_to_reverse_selection: 'クリックで選択を反転します'
+      csv:
+        header_for_root_methods: "%{name}" # 'model' is available
+        header_for_association_methods: "%{name} [%{association}]"
+        encoding_to: "文字コード"
+        encoding_to_help: "空白の場合は%{name}になります"
+        skip_header: "ヘッダなし"
+        skip_header_help: "チェックすると出力にヘッダ行を含めません"
+        default_col_sep: ","
+        col_sep: "区切り文字"
+        col_sep_help: "空白の場合は'%{value}'区切りです" # value is default_col_sep
