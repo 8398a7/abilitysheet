@@ -26,6 +26,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.integer :grade
       t.integer :pref, null: false
       t.text :rival
+      t.text :reverse_rival
 
       ## Confirmable
       # t.string   :confirmation_token

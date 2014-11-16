@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :scores
   has_many :logs
   serialize :rival
+  serialize :reverse_rival
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   }, inclusion: {
     in: 0..47, message: 'のパラメタが異常です。'
   }
-  validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9]+\z/, message: 'は半角英数字で記入して下さい' }
+  validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9]+\z/, message: 'は半角大文字英字で記入して下さい' }
   validates :username, length: { minimum: 3, maximum: 10 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角英数字で記入して下さい' }
   @pref_all = %w(
     海外
