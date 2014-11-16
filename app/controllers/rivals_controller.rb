@@ -1,5 +1,6 @@
 class RivalsController < ApplicationController
   before_action :set_sheet, only: [:clear, :hard]
+  before_filter :authenticate_user!
 
   def list
     rivals = User.find_by(id: current_user.id).rival
