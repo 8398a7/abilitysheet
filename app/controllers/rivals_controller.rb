@@ -30,11 +30,11 @@ class RivalsController < ApplicationController
     u = User.find_by(id: current_user.id)
     r = User.find_by(iidxid: params[:id])
     array, r_array = [], []
+    res = true
     if u.rival
       array = u.rival
       res = rival_overlap(array)
-    else
-      res = true
+      res = false if 9 < u.rival.count
     end
 
     if r.reverse_rival
@@ -52,7 +52,7 @@ class RivalsController < ApplicationController
       r.save
       flash[:notice] = "ライバル(#{ params[:id] })を追加しました"
     else
-      flash[:alert] = '既に登録済みのライバルです'
+      flash[:alert] = '既に登録済みのライバルかライバルが10人を超えています'
     end
     redirect_to :back
   end
