@@ -8,7 +8,7 @@ gem 'slim-rails'
 
 # turbolinkを正しく動作させる
 gem 'jquery-turbolinks'
-#
+
 # UI関連
 gem 'twitter-bootstrap3-rails'
 gem 'font-awesome-rails'
@@ -79,4 +79,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
