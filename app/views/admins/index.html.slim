@@ -8,6 +8,12 @@ table.datatable
       td = link_to 'notice作成', new_notice_admins_path
     tr
       td = link_to 'Rails Admin', rails_admin_path
+    tr
+      td
+        = link_to 'メッセージ', message_list_admins_path
+        - if @message
+          | &nbsp;|&nbsp;
+          font color="red" 未消化メッセージあり
 
 coffee:
   $('.datatable').dataTable()

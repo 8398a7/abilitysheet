@@ -1,0 +1,12 @@
+h2 連絡フォーム
+
+p パスワードを忘れた，既にiidxidが使われている，何らかの不具合やバグ報告など
+
+= form_for @message, url: create_message_welcome_path do |f|
+  .form-group
+    = f.label :body, '内容', class: 'col-md-2 control-label'
+    .col-md-10
+      = f.text_area :body, class: 'form-control'
+  .form-group
+    .col-md-4
+    p = f.submit '送信', class: 'btn btn-primary'
