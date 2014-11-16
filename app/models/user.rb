@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   validates :grade, numericality: {
     only_integer: true
   }, inclusion: {
-    in: 0..17, message: 'のパラメタが異常です。'
+    in: AbilitysheetIidx::Application.config.iidx_grade..17, message: 'のパラメタが異常です。'
   }
   validates :pref, numericality: {
     only_integer: true
@@ -53,6 +53,11 @@ class User < ActiveRecord::Base
     一級 二級 三級 四級 五級 六級 七級
   )
 
+  @dan_all = %w(
+    八段 七段 六段 五段 四段 三段 二段 初段
+    一級 二級 三級 四級 五級 六級 七級
+  )
+
   def belongs
     %w(
       海外
@@ -80,7 +85,7 @@ class User < ActiveRecord::Base
 
   def self.dan
     array = []
-    @dan_all.each_with_index { |d, i| array.push([d, i]) }
+    @dan_all.each.with_index(AbilitysheetIidx::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
     array
   end
 
