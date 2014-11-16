@@ -45,10 +45,8 @@ table.table.table-responsive border=1
         - (1..5).each do |i|
           - s = @sheets[cnt]
           - if cnt < @sheets.size && ab == s.h_ability
-            td width=width height=height align="center" bgcolor="#{ @color[s.id] }"
+            td width=width height=height align="center" bgcolor=@color[s.id]
               = link_to_if !current_user.nil? && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id, 1), remote: true
             - cnt += 1
           - else
             td
-          - if cnt == @sheets.size
-            - break

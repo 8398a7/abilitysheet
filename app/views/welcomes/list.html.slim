@@ -39,8 +39,12 @@ table.datatable.table
                 - flag = true
                 - break
             - unless flag
+              = link_to 'ライバル比較', clear_rival_path(user.iidxid)
+              | &nbsp;|&nbsp;
               = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
           - elsif user_signed_in? && user.id != current_user.id
+            = link_to 'ライバル比較', clear_rival_path(user.iidxid)
+            | &nbsp;|&nbsp;
             = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
 coffee:
   $ ->

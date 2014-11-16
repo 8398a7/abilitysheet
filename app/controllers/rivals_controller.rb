@@ -3,11 +3,14 @@ class RivalsController < ApplicationController
 
   def clear
     @sheets = Sheet.order(:ability, :title)
+    return if params[:condition] == 'all'
     condition if params[:condition]
   end
 
   def hard
     @sheets = Sheet.order(:h_ability, :title)
+    return if params[:condition] == 'all'
+    condition if params[:condition]
   end
 
   def register
@@ -16,7 +19,10 @@ class RivalsController < ApplicationController
     if u.rival
       array = u.rival
       res = rival_overlap(array)
+    else
+      res = true
     end
+
     if res
       array.push(params[:id])
       u.rival = array
