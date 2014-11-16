@@ -6,7 +6,7 @@ h2
     br
     = f.text_field :username, autofocus: true
   .field
-    = f.label :password
+    = f.label :password, 'パスワード'
     br
     = f.password_field :password, autocomplete: "off"
   - if devise_mapping.rememberable?
