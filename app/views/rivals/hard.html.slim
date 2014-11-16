@@ -1,6 +1,17 @@
 .center
   p.btn.btn-danger HARD
   = link_to 'CLEAR', clear_rival_path(params[:id]), { class: 'btn btn-primary' }
+  br
+  br
+  = link_to 'Win', { condition: 'win' }, { class: 'btn btn-primary' }
+  | &nbsp;&nbsp;
+  = link_to 'Even', { condition: 'even' }, { class: 'btn btn-warning' }
+  | &nbsp;&nbsp;
+  = link_to 'Lose', { condition: 'lose' }, { class: 'btn btn-danger' }
+  | &nbsp;&nbsp;
+  = link_to 'ALL', { condition: 'all' }, { class: 'btn btn-success' }
+  br
+  br
 - width, height, diff = 150, 50, 20
 table.table.table-responsive border=1
   thead
@@ -21,6 +32,5 @@ table.table.table-responsive border=1
             td width=diff height=height bgcolor=@rival_color[s.id]
             - cnt += 1
           - else
-            td
-            td
-          - if cnt == @sheets.size
+            td width=width-diff
+            td width=diff

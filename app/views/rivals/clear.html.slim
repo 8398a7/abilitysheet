@@ -8,6 +8,8 @@
   = link_to 'Even', { condition: 'even' }, { class: 'btn btn-warning' }
   | &nbsp;&nbsp;
   = link_to 'Lose', { condition: 'lose' }, { class: 'btn btn-danger' }
+  | &nbsp;&nbsp;
+  = link_to 'ALL', { condition: 'all' }, { class: 'btn btn-success' }
   br
   br
 - width, height, diff = 150, 50, 20
@@ -30,7 +32,5 @@ table.table.table-responsive border=1
             td width=diff height=height bgcolor=@rival_color[s.id]
             - cnt += 1
           - else
-            td
-            td
-          - if cnt == @sheets.size
-            - break
+            td width=width-diff
+            td width=diff
