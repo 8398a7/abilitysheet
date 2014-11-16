@@ -1,37 +1,37 @@
 h2
-  | Edit
-  = resource_name.to_s.humanize
+  | ユーザ編集
 = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
   - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    div
-      | Currently waiting confirmation for:
-      = resource.unconfirmed_email
-  .field
-    = f.label :password
+  .form-group
+    = f.label :password, 'パスワード', class: 'col-md-4 control-label'
     i
-      | (leave blank if you don't want to change it)
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
+      | (変更したくない場合は空のまま)
+    .col-md-5
+      = f.password_field :password, autocomplete: 'off', class: 'form-control'
+  .form-group
+    = f.label :password_confirmation, 'パスワード(確認)', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
+  .form-group
+    = f.label :current_password, '現在のパスワード', class: 'col-md-4 control-label'
     i
-      | (we need your current password to confirm your changes)
-    br
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-h3
-  | Cancel my account
-p
-  | Unhappy?
-  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
-= link_to "Back", :back
+      | (変更を行う場合は現在のパスワードを記入)
+    .col-md-5
+      = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
+  .form-group
+    = f.label :djname, 'DJNAME', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.text_field :djname, autofocus: true, class: 'form-control'
+  .form-group
+    = f.label :grade, '段位', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.select :grade, User.dan, {}, { class: 'form-control' }
+  .form-group
+    = f.label :pref, '所属', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.select :pref, User.belongs, {}, { class: 'form-control' }
+  .form-group
+    .col-md-5
+    .col-md-2
+      = f.submit '更新', class: 'btn btn-primary form-control'
