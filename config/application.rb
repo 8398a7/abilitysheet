@@ -31,6 +31,9 @@ module AbilitysheetIidx
     # Current IIDX version
     config.iidx_version = 22
 
+    # Current IIDX grade
+    config.iidx_grade = 3
+
     # lib auto load
     config.autoload_paths += %W(#{config.root}/lib)
   end
