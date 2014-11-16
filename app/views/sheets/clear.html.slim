@@ -1,8 +1,11 @@
 .center
   p.btn.btn-primary CLEAR
   br
+  br
   - @versions.each do |v|
     = link_to v[0], { version: v[1] }, { class: v[2] }
+  br
+  br
   table.table align="center" style="width:1000px; height:0px; margin-bottom:0px;"
     - noc = 0
     tr
@@ -26,14 +29,11 @@
         = noc
       td
         = link_to 'HARD', hard_sheets_path, { class: "btn btn-danger" }
-      /td
-        = link_to "MY PAGE", player_path, { class: "btn btn-success" }
-      /td
-        = link_to "index", root_path, { class: "btn btn-warning" }
 - width , height = 150, 50
 table.table.table-responsive border=1
   thead
   tbody
+    = render 'shared/state_example'
     - cnt = 0
     - (0..19).each do |ab|
       tr

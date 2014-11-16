@@ -14,6 +14,8 @@ class SheetsController < ApplicationController
   private
 
   def set_sheet
+    @state_examples = {}
+    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
     @power = Sheet.power
     s = User.find_by(iidxid: params[:iidxid]).scores
     @color = Score.convert_color(s)
