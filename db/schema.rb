@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115070915) do
+ActiveRecord::Schema.define(version: 20141116153743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20141115070915) do
 
   add_index "logs", ["sheet_id"], name: "index_logs_on_sheet_id", using: :btree
   add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
+
+  create_table "notices", force: true do |t|
+    t.string  "body"
+    t.integer "state"
+    t.boolean "active"
+    t.date    "created_at"
+  end
 
   create_table "scores", force: true do |t|
     t.integer  "state",      default: 7, null: false
