@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
+  get '/admins/index' => 'admins#index', as: :index_admins
+  get '/admins/register' => 'admins#register', as: :register_admins
+  post '/admins/register' => 'admins#create_sheet', as: :create_sheet_admins
 
   get '/rival/list' => 'rivals#list', as: :list_rival
   get '/rival/reverse_list' => 'rivals#reverse_list', as: :reverse_list_rival
