@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20141115070915) do
     t.integer  "grade"
     t.integer  "pref",                                null: false
     t.text     "rival"
+    t.text     "reverse_rival"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -8,6 +8,12 @@ class RivalsController < ApplicationController
     @color = Score.list_color
   end
 
+  def reverse_list
+    rivals = User.find_by(id: current_user.id).reverse_rival
+    @users = User.where(iidxid: rivals)
+    @color = Score.list_color
+  end
+
   def clear
     @sheets = Sheet.order(:ability, :title)
     return if params[:condition] == 'all'
@@ -22,7 +28,8 @@ class RivalsController < ApplicationController
 
   def register
     u = User.find_by(id: current_user.id)
-    array = []
+    r = User.find_by(iidxid: params[:id])
+    array, r_array = [], []
     if u.rival
       array = u.rival
       res = rival_overlap(array)
@@ -30,28 +37,41 @@ class RivalsController < ApplicationController
       res = true
     end
 
+    if r.reverse_rival
+      r_array = r.reverse_rival
+      res = rival_overlap(r_array)
+    else
+      res = true
+    end
+
     if res
+      r_array.push(current_user.iidxid)
       array.push(params[:id])
-      u.rival = array
+      u.rival, r.reverse_rival = array, r_array
       u.save
+      r.save
       flash[:notice] = "ライバル(#{ params[:id] })を追加しました"
     else
       flash[:alert] = '既に登録済みのライバルです'
     end
-    redirect_to list_welcome_path
+    redirect_to :back
   end
 
   def remove
     u = User.find_by(id: current_user.id)
-    array = []
+    r = User.find_by(iidxid: params[:id])
+    array, r_array = [], []
     if u.rival
       array = u.rival if u.rival
+      r_array = r.reverse_rival
       array.delete(params[:id])
-      u.rival = array
+      r_array.delete(current_user.iidxid)
+      u.rival, r.reverse_rival = array, r_array
       u.save
+      r.save
     end
     flash[:alert] = "ライバル(#{ params[:id] })を削除しました"
-    redirect_to list_welcome_path
+    redirect_to :back
   end
 
   private
