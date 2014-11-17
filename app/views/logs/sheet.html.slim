@@ -21,7 +21,9 @@ table.datatable
         td bgcolor=@color[2] = h
         td bgcolor=@color[1] = ex
         td bgcolor=@color[0] = f
-coffee:
-  $('.datatable').dataTable(
-    aLengthMenu: [157]
-  )
+javascript:
+  (function() {
+    $('.datatable').dataTable({
+      aLengthMenu: [#{ @sheets.count }]
+    });
+  }).call(this);
