@@ -64,7 +64,10 @@ html lang="ja"
                 = f.text_field :username, autoforcus: true, class: 'form-control', placeholder: 'アカウント名'
             .form-group
               .col-md-2
-                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード'
+                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード, remember_me→'
+            .form-group
+              .col-md-2
+                = f.check_box :remember_me
             .form-group
               = f.submit 'ログイン', class: 'btn btn-info'
               | &nbsp;&nbsp;
