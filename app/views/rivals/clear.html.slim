@@ -12,6 +12,9 @@
   = link_to 'ALL', { condition: 'all' }, { class: 'btn btn-success' }
   br
   br
+  - if params[:condition] && params[:condition] != 'all'
+    | 勝敗数
+    = @sheets.count
 - width, height, diff = 150, 50, 20
 table.table.table-responsive border=1
   thead
