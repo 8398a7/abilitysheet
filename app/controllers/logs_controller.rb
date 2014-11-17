@@ -7,7 +7,7 @@ class LogsController < ApplicationController
   end
 
   def list
-    @logs = Log.pluck(:created_at).uniq
+    @logs = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
   end
 
   def show
@@ -17,6 +17,10 @@ class LogsController < ApplicationController
 
   def graph
     user_id = User.find_by(iidxid: params[:iidxid]).id
+    unless Log.exists?(user_id: user_id)
+      flash[:alert] = '更新データがありません！'
+      redirect_to list_logs_path and return
+    end
     oldest = (User.find_by(id: user_id).logs.order(created_at: :desc).last.created_at.strftime('%Y-%m') + '-01').to_date
     now = Time.now.strftime('%Y-%m')
     lastest = (now + '-01').to_date
