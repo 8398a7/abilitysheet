@@ -11,7 +11,8 @@ class LogsController < ApplicationController
   end
 
   def show
-    @logs = Log.where(user_id: current_user.id, created_at: params[:date]).preload(:sheet)
+    user_id = User.find_by(iidxid: params[:iidxid]).id
+    @logs = Log.where(user_id: user_id, created_at: params[:date]).preload(:sheet)
     @color = Score.list_color
   end
 

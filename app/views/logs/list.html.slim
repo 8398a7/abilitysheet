@@ -9,7 +9,7 @@ table.datatable
   tbody
     - @logs.each do |log|
       tr
-        td = link_to log, show_log_path(current_user.iidxid, log)
+        td = link_to log, show_log_path(params[:iidxid], log)
         td = Log.where(created_at: log).count
 coffee:
   $('.datatable').dataTable(
