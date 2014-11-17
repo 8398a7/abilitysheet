@@ -24,7 +24,7 @@ html lang="ja"
           span.icon-bar
           span.icon-bar
         = link_to '☆12参考表', root_path, class: 'navbar-brand'
-      .nav-collapse.collapse.navbar-responsive-collapse
+      .navbar-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
           li = link_to 'ユーザ一覧', list_welcome_path
           - if user_signed_in?
