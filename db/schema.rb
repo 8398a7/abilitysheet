@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141117183906) do
 
   create_table "messages", force: true do |t|
     t.string   "body"
+    t.string   "email"
     t.inet     "ip",                         null: false
     t.integer  "user_id"
     t.boolean  "state",      default: false

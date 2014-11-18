@@ -16,6 +16,7 @@ class WelcomesController < ApplicationController
   def create_message
     message = Message.new
     message.user_id = current_user.id if user_signed_in?
+    message.email = params[:message][:email]
     message.body = params[:message][:body]
     message.ip = request.remote_ip
     result = message.save
