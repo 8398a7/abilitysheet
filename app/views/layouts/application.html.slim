@@ -64,12 +64,12 @@ html lang="ja"
                 = f.text_field :username, autoforcus: true, class: 'form-control', placeholder: 'アカウント名'
             .form-group
               .col-md-2
-                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード, remember_me→'
+                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード, remember→'
             .form-group
               .col-md-2
                 = f.check_box :remember_me
             .form-group
-              = f.submit 'ログイン', class: 'btn btn-info'
+              = f.submit 'ログイン', class: 'btn btn-success'
               | &nbsp;&nbsp;
               = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
               | &nbsp;&nbsp;
