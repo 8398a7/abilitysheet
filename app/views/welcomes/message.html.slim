@@ -1,12 +1,16 @@
-h2 連絡フォーム
-
-p パスワードを忘れた，既にiidxidが使われている，何らかの不具合やバグ報告など
-
-= form_for @message, url: create_message_welcome_path do |f|
-  .form-group
-    = f.label :body, '内容', class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_area :body, class: 'form-control'
-  .form-group
-    .col-md-4
-    p = f.submit '送信', class: 'btn btn-primary'
+.col-lg-2
+.col-lg-8
+  = form_for @message, url: create_message_welcome_path, html: { class: 'form-horizontal' } do |f|
+    fieldset
+      legend 連絡フォーム(パスワードを忘れた，既にiidxidが使われている，何らかの不具合やバグ報告など)
+      .form-group
+        = f.label :email, '連絡先(任意)', class: 'col-md-2 control-label'
+        .col-md-10
+          = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :body, '内容', class: 'col-md-2 control-label'
+        .col-md-10
+          = f.text_area :body, class: 'form-control', rows: 3
+      .form-group
+        .col-lg-10.col-lg-offset-4
+          = f.submit '送信', class: 'btn btn-primary'
