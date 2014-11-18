@@ -10,7 +10,7 @@ table.datatable
     - @logs.each do |log|
       tr
         td = link_to log, show_log_path(params[:iidxid], log)
-        td = Log.where(created_at: log).count
+        td = User.find_by(iidxid: params[:iidxid]).logs.where(created_at: log).count
 coffee:
   $('.datatable').dataTable(
     order: [0, 'desc']

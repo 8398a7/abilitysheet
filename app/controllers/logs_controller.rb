@@ -1,6 +1,4 @@
 class LogsController < ApplicationController
-  before_filter :authenticate_user!
-
   def sheet
     @sheets = Sheet.order(:title)
     @color = Score.list_color
@@ -48,7 +46,7 @@ class LogsController < ApplicationController
       f.legend(layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0)
       f.yAxis(allowDecimals: false, title: { text: '更新数' })
       f.series(name: 'FC', data: fc_count, color: '#ff8c00')
-      f.series(name: 'EXH', data: exh_count, color: '#fffacd')
+      f.series(name: 'EXH', data: exh_count, color: '#ffd900')
       f.series(name: 'HARD', data: h_count, color: '#ff6347')
       f.series(name: 'CLEAR', data: c_count, color: '#afeeee')
       f.series(name: 'EASY', data: e_count, color: '#98fb98')
