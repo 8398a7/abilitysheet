@@ -18,7 +18,7 @@ table.datatable.table
         td = user.id
         td = link_to user.djname, clear_sheets_path(user.iidxid)
         td = user.iidxid
-        td = user.dan
+        td bgcolor=user.dan_color = user.dan
         td = user.belongs
         - if scores
           td = scores.updated_at.to_date.strftime('%Y-%m-%d')

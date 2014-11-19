@@ -83,6 +83,18 @@ class User < ActiveRecord::Base
     )[grade]
   end
 
+  def dan_color
+    if 3 <= grade && grade <= 10
+      '#afeeee'
+    elsif grade == 1 || grade == 2
+      '#ff6347'
+    elsif grade == 0
+      '#ffd900'
+    else
+      '#98fb98'
+    end
+  end
+
   def self.dan
     array = []
     @dan_all.each.with_index(AbilitysheetIidx::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
