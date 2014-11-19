@@ -44,6 +44,9 @@ gem 'rails_admin'
 gem 'cancan'
 gem 'google-analytics-rails'
 
+# db dump
+gem 'yaml_db'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use postgresql as the database for Active Record
