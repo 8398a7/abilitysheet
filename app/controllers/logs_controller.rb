@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
   def sheet
-    @sheets = Sheet.order(:title)
+    @sheets = Sheet.active.order(:title)
     @color = Score.list_color
   end
 
@@ -27,7 +27,7 @@ class LogsController < ApplicationController
 
     category, fc_count, exh_count, h_count, c_count, e_count, cl_cnt, hd_cnt = [], [], [], [], [], [], [], []
     st = between.first[0]
-    all = Sheet.all.count
+    all = Sheet.active.count
     between.each do |b|
       category.push(b[0].strftime('%Y-%m').slice(2, 5))
       cl_cnt.push(all - Log.where(user_id: user_id, new_state: 0..4, created_at: st..b[1]).select(:sheet_id).uniq.count)
