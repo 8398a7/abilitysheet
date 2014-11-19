@@ -10,6 +10,10 @@ class Sheet < ActiveRecord::Base
   )
 
   class << self
+    def active
+      where(active: true)
+    end
+
     def power
       [['地力S+', 0],
        ['個人差S+', 1],

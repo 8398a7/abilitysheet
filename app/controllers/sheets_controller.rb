@@ -2,12 +2,12 @@ class SheetsController < ApplicationController
   before_action :set_sheet
 
   def clear
-    @sheets = Sheet.order(:ability, :title)
+    @sheets = Sheet.active.order(:ability, :title)
     @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
   end
 
   def hard
-    @sheets = Sheet.order(:h_ability, :title)
+    @sheets = Sheet.active.order(:h_ability, :title)
     @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
   end
 
