@@ -47,4 +47,6 @@ table.datatable.table
             | &nbsp;|&nbsp;
             = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
 coffee:
-  $('.datatable').dataTable()
+  $('.datatable').dataTable(
+    order: [5, 'desc']
+  )
