@@ -44,6 +44,21 @@ GEM
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
     cancan (1.6.10)
+    capistrano (3.2.1)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (~> 1.3)
+    capistrano-bundler (1.1.3)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-rails (1.1.2)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.2)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    capistrano3-unicorn (0.2.1)
+      capistrano (~> 3.1, >= 3.1.0)
     chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -53,6 +68,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colorize (0.7.3)
     columnize (0.8.9)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -121,6 +137,9 @@ GEM
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
     nokogiri (1.6.4.1)
       mini_portile (~> 0.6.0)
     ntlm-http (0.1.1)
@@ -211,6 +230,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    sshkit (1.5.1)
+      colorize
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     temple (0.6.10)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
@@ -255,6 +278,11 @@ DEPENDENCIES
   binding_of_caller
   bullet
   cancan
+  capistrano (~> 3.2.1)
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rbenv
+  capistrano3-unicorn
   coffee-rails
   devise
   font-awesome-rails
