@@ -1,4 +1,6 @@
 class LogsController < ApplicationController
+  after_action :scrape_maneger, only: [:maneger]
+
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Score.list_color
@@ -6,6 +8,11 @@ class LogsController < ApplicationController
 
   def list
     @logs = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
+  end
+
+  def maneger
+    flash[:notice] = 'クリアランプの結果を反映しました'
+    redirect_to list_logs_path
   end
 
   def show
@@ -64,6 +71,10 @@ class LogsController < ApplicationController
   end
 
   private
+
+  def scrape_maneger
+    Scrape::Maneger.new(current_user)
+  end
 
   def between_create(o, l)
     array = []
