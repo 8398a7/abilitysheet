@@ -22,7 +22,7 @@ class Score < ActiveRecord::Base
         hash[s.lamp_string] += 1
         count += 1
       end
-      hash['N'] += Sheet.active.count - count
+      # hash['N'] += Sheet.active.count - count
       hash
     end
 
