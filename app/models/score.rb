@@ -7,6 +7,10 @@ class Score < ActiveRecord::Base
     str[state]
   end
 
+  def active?
+    Sheet.find_by(id: sheet_id).active
+  end
+
   class << self
     def score_create(iidxid)
       user_id = User.find_by(iidxid: iidxid).id
@@ -19,6 +23,7 @@ class Score < ActiveRecord::Base
       hash = { 'FC' => 0, 'EXH' => 0, 'H' => 0, 'C' => 0, 'E' => 0, 'A' => 0, 'F' => 0, 'N' => 0 }
       count = 0
       scores.each do |s|
+        next unless s.active?
         hash[s.lamp_string] += 1
         count += 1
       end
