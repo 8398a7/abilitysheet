@@ -11,6 +11,8 @@
 /log/*.log
 /tmp
 
+/config/database.yml
+
 # Ignore bundle
 /vendor/bundle
 
