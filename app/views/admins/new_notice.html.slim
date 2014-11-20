@@ -8,6 +8,6 @@ h2 Notice作成用ページ
   .form-group
     = f.label :state, '種類', class: 'col-md-2 control-label'
     .col-md-10
-      = f.select :state, [['更新履歴', 0], ['お知らせ', 1]], { selected: 0 }, { class: 'form-control' }
+      = f.select :state, [['更新履歴', 0], ['お知らせ', 1], ['今後の予定', 2]], { selected: 0 }, { class: 'form-control' }
   .form-group
     = f.submit '登録', class: 'btn btn-primary'

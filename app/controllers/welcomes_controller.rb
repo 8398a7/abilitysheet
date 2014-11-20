@@ -2,6 +2,7 @@ class WelcomesController < ApplicationController
   def index
     @update_logs = Notice.where(state: 0, active: true).limit(5).order(created_at: :desc)
     @notices = Notice.where(state: 1, active: true).limit(5).order(created_at: :desc)
+    @next = Notice.where(state: 2, active: true).limit(5).order(created_at: :desc)
   end
 
   def list
@@ -23,10 +24,5 @@ class WelcomesController < ApplicationController
     flash[:notice] = '承りました。対応はしばしお待ちください。' if result
     flash[:alert] = '何らかの不具合で送信できていません。Twitterなどにご連絡下さい。' unless result
     redirect_to root_path
-  end
-
-  def test
-    reg = Scrape::Register.new
-    @hoge = reg.get
   end
 end

@@ -10,8 +10,11 @@
     .panel-heading
       h3 今後の実装予定
     .panel-body
-      ul
-        li クリアランプマネージャからクリアランプの移行
+      - @next.each do |n|
+        p
+          = n.created_at
+          | &nbsp;
+          = n.body
 .col-lg-6
   .panel.panel-danger
     .panel-heading
