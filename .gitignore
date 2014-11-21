@@ -12,6 +12,7 @@
 /tmp
 
 /config/database.yml
+/config/secrets.yml
 
 # Ignore bundle
 /vendor/bundle
