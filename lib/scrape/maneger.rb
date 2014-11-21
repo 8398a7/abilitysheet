@@ -5,6 +5,9 @@ module Scrape
       @base = 'http://beatmania-clearlamp.com/'
       @current_user = current_user
       search
+    end
+
+    def sync
       res = extract
       res
     end
