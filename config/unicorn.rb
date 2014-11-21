@@ -9,7 +9,7 @@ stdout_path %(#{ rails_root }/log/unicorn.log)
 timeout 15 # 15秒Railsが反応しなければWorkerをkillしてタイムアウト
 preload_app true # 後述
 
-listen %(#{ rails_root }/tmp/unicorn.sock)
+listen %(#{ rails_root }/tmp/sockets/unicorn.sock)
 
 # pid file path Capistranoとか使う時は要設定か
 pid %(#{ rails_root }/tmp/pids/unicorn.pid)
