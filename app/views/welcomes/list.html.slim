@@ -1,4 +1,5 @@
 h2 ユーザ一覧
+p 現在の利用者は#{ @users.count }人です
 
 table.datatable.table
   thead
@@ -49,4 +50,5 @@ table.datatable.table
 coffee:
   $('.datatable').dataTable(
     order: [5, 'desc']
+    aLengthMenu: [25]
   )
