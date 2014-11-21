@@ -2,7 +2,6 @@ class Log < ActiveRecord::Base
   belongs_to :user
   belongs_to :sheet
   def self.data_create(id, params)
-    puts 'hgoehogehoge'
     sheet_id = params[:score][:sheet_id]
     scores = User.find_by(id: id).scores
     pre_state = 7
