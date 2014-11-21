@@ -11,7 +11,11 @@ class LogsController < ApplicationController
   end
 
   def maneger
-    flash[:notice] = 'クリアランプの結果を反映しました'
+    if @result
+      flash[:notice] = 'クリアランプの結果を反映しました'
+    else
+      flash[:alert] = '何らかの問題で失敗しました(クリアランプマネージャに該当IIDXIDが存在しない)'
+    end
     redirect_to list_logs_path
   end
 
@@ -78,7 +82,7 @@ class LogsController < ApplicationController
   private
 
   def scrape_maneger
-    Scrape::Maneger.new(current_user)
+    @result = Scrape::Maneger.new(current_user)
   end
 
   def between_create(o, l)
