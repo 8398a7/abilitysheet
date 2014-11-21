@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-  after_action :scrape_maneger, only: [:maneger]
+  before_action :scrape_maneger, only: [:maneger]
 
   def sheet
     @sheets = Sheet.active.order(:title)
@@ -82,7 +82,8 @@ class LogsController < ApplicationController
   private
 
   def scrape_maneger
-    @result = Scrape::Maneger.new(current_user)
+    scrape = Scrape::Maneger.new(current_user)
+    @result = scrape.sync
   end
 
   def between_create(o, l)
