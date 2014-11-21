@@ -5,7 +5,8 @@ module Scrape
       @base = 'http://beatmania-clearlamp.com/'
       @current_user = current_user
       search
-      extract
+      res = extract
+      res
     end
 
     private
@@ -42,6 +43,7 @@ module Scrape
       end
 
       # HTMLから曲名と状態を抽出し，登録する
+      return false unless elems
       elems.each do |elem|
         break if elem.index('</div>')
         state = value(elem.split('<dt class="')[1].split('">')[0])
@@ -49,6 +51,7 @@ module Scrape
         title = gigadelic_innocentwalls(title, elem)
         maneger_register(title, state.to_i)
       end
+      true
     end
 
     def gigadelic_innocentwalls(title, e)
