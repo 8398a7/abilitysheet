@@ -16,6 +16,9 @@ module Users
     def score_create
       iidxid = env['rack.request.form_hash']['user']['iidxid']
       return unless User.exists?(iidxid: iidxid)
+      user_id = User.find_by(iidxid: iidxid).id
+      # もし既に登録されていた場合はスコアを作らない
+      return if Score.exists?(user_id: user_id)
       Score.score_create(iidxid)
     end
   end
