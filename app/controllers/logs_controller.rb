@@ -32,13 +32,16 @@ class LogsController < ApplicationController
     lastest = (now + '-01').to_date
     between = between_create(oldest, lastest)
 
-    category, fc_count, exh_count, h_count, c_count, e_count, cl_cnt, hd_cnt = [], [], [], [], [], [], [], []
+    category, fc_count, exh_count, h_count, c_count, e_count = [], [], [], [], [], []
+    fc_cnt, exh_cnt, hd_cnt, cl_cnt = [], [], [], []
     st = between.first[0]
     all = Sheet.active.count
     between.each do |b|
       category.push(b[0].strftime('%Y-%m').slice(2, 5))
       cl_cnt.push(all - Log.where(user_id: user_id, new_state: 0..4, created_at: st..b[1]).select(:sheet_id).uniq.count)
       hd_cnt.push(all - Log.where(user_id: user_id, new_state: 0..2, created_at: st..b[1]).select(:sheet_id).uniq.count)
+      exh_cnt.push(all - Log.where(user_id: user_id, new_state: 0..1, created_at: st..b[1]).select(:sheet_id).uniq.count)
+      fc_cnt.push(all - Log.where(user_id: user_id, new_state: 0, created_at: st..b[1]).select(:sheet_id).uniq.count)
       fc_count.push(Log.where(user_id: user_id, new_state: 0, created_at: b[0]..b[1]).count)
       exh_count.push(Log.where(user_id: user_id, new_state: 1, created_at: b[0]..b[1]).count)
       h_count.push(Log.where(user_id: user_id, new_state: 2, created_at: b[0]..b[1]).count)
@@ -60,13 +63,15 @@ class LogsController < ApplicationController
     end
 
     @spline = LazyHighCharts::HighChart.new('spline') do |f|
-      f.title(text: '未クリア，未難推移')
+      f.title(text: '未達成推移')
       f.chart(type: 'spline')
       f.xAxis(categories: category)
       f.yAxis(allowDecimals: false, max: all, title: { text: '未達成数' })
       f.legend(layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0)
       f.series(name: '未クリア', data: cl_cnt, color: '#afeeee')
       f.series(name: '未難', data: hd_cnt, color: '#ff6347')
+      f.series(name: '未EXH', data: exh_cnt, color: '#ff6347')
+      f.series(name: '未FC', data: fc_cnt, color: '#ff6347')
     end
   end
 
