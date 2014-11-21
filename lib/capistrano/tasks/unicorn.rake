@@ -5,7 +5,7 @@ namespace :unicorn do
   end
 
   def start_unicorn
-    within current_path do
+    within release_path do
       execute :bundle, :exec, :unicorn_rails, "-c #{fetch(:unicorn_config)} -E production -D --path /abilitysheet"
     end
   end
