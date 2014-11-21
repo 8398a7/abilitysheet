@@ -12,6 +12,7 @@ module Scrape
     private
 
     def maneger_register(title, state)
+      return unless Sheet.exists?(title: title)
       sheet_id = Sheet.find_by(title: title).id
       user_id = @current_user.id
       version = AbilitysheetIidx::Application.config.iidx_version
