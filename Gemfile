@@ -53,7 +53,6 @@ group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
-  gem 'capistrano3-unicorn'
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
