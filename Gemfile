@@ -55,6 +55,10 @@ group :deployment do
   gem 'capistrano-bundler'
 end
 
+# sidekiq
+gem 'sidekiq'
+gem 'sinatra', require: false
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use postgresql as the database for Active Record

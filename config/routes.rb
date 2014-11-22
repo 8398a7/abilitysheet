@@ -16,6 +16,13 @@ Rails.application.routes.draw do
   get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins
   post '/admins/notice' => 'admins#create_notice', as: :create_notice_admins
   mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
+  require 'sidekiq/web'
+
+  AbilitysheetIidx::Application.routes.draw do
+    authenticate :user, lambda { |u| u.admin? } do
+      mount Sidekiq::Web => '/admins/sidekiq'
+    end
+  end
 
   # rival
   get '/rival/list' => 'rivals#list', as: :list_rival
