@@ -1,9 +1,10 @@
 class ManegerWorker
   include Sidekiq::Worker
-  def perform(user_id)
-    current_user = User.find_by(id: user_id)
+  sidekiq_options queue: :maneger
+  def perform(id)
+    current_user = User.find_by(id: id)
     scrape = Scrape::Maneger.new(current_user)
-    result = scrape.sync
-    result
+    scrape.sync
+    puts %(#{ Time.now} #{ current_user.djname }[#{ current_user.iidxid }] => maneger scrape done)
   end
 end
