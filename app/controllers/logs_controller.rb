@@ -11,11 +11,8 @@ class LogsController < ApplicationController
   end
 
   def maneger
-    if @result
-      flash[:notice] = 'クリアランプの結果を反映しました'
-    else
-      flash[:alert] = '何らかの問題で失敗しました(クリアランプマネージャに該当IIDXIDが存在しない)'
-    end
+    flash[:notice] = '同期処理を承りました。逐次反映を行います。'
+    flash[:alert] = '反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど)'
     redirect_to list_logs_path
   end
 
@@ -84,8 +81,7 @@ class LogsController < ApplicationController
   private
 
   def scrape_maneger
-    scrape = Scrape::Maneger.new(current_user)
-    @result = scrape.sync
+    @result = ManegerWorker.perform_async(current_user.id)
   end
 
   def between_create(o, l)

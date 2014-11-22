@@ -36,8 +36,8 @@ html lang="ja"
                 li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
                 li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
                 li = link_to '更新データ', list_logs_path(current_user.iidxid)
-              - if User.find_by(id: current_user.id).logs.exists?
-                li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
+                - if User.find_by(id: current_user.id).logs.exists?
+                  li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
             li.dropdown-open
               a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
                 | ライバル
