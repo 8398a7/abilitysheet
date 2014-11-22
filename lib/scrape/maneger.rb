@@ -91,6 +91,7 @@ module Scrape
       when %(EΛΠIΣ) then e = %(ΕΛΠΙΣ)
       when %(Timepiece phase II(CN Ver.)) then e = %(Timepiece phase II (CN Ver.))
       when %(Hollywood Galaxy (DJ NAGAI Remix)) then e = %(Hollywood Galaxy(DJ NAGAI Remix))
+      when %(表裏一体！？怪盗いいんちょの悩み♥) then e = %(表裏一体！？怪盗いいんちょの悩み)
       end
       e
     end
