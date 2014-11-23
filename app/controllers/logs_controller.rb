@@ -81,7 +81,9 @@ class LogsController < ApplicationController
   private
 
   def scrape_maneger
-    @result = ManegerWorker.perform_async(current_user.id)
+    scrape = Scrape::Maneger.new(current_user)
+    scrape.sync
+    # @result = ManegerWorker.perform_async(current_user.id)
   end
 
   def between_create(o, l)
