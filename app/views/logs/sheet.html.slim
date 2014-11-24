@@ -8,7 +8,7 @@ table.datatable
     th bgcolor=@color[0] FULL COMBO
   tbody
     - @sheets.each do |s|
-      - logs = s.logs.where(user_id: current_user.id)
+      - logs = s.logs.where(user_id: @id)
       - e = logs.find_by(new_state: 4).created_at if logs && logs.exists?(new_state: 4)
       - c = logs.find_by(new_state: 3).created_at if logs && logs.exists?(new_state: 3)
       - h = logs.find_by(new_state: 2).created_at if logs && logs.exists?(new_state: 2)

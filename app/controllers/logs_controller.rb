@@ -4,6 +4,7 @@ class LogsController < ApplicationController
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Score.list_color
+    @id = User.find_by(iidxid: params[:iidxid]).id
   end
 
   def list
@@ -73,8 +74,8 @@ class LogsController < ApplicationController
       f.legend(layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0)
       f.series(name: '未クリア', data: cl_cnt, color: '#afeeee')
       f.series(name: '未難', data: hd_cnt, color: '#ff6347')
-      f.series(name: '未EXH', data: exh_cnt, color: '#ff6347')
-      f.series(name: '未FC', data: fc_cnt, color: '#ff6347')
+      f.series(name: '未EXH', data: exh_cnt, color: '#ffd900')
+      f.series(name: '未FC', data: fc_cnt, color: '#ff8c00')
     end
   end
 
