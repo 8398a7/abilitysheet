@@ -34,7 +34,7 @@ class Score < ActiveRecord::Base
     def list_color
       %w(
         #ff8c00
-        #fffacd
+        #ffd900
         #ff6347
         #afeeee
         #98fb98
@@ -60,7 +60,7 @@ class Score < ActiveRecord::Base
     def convert_color(scores)
       color = %w(
         #ff8c00
-        #fffacd
+        #ffd900
         #ff6347
         #afeeee
         #98fb98
