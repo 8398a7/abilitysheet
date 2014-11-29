@@ -19,6 +19,10 @@ class Score < ActiveRecord::Base
       sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
     end
 
+    def official_create(title, score, state, miss, user_id)
+      p title, score, state, miss, user_id
+    end
+
     def stat_info(scores)
       hash = { 'FC' => 0, 'EXH' => 0, 'H' => 0, 'C' => 0, 'E' => 0, 'A' => 0, 'F' => 0, 'N' => 0 }
       count = 0
