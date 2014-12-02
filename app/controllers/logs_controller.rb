@@ -25,6 +25,14 @@ class LogsController < ApplicationController
     @color = Score.list_color
   end
 
+  def title_push(user_id, state, b)
+    array = []
+    Log.where(user_id: user_id, new_state: state, created_at: b[0]..b[1]).each do |log|
+      array.push([Sheet.find_by(id: log.sheet_id).title, 1])
+    end
+    array
+  end
+
   def graph
     user_id = User.find_by(iidxid: params[:iidxid]).id
     unless Log.exists?(user_id: user_id)
@@ -38,6 +46,7 @@ class LogsController < ApplicationController
 
     category, fc_count, exh_count, h_count, c_count, e_count = [], [], [], [], [], []
     fc_cnt, exh_cnt, hd_cnt, cl_cnt = [], [], [], []
+    fc_t, exh_t, h_t, c_t, e_t = [], [], [], [], []
     st = between.first[0]
     all = Sheet.active.count
     between.each do |b|
@@ -51,8 +60,14 @@ class LogsController < ApplicationController
       h_count.push(Log.where(user_id: user_id, new_state: 2, created_at: b[0]..b[1]).count)
       c_count.push(Log.where(user_id: user_id, new_state: 3, created_at: b[0]..b[1]).count)
       e_count.push(Log.where(user_id: user_id, new_state: 4, created_at: b[0]..b[1]).count)
+      fc_t += title_push(user_id, 0, b)
+      exh_t += title_push(user_id, 1, b)
+      h_t += title_push(user_id, 2, b)
+      c_t += title_push(user_id, 3, b)
+      e_t += title_push(user_id, 4, b)
     end
 
+    @deb = h_t
     @column = LazyHighCharts::HighChart.new('column') do |f|
       f.title(text: '月別更新数')
       f.chart(type: 'column')
