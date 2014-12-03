@@ -1,6 +1,8 @@
 class ManegerWorker
   include Sidekiq::Worker
   sidekiq_options queue: :maneger
+  sidekiq_options retry: false
+
   def perform(id)
     current_user = User.find_by(id: id)
     puts %(#{ Time.now} #{ current_user.djname }[#{ current_user.iidxid }] => maneger scrape start)
