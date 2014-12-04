@@ -19,7 +19,7 @@ module Users
       user_id = User.find_by(iidxid: iidxid).id
       # もし既に登録されていた場合はスコアを作らない
       return if Score.exists?(user_id: user_id)
-      Score.score_create(iidxid)
+      RegisterWorker.perform_async(user_id)
     end
   end
 end

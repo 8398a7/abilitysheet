@@ -4,3 +4,4 @@
 :concurrency:  25
 :queues:
   - maneger
+  - register
