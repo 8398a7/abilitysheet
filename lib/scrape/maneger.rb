@@ -27,7 +27,12 @@ module Scrape
     end
 
     def extract
-      page = @agent.get(@base + @agent.page.links[6].href)
+      page_num = 0
+      @agent.page.links.each do |link|
+        page_num += 1
+        break if link.href == '/' && page_num != 1
+      end
+      page = @agent.get(@base + @agent.page.links[page_num - 2].href)
       html = Nokogiri::HTML.parse(page.body, nil, 'UTF-8')
 
       # Level12フォルダの特定
