@@ -51,7 +51,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # log lotate
-  config.logger = Logger.new('log/production.log', 'daily')
+  config.logger = Logger.new('log/production.log', 'weekly')
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
