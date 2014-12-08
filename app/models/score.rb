@@ -20,7 +20,10 @@ class Score < ActiveRecord::Base
     end
 
     def official_create(title, score, state, miss, user_id)
+      sheet = Sheet.find_by(title: title)
+      return unless sheet
       p title, score, state, miss, user_id
+      update(user_id, sheet.id, state)
     end
 
     def stat_info(scores)
@@ -86,14 +89,14 @@ class Score < ActiveRecord::Base
       }
     end
 
-    def update(id, params)
+    def update(id, sheet_id, state, sc = -2, bp = -2)
       version = AbilitysheetIidx::Application.config.iidx_version
-      score = User.find_by(id: id).scores.find_by(sheet_id: params[:score][:sheet_id], version: version)
-      Log.data_create(id, params)
+      score = User.find_by(id: id).scores.find_by(sheet_id: sheet_id, version: version)
+      Log.data_create(id, sheet_id, state, sc, bp)
       score = Score.new if score.nil?
       score.user_id = id
-      score.sheet_id = params[:score][:sheet_id]
-      score.state = params[:score][:state]
+      score.sheet_id = sheet_id
+      score.state = state
       score.version = version
       score.save
     end
