@@ -4,7 +4,7 @@ module Users
 
     def create
       count = User.all.count
-      if 10 <= count
+      if 150 <= count
         flash[:alert] = '登録人数が上限に達しました，追加をお待ちください'
         redirect_to root_path
         return
