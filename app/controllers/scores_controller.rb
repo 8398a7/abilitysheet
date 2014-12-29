@@ -13,7 +13,11 @@ class ScoresController < ApplicationController
   end
 
   def update
-    Score.update(current_user.id, params)
+    Score.update(
+      current_user.id,
+      params[:score][:sheet_id].to_i,
+      params[:score][:state].to_i
+    )
     render :reload
   end
 

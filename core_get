@@ -1,0 +1,125 @@
+=> [32m#<Scrape::Official:0x007fcddc005058[0m
+ @agent[32m=[0m
+  [32m#<Mechanize[0m
+   [32m#<Mechanize::CookieJar:0x007fcddc004e28[0m
+    @store[32m=[0m
+     [32m#<HTTP::CookieJar::HashStore:0x007fcddc0b7bb8[0m
+      @gc_index[32m=[0m[1;34m5[0m,
+      @gc_threshold[32m=[0m[1;34m150[0m,
+      @jar[32m=[0m
+       {[31m[1;31m"[0m[31mp.eagate.573.jp[1;31m"[0m[31m[0m=>
+         {[31m[1;31m"[0m[31m/[1;31m"[0m[31m[0m=>
+           {[31m[1;31m"[0m[31mM573SSID[1;31m"[0m[31m[0m=>
+             [32m#<HTTP::Cookie:name="M573SSID", value="a633245b-fec5-4014-96d6-249b35bcb23a", domain="p.eagate.573.jp", for_domain=false, path="/", secure=false, httponly=false, expires=2014-12-17 02:50:18 UTC, max_age=nil, created_at=2014-12-09 11:13:05 +0900, accessed_at=2014-12-09 11:13:05 +0900 origin=http://p.eagate.573.jp/gate/p/mypage/index.html?___REDIRECT=1>[0m}}},
+      @logger[32m=[0m[1;36mnil[0m,
+      @mon_count[32m=[0m[1;34m0[0m,
+      @mon_mutex[32m=[0m[32m#<Mutex:0x007fcddc0b7b40[0m[32m>[0m,
+      @mon_owner[32m=[0m[1;36mnil[0m[32m>[0m[32m>[0m
+   [32m#<Mechanize::Page[0m
+    {url [32m#<URI::HTTP:0x007fcddc496ec8 URL:http://p.eagate.573.jp/gate/p/mypage/index.html?___REDIRECT=1>[0m}
+    {meta_refresh}
+    {title [31m[1;31m"[0m[31meAMUSEMENT[1;31m"[0m[31m[0m}
+    {iframes}
+    {frames}
+    {links
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mKONAMI[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://www.konami.jp/?ref=eagate[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mマイページ[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/mypage/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mログアウト[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/logout.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31meAMUSEMENT TOP[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMY PAGE[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/mypage/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mPROFILE[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/profile/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31me-AMUSEMENT[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/eamusement/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mFRIEND[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/friend/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mGROUP[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/group/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMESSAGE[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/message/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m各種設定[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/setting/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mフレンドを探す[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/friend/search.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mグループを探す[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/groupsearch/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mグループを作る[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/makegroup/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m公式ユーザー一覧[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/p/friend/search_official.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mプロフィール設定変更[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttps://p.eagate.573.jp/gate/k/kaccount.html?dst=account&rt=mypage[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mはすくさんの課金通帳[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/bbh/pop/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mBASEBALL HEROES 2014[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/bbh/pop/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mお気に入り登録[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/eamusement/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mクルル＠獣耳モフりたい！[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=jqjs3oqv5oy96bs1[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mBeatStream[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/tocontent.html?softgrp=SG-NBTJA&target_uuid=jqjs3oqv5oy96bs1[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMoma[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=8n41j0ir49tyssk0[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m投稿[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/app.html?url=/app/post/1941859[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMoma[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=8n41j0ir49tyssk0[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m投稿[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/app.html?url=/app/post/1923863[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMoma[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=8n41j0ir49tyssk0[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m投稿[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/app.html?url=/app/post/1848867[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31msin[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=gaoo9ivzp6euzqw1[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mbeatmania IIDX 22 PENDUAL[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/2dx/22/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMoma[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=8n41j0ir49tyssk0[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m投稿[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/app.html?url=/app/post/1721128[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mクルル＠獣耳モフりたい！[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=jqjs3oqv5oy96bs1[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mbeatmania IIDX 22 PENDUAL[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/2dx/22/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mMoma[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=8n41j0ir49tyssk0[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m投稿[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/app.html?url=/app/post/1645436[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mshmnlm[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=nzc7x9b3ph6rscih[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mクイズマジックアカデミー　天の学舎[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/qma/10/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mshmnlm[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/e/mypage.html?target_uuid=nzc7x9b3ph6rscih[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mbeatmania IIDX 22 PENDUAL[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/2dx/22/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【SILENT SCOPE BONE-EATER】バージョンアップしました！[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://eagate.573.jp/game/silentscope/boneeater/index.html?mdsid=28009&mdsid=28009&mdsid=28009&mdsid=28009[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m【BEMANI Fan Site】 リニューアルOPEN！[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/game/bemani/fansite/[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【購買部】jubeat saucer fulfill対応したよ！お気に入りのおともをつれていこう！！[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://eagate.573.jp/gate/e/coop_details.html?top&mdsid=28111[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m【エターナルナイツBRAVE】公式サイトオープン！[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/game/ek/brave/?mdsid=27833&mdsid=27833&mdsid=27833[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【WEAC2014】UEFA Europa League 開催！[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://eagate.573.jp/game/weac/2014/index.html?mdsid=27831&mdsid=27831[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【SOUND VOLTEX III GRAVITY WARS】順次稼働開始！[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://eagate.573.jp/game/sdvx/iii/index.html?mdsid=27770&mdsid=27771&mdsid=27771&mdsid=27771[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31me-AMUSEMENT コンテンツ一覧[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/eamusement/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/group/group_top.html?target_group_id=27428[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mRISE 音ゲー部[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/group/group_top.html?target_group_id=27428[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m一覧を見る(1)[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/group/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m              購買部へ                          [1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/gate/p/eamusement/coop/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【お知らせ】12/16(火)サーバーメンテナンス時間延長のお知らせ[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31m/gate/p/mypage/site_info_skeleton.html?cip=eAGATE_INFO&pid=PC-WEB&msgtype=25&mid=28108[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【お知らせ】11/21（金）臨時サーバーメンテナンス実施のお知らせ[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31m/gate/p/mypage/site_info_skeleton.html?cip=eAGATE_INFO&pid=PC-WEB&msgtype=25&mid=27801[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【重要】kiwiアカウントとKONAMI IDの統合のお知らせ[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31m/gate/p/mypage/site_info_skeleton.html?cip=eAGATE_INFO&pid=PC-WEB&msgtype=25&mid=27394[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m「購買部」サービス開始のお知らせ[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31m/gate/p/mypage/site_info_skeleton.html?cip=eAGATE_INFO&pid=PC-WEB&msgtype=25&mid=27172[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【重要】KONAMI IDポータルサイト」ID・パスワード管理について[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://www.konami.jp/osirase/140111/?cm_sp=01-_-oshirase-_-20140111&mdsid=18790&mdsid=18790[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m【重要】KONAMI IDのパスワード、GAME IDのパスワードを聞かれた場合のご注意[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31mhttp://www.konami.jp/osirase/090406/?mdsid=18737&mdsid=18737&mdsid=18737&mdsid=18737[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m
+      [31m[1;31m"[0m[31m[定期]定期メンテナンスのお知らせ[1;31m"[0m[31m[0m
+      [31m[1;31m"[0m[31m/gate/p/mypage/site_info_skeleton.html?cip=eAGATE_INFO&pid=PC-WEB&msgtype=19&mid=18736[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mサービス一覧[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/payment/lead_payment.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m設置店舗検索[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mPAGE TOP[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m#container1[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mPASELI[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://paseli.konami.jp/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31meAMUSEMENTアプリ[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eam.573.jp/app/web/[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mBEMANI fan site[1;31m"[0m[31m[0m [31m[1;31m"[0m[31m/game/bemani/p/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mヘルプ[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mFAQ[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/etc/faq/p/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mはじめての方[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m利用推奨環境[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/etc/environment/p/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m利用規約[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/rules/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m個人情報保護方針[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://www.konami-digital-entertainment.co.jp/privacy/[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m特定商取引法に基づく表示[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/etc/specific/p/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mサイトポリシー[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://www.konami.co.jp/ja/siteinfo/about.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mマナー＆ルール[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31mお問い合わせ[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mhttp://eagate.573.jp/inquiry/index.html[1;31m"[0m[31m[0m[32m>[0m
+     [32m#<Mechanize::Page::Link[0m [31m[1;31m"[0m[31m設置店舗検索[1;31m"[0m[31m[0m [31m[1;31m"[0m[31mjavascript:void(0)[1;31m"[0m[31m[0m[32m>[0m}
+    {forms}[32m>[0m[32m>[0m,
+ @base[32m=[0m[31m[1;31m"[0m[31mhttp://p.eagate.573.jp/game/2dx/22/p/djdata/music.html[1;31m"[0m[31m[0m,
+ @count[32m=[0m[1;34m0[0m,
+ @user_id[32m=[0m[1;34m7[0m[32m>[0m
