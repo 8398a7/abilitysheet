@@ -8,6 +8,7 @@ module Users
         flash[:alert] = '登録人数が上限に達しました，追加をお待ちください'
         redirect_to root_path
       end
+
       super
     end
 
@@ -20,6 +21,7 @@ module Users
       # もし既に登録されていた場合はスコアを作らない
       return if Score.exists?(user_id: user_id)
       RegisterWorker.perform_async(user_id)
+      NoticeMail.new_register(user_id).deliver
     end
   end
 end
