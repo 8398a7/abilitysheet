@@ -19,7 +19,7 @@ class Score < ActiveRecord::Base
       sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
     end
 
-    def official_create(title, score, state, miss, user_id)
+    def official_create(title, score, miss, state, user_id)
       sheet = Sheet.find_by(title: title)
       return unless sheet
       p title, score, state, miss, user_id
