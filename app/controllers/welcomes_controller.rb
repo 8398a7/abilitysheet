@@ -21,6 +21,7 @@ class WelcomesController < ApplicationController
     message.body = params[:message][:body]
     message.ip = request.remote_ip
     result = message.save
+    NoticeMail.new_message(message.id).deliver if result
     flash[:notice] = '承りました。対応はしばしお待ちください。' if result
     flash[:alert] = '何らかの不具合で送信できていません。Twitterなどにご連絡下さい。' unless result
     redirect_to root_path

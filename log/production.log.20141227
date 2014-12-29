@@ -1,0 +1,1353 @@
+I, [2014-11-20T02:46:10.922101 #29313]  INFO -- : Migrating to DeviseCreateUsers (20141110224245)
+I, [2014-11-20T02:46:11.618665 #29313]  INFO -- : Migrating to CreateScores (20141111002700)
+I, [2014-11-20T02:46:12.063983 #29313]  INFO -- : Migrating to CreateLogs (20141115070915)
+I, [2014-11-20T02:46:12.486002 #29313]  INFO -- : Migrating to CreateNotices (20141116153743)
+I, [2014-11-20T02:46:12.675310 #29313]  INFO -- : Migrating to CreateMessages (20141116172112)
+I, [2014-11-20T02:46:12.976290 #29313]  INFO -- : Migrating to AddIndexToMessage (20141117183906)
+I, [2014-11-20T02:47:56.984256 #31537]  INFO -- : Started GET "/" for 192.168.10.185 at 2014-11-20 02:47:56 +0900
+I, [2014-11-20T02:47:57.096049 #31537]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-20T02:47:57.173507 #31537]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (56.1ms)
+I, [2014-11-20T02:47:57.193256 #31537]  INFO -- : Completed 200 OK in 97ms (Views: 61.0ms | ActiveRecord: 19.5ms)
+I, [2014-11-20T02:47:57.378261 #31537]  INFO -- : Started GET "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css" for 192.168.10.185 at 2014-11-20 02:47:57 +0900
+F, [2014-11-20T02:47:57.384373 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:47:57.389302 #31537]  INFO -- : Started GET "/images/example.png" for 192.168.10.185 at 2014-11-20 02:47:57 +0900
+F, [2014-11-20T02:47:57.391874 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/images/example.png"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:47:57.394850 #31537]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-20 02:47:57 +0900
+F, [2014-11-20T02:47:57.397934 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:47:57.412782 #31537]  INFO -- : Started GET "/images/example.png" for 192.168.10.185 at 2014-11-20 02:47:57 +0900
+F, [2014-11-20T02:47:57.415434 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/images/example.png"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:48:00.602885 #31537]  INFO -- : Started GET "/users/list" for 192.168.10.185 at 2014-11-20 02:48:00 +0900
+I, [2014-11-20T02:48:00.608874 #31537]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-20T02:48:00.852327 #31537]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (234.7ms)
+I, [2014-11-20T02:48:00.855422 #31537]  INFO -- : Completed 200 OK in 246ms (Views: 183.2ms | ActiveRecord: 59.7ms)
+I, [2014-11-20T02:48:00.933782 #31537]  INFO -- : Started GET "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css" for 192.168.10.185 at 2014-11-20 02:48:00 +0900
+F, [2014-11-20T02:48:00.939837 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:48:00.944282 #31537]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-20 02:48:00 +0900
+F, [2014-11-20T02:48:00.947304 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:48:02.902498 #31537]  INFO -- : Started GET "/sheets/8594-9652/clear" for 192.168.10.185 at 2014-11-20 02:48:02 +0900
+I, [2014-11-20T02:48:02.909047 #31537]  INFO -- : Processing by SheetsController#clear as HTML
+I, [2014-11-20T02:48:02.909215 #31537]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-20T02:48:02.954618 #31537]  INFO -- :   Rendered shared/_state_example.html.slim (3.2ms)
+I, [2014-11-20T02:48:02.996854 #31537]  INFO -- :   Rendered sheets/clear.html.slim within layouts/application (61.5ms)
+I, [2014-11-20T02:48:03.000314 #31537]  INFO -- : Completed 200 OK in 91ms (Views: 65.3ms | ActiveRecord: 8.0ms)
+I, [2014-11-20T02:48:03.073571 #31537]  INFO -- : Started GET "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css" for 192.168.10.185 at 2014-11-20 02:48:03 +0900
+F, [2014-11-20T02:48:03.079172 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-fe9775eaa9c365991848a42c9e3e6cac.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T02:48:03.080906 #31537]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-20 02:48:03 +0900
+F, [2014-11-20T02:48:03.083609 #31537] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-20T03:37:42.209816 #24985]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-20 03:37:42 +0900
+I, [2014-11-20T03:37:42.252837 #24985]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-20T03:37:42.309662 #24985]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (42.5ms)
+I, [2014-11-20T03:37:42.390321 #24985]  INFO -- : Completed 200 OK in 137ms (Views: 118.7ms | ActiveRecord: 7.8ms)
+I, [2014-11-21T01:15:44.177402 #2077]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-21 01:15:44 +0900
+I, [2014-11-21T01:15:44.244767 #2077]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T01:15:44.422574 #2077]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (104.4ms)
+I, [2014-11-21T01:15:44.470675 #2077]  INFO -- : Completed 200 OK in 226ms (Views: 189.5ms | ActiveRecord: 23.8ms)
+I, [2014-11-21T01:15:50.860085 #2077]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 01:15:50 +0900
+I, [2014-11-21T01:15:50.862035 #2077]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T01:15:52.113525 #2077]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (1249.0ms)
+I, [2014-11-21T01:15:52.118248 #2077]  INFO -- : Completed 200 OK in 1256ms (Views: 663.0ms | ActiveRecord: 591.6ms)
+I, [2014-11-21T01:15:53.896068 #2074]  INFO -- : Started GET "/abilitysheet/sheets/8594-9652/clear" for 127.0.0.1 at 2014-11-21 01:15:53 +0900
+I, [2014-11-21T01:15:53.924733 #2074]  INFO -- : Processing by SheetsController#clear as HTML
+I, [2014-11-21T01:15:53.924864 #2074]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-21T01:15:54.208187 #2074]  INFO -- :   Rendered shared/_state_example.html.slim (3.9ms)
+I, [2014-11-21T01:15:54.252894 #2074]  INFO -- :   Rendered sheets/clear.html.slim within layouts/application (159.6ms)
+I, [2014-11-21T01:15:54.273264 #2074]  INFO -- : Completed 200 OK in 348ms (Views: 178.5ms | ActiveRecord: 80.1ms)
+I, [2014-11-21T01:15:57.139518 #2074]  INFO -- : Started GET "/abilitysheet/sheets/8594-9652/hard" for 127.0.0.1 at 2014-11-21 01:15:57 +0900
+I, [2014-11-21T01:15:57.143014 #2074]  INFO -- : Processing by SheetsController#hard as HTML
+I, [2014-11-21T01:15:57.143141 #2074]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-21T01:15:57.178845 #2074]  INFO -- :   Rendered shared/_state_example.html.slim (0.2ms)
+I, [2014-11-21T01:15:57.205331 #2074]  INFO -- :   Rendered sheets/hard.html.slim within layouts/application (43.0ms)
+I, [2014-11-21T01:15:57.207596 #2074]  INFO -- : Completed 200 OK in 64ms (Views: 42.6ms | ActiveRecord: 8.3ms)
+I, [2014-11-21T01:24:54.174575 #14754]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-21 01:24:54 +0900
+I, [2014-11-21T01:24:54.210796 #14754]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T01:24:54.279977 #14754]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (51.4ms)
+I, [2014-11-21T01:24:54.302488 #14754]  INFO -- : Completed 200 OK in 91ms (Views: 71.4ms | ActiveRecord: 7.4ms)
+I, [2014-11-21T01:24:56.377944 #14757]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 01:24:56 +0900
+I, [2014-11-21T01:24:56.406988 #14757]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T01:24:56.629583 #14757]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (209.2ms)
+I, [2014-11-21T01:24:56.650595 #14757]  INFO -- : Completed 200 OK in 243ms (Views: 208.9ms | ActiveRecord: 25.2ms)
+I, [2014-11-21T01:24:58.798104 #14754]  INFO -- : Started GET "/abilitysheet/sheets/8594-9652/clear" for 127.0.0.1 at 2014-11-21 01:24:58 +0900
+I, [2014-11-21T01:24:58.804755 #14754]  INFO -- : Processing by SheetsController#clear as HTML
+I, [2014-11-21T01:24:58.804898 #14754]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-21T01:24:58.900597 #14754]  INFO -- :   Rendered shared/_state_example.html.slim (3.5ms)
+I, [2014-11-21T01:24:58.932199 #14754]  INFO -- :   Rendered sheets/clear.html.slim within layouts/application (72.3ms)
+I, [2014-11-21T01:24:58.936421 #14754]  INFO -- : Completed 200 OK in 131ms (Views: 66.2ms | ActiveRecord: 21.7ms)
+I, [2014-11-21T01:25:02.856280 #14757]  INFO -- : Started GET "/abilitysheet/sheets/8594-9652/hard" for 127.0.0.1 at 2014-11-21 01:25:02 +0900
+I, [2014-11-21T01:25:02.860067 #14757]  INFO -- : Processing by SheetsController#hard as HTML
+I, [2014-11-21T01:25:02.860196 #14757]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-21T01:25:02.902492 #14757]  INFO -- :   Rendered shared/_state_example.html.slim (3.1ms)
+I, [2014-11-21T01:25:02.930509 #14757]  INFO -- :   Rendered sheets/hard.html.slim within layouts/application (48.3ms)
+I, [2014-11-21T01:25:02.933524 #14757]  INFO -- : Completed 200 OK in 73ms (Views: 49.8ms | ActiveRecord: 7.9ms)
+I, [2014-11-21T02:18:15.380781 #28093]  INFO -- : Started GET "/abilitysheet/sheets/8594-9652/hard" for 127.0.0.1 at 2014-11-21 02:18:15 +0900
+I, [2014-11-21T02:18:15.415001 #28093]  INFO -- : Processing by SheetsController#hard as HTML
+I, [2014-11-21T02:18:15.415112 #28093]  INFO -- :   Parameters: {"iidxid"=>"8594-9652"}
+I, [2014-11-21T02:18:15.495228 #28093]  INFO -- : Completed 500 Internal Server Error in 80ms
+F, [2014-11-21T02:18:15.497114 #28093] FATAL -- : 
+NoMethodError (undefined method `active' for #<Score::ActiveRecord_Associations_CollectionProxy:0x007f206ab169a8>):
+  app/controllers/sheets_controller.rb:24:in `set_sheet'
+
+
+I, [2014-11-21T10:58:43.156228 #29571]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-21 10:58:43 +0900
+I, [2014-11-21T10:58:43.193013 #29571]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T10:58:43.264985 #29571]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (55.2ms)
+I, [2014-11-21T10:58:43.288779 #29571]  INFO -- : Completed 200 OK in 95ms (Views: 75.3ms | ActiveRecord: 7.6ms)
+I, [2014-11-21T14:25:17.262323 #11181]  INFO -- : Started GET "/" for 192.168.10.185 at 2014-11-21 14:25:17 +0900
+I, [2014-11-21T14:25:17.287762 #11181]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T14:25:17.348259 #11181]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (47.6ms)
+I, [2014-11-21T14:25:17.375938 #11181]  INFO -- : Completed 200 OK in 88ms (Views: 71.3ms | ActiveRecord: 8.1ms)
+I, [2014-11-21T14:25:17.520909 #11181]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-21 14:25:17 +0900
+F, [2014-11-21T14:25:17.523865 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:17.555530 #11181]  INFO -- : Started GET "/assets/application-85f62a162ac52161de1467c8c9e5a952.css" for 192.168.10.185 at 2014-11-21 14:25:17 +0900
+F, [2014-11-21T14:25:17.559342 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-85f62a162ac52161de1467c8c9e5a952.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:17.561271 #11181]  INFO -- : Started GET "/images/example.png" for 192.168.10.185 at 2014-11-21 14:25:17 +0900
+F, [2014-11-21T14:25:17.564376 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/images/example.png"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:19.893132 #11181]  INFO -- : Started GET "/users/sign_up" for 192.168.10.185 at 2014-11-21 14:25:19 +0900
+I, [2014-11-21T14:25:19.902980 #11181]  INFO -- : Processing by Users::RegistrationsController#new as HTML
+I, [2014-11-21T14:25:19.956621 #11181]  INFO -- :   Rendered devise/shared/_links.html.slim (6.0ms)
+I, [2014-11-21T14:25:19.957576 #11181]  INFO -- :   Rendered devise/registrations/new.html.slim within layouts/application (31.4ms)
+I, [2014-11-21T14:25:19.960619 #11181]  INFO -- : Completed 200 OK in 57ms (Views: 45.5ms | ActiveRecord: 4.6ms)
+I, [2014-11-21T14:25:20.057296 #11181]  INFO -- : Started GET "/assets/application-85f62a162ac52161de1467c8c9e5a952.css" for 192.168.10.185 at 2014-11-21 14:25:20 +0900
+F, [2014-11-21T14:25:20.063950 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-85f62a162ac52161de1467c8c9e5a952.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:20.065374 #11181]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-21 14:25:20 +0900
+F, [2014-11-21T14:25:20.067505 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:31.634050 #11181]  INFO -- : Started POST "/users" for 192.168.10.185 at 2014-11-21 14:25:31 +0900
+I, [2014-11-21T14:25:31.637030 #11181]  INFO -- : Processing by Users::RegistrationsController#create as HTML
+I, [2014-11-21T14:25:31.637278 #11181]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"DquqGwqbz806Tmbph8QzvTWlbjKwuvrEE3ddzPTAsTI=", "user"=>{"username"=>"dddd", "djname"=>"KY", "iidxid"=>"5721-4982", "grade"=>"1", "pref"=>"0", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録"}
+I, [2014-11-21T14:25:31.836707 #11181]  INFO -- : Redirected to http://192.168.10.56:3000/
+I, [2014-11-21T14:25:39.919920 #11181]  INFO -- : Completed 302 Found in 8282ms (ActiveRecord: 7539.2ms)
+I, [2014-11-21T14:25:39.942327 #11181]  INFO -- : Started GET "/" for 192.168.10.185 at 2014-11-21 14:25:39 +0900
+I, [2014-11-21T14:25:39.944284 #11181]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T14:25:39.957149 #11181]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (11.0ms)
+I, [2014-11-21T14:25:39.960215 #11181]  INFO -- : Completed 200 OK in 16ms (Views: 9.1ms | ActiveRecord: 5.3ms)
+I, [2014-11-21T14:25:40.092536 #11181]  INFO -- : Started GET "/assets/application-85f62a162ac52161de1467c8c9e5a952.css" for 192.168.10.185 at 2014-11-21 14:25:40 +0900
+F, [2014-11-21T14:25:40.112609 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-85f62a162ac52161de1467c8c9e5a952.css"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:40.113961 #11181]  INFO -- : Started GET "/assets/application-00a772c2dab259b90b381412d09ec9e4.js" for 192.168.10.185 at 2014-11-21 14:25:40 +0900
+F, [2014-11-21T14:25:40.116847 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/assets/application-00a772c2dab259b90b381412d09ec9e4.js"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:40.118562 #11181]  INFO -- : Started GET "/images/example.png" for 192.168.10.185 at 2014-11-21 14:25:40 +0900
+F, [2014-11-21T14:25:40.121679 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/images/example.png"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:25:41.169472 #11181]  INFO -- : Started GET "/images/favicon.ico" for 192.168.10.185 at 2014-11-21 14:25:41 +0900
+F, [2014-11-21T14:25:41.172201 #11181] FATAL -- : 
+ActionController::RoutingError (No route matches [GET] "/images/favicon.ico"):
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:38:in `call_app'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `block in call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:26:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/tagged_logging.rb:68:in `tagged'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/rack/logger.rb:20:in `call'
+  vendor/bundle/ruby/2.1.0/gems/actionpack-4.1.8/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/activesupport-4.1.8/lib/active_support/cache/strategy/local_cache_middleware.rb:26:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/engine.rb:514:in `call'
+  vendor/bundle/ruby/2.1.0/gems/railties-4.1.8/lib/rails/application.rb:144:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/2.1.0/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/rbenv/versions/2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+I, [2014-11-21T14:26:33.411325 #29571]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-21 14:26:33 +0900
+I, [2014-11-21T14:26:33.413651 #29571]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T14:26:33.445929 #29571]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (30.4ms)
+I, [2014-11-21T14:26:33.448136 #29571]  INFO -- : Completed 200 OK in 34ms (Views: 25.6ms | ActiveRecord: 7.5ms)
+I, [2014-11-21T14:26:36.111061 #29571]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 14:26:36 +0900
+I, [2014-11-21T14:26:36.113552 #29571]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T14:26:36.350496 #29571]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (234.3ms)
+I, [2014-11-21T14:26:36.353722 #29571]  INFO -- : Completed 200 OK in 240ms (Views: 178.2ms | ActiveRecord: 60.3ms)
+I, [2014-11-21T14:26:45.243486 #29568]  INFO -- : Started GET "/abilitysheet/logs/5721-4982/list" for 127.0.0.1 at 2014-11-21 14:26:45 +0900
+I, [2014-11-21T14:26:45.274337 #29568]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T14:26:45.274565 #29568]  INFO -- :   Parameters: {"iidxid"=>"5721-4982"}
+I, [2014-11-21T14:26:45.546309 #29568]  INFO -- :   Rendered logs/list.html.slim within layouts/application (114.8ms)
+I, [2014-11-21T14:26:45.567847 #29568]  INFO -- : Completed 200 OK in 293ms (Views: 141.2ms | ActiveRecord: 104.3ms)
+I, [2014-11-21T14:26:47.757129 #29571]  INFO -- : Started POST "/abilitysheet/logs/5721-4982/list" for 127.0.0.1 at 2014-11-21 14:26:47 +0900
+I, [2014-11-21T14:26:47.760572 #29571]  INFO -- : Processing by LogsController#maneger as HTML
+I, [2014-11-21T14:26:47.760681 #29571]  INFO -- :   Parameters: {"authenticity_token"=>"DquqGwqbz806Tmbph8QzvTWlbjKwuvrEE3ddzPTAsTI=", "iidxid"=>"5721-4982"}
+I, [2014-11-21T14:26:47.762195 #29571]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/logs/5721-4982/list
+I, [2014-11-21T14:26:49.205482 #29571]  INFO -- : Completed 500 Internal Server Error in 1445ms
+F, [2014-11-21T14:26:49.210619 #29571] FATAL -- : 
+NoMethodError (undefined method `each' for nil:NilClass):
+  lib/scrape/maneger.rb:45:in `extract'
+  lib/scrape/maneger.rb:8:in `initialize'
+  app/controllers/logs_controller.rb:76:in `new'
+  app/controllers/logs_controller.rb:76:in `scrape_maneger'
+
+
+I, [2014-11-21T15:54:10.727159 #29568]  INFO -- : Started GET "/abilitysheet/logs/5721-4982/list" for 127.0.0.1 at 2014-11-21 15:54:10 +0900
+I, [2014-11-21T15:54:10.729333 #29568]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T15:54:10.729479 #29568]  INFO -- :   Parameters: {"iidxid"=>"5721-4982"}
+I, [2014-11-21T15:54:10.740602 #29568]  INFO -- :   Rendered logs/list.html.slim within layouts/application (5.9ms)
+I, [2014-11-21T15:54:10.745320 #29568]  INFO -- : Completed 200 OK in 16ms (Views: 11.0ms | ActiveRecord: 1.5ms)
+I, [2014-11-21T15:57:56.786217 #10077]  INFO -- : Started GET "/abilitysheet" for 127.0.0.1 at 2014-11-21 15:57:56 +0900
+I, [2014-11-21T15:57:56.827373 #10077]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T15:57:56.901233 #10077]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (58.4ms)
+I, [2014-11-21T15:57:56.930402 #10077]  INFO -- : Completed 200 OK in 103ms (Views: 84.5ms | ActiveRecord: 7.7ms)
+I, [2014-11-21T15:57:59.117380 #10080]  INFO -- : Started GET "/abilitysheet/users/sign_up" for 127.0.0.1 at 2014-11-21 15:57:59 +0900
+I, [2014-11-21T15:57:59.143036 #10080]  INFO -- : Processing by Users::RegistrationsController#new as HTML
+I, [2014-11-21T15:57:59.231597 #10080]  INFO -- :   Rendered devise/shared/_links.html.slim (6.6ms)
+I, [2014-11-21T15:57:59.232418 #10080]  INFO -- :   Rendered devise/registrations/new.html.slim within layouts/application (57.2ms)
+I, [2014-11-21T15:57:59.265284 #10080]  INFO -- : Completed 200 OK in 122ms (Views: 98.7ms | ActiveRecord: 4.5ms)
+I, [2014-11-21T15:58:17.124211 #10077]  INFO -- : Started POST "/abilitysheet/users" for 127.0.0.1 at 2014-11-21 15:58:17 +0900
+I, [2014-11-21T15:58:17.131177 #10077]  INFO -- : Processing by Users::RegistrationsController#create as HTML
+I, [2014-11-21T15:58:17.131476 #10077]  INFO -- :   Parameters: {"utf8"=>"✓", "authenticity_token"=>"snWQFlcdxjQIrAqSBn95dDN8s6U4hU6If78K06gaY2A=", "user"=>{"username"=>"husq_hand", "djname"=>"HUSQ", "iidxid"=>"5560-4795", "grade"=>"3", "pref"=>"0", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"登録"}
+I, [2014-11-21T15:58:17.473366 #10077]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/
+I, [2014-11-21T15:58:26.822264 #10077]  INFO -- : Completed 302 Found in 9690ms (ActiveRecord: 8592.3ms)
+I, [2014-11-21T15:58:26.841671 #10077]  INFO -- : Started GET "/abilitysheet/" for 127.0.0.1 at 2014-11-21 15:58:26 +0900
+I, [2014-11-21T15:58:26.845806 #10077]  INFO -- : Processing by WelcomesController#index as HTML
+I, [2014-11-21T15:58:26.869469 #10077]  INFO -- :   Rendered welcomes/index.html.slim within layouts/application (17.9ms)
+I, [2014-11-21T15:58:26.873542 #10077]  INFO -- : Completed 200 OK in 27ms (Views: 14.7ms | ActiveRecord: 8.2ms)
+I, [2014-11-21T15:58:29.967453 #10077]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 15:58:29 +0900
+I, [2014-11-21T15:58:29.975731 #10077]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T15:58:30.126310 #10077]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (143.8ms)
+I, [2014-11-21T15:58:30.128632 #10077]  INFO -- : Completed 200 OK in 152ms (Views: 138.2ms | ActiveRecord: 10.9ms)
+I, [2014-11-21T15:58:33.745760 #10080]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 15:58:33 +0900
+I, [2014-11-21T15:58:33.753241 #10080]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T15:58:33.753494 #10080]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T15:58:33.879771 #10080]  INFO -- :   Rendered logs/list.html.slim within layouts/application (93.9ms)
+I, [2014-11-21T15:58:33.882422 #10080]  INFO -- : Completed 200 OK in 129ms (Views: 97.2ms | ActiveRecord: 7.7ms)
+I, [2014-11-21T15:58:36.054101 #10077]  INFO -- : Started POST "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 15:58:36 +0900
+I, [2014-11-21T15:58:36.060589 #10077]  INFO -- : Processing by LogsController#maneger as HTML
+I, [2014-11-21T15:58:36.060737 #10077]  INFO -- :   Parameters: {"authenticity_token"=>"snWQFlcdxjQIrAqSBn95dDN8s6U4hU6If78K06gaY2A=", "iidxid"=>"5560-4795"}
+I, [2014-11-21T15:58:41.567007 #10077]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/logs/5560-4795/list
+I, [2014-11-21T15:58:41.567243 #10077]  INFO -- : Completed 302 Found in 5506ms (ActiveRecord: 564.5ms)
+I, [2014-11-21T15:58:41.574587 #10080]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 15:58:41 +0900
+I, [2014-11-21T15:58:41.576385 #10080]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T15:58:41.576492 #10080]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T15:58:41.586318 #10080]  INFO -- :   Rendered logs/list.html.slim within layouts/application (4.9ms)
+I, [2014-11-21T15:58:41.588967 #10080]  INFO -- : Completed 200 OK in 12ms (Views: 6.7ms | ActiveRecord: 2.3ms)
+I, [2014-11-21T15:58:44.197246 #10077]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 15:58:44 +0900
+I, [2014-11-21T15:58:44.201931 #10077]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T15:58:44.239198 #10077]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (35.6ms)
+I, [2014-11-21T15:58:44.241323 #10077]  INFO -- : Completed 200 OK in 39ms (Views: 26.5ms | ActiveRecord: 11.6ms)
+I, [2014-11-21T16:15:58.911346 #5008]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:15:58 +0900
+I, [2014-11-21T16:15:58.944680 #5008]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:15:58.944878 #5008]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:15:59.116413 #5008]  INFO -- :   Rendered logs/list.html.slim within layouts/application (111.2ms)
+I, [2014-11-21T16:15:59.141921 #5008]  INFO -- : Completed 200 OK in 197ms (Views: 139.4ms | ActiveRecord: 11.0ms)
+I, [2014-11-21T16:16:03.225758 #5005]  INFO -- : Started POST "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:16:03 +0900
+I, [2014-11-21T16:16:03.263723 #5005]  INFO -- : Processing by LogsController#maneger as HTML
+I, [2014-11-21T16:16:03.263917 #5005]  INFO -- :   Parameters: {"authenticity_token"=>"snWQFlcdxjQIrAqSBn95dDN8s6U4hU6If78K06gaY2A=", "iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:06.254523 #5005]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/logs/5560-4795/list
+I, [2014-11-21T16:16:06.254954 #5005]  INFO -- : Completed 302 Found in 2991ms (ActiveRecord: 407.1ms)
+I, [2014-11-21T16:16:06.262413 #5008]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:16:06 +0900
+I, [2014-11-21T16:16:06.264522 #5008]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:16:06.264668 #5008]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:06.273406 #5008]  INFO -- :   Rendered logs/list.html.slim within layouts/application (4.2ms)
+I, [2014-11-21T16:16:06.277226 #5008]  INFO -- : Completed 200 OK in 12ms (Views: 7.2ms | ActiveRecord: 2.3ms)
+I, [2014-11-21T16:16:16.999062 #5005]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 16:16:16 +0900
+I, [2014-11-21T16:16:17.005526 #5005]  INFO -- : Processing by WelcomesController#list as HTML
+I, [2014-11-21T16:16:17.189189 #5005]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (173.5ms)
+I, [2014-11-21T16:16:17.210984 #5005]  INFO -- : Completed 200 OK in 205ms (Views: 191.1ms | ActiveRecord: 11.2ms)
+I, [2014-11-21T16:16:22.188533 #5008]  INFO -- : Started GET "/abilitysheet/sheets/5560-4795/clear" for 127.0.0.1 at 2014-11-21 16:16:22 +0900
+I, [2014-11-21T16:16:22.194354 #5008]  INFO -- : Processing by SheetsController#clear as HTML
+I, [2014-11-21T16:16:22.195374 #5008]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:22.545451 #5008]  INFO -- :   Rendered shared/_state_example.html.slim (3.7ms)
+I, [2014-11-21T16:16:22.580039 #5008]  INFO -- :   Rendered sheets/clear.html.slim within layouts/application (62.7ms)
+I, [2014-11-21T16:16:22.583075 #5008]  INFO -- : Completed 200 OK in 387ms (Views: 65.0ms | ActiveRecord: 148.9ms)
+I, [2014-11-21T16:16:25.970753 #5008]  INFO -- : Started GET "/abilitysheet/scores/1.0" for 127.0.0.1 at 2014-11-21 16:16:25 +0900
+I, [2014-11-21T16:16:25.974311 #5008]  INFO -- : Processing by ScoresController#attribute as 
+I, [2014-11-21T16:16:25.974527 #5008]  INFO -- :   Parameters: {"id"=>"1"}
+I, [2014-11-21T16:16:26.013958 #5008]  INFO -- :   Rendered scores/_form.html.slim (8.8ms)
+I, [2014-11-21T16:16:26.021538 #5008]  INFO -- :   Rendered scores/show_modal.js.coffee (20.0ms)
+I, [2014-11-21T16:16:26.022429 #5008]  INFO -- : Completed 200 OK in 48ms (Views: 29.2ms | ActiveRecord: 5.4ms)
+I, [2014-11-21T16:16:28.573041 #5005]  INFO -- : Started PATCH "/abilitysheet/scores/1.0" for 127.0.0.1 at 2014-11-21 16:16:28 +0900
+I, [2014-11-21T16:16:28.577139 #5005]  INFO -- : Processing by ScoresController#update as 
+I, [2014-11-21T16:16:28.577413 #5005]  INFO -- :   Parameters: {"utf8"=>"✓", "score"=>{"state"=>"6", "sheet_id"=>"1"}, "commit"=>"更新", "id"=>"1"}
+I, [2014-11-21T16:16:28.759909 #5005]  INFO -- :   Rendered scores/reload.js.coffee (6.9ms)
+I, [2014-11-21T16:16:28.760595 #5005]  INFO -- : Completed 200 OK in 183ms (Views: 38.9ms | ActiveRecord: 109.9ms)
+I, [2014-11-21T16:16:28.786578 #5005]  INFO -- : Started GET "/abilitysheet/sheets/5560-4795/clear" for 127.0.0.1 at 2014-11-21 16:16:28 +0900
+I, [2014-11-21T16:16:28.790984 #5005]  INFO -- : Processing by SheetsController#clear as HTML
+I, [2014-11-21T16:16:28.791188 #5005]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:29.046810 #5005]  INFO -- :   Rendered shared/_state_example.html.slim (4.1ms)
+I, [2014-11-21T16:16:29.077947 #5005]  INFO -- :   Rendered sheets/clear.html.slim within layouts/application (52.5ms)
+I, [2014-11-21T16:16:29.080886 #5005]  INFO -- : Completed 200 OK in 289ms (Views: 53.9ms | ActiveRecord: 117.3ms)
+I, [2014-11-21T16:16:31.065519 #5008]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:16:31 +0900
+I, [2014-11-21T16:16:31.070484 #5008]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:16:31.070849 #5008]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:31.090267 #5008]  INFO -- :   Rendered logs/list.html.slim within layouts/application (8.4ms)
+I, [2014-11-21T16:16:31.093668 #5008]  INFO -- : Completed 200 OK in 23ms (Views: 10.5ms | ActiveRecord: 4.3ms)
+I, [2014-11-21T16:16:33.858212 #5008]  INFO -- : Started POST "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:16:33 +0900
+I, [2014-11-21T16:16:33.861143 #5008]  INFO -- : Processing by LogsController#maneger as HTML
+I, [2014-11-21T16:16:33.861416 #5008]  INFO -- :   Parameters: {"authenticity_token"=>"snWQFlcdxjQIrAqSBn95dDN8s6U4hU6If78K06gaY2A=", "iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:35.848542 #5008]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/logs/5560-4795/list
+I, [2014-11-21T16:16:35.848893 #5008]  INFO -- : Completed 302 Found in 1986ms (ActiveRecord: 448.5ms)
+I, [2014-11-21T16:16:35.855897 #5005]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:16:35 +0900
+I, [2014-11-21T16:16:35.858000 #5005]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:16:35.858148 #5005]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+I, [2014-11-21T16:16:35.878773 #5005]  INFO -- :   Rendered logs/list.html.slim within layouts/application (12.1ms)
+I, [2014-11-21T16:16:35.881157 #5005]  INFO -- : Completed 200 OK in 23ms (Views: 15.6ms | ActiveRecord: 2.5ms)
+I, [2014-11-21T16:17:32.529505 #7336]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:17:32 +0900
+I, [2014-11-21T16:17:32.558463 #7336]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:17:32.558638 #7336]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+D, [2014-11-21T16:17:32.579200 #7336] DEBUG -- :   [1m[36mUser Load (1.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."iidxid" = '5560-4795' LIMIT 1[0m
+D, [2014-11-21T16:17:32.615235 #7336] DEBUG -- :   [1m[35m (1.0ms)[0m  SELECT "logs"."created_at" FROM "logs"  WHERE "logs"."user_id" = $1  [["user_id", 7]]
+D, [2014-11-21T16:17:32.731668 #7336] DEBUG -- :   [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 7  ORDER BY "users"."id" ASC LIMIT 1[0m
+D, [2014-11-21T16:17:32.733644 #7336] DEBUG -- :   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."iidxid" = '5560-4795' LIMIT 1
+D, [2014-11-21T16:17:32.736345 #7336] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "logs"  WHERE "logs"."user_id" = $1 AND "logs"."created_at" = '2014-11-21'[0m  [["user_id", 7]]
+I, [2014-11-21T16:17:32.736711 #7336]  INFO -- :   Rendered logs/list.html.slim within layouts/application (116.2ms)
+I, [2014-11-21T16:17:32.756739 #7336]  INFO -- : Completed 200 OK in 198ms (Views: 138.7ms | ActiveRecord: 12.9ms)
+I, [2014-11-21T16:17:36.803566 #7338]  INFO -- : Started POST "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:17:36 +0900
+I, [2014-11-21T16:17:36.844139 #7338]  INFO -- : Processing by LogsController#maneger as HTML
+I, [2014-11-21T16:17:36.844370 #7338]  INFO -- :   Parameters: {"authenticity_token"=>"snWQFlcdxjQIrAqSBn95dDN8s6U4hU6If78K06gaY2A=", "iidxid"=>"5560-4795"}
+D, [2014-11-21T16:17:36.872335 #7338] DEBUG -- :   [1m[36mUser Load (2.6ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = 7  ORDER BY "users"."id" ASC LIMIT 1[0m
+D, [2014-11-21T16:17:37.624674 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'A' LIMIT 1
+D, [2014-11-21T16:17:37.626661 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'A' LIMIT 1[0m
+D, [2014-11-21T16:17:37.628493 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'A' LIMIT 1
+D, [2014-11-21T16:17:37.636297 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 1 LIMIT 1[0m
+D, [2014-11-21T16:17:37.646418 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'AA' LIMIT 1
+D, [2014-11-21T16:17:37.647955 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'AA' LIMIT 1[0m
+D, [2014-11-21T16:17:37.649608 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'AA' LIMIT 1
+D, [2014-11-21T16:17:37.653566 #7338] DEBUG -- :   [1m[36mScore Load (1.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 95 LIMIT 1[0m
+D, [2014-11-21T16:17:37.655893 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Adularia' LIMIT 1
+D, [2014-11-21T16:17:37.657573 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Adularia' LIMIT 1[0m
+D, [2014-11-21T16:17:37.659080 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Adularia' LIMIT 1
+D, [2014-11-21T16:17:37.660832 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 2 LIMIT 1[0m
+D, [2014-11-21T16:17:37.664460 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ALBIDA' LIMIT 1
+D, [2014-11-21T16:17:37.666405 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ALBIDA' LIMIT 1[0m
+D, [2014-11-21T16:17:37.667784 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ALBIDA' LIMIT 1
+D, [2014-11-21T16:17:37.669473 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 96 LIMIT 1[0m
+D, [2014-11-21T16:17:37.671229 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Almagest' LIMIT 1
+D, [2014-11-21T16:17:37.672979 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Almagest' LIMIT 1[0m
+D, [2014-11-21T16:17:37.674976 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Almagest' LIMIT 1
+D, [2014-11-21T16:17:37.676771 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 133 LIMIT 1[0m
+D, [2014-11-21T16:17:37.679050 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes' LIMIT 1
+D, [2014-11-21T16:17:37.682431 #7338] DEBUG -- :   [1m[36mSheet Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes' LIMIT 1[0m
+D, [2014-11-21T16:17:37.685364 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes' LIMIT 1
+D, [2014-11-21T16:17:37.687923 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 3 LIMIT 1[0m
+D, [2014-11-21T16:17:37.689473 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:37.690979 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:37.692253 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Ancient Scapes†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:37.694803 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 4 LIMIT 1[0m
+D, [2014-11-21T16:17:37.698335 #7338] DEBUG -- :   [1m[35mSheet Exists (1.4ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Bad Maniacs' LIMIT 1
+D, [2014-11-21T16:17:37.700763 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Bad Maniacs' LIMIT 1[0m
+D, [2014-11-21T16:17:37.702644 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Bad Maniacs' LIMIT 1
+D, [2014-11-21T16:17:37.704846 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 97 LIMIT 1[0m
+D, [2014-11-21T16:17:37.706934 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BITTER CHOCOLATE STRIKER' LIMIT 1
+D, [2014-11-21T16:17:37.708563 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BITTER CHOCOLATE STRIKER' LIMIT 1[0m
+D, [2014-11-21T16:17:37.710252 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'BITTER CHOCOLATE STRIKER' LIMIT 1
+D, [2014-11-21T16:17:37.712242 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 98 LIMIT 1[0m
+D, [2014-11-21T16:17:37.714600 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BLACK.by X-Cross Fade' LIMIT 1
+D, [2014-11-21T16:17:37.716252 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BLACK.by X-Cross Fade' LIMIT 1[0m
+D, [2014-11-21T16:17:37.717764 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'BLACK.by X-Cross Fade' LIMIT 1
+D, [2014-11-21T16:17:37.719597 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 99 LIMIT 1[0m
+D, [2014-11-21T16:17:37.721408 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BLUE DRAGON(雷龍RemixIIDX)' LIMIT 1
+D, [2014-11-21T16:17:37.723314 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'BLUE DRAGON(雷龍RemixIIDX)' LIMIT 1[0m
+D, [2014-11-21T16:17:37.725451 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'BLUE DRAGON(雷龍RemixIIDX)' LIMIT 1
+D, [2014-11-21T16:17:37.728502 #7338] DEBUG -- :   [1m[36mScore Load (1.3ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 7 LIMIT 1[0m
+D, [2014-11-21T16:17:37.732100 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Broken' LIMIT 1
+D, [2014-11-21T16:17:37.734622 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Broken' LIMIT 1[0m
+D, [2014-11-21T16:17:37.736154 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Broken' LIMIT 1
+D, [2014-11-21T16:17:37.738039 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 8 LIMIT 1[0m
+D, [2014-11-21T16:17:37.739874 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Broken Sword' LIMIT 1
+D, [2014-11-21T16:17:37.741764 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Broken Sword' LIMIT 1[0m
+D, [2014-11-21T16:17:37.743544 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Broken Sword' LIMIT 1
+D, [2014-11-21T16:17:37.745620 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 150 LIMIT 1[0m
+D, [2014-11-21T16:17:37.747822 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Candy Galy' LIMIT 1
+D, [2014-11-21T16:17:37.749519 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Candy Galy' LIMIT 1[0m
+D, [2014-11-21T16:17:37.751028 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Candy Galy' LIMIT 1
+D, [2014-11-21T16:17:37.752840 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 100 LIMIT 1[0m
+D, [2014-11-21T16:17:37.754802 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru' LIMIT 1
+D, [2014-11-21T16:17:37.756583 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru' LIMIT 1[0m
+D, [2014-11-21T16:17:37.758028 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru' LIMIT 1
+D, [2014-11-21T16:17:37.760379 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 10 LIMIT 1[0m
+D, [2014-11-21T16:17:37.764322 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:37.767401 #7338] DEBUG -- :   [1m[36mSheet Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:37.768926 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Close the World feat.a☆ru†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:37.770507 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 134 LIMIT 1[0m
+D, [2014-11-21T16:17:37.772112 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Colorful Cookie' LIMIT 1
+D, [2014-11-21T16:17:37.773758 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Colorful Cookie' LIMIT 1[0m
+D, [2014-11-21T16:17:37.775519 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Colorful Cookie' LIMIT 1
+D, [2014-11-21T16:17:37.777052 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 101 LIMIT 1[0m
+D, [2014-11-21T16:17:37.780641 #7338] DEBUG -- :   [1m[35mSheet Exists (1.5ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Colors(radio edit)' LIMIT 1
+D, [2014-11-21T16:17:37.783824 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Colors (radio edit)' LIMIT 1[0m
+D, [2014-11-21T16:17:37.786773 #7338] DEBUG -- :   [1m[35mSheet Load (1.2ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Colors (radio edit)' LIMIT 1
+D, [2014-11-21T16:17:37.788932 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 14 LIMIT 1[0m
+D, [2014-11-21T16:17:37.791015 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Concertino in Blue' LIMIT 1
+D, [2014-11-21T16:17:37.792479 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Concertino in Blue' LIMIT 1[0m
+D, [2014-11-21T16:17:37.794362 #7338] DEBUG -- :   [1m[35mSheet Load (1.1ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Concertino in Blue' LIMIT 1
+D, [2014-11-21T16:17:37.796737 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 16 LIMIT 1[0m
+D, [2014-11-21T16:17:37.798937 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Confiserie' LIMIT 1
+D, [2014-11-21T16:17:37.800402 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Confiserie' LIMIT 1[0m
+D, [2014-11-21T16:17:37.802002 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Confiserie' LIMIT 1
+D, [2014-11-21T16:17:37.803741 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 102 LIMIT 1[0m
+D, [2014-11-21T16:17:37.807017 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Dances with Snow Fairies' LIMIT 1
+D, [2014-11-21T16:17:37.809924 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Dances with Snow Fairies' LIMIT 1[0m
+D, [2014-11-21T16:17:37.811822 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Dances with Snow Fairies' LIMIT 1
+D, [2014-11-21T16:17:37.814062 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 103 LIMIT 1[0m
+D, [2014-11-21T16:17:37.816768 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DARK LEGACY' LIMIT 1
+D, [2014-11-21T16:17:37.818422 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DARK LEGACY' LIMIT 1[0m
+D, [2014-11-21T16:17:37.820219 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'DARK LEGACY' LIMIT 1
+D, [2014-11-21T16:17:37.822032 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 19 LIMIT 1[0m
+D, [2014-11-21T16:17:37.823877 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DAY DREAM' LIMIT 1
+D, [2014-11-21T16:17:37.825371 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DAY DREAM' LIMIT 1[0m
+D, [2014-11-21T16:17:37.827482 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'DAY DREAM' LIMIT 1
+D, [2014-11-21T16:17:37.829664 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 20 LIMIT 1[0m
+D, [2014-11-21T16:17:37.832201 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Devilz Staircase' LIMIT 1
+D, [2014-11-21T16:17:37.833680 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Devilz Staircase' LIMIT 1[0m
+D, [2014-11-21T16:17:37.835054 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Devilz Staircase' LIMIT 1
+D, [2014-11-21T16:17:37.837454 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 21 LIMIT 1[0m
+D, [2014-11-21T16:17:37.840591 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DIAVOLO' LIMIT 1
+D, [2014-11-21T16:17:37.842688 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DIAVOLO' LIMIT 1[0m
+D, [2014-11-21T16:17:37.844344 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'DIAVOLO' LIMIT 1
+D, [2014-11-21T16:17:37.846940 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 104 LIMIT 1[0m
+D, [2014-11-21T16:17:37.848942 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DOMINION' LIMIT 1
+D, [2014-11-21T16:17:37.850471 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'DOMINION' LIMIT 1[0m
+D, [2014-11-21T16:17:37.851782 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'DOMINION' LIMIT 1
+D, [2014-11-21T16:17:37.853704 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 105 LIMIT 1[0m
+D, [2014-11-21T16:17:37.855527 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ELECTRIC MASSIVE DIVER' LIMIT 1
+D, [2014-11-21T16:17:37.858251 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ELECTRIC MASSIVE DIVER' LIMIT 1[0m
+D, [2014-11-21T16:17:37.861422 #7338] DEBUG -- :   [1m[35mSheet Load (1.5ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ELECTRIC MASSIVE DIVER' LIMIT 1
+D, [2014-11-21T16:17:37.863549 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 106 LIMIT 1[0m
+D, [2014-11-21T16:17:37.865654 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Elemental Creation' LIMIT 1
+D, [2014-11-21T16:17:37.867387 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Elemental Creation' LIMIT 1[0m
+D, [2014-11-21T16:17:37.868912 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Elemental Creation' LIMIT 1
+D, [2014-11-21T16:17:37.870480 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 107 LIMIT 1[0m
+D, [2014-11-21T16:17:37.872072 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'eRAseRmOToRpHAntOM' LIMIT 1
+D, [2014-11-21T16:17:37.873374 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'eRAseRmOToRpHAntOM' LIMIT 1[0m
+D, [2014-11-21T16:17:37.874875 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'eRAseRmOToRpHAntOM' LIMIT 1
+D, [2014-11-21T16:17:37.877102 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 108 LIMIT 1[0m
+D, [2014-11-21T16:17:37.879315 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Evans' LIMIT 1
+D, [2014-11-21T16:17:37.881059 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Evans' LIMIT 1[0m
+D, [2014-11-21T16:17:37.882655 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Evans' LIMIT 1
+D, [2014-11-21T16:17:37.885287 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 25 LIMIT 1[0m
+D, [2014-11-21T16:17:37.888204 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'EXUSIA' LIMIT 1
+D, [2014-11-21T16:17:37.889979 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'EXUSIA' LIMIT 1[0m
+D, [2014-11-21T16:17:37.891342 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'EXUSIA' LIMIT 1
+D, [2014-11-21T16:17:37.893197 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 109 LIMIT 1[0m
+D, [2014-11-21T16:17:37.895404 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'EΛΠIΣ' LIMIT 1
+D, [2014-11-21T16:17:37.897344 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ΕΛΠΙΣ' LIMIT 1[0m
+D, [2014-11-21T16:17:37.899070 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ΕΛΠΙΣ' LIMIT 1
+D, [2014-11-21T16:17:37.900651 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 83 LIMIT 1[0m
+D, [2014-11-21T16:17:37.902298 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'F' LIMIT 1
+D, [2014-11-21T16:17:37.903655 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'F' LIMIT 1[0m
+D, [2014-11-21T16:17:37.904874 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'F' LIMIT 1
+D, [2014-11-21T16:17:37.906812 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 110 LIMIT 1[0m
+D, [2014-11-21T16:17:37.908972 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FAKE TIME' LIMIT 1
+D, [2014-11-21T16:17:37.910847 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FAKE TIME' LIMIT 1[0m
+D, [2014-11-21T16:17:37.912221 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'FAKE TIME' LIMIT 1
+D, [2014-11-21T16:17:37.914324 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 111 LIMIT 1[0m
+D, [2014-11-21T16:17:37.916973 #7338] DEBUG -- :   [1m[35mSheet Exists (1.2ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FANTASTIC THREE' LIMIT 1
+D, [2014-11-21T16:17:37.919011 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FANTASTIC THREE' LIMIT 1[0m
+D, [2014-11-21T16:17:37.920873 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'FANTASTIC THREE' LIMIT 1
+D, [2014-11-21T16:17:37.923288 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 159 LIMIT 1[0m
+D, [2014-11-21T16:17:37.924879 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Fascination MAXX' LIMIT 1
+D, [2014-11-21T16:17:37.926456 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Fascination MAXX' LIMIT 1[0m
+D, [2014-11-21T16:17:37.928131 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Fascination MAXX' LIMIT 1
+D, [2014-11-21T16:17:37.930091 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 113 LIMIT 1[0m
+D, [2014-11-21T16:17:37.932391 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat' LIMIT 1
+D, [2014-11-21T16:17:37.935086 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat' LIMIT 1[0m
+D, [2014-11-21T16:17:37.937097 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat' LIMIT 1
+D, [2014-11-21T16:17:38.021689 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 30 LIMIT 1[0m
+D, [2014-11-21T16:17:38.023487 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.024930 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.026401 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Feel The Beat†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.028229 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 144 LIMIT 1[0m
+D, [2014-11-21T16:17:38.030430 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'fffff' LIMIT 1
+D, [2014-11-21T16:17:38.031872 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'fffff' LIMIT 1[0m
+D, [2014-11-21T16:17:38.033149 #7338] DEBUG -- :   [1m[35mSheet Load (0.5ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'fffff' LIMIT 1
+D, [2014-11-21T16:17:38.034971 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 32 LIMIT 1[0m
+D, [2014-11-21T16:17:38.036657 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FIRE FIRE' LIMIT 1
+D, [2014-11-21T16:17:38.038188 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'FIRE FIRE' LIMIT 1[0m
+D, [2014-11-21T16:17:38.039483 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'FIRE FIRE' LIMIT 1
+D, [2014-11-21T16:17:38.042209 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 33 LIMIT 1[0m
+D, [2014-11-21T16:17:38.045378 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'G59' LIMIT 1
+D, [2014-11-21T16:17:38.047461 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'G59' LIMIT 1[0m
+D, [2014-11-21T16:17:38.049491 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'G59' LIMIT 1
+D, [2014-11-21T16:17:38.051587 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 114 LIMIT 1[0m
+D, [2014-11-21T16:17:38.053692 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'GAIA' LIMIT 1
+D, [2014-11-21T16:17:38.055582 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'GAIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.057390 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'GAIA' LIMIT 1
+D, [2014-11-21T16:17:38.060262 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 35 LIMIT 1[0m
+D, [2014-11-21T16:17:38.062523 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'gigadelic' LIMIT 1
+D, [2014-11-21T16:17:38.064320 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'gigadelic[H]' LIMIT 1[0m
+D, [2014-11-21T16:17:38.065686 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'gigadelic[H]' LIMIT 1
+D, [2014-11-21T16:17:38.067333 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 37 LIMIT 1[0m
+D, [2014-11-21T16:17:38.069310 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'gigadelic' LIMIT 1
+D, [2014-11-21T16:17:38.071770 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'gigadelic[A]' LIMIT 1[0m
+D, [2014-11-21T16:17:38.073733 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'gigadelic[A]' LIMIT 1
+D, [2014-11-21T16:17:38.075727 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 38 LIMIT 1[0m
+D, [2014-11-21T16:17:38.077690 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Go Beyond!!' LIMIT 1
+D, [2014-11-21T16:17:38.079674 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Go Beyond!!' LIMIT 1[0m
+D, [2014-11-21T16:17:38.081229 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Go Beyond!!' LIMIT 1
+D, [2014-11-21T16:17:38.082897 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 132 LIMIT 1[0m
+D, [2014-11-21T16:17:38.084549 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'GOLDEN CROSS' LIMIT 1
+D, [2014-11-21T16:17:38.085939 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'GOLDEN CROSS' LIMIT 1[0m
+D, [2014-11-21T16:17:38.087415 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'GOLDEN CROSS' LIMIT 1
+D, [2014-11-21T16:17:38.091454 #7338] DEBUG -- :   [1m[36mScore Load (2.3ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 115 LIMIT 1[0m
+D, [2014-11-21T16:17:38.094793 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'HAERETICUS' LIMIT 1
+D, [2014-11-21T16:17:38.096630 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'HAERETICUS' LIMIT 1[0m
+D, [2014-11-21T16:17:38.098380 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'HAERETICUS' LIMIT 1
+D, [2014-11-21T16:17:38.100059 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 116 LIMIT 1[0m
+D, [2014-11-21T16:17:38.101744 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy' LIMIT 1
+D, [2014-11-21T16:17:38.103181 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy' LIMIT 1[0m
+D, [2014-11-21T16:17:38.104429 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy' LIMIT 1
+D, [2014-11-21T16:17:38.105996 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 117 LIMIT 1[0m
+D, [2014-11-21T16:17:38.107644 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy (DJ NAGAI Remix)' LIMIT 1
+D, [2014-11-21T16:17:38.108991 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy(DJ NAGAI Remix)' LIMIT 1[0m
+D, [2014-11-21T16:17:38.111734 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Hollywood Galaxy(DJ NAGAI Remix)' LIMIT 1
+D, [2014-11-21T16:17:38.114221 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 151 LIMIT 1[0m
+D, [2014-11-21T16:17:38.116704 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ICARUS' LIMIT 1
+D, [2014-11-21T16:17:38.120520 #7338] DEBUG -- :   [1m[36mSheet Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ICARUS' LIMIT 1[0m
+D, [2014-11-21T16:17:38.122771 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ICARUS' LIMIT 1
+D, [2014-11-21T16:17:38.124859 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 42 LIMIT 1[0m
+D, [2014-11-21T16:17:38.127862 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Idola' LIMIT 1
+D, [2014-11-21T16:17:38.130994 #7338] DEBUG -- :   [1m[36mSheet Exists (1.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Idola' LIMIT 1[0m
+D, [2014-11-21T16:17:38.132863 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Idola' LIMIT 1
+D, [2014-11-21T16:17:38.134509 #7338] DEBUG -- :   [1m[36mScore Load (0.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 136 LIMIT 1[0m
+D, [2014-11-21T16:17:38.136580 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Immortal' LIMIT 1
+D, [2014-11-21T16:17:38.138795 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Immortal' LIMIT 1[0m
+D, [2014-11-21T16:17:38.140490 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Immortal' LIMIT 1
+D, [2014-11-21T16:17:38.142843 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 138 LIMIT 1[0m
+D, [2014-11-21T16:17:38.144887 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls' LIMIT 1
+D, [2014-11-21T16:17:38.146483 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls[H]' LIMIT 1[0m
+D, [2014-11-21T16:17:38.148583 #7338] DEBUG -- :   [1m[35mSheet Load (1.2ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls[H]' LIMIT 1
+D, [2014-11-21T16:17:38.151752 #7338] DEBUG -- :   [1m[36mScore Load (1.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 45 LIMIT 1[0m
+D, [2014-11-21T16:17:38.154935 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls' LIMIT 1
+D, [2014-11-21T16:17:38.157056 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls[A]' LIMIT 1[0m
+D, [2014-11-21T16:17:38.158593 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Innocent Walls[A]' LIMIT 1
+D, [2014-11-21T16:17:38.160484 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 157 LIMIT 1[0m
+D, [2014-11-21T16:17:38.162737 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'INSOMNIA' LIMIT 1
+D, [2014-11-21T16:17:38.164940 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'INSOMNIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.167584 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'INSOMNIA' LIMIT 1
+D, [2014-11-21T16:17:38.169942 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 46 LIMIT 1[0m
+D, [2014-11-21T16:17:38.171677 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'invoker' LIMIT 1
+D, [2014-11-21T16:17:38.172984 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'invoker' LIMIT 1[0m
+D, [2014-11-21T16:17:38.174313 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'invoker' LIMIT 1
+D, [2014-11-21T16:17:38.176170 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 48 LIMIT 1[0m
+D, [2014-11-21T16:17:38.178251 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'invoker †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.180099 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'invoker†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.182241 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'invoker†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.184019 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 50 LIMIT 1[0m
+D, [2014-11-21T16:17:38.185592 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'IX' LIMIT 1
+D, [2014-11-21T16:17:38.187222 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'IX' LIMIT 1[0m
+D, [2014-11-21T16:17:38.188405 #7338] DEBUG -- :   [1m[35mSheet Load (0.5ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'IX' LIMIT 1
+D, [2014-11-21T16:17:38.189998 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 51 LIMIT 1[0m
+D, [2014-11-21T16:17:38.191616 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'JOMANDA' LIMIT 1
+D, [2014-11-21T16:17:38.193390 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'JOMANDA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.195389 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'JOMANDA' LIMIT 1
+D, [2014-11-21T16:17:38.198403 #7338] DEBUG -- :   [1m[36mScore Load (1.4ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 118 LIMIT 1[0m
+D, [2014-11-21T16:17:38.201312 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'KAISER PHOENIX' LIMIT 1
+D, [2014-11-21T16:17:38.203504 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'KAISER PHOENIX' LIMIT 1[0m
+D, [2014-11-21T16:17:38.205063 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'KAISER PHOENIX' LIMIT 1
+D, [2014-11-21T16:17:38.206727 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 141 LIMIT 1[0m
+D, [2014-11-21T16:17:38.208327 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'LASER CRUSTER' LIMIT 1
+D, [2014-11-21T16:17:38.210100 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'LASER CRUSTER' LIMIT 1[0m
+D, [2014-11-21T16:17:38.212215 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'LASER CRUSTER' LIMIT 1
+D, [2014-11-21T16:17:38.214566 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 54 LIMIT 1[0m
+D, [2014-11-21T16:17:38.216281 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Last Dance' LIMIT 1
+D, [2014-11-21T16:17:38.217585 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Last Dance' LIMIT 1[0m
+D, [2014-11-21T16:17:38.218995 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Last Dance' LIMIT 1
+D, [2014-11-21T16:17:38.220709 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 56 LIMIT 1[0m
+D, [2014-11-21T16:17:38.222547 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Liberation' LIMIT 1
+D, [2014-11-21T16:17:38.223855 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Liberation' LIMIT 1[0m
+D, [2014-11-21T16:17:38.225021 #7338] DEBUG -- :   [1m[35mSheet Load (0.5ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Liberation' LIMIT 1
+D, [2014-11-21T16:17:38.227686 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 57 LIMIT 1[0m
+D, [2014-11-21T16:17:38.231027 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Little Star' LIMIT 1
+D, [2014-11-21T16:17:38.232860 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Little Star' LIMIT 1[0m
+D, [2014-11-21T16:17:38.234225 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Little Star' LIMIT 1
+D, [2014-11-21T16:17:38.235781 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 58 LIMIT 1[0m
+D, [2014-11-21T16:17:38.237371 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'MENDES' LIMIT 1
+D, [2014-11-21T16:17:38.238926 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'MENDES' LIMIT 1[0m
+D, [2014-11-21T16:17:38.240235 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'MENDES' LIMIT 1
+D, [2014-11-21T16:17:38.242776 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 119 LIMIT 1[0m
+D, [2014-11-21T16:17:38.244925 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Monopole.' LIMIT 1
+D, [2014-11-21T16:17:38.246815 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Monopole.' LIMIT 1[0m
+D, [2014-11-21T16:17:38.248265 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Monopole.' LIMIT 1
+D, [2014-11-21T16:17:38.249951 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 160 LIMIT 1[0m
+D, [2014-11-21T16:17:38.251529 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'moon_child' LIMIT 1
+D, [2014-11-21T16:17:38.252949 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'moon_child' LIMIT 1[0m
+D, [2014-11-21T16:17:38.254439 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'moon_child' LIMIT 1
+D, [2014-11-21T16:17:38.256745 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 59 LIMIT 1[0m
+D, [2014-11-21T16:17:38.259939 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'mosaic' LIMIT 1
+D, [2014-11-21T16:17:38.261520 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'mosaic' LIMIT 1[0m
+D, [2014-11-21T16:17:38.263072 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'mosaic' LIMIT 1
+D, [2014-11-21T16:17:38.264706 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 61 LIMIT 1[0m
+D, [2014-11-21T16:17:38.266393 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'NEO GENERATOR SEVEN' LIMIT 1
+D, [2014-11-21T16:17:38.267677 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'NEO GENERATOR SEVEN' LIMIT 1[0m
+D, [2014-11-21T16:17:38.268962 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'NEO GENERATOR SEVEN' LIMIT 1
+D, [2014-11-21T16:17:38.270465 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 153 LIMIT 1[0m
+D, [2014-11-21T16:17:38.272610 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'neu' LIMIT 1
+D, [2014-11-21T16:17:38.274593 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'neu' LIMIT 1[0m
+D, [2014-11-21T16:17:38.277395 #7338] DEBUG -- :   [1m[35mSheet Load (1.3ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'neu' LIMIT 1
+D, [2014-11-21T16:17:38.279744 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 63 LIMIT 1[0m
+D, [2014-11-21T16:17:38.281733 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'NNRT' LIMIT 1
+D, [2014-11-21T16:17:38.283307 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'NNRT' LIMIT 1[0m
+D, [2014-11-21T16:17:38.284632 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'NNRT' LIMIT 1
+D, [2014-11-21T16:17:38.286351 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 65 LIMIT 1[0m
+D, [2014-11-21T16:17:38.288084 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'One More Lovely' LIMIT 1
+D, [2014-11-21T16:17:38.289474 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'One More Lovely' LIMIT 1[0m
+D, [2014-11-21T16:17:38.290746 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'One More Lovely' LIMIT 1
+D, [2014-11-21T16:17:38.292560 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 120 LIMIT 1[0m
+D, [2014-11-21T16:17:38.294502 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'one or eight' LIMIT 1
+D, [2014-11-21T16:17:38.296329 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'one or eight' LIMIT 1[0m
+D, [2014-11-21T16:17:38.297967 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'one or eight' LIMIT 1
+D, [2014-11-21T16:17:38.299646 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 67 LIMIT 1[0m
+D, [2014-11-21T16:17:38.301394 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'oratio' LIMIT 1
+D, [2014-11-21T16:17:38.304051 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'oratio' LIMIT 1[0m
+D, [2014-11-21T16:17:38.306473 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'oratio' LIMIT 1
+D, [2014-11-21T16:17:38.309050 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 68 LIMIT 1[0m
+D, [2014-11-21T16:17:38.311283 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PARADISE LOST' LIMIT 1
+D, [2014-11-21T16:17:38.313027 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PARADISE LOST' LIMIT 1[0m
+D, [2014-11-21T16:17:38.314868 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'PARADISE LOST' LIMIT 1
+D, [2014-11-21T16:17:38.316717 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 121 LIMIT 1[0m
+D, [2014-11-21T16:17:38.318564 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PARANOiA ～HADES～' LIMIT 1
+D, [2014-11-21T16:17:38.319971 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PARANOiA ～HADES～' LIMIT 1[0m
+D, [2014-11-21T16:17:38.321250 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'PARANOiA ～HADES～' LIMIT 1
+D, [2014-11-21T16:17:38.324007 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 122 LIMIT 1[0m
+D, [2014-11-21T16:17:38.327202 #7338] DEBUG -- :   [1m[35mSheet Exists (1.3ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'perditus†paradisus' LIMIT 1
+D, [2014-11-21T16:17:38.329144 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'perditus†paradisus' LIMIT 1[0m
+D, [2014-11-21T16:17:38.330870 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'perditus†paradisus' LIMIT 1
+D, [2014-11-21T16:17:38.332891 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 123 LIMIT 1[0m
+D, [2014-11-21T16:17:38.334980 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Plan 8' LIMIT 1
+D, [2014-11-21T16:17:38.336337 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Plan 8' LIMIT 1[0m
+D, [2014-11-21T16:17:38.337608 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Plan 8' LIMIT 1
+D, [2014-11-21T16:17:38.339224 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 131 LIMIT 1[0m
+D, [2014-11-21T16:17:38.340765 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PLEASE DON''T GO' LIMIT 1
+D, [2014-11-21T16:17:38.342287 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PLEASE DON''T GO' LIMIT 1[0m
+D, [2014-11-21T16:17:38.344171 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'PLEASE DON''T GO' LIMIT 1
+D, [2014-11-21T16:17:38.346172 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 155 LIMIT 1[0m
+D, [2014-11-21T16:17:38.348255 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Proof of the existence' LIMIT 1
+D, [2014-11-21T16:17:38.349734 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Proof of the existence' LIMIT 1[0m
+D, [2014-11-21T16:17:38.351313 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Proof of the existence' LIMIT 1
+D, [2014-11-21T16:17:38.354196 #7338] DEBUG -- :   [1m[36mScore Load (1.3ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 124 LIMIT 1[0m
+D, [2014-11-21T16:17:38.356446 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PUNISHER' LIMIT 1
+D, [2014-11-21T16:17:38.359120 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'PUNISHER' LIMIT 1[0m
+D, [2014-11-21T16:17:38.361106 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'PUNISHER' LIMIT 1
+D, [2014-11-21T16:17:38.364153 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 5 LIMIT 1[0m
+D, [2014-11-21T16:17:38.366336 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'quaver♪' LIMIT 1
+D, [2014-11-21T16:17:38.367821 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'quaver♪' LIMIT 1[0m
+D, [2014-11-21T16:17:38.369380 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'quaver♪' LIMIT 1
+D, [2014-11-21T16:17:38.371129 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 6 LIMIT 1[0m
+D, [2014-11-21T16:17:38.373106 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'quell～the seventh slave～' LIMIT 1
+D, [2014-11-21T16:17:38.375163 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'quell～the seventh slave～' LIMIT 1[0m
+D, [2014-11-21T16:17:38.377125 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'quell～the seventh slave～' LIMIT 1
+D, [2014-11-21T16:17:38.379047 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 125 LIMIT 1[0m
+D, [2014-11-21T16:17:38.381072 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ra''am' LIMIT 1
+D, [2014-11-21T16:17:38.383921 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ra''am' LIMIT 1[0m
+D, [2014-11-21T16:17:38.386443 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ra''am' LIMIT 1
+D, [2014-11-21T16:17:38.388702 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 9 LIMIT 1[0m
+D, [2014-11-21T16:17:38.391393 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'rage against usual' LIMIT 1
+D, [2014-11-21T16:17:38.393494 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'rage against usual' LIMIT 1[0m
+D, [2014-11-21T16:17:38.396294 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'rage against usual' LIMIT 1
+D, [2014-11-21T16:17:38.398472 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 11 LIMIT 1[0m
+D, [2014-11-21T16:17:38.400442 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Red. by Full Metal Jacket' LIMIT 1
+D, [2014-11-21T16:17:38.402125 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Red. by Full Metal Jacket' LIMIT 1[0m
+D, [2014-11-21T16:17:38.403939 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Red. by Full Metal Jacket' LIMIT 1
+D, [2014-11-21T16:17:38.406801 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 12 LIMIT 1[0m
+D, [2014-11-21T16:17:38.409997 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'reunion' LIMIT 1
+D, [2014-11-21T16:17:38.412068 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'reunion' LIMIT 1[0m
+D, [2014-11-21T16:17:38.414171 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'reunion' LIMIT 1
+D, [2014-11-21T16:17:38.416225 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 13 LIMIT 1[0m
+D, [2014-11-21T16:17:38.418236 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ristaccia' LIMIT 1
+D, [2014-11-21T16:17:38.419859 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Ristaccia' LIMIT 1[0m
+D, [2014-11-21T16:17:38.421446 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Ristaccia' LIMIT 1
+D, [2014-11-21T16:17:38.423509 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 15 LIMIT 1[0m
+D, [2014-11-21T16:17:38.426334 #7338] DEBUG -- :   [1m[35mSheet Exists (1.4ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'sakura storm' LIMIT 1
+D, [2014-11-21T16:17:38.428548 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'sakura storm' LIMIT 1[0m
+D, [2014-11-21T16:17:38.431953 #7338] DEBUG -- :   [1m[35mSheet Load (1.1ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'sakura storm' LIMIT 1
+D, [2014-11-21T16:17:38.434772 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 17 LIMIT 1[0m
+D, [2014-11-21T16:17:38.437033 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SCREAM SQUAD' LIMIT 1
+D, [2014-11-21T16:17:38.438994 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SCREAM SQUAD' LIMIT 1[0m
+D, [2014-11-21T16:17:38.440653 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'SCREAM SQUAD' LIMIT 1
+D, [2014-11-21T16:17:38.442864 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 18 LIMIT 1[0m
+D, [2014-11-21T16:17:38.445266 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Scripted Connection⇒A mix' LIMIT 1
+D, [2014-11-21T16:17:38.447671 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Scripted Connection⇒ A mix' LIMIT 1[0m
+D, [2014-11-21T16:17:38.449527 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Scripted Connection⇒ A mix' LIMIT 1
+D, [2014-11-21T16:17:38.451719 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 156 LIMIT 1[0m
+D, [2014-11-21T16:17:38.453802 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sense 2007' LIMIT 1
+D, [2014-11-21T16:17:38.455645 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sense 2007' LIMIT 1[0m
+D, [2014-11-21T16:17:38.458030 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Sense 2007' LIMIT 1
+D, [2014-11-21T16:17:38.460529 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 22 LIMIT 1[0m
+D, [2014-11-21T16:17:38.463872 #7338] DEBUG -- :   [1m[35mSheet Exists (1.1ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Session 9-Chronicles-' LIMIT 1
+D, [2014-11-21T16:17:38.466170 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Session 9 -Chronicles-' LIMIT 1[0m
+D, [2014-11-21T16:17:38.468029 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Session 9 -Chronicles-' LIMIT 1
+D, [2014-11-21T16:17:38.470002 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 23 LIMIT 1[0m
+D, [2014-11-21T16:17:38.472051 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sigmund' LIMIT 1
+D, [2014-11-21T16:17:38.473738 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sigmund' LIMIT 1[0m
+D, [2014-11-21T16:17:38.475773 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Sigmund' LIMIT 1
+D, [2014-11-21T16:17:38.478459 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 24 LIMIT 1[0m
+D, [2014-11-21T16:17:38.482311 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sigmund †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.484437 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sigmund†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.486607 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Sigmund†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.488788 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 26 LIMIT 1[0m
+D, [2014-11-21T16:17:38.490542 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Snake Stick' LIMIT 1
+D, [2014-11-21T16:17:38.492719 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Snake Stick' LIMIT 1[0m
+D, [2014-11-21T16:17:38.494960 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Snake Stick' LIMIT 1
+D, [2014-11-21T16:17:38.497395 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 27 LIMIT 1[0m
+D, [2014-11-21T16:17:38.499581 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sol Cosine Job 2' LIMIT 1
+D, [2014-11-21T16:17:38.501345 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Sol Cosine Job 2' LIMIT 1[0m
+D, [2014-11-21T16:17:38.503061 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Sol Cosine Job 2' LIMIT 1
+D, [2014-11-21T16:17:38.504972 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 28 LIMIT 1[0m
+D, [2014-11-21T16:17:38.507917 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SOLID STATE SQUAD' LIMIT 1
+D, [2014-11-21T16:17:38.511679 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SOLID STATE SQUAD' LIMIT 1[0m
+D, [2014-11-21T16:17:38.514399 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'SOLID STATE SQUAD' LIMIT 1
+D, [2014-11-21T16:17:38.516753 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 29 LIMIT 1[0m
+D, [2014-11-21T16:17:38.519414 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SpaceLand☆TOYBOX' LIMIT 1
+D, [2014-11-21T16:17:38.521869 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SpaceLand☆TOYBOX' LIMIT 1[0m
+D, [2014-11-21T16:17:38.523801 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'SpaceLand☆TOYBOX' LIMIT 1
+D, [2014-11-21T16:17:38.526036 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 161 LIMIT 1[0m
+D, [2014-11-21T16:17:38.528392 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SPECIAL SUMMER CAMPAIGN!' LIMIT 1
+D, [2014-11-21T16:17:38.530433 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SPECIAL SUMMER CAMPAIGN!' LIMIT 1[0m
+D, [2014-11-21T16:17:38.531982 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'SPECIAL SUMMER CAMPAIGN!' LIMIT 1
+D, [2014-11-21T16:17:38.533927 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 31 LIMIT 1[0m
+D, [2014-11-21T16:17:38.535774 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'STULTI' LIMIT 1
+D, [2014-11-21T16:17:38.537486 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'STULTI' LIMIT 1[0m
+D, [2014-11-21T16:17:38.540050 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'STULTI' LIMIT 1
+D, [2014-11-21T16:17:38.543405 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 34 LIMIT 1[0m
+D, [2014-11-21T16:17:38.545548 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Symmetry' LIMIT 1
+D, [2014-11-21T16:17:38.547467 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Symmetry' LIMIT 1[0m
+D, [2014-11-21T16:17:38.548954 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Symmetry' LIMIT 1
+D, [2014-11-21T16:17:38.550694 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 154 LIMIT 1[0m
+D, [2014-11-21T16:17:38.552922 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SYNC-ANTHEM' LIMIT 1
+D, [2014-11-21T16:17:38.554762 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'SYNC-ANTHEM' LIMIT 1[0m
+D, [2014-11-21T16:17:38.556228 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'SYNC-ANTHEM' LIMIT 1
+D, [2014-11-21T16:17:38.558347 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 36 LIMIT 1[0m
+D, [2014-11-21T16:17:38.560960 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'The Limbo' LIMIT 1
+D, [2014-11-21T16:17:38.564607 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'The Limbo' LIMIT 1[0m
+D, [2014-11-21T16:17:38.566387 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'The Limbo' LIMIT 1
+D, [2014-11-21T16:17:38.568302 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 39 LIMIT 1[0m
+D, [2014-11-21T16:17:38.570155 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'The Sampling Paradise' LIMIT 1
+D, [2014-11-21T16:17:38.571790 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'The Sampling Paradise' LIMIT 1[0m
+D, [2014-11-21T16:17:38.573292 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'The Sampling Paradise' LIMIT 1
+D, [2014-11-21T16:17:38.575421 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 40 LIMIT 1[0m
+D, [2014-11-21T16:17:38.577708 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Thor''s Hammer' LIMIT 1
+D, [2014-11-21T16:17:38.579916 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Thor''s Hammer' LIMIT 1[0m
+D, [2014-11-21T16:17:38.582187 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Thor''s Hammer' LIMIT 1
+D, [2014-11-21T16:17:38.584184 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 128 LIMIT 1[0m
+D, [2014-11-21T16:17:38.587067 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Thunderbolt' LIMIT 1
+D, [2014-11-21T16:17:38.589415 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Thunderbolt' LIMIT 1[0m
+D, [2014-11-21T16:17:38.592147 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Thunderbolt' LIMIT 1
+D, [2014-11-21T16:17:38.594472 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 41 LIMIT 1[0m
+D, [2014-11-21T16:17:38.596692 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II' LIMIT 1
+D, [2014-11-21T16:17:38.598557 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II' LIMIT 1[0m
+D, [2014-11-21T16:17:38.600002 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II' LIMIT 1
+D, [2014-11-21T16:17:38.601886 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 43 LIMIT 1[0m
+D, [2014-11-21T16:17:38.603750 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II(CN Ver.)' LIMIT 1
+D, [2014-11-21T16:17:38.605341 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II (CN Ver.)' LIMIT 1[0m
+D, [2014-11-21T16:17:38.606755 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Timepiece phase II (CN Ver.)' LIMIT 1
+D, [2014-11-21T16:17:38.608675 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 44 LIMIT 1[0m
+D, [2014-11-21T16:17:38.610931 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Todestrieb' LIMIT 1
+D, [2014-11-21T16:17:38.613187 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Todestrieb' LIMIT 1[0m
+D, [2014-11-21T16:17:38.615005 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Todestrieb' LIMIT 1
+D, [2014-11-21T16:17:38.618292 #7338] DEBUG -- :   [1m[36mScore Load (1.1ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 112 LIMIT 1[0m
+D, [2014-11-21T16:17:38.621248 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'tripping contact' LIMIT 1
+D, [2014-11-21T16:17:38.623063 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'tripping contact' LIMIT 1[0m
+D, [2014-11-21T16:17:38.624945 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'tripping contact' LIMIT 1
+D, [2014-11-21T16:17:38.627479 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 148 LIMIT 1[0m
+D, [2014-11-21T16:17:38.629984 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'TROOPERS' LIMIT 1
+D, [2014-11-21T16:17:38.631910 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'TROOPERS' LIMIT 1[0m
+D, [2014-11-21T16:17:38.633985 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'TROOPERS' LIMIT 1
+D, [2014-11-21T16:17:38.636696 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 47 LIMIT 1[0m
+D, [2014-11-21T16:17:38.639034 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'True Blue' LIMIT 1
+D, [2014-11-21T16:17:38.640778 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'True Blue' LIMIT 1[0m
+D, [2014-11-21T16:17:38.642651 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'True Blue' LIMIT 1
+D, [2014-11-21T16:17:38.644899 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 49 LIMIT 1[0m
+D, [2014-11-21T16:17:38.647462 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'V' LIMIT 1
+D, [2014-11-21T16:17:38.649431 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'V' LIMIT 1[0m
+D, [2014-11-21T16:17:38.651222 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'V' LIMIT 1
+D, [2014-11-21T16:17:38.653050 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 52 LIMIT 1[0m
+D, [2014-11-21T16:17:38.655193 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Valanga' LIMIT 1
+D, [2014-11-21T16:17:38.657190 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Valanga' LIMIT 1[0m
+D, [2014-11-21T16:17:38.659608 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Valanga' LIMIT 1
+D, [2014-11-21T16:17:38.662051 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 53 LIMIT 1[0m
+D, [2014-11-21T16:17:38.665123 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'VANESSA' LIMIT 1
+D, [2014-11-21T16:17:38.668037 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'VANESSA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.670023 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'VANESSA' LIMIT 1
+D, [2014-11-21T16:17:38.672031 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 55 LIMIT 1[0m
+D, [2014-11-21T16:17:38.674594 #7338] DEBUG -- :   [1m[35mSheet Exists (1.2ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Verflucht' LIMIT 1
+D, [2014-11-21T16:17:38.676909 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Verflucht' LIMIT 1[0m
+D, [2014-11-21T16:17:38.679199 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Verflucht' LIMIT 1
+D, [2014-11-21T16:17:38.681076 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 135 LIMIT 1[0m
+D, [2014-11-21T16:17:38.683016 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Verflucht †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.684523 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Verflucht†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.685984 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Verflucht†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.687618 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 145 LIMIT 1[0m
+D, [2014-11-21T16:17:38.689357 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'VOX UP' LIMIT 1
+D, [2014-11-21T16:17:38.691039 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'VOX UP' LIMIT 1[0m
+D, [2014-11-21T16:17:38.693024 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'VOX UP' LIMIT 1
+D, [2014-11-21T16:17:38.695950 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 129 LIMIT 1[0m
+D, [2014-11-21T16:17:38.698630 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Watch Out Pt.2' LIMIT 1
+D, [2014-11-21T16:17:38.700340 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Watch Out Pt.2' LIMIT 1[0m
+D, [2014-11-21T16:17:38.701693 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Watch Out Pt.2' LIMIT 1
+D, [2014-11-21T16:17:38.703581 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 60 LIMIT 1[0m
+D, [2014-11-21T16:17:38.705672 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'We''re so Happy (P*Light Remix) IIDX Ver.' LIMIT 1
+D, [2014-11-21T16:17:38.707288 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'We''re so Happy (P*Light Remix) IIDX ver.' LIMIT 1[0m
+D, [2014-11-21T16:17:38.709188 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'We''re so Happy (P*Light Remix) IIDX ver.' LIMIT 1
+D, [2014-11-21T16:17:38.711294 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 152 LIMIT 1[0m
+D, [2014-11-21T16:17:38.713374 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'WONDER WALKER' LIMIT 1
+D, [2014-11-21T16:17:38.715629 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'WONDER WALKER' LIMIT 1[0m
+D, [2014-11-21T16:17:38.717964 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'WONDER WALKER' LIMIT 1
+D, [2014-11-21T16:17:38.720165 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 62 LIMIT 1[0m
+D, [2014-11-21T16:17:38.722223 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'YAKSHA' LIMIT 1
+D, [2014-11-21T16:17:38.723852 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'YAKSHA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.725466 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'YAKSHA' LIMIT 1
+D, [2014-11-21T16:17:38.727503 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 64 LIMIT 1[0m
+D, [2014-11-21T16:17:38.729600 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Zirkfied' LIMIT 1
+D, [2014-11-21T16:17:38.731505 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'Zirkfied' LIMIT 1[0m
+D, [2014-11-21T16:17:38.732892 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'Zirkfied' LIMIT 1
+D, [2014-11-21T16:17:38.735082 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 66 LIMIT 1[0m
+D, [2014-11-21T16:17:38.736902 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ZZ' LIMIT 1
+D, [2014-11-21T16:17:38.738963 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ZZ' LIMIT 1[0m
+D, [2014-11-21T16:17:38.740574 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ZZ' LIMIT 1
+D, [2014-11-21T16:17:38.743370 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 162 LIMIT 1[0m
+D, [2014-11-21T16:17:38.746315 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'リリーゼと炎龍レーヴァテイン' LIMIT 1
+D, [2014-11-21T16:17:38.748145 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'リリーゼと炎龍レーヴァテイン' LIMIT 1[0m
+D, [2014-11-21T16:17:38.749668 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'リリーゼと炎龍レーヴァテイン' LIMIT 1
+D, [2014-11-21T16:17:38.751459 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 158 LIMIT 1[0m
+D, [2014-11-21T16:17:38.753261 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷 †LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.754829 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷†LEGGENDARIA' LIMIT 1[0m
+D, [2014-11-21T16:17:38.756238 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷†LEGGENDARIA' LIMIT 1
+D, [2014-11-21T16:17:38.758340 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 146 LIMIT 1[0m
+D, [2014-11-21T16:17:38.760558 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '紅牡丹' LIMIT 1
+D, [2014-11-21T16:17:38.763249 #7338] DEBUG -- :   [1m[36mSheet Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '紅牡丹' LIMIT 1[0m
+D, [2014-11-21T16:17:38.764838 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '紅牡丹' LIMIT 1
+D, [2014-11-21T16:17:38.766998 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 163 LIMIT 1[0m
+D, [2014-11-21T16:17:38.768918 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '3y3s' LIMIT 1
+D, [2014-11-21T16:17:38.770503 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '3y3s' LIMIT 1[0m
+D, [2014-11-21T16:17:38.772236 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '3y3s' LIMIT 1
+D, [2014-11-21T16:17:38.774787 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 130 LIMIT 1[0m
+D, [2014-11-21T16:17:38.778083 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '†渚の小悪魔ラヴリィ〜レイディオ†(IIDX EDIT)' LIMIT 1
+D, [2014-11-21T16:17:38.779975 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)' LIMIT 1[0m
+D, [2014-11-21T16:17:38.781545 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)' LIMIT 1
+D, [2014-11-21T16:17:38.783382 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 94 LIMIT 1[0m
+D, [2014-11-21T16:17:38.784997 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'たまゆら' LIMIT 1
+D, [2014-11-21T16:17:38.786398 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'たまゆら' LIMIT 1[0m
+D, [2014-11-21T16:17:38.787687 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'たまゆら' LIMIT 1
+D, [2014-11-21T16:17:38.789212 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 69 LIMIT 1[0m
+D, [2014-11-21T16:17:38.790905 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'アストライアの双皿' LIMIT 1
+D, [2014-11-21T16:17:38.793370 #7338] DEBUG -- :   [1m[36mSheet Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'アストライアの双皿' LIMIT 1[0m
+D, [2014-11-21T16:17:38.796851 #7338] DEBUG -- :   [1m[35mSheet Load (1.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'アストライアの双皿' LIMIT 1
+D, [2014-11-21T16:17:38.800085 #7338] DEBUG -- :   [1m[36mScore Load (1.2ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 70 LIMIT 1[0m
+D, [2014-11-21T16:17:38.802670 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'カゴノトリ～弐式～' LIMIT 1
+D, [2014-11-21T16:17:38.804752 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'カゴノトリ～弐式～' LIMIT 1[0m
+D, [2014-11-21T16:17:38.806259 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'カゴノトリ～弐式～' LIMIT 1
+D, [2014-11-21T16:17:38.807796 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 71 LIMIT 1[0m
+D, [2014-11-21T16:17:38.810113 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'キャトられ 恋はモ～モク' LIMIT 1
+D, [2014-11-21T16:17:38.811861 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'キャトられ恋はモ～モク' LIMIT 1[0m
+D, [2014-11-21T16:17:38.813674 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'キャトられ恋はモ～モク' LIMIT 1
+D, [2014-11-21T16:17:38.815783 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 72 LIMIT 1[0m
+D, [2014-11-21T16:17:38.817422 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'シュレーディンガーの猫' LIMIT 1
+D, [2014-11-21T16:17:38.818948 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'シュレーディンガーの猫' LIMIT 1[0m
+D, [2014-11-21T16:17:38.821098 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'シュレーディンガーの猫' LIMIT 1
+D, [2014-11-21T16:17:38.824055 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 74 LIMIT 1[0m
+D, [2014-11-21T16:17:38.827273 #7338] DEBUG -- :   [1m[35mSheet Exists (1.2ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'トリカゴノ鳳凰' LIMIT 1
+D, [2014-11-21T16:17:38.829526 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'トリカゴノ鳳凰' LIMIT 1[0m
+D, [2014-11-21T16:17:38.831167 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'トリカゴノ鳳凰' LIMIT 1
+D, [2014-11-21T16:17:38.833056 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 76 LIMIT 1[0m
+D, [2014-11-21T16:17:38.837042 #7338] DEBUG -- :   [1m[35mSheet Exists (2.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ピアノ協奏曲第１番"蠍火"' LIMIT 1
+D, [2014-11-21T16:17:38.839311 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ピアノ協奏曲第１番”蠍火”' LIMIT 1[0m
+D, [2014-11-21T16:17:38.845598 #7338] DEBUG -- :   [1m[35mSheet Load (4.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ピアノ協奏曲第１番”蠍火”' LIMIT 1
+D, [2014-11-21T16:17:38.848941 #7338] DEBUG -- :   [1m[36mScore Load (1.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 79 LIMIT 1[0m
+D, [2014-11-21T16:17:38.852408 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ワルツ第17番 ト短調"大犬のワルツ"' LIMIT 1
+D, [2014-11-21T16:17:38.855103 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = 'ワルツ第17番 ト短調”大犬のワルツ”' LIMIT 1[0m
+D, [2014-11-21T16:17:38.859499 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = 'ワルツ第17番 ト短調”大犬のワルツ”' LIMIT 1
+D, [2014-11-21T16:17:38.862259 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 80 LIMIT 1[0m
+D, [2014-11-21T16:17:38.864611 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '不沈艦CANDY' LIMIT 1
+D, [2014-11-21T16:17:38.866176 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '不沈艦CANDY' LIMIT 1[0m
+D, [2014-11-21T16:17:38.867964 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '不沈艦CANDY' LIMIT 1
+D, [2014-11-21T16:17:38.869705 #7338] DEBUG -- :   [1m[36mScore Load (0.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 77 LIMIT 1[0m
+D, [2014-11-21T16:17:38.873436 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '冥' LIMIT 1
+D, [2014-11-21T16:17:38.877051 #7338] DEBUG -- :   [1m[36mSheet Exists (1.2ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '冥' LIMIT 1[0m
+D, [2014-11-21T16:17:38.880403 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '冥' LIMIT 1
+D, [2014-11-21T16:17:38.882377 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 127 LIMIT 1[0m
+D, [2014-11-21T16:17:38.884950 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '卑弥呼' LIMIT 1
+D, [2014-11-21T16:17:38.886569 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '卑弥呼' LIMIT 1[0m
+D, [2014-11-21T16:17:38.888649 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '卑弥呼' LIMIT 1
+D, [2014-11-21T16:17:38.890868 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 75 LIMIT 1[0m
+D, [2014-11-21T16:17:38.894099 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '即席！脳直★ミュージックシステム' LIMIT 1
+D, [2014-11-21T16:17:38.897390 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '即席！脳直★ミュージックシステム' LIMIT 1[0m
+D, [2014-11-21T16:17:38.900052 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '即席！脳直★ミュージックシステム' LIMIT 1
+D, [2014-11-21T16:17:38.902855 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 82 LIMIT 1[0m
+D, [2014-11-21T16:17:38.908906 #7338] DEBUG -- :   [1m[35mSheet Exists (2.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '嘆きの樹' LIMIT 1
+D, [2014-11-21T16:17:38.910879 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '嘆きの樹' LIMIT 1[0m
+D, [2014-11-21T16:17:38.913228 #7338] DEBUG -- :   [1m[35mSheet Load (0.9ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '嘆きの樹' LIMIT 1
+D, [2014-11-21T16:17:38.916410 #7338] DEBUG -- :   [1m[36mScore Load (1.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 81 LIMIT 1[0m
+D, [2014-11-21T16:17:38.919830 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '天空の夜明け' LIMIT 1
+D, [2014-11-21T16:17:38.922020 #7338] DEBUG -- :   [1m[36mSheet Exists (1.3ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '天空の夜明け' LIMIT 1[0m
+D, [2014-11-21T16:17:38.923581 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '天空の夜明け' LIMIT 1
+D, [2014-11-21T16:17:38.925646 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 137 LIMIT 1[0m
+D, [2014-11-21T16:17:38.928569 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '子供の落書き帳' LIMIT 1
+D, [2014-11-21T16:17:38.931473 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '子供の落書き帳' LIMIT 1[0m
+D, [2014-11-21T16:17:38.934600 #7338] DEBUG -- :   [1m[35mSheet Load (1.2ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '子供の落書き帳' LIMIT 1
+D, [2014-11-21T16:17:38.937071 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 91 LIMIT 1[0m
+D, [2014-11-21T16:17:38.939231 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '少年A' LIMIT 1
+D, [2014-11-21T16:17:38.941439 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '少年A' LIMIT 1[0m
+D, [2014-11-21T16:17:38.945448 #7338] DEBUG -- :   [1m[35mSheet Load (2.2ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '少年A' LIMIT 1
+D, [2014-11-21T16:17:38.948639 #7338] DEBUG -- :   [1m[36mScore Load (1.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 87 LIMIT 1[0m
+D, [2014-11-21T16:17:38.951727 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '恋する☆宇宙戦争っ!!' LIMIT 1
+D, [2014-11-21T16:17:38.954058 #7338] DEBUG -- :   [1m[36mSheet Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '恋する☆宇宙戦争っ！！' LIMIT 1[0m
+D, [2014-11-21T16:17:38.955784 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '恋する☆宇宙戦争っ！！' LIMIT 1
+D, [2014-11-21T16:17:38.957686 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 73 LIMIT 1[0m
+D, [2014-11-21T16:17:38.960095 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '旋律のドグマ ～Misérables～' LIMIT 1
+D, [2014-11-21T16:17:38.962200 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '旋律のドグマ ～Misérables～' LIMIT 1[0m
+D, [2014-11-21T16:17:38.963981 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '旋律のドグマ ～Misérables～' LIMIT 1
+D, [2014-11-21T16:17:38.965788 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 93 LIMIT 1[0m
+D, [2014-11-21T16:17:38.967600 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '桜' LIMIT 1
+D, [2014-11-21T16:17:38.969126 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '桜' LIMIT 1[0m
+D, [2014-11-21T16:17:38.970466 #7338] DEBUG -- :   [1m[35mSheet Load (0.5ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '桜' LIMIT 1
+D, [2014-11-21T16:17:38.972156 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 92 LIMIT 1[0m
+D, [2014-11-21T16:17:38.973991 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '海神' LIMIT 1
+D, [2014-11-21T16:17:38.976619 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '海神' LIMIT 1[0m
+D, [2014-11-21T16:17:38.979839 #7338] DEBUG -- :   [1m[35mSheet Load (1.3ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '海神' LIMIT 1
+D, [2014-11-21T16:17:38.982313 #7338] DEBUG -- :   [1m[36mScore Load (1.0ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 139 LIMIT 1[0m
+D, [2014-11-21T16:17:38.984808 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '灼熱Beach Side Bunny' LIMIT 1
+D, [2014-11-21T16:17:38.986817 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '灼熱Beach Side Bunny' LIMIT 1[0m
+D, [2014-11-21T16:17:38.988252 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '灼熱Beach Side Bunny' LIMIT 1
+D, [2014-11-21T16:17:38.990025 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 126 LIMIT 1[0m
+D, [2014-11-21T16:17:38.992134 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '煉獄のエルフェリア' LIMIT 1
+D, [2014-11-21T16:17:38.994297 #7338] DEBUG -- :   [1m[36mSheet Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '煉獄のエルフェリア' LIMIT 1[0m
+D, [2014-11-21T16:17:38.996082 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '煉獄のエルフェリア' LIMIT 1
+D, [2014-11-21T16:17:38.998004 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 149 LIMIT 1[0m
+D, [2014-11-21T16:17:38.999770 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '狂イ咲ケ焔ノ華' LIMIT 1
+D, [2014-11-21T16:17:39.001363 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '狂イ咲ケ焔ノ華' LIMIT 1[0m
+D, [2014-11-21T16:17:39.002989 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '狂イ咲ケ焔ノ華' LIMIT 1
+D, [2014-11-21T16:17:39.004588 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 88 LIMIT 1[0m
+D, [2014-11-21T16:17:39.006812 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷' LIMIT 1
+D, [2014-11-21T16:17:39.010203 #7338] DEBUG -- :   [1m[36mSheet Exists (1.4ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷' LIMIT 1[0m
+D, [2014-11-21T16:17:39.012465 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '疾風迅雷' LIMIT 1
+D, [2014-11-21T16:17:39.014569 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 147 LIMIT 1[0m
+D, [2014-11-21T16:17:39.016366 #7338] DEBUG -- :   [1m[35mSheet Exists (0.7ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '聖人の塔' LIMIT 1
+D, [2014-11-21T16:17:39.017863 #7338] DEBUG -- :   [1m[36mSheet Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '聖人の塔' LIMIT 1[0m
+D, [2014-11-21T16:17:39.019167 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '聖人の塔' LIMIT 1
+D, [2014-11-21T16:17:39.020897 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 86 LIMIT 1[0m
+D, [2014-11-21T16:17:39.023643 #7338] DEBUG -- :   [1m[35mSheet Exists (1.0ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '表裏一体！？怪盗いいんちょの悩み♥' LIMIT 1
+D, [2014-11-21T16:17:39.026993 #7338] DEBUG -- :   [1m[36mSheet Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '表裏一体！？怪盗いいんちょの悩み♥' LIMIT 1[0m
+D, [2014-11-21T16:17:39.029707 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '轟け！恋のビーンボール！！' LIMIT 1
+D, [2014-11-21T16:17:39.032494 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '轟け！恋のビーンボール！！' LIMIT 1[0m
+D, [2014-11-21T16:17:39.034147 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '轟け！恋のビーンボール！！' LIMIT 1
+D, [2014-11-21T16:17:39.035838 #7338] DEBUG -- :   [1m[36mScore Load (0.7ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 89 LIMIT 1[0m
+D, [2014-11-21T16:17:39.037571 #7338] DEBUG -- :   [1m[35mSheet Exists (0.6ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '雪月花' LIMIT 1
+D, [2014-11-21T16:17:39.039256 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '雪月花' LIMIT 1[0m
+D, [2014-11-21T16:17:39.041000 #7338] DEBUG -- :   [1m[35mSheet Load (0.8ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '雪月花' LIMIT 1
+D, [2014-11-21T16:17:39.043485 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 84 LIMIT 1[0m
+D, [2014-11-21T16:17:39.045681 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '電人、暁に斃れる。' LIMIT 1
+D, [2014-11-21T16:17:39.047582 #7338] DEBUG -- :   [1m[36mSheet Exists (0.6ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '電人、暁に斃れる。' LIMIT 1[0m
+D, [2014-11-21T16:17:39.048999 #7338] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '電人、暁に斃れる。' LIMIT 1
+D, [2014-11-21T16:17:39.050555 #7338] DEBUG -- :   [1m[36mScore Load (0.6ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 78 LIMIT 1[0m
+D, [2014-11-21T16:17:39.052653 #7338] DEBUG -- :   [1m[35mSheet Exists (0.9ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '音楽' LIMIT 1
+D, [2014-11-21T16:17:39.055291 #7338] DEBUG -- :   [1m[36mSheet Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '音楽' LIMIT 1[0m
+D, [2014-11-21T16:17:39.057872 #7338] DEBUG -- :   [1m[35mSheet Load (1.0ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '音楽' LIMIT 1
+D, [2014-11-21T16:17:39.060531 #7338] DEBUG -- :   [1m[36mScore Load (0.8ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 85 LIMIT 1[0m
+D, [2014-11-21T16:17:39.062726 #7338] DEBUG -- :   [1m[35mSheet Exists (0.8ms)[0m  SELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '黒髪乱れし修羅となりて' LIMIT 1
+D, [2014-11-21T16:17:39.064512 #7338] DEBUG -- :   [1m[36mSheet Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "sheets"  WHERE "sheets"."title" = '黒髪乱れし修羅となりて' LIMIT 1[0m
+D, [2014-11-21T16:17:39.066188 #7338] DEBUG -- :   [1m[35mSheet Load (0.7ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."title" = '黒髪乱れし修羅となりて' LIMIT 1
+D, [2014-11-21T16:17:39.068130 #7338] DEBUG -- :   [1m[36mScore Load (0.9ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = 7 AND "scores"."sheet_id" = 90 LIMIT 1[0m
+I, [2014-11-21T16:17:39.069947 #7338]  INFO -- : Redirected to http://192.168.10.56/abilitysheet/logs/5560-4795/list
+I, [2014-11-21T16:17:39.070504 #7338]  INFO -- : Completed 302 Found in 2226ms (ActiveRecord: 536.1ms)
+I, [2014-11-21T16:17:39.078658 #7338]  INFO -- : Started GET "/abilitysheet/logs/5560-4795/list" for 127.0.0.1 at 2014-11-21 16:17:39 +0900
+I, [2014-11-21T16:17:39.080912 #7338]  INFO -- : Processing by LogsController#list as HTML
+I, [2014-11-21T16:17:39.081073 #7338]  INFO -- :   Parameters: {"iidxid"=>"5560-4795"}
+D, [2014-11-21T16:17:39.084811 #7338] DEBUG -- :   [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."iidxid" = '5560-4795' LIMIT 1
+D, [2014-11-21T16:17:39.109054 #7338] DEBUG -- :   [1m[36m (0.9ms)[0m  [1mSELECT "logs"."created_at" FROM "logs"  WHERE "logs"."user_id" = $1[0m  [["user_id", 7]]
+D, [2014-11-21T16:17:39.224995 #7338] DEBUG -- :   [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = 7  ORDER BY "users"."id" ASC LIMIT 1
+D, [2014-11-21T16:17:39.227195 #7338] DEBUG -- :   [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."iidxid" = '5560-4795' LIMIT 1[0m
+D, [2014-11-21T16:17:39.230441 #7338] DEBUG -- :   [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "logs"  WHERE "logs"."user_id" = $1 AND "logs"."created_at" = '2014-11-21'  [["user_id", 7]]
+I, [2014-11-21T16:17:39.231193 #7338]  INFO -- :   Rendered logs/list.html.slim within layouts/application (117.1ms)
+I, [2014-11-21T16:17:39.266379 #7338]  INFO -- : Completed 200 OK in 185ms (Views: 154.8ms | ActiveRecord: 7.1ms)
+I, [2014-11-21T17:18:55.094312 #7336]  INFO -- : Started GET "/abilitysheet/users/list" for 127.0.0.1 at 2014-11-21 17:18:55 +0900
+I, [2014-11-21T17:18:55.097565 #7336]  INFO -- : Processing by WelcomesController#list as HTML
+D, [2014-11-21T17:18:55.189579 #7336] DEBUG -- :   [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "users"
+D, [2014-11-21T17:18:55.190657 #7336] DEBUG -- :   [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users"[0m
+D, [2014-11-21T17:18:55.197728 #7336] DEBUG -- :   [1m[35mScore Load (0.8ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 1]]
+D, [2014-11-21T17:18:55.233737 #7336] DEBUG -- :   [1m[36mSheet Load (0.6ms)[0m  [1mSELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1[0m  [["id", 62]]
+D, [2014-11-21T17:18:55.245538 #7336] DEBUG -- :   [1m[35mScore Load (1.1ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 2]]
+D, [2014-11-21T17:18:55.248203 #7336] DEBUG -- :   [1m[36mSheet Load (0.7ms)[0m  [1mSELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1[0m  [["id", 11]]
+D, [2014-11-21T17:18:55.251790 #7336] DEBUG -- :   [1m[35mScore Load (0.9ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 3]]
+D, [2014-11-21T17:18:55.254566 #7336] DEBUG -- :   [1m[36mSheet Load (0.9ms)[0m  [1mSELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1[0m  [["id", 141]]
+D, [2014-11-21T17:18:55.257078 #7336] DEBUG -- :   [1m[35mScore Load (0.9ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 4]]
+D, [2014-11-21T17:18:55.259515 #7336] DEBUG -- :   [1m[36mSheet Load (0.9ms)[0m  [1mSELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1[0m  [["id", 141]]
+D, [2014-11-21T17:18:55.262047 #7336] DEBUG -- :   [1m[35mScore Load (1.0ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 5]]
+D, [2014-11-21T17:18:55.264725 #7336] DEBUG -- :   [1m[36mSheet Load (0.7ms)[0m  [1mSELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1[0m  [["id", 139]]
+D, [2014-11-21T17:18:55.266819 #7336] DEBUG -- :   [1m[35mScore Load (0.7ms)[0m  SELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1  [["user_id", 6]]
+D, [2014-11-21T17:18:55.268500 #7336] DEBUG -- :   [1m[36mScore Load (0.5ms)[0m  [1mSELECT  "scores".* FROM "scores"  WHERE "scores"."user_id" = $1 AND ("scores"."state" BETWEEN 0 AND 6)  ORDER BY "scores"."updated_at" DESC LIMIT 1[0m  [["user_id", 7]]
+D, [2014-11-21T17:18:55.270139 #7336] DEBUG -- :   [1m[35mSheet Load (0.6ms)[0m  SELECT  "sheets".* FROM "sheets"  WHERE "sheets"."id" = $1 LIMIT 1  [["id", 1]]
+I, [2014-11-21T17:18:55.270591 #7336]  INFO -- :   Rendered welcomes/list.html.slim within layouts/application (169.9ms)
+I, [2014-11-21T17:18:55.274213 #7336]  INFO -- : Completed 200 OK in 176ms (Views: 152.9ms | ActiveRecord: 23.1ms)
