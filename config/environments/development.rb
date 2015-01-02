@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Indent html for pretty debugging and do not sort attributes
-  Slim::Engine.set_default_options pretty: true, sort_attrs: false
+  Slim::Engine.set_options pretty: true, sort_attrs: false
 
   # better_errors
   BetterErrors::Middleware.allow_ip! '192.168.10.185'

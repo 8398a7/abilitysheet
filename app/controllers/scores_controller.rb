@@ -3,7 +3,9 @@ class ScoresController < ApplicationController
   before_action :version_confirm
 
   def attribute
-    @title = Sheet.find_by(id: params[:id]).title
+    sheet = Sheet.find_by(id: params[:id])
+    @title = sheet.title
+    @textage = sheet.textage
     if User.find_by(id: current_user.id).scores.exists?(sheet_id: params[:id], version: @version)
       @score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:id], version: @version)
     else
