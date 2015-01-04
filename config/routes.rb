@@ -47,4 +47,7 @@ Rails.application.routes.draw do
   post '/logs/:iidxid/list' => 'logs#maneger', as: :maneger_logs
   get '/logs/:iidxid/sheet' => 'logs#sheet', as: :sheet_log
   get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
+
+  # API
+  mount API => '/'
 end
