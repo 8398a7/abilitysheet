@@ -36,5 +36,9 @@ module AbilitysheetIidx
 
     # lib auto load
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # api auto load
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end
