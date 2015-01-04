@@ -87,7 +87,6 @@ class AdminsController < ApplicationController
   end
 
   def update(client, tweet)
-    binding.pry
     begin
       tweet = (tweet.length > 140) ? tweet[0..139].to_s : tweet
       client.update(tweet.chomp)
