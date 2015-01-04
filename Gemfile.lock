@@ -36,6 +36,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     arel (6.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -48,6 +49,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    buftok (0.2.0)
     builder (3.2.2)
     bullet (4.14.0)
       activesupport (>= 3.0.0)
@@ -102,6 +104,8 @@ GEM
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.2)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.2.0.0)
       railties (>= 3.2, < 5.0)
     get_process_mem (0.2.0)
@@ -130,8 +134,11 @@ GEM
     hashie (3.3.2)
     hike (1.2.3)
     hitimes (1.2.2)
+    http (0.6.3)
+      http_parser.rb (~> 0.6.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
+    http_parser.rb (0.6.0)
     i18n (0.7.0)
     ice_nine (0.11.1)
     jbuilder (2.2.6)
@@ -173,12 +180,16 @@ GEM
       nokogiri (~> 1.4)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     nested_form (0.3.2)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
@@ -281,6 +292,7 @@ GEM
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
+    simple_oauth (0.3.1)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -323,6 +335,17 @@ GEM
       hitimes
     turbolinks (2.5.3)
       coffee-rails
+    twitter (5.13.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     twitter-bootstrap3-rails (3.2.7.1)
       actionpack (>= 3.1)
       execjs
@@ -398,6 +421,7 @@ DEPENDENCIES
   spring
   therubyracer
   turbolinks
+  twitter
   twitter-bootstrap3-rails
   uglifier (>= 1.3.0)
   unicorn
