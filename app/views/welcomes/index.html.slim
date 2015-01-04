@@ -5,7 +5,11 @@
   p クリアランプの管理などがグラフなどで可視化できるシステムです。
   - unless user_signed_in?
     p align="center" = link_to '登録', new_user_registration_path, class: 'btn btn-primary btn-lg'
-.col-lg-12
+.col-lg-6
+  a.twitter-timeline href="https://twitter.com/search?q=iidxas" data-widget-id="551580128916946944">  | ツイート
+  javascript:
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+.col-lg-6
   .panel.panel-warning
     .panel-heading
       h3 今後の実装予定
