@@ -32,7 +32,7 @@ module Scrape
         page_num += 1
         break if link.href == '/' && page_num != 1
       end
-      page = @agent.get(@base + @agent.page.links[page_num - 2].href)
+      page = @agent.get(@base + @agent.page.links[page_num - 2].href + 'sp/')
       html = Nokogiri::HTML.parse(page.body, nil, 'UTF-8')
 
       # Level12フォルダの特定
