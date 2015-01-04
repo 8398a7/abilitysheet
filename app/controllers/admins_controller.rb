@@ -26,6 +26,7 @@ class AdminsController < ApplicationController
     notice.body = params[:notice][:body]
     notice.state = params[:notice][:state]
     notice.save
+    twitter(params[:notice][:body])
     flash[:notice] = "#{ notice.body }を追加しました"
     redirect_to new_notice_admins_path
   end
@@ -64,5 +65,34 @@ class AdminsController < ApplicationController
                  ['tri',  20],
                  ['SPD',  21],
                  ['PEN',  22]]
+  end
+
+  private
+
+  def twitter(message)
+    client = twitter_client_get
+    tweet = message
+    update(client, tweet)
+  end
+
+  def twitter_client_get
+    keys = File.open(File.join(Rails.root, 'tmp', 'twitter'), 'r').read.chomp.split(',')
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = keys[0]
+      config.consumer_secret     = keys[1]
+      config.access_token        = keys[2]
+      config.access_token_secret = keys[3]
+    end
+    client
+  end
+
+  def update(client, tweet)
+    binding.pry
+    begin
+      tweet = (tweet.length > 140) ? tweet[0..139].to_s : tweet
+      client.update(tweet.chomp)
+    rescue => e
+      Rails.logger.error "<<twitter.rake::tweet.update ERROR : #{e.message}>>"
+    end
   end
 end
