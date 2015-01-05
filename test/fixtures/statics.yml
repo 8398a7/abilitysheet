@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fc: 1.5
+  exh: 1.5
+  h: 1.5
+  c: 1.5
+  e: 1.5
+
+two:
+  fc: 1.5
+  exh: 1.5
+  h: 1.5
+  c: 1.5
+  e: 1.5

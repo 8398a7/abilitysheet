@@ -1,6 +1,7 @@
 class Sheet < ActiveRecord::Base
   has_many :scores
   has_many :logs
+  has_one :static
   establish_connection(
     adapter:  'postgresql',
     host:     'localhost',
