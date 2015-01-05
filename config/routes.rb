@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'recommends/list'
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   # all visitor
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
 
   AbilitysheetIidx::Application.routes.draw do
+  get 'recommends/list'
+
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/admins/sidekiq'
     end
@@ -47,6 +51,9 @@ Rails.application.routes.draw do
   post '/logs/:iidxid/list' => 'logs#maneger', as: :maneger_logs
   get '/logs/:iidxid/sheet' => 'logs#sheet', as: :sheet_log
   get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
+
+  # recommends
+  get '/recommends/list' => 'recommends#list', as: :list_recommends
 
   # API
   mount API => '/'
