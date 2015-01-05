@@ -48,7 +48,7 @@ html lang="ja"
           - if user_signed_in? && current_user.admin?
             li = link_to '管理者用', index_admins_path
           li = link_to '連絡フォーム', message_welcome_path
-          li = link_to '☆12投票支援', '/voteiidx'
+          li = link_to 'リコメンドっぽいもの', list_recommends_path
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open
