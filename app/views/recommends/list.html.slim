@@ -1,0 +1,21 @@
+table.table
+  thead
+    td 曲名
+    td EASY
+    td CLEAR
+    td HARD
+    td EXH CLEAR
+    td FULL COMBO
+  tbody
+    - @sheets.each do |sheet|
+      tr
+        td = sheet.title
+        td = sheet.static.e
+        td = sheet.static.c
+        td = sheet.static.h
+        td = sheet.static.exh
+        td = sheet.static.fc
+coffee:
+  $('.table').dataTable(
+    aLengthMenu: [167]
+  )
