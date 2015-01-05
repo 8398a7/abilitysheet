@@ -1,21 +1,23 @@
 table.table
   thead
-    td 曲名
-    td EASY
-    td CLEAR
-    td HARD
-    td EXH CLEAR
-    td FULL COMBO
+    th TITLE
+    th EASY
+    th CLEAR
+    th HARD
+    th EXH CLEAR
+    th FULL COMBO
   tbody
     - @sheets.each do |sheet|
       tr
         td = sheet.title
-        td = sheet.static.e
-        td = sheet.static.c
-        td = sheet.static.h
-        td = sheet.static.exh
-        td = sheet.static.fc
-coffee:
-  $('.table').dataTable(
-    aLengthMenu: [167]
-  )
+        td bgcolor=@color[4] = sheet.static.e
+        td bgcolor=@color[3] = sheet.static.c
+        td bgcolor=@color[2] = sheet.static.h
+        td bgcolor=@color[1] = sheet.static.exh
+        td bgcolor=@color[0] = sheet.static.fc
+javascript:
+  (function() {
+    $('.table').dataTable({
+      aLengthMenu: [#{ @sheets.count }]
+    });
+  }).call(this);

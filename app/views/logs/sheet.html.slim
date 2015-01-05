@@ -1,11 +1,11 @@
 table.datatable
   thead
     th TITLE
-    th bgcolor=@color[4] EASY CLEAR
-    th bgcolor=@color[3] CLEAR
-    th bgcolor=@color[2] HARD CLEAR
-    th bgcolor=@color[1] EXH CLEAR
-    th bgcolor=@color[0] FULL COMBO
+    th EASY CLEAR
+    th CLEAR
+    th HARD CLEAR
+    th EXH CLEAR
+    th FULL COMBO
   tbody
     - @sheets.each do |s|
       - logs = s.logs.where(user_id: @id)
