@@ -18,7 +18,7 @@ table.table
         td bgcolor=@color[2] = sprintf("%.2f", sheet.static.h)
         td bgcolor=@color[1] = sprintf("%.2f", sheet.static.exh)
         td bgcolor=@color[0] = sprintf("%.2f", sheet.static.fc)
-        td = sheet.static.aaa
+        td = sprintf("%.2f", sheet.static.aaa)
 javascript:
   (function() {
     $('.table').dataTable({
