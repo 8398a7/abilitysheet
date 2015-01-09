@@ -24,6 +24,7 @@ table.table
 javascript:
   (function() {
     $('.table').dataTable({
+      order: [1, 'desc'],
       aLengthMenu: [#{ @sheets.count }]
     });
   }).call(this);
