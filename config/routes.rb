@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
 
   AbilitysheetIidx::Application.routes.draw do
-  get 'recommends/list'
-
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/admins/sidekiq'
     end
@@ -54,6 +52,7 @@ Rails.application.routes.draw do
 
   # recommends
   get '/recommends/list' => 'recommends#list', as: :list_recommends
+  get '/recommends/integration' => 'recommends#integration', as: :integration_recommends
 
   # API
   mount API => '/'
