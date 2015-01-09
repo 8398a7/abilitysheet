@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   # sheet
   get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
   get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets
+  get '/sheets/:iidxid/power' => 'sheets#power', as: :power_sheets
 
   # score
   get '/scores/:id.:format' => 'scores#attribute', as: :scores
