@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150105172226) do
     t.float    "h"
     t.float    "c"
     t.float    "e"
+    t.float    "aaa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
