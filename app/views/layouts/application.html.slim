@@ -46,9 +46,6 @@ html lang="ja"
               ul.dropdown-menu
                 li = link_to 'ライバル一覧', list_rival_path
                 li = link_to '逆ライバル一覧', reverse_list_rival_path
-          - if user_signed_in? && current_user.admin?
-            li = link_to '管理者用', index_admins_path
-          li = link_to '連絡フォーム', message_welcome_path
           li.dropdown-open
             a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
               | 地力値関係
@@ -56,6 +53,9 @@ html lang="ja"
             ul.dropdown-menu
               li = link_to '☆12 地力値+AAA', list_recommends_path
               li = link_to '統合表', integration_recommends_path
+          - if user_signed_in? && current_user.admin?
+            li = link_to '管理者用', index_admins_path
+          li = link_to '連絡フォーム', message_welcome_path
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right
             li.dropdown-open
@@ -82,9 +82,6 @@ html lang="ja"
               | &nbsp;&nbsp;
               = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
               | &nbsp;&nbsp;
-    br
-    br
-    br
     .container
       .row
         .col-lg-12
