@@ -7,6 +7,7 @@ class CreateStatics < ActiveRecord::Migration
       t.float :h
       t.float :c
       t.float :e
+      t.float :aaa
 
       t.timestamps null: false
     end
