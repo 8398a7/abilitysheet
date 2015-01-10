@@ -1,0 +1,30 @@
+h2
+  | サンプルデータはiidx.meより1100人程度を利用
+table.table
+  thead
+    th TITLE
+    th VALUE
+  tbody
+    - @sheets.each do |sheet|
+      tr
+        td = sheet.title
+        td bgcolor=@color[4] = sprintf("%.2f", sheet.static.e)
+      tr
+        td = sheet.title
+        td bgcolor=@color[3] = sprintf("%.2f", sheet.static.c)
+      tr
+        td = sheet.title
+        td bgcolor=@color[2] = sprintf("%.2f", sheet.static.h)
+      tr
+        td = sheet.title
+        td bgcolor=@color[1] = sprintf("%.2f", sheet.static.exh)
+      tr
+        td = sheet.title
+        td bgcolor=@color[0] = sprintf("%.2f", sheet.static.fc)
+javascript:
+  (function() {
+    $('.table').dataTable({
+      order: [1, 'desc'],
+      aLengthMenu: [#{ @sheets.count }]
+    });
+  }).call(this);
