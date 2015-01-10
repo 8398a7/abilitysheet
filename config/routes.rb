@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
 
   AbilitysheetIidx::Application.routes.draw do
-  get 'recommends/list'
-
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/admins/sidekiq'
     end
@@ -39,6 +37,7 @@ Rails.application.routes.draw do
   # sheet
   get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
   get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets
+  get '/sheets/:iidxid/power' => 'sheets#power', as: :power_sheets
 
   # score
   get '/scores/:id.:format' => 'scores#attribute', as: :scores
@@ -54,6 +53,7 @@ Rails.application.routes.draw do
 
   # recommends
   get '/recommends/list' => 'recommends#list', as: :list_recommends
+  get '/recommends/integration' => 'recommends#integration', as: :integration_recommends
 
   # API
   mount API => '/'

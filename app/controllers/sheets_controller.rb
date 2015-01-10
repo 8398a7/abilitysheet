@@ -1,6 +1,10 @@
 class SheetsController < ApplicationController
   before_action :set_sheet
 
+  def power
+    @sheets = Sheet.active.preload(:static)
+  end
+
   def clear
     @sheets = Sheet.active.order(:ability, :title)
     @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
