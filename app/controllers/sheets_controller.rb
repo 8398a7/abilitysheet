@@ -6,18 +6,18 @@ class SheetsController < ApplicationController
   end
 
   def clear
-    @sheets = Sheet.active.order(:ability, :title)
-    @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
+    @sheets = @sheets.order(:ability, :title)
   end
 
   def hard
-    @sheets = Sheet.active.order(:h_ability, :title)
-    @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
+    @sheets = @sheets.order(:h_ability, :title)
   end
 
   private
 
   def set_sheet
+    @sheets = Sheet.active
+    @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
     if user_signed_in?
       flash[:alert] = '曲名をクリックすると状態を更新できます。' unless User.find_by(id: current_user.id).scores.exists?(state: 0..6)
       flash[:notice] = 'versionを選択すると絞り込みができます。' unless User.find_by(id: current_user.id).scores.exists?(state: 0..6)
@@ -25,7 +25,8 @@ class SheetsController < ApplicationController
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
     @power = Sheet.power
-    s = User.find_by(iidxid: params[:iidxid]).scores
+    sheet_id = @sheets.map(&:id)
+    s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: sheet_id)
     @color = Score.convert_color(s)
     @list_color = Score.list_color
     @stat = Score.stat_info(s)
