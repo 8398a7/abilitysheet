@@ -76,9 +76,7 @@ class Score < ActiveRecord::Base
         #ffffff
       )
       hash = {}
-      scores.each do |s|
-        hash.store(s.sheet_id, color[s.state])
-      end
+      scores.each { |s| hash.store(s.sheet_id, color[s.state]) }
       hash
     end
 
