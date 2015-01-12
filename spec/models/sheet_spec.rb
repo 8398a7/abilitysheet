@@ -7,7 +7,7 @@ describe Sheet do
       expect(sheet.active).to eq true
     end
   end
-  # 地力値を配列で返すこと[['海外', 0], ['北海道', 1]..]
+  # 地力値を配列で返すこと[['地力S', 0], ['個人差S+', 1]..]
   it 'returns music power as array' do
     power = [['地力S+', 0],
              ['個人差S+', 1],
