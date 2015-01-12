@@ -51,7 +51,7 @@ describe User do
 
   # クラスメソッド
   # 所属を配列で返すこと[['海外', 0], ['北海道', 1]..]
-  it 'returns belongs information as a array' do
+  it 'returns belongs information as array' do
     pref = %w(
       海外
       北海道 青森県   岩手県 宮城県
@@ -70,7 +70,7 @@ describe User do
     User.belongs.each { |p| expect(pref[p[1]]).to eq p[0] }
   end
   # 段位を配列で返すこと[['皆伝', 0], ['十段', 1]..]
-  it 'returns grade information as a array' do
+  it 'returns grade information as array' do
     dan = %w(
       皆伝
       十段 九段
