@@ -1,4 +1,3 @@
-matrix:
-  exclude:
-    - rvm: 2.1.0
-    gemfile: Gemfile
+- rvm: 2.1.0
+gemfile: Gemfile
+cache: bundler
