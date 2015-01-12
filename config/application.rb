@@ -40,5 +40,8 @@ module AbilitysheetIidx
     # api auto load
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    # test_framework
+    config.generators.test_framework = 'rspec'
   end
 end
