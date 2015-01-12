@@ -1,18 +1,18 @@
 module Scrape
   class Maneger
+    attr_reader :agent, :url
     def initialize(current_user)
       @agent = Mechanize.new
       @base = 'http://beatmania-clearlamp.com/'
       @current_user = current_user
+      @url = []
       search
     end
 
     def sync
-      res = extract
+      res = go
       res
     end
-
-    private
 
     def maneger_register(title, state)
       return unless Sheet.exists?(title: title)
@@ -26,14 +26,16 @@ module Scrape
       score.save
     end
 
-    def extract
-      page_num = 0
-      @agent.page.links.each do |link|
-        page_num += 1
-        break if link.href == '/' && page_num != 1
-      end
-      page = @agent.get(@base + @agent.page.links[page_num - 2].href + 'sp/')
-      html = Nokogiri::HTML.parse(page.body, nil, 'UTF-8')
+    def go(url = @url)
+      # @urlがなければ収集終了
+      return false if url.count == 0
+
+      # 配列の数だけ収集
+      url.each { |u| extract(u) }
+    end
+
+    def extract(url)
+      html = Nokogiri::HTML.parse(@agent.get(@base + url).page.body, nil, 'UTF-8')
 
       # Level12フォルダの特定
       data = nil
@@ -50,9 +52,9 @@ module Scrape
         next unless d.index('level l12')
         elems = d.split('</dl>')
       end
+      return false unless elems
 
       # HTMLから曲名と状態を抽出し，登録する
-      return false unless elems
       elems.each do |elem|
         break if elem.index('</div>')
         state = value(elem.split('<dt class="')[1].split('">')[0])
@@ -106,13 +108,27 @@ module Scrape
       hash[e]
     end
 
-    def search
+    def search(current_user = @current_user)
+      # ユーザの探索
       @agent.get(@base + 'djdata/')
       @agent.page.encoding = 'UTF-8'
       form = @agent.page.forms[2]
-      iidxid = @current_user.iidxid.delete('-')
+      iidxid = current_user.iidxid.delete('-')
       form.searchWord = iidxid
       @agent.submit(form)
+
+      # そのユーザのページのURLを配列に格納
+      html = Nokogiri::HTML.parse(@agent.page.body, nil, 'UTF-8')
+      html.xpath('//table/tbody/tr').each do |tr|
+        cnt = 0
+        tmp = ''
+        tr.xpath('td').each do |td|
+          tmp = td.to_s.split('a href="/')[1].split('"')[0] if cnt == 1
+          tmp = '' if cnt == 6 && td.text != iidxid
+          cnt += 1
+        end
+        @url.push(tmp + '/sp/') unless tmp == ''
+      end
     end
   end
 end
