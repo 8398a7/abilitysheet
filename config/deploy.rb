@@ -48,7 +48,7 @@ namespace :deploy do
   end
 
 
-  # 上記linked_filesで使用するファイルをアップロードするタスク 
+  # 上記linked_filesで使用するファイルをアップロードするタスク
   # deployが行われる前に実行する必要がある。
   desc 'upload importabt files'
   task :upload do
