@@ -1,5 +1,4 @@
 # IIDX☆12参考表システム
-[![Build Status](https://travis-ci.org/8398a7/abilitysheet-iidx.svg?branch=master)](https://travis-ci.org/8398a7/abilitysheet-iidx)
 
 現在
 * 個人個人で管理している(エクセルやらHTMLやら)
