@@ -8,7 +8,7 @@ class CreateScores < ActiveRecord::Migration
       t.integer :user_id, null: false
       t.integer :version, null: false
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :scores, :sheet_id
