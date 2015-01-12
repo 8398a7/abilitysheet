@@ -1,7 +1,9 @@
 language: ruby
 rvm:
   - 2.1.5
-bundler_args: --without development --deployment
+bundler_args: -j 4 --retry 3 --without development --deployment
 cache: bundler
 before_script:
   - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
