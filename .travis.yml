@@ -2,7 +2,9 @@ language: ruby
 rvm:
   - 2.1.5
 bundler_args: -j 4 --retry 3 --without development --deployment
-cache: bundler
+cache:
+  directories:
+    - vendor/bundle
 before_script:
   - cp config/database.travis.yml config/database.yml
   - bundle exec rake db:create
