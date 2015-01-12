@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105172226) do
+ActiveRecord::Schema.define(version: 20150112192519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,21 +33,21 @@ ActiveRecord::Schema.define(version: 20150105172226) do
   add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.string   "body"
-    t.string   "email"
-    t.inet     "ip",                         null: false
+    t.string   "body",       limit: 255
+    t.string   "email",      limit: 255
+    t.inet     "ip",                                     null: false
     t.integer  "user_id"
-    t.boolean  "state",      default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "state",                  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "notices", force: :cascade do |t|
-    t.string  "body"
+    t.string  "body",       limit: 255
     t.integer "state"
-    t.boolean "active",     default: true
+    t.boolean "active",                 default: true
     t.date    "created_at"
   end
 
@@ -58,12 +58,23 @@ ActiveRecord::Schema.define(version: 20150105172226) do
     t.integer  "sheet_id",               null: false
     t.integer  "user_id",                null: false
     t.integer  "version",                null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "scores", ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
   add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
+
+  create_table "sheets", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "ability"
+    t.integer  "h_ability"
+    t.integer  "version"
+    t.boolean  "active",     default: true, null: false
+    t.string   "textage"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "statics", force: :cascade do |t|
     t.integer  "sheet_id"
@@ -80,26 +91,26 @@ ActiveRecord::Schema.define(version: 20150105172226) do
   add_index "statics", ["sheet_id"], name: "index_statics_on_sheet_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "username",               limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",                      default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "iidxid",                                 null: false
-    t.integer  "version",                default: 22,    null: false
-    t.string   "djname",                                 null: false
+    t.string   "iidxid",                 limit: 255,                 null: false
+    t.integer  "version",                            default: 22,    null: false
+    t.string   "djname",                 limit: 255,                 null: false
     t.integer  "grade"
-    t.integer  "pref",                                   null: false
+    t.integer  "pref",                                               null: false
     t.text     "rival"
     t.text     "reverse_rival"
-    t.boolean  "admin",                  default: false, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                              default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["iidxid"], name: "index_users_on_iidxid", unique: true, using: :btree

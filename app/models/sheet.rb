@@ -2,13 +2,7 @@ class Sheet < ActiveRecord::Base
   has_many :scores
   has_many :logs
   has_one :static
-  establish_connection(
-    adapter:  'postgresql',
-    host:     'localhost',
-    database: 'voteiidx_production',
-    username: 'voteiidx',
-    password: ''
-  )
+
   delegate :e,   to: :static
   delegate :c,   to: :static
   delegate :h,   to: :static
