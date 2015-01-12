@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.1.5
-bundler_args: -jobs=4 --retry=3 --without development --deployment --path vendor/bundle
+bundler_args: --jobs=4 --retry=3 --without development --deployment --path vendor/bundle
 cache: bundler
 before_script:
   - cp config/database.travis.yml config/database.yml
