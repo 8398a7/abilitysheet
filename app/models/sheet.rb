@@ -16,12 +16,9 @@ class Sheet < ActiveRecord::Base
   delegate :fc,  to: :static
   delegate :aaa, to: :static
 
+  scope :active, -> { where(active: true) }
 
   class << self
-    def active
-      where(active: true)
-    end
-
     def power
       [['地力S+', 0],
        ['個人差S+', 1],
