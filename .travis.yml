@@ -1,12 +1,9 @@
 language: ruby
-
+install: bundle install --deployment
+cache:
+  directories: vendor/bundle
 rvm:
   - 2.1.5
-
-cache:
-  bundler: true
-
-bundler_args: --jobs=4 --retry=3 --without development --deployment
 
 before_script:
   - cp config/database.travis.yml config/database.yml
