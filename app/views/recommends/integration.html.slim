@@ -8,19 +8,19 @@ table.table
     - @sheets.each do |sheet|
       tr
         td = sheet.title
-        td bgcolor=@color[4] = sprintf("%.2f", sheet.static.e)
+        td bgcolor=@color[4] = sprintf("%.2f", sheet.e)
       tr
         td = sheet.title
-        td bgcolor=@color[3] = sprintf("%.2f", sheet.static.c)
+        td bgcolor=@color[3] = sprintf("%.2f", sheet.c)
       tr
         td = sheet.title
-        td bgcolor=@color[2] = sprintf("%.2f", sheet.static.h)
+        td bgcolor=@color[2] = sprintf("%.2f", sheet.h)
       tr
         td = sheet.title
-        td bgcolor=@color[1] = sprintf("%.2f", sheet.static.exh)
+        td bgcolor=@color[1] = sprintf("%.2f", sheet.exh)
       tr
         td = sheet.title
-        td bgcolor=@color[0] = sprintf("%.2f", sheet.static.fc)
+        td bgcolor=@color[0] = sprintf("%.2f", sheet.fc)
 javascript:
   (function() {
     $('.table').dataTable({

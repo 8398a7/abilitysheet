@@ -9,6 +9,13 @@ class Sheet < ActiveRecord::Base
     username: 'voteiidx',
     password: ''
   )
+  delegate :e,   to: :static
+  delegate :c,   to: :static
+  delegate :h,   to: :static
+  delegate :exh, to: :static
+  delegate :fc,  to: :static
+  delegate :aaa, to: :static
+
 
   class << self
     def active

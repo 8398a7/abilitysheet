@@ -13,11 +13,11 @@ table.table
     - @sheets.each do |sheet|
       tr
         td = sheet.title
-        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.static.e)
-        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.static.c)
-        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.static.h)
-        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.static.exh)
-        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.static.fc)
+        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.e)
+        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.c)
+        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.h)
+        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.exh)
+        td bgcolor=@color[sheet.id] = sprintf("%.2f", sheet.fc)
         td = sprintf("%.2f", sheet.static.aaa)
 javascript:
   (function() {
