@@ -66,6 +66,12 @@ gem 'grape-jbuilder'
 # twitter
 gem 'twitter'
 
+# RSpec
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use postgresql as the database for Active Record
