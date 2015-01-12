@@ -1,7 +1,7 @@
 language: ruby
 rvm:
   - 2.1.5
-bundler_args: -j 4 --retry 3 --without development --deployment
+bundler_args: -j 4 --retry 3 --without development --deployment --path vendor/bundle
 cache:
   directories:
     - vendor/bundle
