@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
 
   @dan_all = %w(
     皆伝
+    十段 九段
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
   )
@@ -95,16 +96,18 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.dan
-    array = []
-    @dan_all.each.with_index(AbilitysheetIidx::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
-    array
-  end
+  class << self
+    def dan
+      array = []
+      @dan_all.each.with_index(AbilitysheetIidx::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
+      array
+    end
 
-  def self.belongs
-    array = []
-    @pref_all.each_with_index { |p, i| array.push([p, i]) }
-    array
+    def belongs
+      array = []
+      @pref_all.each_with_index { |p, i| array.push([p, i]) }
+      array
+    end
   end
 
   # 登録時にemailを不要とする
