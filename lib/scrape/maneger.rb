@@ -18,10 +18,13 @@ module Scrape
       return false unless Sheet.exists?(title: title)
       sheet_id = Sheet.find_by(title: title).id
       user_id = @current_user.id
-      version = AbilitysheetIidx::Application.config.iidx_version
       score = Score.find_by(user_id: user_id, sheet_id: sheet_id)
       return false if score.state <= state
-      Log.create(user_id: user_id, sheet_id: sheet_id, pre_state: score.state, new_state: state, version: version)
+      version = AbilitysheetIidx::Application.config.iidx_version
+      Log.create(
+        user_id: user_id, sheet_id: sheet_id,
+        pre_state: score.state, new_state: state, version: version
+      )
       score.state = state
       score.save
       true
