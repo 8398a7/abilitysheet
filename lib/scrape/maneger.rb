@@ -15,15 +15,16 @@ module Scrape
     end
 
     def maneger_register(title, state)
-      return unless Sheet.exists?(title: title)
+      return false unless Sheet.exists?(title: title)
       sheet_id = Sheet.find_by(title: title).id
       user_id = @current_user.id
       version = AbilitysheetIidx::Application.config.iidx_version
       score = Score.find_by(user_id: user_id, sheet_id: sheet_id)
-      return if score.state <= state
+      return false if score.state <= state
       Log.create(user_id: user_id, sheet_id: sheet_id, pre_state: score.state, new_state: state, version: version)
       score.state = state
       score.save
+      true
     end
 
     def go(url = @url)
@@ -32,10 +33,11 @@ module Scrape
 
       # 配列の数だけ収集
       url.each { |u| extract(u) }
+      true
     end
 
     def extract(url)
-      html = Nokogiri::HTML.parse(@agent.get(@base + url).page.body, nil, 'UTF-8')
+      html = Nokogiri::HTML.parse(@agent.get(@base + url).body, nil, 'UTF-8')
 
       # Level12フォルダの特定
       data = nil
@@ -127,7 +129,7 @@ module Scrape
           tmp = '' if cnt == 6 && td.text != iidxid
           cnt += 1
         end
-        @url.push(tmp + '/sp/') unless tmp == ''
+        @url.push(tmp + 'sp/') unless tmp == ''
       end
     end
   end
