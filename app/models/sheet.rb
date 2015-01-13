@@ -2,13 +2,7 @@ class Sheet < ActiveRecord::Base
   has_many :scores
   has_many :logs
   has_one :static
-  establish_connection(
-    adapter:  'postgresql',
-    host:     'localhost',
-    database: 'voteiidx_production',
-    username: 'voteiidx',
-    password: ''
-  )
+
   delegate :e,   to: :static
   delegate :c,   to: :static
   delegate :h,   to: :static
@@ -16,12 +10,9 @@ class Sheet < ActiveRecord::Base
   delegate :fc,  to: :static
   delegate :aaa, to: :static
 
+  scope :active, -> { where(active: true) }
 
   class << self
-    def active
-      where(active: true)
-    end
-
     def power
       [['地力S+', 0],
        ['個人差S+', 1],

@@ -1,6 +1,86 @@
 require 'rails_helper'
 
 describe User do
+  # インスタンスメソッド
+  # 指定された段位の数字を文字列として段位を返すこと
+  it "returns a user's grade as a string" do
+    grade = %w(
+      皆伝 十段 九段 八段 七段 六段 五段 四段 三段 二段 初段
+      一級 二級 三級 四級 五級 六級 七級
+    )
+    (0..17).each do |g|
+      user = build(:user, grade: g)
+      expect(user.dan).to eq grade[g]
+    end
+  end
+  # 指定された所属の数字を文字列として所属を返すこと
+  it "returns a user's belongs as a string" do
+    pref = %w(
+      海外
+      北海道 青森県   岩手県 宮城県
+      秋田県 山形県   福島県 茨城県
+      栃木県 群馬県   埼玉県 千葉県
+      東京都 神奈川県 新潟県 富山県
+      石川県 福井県   山梨県 長野県
+      岐阜県 静岡県   愛知県 三重県
+      滋賀県 京都府   大阪府 兵庫県
+      奈良県 和歌山県 鳥取県 島根県
+      岡山県 広島県   山口県 徳島県
+      香川県 愛媛県   高知県 福岡県
+      佐賀県 長崎県   熊本県 大分県
+      宮崎県 鹿児島県 沖縄県
+    )
+    (0..47).each do |p|
+      user = build(:user, pref: p)
+      expect(user.belongs).to eq pref[p]
+    end
+  end
+  # 指定された段位の数字を文字列として段位色を返すこと
+  it "returns a user's grade color as a string" do
+    color = %w(
+      #ffd900
+      #ff6347 #ff6347
+      #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
+      #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
+    )
+    (0..17).each do |c|
+      user = build(:user, grade: c)
+      expect(user.dan_color).to eq color[c]
+    end
+  end
+
+  # クラスメソッド
+  # 所属を配列で返すこと[['海外', 0], ['北海道', 1]..]
+  it 'returns belongs information as array' do
+    pref = %w(
+      海外
+      北海道 青森県   岩手県 宮城県
+      秋田県 山形県   福島県 茨城県
+      栃木県 群馬県   埼玉県 千葉県
+      東京都 神奈川県 新潟県 富山県
+      石川県 福井県   山梨県 長野県
+      岐阜県 静岡県   愛知県 三重県
+      滋賀県 京都府   大阪府 兵庫県
+      奈良県 和歌山県 鳥取県 島根県
+      岡山県 広島県   山口県 徳島県
+      香川県 愛媛県   高知県 福岡県
+      佐賀県 長崎県   熊本県 大分県
+      宮崎県 鹿児島県 沖縄県
+    )
+    User.belongs.each { |p| expect(pref[p[1]]).to eq p[0] }
+  end
+  # 段位を配列で返すこと[['皆伝', 0], ['十段', 1]..]
+  it 'returns grade information as array' do
+    dan = %w(
+      皆伝
+      十段 九段
+      八段 七段 六段 五段 四段 三段 二段 初段
+      一級 二級 三級 四級 五級 六級 七級
+    )
+    User.dan.each { |d| expect(dan[d[1]]).to eq d[0] }
+  end
+
+  # バリデーション
   # iidxid, version, djname, pref, grade, username, passwordがあれば有効な状態であること
   it 'is valid with a iidxid, version, djname, grade, username and password' do
     expect(create(:user)).to be_valid
