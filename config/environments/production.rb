@@ -89,4 +89,7 @@ Rails.application.configure do
 
   # Google Analytics
   GA.tracker = 'UA-56797171-1'
+
+  # font-awesome-rails
+  config.action_controller.relative_url_root = '/abilitysheet'
 end
