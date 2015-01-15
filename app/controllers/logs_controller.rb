@@ -12,8 +12,8 @@ class LogsController < ApplicationController
   end
 
   def maneger
-    flash[:notice] = '同期処理を承りました。逐次反映を行います。'
-    flash[:alert] = '反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど)'
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
     redirect_to list_logs_path
   end
 
@@ -97,8 +97,6 @@ class LogsController < ApplicationController
   private
 
   def scrape_maneger
-    # scrape = Scrape::Maneger.new(current_user)
-    # scrape.sync
     @result = ManegerWorker.perform_async(current_user.id)
   end
 
@@ -117,10 +115,10 @@ class LogsController < ApplicationController
   def prev_next(user_id, created_at)
     logs = User.find_by(id: user_id).logs.order(:created_at).pluck(:created_at).uniq
     prev_u, next_u = nil, nil
-    (0..logs.count-1).each do |cnt|
+    (0..logs.count - 1).each do |cnt|
       if logs[cnt].strftime == created_at
-        prev_u = logs[cnt-1] if 0 <= cnt-1
-        next_u = logs[cnt+1] if cnt+1 <= logs.count-1
+        prev_u = logs[cnt - 1] if 0 <= cnt - 1
+        next_u = logs[cnt + 1] if cnt + 1 <= logs.count - 1
       end
     end
     return prev_u, next_u
