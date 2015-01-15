@@ -19,6 +19,3 @@
 
 # Ignore seeds
 /db/seeds/*
-
-# Ignore public
-/public
