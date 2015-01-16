@@ -1,5 +1,6 @@
 # IIDX☆12参考表システム
 [![Build Status](https://travis-ci.org/8398a7/abilitysheet.svg?branch=master)](https://travis-ci.org/8398a7/abilitysheet)
+[![Code Climate](https://codeclimate.com/github/8398a7/abilitysheet/badges/gpa.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 
 現在
 * 個人個人で管理している(エクセルやらHTMLやら)
