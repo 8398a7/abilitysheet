@@ -71,6 +71,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
