@@ -19,3 +19,6 @@
 
 # Ignore seeds
 /db/seeds/*
+
+# Ignore coverage
+/coverage/*
