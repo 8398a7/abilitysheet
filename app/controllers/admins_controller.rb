@@ -6,6 +6,12 @@ class AdminsController < ApplicationController
     @message = Message.exists?(state: false)
   end
 
+  def create_mail
+    NoticeMail.form_deal(params[:email_address], params[:subject], params[:body]).deliver
+    flash[:notice] = %(メールを送信しました)
+    redirect_to new_mail_admins_path
+  end
+
   def message_list
     @messages = Message.all
   end

@@ -14,6 +14,12 @@ table.datatable
         - if @message
           | &nbsp;|&nbsp;
           font color="red" 未消化メッセージあり
+    tr
+      td
+        = link_to 'sidekiq', sidekiq_admin_path
+    tr
+      td
+        = link_to 'メール送信', new_mail_admins_path
 
 coffee:
   $('.datatable').dataTable()
