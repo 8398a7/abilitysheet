@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins
   post '/admins/notice' => 'admins#create_notice', as: :create_notice_admins
   mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
+  get '/admins/mail' => 'admins#new_mail', as: :new_mail_admins
+  post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
   require 'sidekiq/web'
 
   AbilitysheetIidx::Application.routes.draw do
     authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/admins/sidekiq'
+      mount Sidekiq::Web => '/admins/sidekiq', as: :sidekiq_admin
     end
   end
 

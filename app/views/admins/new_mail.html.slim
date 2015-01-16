@@ -1,0 +1,17 @@
+h2 Notice作成用ページ
+
+= form_tag(create_mail_admins_path) do
+  .form-group
+    label.col-md-2.control-label メールアドレス
+    .col-md-10
+      = email_field_tag :email_address, '', size: '98', html: { class: 'form-control' }
+  .form-group
+    label.col-md-2.control-label 件名
+    .col-md-10
+      = text_field_tag :subject, '[IIDX ☆12参考表] 問合せ対応', size: '98', html: { class: 'form-control' }
+  .form-group
+    label.col-md-2.control-label 内容
+    .col-md-10
+      = text_area_tag :body, '', size: '100x20', html: { class: 'form-control' }
+  .form-group
+    = submit_tag '送信', class: 'btn btn-primary'

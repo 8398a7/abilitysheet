@@ -14,4 +14,10 @@ class NoticeMail < ActionMailer::Base
     mail to: 'sitan.chabots@gmail.com'
     mail subject: '新規問合せ'
   end
+
+  def form_deal(email, subject, body)
+    @body = body + "\r\n"
+    mail to: email
+    mail subject: subject
+  end
 end
