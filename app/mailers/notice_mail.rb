@@ -17,6 +17,8 @@ class NoticeMail < ActionMailer::Base
 
   def form_deal(email, subject, body)
     @body = body + "\r\n"
+    @body += '---------------------------------------------------' + "\r\n"
+    @body += '※ このメールアドレスには返信ができません．'
     mail to: email
     mail subject: subject
   end
