@@ -1,6 +1,8 @@
 class Log < ActiveRecord::Base
   belongs_to :user
   belongs_to :sheet
+  delegate :title,   to: :sheet
+
   def self.data_create(id, sheet_id, state, sc = -2, bp = -2)
     sheet_id = sheet_id
     scores = User.find_by(id: id).scores
