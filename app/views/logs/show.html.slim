@@ -14,7 +14,7 @@ table.datatable
   tbody
     - @logs.each do |log|
       tr
-        td = log.sheet.title
+        td = log.title
         td bgcolor=@color[log.pre_state]
         td bgcolor=@color[log.new_state]
 a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新履歴" data-via="IIDX_12" data-lang="ja" data-size="large" data-related="IIDX_12" data-hashtags="iidx_as"
