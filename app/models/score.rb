@@ -1,6 +1,7 @@
 class Score < ActiveRecord::Base
   belongs_to :sheet
   belongs_to :user
+  delegate :title,   to: :sheet
 
   def lamp_string
     str = %w(FC EXH H C E A F N)

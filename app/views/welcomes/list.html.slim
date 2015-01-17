@@ -23,7 +23,7 @@ table.datatable.table
         td = user.belongs
         - if scores
           td = link_to scores.updated_at.to_date.strftime, show_log_path(user.iidxid, scores.updated_at.to_date.strftime)
-          td = scores.sheet.title
+          td = scores.title
           td bgcolor="#{ @color[scores.state] }"
         - else
           td

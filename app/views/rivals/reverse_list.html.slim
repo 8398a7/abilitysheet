@@ -20,7 +20,7 @@ table.datatable.table
         td = user.belongs
         - if scores
           td = scores.updated_at.to_date.strftime('%Y-%m-%d')
-          td = scores.sheet.title
+          td = scores.title
           td bgcolor="#{ @color[scores.state] }"
         - else
           td

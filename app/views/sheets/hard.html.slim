@@ -29,8 +29,9 @@
         = noc
       td
         = link_to 'CLEAR', clear_sheets_path, { class: 'btn btn-primary' }
-      td
-        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(未難#{ noc })" data-via="IIDX_12" data-lang="ja" data-size="large" data-related="IIDX_12"
+      - if !current_user.nil? && current_user.iidxid == params[:iidxid]
+        td
+          a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(未難#{ noc })" data-via="IIDX_12" data-lang="ja" data-size="large" data-related="IIDX_12"
 - width , height = 150, 50
 table.table.table-responsive border=1
   thead
