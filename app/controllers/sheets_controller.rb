@@ -15,14 +15,17 @@ class SheetsController < ApplicationController
 
   private
 
+  def version_check
+    @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
+  end
+
   def set_sheet
     @sheets = Sheet.active
-    @sheets = @sheets.where(version: params[:version]) if params[:version] && params[:version] != '0'
+    version_check
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
     @power = Sheet.power
-    sheet_id = @sheets.map(&:id)
-    s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: sheet_id)
+    s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
     @color = Score.convert_color(s)
     @list_color = Score.list_color
     @stat = Score.stat_info(s)
