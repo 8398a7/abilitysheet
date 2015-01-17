@@ -1,4 +1,7 @@
 # [IIDX☆12参考表システム](http://iidxas.tk/abilitysheet)
+
+## Status
+
 [![Build Status](https://travis-ci.org/8398a7/abilitysheet.svg?branch=master)](https://travis-ci.org/8398a7/abilitysheet)
 [![Code Climate](https://codeclimate.com/github/8398a7/abilitysheet/badges/gpa.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 [![Test Coverage](https://codeclimate.com/github/8398a7/abilitysheet/badges/coverage.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
@@ -17,7 +20,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
   * グラフ化やログの蓄積などを行い，データの可視化や記録ができる
   * Versionごとにログを取るため，過去のバージョンとの比較も行える
 
-現在はネット上からノマゲ地力表，ハード地力表の反映．
+現在はネット上からノマゲ地力表，ハード地力表の反映．  
 また，[iidx.me](http://iidx.me)から集計したデータを元に地力値表を提供しています．
 
 ## Next
@@ -28,4 +31,5 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 ## Help
 
-### 共同開発者随時募集中
+### [共同開発者随時募集中](http://twitter.com/IIDX_12)
+お気軽にツイッターで声をかけて下さい，とても喜びます．
