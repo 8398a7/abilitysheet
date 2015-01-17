@@ -4,24 +4,22 @@ class RivalsController < ApplicationController
 
   def list
     rivals = User.find_by(id: current_user.id).rival
-    @users = User.where(iidxid: rivals)
-    @color = Score.list_color
+    rival_set(rivals)
   end
 
   def reverse_list
     rivals = User.find_by(id: current_user.id).reverse_rival
-    @users = User.where(iidxid: rivals)
-    @color = Score.list_color
+    rival_set(rivals)
   end
 
   def clear
-    @sheets = Sheet.active.order(:ability, :title)
+    @sheets = @sheets.active.order(:ability, :title)
     return if params[:condition] == 'all'
     condition if params[:condition]
   end
 
   def hard
-    @sheets = Sheet.active.order(:h_ability, :title)
+    @sheets = @sheets.order(:h_ability, :title)
     return if params[:condition] == 'all'
     condition if params[:condition]
   end
@@ -76,6 +74,11 @@ class RivalsController < ApplicationController
 
   private
 
+  def rival_set(rivals)
+    @users = User.where(iidxid: rivals)
+    @color = Score.list_color
+  end
+
   def condition
     copy = @sheets
     @sheets = []
@@ -95,6 +98,7 @@ class RivalsController < ApplicationController
   end
 
   def set_sheet
+    @sheets = Sheet.active
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
     @power = Sheet.power
