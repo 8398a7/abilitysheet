@@ -16,9 +16,13 @@ h2
   .form-group
     = f.label :current_password, '現在のパスワード', class: 'col-md-4 control-label'
     i
-      | (変更を行う場合は現在のパスワードを記入)
+      | (変更する場合は現在のパスワードを記入)
     .col-md-5
       = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
+  .form-group
+    = f.label :username, 'アカウント名', class: 'col-md-4 control-label'
+    .col-md-5
+      = f.text_field :username, autofocus: true, class: 'form-control'
   .form-group
     = f.label :djname, 'DJNAME', class: 'col-md-4 control-label'
     .col-md-5

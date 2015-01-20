@@ -70,7 +70,7 @@ html lang="ja"
           = form_for :user, url: { controller: 'devise/sessions', action: 'new' }, html: { class: 'navbar-form navbar-right' } do |f|
             .form-group
               .col-md-2
-                = f.text_field :username, autoforcus: true, class: 'form-control', placeholder: 'アカウント名'
+                = f.text_field :login, autoforcus: true, class: 'form-control', placeholder: 'アカウント名 or IIDXID'
             .form-group
               .col-md-2
                 = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード, remember→'
