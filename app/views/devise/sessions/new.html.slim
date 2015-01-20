@@ -2,9 +2,9 @@ h2
   | Log in
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .field
-    = f.label :username, 'ユーザ名'
+    = f.label :login, 'アカウント名 or IIDXID'
     br
-    = f.text_field :username, autofocus: true
+    = f.text_field :login, autofocus: true
   .field
     = f.label :password, 'パスワード'
     br

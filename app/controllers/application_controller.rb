@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # strong parametersを設定し、usernameを許可
     devise_parameter_sanitizer.for(:sign_up) << [:username, :iidxid, :djname, :grade, :pref]
-    devise_parameter_sanitizer.for(:account_update) << [:djname, :grade, :pref]
+    devise_parameter_sanitizer.for(:account_update) << [:username, :djname, :grade, :pref]
   end
 
   def white_list
