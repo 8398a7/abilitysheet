@@ -3,11 +3,11 @@ class User < ActiveRecord::Base
   has_many :logs
   serialize :rival
   serialize :reverse_rival
-  class_attribute :dan_all
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable
+  attr_accessor :login
 
   # usernameを必須・一意とする
   validates_uniqueness_of :username, :iidxid
@@ -30,7 +30,17 @@ class User < ActiveRecord::Base
     in: 0..47, message: 'のパラメタが異常です。'
   }
   validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9\-\_.*!#&]+\z/, message: 'は半角大文字英字で記入して下さい' }
-  validates :username, length: { minimum: 3, maximum: 10 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角英数字で記入して下さい' }
+  validates :username, length: { maximum: 15 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角英数字で記入して下さい' }
+
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    login = conditions.delete(:login)
+    if login
+      find_by(['username = :value OR iidxid = :value', { value: login }])
+    else
+      find_by(conditions)
+    end
+  end
 
   def belongs
     p = User.pref_elems
