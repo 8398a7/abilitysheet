@@ -49,7 +49,6 @@ class User < ActiveRecord::Base
 
   def dan
     d = User.dan_elems
-    d.unshift('皆伝')
     d[grade]
   end
 
@@ -68,6 +67,7 @@ class User < ActiveRecord::Base
   class << self
     def dan_elems
       @dan_elems = %w(
+        皆伝
         十段 九段
         八段 七段 六段 五段 四段 三段 二段 初段
         一級 二級 三級 四級 五級 六級 七級
