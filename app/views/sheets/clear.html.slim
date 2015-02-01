@@ -2,8 +2,10 @@
   p.btn.btn-primary CLEAR
   br
   br
-  - @versions.each do |v|
-    = link_to v[0], { version: v[1] }, { class: v[2] }
+  - @versions.each_with_index do |v, i|
+    - if i == 6
+      br
+    = link_to %(#{ v[0] }(#{ @version_stat[i] })), { version: v[1] }, { class: v[2] }
   br
   br
   table.table align="center" style="width:1000px; height:0px; margin-bottom:0px;"
