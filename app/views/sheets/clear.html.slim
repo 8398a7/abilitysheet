@@ -3,6 +3,8 @@
   br
   br
   - @versions.each_with_index do |v, i|
+    - if i == 6
+      br
     = link_to %(#{ v[0] }(#{ @version_stat[i] })), { version: v[1] }, { class: v[2] }
   br
   br
