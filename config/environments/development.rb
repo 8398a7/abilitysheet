@@ -54,4 +54,11 @@ Rails.application.configure do
     Bullet.console = true
     Bullet.rails_logger = true
   end
+
+  # rack-dev-mark
+  config.rack_dev_mark.enable = true
+  config.rack_dev_mark.theme = [
+    :title,
+    Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right', color: 'green', fixed: true)
+  ]
 end
