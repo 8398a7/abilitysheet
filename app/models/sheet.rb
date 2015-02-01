@@ -13,6 +13,11 @@ class Sheet < ActiveRecord::Base
   scope :active, -> { where(active: true) }
 
   class << self
+    def where_version(params)
+      return all if params[:version].nil? || params[:version] == '0'
+      where(version: params[:version])
+    end
+
     def power
       [['地力S+', 0],
        ['個人差S+', 1],
