@@ -38,15 +38,7 @@ class AdminsController < ApplicationController
   end
 
   def create_sheet
-    sheet = Sheet.new
-    sheet.title = params[:sheet][:title]
-    sheet.ability = params[:sheet][:ability]
-    sheet.h_ability = params[:sheet][:h_ability]
-    sheet.version = params[:sheet][:version]
-    sheet.save
-    users = User.all
-    version = AbilitysheetIidx::Application.config.iidx_version
-    users.each { |user| Score.create(user_id: user.id, sheet_id: sheet.id, version: version) }
+    sheet = Sheet.create_sheet(params)
     flash[:notice] = "#{ sheet.title }を追加しました"
     redirect_to new_sheet_admins_path
   end
