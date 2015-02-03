@@ -13,6 +13,23 @@ class Sheet < ActiveRecord::Base
   scope :active, -> { where(active: true) }
 
   class << self
+    def create_sheet(params)
+      s = Sheet.create(
+        title: params[:sheet][:title],
+        ability: params[:sheet][:ability],
+        h_ability: params[:sheet][:h_ability],
+        version: params[:sheet][:version]
+      )
+      version = AbilitysheetIidx::Application.config.iidx_version
+      User.all.each { |u| Score.create(user_id: u.id, sheet_id: s.id, version: version) }
+      d = -99.99
+      Static.create(
+        sheet_id: s.id,
+        fc: d, exh: d, h: d, c: d, e: d, aaa: d
+      )
+      s
+    end
+
     def where_version(params)
       return all if params[:version].nil? || params[:version] == '0'
       where(version: params[:version])
