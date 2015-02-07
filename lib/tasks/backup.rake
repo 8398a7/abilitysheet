@@ -16,10 +16,6 @@ namespace :db do
       end
     end
 
-    def db_dump_data_file(extension = 'yml')
-      "#{ backup_dir }/data.#{ extension }"
-    end
-
     def backup_dir
       "#{ Rails.root }/tmp/abilitysheet_backup"
     end
