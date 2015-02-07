@@ -2,25 +2,27 @@ h2
   | サンプルデータはiidx.meより1100人程度を利用
 table.table
   thead
-    th TITLE
+    th.center TITLE
     th VALUE
   tbody
     - @sheets.each do |sheet|
+      - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
+      - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
       tr
-        td = sheet.title
-        td bgcolor=@color[4] = sprintf("%.2f", sheet.e)
+        td.center = sheet.title
+        td.center bgcolor=@color[4] = val[0]
       tr
-        td = sheet.title
-        td bgcolor=@color[3] = sprintf("%.2f", sheet.c)
+        td.center = sheet.title
+        td.center bgcolor=@color[3] = val[1]
       tr
-        td = sheet.title
-        td bgcolor=@color[2] = sprintf("%.2f", sheet.h)
+        td.center = sheet.title
+        td.center bgcolor=@color[2] = val[2]
       tr
-        td = sheet.title
-        td bgcolor=@color[1] = sprintf("%.2f", sheet.exh)
+        td.center = sheet.title
+        td.center bgcolor=@color[1] = val[3]
       tr
-        td = sheet.title
-        td bgcolor=@color[0] = sprintf("%.2f", sheet.fc)
+        td.center = sheet.title
+        td.center bgcolor=@color[0] = val[4]
 javascript:
   (function() {
     $('.table').dataTable({

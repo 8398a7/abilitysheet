@@ -10,23 +10,25 @@ h2
     p 今後1万人程度のデータで計算し直す予定です
 table.table
   thead
-    th TITLE
-    th EASY
-    th CLEAR
-    th HARD
-    th EXH CLEAR
-    th FULL COMBO
-    th AAA
+    th.center TITLE
+    th.center EASY
+    th.center CLEAR
+    th.center HARD
+    th.center EXH CLEAR
+    th.center FULL COMBO
+    th.center AAA
   tbody
     - @sheets.each do |sheet|
       tr
-        td = sheet.title
-        td bgcolor=@color[4] = sprintf("%.2f", sheet.e)
-        td bgcolor=@color[3] = sprintf("%.2f", sheet.c)
-        td bgcolor=@color[2] = sprintf("%.2f", sheet.h)
-        td bgcolor=@color[1] = sprintf("%.2f", sheet.exh)
-        td bgcolor=@color[0] = sprintf("%.2f", sheet.fc)
-        td = sprintf("%.2f", sheet.aaa)
+        - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
+        - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
+        td.center = sheet.title
+        td.center bgcolor=@color[4] = val[0]
+        td.center bgcolor=@color[3] = val[1]
+        td.center bgcolor=@color[2] = val[2]
+        td.center bgcolor=@color[1] = val[3]
+        td.center bgcolor=@color[0] = val[4]
+        td.center = val[5]
 javascript:
   (function() {
     $('.table').dataTable({
