@@ -30,8 +30,10 @@ table.table
         td.center bgcolor=@color[0] = val[4]
         td.center = val[5]
 javascript:
-  (function() {
+  $(document).ready(function() {
     $('.table').dataTable({
-      aLengthMenu: [#{ @sheets.count }]
+      order: [4, 'desc'],
+      aLengthMenu: [#{ @sheets.count }],
+      columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]
     });
   }).call(this);
