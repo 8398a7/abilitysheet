@@ -3,7 +3,7 @@ h2
 table.table
   thead
     th.center TITLE
-    th VALUE
+    th.center VALUE
   tbody
     - @sheets.each do |sheet|
       - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
@@ -23,6 +23,18 @@ table.table
       tr
         td.center = sheet.title
         td.center bgcolor=@color[0] = val[4]
+coffee:
+  $.extend $.fn.DataTable.ext.oSort,
+    'custom': (a) ->
+      a
+    'custom-asc': (x, y) ->
+      x = parseFloat(x)
+      y = parseFloat(y)
+      if x < y then -1 else if x > y then 1 else 0
+    'custom-desc': (x, y) ->
+      x = parseFloat(x)
+      y = parseFloat(y)
+      if x < y then 1 else if x > y then -1 else 0
 javascript:
   (function() {
     $('.table').dataTable({
