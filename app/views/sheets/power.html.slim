@@ -24,6 +24,7 @@ table.table
 javascript:
   (function() {
     $('.table').dataTable({
-      aLengthMenu: [#{ @sheets.count }]
+      aLengthMenu: [#{ @sheets.count }],
+      columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]
     });
   }).call(this);

@@ -27,6 +27,7 @@ javascript:
   (function() {
     $('.table').dataTable({
       order: [1, 'desc'],
-      aLengthMenu: [#{ @sheets.count }]
+      aLengthMenu: [#{ @sheets.count }],
+      columnDefs: [{type: 'custom', targets: [1]}]
     });
   }).call(this);
