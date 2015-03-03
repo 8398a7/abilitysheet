@@ -47,5 +47,6 @@
       h3 可視化例
     .panel-body
       .center
-        = image_tag '/images/example.png'
+        = high_chart('column', @column)
+        = high_chart('spline', @spline)
 
