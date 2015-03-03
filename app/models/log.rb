@@ -1,7 +1,9 @@
 class Log < ActiveRecord::Base
   belongs_to :user
   belongs_to :sheet
-  delegate :title,   to: :sheet
+  delegate :title, to: :sheet
+
+  include Graph
 
   def self.data_create(id, sheet_id, state, sc = -2, bp = -2)
     sheet_id = sheet_id
