@@ -11,7 +11,7 @@ table.datatable.table
     th.center ライバル情報
   tbody
     - @users.each do |user|
-      - scores = user.scores.order(updated_at: :desc).where(state: 0..6).first
+      - scores = user.scores.order(updated_at: :desc).find_by(state: 0..6)
       tr
         td.center = user.id
         td.center = link_to user.djname, clear_sheets_path(user.iidxid)
