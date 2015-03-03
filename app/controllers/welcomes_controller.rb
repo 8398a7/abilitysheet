@@ -3,6 +3,8 @@ class WelcomesController < ApplicationController
     @update_logs = Notice.where(state: 0, active: true).limit(5).order(created_at: :desc)
     @notices = Notice.where(state: 1, active: true).limit(5).order(created_at: :desc)
     @next = Notice.where(state: 2, active: true).limit(5).order(created_at: :desc)
+    @column = Log.column(1)
+    @spline = Log.spline(1)
   end
 
   def list
