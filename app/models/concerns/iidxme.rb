@@ -3,11 +3,14 @@ module IIDXME
 
   included do
     def self.iidxme_async(user_id, elems)
+      scores = Score.where(user_id: user_id)
       elems.each do |elem|
         title = gigadelic_innocentwalls(elem['data'])
         title = title_check(title)
+        next unless Sheet.find_by(title: title)
         sheet_id = Sheet.find_by(title: title).id
         state = reverse(elem['clear']).to_i
+        next if scores.find_by(sheet_id: sheet_id).state <= state
         update(user_id, sheet_id, state)
       end
     end
