@@ -17,6 +17,13 @@ class LogsController < ApplicationController
     redirect_to list_logs_path
   end
 
+  def iidxme
+    IidxmeWorker.perform_async(current_user.id)
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
+    render :reload
+  end
+
   def show
     user_id = User.find_by(iidxid: params[:iidxid]).id
     @logs = Log.where(user_id: user_id, created_at: params[:date]).preload(:sheet)

@@ -3,6 +3,8 @@ class Score < ActiveRecord::Base
   belongs_to :user
   delegate :title,   to: :sheet
 
+  include IIDXME
+
   def lamp_string
     str = %w(FC EXH H C E A F N)
     str[state]
@@ -90,8 +92,8 @@ class Score < ActiveRecord::Base
 
     def update(id, sheet_id, state, sc = -2, bp = -2)
       version = AbilitysheetIidx::Application.config.iidx_version
-      score = User.find_by(id: id).scores.find_by(sheet_id: sheet_id, version: version)
-      Log.data_create(id, sheet_id, state, sc, bp)
+      score = find_by(user_id: id, sheet_id: sheet_id, version: version)
+      Log.data_create(id, sheet_id, state, sc, bp) if score.state != state
       score = Score.new if score.nil?
       score.user_id = id
       score.sheet_id = sheet_id
