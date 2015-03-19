@@ -33,3 +33,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
 お気軽にツイッターで声をかけて下さい，とても喜びます．
+
+## License
+
+This software is released under the MIT License, see LICENSE.txt.
