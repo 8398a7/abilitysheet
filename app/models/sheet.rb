@@ -22,7 +22,7 @@ class Sheet < ActiveRecord::Base
       )
       version = AbilitysheetIidx::Application.config.iidx_version
       User.all.each { |u| Score.create(user_id: u.id, sheet_id: s.id, version: version) }
-      d = -99.99
+      d = 99.99
       Static.create(
         sheet_id: s.id,
         fc: d, exh: d, h: d, c: d, e: d, aaa: d
