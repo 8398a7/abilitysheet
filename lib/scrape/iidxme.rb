@@ -18,13 +18,11 @@ module Scrape
     end
 
     def user_id_search(iidxid)
-      @agent.get("http://iidx.me/?name=#{ iidxid }")
-      user_id_get(Nokogiri::HTML.parse(@agent.page.body, nil, 'UTF-8'))
-    end
-
-    def user_id_get(html)
-      return false unless html.xpath('//table/tr').count == 2
-      html.xpath('//table/tr')[1].xpath('td').xpath('a').first.attribute('href').value.gsub('/', '')
+      uri    = URI.parse("http://json.iidx.me/?name=#{ iidxid }")
+      res    = Net::HTTP.get(uri)
+      hash = JSON.parse(res)
+      return false if hash['users'][0].nil?
+      hash['users'][0]['userid']
     end
 
     def data_get(iidxid)
