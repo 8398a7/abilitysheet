@@ -6,5 +6,6 @@ FactoryGirl.define do
     pref 0
     username 'test'
     password 'hogehoge'
+    admin true
   end
 end
