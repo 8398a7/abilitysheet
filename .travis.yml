@@ -10,4 +10,4 @@ before_script:
 - bundle exec rake db:create db:migrate
 before_install:
 - openssl aes-256-cbc -K $encrypted_b6a8623ba3b4_key -iv $encrypted_b6a8623ba3b4_iv
-  -in secrets.yml.enc -out config/secrets.yml -d
+  -in config/secrets.yml.enc -out config/secrets.yml -d
