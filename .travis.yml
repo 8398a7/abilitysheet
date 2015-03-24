@@ -10,3 +10,4 @@ before_script:
   - bundle exec rake db:create db:migrate
 env:
   SECRET_KEY_BASE="$(bundle exec rake secret)"
+  secret_key_base="$(bundle exec rake secret)"
