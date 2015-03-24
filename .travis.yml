@@ -8,3 +8,5 @@ gemfile:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - bundle exec rake db:create db:migrate
+env:
+  SECRET_KEY_BASE="$(bundle exec rake secret)"
