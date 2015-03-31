@@ -1,28 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Scrape::IIDXME do
-  before(:all) do
-    @user = User.first
-    @iidxme = Scrape::IIDXME.new
-  end
+  let(:user) { FactoryGirl.create(:user, iidxid) }
+  let(:iidxme) { Scrape::IIDXME.new }
 
-  context '存在するIIDXIDで実行した場合' do
-    before(:all) do
-      @iidxid = '7289-4932'
-      @user.update(iidxid: @iidxid)
-    end
-
-    it '全体の処理が行った時にtrueを返す' do
-      res = @iidxme.async(@iidxid)
-      expect(res).to eq true
+  context '正常系' do
+    describe '存在するIIDXIDで処理を行う場合' do
+      let(:iidxid) { { iidxid: '7289-4932' } }
+      it '#async' do
+        expect(iidxme.async(user.iidxid)).to be_truthy
+      end
+      it '#process' do
+        expect(iidxme.send(:process, user.iidxid)).to be_truthy
+      end
+      it '#user_id_search' do
+        expect(iidxme.send(:user_id_search, user.iidxid).class).to eq String
+      end
+      it '#data_get' do
+        expect(iidxme.send(:data_get, user.iidxid).class).to eq Hash
+      end
     end
   end
-  context '存在しないIIDXIDで実行した場合' do
-    before(:all) do
-      @iidxid = '0000-0000'
-      @user.update(iidxid: @iidxid)
-    end
-    it '全体の処理を行った時にfalseを返す' do
+  context '異常系' do
+    describe '存在しないIIDXIDで処理を行う場合' do
+      let(:iidxid) { { iidxid: '0000-0000' } }
     end
   end
 end
