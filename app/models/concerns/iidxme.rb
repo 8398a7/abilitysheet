@@ -13,6 +13,7 @@ module IIDXME
         next if scores.find_by(sheet_id: sheet_id).state <= state
         update(user_id, sheet_id, state)
       end
+      true
     end
 
     def self.title_check(e)
