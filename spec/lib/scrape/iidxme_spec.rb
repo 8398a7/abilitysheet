@@ -24,6 +24,18 @@ RSpec.describe Scrape::IIDXME do
   context '異常系' do
     describe '存在しないIIDXIDで処理を行う場合' do
       let(:iidxid) { { iidxid: '0000-0000' } }
+      it '#async' do
+        expect(iidxme.async(user.iidxid)).to be_falsy
+      end
+      it '#process' do
+        expect(iidxme.send(:process, user.iidxid)).to be_falsy
+      end
+      it '#user_id_search' do
+        expect(iidxme.send(:user_id_search, user.iidxid)).to be_falsy
+      end
+      it '#data_get' do
+        expect(iidxme.send(:data_get, user.iidxid)).to be_falsy
+      end
     end
   end
 end
