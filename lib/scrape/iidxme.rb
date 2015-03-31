@@ -18,10 +18,11 @@ module Scrape
     end
 
     def user_id_search(iidxid)
+      return false unless iidxid =~ /\A\d{4}-\d{4}\z/
       uri    = URI.parse("http://json.iidx.me/?name=#{ iidxid }")
       res    = Net::HTTP.get(uri)
       hash = JSON.parse(res)
-      return false if hash['users'][0].nil?
+      return false unless hash['users'].count == 1
       hash['users'][0]['userid']
     end
 

@@ -22,6 +22,21 @@ RSpec.describe Scrape::IIDXME do
     end
   end
   context '異常系' do
+    describe 'IIDXIDの書式が正しくない場合' do
+      let(:iidxids) { ['1', '1110'] }
+      it '#async' do
+        iidxids.each { |iidxid| expect(iidxme.async(iidxid)).to be_falsy }
+      end
+      it '#process' do
+        iidxids.each { |iidxid| expect(iidxme.send(:process, iidxid)).to be_falsy }
+      end
+      it '#user_id_search' do
+        iidxids.each { |iidxid| expect(iidxme.send(:user_id_search, iidxid)).to be_falsy }
+      end
+      it '#data_get' do
+        iidxids.each { |iidxid| expect(iidxme.send(:data_get, iidxid)).to be_falsy }
+      end
+    end
     describe '存在しないIIDXIDで処理を行う場合' do
       let(:iidxid) { { iidxid: '0000-0000' } }
       it '#async' do
