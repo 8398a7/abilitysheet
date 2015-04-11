@@ -8,7 +8,8 @@ class WelcomesController < ApplicationController
   end
 
   def list
-    @users = User.all
+    @cnt = User.count
+    @users = User.limit(200)
     @color = Score.list_color
   end
 
