@@ -26,7 +26,7 @@ html lang="ja"
         = link_to '☆12参考表', root_path, class: 'navbar-brand'
       .navbar-collapse.collapse.navbar-responsive-collapse
         ul.nav.navbar-nav
-          li = link_to 'ユーザ一覧', list_welcome_path
+          li = link_to '最近更新したユーザ', list_welcome_path
           - if user_signed_in?
             li.dropdown-open
               a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
