@@ -9,7 +9,9 @@ class WelcomesController < ApplicationController
 
   def list
     @cnt = User.count
-    @users = User.limit(200)
+    user_ids = Score.order(updated_at: :desc).pluck(:user_id).uniq
+    user_ids.slice!(200, user_ids.count - 1)
+    @users = User.where(id: user_ids)
     @color = Score.list_color
   end
 
