@@ -23,3 +23,5 @@
 /coverage/*
 
 /public/assets
+
+*.rdb
