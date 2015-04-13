@@ -1,4 +1,4 @@
-REDIS_URL = { url: 'redis://localhost:6379', namespace: "sidekiq_#{ENV['USER']}" }
+REDIS_URL = { url: 'redis://localhost:6379' }
 
 Sidekiq.configure_server do |config|
   config.redis = REDIS_URL
