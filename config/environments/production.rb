@@ -92,4 +92,7 @@ Rails.application.configure do
 
   # font-awesome-rails
   config.action_controller.relative_url_root = '/abilitysheet'
+
+  # sidekiq
+  ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '131072'
 end
