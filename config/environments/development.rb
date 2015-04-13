@@ -61,4 +61,7 @@ Rails.application.configure do
     :title,
     Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right', color: 'green', fixed: true)
   ]
+
+  # sidekiq
+  ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '204800'
 end

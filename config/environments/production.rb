@@ -94,5 +94,5 @@ Rails.application.configure do
   config.action_controller.relative_url_root = '/abilitysheet'
 
   # sidekiq
-  ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '131072'
+  ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '204800'
 end
