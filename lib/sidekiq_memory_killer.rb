@@ -32,6 +32,9 @@ class SidekiqMemoryKiller
 
       Sidekiq.logger.warn "sending SIGTERM to PID #{Process.pid}"
       Process.kill('SIGTERM', Process.pid)
+
+      # 再度起動させる
+      Rake::Task['sidekiq:start'].invoke
     end
   end
 
