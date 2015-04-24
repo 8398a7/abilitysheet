@@ -11,7 +11,7 @@
 /log
 /tmp
 
-/config/*.yml
+/config/token.yml
 
 # Ignore bundle
 /vendor/bundle
