@@ -8,7 +8,7 @@ class LogsController < ApplicationController
   end
 
   def list
-    @logs = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
+    @logs = User.find_by(iidxid: params[:iidxid]).logs
   end
 
   def maneger
