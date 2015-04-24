@@ -5,15 +5,15 @@
   = link_to 'IIDXMEとの同期', iidxme_logs_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, class: 'btn btn-info', method: :post, remote: true
 
 h2 更新履歴
-table.datatable
+table.table.datatable
   thead
     th 更新日付
     th 更新個数
   tbody
-    - @logs.each do |log|
+    - @logs.pluck(:created_at).uniq.each do |log|
       tr
         td = link_to log, show_log_path(params[:iidxid], log)
-        td = User.find_by(iidxid: params[:iidxid]).logs.where(created_at: log).count
+        td = @logs.where(created_at: log).count
 coffee:
   $('.datatable').dataTable(
     order: [0, 'desc']
