@@ -73,6 +73,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
+gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -99,5 +100,3 @@ gem 'spring',        group: :development
 # Use unicorn as the app server
 gem 'unicorn'
 gem 'unicorn-worker-killer'
-# Use debugger
-# gem 'debugger', group: [:development, :test]
