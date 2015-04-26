@@ -102,6 +102,9 @@ GEM
     docile (1.1.5)
     domain_name (0.5.23)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.0.1)
+    dotenv-rails (2.0.1)
+      dotenv (= 2.0.1)
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.4.0)
@@ -425,6 +428,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   devise
+  dotenv-rails
   factory_girl_rails
   font-awesome-rails
   google-analytics-rails

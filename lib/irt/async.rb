@@ -8,7 +8,7 @@ module IRT
     private
 
     def self.fetch
-      token = YAML.load_file("#{Rails.root}/config/token.yml").symbolize_keys![:token]
+      token  = ENV['IRT_TOKEN']
       uri    = URI.parse('http://localhost:13000/api/v1/auth/power?token=' + token)
       res    = Net::HTTP.get(uri)
       JSON.parse(res)['result']

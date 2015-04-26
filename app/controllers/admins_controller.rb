@@ -74,7 +74,7 @@ class AdminsController < ApplicationController
   end
 
   def twitter_client_get
-    keys = File.open(File.join(Rails.root, 'tmp', 'twitter'), 'r').read.chomp.split(',')
+    keys = ENV['TWITTER'].split(',')
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = keys[0]
       config.consumer_secret     = keys[1]
