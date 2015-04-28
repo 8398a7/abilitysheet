@@ -1,6 +1,4 @@
 class LogsController < ApplicationController
-  before_action :scrape_maneger, only: [:maneger]
-
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Score.list_color
@@ -12,9 +10,10 @@ class LogsController < ApplicationController
   end
 
   def maneger
+    ManegerWorker.perform_async(current_user.id)
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
     flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
-    redirect_to list_logs_path
+    render :reload
   end
 
   def iidxme
@@ -43,10 +42,6 @@ class LogsController < ApplicationController
   end
 
   private
-
-  def scrape_maneger
-    @result = ManegerWorker.perform_async(current_user.id)
-  end
 
   def prev_next(user_id, created_at)
     logs = User.find_by(id: user_id).logs.order(:created_at).pluck(:created_at).uniq
