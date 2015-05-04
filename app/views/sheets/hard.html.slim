@@ -1,4 +1,8 @@
+h2
+  | ハード参考表
 .center
+  a
+    = link_to 'CLEAR', clear_sheets_path, { class: 'btn btn-primary' }
   p.btn.btn-danger HARD
   br
   br
@@ -8,7 +12,7 @@
     = link_to %(#{ v[0] }(#{ @version_stat[i] })), { version: v[1] }, { class: v[2] }
   br
   br
-  table.table align="center" style="width:1000px; height:0px; margin-bottom:0px;"
+  table.table.table-bordered align="center"
     - noc = 0
     tr
       - st = 0
@@ -29,13 +33,11 @@
       td bgcolor = "#00FF7F"
         | 未難
         = noc
-      td
-        = link_to 'CLEAR', clear_sheets_path, { class: 'btn btn-primary' }
       - if !current_user.nil? && current_user.iidxid == params[:iidxid]
-        td
+        td style="width:120px"
           a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(未難#{ noc })" data-lang="ja" data-size="large" data-related="IIDX_12"
 - width , height = 150, 50
-table.table.table-responsive border=1
+table.table.table-responsive.table-bordered
   thead
   tbody
     = render 'shared/state_example'
@@ -56,7 +58,7 @@ table.table.table-responsive border=1
           - else
             td
 css:
-  a {
+  table a {
     color: black;
   }
 javascript:
