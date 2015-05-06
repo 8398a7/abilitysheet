@@ -1,0 +1,28 @@
+.checkbox
+  - @versions.each do |v|
+    label
+      input type="checkbox" value=v[1] name="check" checked=true
+        = v[0]
+table.table.table-bordered align="center"
+  tr
+    td bgcolor='#ff8c00' FC
+    td.statistic#fc
+    td bgcolor='#ffd900' EXH
+    td.statistic#exh
+    td bgcolor='#ff6347' H
+    td.statistic#h
+    td bgcolor='#afeeee' C
+    td.statistic#c
+    td bgcolor='#98fb98' E
+    td.statistic#e
+    td bgcolor='#9595ff' A
+    td.statistic#a
+    td bgcolor='#c0c0c0' F
+    td.statistic#f
+    td bgcolor='#ffffff' N
+    td.statistic#n
+    td#per bgcolor='#7fffd4'
+    td#remain bgcolor='#00ff7f'
+    - if !current_user.nil? && current_user.iidxid == params[:iidxid]
+      td style="width:120px"
+        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(#{ @remain })" data-lang="ja" data-size="large" data-related="IIDX_12"

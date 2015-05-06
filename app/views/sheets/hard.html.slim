@@ -1,41 +1,10 @@
-h2
-  | ハード参考表
 .center
-  a
-    = link_to 'CLEAR', clear_sheets_path, { class: 'btn btn-primary' }
+  h2 ハード参考表
+  = link_to 'CLEAR', clear_sheets_path, class: 'btn btn-primary', data: { 'no-turbolink': true }
   p.btn.btn-danger HARD
   br
   br
-  - @versions.each_with_index do |v, i|
-    - if i == 6
-      br
-    = link_to %(#{ v[0] }(#{ @version_stat[i] })), { version: v[1] }, { class: v[2] }
-  br
-  br
-  table.table.table-bordered align="center"
-    - noc = 0
-    tr
-      - st = 0
-      - @stat.each do |k, v|
-        - if k == 'C' || k == 'E' || k == 'A' || k == 'F' || k == 'N'
-          - noc += v
-        td bgcolor=@list_color[st]
-          = k
-        td bgcolor="#e6e6fa"
-          = v
-        - st += 1
-      td bgcolor = "#7FFFD4"
-        | (
-        = @sheets.count - noc
-        | /
-        = @sheets.count
-        | )
-      td bgcolor = "#00FF7F"
-        | 未難
-        = noc
-      - if !current_user.nil? && current_user.iidxid == params[:iidxid]
-        td style="width:120px"
-          a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(未難#{ noc })" data-lang="ja" data-size="large" data-related="IIDX_12"
+  = render 'statistics'
 - width , height = 150, 50
 table.table.table-responsive.table-bordered
   thead
@@ -52,14 +21,8 @@ table.table.table-responsive.table-bordered
         - (1..5).each do |i|
           - s = @sheets[cnt]
           - if cnt < @sheets.size && ab == s.h_ability
-            td width=width height=height align="center" bgcolor=@color[s.id]
+            td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
               = link_to_if !current_user.nil? && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id, 1), remote: true
             - cnt += 1
-          - else
-            td
-css:
-  table a {
-    color: black;
-  }
 javascript:
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');

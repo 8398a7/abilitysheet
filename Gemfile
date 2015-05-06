@@ -75,6 +75,9 @@ end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'
 
+# js <=> rails
+gem 'gon'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
 # Use postgresql as the database for Active Record

@@ -120,6 +120,11 @@ GEM
     get_process_mem (0.2.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    gon (5.2.3)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     google-analytics-rails (0.0.6)
     grape (0.11.0)
       activesupport
@@ -283,6 +288,7 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     ref (1.0.5)
     remotipart (1.2.1)
+    request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rspec-core (3.2.2)
@@ -431,6 +437,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   font-awesome-rails
+  gon
   google-analytics-rails
   grape
   grape-jbuilder
