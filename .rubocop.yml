@@ -21,3 +21,6 @@ Style/AsciiComments:
 # rails用
 Documentation:
   Enabled: false
+
+Metrics/AbcSize:
+    Max: 25
