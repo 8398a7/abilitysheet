@@ -1,0 +1,28 @@
+.checkbox
+  - @versions.each do |v|
+    label
+      input type="checkbox" value=v[1] name="check" checked=true
+        = v[0]
+table.table.table-bordered align="center"
+  tr
+    td FC
+    td#fc
+    td EXH
+    td#exh
+    td H
+    td#h
+    td C
+    td#c
+    td E
+    td#e
+    td A
+    td#a
+    td F
+    td#f
+    td N
+    td#n
+    td#per
+    td#remain
+    - if !current_user.nil? && current_user.iidxid == params[:iidxid]
+      td style="width:120px"
+        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(#{ @remain })" data-lang="ja" data-size="large" data-related="IIDX_12"

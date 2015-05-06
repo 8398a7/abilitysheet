@@ -10,10 +10,18 @@ class SheetsController < ApplicationController
 
   def clear
     @sheets = @sheets.order(:ability, :title)
+    remain_num = 0
+    @scores.each { |score| remain_num += 1 if 4 < score.state }
+    @remain = '未クリア' + remain_num.to_s
+    gon.sheet_type = 0
   end
 
   def hard
     @sheets = @sheets.order(:h_ability, :title)
+    remain_num = 0
+    @scores.each { |score| remain_num += 1 if 2 < score.state }
+    @remain = '未難' + remain_num.to_s
+    gon.sheet_type = 1
   end
 
   private
@@ -41,5 +49,6 @@ class SheetsController < ApplicationController
     s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
     @color, @stat = Score.convert_color(s), Score.stat_info(s)
     @power, @list_color, @versions = Sheet.power, Score.list_color, Sheet.version
+    @scores = User.find_by(iidxid: params[:iidxid]).scores
   end
 end
