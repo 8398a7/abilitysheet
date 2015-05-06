@@ -10,16 +10,14 @@ class SheetsController < ApplicationController
 
   def clear
     @sheets = @sheets.order(:ability, :title)
-    remain_num = 0
-    @scores.each { |score| remain_num += 1 if 4 < score.state }
+    remain_num = @scores.where(state: 5..7).count
     @remain = '未クリア' + remain_num.to_s
     gon.sheet_type = 0
   end
 
   def hard
     @sheets = @sheets.order(:h_ability, :title)
-    remain_num = 0
-    @scores.each { |score| remain_num += 1 if 2 < score.state }
+    remain_num = @scores.where(state: 3..7).count
     @remain = '未難' + remain_num.to_s
     gon.sheet_type = 1
   end
