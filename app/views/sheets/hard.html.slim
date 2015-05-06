@@ -22,7 +22,7 @@ table.table.table-responsive.table-bordered
           - s = @sheets[cnt]
           - if cnt < @sheets.size && ab == s.h_ability
             td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
-              = link_to_if !current_user.nil? && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id, 1), remote: true
+              = link_to_if !current_user.nil? && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id, 1), remote: true, class: 'music_link'
             - cnt += 1
 javascript:
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
