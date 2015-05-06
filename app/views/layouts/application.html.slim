@@ -94,11 +94,10 @@ html lang="ja"
             p.alert.alert-danger
               = alert
           = yield
-      br
-      footer align="right"
-        small &copy; IIDX☆12参考表 by839 2014-2015
-        br
-        = link_to 'http://twitter.com/IIDX_12'
-          = fa_icon 'twitter', text: 'Twitter'
-        br
-        .revision.btn.btn-info rev.#{ AbilitysheetIidx::Application.config.git_revision }
+      footer
+        div class="panel panel-default" align="center"
+          div class="panel-body"
+            span style="float:left;" = link_to 'http://twitter.com/IIDX_12'
+              = fa_icon 'twitter', text: 'Twitter'
+            span &copy; IIDX☆12参考表 by839 2014-2015　
+            span style="float:right;" rev.#{ AbilitysheetIidx::Application.config.git_revision }
