@@ -25,4 +25,4 @@ table.table.table-bordered align="center"
     td#remain bgcolor='#00ff7f'
     - if !current_user.nil? && current_user.iidxid == params[:iidxid]
       td style="width:120px"
-        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{ current_user.djname } ☆12ハード地力表(#{ @remain })" data-lang="ja" data-size="large" data-related="IIDX_12"
+        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{current_user.djname} #{@remain}" data-lang="ja" data-size="large" data-related="IIDX_12"

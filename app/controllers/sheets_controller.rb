@@ -12,14 +12,14 @@ class SheetsController < ApplicationController
   def clear
     @sheets = @sheets.order(:ability, :title)
     remain_num = @scores.where(state: 5..7).count
-    @remain = '未クリア' + remain_num.to_s
+    @remain = "☆12ノマゲ参考表(未クリア#{remain_num})"
     gon.sheet_type = 0
   end
 
   def hard
     @sheets = @sheets.order(:h_ability, :title)
     remain_num = @scores.where(state: 3..7).count
-    @remain = '未難' + remain_num.to_s
+    @remain = "☆12ハード参考表(未難#{remain_num})"
     gon.sheet_type = 1
   end
 
