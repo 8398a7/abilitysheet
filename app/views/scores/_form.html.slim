@@ -17,7 +17,7 @@ meta name="viewport" content="width=device-width, initial-scale=0.2"
     = f.hidden_field :sheet_id, value: params[:id]
     input type="hidden" value="0"
   - modal_footer = capture do
-    - if textage
+    - if textage && !textage.empty?
       = link_to '1P(textage)', textage + '?1AC00', class: 'btn btn-success', target: '_blank'
       = link_to '2P(textage)', textage + '?2AC00', class: 'btn btn-danger', target: '_blank'
     = f.submit '更新', class: 'btn btn-primary'
