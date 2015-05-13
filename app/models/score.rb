@@ -5,6 +5,8 @@ class Score < ActiveRecord::Base
 
   include IIDXME
 
+  scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
+
   def lamp_string
     str = %w(FC EXH H C E A F N)
     str[state]

@@ -11,19 +11,28 @@ class SheetsController < ApplicationController
 
   def clear
     @sheets = @sheets.order(:ability, :title)
-    remain_num = @scores.where(state: 5..7).count
-    @remain = "☆12ノマゲ参考表(未クリア#{remain_num})"
     gon.sheet_type = 0
+    write_remain(0)
   end
 
   def hard
     @sheets = @sheets.order(:h_ability, :title)
-    remain_num = @scores.where(state: 3..7).count
-    @remain = "☆12ハード参考表(未難#{remain_num})"
     gon.sheet_type = 1
+    write_remain(1)
   end
 
   private
+
+  def write_remain(type)
+    return if current_user.iidxid != params[:iidxid]
+    if type == 0
+      remain_num = @scores.where(state: 5..7).is_active.count
+      @remain = "☆12ノマゲ参考表(未クリア#{remain_num})"
+    else
+      remain_num = @scores.where(state: 3..7).is_active.count
+      @remain = "☆12ハード参考表(未難#{remain_num})"
+    end
+  end
 
   def set_state_example
     @state_examples = {}
