@@ -25,3 +25,5 @@
 # config
 .env
 *.rdb
+
+.DS_Store
