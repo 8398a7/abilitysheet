@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.7)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (6.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -423,6 +426,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   better_errors
   binding_of_caller
   bullet
