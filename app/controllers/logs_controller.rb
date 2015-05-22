@@ -24,10 +24,16 @@ class LogsController < ApplicationController
   end
 
   def show
+    begin
+      date = params[:date].to_date
+    rescue
+      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+    end
     user_id = User.find_by(iidxid: params[:iidxid]).id
-    @logs = Log.where(user_id: user_id, created_at: params[:date]).preload(:sheet)
+    @logs = Log.where(user_id: user_id, created_at: date).preload(:sheet)
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' unless @logs.present?
     list = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
-    @prev_update, @next_update = prev_next(user_id, params[:date])
+    @prev_update, @next_update = prev_next(user_id, date)
     @color = Score.list_color
   end
 
