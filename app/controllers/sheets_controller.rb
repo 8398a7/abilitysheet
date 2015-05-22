@@ -40,6 +40,7 @@ class SheetsController < ApplicationController
 
   def set_sheet
     @sheets = Sheet.active
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless User.exists?(iidxid: params[:iidxid])
     s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
     @color, @stat = Score.convert_color(s), Score.stat_info(s)
     @power, @list_color, @versions = Sheet.power, Score.list_color, Sheet.version
