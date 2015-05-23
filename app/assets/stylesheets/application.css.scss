@@ -12,10 +12,12 @@
  *
  *= require_tree .
  *= require font-awesome
+ *= require uikit
+ *= require uikit/almost-flat
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
  */
 
 .center {
-  text-align: center;
+  text-align: center
 }
