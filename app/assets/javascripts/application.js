@@ -15,7 +15,6 @@
 //= require jquery_ujs
 //= require uikit
 //= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
