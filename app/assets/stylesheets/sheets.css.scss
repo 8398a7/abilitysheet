@@ -4,3 +4,185 @@
 .statistic {
   background-color: #e6e6fa
 }
+
+mark {
+  color: #e28327;
+  background: transparent;
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.brand {
+  font-family: 'LogoTypeGothic';
+}
+.bold {
+  font-weight: bold;
+}
+.monospace {
+  font-family: monospace !important;
+}
+
+.relative {
+  position: relative;
+}
+.absolute-top {
+  position: absolute;
+  top: 0;
+}
+.absolute-right {
+  position: absolute;
+  right: 0;
+}
+.revision {
+  font-family: monospace;
+  color: #999;
+}
+
+.placeholder {
+  color: #999 !important;
+}
+
+.uk-modal-dialog {
+  min-height: 0;
+}
+.uk-modal-dialog-large {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.uk-placeholder {
+  padding: 8px 6px;
+}
+
+.uk-table {
+  border: 1px solid #ddd;
+
+  th, td {
+    border: 1px solid #ddd;
+  }
+  thead th {
+    border-bottom: 2px solid #ddd;
+  }
+}
+
+.uk-nav-header {
+  text-transform: none;
+}
+.uk-nav-divider {
+  margin: 10px 15px;
+}
+.uk-form {
+  .uk-nav-divider {
+    margin: 10px 0;
+  }
+}
+
+.uk-dropdown {
+  width: auto;
+
+  .uk-form-row+.uk-form-row {
+    margin-top: 5px;
+  }
+}
+.uk-parent {
+  .uk-dropdown {
+    width: 175px;
+  }
+}
+.uk-button-dropdown {
+  .uk-dropdown {
+    width: 250px;
+  }
+}
+
+.uk-form-help-block {
+  ul {
+    margin-bottom: 0;
+  }
+  ul + ul {
+    margin-top: 0;
+  }
+  ul > li {
+    font-size: 12px;
+  }
+}
+
+.uk-panel-box {
+  .uk-panel-title {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+}
+
+.uk-form-stacked {
+  .uk-form-row+.uk-form-row {
+    margin-top: 10px;
+  }
+  .uk-form-row+.uk-panel-title {
+    margin-top: 10px;
+  }
+  .uk-form-icon {
+    width: 100%;
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+    }
+  }
+}
+
+.uk-article {
+  dd > p {
+    margin-top: 7.5px;
+  }
+}
+.uk-article-title {
+  font-size: 24px;
+  line-height: normal;
+}
+.uk-article-divider {
+  border: none;
+  border-top: 2px solid #999;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.uk-button-mini {
+  width: 70px;
+}
+.uk-button-big {
+  width: 125px;
+  height: 45px;
+}
+@media (max-width: 480px) {
+  .uk-button-group {
+    width: 100%;
+
+    .uk-button {
+      max-width: 50%;
+      overflow: hidden;
+    }
+  }
+}
+
+.uk-description-list-line {
+  dt > a {
+    color: #444;
+    text-decoration: none;
+  }
+  dt > a:hover {
+    color: #222;
+  }
+  dd {
+    padding-top: 5px;
+  }
+  dt:nth-child(n+2) {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+
+iframe.uk-panel-box {
+  width: 100%;
+  height: 700px;
+  padding: 0;
+}

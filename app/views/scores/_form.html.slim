@@ -1,26 +1,33 @@
-meta name="viewport" content="width=device-width, initial-scale=0.2"
-= form_for score, url: score_path(format: params[:format]), html: { class: 'form-horizontal' }, remote: true do |f|
-  - modal_body = capture do
-    .form-group
-      label.col-md-3.control-label 曲名
-      .col-md-8
-        text_field.form-control readonly="true" = title
-    .form-group
-      = f.label :state, 'ランプ状況', class: 'col-md-3 control-label'
-      .col-md-8
-        = f.select :state, Score.select_state, { selected: score.state }, { class: 'form-control' }
-    .form-group
-      label.col-md-3.control-label 最終更新日
-      .col-md-8
-        text_field.form-control readonly="true"
-          = score.updated_at.to_date.strftime('%Y-%m-%d') if score.updated_at
-    = f.hidden_field :sheet_id, value: params[:id]
-    input type="hidden" value="0"
-  - modal_footer = capture do
-    - if textage && !textage.empty?
-      = link_to '1P(textage)', textage + '?1AC00', class: 'btn btn-success', target: '_blank'
-      = link_to '2P(textage)', textage + '?2AC00', class: 'btn btn-danger', target: '_blank'
-    = f.submit '更新', class: 'btn btn-primary'
-    = content_tag :button, 'キャンセル', class: 'btn btn-default', 'data-dismiss' => 'modal'
+.uk-modal-dialog.uk-modal-dialog
+  a.uk-modal-close.uk-close
 
-  - modal_dialog :id => 'modal-form', :header => { :show_close => true, :dismiss => 'modal', :title => 'クリア情報更新' }, body: modal_body, :footer => modal_footer
+  .uk-modal-header
+    span.uk-h4.bold
+      = fa_icon 'level-up', text: 'クリア情報更新'
+    /span.uk-h6.uk-text-muted.uk-margin-small-left
+      | (#{picture.attachment_content_type})
+
+  .uk-text-center
+    = form_for score, url: score_path(format: params[:format]), html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
+      .uk-form-row
+        label.uk-form-label 曲名
+        .uk-form-controls
+          text_field.form-control readonly="true" = title
+      .uk-form-row
+        = f.label :state, 'ランプ状況', class: 'uk-form-label'
+        .uk-form-controls
+          = f.select :state, Score.select_state, { selected: score.state }
+      .uk-form-row
+        label.uk-form-label 最終更新日
+        .uk-form-controls
+          text_field.form-control readonly="true" = score.updated_at.to_date.strftime('%Y-%m-%d') if score.updated_at
+        = f.hidden_field :sheet_id, value: params[:id]
+      input type="hidden" value="0"
+      button.uk-button.uk-button-primary type="submit"
+        = fa_icon 'refresh', text: '更新'
+  .uk-modal-footer.uk-text-right
+    - if textage && !textage.empty?
+      = link_to '1P(textage)', textage + '?1AC00', class: 'uk-button uk-button-success', target: '_blank'
+      = link_to '2P(textage)', textage + '?2AC00', class: 'uk-button uk-button-danger', target: '_blank'
+    button.uk-button.uk-modal-close
+      = fa_icon 'times', text: '閉じる'

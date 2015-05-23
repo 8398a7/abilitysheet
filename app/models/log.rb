@@ -16,7 +16,7 @@ class Log < ActiveRecord::Base
       pre_state: pre_state, new_state: state,
       pre_score: nil, new_score: nil,
       pre_bp: nil, new_bp: nil,
-      version: AbilitysheetIidx::Application.config.iidx_version
+      version: Abilitysheet::Application.config.iidx_version
     )
   end
 end

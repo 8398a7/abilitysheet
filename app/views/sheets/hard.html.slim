@@ -1,12 +1,12 @@
 .center
   h2 ハード参考表
-  = link_to 'CLEAR', clear_sheets_path, class: 'btn btn-primary', data: { 'no-turbolink': true }
-  p.btn.btn-danger HARD
+  = link_to 'CLEAR', clear_sheets_path, class: 'uk-button uk-button-primary', data: { 'no-turbolink': true }
+  button.uk-buton.uk-button-danger HARD
   br
   br
   = render 'statistics'
 - width , height = 150, 50
-table.table.table-responsive.table-bordered
+table.uk-table.uk-table-responsive.uk-table-bordered
   thead
   tbody
     = render 'shared/state_example'

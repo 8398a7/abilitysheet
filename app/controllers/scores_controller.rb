@@ -26,6 +26,6 @@ class ScoresController < ApplicationController
   private
 
   def version_confirm
-    @version = AbilitysheetIidx::Application.config.iidx_version
+    @version = Abilitysheet::Application.config.iidx_version
   end
 end

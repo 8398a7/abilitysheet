@@ -1,103 +1,145 @@
 doctype html
-html lang="ja"
+html
   head
+    title #{@title} | ☆12参考表
     meta charset="utf-8"
-    meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"
     meta name="description" content="beatmania IIDXの☆12参考表支援サイトです．ノマゲ地力表，ハード地力表の他に，楽曲の地力値情報，プレイヤーの状態管理などのサービスを提供します．"
     meta name="keywords" content="iidx,IIDX,beatmania,☆12,☆12参考表,☆12ノマゲ参考表,☆12ハード参考表,地力表"
-    title= content_for?(:title) ? yield(:title) : 'IIDX ☆12参考表'
-    = csrf_meta_tags
-    = analytics_init if Rails.env.production?
-
-    /! Le HTML5 shim, for IE6-8 support of HTML elements
-    /[if lt IE 9]
-      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
-    = stylesheet_link_tag "application", :media => "all"
-    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag    'application', 'data-turbolinks-track': true, media: 'all'
     = include_gon
-    = javascript_include_tag "application"
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
+    = csrf_meta_tags
+    = favicon_link_tag 'favicon.ico', rel: 'application'
+
   body
-    .modal-form
-    .navbar.navbar-default.navbar-static-top
-      .navbar-header
-        button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse"
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        = link_to '☆12参考表', root_path, class: 'navbar-brand'
-      .navbar-collapse.collapse.navbar-responsive-collapse
-        ul.nav.navbar-nav
+    .uk-modal
+
+    nav.uk-navbar.uk-navbar-attached
+      .uk-container.uk-container-center
+        = link_to root_path, class: 'uk-navbar-brand'
+          span.brand.bold ☆12参考表
+
+        ul.uk-navbar-nav.uk-hidden-small
+          li
+            = link_to list_welcome_path
+              = fa_icon 'refresh', text: '最近更新したユーザ'
+          - if user_signed_in?
+            li.uk-parent data-uk-dropdown=""
+              a = fa_icon 'database', text: 'マイページ'
+              .uk-dropdown.uk-dropdown-navbar
+                ul.uk-nav.uk-nav-navbar
+                  li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
+                  li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
+                  li = link_to '地力値参考表', power_sheets_path(current_user.iidxid)
+                  li = link_to '更新データ', list_logs_path(current_user.iidxid)
+                  - if User.find_by(id: current_user.id).logs.exists?
+                    li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
+
+            li.uk-parent data-uk-dropdown=""
+              a = fa_icon 'user-times', text: 'ライバル'
+              .uk-dropdown.uk-dropdown-navbar
+                ul.uk-nav.uk-nav-navbar
+                  li = link_to 'ライバル一覧', list_rival_path
+                  li = link_to '逆ライバル一覧', reverse_list_rival_path
+
+          li.uk-parent data-uk-dropdown=""
+            a = fa_icon 'level-up', text: '地力値関係'
+            .uk-dropdown.uk-dropdown-navbar
+              ul.uk-nav.uk-nav-navbar
+                li = link_to '☆12 地力値+AAA', list_recommends_path
+                li = link_to '統合表', integration_recommends_path
+          li
+            = link_to message_welcome_path
+              = fa_icon 'phone', text: '連絡フォーム'
+          - if user_signed_in? && current_user.admin?
+            li
+              = link_to index_admins_path
+                = fa_icon 'gears', text: '管理'
+
+        .uk-navbar-flip.uk-hidden-small
+          ul.uk-navbar-nav
+            - if user_signed_in?
+              li.uk-parent data-uk-dropdown=""
+                a
+                  = fa_icon 'user', text: current_user.djname
+                .uk-dropdown.uk-dropdown-navbar
+                  ul.uk-nav.uk-nav-navbar
+                    li
+                      = link_to edit_user_registration_path
+                        = fa_icon 'pencil fw', text: '編集'
+                    li
+                      = link_to destroy_user_session_path, method: :delete
+                        = fa_icon 'sign-out fw', text: 'ログアウト'
+
+            - else
+              li
+                = link_to new_user_session_path
+                  = fa_icon 'sign-in', text: 'ログイン'
+
+        .uk-navbar-flip.uk-visible-small
+          a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""
+
+    .uk-offcanvas#navbar-offcanvas
+      .uk-offcanvas-bar.uk-offcanvas-bar-flip
+        ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
+          li.uk-nav-header
+            = fa_icon 'refresh', text: '最近更新したユーザ'
           li = link_to '最近更新したユーザ', list_welcome_path
           - if user_signed_in?
-            li.dropdown-open
-              a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
-                | マイページ
-                b.caret
-              ul.dropdown-menu
-                li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
-                li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
-                li = link_to '地力値参考表', power_sheets_path(current_user.iidxid)
-                li = link_to '更新データ', list_logs_path(current_user.iidxid)
-                - if User.find_by(id: current_user.id).logs.exists?
-                  li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
-            li.dropdown-open
-              a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
-                | ライバル
-                b.caret
-              ul.dropdown-menu
-                li = link_to 'ライバル一覧', list_rival_path
-                li = link_to '逆ライバル一覧', reverse_list_rival_path
-          li.dropdown-open
-            a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
-              | 地力値関係
-              b.caret
-            ul.dropdown-menu
-              li = link_to '☆12 地力値+AAA', list_recommends_path
-              li = link_to '統合表', integration_recommends_path
-          - if user_signed_in? && current_user.admin?
-            li = link_to '管理者用', index_admins_path
+            li.uk-nav-header
+              = fa_icon 'database', text: 'マイページ'
+            li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
+            li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
+            li = link_to '地力値参考表', power_sheets_path(current_user.iidxid)
+            li = link_to '更新データ', list_logs_path(current_user.iidxid)
+            - if User.find_by(id: current_user.id).logs.exists?
+              li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
+            li.uk-nav-header
+              = fa_icon 'user-times', text: 'ライバル'
+            li = link_to 'ライバル一覧', list_rival_path
+            li = link_to '逆ライバル一覧', reverse_list_rival_path
+          li.uk-nav-header
+            = fa_icon 'level-up', text: '地力値関係'
+          li = link_to '☆12 地力値+AAA', list_recommends_path
+          li = link_to '統合表', integration_recommends_path
+          li.uk-nav-header
+            = fa_icon 'phone', text: '連絡フォーム'
           li = link_to '連絡フォーム', message_welcome_path
-        - if user_signed_in?
-          ul.nav.navbar-nav.navbar-right
-            li.dropdown-open
-              a.dropdown-toggle href="#" data-toggle="dropdown" aria-expanded="true"
-                = current_user.djname
-                b.caret
-                | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              ul.dropdown-menu
-                li = link_to '編集', edit_user_registration_path
-                li = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          = form_for :user, url: { controller: 'devise/sessions', action: 'new' }, html: { class: 'navbar-form navbar-right' } do |f|
-            .form-group
-              .col-md-2
-                = f.text_field :login, autoforcus: true, class: 'form-control', placeholder: 'アカウント名 or IIDXID'
-            .form-group
-              .col-md-2
-                = f.password_field :password, auctocomplete: 'off', class: 'form-control', placeholder: 'パスワード, remember→'
-            .form-group
-              .col-md-2
-                = f.check_box :remember_me
-            .form-group
-              = f.submit 'ログイン', class: 'btn btn-success'
-              | &nbsp;&nbsp;
-              = link_to '新規登録', new_user_registration_path, class: 'btn btn-primary'
-              | &nbsp;&nbsp;
-    .container
-      .row
-        .col-lg-12
-          = bootstrap_flash
-          - if notice
-            p.alert.alert-success
-              = notice
-          - if alert
-            p.alert.alert-danger
-              = alert
-          = yield
+          - if user_signed_in? && current_user.admin?
+            li.uk-nav-header
+              = fa_icon 'gears', text: '管理'
+            li = link_to '管理ページ', index_admins_path
+          - if user_signed_in?
+            li.uk-nav-header
+              = fa_icon 'user fw', text: current_user.djname
+            li
+              = link_to edit_user_registration_path(current_user.id)
+                = fa_icon 'pencil fw', text: '設定'
+            li
+              = link_to destroy_user_session_path, method: :delete
+                = fa_icon 'sign-out fw', text: 'ログアウト'
+          - else
+            li
+              = link_to new_user_session_path
+                = fa_icon 'sign-in fw', text: 'ログイン'
+
+    .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
+      = yield
+
+    .uk-container.uk-container-center.uk-margin-bottom
       footer
-        div class="panel panel-default" align="center"
-          div class="panel-body"
+        .relative
+          .uk-panel.panel-default align="center"
             span style="float:left;" = link_to 'http://twitter.com/IIDX_12'
               = fa_icon 'twitter', text: 'Twitter'
-            span &copy; IIDX☆12参考表 by839 2014-2015　
-            span style="float:right;" rev.#{ AbilitysheetIidx::Application.config.git_revision }
+            span &copy; IIDX☆12参考表 by839 2014-2015
+            - unless Rails.env.production?
+              span style="float:right;" rev.#{ Abilitysheet::Application.config.git_revision }
+- if notice
+  javascript:
+    UIkit.notify({ message: '#{notice}', timeout: 3000 });
+
+- if alert
+  javascript:
+    UIkit.notify({ message: '#{alert}', timeout: 3000, status: 'danger' });

@@ -1,18 +1,26 @@
-h2
-  | Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :login, 'アカウント名 or IIDXID'
-    br
-    = f.text_field :login, autofocus: true
-  .field
-    = f.label :password, 'パスワード'
-    br
-    = f.password_field :password, autocomplete: "off"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+- @title = 'ログイン'
+
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    .uk-panel-title.bold
+      = fa_icon 'sign-in', text: @title
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
+      .uk-form-row.uk-form-icon
+        i.uk-icon-user
+        = f.text_field :login, autofocus: true, placeholder: 'アカウント名 or IIDXID'
+      .uk-form-row.uk-form-icon
+        i.uk-icon-key
+        = f.password_field :password, autocomplete: 'off', placeholder: 'パスワード'
+      .uk-form-row
+        = f.label :remember_me
+        = f.check_box :remember_me
+      .uk-form-row
+        .uk-button-group
+          button.uk-button.uk-button-primary type="submit"
+            = fa_icon 'sign-in', text: 'ログイン'
+          = link_to new_user_registration_path, class: 'uk-button uk-button-success'
+            = fa_icon 'sign-up', text: '新規作成'

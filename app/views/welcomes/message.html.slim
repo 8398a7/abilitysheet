@@ -1,26 +1,34 @@
-.col-lg-2
-.col-lg-8
-  = form_for @message, url: create_message_welcome_path, html: { class: 'form-horizontal' } do |f|
-    fieldset
-      legend
-        連絡フォーム
-        ul
-          li パスワードを忘れた
-          li 既にiidxidが使われている
-          li 何らかの不具合やバグ報告など
-          | 対応は
-          = link_to 'Twitter', 'http://twitter.com/IIDX_12'
-          | のほうが迅速です。
-      .form-group
-        = f.label :email, '連絡先(任意)', class: 'col-md-2 control-label'
-        .col-md-10
-          = f.email_field :email, class: 'form-control'
-      .form-group
-        = f.label :body, '内容', class: 'col-md-2 control-label'
-        .col-md-10
-          = f.text_area :body, class: 'form-control', rows: 3
-      .form-group
-        .col-lg-10.col-lg-offset-2
-          = link_to 'キャンセル', message_welcome_path, class: 'btn btn-default'
-          | &nbsp;
-          = f.submit '送信', class: 'btn btn-primary'
+- @title = '連絡フォーム'
+
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    .uk-panel-title.bold
+      = fa_icon 'phone', text: @title
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_for @message, url: create_message_welcome_path, html: { class: 'uk-form uk-form-stacked' } do |f|
+      fieldset
+        legend
+          連絡フォーム
+            ul
+              li パスワードを忘れた
+              li 既にiidxidが使われている
+              li 何らかの不具合やバグ報告など
+              | 対応は
+              = link_to 'Twitter', 'http://twitter.com/IIDX_12'
+              | のほうが迅速です。
+      .uk-form-row.uk-form-icon
+        = f.label :email, '連絡先(任意)', class: 'uk-form-label'
+        .uk-form-controls
+          = f.email_field :email
+      .uk-form-row.uk-form-icon
+        = f.label :body, '内容', class: 'uk-form-label'
+        .uk-form-controls
+          = f.text_area :body, rows: 3
+      .uk-form-row
+        .uk-button-group
+          button.uk-button.uk-button-primary type="submit"
+            = fa_icon 'sign-in', text: '送信'
+          = link_to 'キャンセル', message_welcome_path, class: 'uk-button'
