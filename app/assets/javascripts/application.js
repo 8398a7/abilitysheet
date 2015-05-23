@@ -14,7 +14,6 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require uikit
-//= require dataTables/jquery.dataTables
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
