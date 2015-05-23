@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   validates :grade, numericality: {
     only_integer: true
   }, inclusion: {
-    in: AbilitysheetIidx::Application.config.iidx_grade..17, message: 'のパラメタが異常です。'
+    in: Abilitysheet::Application.config.iidx_grade..17, message: 'のパラメタが異常です。'
   }
   validates :pref, numericality: {
     only_integer: true
@@ -94,7 +94,7 @@ class User < ActiveRecord::Base
 
     def dan
       array = []
-      dan_elems.each.with_index(AbilitysheetIidx::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
+      dan_elems.each.with_index(Abilitysheet::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
       array
     end
 

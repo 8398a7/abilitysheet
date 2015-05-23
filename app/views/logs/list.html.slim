@@ -1,20 +1,20 @@
-= link_to '表のクリア推移', sheet_log_path, class: 'btn btn-warning'
-= link_to '月別情報', graph_logs_path, class: 'btn btn-success'
-- if user_signed_in? && current_user.iidxid == params[:iidxid] && flash[:notice] != '同期処理を承りました。逐次反映を行います。'
-  = link_to 'クリアランプマネージャとの同期', maneger_logs_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, class: 'btn btn-danger', method: :post, remote: true
-  = link_to 'IIDXMEとの同期', iidxme_logs_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, class: 'btn btn-info', method: :post, remote: true
-
-h2 更新履歴
-table.table.datatable
-  thead
-    th 更新日付
-    th 更新個数
-  tbody
-    - @logs.pluck(:created_at).uniq.each do |log|
-      tr
-        td = link_to log, show_log_path(params[:iidxid], log)
-        td = @logs.where(created_at: log).count
-coffee:
-  $('.datatable').dataTable(
-    order: [0, 'desc']
-  )
+.relative
+  .uk-grid
+    .uk-width-medium-3-10
+      .uk-hidden-small
+        = render partial: 'logs/sidebar'
+    .uk-width-medium-7-10
+      h2 更新履歴
+      table.table.datatable
+        thead
+          th 更新日付
+          th 更新個数
+        tbody
+          - @logs.pluck(:created_at).uniq.each do |log|
+            tr
+              td = link_to log, show_log_path(params[:iidxid], log)
+              td = @logs.where(created_at: log).count
+      coffee:
+        $('.datatable').dataTable(
+          order: [0, 'desc']
+        )

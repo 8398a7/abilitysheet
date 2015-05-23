@@ -18,7 +18,7 @@ module Scrape
     end
 
     def score_get
-      recent = AbilitysheetIidx::Application.config.iidx_version - 1
+      recent = Abilitysheet::Application.config.iidx_version - 1
       recent.downto(4) do |version|
         puts version
         # version管理

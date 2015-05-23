@@ -6,12 +6,11 @@ gem 'pry-rails'
 # viewはslimで
 gem 'slim-rails'
 
-# turbolinkを正しく動作させる
-gem 'jquery-turbolinks'
-
 # UI関連
-gem 'twitter-bootstrap3-rails'
 gem 'font-awesome-rails'
+gem 'uikit-sass-rails'
+gem 'jquery-turbolinks'
+gem 'active_link_to'
 
 # dataTables利用
 gem 'jquery-datatables-rails'

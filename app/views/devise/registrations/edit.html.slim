@@ -1,41 +1,44 @@
-h2
-  | ユーザ編集
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-  .form-group
-    = f.label :password, 'パスワード', class: 'col-md-4 control-label'
-    i
-      | (変更したくない場合は空のまま)
-    .col-md-5
-      = f.password_field :password, autocomplete: 'off', class: 'form-control'
-  .form-group
-    = f.label :password_confirmation, 'パスワード(確認)', class: 'col-md-4 control-label'
-    .col-md-5
-      = f.password_field :password_confirmation, autocomplete: 'off', class: 'form-control'
-  .form-group
-    = f.label :current_password, '現在のパスワード', class: 'col-md-4 control-label'
-    i
-      | (変更する場合は現在のパスワードを記入)
-    .col-md-5
-      = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
-  .form-group
-    = f.label :username, 'アカウント名', class: 'col-md-4 control-label'
-    .col-md-5
-      = f.text_field :username, autofocus: true, class: 'form-control'
-  .form-group
-    = f.label :djname, 'DJNAME', class: 'col-md-4 control-label'
-    .col-md-5
-      = f.text_field :djname, autofocus: true, class: 'form-control'
-  .form-group
-    = f.label :grade, '段位', class: 'col-md-4 control-label'
-    .col-md-5
-      = f.select :grade, User.dan, {}, { class: 'form-control' }
-  .form-group
-    = f.label :pref, '所属', class: 'col-md-4 control-label'
-    .col-md-5
-      = f.select :pref, User.belongs, {}, { class: 'form-control' }
-  .form-group
-    .col-md-5
-    .col-md-2
-      = f.submit '更新', class: 'btn btn-primary form-control'
+- @title = 'ユーザ編集'
+
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    .uk-panel-title.bold
+      = fa_icon 'sign-in', text: @title
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
+      = devise_error_messages!
+      .uk-form-row.uk-form-icon
+        label.uk-form-label アカウント名(半角英数字)
+        .uk-form-controls
+          = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample'
+      .uk-form-row.uk-form-icon
+        label.uk-form-label DJNAME(半角英数大文字)
+        .uk-form-controls
+          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE'
+      .uk-form-row.uk-form-icon
+        label.uk-form-label 段位
+        .uk-form-controls
+          = f.select :grade, User.dan, {}
+      .uk-form-row.uk-form-icon
+        label.uk-form-label 所属
+        .uk-form-controls
+          = f.select :pref, User.belongs, {}, { class: 'form-control' }
+      .uk-form-row.uk-form-icon
+        label.uk-form-label 現在のパスワード
+        i.uk-icon-key
+        = f.password_field :current_password, autocomplete: 'off', placeholder: "パスワード"
+      .uk-form-row.uk-form-icon
+        label.uk-form-label パスワード(更新しない場合は空のまま)
+        i.uk-icon-key
+        = f.password_field :password, autocomplete: 'off', placeholder: "パスワード"
+      .uk-form-row.uk-form-icon
+        label.uk-form-label パスワード(確認)
+        i.uk-icon-key
+        = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード'
+      .uk-form-row
+        .uk-button-group
+          button.uk-button.uk-button-primary type="submit"
+            = fa_icon 'refresh', text: '更新'

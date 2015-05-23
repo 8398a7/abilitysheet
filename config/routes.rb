@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
   require 'sidekiq/web'
 
-  AbilitysheetIidx::Application.routes.draw do
+  Abilitysheet::Application.routes.draw do
     authenticate :user, lambda { |u| u.admin? } do
       mount Sidekiq::Web => '/admins/sidekiq', as: :sidekiq_admin
     end

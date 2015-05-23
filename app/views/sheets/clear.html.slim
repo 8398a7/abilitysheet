@@ -1,12 +1,12 @@
 .center
   h2 ノマゲ参考表
-  p.btn.btn-primary CLEAR
-  = link_to 'HARD', hard_sheets_path, class: 'btn btn-danger', data: { 'no-turbolink': true }
+  button.uk-buton.uk-button-primary CLEAR
+  = link_to 'HARD', hard_sheets_path, class: 'uk-button uk-button-danger', data: { 'no-turbolink': true }
   br
   br
   = render 'statistics'
 - width , height = 150, 50
-table.table.table-responsive.table-bordered
+table.uk-table.uk-table-responsive.uk-table-bordered
   thead
   tbody
     = render 'shared/state_example'
