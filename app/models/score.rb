@@ -20,7 +20,7 @@ class Score < ActiveRecord::Base
     def score_create(iidxid)
       user_id = User.find_by(iidxid: iidxid).id
       sheets = Sheet.all
-      version = AbilitysheetIidx::Application.config.iidx_version
+      version = Abilitysheet::Application.config.iidx_version
       sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
     end
 
@@ -93,7 +93,7 @@ class Score < ActiveRecord::Base
     end
 
     def update(id, sheet_id, state, sc = -2, bp = -2)
-      version = AbilitysheetIidx::Application.config.iidx_version
+      version = Abilitysheet::Application.config.iidx_version
       score = find_by(user_id: id, sheet_id: sheet_id, version: version)
       Log.data_create(id, sheet_id, state, sc, bp) if score.state != state
       score = Score.new if score.nil?

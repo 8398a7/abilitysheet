@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module AbilitysheetIidx
+module Abilitysheet
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -24,6 +24,9 @@ module AbilitysheetIidx
     config.generators.template_engine = :slim
     config.generators.helper          = false
     config.generators.assets          = false
+
+    # copyright
+    config.copyright = 'IIDX☆12参考表 by839 2014-2015'
 
     # Current git revision
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`

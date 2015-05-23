@@ -153,7 +153,7 @@ describe User do
   end
   # gradeが設定値..17であれば有効な状態であること
   it 'is valid with a grade is set value-17' do
-    set_value = AbilitysheetIidx::Application.config.iidx_grade
+    set_value = Abilitysheet::Application.config.iidx_grade
     (set_value..17).each { |grade| expect(build(:user, grade: grade)).to be_valid }
   end
   # usernameがなければ無効な状態であること
