@@ -1,7 +1,5 @@
 # [IIDX☆12参考表システム](http://iidxas.tk/abilitysheet)
 
-[![Join the chat at https://gitter.im/8398a7/abilitysheet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/8398a7/abilitysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 ## Status
 
 [![Build Status](https://travis-ci.org/8398a7/abilitysheet.svg?branch=master)](https://travis-ci.org/8398a7/abilitysheet)
@@ -34,7 +32,8 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Help
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-お気軽にツイッターで声をかけて下さい，とても喜びます．
+[![Join the chat at https://gitter.im/8398a7/abilitysheet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/8398a7/abilitysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
+お気軽にツイッターやgitterで声をかけて下さい，とても喜びます．
 
 ## License
 
