@@ -9,7 +9,6 @@ gem 'slim-rails'
 # UI関連
 gem 'font-awesome-rails'
 gem 'uikit-sass-rails'
-gem 'jquery-turbolinks'
 gem 'active_link_to'
 
 # dataTables利用
