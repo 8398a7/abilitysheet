@@ -9,7 +9,6 @@ gem 'slim-rails'
 # UI関連
 gem 'font-awesome-rails'
 gem 'uikit-sass-rails'
-gem 'jquery-turbolinks'
 gem 'active_link_to'
 
 # dataTables利用
@@ -67,9 +66,13 @@ gem 'grape-jbuilder'
 gem 'twitter'
 
 # RSpec
-group :development, :test do
+group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'
