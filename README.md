@@ -1,5 +1,7 @@
 # [IIDX☆12参考表システム](http://iidxas.tk/abilitysheet)
 
+[![Join the chat at https://gitter.im/8398a7/abilitysheet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/8398a7/abilitysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Status
 
 [![Build Status](https://travis-ci.org/8398a7/abilitysheet.svg?branch=master)](https://travis-ci.org/8398a7/abilitysheet)
