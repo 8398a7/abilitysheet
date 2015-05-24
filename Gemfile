@@ -66,9 +66,13 @@ gem 'grape-jbuilder'
 gem 'twitter'
 
 # RSpec
-group :development, :test do
+group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'

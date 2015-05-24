@@ -5,6 +5,7 @@ module Graph
     class << self
       def column(user_id)
         between = common(user_id)
+        return false unless between
         category, fc_count, exh_count, h_count, c_count, e_count = [], [], [], [], [], []
         between.each do |b|
           category.push(b[0].strftime('%Y-%m').slice(2, 5))
@@ -31,6 +32,7 @@ module Graph
 
       def spline(user_id)
         between = common(user_id)
+        return false unless between
         st, all = between.first[0], Sheet.active.count
         category, fc_cnt, exh_cnt, hd_cnt, cl_cnt = [], [], [], [], []
         fc_t, exh_t, h_t, c_t, e_t = [], [], [], [], []
@@ -82,7 +84,9 @@ module Graph
       end
 
       def common(user_id)
-        oldest = (User.find_by(id: user_id).logs.order(created_at: :desc).last.created_at.strftime('%Y-%m') + '-01').to_date
+        user = User.find_by(id: user_id)
+        return false if user.nil? || user.logs.nil? || user.logs.empty?
+        oldest = (user.logs.order(created_at: :desc).last.created_at.strftime('%Y-%m') + '-01').to_date
         now = Time.now.strftime('%Y-%m')
         lastest = (now + '-01').to_date
         between_create(oldest, lastest)
