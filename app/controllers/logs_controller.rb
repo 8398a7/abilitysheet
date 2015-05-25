@@ -41,18 +41,20 @@ class LogsController < ApplicationController
     begin
       date = params[:date].to_date
     rescue
-      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return
     end
     user_id = User.find_by(iidxid: params[:iidxid]).id
     @logs = Log.where(user_id: user_id, created_at: date).preload(:sheet)
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' unless @logs.present?
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless @logs.present?
     list = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
     @prev_update, @next_update = prev_next(user_id, date)
     @color = Score.list_color
   end
 
   def graph
-    user_id = User.find_by(iidxid: params[:iidxid]).id
+    user = User.find_by(iidxid: params[:iidxid])
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless user
+    user_id = user.id
     unless Log.exists?(user_id: user_id)
       flash[:alert] = '更新データがありません！'
       redirect_to list_logs_path and return
