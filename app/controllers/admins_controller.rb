@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :white_list
+  before_action :authenticate_user!
+  before_action :white_list
 
   def index
     @message = Message.exists?(state: false)
