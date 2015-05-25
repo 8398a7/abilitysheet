@@ -23,6 +23,20 @@ class LogsController < ApplicationController
     render :reload
   end
 
+  def official
+    render :show_modal
+  end
+
+  def update_official
+    unless current_user.is_special?
+      flash[:alert] = %(不正な操作です。)
+      redirect_to list_logs_path and return
+    end
+    OfficialWorker.perform_async(current_user.id, params[:kid], params[:kpass])
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    redirect_to list_logs_path
+  end
+
   def show
     begin
       date = params[:date].to_date

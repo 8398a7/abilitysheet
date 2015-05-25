@@ -32,6 +32,14 @@ class User < ActiveRecord::Base
   validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9\-\_.*!#&]+\z/, message: 'は半角大文字英字で記入して下さい' }
   validates :username, length: { maximum: 15 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角英数字で記入して下さい' }
 
+  module Special
+    USERS = [1, 2, 3, 4, 5, 6, 8, 13, 16, 21, 34, 53, 63, 73, 100]
+  end
+
+  def is_special?
+    Special::USERS.include?(id)
+  end
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     login = conditions.delete(:login)

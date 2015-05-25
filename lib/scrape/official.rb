@@ -18,9 +18,9 @@ module Scrape
     end
 
     def score_get
+      return false unless incorrect_user
       recent = Abilitysheet::Application.config.iidx_version - 1
       recent.downto(4) do |version|
-        puts version
         # version管理
         url = @base + %(?list=#{ version }&play_style=0&s=1&page=1#musiclist)
         @agent.get(url)
@@ -33,6 +33,16 @@ module Scrape
     end
 
     private
+
+    def incorrect_user
+      iidxid = User.find_by(id: @user_id).iidxid
+      check = @agent.get('http://p.eagate.573.jp/game/2dx/22/p/djdata/status.html')
+      data = check.body.kconv(Kconv::UTF8, Kconv::SJIS)
+      html = Nokogiri::HTML.parse(data, nil, 'UTF-8')
+      remote_iidxid = html.xpath('//div[@class="dj_info_box"]/table/tbody/tr/td')[2].text
+      return true if iidxid == remote_iidxid
+      false
+    end
 
     def last_page_check(url)
       check = @agent.get(url)
@@ -53,6 +63,11 @@ module Scrape
       page = 1
       while 1 > 0
         url = @base + %(?list=#{ version }&play_style=0&s=1&page=#{ page }#musiclist)
+        html = Nokogiri::HTML.parse(
+          @agent.get(url).body.kconv(Kconv::UTF8, Kconv::SJIS),
+          nil,
+          'UTF-8'
+        )
         # 最後尾のページになったら次のバージョンへ
         return true if last_page_check(url)
 

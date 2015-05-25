@@ -27,7 +27,7 @@ class Score < ActiveRecord::Base
     def official_create(title, score, miss, state, user_id)
       sheet = Sheet.find_by(title: title)
       return unless sheet
-      p title, score, state, miss, user_id
+      # p title, score, state, miss, user_id
       update(user_id, sheet.id, state)
     end
 
