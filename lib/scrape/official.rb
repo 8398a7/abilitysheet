@@ -20,7 +20,6 @@ module Scrape
     def score_get
       recent = Abilitysheet::Application.config.iidx_version - 1
       recent.downto(4) do |version|
-        puts version
         # version管理
         url = @base + %(?list=#{ version }&play_style=0&s=1&page=1#musiclist)
         @agent.get(url)
@@ -53,6 +52,11 @@ module Scrape
       page = 1
       while 1 > 0
         url = @base + %(?list=#{ version }&play_style=0&s=1&page=#{ page }#musiclist)
+        html = Nokogiri::HTML.parse(
+          @agent.get(url).body.kconv(Kconv::UTF8, Kconv::SJIS),
+          nil,
+          'UTF-8'
+        )
         # 最後尾のページになったら次のバージョンへ
         return true if last_page_check(url)
 

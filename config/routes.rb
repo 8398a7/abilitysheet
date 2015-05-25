@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   get '/logs/:iidxid/list' => 'logs#list', as: :list_logs
   post '/logs/:iidxid/list' => 'logs#maneger', as: :maneger_logs
   post '/logs/:iidxid/iidxme' => 'logs#iidxme', as: :iidxme_logs
+  post '/logs/:iidxid/update_official' => 'logs#update_official', as: :update_official_logs
+  post '/logs/:iidxid/official' => 'logs#official', as: :official_logs
   get '/logs/:iidxid/sheet' => 'logs#sheet', as: :sheet_log
   get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
 

@@ -1,0 +1,24 @@
+.uk-modal-dialog.uk-modal-dialog
+  a.uk-modal-close.uk-close
+
+  .uk-modal-header
+    span.uk-h4.bold
+      = fa_icon 'level-up', text: '公式同期'
+    /span.uk-h6.uk-text-muted.uk-margin-small-left
+      | (#{picture.attachment_content_type})
+
+  .uk-text-center
+    = form_tag update_official_logs_path, class: 'uk-form uk-form-horizontal'
+      .uk-form-row
+        label.uk-form-label konami_id
+        .uk-form-controls
+          = text_field_tag :kid, '', class: 'form-controls'
+      .uk-form-row
+        label.uk-form-label konami_pass
+        .uk-form-controls
+          = password_field_tag :kpass, '', class: 'form-controls'
+      button.uk-button.uk-button-primary type="submit"
+        = fa_icon 'refresh', text: '更新'
+  .uk-modal-footer.uk-text-right
+    button.uk-button.uk-modal-close
+      = fa_icon 'times', text: '閉じる'
