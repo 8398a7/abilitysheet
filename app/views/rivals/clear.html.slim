@@ -1,22 +1,23 @@
+- @title = "vs #{User.find_by(iidxid: params[:id]).djname} - ノマゲ地力表"
 .center
-  p.btn.btn-primary CLEAR
-  = link_to 'HARD', hard_rival_path(params[:id]), { class: 'btn btn-danger' }
+  p.uk-button.uk-button-primary CLEAR
+  = link_to 'HARD', hard_rival_path(params[:id]), { class: 'uk-button uk-button-danger' }
   br
   br
-  = link_to 'Win', { condition: 'win' }, { class: 'btn btn-primary' }
+  = link_to 'Win', { condition: 'win' }, { class: 'uk-button uk-button-primary' }
   | &nbsp;&nbsp;
-  = link_to 'Even', { condition: 'even' }, { class: 'btn btn-warning' }
+  = link_to 'Even', { condition: 'even' }, { class: 'uk-button uk-button-warning' }
   | &nbsp;&nbsp;
-  = link_to 'Lose', { condition: 'lose' }, { class: 'btn btn-danger' }
+  = link_to 'Lose', { condition: 'lose' }, { class: 'uk-button uk-button-danger' }
   | &nbsp;&nbsp;
-  = link_to 'ALL', { condition: 'all' }, { class: 'btn btn-success' }
+  = link_to 'ALL', { condition: 'all' }, { class: 'uk-button uk-button-success' }
   br
   br
   - if params[:condition] && params[:condition] != 'all'
     | 勝敗数
     = @sheets.count
 - width, height, diff = 150, 50, 20
-table.table.table-responsive border=1
+table.uk-table.table-responsive border=1
   thead
   tbody
     = render 'shared/state_example_rival'

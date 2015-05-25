@@ -1,3 +1,4 @@
+- @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - 更新履歴"
 .relative
   .uk-grid
     .uk-width-medium-10-10
@@ -6,9 +7,9 @@
         .uk-offcanvas-bar
           .uk-panel
             ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
-              li.uk-nav-header = fa_icon 'content', text: 'コンテンツ'
-              li = link_to '表のクリア推移', sheet_log_path
-              li = link_to '月別情報', graph_logs_path
+              li.uk-nav-header = fa_icon 'bar-chart', text: 'コンテンツ'
+              li = link_to 'クリア推移', sheet_log_path
+              li = link_to '月別グラフ', graph_logs_path
               - if user_signed_in? && current_user.iidxid == params[:iidxid] && notice != '同期処理を承りました。逐次反映を行います。 '
                 li.uk-nav-header = fa_icon 'refresh', text: '同期'
                 li = link_to 'マネージャとの同期', maneger_logs_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
