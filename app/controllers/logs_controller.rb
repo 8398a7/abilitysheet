@@ -32,7 +32,7 @@ class LogsController < ApplicationController
       flash[:alert] = %(不正な操作です。)
       redirect_to list_logs_path and return
     end
-    OfficialWorker.perform_async(current_user.id, params[:kid], params[:kpass])
+    OfficialWorker.perform_async(current_user.id, params[:kid], params[:password])
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
     redirect_to list_logs_path
   end
