@@ -1,0 +1,20 @@
+- width , height = 150, 50
+table.uk-table.uk-table-responsive.uk-table-bordered
+  thead
+  tbody
+    = render 'shared/state_example'
+    - cnt = 0
+    - (0..19).each do |ab|
+      tr
+        - if cnt < @sheets.size && return_ability(cnt) == ab
+          th colspan=5 height=10 bgcolor="#f5deb3"
+            center = @power[ab][0]
+      - while cnt < @sheets.size && return_ability(cnt) == ab
+        tr
+        - (1..5).each do |i|
+          - if cnt < @sheets.size && return_ability(cnt) == ab
+            - s = @sheets[cnt]
+            td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
+              = link_to_if current_user && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id), remote: true, class: 'music_link'
+            - cnt += 1
+

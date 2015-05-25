@@ -2,29 +2,13 @@
 .center
   h2 ノマゲ参考表
   button.uk-buton.uk-button-primary CLEAR
+  | &nbsp;
   = link_to 'HARD', hard_sheets_path, class: 'uk-button uk-button-danger', data: { 'no-turbolink': true }
   br
   br
   = render 'statistics'
-- width , height = 150, 50
-table.uk-table.uk-table-responsive.uk-table-bordered
-  thead
-  tbody
-    = render 'shared/state_example'
-    - cnt = 0
-    - (0..19).each do |ab|
-      tr
-        - if cnt < @sheets.size && @sheets[cnt].ability == ab
-          th colspan=5 height=10 bgcolor="#f5deb3"
-            center = @power[ab][0]
-      - while cnt < @sheets.size && ab == @sheets[cnt].ability
-        tr
-        - (1..5).each do |i|
-          - s = @sheets[cnt]
-          - if cnt < @sheets.size && ab == s.ability
-            td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
-              = link_to_if !current_user.nil? && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id, 0), remote: true, class: 'music_link'
-            - cnt += 1
+= render 'sheets/list'
+
 javascript:
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 coffee:
