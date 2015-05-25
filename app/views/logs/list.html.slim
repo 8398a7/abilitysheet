@@ -4,6 +4,20 @@
       .uk-hidden-small
         = render partial: 'logs/sidebar'
     .uk-width-medium-7-10
+      - if is_mobile_request?
+        button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
+        .uk-offcanvas#mobile-menu
+          .uk-offcanvas-bar
+            .uk-panel
+              ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
+                li.uk-nav-header = fa_icon 'content', text: 'コンテンツ'
+                li = link_to '表のクリア推移', sheet_log_path
+                li = link_to '月別情報', graph_logs_path
+                - if user_signed_in? && current_user.iidxid == params[:iidxid] && notice != '同期処理を承りました。逐次反映を行います。 '
+                  li.uk-nav-header = fa_icon 'refresh', text: '同期'
+
+                  li = link_to 'マネージャとの同期', maneger_logs_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
+                  li = link_to 'iidx.meとの同期', iidxme_logs_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
       h2 更新履歴
       table.table.datatable
         thead

@@ -10,6 +10,7 @@ gem 'slim-rails'
 gem 'font-awesome-rails'
 gem 'uikit-sass-rails'
 gem 'active_link_to'
+gem 'mobylette'
 
 # dataTables利用
 gem 'jquery-datatables-rails'
