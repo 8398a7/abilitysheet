@@ -41,7 +41,7 @@ class LogsController < ApplicationController
     begin
       date = params[:date].to_date
     rescue
-      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return
     end
     user_id = User.find_by(iidxid: params[:iidxid]).id
     @logs = Log.where(user_id: user_id, created_at: date).preload(:sheet)
