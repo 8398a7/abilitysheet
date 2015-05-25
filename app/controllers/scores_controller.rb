@@ -1,5 +1,5 @@
 class ScoresController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
   before_action :version_confirm
 
   def attribute

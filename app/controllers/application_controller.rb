@@ -1,6 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :shift_domain
+
+  def shift_domain
+    host = 'iidxas.tk'
+    if request.url.include?(host)
+      path = Rails.root.join('tmp', 'shift_domain')
+      num = File.read(path).to_i
+      num += 1
+      File.write(path, num)
+      redirect_to request.url.gsub(host, 'iidx12.tk') and return
+    end
+  end
 
   protected
 
