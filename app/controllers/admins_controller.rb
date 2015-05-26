@@ -28,7 +28,8 @@ class AdminsController < ApplicationController
   end
 
   def create_notice
-    flash[:notice] = "#{ notice.body }を告知しました"
+    twitter(params[:notice][:body])
+    flash[:notice] = "#{ params[:notice][:body] }を告知しました"
     redirect_to new_notice_admins_path
   end
 
