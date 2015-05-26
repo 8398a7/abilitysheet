@@ -1,25 +1,6 @@
-table.uk-table.datatable
-  thead
-    th 用途
-  tbody
-    tr
-      td = link_to '新規楽曲追加', new_sheet_admins_path
-    tr
-      td = link_to 'notice作成', new_notice_admins_path
-    tr
-      td = link_to 'Rails Admin', rails_admin_path
-    tr
-      td
-        = link_to 'メッセージ', message_list_admins_path
-        - if @message
-          | &nbsp;|&nbsp;
-          font color="red" 未消化メッセージあり
-    tr
-      td
-        = link_to 'sidekiq', sidekiq_admin_path
-    tr
-      td
-        = link_to 'メール送信', new_mail_admins_path
-
-coffee:
-  $('.datatable').dataTable()
+- @title = '管理画面'
+.uk-grid
+  .uk-width-medium-3-10
+    = render partial: 'admins/sidebar', locals: { message: @message }
+  .uk-width-medium-7-10
+    h2 管理画面トップページ

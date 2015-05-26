@@ -1,9 +1,9 @@
 class AdminsController < ApplicationController
   before_action :authenticate_user!
   before_action :white_list
+  before_action :check_message
 
   def index
-    @message = Message.exists?(state: false)
   end
 
   def create_mail
@@ -28,12 +28,7 @@ class AdminsController < ApplicationController
   end
 
   def create_notice
-    notice = Notice.new
-    notice.body = params[:notice][:body]
-    notice.state = params[:notice][:state]
-    notice.save
-    twitter(params[:notice][:body])
-    flash[:notice] = "#{ notice.body }を追加しました"
+    flash[:notice] = "#{ notice.body }を告知しました"
     redirect_to new_notice_admins_path
   end
 
@@ -65,7 +60,14 @@ class AdminsController < ApplicationController
                  ['PEN',  22]]
   end
 
+  def sidekiq
+  end
+
   private
+
+  def check_message
+    @message = Message.exists?(state: false)
+  end
 
   def twitter(message)
     client = twitter_client_get
