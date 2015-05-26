@@ -1,13 +1,20 @@
-h2 Notice作成用ページ
+- @title = '告知 - 管理'
+.uk-grid
+  .uk-width-medium-3-10
+    = render partial: 'admins/sidebar', locals: { message: @message }
+  .uk-width-medium-7-10.uk-container-center
+    .uk-panel.uk-panel-box
+      .uk-panel-title.bold
+        = fa_icon 'twitter', text: '告知'
 
-= form_for @elem, url: create_notice_admins_path do |f|
-  .form-group
-    = f.label :body, '内容', class: 'col-md-2 control-label'
-    .col-md-10
-      = f.text_field :body, class: 'form-control'
-  .form-group
-    = f.label :state, '種類', class: 'col-md-2 control-label'
-    .col-md-10
-      = f.select :state, [['更新履歴', 0], ['お知らせ', 1], ['今後の予定', 2]], { selected: 0 }, { class: 'form-control' }
-  .form-group
-    = f.submit '登録', class: 'btn btn-primary'
+      = form_for @elem, url: create_notice_admins_path, class: 'uk-form uk-form-horizontal' do |f|
+        .uk-form-row.uk-form-icon
+          label.uk-form-label 内容
+          .uk-form-controls
+            = text_area_tag :body, '', size: '80x20'
+        .uk-form-row
+          .uk-button-group
+            button.uk-button.uk-button-primary type="submit"
+              = fa_icon 'sign-in', text: '送信'
+coffee:
+  $('#notice').addClass('uk-active')

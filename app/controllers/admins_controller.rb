@@ -28,12 +28,7 @@ class AdminsController < ApplicationController
   end
 
   def create_notice
-    notice = Notice.new
-    notice.body = params[:notice][:body]
-    notice.state = params[:notice][:state]
-    notice.save
-    twitter(params[:notice][:body])
-    flash[:notice] = "#{ notice.body }を追加しました"
+    flash[:notice] = "#{ notice.body }を告知しました"
     redirect_to new_notice_admins_path
   end
 
