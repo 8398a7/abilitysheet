@@ -15,15 +15,15 @@
       .uk-form-row.uk-form-icon
         label.uk-form-label ノマゲ地力
         .uk-form-controls
-          = f.select :ability, Sheet.power, { selected: 19 }, { class: 'form-control' }
+          = f.select :ability, Sheet.power, { selected: 19 }
       .uk-form-row.uk-form-icon
         label.uk-form-label ハード地力
         .uk-form-controls
-          = f.select :h_ability, Sheet.power, { selected: 19 }, { class: 'form-control' }
+          = f.select :h_ability, Sheet.power, { selected: 19 }
       .uk-form-row.uk-form-icon
         label.uk-form-label バージョン
         .uk-form-controls
-          = f.select :version, @versions, { selected: 22 }, { class: 'form-control' }
+          = f.select :version, @versions, { selected: 22 }
       .uk-form-row
         .uk-button-group
           button.uk-button.uk-button-primary type="submit"
