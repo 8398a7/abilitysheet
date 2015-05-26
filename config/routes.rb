@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # admin
   get '/admins' => 'admins#index', as: :index_admins
+  get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
   get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
   post '/admins/message/:id' => 'admins#message_change', as: :message_change_admins
   get '/admins/register' => 'admins#new_sheet', as: :new_sheet_admins
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
 
   Abilitysheet::Application.routes.draw do
     authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/admins/sidekiq', as: :sidekiq_admin
+      mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
     end
   end
 

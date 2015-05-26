@@ -1,9 +1,9 @@
 class AdminsController < ApplicationController
   before_action :authenticate_user!
   before_action :white_list
+  before_action :check_message
 
   def index
-    @message = Message.exists?(state: false)
   end
 
   def create_mail
@@ -65,7 +65,14 @@ class AdminsController < ApplicationController
                  ['PEN',  22]]
   end
 
+  def sidekiq
+  end
+
   private
+
+  def check_message
+    @message = Message.exists?(state: false)
+  end
 
   def twitter(message)
     client = twitter_client_get
