@@ -1,17 +1,26 @@
-h2 Notice作成用ページ
+- @title = '問い合わせ返信 - 管理'
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    .uk-panel-title.bold
+      = fa_icon 'mail', text: '問い合わせ返信フォーム'
 
-= form_tag(create_mail_admins_path) do
-  .form-group
-    label.col-md-2.control-label メールアドレス
-    .col-md-10
-      = email_field_tag :email_address, '', size: '98', html: { class: 'form-control' }
-  .form-group
-    label.col-md-2.control-label 件名
-    .col-md-10
-      = text_field_tag :subject, '[IIDX ☆12参考表] 問合せ対応', size: '98', html: { class: 'form-control' }
-  .form-group
-    label.col-md-2.control-label 内容
-    .col-md-10
-      = text_area_tag :body, '', size: '100x20', html: { class: 'form-control' }
-  .form-group
-    = submit_tag '送信', class: 'btn btn-primary'
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_tag create_mail_admins_path, html: { class: 'uk-form uk-form-horizontal' }
+      .uk-form-row.uk-form-icon
+        label.uk-form-label メールアドレス
+        .uk-form-controls
+          = email_field_tag :email_address, '', size: '80'
+      .uk-form-row.uk-form-icon
+        label.uk-form-label 件名
+        .uk-form-controls
+          = text_field_tag :subject, '[IIDX ☆12参考表] 問合せ対応', size: '80'
+      .uk-form-row.uk-form-icon
+        label.uk-form-label 内容
+        .uk-form-controls
+          = text_area_tag :body, '', size: '80x20'
+      .uk-form-row
+        .uk-button-group
+          button.uk-button.uk-button-primary type="submit"
+            = fa_icon 'sign-in', text: '送信'

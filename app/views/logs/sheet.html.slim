@@ -26,8 +26,7 @@ table.datatable
         td bgcolor=@color[0] = f
         td = u
 javascript:
-  (function() {
-    $('.datatable').dataTable({
-      aLengthMenu: [#{ @sheets.count }]
-    });
-  }).call(this);
+  sheets_count = '#{@sheets.count}'
+coffee:
+  $('.datatable').dataTable
+    aLengthMenu: [sheets_count]
