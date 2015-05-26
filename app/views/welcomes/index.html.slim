@@ -12,19 +12,15 @@
 br
 .uk-grid
   .uk-width-medium-5-10
-    .uk-hidden-small
-      a.twitter-timeline href="https://twitter.com/search?q=iidxas" data-widget-id="551580128916946944">  | ツイート
-      javascript:
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    a.twitter-timeline href="https://twitter.com/search?q=iidxas" data-widget-id="551580128916946944">  | ツイート
   .uk-width-medium-5-10
-    .uk-hidden-small
-      .uk-panel.uk-panel-box
-        a.twitter-timeline href="https://twitter.com/IIDX_12" data-widget-id="602894937776988160"> | お知らせ
-        javascript:
-          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    .uk-panel.uk-panel-box
+      a.twitter-timeline href="https://twitter.com/IIDX_12" data-widget-id="602894937776988160"> | お知らせ
 br
 .uk-panel.uk-panel-box
   h3.uk-panel-title 可視化例
   .center
     = high_chart('column', @column) if @column
     = high_chart('spline', @spline) if @spline
+javascript:
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
