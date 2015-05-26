@@ -16,26 +16,4 @@
   - if params[:condition] && params[:condition] != 'all'
     | 勝敗数
     = @sheets.count
-- width, height, diff = 150, 50, 20
-table.uk-table.table-responsive border=1
-  thead
-  tbody
-    = render 'shared/state_example_rival'
-    - cnt = 0
-    - (0..19).each do |ab|
-      tr
-        - if cnt < @sheets.size && @sheets[cnt].ability == ab
-          th colspan=10 height=10 bgcolor="#f5deb3"
-            center = @power[ab][0]
-      - while cnt < @sheets.size && ab == @sheets[cnt].ability
-        tr
-        - (1..5).each do |i|
-          - s = @sheets[cnt]
-          - if cnt < @sheets.size && ab == s.ability
-            td width=width-diff height=height align="center" bgcolor=@my_color[s.id]
-              = s.title
-            td width=diff height=height bgcolor=@rival_color[s.id]
-            - cnt += 1
-          - else
-            td width=width-diff
-            td width=diff
+= render 'rivals/list'
