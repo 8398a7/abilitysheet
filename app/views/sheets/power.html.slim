@@ -1,7 +1,7 @@
 - @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - 参考表"
 h2
   | サンプルデータはiidx.meより1100人程度を利用
-table.table
+table.datatable
   thead
     th.center TITLE
     th.center EASY
@@ -35,9 +35,8 @@ coffee:
       y = parseFloat(y)
       if x < y then 1 else if x > y then -1 else 0
 javascript:
-  (function() {
-    $('.table').dataTable({
-      aLengthMenu: [#{ @sheets.count }],
-      columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]
-    });
-  }).call(this);
+  sheets_count = '#{@sheets.count}'
+coffee:
+  $('.datatable').dataTable
+    aLengthMenu: [sheets_count],
+    columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]

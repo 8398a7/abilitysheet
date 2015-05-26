@@ -3,10 +3,8 @@ class User < ActiveRecord::Base
   has_many :logs
   serialize :rival
   serialize :reverse_rival
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :rememberable, :trackable, :validatable
+
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
   attr_accessor :login
 
   # usernameを必須・一意とする

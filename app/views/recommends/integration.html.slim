@@ -1,4 +1,4 @@
-table.table
+table.datatable
   thead
     th.center TITLE
     th.center VALUE
@@ -34,10 +34,9 @@ coffee:
       y = parseFloat(y)
       if x < y then 1 else if x > y then -1 else 0
 javascript:
-  (function() {
-    $('.table').dataTable({
-      order: [1, 'desc'],
-      aLengthMenu: [#{ @sheets.count }],
-      columnDefs: [{type: 'custom', targets: [1]}]
-    });
-  }).call(this);
+  sheets_count = '#{@sheets.count}'
+coffee:
+  $('.datatable').dataTable
+    order: [1, 'desc'],
+    aLengthMenu: [sheets_count],
+    columnDefs: [{type: 'custom', targets: [1]}]

@@ -26,7 +26,6 @@
             tr
               td = link_to log, show_log_path(params[:iidxid], log)
               td = @logs.where(created_at: log).count
-      coffee:
-        $('.datatable').dataTable(
-          order: [0, 'desc']
-        )
+coffee:
+  $('.datatable').dataTable
+    order: [0, 'desc']
