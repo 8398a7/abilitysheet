@@ -16,4 +16,5 @@ table.datatable
         td = m.body
         td = link_to "状態変化(#{ m.state })", message_change_admins_path(m.id), method: :post
 coffee:
-  $('.datatable').dataTable()
+  $('.datatable').dataTable
+    order: [3, 'asc']
