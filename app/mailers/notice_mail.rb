@@ -1,5 +1,5 @@
 class NoticeMail < ActionMailer::Base
-  default from: 'abilitysheet@iidxas.tk'
+  default from: 'abilitysheet@iidx12.tk'
 
   def new_register(user_id)
     @user = User.find_by(id: user_id)
