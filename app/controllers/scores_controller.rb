@@ -3,6 +3,7 @@ class ScoresController < ApplicationController
   before_action :version_confirm
 
   def attribute
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return if request.get?
     sheet = Sheet.find_by(id: params[:id])
     @title = sheet.title
     @textage = sheet.textage
