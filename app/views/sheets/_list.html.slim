@@ -15,6 +15,10 @@ table.uk-table.uk-table-responsive.uk-table-bordered
           - if cnt < @sheets.size && return_ability(cnt) == ab
             - s = @sheets[cnt]
             td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
-              = link_to_if current_user && current_user.iidxid == params[:iidxid], s.title, scores_path(s.id), remote: true, class: 'music_link'
+              - if user_signed_in? && current_user.iidxid == params[:iidxid]
+                = link_to scores_path(s.id), remote: true, class: 'music_link'
+                  = fa_icon 'external-link', text: s.title
+              - else
+                = s.title
             - cnt += 1
 
