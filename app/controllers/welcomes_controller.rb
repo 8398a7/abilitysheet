@@ -28,9 +28,13 @@ class WelcomesController < ApplicationController
 
   def list
     @cnt = User.count
-    user_ids = Score.order(updated_at: :desc).pluck(:user_id).uniq
-    user_ids.slice!(200, user_ids.count - 1)
-    @users = User.where(id: user_ids)
+    if params[:query] && params[:query].present?
+      @users = User.search_djname(params[:query].upcase)
+    else
+      user_ids = Score.order(updated_at: :desc).pluck(:user_id).uniq
+      user_ids.slice!(200, user_ids.count - 1)
+      @users = User.where(id: user_ids)
+    end
     @color = Score.list_color
   end
 
