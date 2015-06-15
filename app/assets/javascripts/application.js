@@ -16,6 +16,5 @@
 //= require highcharts/highcharts
 //= require uikit
 //= require highcharts/highcharts-more
-//= require highcharts/highstock
 //= require turbolinks
 //= require_tree .
