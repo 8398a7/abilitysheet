@@ -8,7 +8,7 @@ gem 'slim-rails'
 
 # UI関連
 gem 'font-awesome-rails'
-gem 'uikit-sass-rails'
+gem 'uikit-sass-rails', git: 'git://github.com/8398a7/uikit-sass-rails'
 gem 'active_link_to'
 
 # dataTables利用
