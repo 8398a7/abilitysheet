@@ -50,6 +50,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+    params.delete(:password) if params[:password].blank?
+    params.delete(:password_confirmation) if params[:password_confirmation].blank?
+
+    clean_up_passwords
+    update_attributes(params, *options)
+  end
+
   def belongs
     p = User.pref_elems
     p[pref]
