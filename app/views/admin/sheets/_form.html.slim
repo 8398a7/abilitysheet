@@ -1,0 +1,42 @@
+- unless sheet
+  - sheet = Sheet.new
+  - title = '楽曲の追加'
+  - submit = '追加'
+- else
+  - title = '楽曲の更新'
+  - submit = '更新'
+
+.uk-modal-dialog style="padding-bottom: 0"
+  a.uk-modal-close.uk-close
+
+  = form_for [:admin, sheet], html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
+    .uk-modal-header
+      h4.bold
+        = fa_icon 'list-ul', text: title
+
+    .uk-form-row
+      label.uk-form-label 楽曲名
+      .uk-form-controls
+        = f.text_field :title, placeholder: '楽曲名', class: 'uk-width-1-1'
+    .uk-form-row
+      label.uk-form-label ノマゲ地力
+      .uk-form-controls
+        = f.select :ability, Grade::POWER, { selected: sheet.ability ? sheet.ability : 19 }, { class: 'uk-width-1-1 searchable' }
+    .uk-form-row
+      label.uk-form-label ハード地力
+      .uk-form-controls
+        = f.select :h_ability, Grade::POWER, { selected: sheet.h_ability ? sheet.h_ability : 19 }, { class: 'uk-width-1-1 searchable' }
+    .uk-form-row
+      label.uk-form-label バージョン
+      .uk-form-controls
+        = f.select :version, Grade::VERSION, { selected: sheet.version ? sheet.version : Abilitysheet::Application.config.iidx_version }, { class: 'uk-width-1-1 searchable' }
+    .uk-modal-footer.uk-text-right
+      .uk-button-group
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: submit
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'
+
+coffee:
+  $('.searchable').select2()
+

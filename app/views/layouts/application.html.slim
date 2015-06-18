@@ -55,9 +55,11 @@ html
             = link_to message_welcome_path
               = fa_icon 'phone', text: '連絡フォーム'
           - if user_signed_in? && current_user.admin?
-            li
-              = link_to index_admins_path
-                = fa_icon 'gears', text: '管理'
+            li.uk-parent data-uk-dropdown=""
+              a = fa_icon 'gears', text: '管理'
+              .uk-dropdown.uk-dropdown-navbar
+                ul.uk-nav.uk-nav-navbar
+                  li = link_to '楽曲管理', admin_sheets_path
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav

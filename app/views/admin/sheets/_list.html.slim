@@ -1,0 +1,33 @@
+.uk-overflow-container
+  table.uk-table.uk-table-striped.datatables
+    thead
+      tr
+        th style="width: 150px;"
+          = link_to new_admin_sheet_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
+            = fa_icon 'plus', text: '作成'
+        th id
+        th 曲名
+        th ノマゲ地力
+        th ハード地力
+    tbody
+      - sheets.each do |sheet|
+        - sheet = sheet.decorate
+        tr
+          td
+            - if sheet.active
+              = link_to edit_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true
+                = fa_icon 'pencil', text: '編集'
+              = link_to inactive_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini', method: :post, remote: true
+                = fa_icon 'lock', text: '無効化'
+            - else
+              = link_to active_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-primary uk-margin-small-right', method: :post, remote: true
+                = fa_icon 'level-up', text: '有効化'
+              = link_to admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
+                = fa_icon 'trash', text: '削除'
+          td = sheet.id
+          td class=(sheet.active ? "uk-button-success" : "uk-button-danger") = sheet.title
+          td = sheet.normal
+          td = sheet.hard
+coffee:
+  $('.datatables').dataTable
+    order: [1, 'desc']
