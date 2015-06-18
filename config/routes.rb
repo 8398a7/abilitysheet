@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   post '/messages' => 'welcomes#create_message', as: :create_message_welcome
 
   # admin
+  namespace :admin do
+    resources :sheets do
+      post :active, on: :member
+      post :inactive, on: :member
+    end
+  end
   get '/admins' => 'admins#index', as: :index_admins
   get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
   get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
@@ -23,10 +29,8 @@ Rails.application.routes.draw do
   post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
   require 'sidekiq/web'
 
-  Abilitysheet::Application.routes.draw do
-    authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
-    end
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
   end
 
   # rival

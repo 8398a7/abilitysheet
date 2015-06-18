@@ -1,0 +1,17 @@
+- @title = '楽曲管理'
+
+h2.bold
+  = fa_stacked_icon 'list-ul inverse', base: 'square', text: @title
+
+= search_form_for [:admin, @search], class: 'uk-form right' do |f|
+  = fa_icon 'search', text: '曲名から絞込'
+  .uk-form-row
+    = f.select :id_eq, Sheet.all.map { |s| [s.title, s.id] }, {}, class: 'select2', style: 'width: 300px'
+    button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
+      = fa_icon 'search', text: '検索'
+hr
+= render partial: 'admin/sheets/list', locals: { sheets: @sheets }
+
+coffee:
+  $('#nav-admin').addClass('uk-active')
+  $('.select2').select2()

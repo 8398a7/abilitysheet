@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << [:username, :djname, :grade, :pref]
   end
 
-  def white_list
+  def admin_user!
     return true if current_user.admin?
     flash[:alert] = '許可されていないページです'
     redirect_to root_path

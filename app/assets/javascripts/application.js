@@ -15,6 +15,7 @@
 //= require dataTables/jquery.dataTables
 //= require highcharts/highcharts
 //= require uikit
+//= require select2
 //= require highcharts/highcharts-more
 //= require turbolinks
 //= require_tree .

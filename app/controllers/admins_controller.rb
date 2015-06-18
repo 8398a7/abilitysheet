@@ -29,13 +29,13 @@ class AdminsController < ApplicationController
 
   def create_notice
     twitter(params[:notice][:body])
-    flash[:notice] = "#{ params[:notice][:body] }を告知しました"
+    flash[:notice] = "#{params[:notice][:body]}を告知しました"
     redirect_to new_notice_admins_path
   end
 
   def create_sheet
-    sheet = Sheet.create_sheet(params)
-    flash[:notice] = "#{ sheet.title }を追加しました"
+    sheet = Sheet.create(params)
+    flash[:notice] = "#{sheet.title}を追加しました"
     redirect_to new_sheet_admins_path
   end
 
