@@ -1,0 +1,33 @@
+.uk-overflow-container
+  table.uk-table.uk-table-striped.datatables
+    thead
+      tr
+        th style="width: 150px;"
+          = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
+            = fa_icon 'plus', text: '作成'
+        th id
+        th DJNAME
+        th IIDXID
+        th 所属
+        th サインイン数
+        th 現在
+        th 最後
+    tbody
+      - users.each do |user|
+        - user = user.decorate
+        tr
+          td
+            = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true
+              = fa_icon 'pencil', text: '編集'
+            = link_to admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
+              = fa_icon 'trash', text: '削除'
+          td = user.id
+          td = user.djname
+          td = user.iidxid
+          td = user.pref
+          td = user.sign_in_count
+          td = user.current
+          td = user.last
+coffee:
+  $('.datatables').dataTable
+    order: [1, 'asc']
