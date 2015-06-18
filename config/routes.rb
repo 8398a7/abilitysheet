@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post :inactive, on: :member
     end
     resources :users
+    resources :sidekiq, only: [:index]
   end
   get '/admins' => 'admins#index', as: :index_admins
   get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
