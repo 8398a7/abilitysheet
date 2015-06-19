@@ -2,11 +2,11 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def pref
-    "#{Grade::PREF[object.pref]}"
+    "#{Static::PREF[object.pref]}"
   end
 
   def grade
-    "#{Grade::GRADE[object.grade]}"
+    "#{Static::GRADE[object.grade]}"
   end
 
   def current

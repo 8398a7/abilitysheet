@@ -1,4 +1,4 @@
-module Grade
+module Static
   POWER = [
     ['地力S+', 0],
     ['個人差S+', 1],

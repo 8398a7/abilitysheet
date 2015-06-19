@@ -58,7 +58,7 @@ class Score < ActiveRecord::Base
 
     def convert_color(scores)
       hash = {}
-      scores.each { |s| hash.store(s.sheet_id, Grade::COLOR[s.state]) }
+      scores.each { |s| hash.store(s.sheet_id, Static::COLOR[s.state]) }
       hash
     end
 

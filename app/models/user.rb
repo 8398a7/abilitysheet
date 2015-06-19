@@ -60,11 +60,11 @@ class User < ActiveRecord::Base
   end
 
   def belongs
-    Grade::PREF[pref]
+    Static::PREF[pref]
   end
 
   def dan
-    Grade::GRADE[grade]
+    Static::GRADE[grade]
   end
 
   def dan_color
@@ -82,13 +82,13 @@ class User < ActiveRecord::Base
   class << self
     def dan
       array = []
-      Grade::GRADE.each.with_index(Abilitysheet::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
+      Static::GRADE.each.with_index(Abilitysheet::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
       array
     end
 
     def belongs
       array = []
-      Grade::PREF.each_with_index { |p, i| array.push([p, i]) }
+      Static::PREF.each_with_index { |p, i| array.push([p, i]) }
       array
     end
   end
