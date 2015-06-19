@@ -8,7 +8,7 @@ RSpec.describe ScoresController, type: :request do
 
     context 'GET' do
       it '#attribute' do
-        visit scores_path(Sheet.first.id)
+        visit edit_score_path(Sheet.first.id)
         expect(page).to have_content('404')
       end
     end
