@@ -35,7 +35,7 @@ class WelcomesController < ApplicationController
       user_ids.slice!(200, user_ids.count - 1)
       @users = User.where(id: user_ids)
     end
-    @color = Score.list_color
+    @color = Grade::COLOR
   end
 
   def message

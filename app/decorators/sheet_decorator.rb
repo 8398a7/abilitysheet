@@ -2,7 +2,7 @@ class SheetDecorator < Draper::Decorator
   delegate_all
 
   def normal
-    "#{Grade::POWER[object.ability].first}"
+    "#{Grade::POWER[object.n_ability].first}"
   end
 
   def hard

@@ -21,7 +21,7 @@
     .uk-form-row
       label.uk-form-label ノマゲ地力
       .uk-form-controls
-        = f.select :ability, Grade::POWER, { selected: sheet.ability ? sheet.ability : 19 }, { class: 'uk-width-1-1 searchable' }
+        = f.select :n_ability, Grade::POWER, { selected: sheet.n_ability ? sheet.n_ability : 19 }, { class: 'uk-width-1-1 searchable' }
     .uk-form-row
       label.uk-form-label ハード地力
       .uk-form-controls

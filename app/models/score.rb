@@ -43,19 +43,6 @@ class Score < ActiveRecord::Base
       hash
     end
 
-    def list_color
-      %w(
-        #ff8c00
-        #ffd900
-        #ff6347
-        #afeeee
-        #98fb98
-        #9595ff
-        #c0c0c0
-        #ffffff
-      )
-    end
-
     def list_name
       [
         'FULL COMBO',
@@ -70,18 +57,8 @@ class Score < ActiveRecord::Base
     end
 
     def convert_color(scores)
-      color = %w(
-        #ff8c00
-        #ffd900
-        #ff6347
-        #afeeee
-        #98fb98
-        #9595ff
-        #c0c0c0
-        #ffffff
-      )
       hash = {}
-      scores.each { |s| hash.store(s.sheet_id, color[s.state]) }
+      scores.each { |s| hash.store(s.sheet_id, Grade::COLOR[s.state]) }
       hash
     end
 

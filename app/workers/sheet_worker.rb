@@ -4,14 +4,14 @@ class SheetWorker
   sidekiq_options retry: false
 
   def perform(id)
-    puts %(#{Time.now} sheet_id: #{id} => create score and static start)
+    puts %(#{Time.now} sheet_id: #{id} => create score and ability start)
     version = Abilitysheet::Application.config.iidx_version
     User.all.each { |u| Score.create(user_id: u.id, sheet_id: id, version: version) }
     d = 99.99
-    Static.create(
+    Ability.create(
       sheet_id: id,
       fc: d, exh: d, h: d, c: d, e: d, aaa: d
     )
-    puts %(#{Time.now} sheet_id: #{id} => create score and static end)
+    puts %(#{Time.now} sheet_id: #{id} => create score and ability end)
   end
 end

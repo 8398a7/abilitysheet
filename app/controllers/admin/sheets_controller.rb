@@ -48,7 +48,7 @@ class Admin::SheetsController < ApplicationController
 
   def sheet_params
     params.require(:sheet).permit(
-      :title, :ability, :h_ability, :version
+      :title, :n_ability, :h_ability, :version
     )
   end
 

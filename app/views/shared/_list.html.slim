@@ -21,7 +21,7 @@ table.datatable
         - if scores
           td.center = link_to scores.updated_at.to_date.strftime, show_log_path(user.iidxid, scores.updated_at.to_date.strftime)
           td.center = scores.title
-          td.center bgcolor="#{ @color[scores.state] }"
+          td.center bgcolor="#{@color[scores.state]}"
         - else
           td
           td

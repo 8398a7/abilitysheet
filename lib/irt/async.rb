@@ -2,7 +2,7 @@ module IRT
   class Async
     def self.run
       hash = fetch
-      Static.async(hash)
+      Ability.async(hash)
     end
 
     private
