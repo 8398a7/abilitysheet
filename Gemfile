@@ -50,10 +50,8 @@ gem 'yaml_db'
 
 # deploy
 group :deployment do
-  gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-rails'
-  gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
+  gem 'capistrano-sidekiq'
 end
 
 # sidekiq
