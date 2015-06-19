@@ -30,17 +30,6 @@ Rails.application.routes.draw do
     resources :mails, only: [:new, :create]
   end
 
-  get '/admins' => 'admins#index', as: :index_admins
-  get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
-  get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
-  post '/admins/message/:id' => 'admins#message_change', as: :message_change_admins
-  get '/admins/register' => 'admins#new_sheet', as: :new_sheet_admins
-  post '/admins/register' => 'admins#create_sheet', as: :create_sheet_admins
-  get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins
-  post '/admins/notice' => 'admins#create_notice', as: :create_notice_admins
-  get '/admins/mail' => 'admins#new_mail', as: :new_mail_admins
-  post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
-
   # rival
   get '/rival/list' => 'rivals#list', as: :list_rival
   get '/rival/reverse_list' => 'rivals#reverse_list', as: :reverse_list_rival
