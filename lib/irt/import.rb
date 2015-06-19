@@ -5,7 +5,7 @@ module IRT
         data = nil
         open('./irt/' + file, 'r') { |f| data = Marshal.load(f) }
         data[1].each do |k, v|
-          power = Static.find_by(sheet_id: k)
+          power = Ability.find_by(sheet_id: k)
           power.update(fc:   v) if type == 0
           power.update(exh:  v) if type == 1
           power.update(h:    v) if type == 2

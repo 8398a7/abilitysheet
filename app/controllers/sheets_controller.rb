@@ -3,7 +3,7 @@ class SheetsController < ApplicationController
   before_action :set_state_example, only: [:clear, :hard]
 
   def power
-    @sheets = Sheet.active.preload(:static)
+    @sheets = Sheet.active.preload(:ability)
     @color = Score.convert_color(
       User.find_by(iidxid: params[:iidxid]).scores
     )
