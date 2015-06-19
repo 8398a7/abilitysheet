@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   post '/messages' => 'welcomes#create_message', as: :create_message_welcome
 
   # admin
+  require 'sidekiq/web'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
+    mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
+  end
   namespace :admin do
     resources :sheets do
       post :active, on: :member
@@ -22,7 +27,9 @@ Rails.application.routes.draw do
       post :active, on: :member
       post :inactive, on: :member
     end
+    resources :mails, only: [:new, :create]
   end
+
   get '/admins' => 'admins#index', as: :index_admins
   get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
   get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
@@ -31,14 +38,8 @@ Rails.application.routes.draw do
   post '/admins/register' => 'admins#create_sheet', as: :create_sheet_admins
   get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins
   post '/admins/notice' => 'admins#create_notice', as: :create_notice_admins
-  mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
   get '/admins/mail' => 'admins#new_mail', as: :new_mail_admins
   post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
-  require 'sidekiq/web'
-
-  authenticate :user, lambda { |u| u.admin? } do
-    mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
-  end
 
   # rival
   get '/rival/list' => 'rivals#list', as: :list_rival
