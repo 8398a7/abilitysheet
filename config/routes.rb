@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'recommends/list'
-
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   # all visitor
