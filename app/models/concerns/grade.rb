@@ -65,4 +65,15 @@ module Grade
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
   )
+
+  COLOR = %w(
+    #ff8c00
+    #ffd900
+    #ff6347
+    #afeeee
+    #98fb98
+    #9595ff
+    #c0c0c0
+    #ffffff
+  )
 end

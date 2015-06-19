@@ -35,15 +35,21 @@ class SheetsController < ApplicationController
 
   def set_state_example
     @state_examples = {}
-    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
+    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Grade::COLOR[j] }
   end
 
   def set_sheet
+    unless User.exists?(iidxid: params[:iidxid])
+      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+      return
+    end
     @sheets = Sheet.active
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless User.exists?(iidxid: params[:iidxid])
     s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
-    @color, @stat = Score.convert_color(s), Score.stat_info(s)
-    @power, @list_color, @versions = Grade::POWER, Score.list_color, Sheet.version
+    @color = Score.convert_color(s)
+    @stat = Score.stat_info(s)
+    @power = Grade::POWER
+    @list_color = Grade::COLOR
+    @versions = Grade::VERSION
     @scores = User.find_by(iidxid: params[:iidxid]).scores
   end
 end

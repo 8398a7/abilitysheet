@@ -76,7 +76,7 @@ class RivalsController < ApplicationController
 
   def rival_set(rivals)
     @users = User.where(iidxid: rivals)
-    @color = Score.list_color
+    @color = Grade::COLOR
   end
 
   def condition
@@ -100,12 +100,12 @@ class RivalsController < ApplicationController
   def set_sheet
     @sheets = Sheet.active
     @state_examples = {}
-    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Score.list_color[j] }
+    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Grade::COLOR[j] }
     @power = Grade::POWER
     s = User.find_by(iidxid: params[:id]).scores
     @rival_color = Score.convert_color(s)
     s = User.find_by(id: current_user.id).scores
     @my_color = Score.convert_color(s)
-    @list_color = Score.list_color
+    @list_color = Grade::COLOR
   end
 end
