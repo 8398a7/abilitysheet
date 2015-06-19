@@ -52,7 +52,7 @@ html
                 li = link_to '☆12 地力値+AAA', list_recommends_path
                 li = link_to '統合表', integration_recommends_path
           li
-            = link_to message_welcome_path
+            = link_to new_message_path
               = fa_icon 'phone', text: '連絡フォーム'
           - if user_signed_in? && current_user.admin?
             li.uk-parent#nav-admin data-uk-dropdown=""
@@ -114,7 +114,7 @@ html
           li = link_to '統合表', integration_recommends_path
           li.uk-nav-header
             = fa_icon 'phone', text: '連絡フォーム'
-          li = link_to '連絡フォーム', message_welcome_path
+          li = link_to '連絡フォーム', new_message_path
           - if user_signed_in? && current_user.admin?
             li.uk-nav-header
               = fa_icon 'gears', text: '管理'

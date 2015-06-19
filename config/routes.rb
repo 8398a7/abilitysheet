@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   # all visitor
   root 'welcomes#index'
   get '/users/list' => 'welcomes#list', as: :list_welcome
-  get '/messages' => 'welcomes#message', as: :message_welcome
-  post '/messages' => 'welcomes#create_message', as: :create_message_welcome
+  resources :messages, only: [:new, :create]
 
   # admin
   require 'sidekiq/web'
