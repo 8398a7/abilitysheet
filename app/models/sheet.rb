@@ -19,16 +19,6 @@ class Sheet < ActiveRecord::Base
   end
 
   class << self
-    def create_sheet(params)
-      s = Sheet.create(
-        title: params[:sheet][:title],
-        ability: params[:sheet][:ability],
-        h_ability: params[:sheet][:h_ability],
-        version: params[:sheet][:version]
-      )
-      s
-    end
-
     def power
       [['地力S+', 0],
        ['個人差S+', 1],
