@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   # all visitor
   root 'welcomes#index'
-  get '/users/list' => 'welcomes#list', as: :list_welcome
+  resources :users, only: [:index]
   resources :messages, only: [:new, :create]
 
   # admin
