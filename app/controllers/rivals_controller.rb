@@ -13,7 +13,7 @@ class RivalsController < ApplicationController
   end
 
   def clear
-    @sheets = @sheets.active.order(:ability, :title)
+    @sheets = @sheets.active.order(:n_ability, :title)
     return if params[:condition] == 'all'
     condition if params[:condition]
   end

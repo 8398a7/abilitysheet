@@ -10,7 +10,7 @@ class SheetsController < ApplicationController
   end
 
   def clear
-    @sheets = @sheets.order(:ability, :title)
+    @sheets = @sheets.order(:n_ability, :title)
     gon.sheet_type = 0
     write_remain(0)
   end
