@@ -50,6 +50,7 @@ class SheetsController < ApplicationController
     @power = Grade::POWER
     @list_color = Grade::COLOR
     @versions = Grade::VERSION
+    @versions.push(['ALL', 0])
     @scores = User.find_by(iidxid: params[:iidxid]).scores
   end
 end
