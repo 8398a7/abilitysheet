@@ -43,7 +43,6 @@ gem 'whenever', require: false
 # User管理
 gem 'devise'
 gem 'rails_admin'
-gem 'cancan'
 gem 'google-analytics-rails'
 
 # db dump

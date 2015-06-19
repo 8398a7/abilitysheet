@@ -68,7 +68,6 @@ GEM
       uniform_notifier (~> 1.9.0)
     byebug (4.0.5)
       columnize (= 0.9.0)
-    cancan (1.6.10)
     capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
@@ -458,7 +457,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
-  cancan
   capistrano (~> 3.2.1)
   capistrano-bundler
   capistrano-rails

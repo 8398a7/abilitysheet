@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   # admin
   require 'sidekiq/web'
   authenticate :user, lambda { |u| u.admin? } do
-    mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
-    mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
+    mount RailsAdmin::Engine => '/admin/model', as: :rails_admin
+    mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
   end
   namespace :admin do
     resources :sheets do
