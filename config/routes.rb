@@ -10,23 +10,24 @@ Rails.application.routes.draw do
   post '/messages' => 'welcomes#create_message', as: :create_message_welcome
 
   # admin
-  get '/admins' => 'admins#index', as: :index_admins
-  get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
-  get '/admins/message/list' => 'admins#message_list', as: :message_list_admins
-  post '/admins/message/:id' => 'admins#message_change', as: :message_change_admins
-  get '/admins/register' => 'admins#new_sheet', as: :new_sheet_admins
-  post '/admins/register' => 'admins#create_sheet', as: :create_sheet_admins
-  get '/admins/notice' => 'admins#new_notice', as: :new_notice_admins
-  post '/admins/notice' => 'admins#create_notice', as: :create_notice_admins
-  mount RailsAdmin::Engine => '/admins/model', as: :rails_admin
-  get '/admins/mail' => 'admins#new_mail', as: :new_mail_admins
-  post '/admins/mail' => 'admins#create_mail', as: :create_mail_admins
   require 'sidekiq/web'
-
-  Abilitysheet::Application.routes.draw do
-    authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/admins/sidekiq/dashboard', as: :sidekiq_admin
+  authenticate :user, lambda { |u| u.admin? } do
+    mount RailsAdmin::Engine => '/admin/model', as: :rails_admin
+    mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
+  end
+  namespace :admin do
+    resources :sheets do
+      post :active, on: :member
+      post :inactive, on: :member
     end
+    resources :users
+    resources :sidekiq, only: [:index]
+    resources :tweets, only: [:new, :create]
+    resources :messages, only: [:index] do
+      post :active, on: :member
+      post :inactive, on: :member
+    end
+    resources :mails, only: [:new, :create]
   end
 
   # rival

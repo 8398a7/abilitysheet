@@ -1,0 +1,54 @@
+- unless user
+  - user = User.new
+  - title = 'ユーザの追加'
+  - submit = '追加'
+- else
+  - title = 'ユーザの更新'
+  - submit = '更新'
+
+.uk-modal-dialog style="padding-bottom: 0"
+  a.uk-modal-close.uk-close
+
+  = form_for [:admin, user], html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
+    .uk-modal-header
+      h4.bold
+        = fa_icon 'user', text: title
+
+    .uk-form-row
+      label.uk-form-label アカウント名
+      .uk-form-controls
+        = f.text_field :username, class: 'uk-width-1-1'
+    .uk-form-row
+      label.uk-form-label DJNAME
+      .uk-form-controls
+        = f.text_field :djname, class: 'uk-width-1-1'
+    .uk-form-row
+      label.uk-form-label 段位
+      .uk-form-controls
+        = f.select :grade, User.dan, {}, { class: 'uk-width-1-1 searchable' }
+    .uk-form-row
+      label.uk-form-label IIDXID
+      .uk-form-controls
+        = f.text_field :iidxid, class: 'uk-width-1-1'
+    .uk-form-row
+      label.uk-form-label 所属
+      .uk-form-controls
+        = f.select :pref, User.belongs, {}, { class: 'uk-width-1-1 searchable' }
+    .uk-form-row
+      label.uk-form-label パスワード
+      .uk-form-controls
+        = f.password_field :password, class: 'uk-width-1-1'
+    .uk-form-row
+      label.uk-form-label パスワード(確認)
+      .uk-form-controls
+        = f.password_field :password_confirmation, class: 'uk-width-1-1'
+    .uk-modal-footer.uk-text-right
+      .uk-button-group
+        button.uk-button.uk-button-primary
+          = fa_icon 'floppy-o', text: submit
+        button.uk-button.uk-modal-close
+          = fa_icon 'times', text: 'キャンセル'
+
+coffee:
+  $('.searchable').select2()
+

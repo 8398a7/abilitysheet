@@ -1,9 +1,0 @@
-- @title = 'Sidekiq - 管理'
-.uk-grid
-  .uk-width-medium-3-10
-    = render partial: 'admins/sidebar', locals: { message: @message }
-  .uk-width-medium-7-10
-    iframe.uk-panel.uk-panel-box src=sidekiq_admin_path
-
-coffee:
-  $('#sidekiq').addClass('uk-active')
