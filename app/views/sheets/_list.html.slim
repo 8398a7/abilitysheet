@@ -16,7 +16,7 @@ table.uk-table.uk-table-responsive.uk-table-bordered
             - s = @sheets[cnt]
             td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
               - if user_signed_in? && current_user.iidxid == params[:iidxid]
-                = link_to scores_path(s.id), remote: true, class: 'music_link'
+                = link_to edit_score_path(s.id), remote: true, class: 'music_link'
                   = fa_icon 'external-link', text: s.title
               - else
                 = s.title

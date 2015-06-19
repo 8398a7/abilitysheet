@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def return_404
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+  end
+
   def configure_permitted_parameters
     # strong parametersを設定し、usernameを許可
     devise_parameter_sanitizer.for(:sign_up) << [:username, :iidxid, :djname, :grade, :pref]

@@ -1,12 +1,14 @@
 class ScoresController < ApplicationController
   before_action :authenticate_user!
   before_action :version_confirm
+  before_action :load_score, only: [:update]
 
-  def attribute
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless env['HTTP_X_REQUESTED_WITH']
-    sheet = Sheet.find_by(id: params[:id])
-    @title = sheet.title
-    @textage = sheet.textage
+  def edit
+    unless env['HTTP_X_REQUESTED_WITH']
+      return_404
+      return
+    end
+    @sheet = Sheet.find_by(id: params[:id])
     if User.find_by(id: current_user.id).scores.exists?(sheet_id: params[:id], version: @version)
       @score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:id], version: @version)
     else
@@ -16,15 +18,22 @@ class ScoresController < ApplicationController
   end
 
   def update
-    Score.update(
-      current_user.id,
-      params[:score][:sheet_id].to_i,
-      params[:score][:state].to_i
-    )
+    @score.update(score_params)
     render :reload
   end
 
   private
+
+  def load_score
+    return unless params[:id]
+    @score = current_user.scores.find_by(sheet_id: params[:id])
+  end
+
+  def score_params
+    params.require(:score).permit(
+      :sheet_id, :state
+    )
+  end
 
   def version_confirm
     @version = Abilitysheet::Application.config.iidx_version

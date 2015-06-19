@@ -4,15 +4,13 @@
   .uk-modal-header
     span.uk-h4.bold
       = fa_icon 'level-up', text: 'クリア情報更新'
-    /span.uk-h6.uk-text-muted.uk-margin-small-left
-      | (#{picture.attachment_content_type})
 
   .uk-text-center
-    = form_for score, url: score_path(format: params[:format]), html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
+    = form_for score, html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
       .uk-form-row
         label.uk-form-label 曲名
         .uk-form-controls
-          text_field.form-control readonly="true" = title
+          text_field.form-control readonly="true" = sheet.title
       .uk-form-row
         = f.label :state, 'ランプ状況', class: 'uk-form-label'
         .uk-form-controls
@@ -26,8 +24,8 @@
       button.uk-button.uk-button-primary type="submit"
         = fa_icon 'refresh', text: '更新'
   .uk-modal-footer.uk-text-right
-    - if textage && !textage.empty?
-      = link_to '1P(textage)', textage + '?1AC00', class: 'uk-button uk-button-success', target: '_blank'
-      = link_to '2P(textage)', textage + '?2AC00', class: 'uk-button uk-button-danger', target: '_blank'
+    - if sheet.textage && !sheet.textage.empty?
+      = link_to '1P(textage)', sheet.textage + '?1AC00', class: 'uk-button uk-button-success', target: '_blank'
+      = link_to '2P(textage)', sheet.textage + '?2AC00', class: 'uk-button uk-button-danger', target: '_blank'
     button.uk-button.uk-modal-close
       = fa_icon 'times', text: '閉じる'

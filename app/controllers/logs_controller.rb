@@ -30,7 +30,8 @@ class LogsController < ApplicationController
   def update_official
     unless current_user.special?
       flash[:alert] = %(不正な操作です。)
-      redirect_to list_logs_path and return
+      redirect_to list_logs_path
+      return
     end
     OfficialWorker.perform_async(current_user.id, params[:kid], params[:password])
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
@@ -41,11 +42,15 @@ class LogsController < ApplicationController
     begin
       date = params[:date].to_date
     rescue
-      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return
+      return_404
+      return
     end
     user_id = User.find_by(iidxid: params[:iidxid]).id
     @logs = Log.where(user_id: user_id, created_at: date).preload(:sheet)
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless @logs.present?
+    unless @logs.present?
+      return_404
+      return
+    end
     list = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
     @prev_update, @next_update = prev_next(user_id, date)
     @color = Static::COLOR
@@ -53,11 +58,15 @@ class LogsController < ApplicationController
 
   def graph
     user = User.find_by(iidxid: params[:iidxid])
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html' and return unless user
+    unless user
+      return_404
+      return
+    end
     user_id = user.id
     unless Log.exists?(user_id: user_id)
       flash[:alert] = '更新データがありません！'
-      redirect_to list_logs_path and return
+      redirect_to list_logs_path
+      return
     end
     @column = Log.column(user_id)
     @spline = Log.spline(user_id)
@@ -74,6 +83,6 @@ class LogsController < ApplicationController
         next_u = logs[cnt + 1] if cnt + 1 <= logs.count - 1
       end
     end
-    return prev_u, next_u
+    [prev_u, next_u]
   end
 end
