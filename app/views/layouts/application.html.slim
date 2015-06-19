@@ -55,14 +55,15 @@ html
             = link_to message_welcome_path
               = fa_icon 'phone', text: '連絡フォーム'
           - if user_signed_in? && current_user.admin?
-            li.uk-parent data-uk-dropdown=""
+            li.uk-parent#nav-admin data-uk-dropdown=""
               a = fa_icon 'gears', text: '管理'
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
                   li = link_to '楽曲管理', admin_sheets_path
                   li = link_to 'ユーザ管理', admin_users_path
-                  li#sidekiq = link_to 'siekiq管理', admin_sidekiq_index_path
+                  li = link_to 'siekiq管理', admin_sidekiq_index_path
                   li = link_to 'RailsAdmin', rails_admin_path
+                  li = link_to 'Twitter', new_admin_tweet_path
 
         .uk-navbar-flip.uk-hidden-small
           ul.uk-navbar-nav

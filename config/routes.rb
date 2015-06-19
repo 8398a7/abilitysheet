@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end
     resources :users
     resources :sidekiq, only: [:index]
+    resources :tweets, only: [:new, :create]
   end
   get '/admins' => 'admins#index', as: :index_admins
   get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins
