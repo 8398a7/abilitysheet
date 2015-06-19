@@ -28,7 +28,7 @@ class LogsController < ApplicationController
   end
 
   def update_official
-    unless current_user.is_special?
+    unless current_user.special?
       flash[:alert] = %(不正な操作です。)
       redirect_to list_logs_path and return
     end
