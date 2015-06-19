@@ -1,5 +1,5 @@
 set :stage, :production
-set :branch, 'master'
+set :branch, '7_deploy'
 set :rails_env, 'production'
 set :migration_role, 'db'
 
