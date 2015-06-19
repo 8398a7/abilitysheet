@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :users
     resources :sidekiq, only: [:index]
     resources :tweets, only: [:new, :create]
+    resources :messages, only: [:index] do
+      post :active, on: :member
+      post :inactive, on: :member
+    end
   end
   get '/admins' => 'admins#index', as: :index_admins
   get '/admins/sidekiq' => 'admins#sidekiq', as: :sidekiq_admins

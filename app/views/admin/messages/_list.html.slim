@@ -1,0 +1,24 @@
+table.table.datatable
+  thead
+    th 状態
+    th ユーザ
+    th 内容
+    th 作成日
+  tbody
+    - messages.each do |m|
+      - m = m.decorate
+      tr
+        td = link_to m.status, (m.state ? inactive_admin_message_path(m.id) : active_admin_message_path(m.id)), method: :post, class: (m.state ? 'uk-button-success' : 'uk-button-danger')
+        td = m.user_name
+        td.left.mail-info
+          span.from
+            | 連絡先:
+            = m.email
+          span.mail-body = m.body
+        td = m.created_at
+coffee:
+  $('.datatable').dataTable
+    order: [2, 'asc']
+
+coffee:
+  $('#nav-admin').addClass('uk-active')
