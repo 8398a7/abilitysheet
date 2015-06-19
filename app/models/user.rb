@@ -59,36 +59,16 @@ class User < ActiveRecord::Base
     update_attributes(params, *options)
   end
 
-  def belongs
-    Grade::PREF[pref]
-  end
-
-  def dan
-    Grade::GRADE[grade]
-  end
-
-  def dan_color
-    if 3 <= grade && grade <= 10
-      '#afeeee'
-    elsif grade == 1 || grade == 2
-      '#ff6347'
-    elsif grade == 0
-      '#ffd900'
-    else
-      '#98fb98'
-    end
-  end
-
   class << self
     def dan
       array = []
-      Grade::GRADE.each.with_index(Abilitysheet::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
+      Static::GRADE.each.with_index(Abilitysheet::Application.config.iidx_grade) { |d, i| array.push([d, i]) }
       array
     end
 
     def belongs
       array = []
-      Grade::PREF.each_with_index { |p, i| array.push([p, i]) }
+      Static::PREF.each_with_index { |p, i| array.push([p, i]) }
       array
     end
   end

@@ -35,7 +35,7 @@ class SheetsController < ApplicationController
 
   def set_state_example
     @state_examples = {}
-    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Grade::COLOR[j] }
+    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
   end
 
   def set_sheet
@@ -47,9 +47,9 @@ class SheetsController < ApplicationController
     s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
     @color = Score.convert_color(s)
     @stat = Score.stat_info(s)
-    @power = Grade::POWER
-    @list_color = Grade::COLOR
-    @versions = Grade::VERSION
+    @power = Static::POWER
+    @list_color = Static::COLOR
+    @versions = Static::VERSION
     @versions.push(['ALL', 0])
     @scores = User.find_by(iidxid: params[:iidxid]).scores
   end

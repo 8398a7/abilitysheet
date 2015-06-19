@@ -12,6 +12,7 @@ table.datatable
   tbody
     - @users.each do |user|
       - scores = user.scores.order(updated_at: :desc).find_by(state: 0..6)
+      - user = user.decorate
       tr
         td.center = user.id
         td.center = link_to user.djname, clear_sheets_path(user.iidxid)
@@ -19,7 +20,7 @@ table.datatable
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
         - if scores
-          td.center = link_to scores.updated_at.to_date.strftime, show_log_path(user.iidxid, scores.updated_at.to_date.strftime)
+          td.center = link_to scores.decorate.updated_at, show_log_path(user.iidxid, scores.updated_at.to_date.strftime)
           td.center = scores.title
           td.center bgcolor="#{@color[scores.state]}"
         - else

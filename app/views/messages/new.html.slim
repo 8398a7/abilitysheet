@@ -8,7 +8,7 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for @message, url: create_message_welcome_path, html: { class: 'uk-form uk-form-stacked' } do |f|
+    = form_for @message, html: { class: 'uk-form uk-form-stacked' } do |f|
       fieldset
         legend
           連絡フォーム
@@ -31,4 +31,4 @@
         .uk-button-group
           button.uk-button.uk-button-primary type="submit"
             = fa_icon 'sign-in', text: '送信'
-          = link_to 'キャンセル', message_welcome_path, class: 'uk-button'
+          = link_to 'キャンセル', new_message_path, class: 'uk-button'
