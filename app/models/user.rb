@@ -59,26 +59,6 @@ class User < ActiveRecord::Base
     update_attributes(params, *options)
   end
 
-  def belongs
-    Static::PREF[pref]
-  end
-
-  def dan
-    Static::GRADE[grade]
-  end
-
-  def dan_color
-    if 3 <= grade && grade <= 10
-      '#afeeee'
-    elsif grade == 1 || grade == 2
-      '#ff6347'
-    elsif grade == 0
-      '#ffd900'
-    else
-      '#98fb98'
-    end
-  end
-
   class << self
     def dan
       array = []
