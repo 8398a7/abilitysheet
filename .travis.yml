@@ -10,3 +10,5 @@ before_script:
 - bundle exec rake db:create db:migrate
 services:
   - redis-server
+script:
+  - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && bundle exec rake tests:integration || false'
