@@ -43,9 +43,7 @@ Rails.application.routes.draw do
   get '/sheets/:iidxid/power' => 'sheets#power', as: :power_sheets
 
   # score
-  get '/scores/:id' => 'scores#attribute', as: :scores
-  post '/scores/:id' => 'scores#update', as: :score
-  patch '/scores/:id' => 'scores#update'
+  resources :scores, only: [:edit, :update]
 
   # log
   get '/logs/:iidxid/graph' => 'logs#graph', as: :graph_logs
