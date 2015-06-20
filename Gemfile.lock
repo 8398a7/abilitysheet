@@ -68,7 +68,7 @@ GEM
       uniform_notifier (~> 1.9.0)
     byebug (4.0.5)
       columnize (= 0.9.0)
-    capistrano (3.2.1)
+    capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
@@ -78,9 +78,9 @@ GEM
     capistrano-rails (1.1.3)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-rbenv (2.0.3)
-      capistrano (~> 3.1)
-      sshkit (~> 1.3)
+    capistrano-sidekiq (0.5.2)
+      capistrano
+      sidekiq
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -123,9 +123,10 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.0.1)
-    dotenv-rails (2.0.1)
-      dotenv (= 2.0.1)
+    dotenv (2.0.2)
+    dotenv-rails (2.0.2)
+      dotenv (= 2.0.2)
+      railties (~> 4.0)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -152,7 +153,7 @@ GEM
       multi_json
       request_store (>= 1.0.5)
     google-analytics-rails (0.0.6)
-    grape (0.11.0)
+    grape (0.12.0)
       activesupport
       builder
       hashie (>= 2.1.0)
@@ -253,7 +254,7 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.2)
+    rack (1.6.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-dev-mark (0.7.3)
@@ -324,7 +325,7 @@ GEM
     request_store (1.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rspec-core (3.3.0)
+    rspec-core (3.3.1)
       rspec-support (~> 3.3.0)
     rspec-expectations (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -332,7 +333,7 @@ GEM
     rspec-mocks (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
-    rspec-rails (3.3.1)
+    rspec-rails (3.3.2)
       actionpack (>= 3.0, < 4.3)
       activesupport (>= 3.0, < 4.3)
       railties (>= 3.0, < 4.3)
@@ -457,10 +458,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
-  capistrano (~> 3.2.1)
-  capistrano-bundler
   capistrano-rails
-  capistrano-rbenv
+  capistrano-sidekiq
   capybara
   capybara-webkit
   codeclimate-test-reporter
