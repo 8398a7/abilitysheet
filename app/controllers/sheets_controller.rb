@@ -50,7 +50,7 @@ class SheetsController < ApplicationController
     @power = Static::POWER
     @list_color = Static::COLOR
     @versions = Static::VERSION
-    @versions.push(['ALL', 0])
+    @versions.push(['ALL', 0]) if @versions.count < 19
     @scores = User.find_by(iidxid: params[:iidxid]).scores
   end
 end
