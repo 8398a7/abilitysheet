@@ -1,7 +1,7 @@
 namespace :unicorn do
   desc 'Start unicorn'
   task(:start) do
-    config = Rails.root.to_s + '/config/unicorn/staging.rb'
+    config = Rails.root.to_s + '/config/unicorn/development.rb'
     env = ENV['RAILS_ENV'] || 'production'
     sh "bundle exec unicorn_rails -D -c #{config} -E #{env} --path /abilitysheet"
   end
