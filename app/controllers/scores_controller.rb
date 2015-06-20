@@ -25,8 +25,8 @@ class ScoresController < ApplicationController
   private
 
   def load_score
-    return unless params[:id]
-    @score = current_user.scores.find_by(sheet_id: params[:id])
+    return unless params[:score][:sheet_id]
+    @score = current_user.scores.find_by(sheet_id: params[:score][:sheet_id])
   end
 
   def score_params
