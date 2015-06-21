@@ -25,7 +25,7 @@ html
         ul.uk-navbar-nav.uk-hidden-small
           li
             = link_to users_path
-              = fa_icon 'users', text: 'ユーザ一覧'
+              = fa_icon 'refresh', text: '最近更新したユーザ'
           - if user_signed_in?
             li.uk-parent data-uk-dropdown=""
               a = fa_icon 'database', text: 'マイページ'
