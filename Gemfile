@@ -13,6 +13,7 @@ gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
 gem 'select2-rails'
+gem 'rack-mini-profiler', require: false
 
 # dataTables利用
 gem 'jquery-datatables-rails'
@@ -26,7 +27,6 @@ gem 'mechanize'
 
 # debug関係
 group :development do
-  gem 'rack-mini-profiler', require: false
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'

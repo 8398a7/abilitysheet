@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :shift_domain
+  before_action :miniprofiler
 
   def shift_domain
     host = 'iidxas.tk'
@@ -30,5 +31,9 @@ class ApplicationController < ActionController::Base
     return true if current_user.admin?
     flash[:alert] = '許可されていないページです'
     redirect_to root_path
+  end
+
+  def miniprofiler
+    Rack::MiniProfiler.authorize_request if user_signed_in? && current_user.admin?
   end
 end

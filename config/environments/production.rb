@@ -20,8 +20,8 @@ Rails.application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  # config.serve_static_assets = false
   config.serve_static_files = false
+  # config.serve_static_files = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -70,7 +70,6 @@ Rails.application.configure do
     openssl_verify_mode: 'none'
   }
 
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -92,7 +91,4 @@ Rails.application.configure do
 
   # font-awesome-rails
   config.action_controller.relative_url_root = '/abilitysheet'
-
-  # sidekiq
-  ENV['SIDEKIQ_MEMORY_KILLER_MAX_RSS'] = '204800'
 end
