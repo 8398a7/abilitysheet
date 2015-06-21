@@ -8,12 +8,12 @@ class Score < ActiveRecord::Base
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
   def update_with_logs(score_params, sc = -2, bp = -2)
-    update(score_params)
     Log.data_create(
       user_id,
       score_params['sheet_id'], score_params['state'],
       sc, bp
     ) if score_params['state'] != state
+    update(score_params)
   end
 
   def self.last_updated
