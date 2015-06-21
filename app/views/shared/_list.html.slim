@@ -11,7 +11,6 @@ table.datatable
     th.center ライバル情報
   tbody
     - @users.each do |user|
-      - scores = user.scores.order(updated_at: :desc).find_by(state: 0..6)
       - user = user.decorate
       tr
         td.center = user.id
@@ -19,14 +18,9 @@ table.datatable
         td.center = user.iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        - if scores
-          td.center = link_to scores.decorate.updated_at, show_log_path(user.iidxid, scores.updated_at.to_date.strftime)
-          td.center = scores.title
-          td.center bgcolor="#{@color[scores.state]}"
-        - else
-          td
-          td
-          td
+        td.center.load id="#{user.id}-updated-at"
+        td.center.load id="#{user.id}-music-title"
+        td.center.load id="#{user.id}-music-state"
         td
           - if user_signed_in? && current_user.rival && user.id != current_user.id
             - flag = false
@@ -45,7 +39,29 @@ table.datatable
             = link_to 'ライバル比較', clear_rival_path(user.iidxid)
             | &nbsp;|&nbsp;
             = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
+
+javascript:
+  user_ids = "#{@users.pluck(:id)}";
+  loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";
 coffee:
-  $('.datatable').dataTable
-    order: [5, 'desc']
-    aLengthMenu: [25]
+  render = (d) ->
+    $.each d, (k, v) ->
+      $("##{k}-updated-at").prepend(v.updatedAt)
+      $("##{k}-music-title").text(v.title)
+      $("##{k}-music-state").css('background-color', v.stateColor)
+    $('.datatable').dataTable
+      order: [5, 'desc']
+      aLengthMenu: [25]
+
+  $.ajax
+    url: 'users/call_back'
+    type: 'POST'
+    data: { id: user_ids }
+    dataType: 'html'
+    beforeSend: ->
+      $('.load').html("#{loading_gif}")
+    success: (d) ->
+      $('.load').empty()
+      render(JSON.parse(d))
+    error: ->
+      alert('error')

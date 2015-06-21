@@ -1,11 +1,4 @@
-- @title = '最近更新した200人'
-h2 最近更新した200人
+- @title = 'ユーザ一覧'
 p 現在の利用者総数は#{@cnt}人です
 
-= form_tag users_path, method: :get, class: 'uk-form right'
-  = fa_icon 'search', text: 'DJNAMEから検索'
-  .uk-form-row
-    = text_field_tag :query, params[:query], place: 'DJNAME'
-    button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
-      = fa_icon 'search', text: '検索'
 = render 'shared/list'
