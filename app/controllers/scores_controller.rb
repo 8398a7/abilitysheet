@@ -18,7 +18,7 @@ class ScoresController < ApplicationController
   end
 
   def update
-    @score.update(score_params)
+    @score.update_with_logs(score_params)
     render :reload
   end
 
