@@ -25,7 +25,7 @@
           - @logs.pluck(:created_at).uniq.each do |log|
             tr
               td = link_to log, show_log_path(params[:iidxid], log)
-              td = @logs.where(created_at: log).count
+              td = @logs.select(:created_at).where(created_at: log).count
 coffee:
   $('.datatable').dataTable
     order: [0, 'desc']

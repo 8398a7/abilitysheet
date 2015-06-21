@@ -3,7 +3,7 @@ class NoticeMail < ActionMailer::Base
 
   def new_register(user_id)
     @user = User.find_by(id: user_id)
-    @count = User.all.count
+    @count = User.select(:id).count
 
     mail to: 'sitan.chabots@gmail.com'
     mail subject: '新規登録者'
