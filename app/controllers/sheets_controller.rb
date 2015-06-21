@@ -25,10 +25,10 @@ class SheetsController < ApplicationController
 
   def write_remain(type)
     if type == 0
-      remain_num = @scores.where(state: 5..7).is_active.count
+      remain_num = @scores.select(:state).where(state: 5..7).is_active.count
       @remain = "☆12ノマゲ参考表(未クリア#{remain_num})"
     else
-      remain_num = @scores.where(state: 3..7).is_active.count
+      remain_num = @scores.select(:state).where(state: 3..7).is_active.count
       @remain = "☆12ハード参考表(未難#{remain_num})"
     end
   end

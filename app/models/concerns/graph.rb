@@ -60,7 +60,7 @@ module Graph
       def spline(user_id)
         between = common(user_id)
         return false unless between
-        st, all = between.first[0], Sheet.active.count
+        st, all = between.first[0], Sheet.active.select(:id).count
         category, fc_cnt, exh_cnt, hd_cnt, cl_cnt = [], [], [], [], []
         fc_t, exh_t, h_t, c_t, e_t = [], [], [], [], []
         between.each do |b|

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @cnt = User.count
+    @cnt = User.select(:id).count
     if params[:query] && params[:query].present?
       @users = User.search_djname(params[:query].upcase)
     else
