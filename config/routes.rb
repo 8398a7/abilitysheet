@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # all visitor
   root 'welcomes#index'
   resources :users, only: [:index]
+  post '/users/call_back' => 'users#call_back'
   resources :messages, only: [:new, :create]
 
   # admin
