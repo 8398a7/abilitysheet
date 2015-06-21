@@ -1,6 +1,4 @@
-if Rails.env == 'development'
-  require 'rack-mini-profiler'
-  Rack::MiniProfiler.config.skip_paths ||= []
-  Rack::MiniProfiler.config.skip_paths << '/admins/model'
-  Rack::MiniProfiler.config.skip_paths << '/admins/sidekiq'
-end
+require 'rack-mini-profiler'
+Rack::MiniProfiler.config.skip_paths ||= []
+Rack::MiniProfiler.config.skip_paths << '/admins/model'
+Rack::MiniProfiler.config.skip_paths << '/admins/sidekiq'
