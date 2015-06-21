@@ -14,6 +14,7 @@ gem 'ransack'
 gem 'draper'
 gem 'select2-rails'
 gem 'rack-mini-profiler', require: false
+gem 'nprogress-rails'
 
 # dataTables利用
 gem 'jquery-datatables-rails'

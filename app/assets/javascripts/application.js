@@ -17,5 +17,7 @@
 //= require uikit
 //= require select2
 //= require highcharts/highcharts-more
+//= require nprogress
+//= require nprogress-turbolinks
 //= require turbolinks
 //= require_tree .
