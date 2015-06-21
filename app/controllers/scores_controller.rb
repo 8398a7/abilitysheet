@@ -4,7 +4,7 @@ class ScoresController < ApplicationController
   before_action :load_score, only: [:update]
 
   def edit
-    unless env['HTTP_X_REQUESTED_WITH']
+    unless request.xhr?
       return_404
       return
     end
