@@ -64,5 +64,5 @@ coffee:
     success: (d) ->
       $('.load').empty()
       render(JSON.parse(d))
-    error: ->
-      alert('error')
+    error: (d) ->
+      console.error(d)
