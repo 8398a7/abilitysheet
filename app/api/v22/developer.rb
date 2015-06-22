@@ -19,6 +19,11 @@ module V22
           { result: %(User Error.) }
         end
       end
+
+      get :users do
+        count = User.select(:id).count
+        { users: count }
+      end
     end
   end
 end
