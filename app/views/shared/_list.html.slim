@@ -43,6 +43,7 @@ table.datatable
 javascript:
   user_ids = "#{@users.pluck(:id)}";
   loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";
+  url = "#{user_call_back_path}"
 coffee:
   render = (d) ->
     $.each d, (k, v) ->
@@ -54,7 +55,7 @@ coffee:
       aLengthMenu: [25]
 
   $.ajax
-    url: 'users/call_back'
+    url: url
     type: 'POST'
     data: { id: user_ids }
     dataType: 'html'
