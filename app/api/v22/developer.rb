@@ -20,7 +20,7 @@ module V22
         end
       end
 
-      get :users do
+      post :users do
         count = User.select(:id).count
         { users: count }
       end
