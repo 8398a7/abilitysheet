@@ -16,7 +16,7 @@ module Users
       return if Score.exists?(user_id: user_id)
       RegisterWorker.perform_async(user_id)
       NoticeMail.new_register(user_id).deliver
-      ManegerWorker.perform_in(10.second, user_id)
+      ManegerWorker.perform_in(30.second, user_id)
     end
   end
 end
