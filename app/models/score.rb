@@ -12,7 +12,7 @@ class Score < ActiveRecord::Base
       user_id,
       score_params['sheet_id'], score_params['state'],
       sc, bp
-    ) if score_params['state'] != state
+    ) if score_params['state'].to_i != state
     update(score_params)
   end
 
