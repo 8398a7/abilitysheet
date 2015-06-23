@@ -58,11 +58,10 @@ coffee:
     url: url
     type: 'POST'
     data: { id: user_ids }
-    dataType: 'html'
     beforeSend: ->
       $('.load').html("#{loading_gif}")
     success: (d) ->
       $('.load').empty()
-      render(JSON.parse(d))
+      render(d)
     error: (d) ->
       console.error(d)
