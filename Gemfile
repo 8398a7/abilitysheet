@@ -70,6 +70,7 @@ gem 'twitter'
 # RSpec
 group :test do
   gem 'rspec-rails'
+  gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-webkit'
