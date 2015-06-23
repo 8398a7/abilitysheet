@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   # クラスメソッド
   # 所属を配列で返すこと[['海外', 0], ['北海道', 1]..]
   it 'returns belongs information as array' do
