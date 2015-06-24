@@ -5,6 +5,7 @@ require 'capybara/rspec'
 require 'capybara-webkit'
 require 'database_cleaner'
 require 'warden'
+require 'devise'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
