@@ -17,6 +17,8 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
 
+  config.order = 'random'
+
   config.before(:all) do
     Capybara.default_selector = :css
     Capybara.javascript_driver = :webkit
