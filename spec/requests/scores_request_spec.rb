@@ -14,4 +14,3 @@ RSpec.describe ScoresController, type: :request do
     end
   end
 end
-

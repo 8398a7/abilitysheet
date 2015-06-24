@@ -72,4 +72,3 @@ RSpec.describe SheetsController, type: :request do
     end
   end
 end
-
