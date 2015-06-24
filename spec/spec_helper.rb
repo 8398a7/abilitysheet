@@ -5,6 +5,7 @@ require 'capybara/rspec'
 require 'capybara-webkit'
 require 'database_cleaner'
 require 'warden'
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -15,6 +16,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include FactoryGirl::Syntax::Methods
   config.include Capybara::DSL
+
   config.before(:all) do
     Capybara.default_selector = :css
     Capybara.javascript_driver = :webkit
