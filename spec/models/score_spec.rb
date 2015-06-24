@@ -41,7 +41,7 @@ RSpec.describe Score, type: :model do
         pre_state: 6, new_state: 5,
         pre_score: nil, new_score: nil,
         pre_bp: nil, new_bp: nil,
-        version: 22, created_at: '2015-06-23'
+        version: 22
       }
       expect(User.find_by(id: 1).logs.exists?(ret)).to eq true
     end
