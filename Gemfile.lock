@@ -196,6 +196,7 @@ GEM
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
     json (1.8.3)
+    json_expressions (0.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -332,6 +333,9 @@ GEM
     rspec-expectations (3.3.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
+    rspec-its (1.2.0)
+      rspec-core (>= 3.0.0)
+      rspec-expectations (>= 3.0.0)
     rspec-mocks (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
@@ -481,6 +485,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-datatables-rails
   jquery-rails
+  json_expressions
   launchy
   lazy_high_charts
   mechanize
@@ -497,6 +502,7 @@ DEPENDENCIES
   rails
   rails_admin
   ransack
+  rspec-its
   rspec-rails
   sass-rails
   sdoc (~> 0.4.0)

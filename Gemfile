@@ -70,12 +70,14 @@ gem 'twitter'
 # RSpec
 group :test do
   gem 'rspec-rails'
+  gem 'rspec-its'
   gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'json_expressions'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'
