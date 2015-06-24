@@ -53,4 +53,15 @@ RSpec.describe V22::Developer, type: :request do
       end
     end
   end
+  context 'POST /api/v22/developer/users' do
+    before { FactoryGirl.create(:user) }
+    let(:url) { '/api/v22/developer/users' }
+    let(:method) { 'post' }
+    describe 'ユーザの人数を返す' do
+      let(:result) do
+        { users: 1 }
+      end
+      it_behaves_like '201 Created'
+    end
+  end
 end
