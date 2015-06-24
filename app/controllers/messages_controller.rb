@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     message.ip = request.remote_ip
     result = message.save
     if result
-      NoticeMail.new_message(message.id).deliver
+      NoticeMail.new_message(message.id).deliver_now
       flash[:notice] = '承りました。対応はしばしお待ちください。'
     else
       flash[:alert] = '何らかの不具合で送信できていません。Twitterなどにご連絡下さい。'
