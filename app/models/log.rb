@@ -5,7 +5,7 @@ class Log < ActiveRecord::Base
 
   include Graph
 
-  def self.data_create(id, sheet_id, state, sc = -2, bp = -2)
+  def self.data_create(id, sheet_id, state, _sc = -2, _bp = -2)
     sheet_id = sheet_id
     scores = User.find_by(id: id).scores
     pre_state = 7

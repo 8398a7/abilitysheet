@@ -27,7 +27,8 @@ class RivalsController < ApplicationController
   def register
     u = User.find_by(id: current_user.id)
     r = User.find_by(iidxid: params[:id])
-    array, r_array = [], []
+    array = []
+    r_array = []
     res = true
     if u.rival
       array = u.rival
@@ -45,10 +46,11 @@ class RivalsController < ApplicationController
     if res
       r_array.push(current_user.iidxid)
       array.push(params[:id])
-      u.rival, r.reverse_rival = array, r_array
+      u.rival = array
+      r.reverse_rival = r_array
       u.save
       r.save
-      flash[:notice] = "ライバル(#{ params[:id] })を追加しました"
+      flash[:notice] = "ライバル(#{params[:id]})を追加しました"
     else
       flash[:alert] = '既に登録済みのライバルかライバルが10人を超えています'
     end
@@ -58,17 +60,18 @@ class RivalsController < ApplicationController
   def remove
     u = User.find_by(id: current_user.id)
     r = User.find_by(iidxid: params[:id])
-    array, r_array = [], []
+    array = []
     if u.rival
       array = u.rival if u.rival
       r_array = r.reverse_rival
       array.delete(params[:id])
       r_array.delete(current_user.iidxid)
-      u.rival, r.reverse_rival = array, r_array
+      u.rival = array
+      r.reverse_rival = r_array
       u.save
       r.save
     end
-    flash[:alert] = "ライバル(#{ params[:id] })を削除しました"
+    flash[:alert] = "ライバル(#{params[:id]})を削除しました"
     redirect_to :back
   end
 

@@ -60,9 +60,18 @@ module Graph
       def spline(user_id)
         between = common(user_id)
         return false unless between
-        st, all = between.first[0], Sheet.active.select(:id).count
-        category, fc_cnt, exh_cnt, hd_cnt, cl_cnt = [], [], [], [], []
-        fc_t, exh_t, h_t, c_t, e_t = [], [], [], [], []
+        st = between.first[0]
+        all = Sheet.active.select(:id).count
+        category = []
+        fc_cnt = []
+        exh_cnt = []
+        hd_cnt = []
+        cl_cnt = []
+        fc_t = []
+        exh_t = []
+        h_t = []
+        c_t = []
+        e_t = []
         between.each do |b|
           category.push(b[0].strftime('%Y-%m').slice(2, 5))
           cl_cnt.push(all - Log.where(user_id: user_id, new_state: 0..4, created_at: st..b[1]).select(:sheet_id).uniq.count)
@@ -90,6 +99,7 @@ module Graph
       end
 
       private
+
       def between_create(o, l)
         array = []
         s = o
