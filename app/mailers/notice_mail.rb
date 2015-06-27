@@ -5,7 +5,7 @@ class NoticeMail < ActionMailer::Base
     @user = User.find_by(id: user_id)
     @count = User.select(:id).count
 
-    mail to: 'sitan.chabots@gmail.com'
+    mail to: '8398a7@gmail.com'
     mail subject: '新規登録者'
   end
 
