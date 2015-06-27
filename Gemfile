@@ -78,6 +78,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'json_expressions'
+  gem 'rubocop'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'
