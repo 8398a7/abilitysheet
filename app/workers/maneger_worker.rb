@@ -5,9 +5,9 @@ class ManegerWorker
 
   def perform(id)
     user = User.find_by(id: id)
-    puts %(#{ Time.now} #{ user.djname }[#{ user.iidxid }] => maneger scrape start)
+    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => maneger scrape start)
     scrape = Scrape::Maneger.new(user)
     scrape.sync
-    puts %(#{ Time.now} #{ user.djname }[#{ user.iidxid }] => maneger scrape done)
+    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => maneger scrape done)
   end
 end

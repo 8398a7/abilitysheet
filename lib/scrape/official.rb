@@ -22,7 +22,7 @@ module Scrape
       recent = Abilitysheet::Application.config.iidx_version - 1
       recent.downto(4) do |version|
         # version管理
-        url = @base + %(?list=#{ version }&play_style=0&s=1&page=1#musiclist)
+        url = @base + %(?list=#{version}&play_style=0&s=1&page=1#musiclist)
         @agent.get(url)
 
         # スコア取得処理
@@ -62,7 +62,7 @@ module Scrape
     def normal_get(version)
       page = 1
       while 1 > 0
-        url = @base + %(?list=#{ version }&play_style=0&s=1&page=#{ page }#musiclist)
+        url = @base + %(?list=#{version}&play_style=0&s=1&page=#{page}#musiclist)
         html = Nokogiri::HTML.parse(
           @agent.get(url).body.kconv(Kconv::UTF8, Kconv::SJIS),
           nil,
@@ -82,8 +82,13 @@ module Scrape
 
     # no_value周り要修正
     def data_register(title, score, miss, l_v)
-      pg, g = pg_s(score), g_s(score)
-      miss, pg, g = no_value(miss), no_value(pg), no_value(g)
+      pg = pg_s(score)
+      g  = g_s(score)
+
+      miss = no_value(miss)
+      pg   = no_value(pg)
+      g    = no_value(g)
+
       score = pg.to_i * 2 + g.to_i
       Score.official_create(title, score, miss, l_v, @user_id)
       @count += 1
@@ -93,8 +98,11 @@ module Scrape
       hash = Hash.new(2)
       hash.store('gigadelic', 1)
       hash.store('Innocent Walls', 1)
+
       t = hash[title]
-      score, miss = tmp_score[t + 3].text, tmp_miss[t].text
+      score = tmp_score[t + 3].text
+      miss  = tmp_miss[t].text
+
       l_v = lamp_return(lamp[t].attribute('src').value)
       title += '[H]' if t == 1
       data_register(title, score, miss, l_v)
