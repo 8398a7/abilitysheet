@@ -33,6 +33,7 @@ group :development do
   gem 'bullet'
   gem 'quiet_assets'
   gem 'rack-dev-mark'
+  gem 'annotate'
 end
 
 # HighCharts
@@ -78,6 +79,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'json_expressions'
+  gem 'rubocop'
 end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'

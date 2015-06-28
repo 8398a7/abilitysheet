@@ -6,13 +6,12 @@ class ApplicationController < ActionController::Base
 
   def shift_domain
     host = 'iidxas.tk'
-    if request.url.include?(host)
-      path = Rails.root.join('tmp', 'shift_domain')
-      num = File.read(path).to_i
-      num += 1
-      File.write(path, num)
-      redirect_to request.url.gsub(host, 'iidx12.tk') and return
-    end
+    return unless request.url.include?(host)
+    path = Rails.root.join('tmp', 'shift_domain')
+    num = File.read(path).to_i
+    num += 1
+    File.write(path, num)
+    redirect_to request.url.gsub(host, 'iidx12.tk')
   end
 
   protected

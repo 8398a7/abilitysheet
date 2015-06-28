@@ -3,3 +3,7 @@ machine:
     Asia/Tokyo
   ruby:
     version: 2.2.0
+test:
+  override:
+    - "bundle exec bin/rubocop_parallel": { parallel: true }
+    - "bin/rspec --color --format documentation"

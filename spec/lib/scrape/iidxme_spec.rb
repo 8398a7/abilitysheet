@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Scrape::IIDXME do
-  let(:user) { FactoryGirl.create(:user, iidxid) }
+  let(:user) { create(:user, iidxid) }
   let(:iidxme) { Scrape::IIDXME.new }
 
   context '正常系' do
@@ -23,7 +23,7 @@ RSpec.describe Scrape::IIDXME do
   end
   context '異常系' do
     describe 'IIDXIDの書式が正しくない場合' do
-      let(:iidxids) { ['1', '1110'] }
+      let(:iidxids) { %w(1 1110) }
       it '#async' do
         iidxids.each { |iidxid| expect(iidxme.async(iidxid)).to be_falsy }
       end

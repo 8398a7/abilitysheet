@@ -1,6 +1,6 @@
 class WelcomesController < ApplicationController
   def index
-    @column = Graph::TOP_COLUMN
-    @spline = Graph::TOP_SPLINE
+    @column = Static::TOP_COLUMN
+    @spline = Static::TOP_SPLINE
   end
 end

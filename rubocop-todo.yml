@@ -1,0 +1,33 @@
+# ネストが深すぎる
+BlockNesting:
+  Max: 5
+
+# クラスの行数が多すぎる
+ClassLength:
+  Enabled: false
+
+# 循環的複雑度が高すぎる(ifやforなどを1メソッド内で使いすぎている)
+CyclomaticComplexity:
+  Enabled: false
+
+# 例外を抑制している
+HandleExceptions:
+  Enabled: false
+
+# 行が長すぎる
+LineLength:
+  Enabled: false
+
+# メソッドの行数が多すぎる
+MethodLength:
+  Enabled: false
+
+# 引数の数が多すぎる
+ParameterLists:
+  Max: 12
+
+AccessorMethodName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 60

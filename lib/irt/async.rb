@@ -5,11 +5,9 @@ module IRT
       Ability.async(hash)
     end
 
-    private
-
     def self.fetch
-      token  = ENV['IRT_TOKEN']
-      uri    = URI.parse('http://localhost:13000/api/v1/auth/power?token)
+      # token  = ENV['IRT_TOKEN']
+      uri    = URI.parse('http://localhost:13000/api/v1/auth/power?token')
       res    = Net::HTTP.get(uri)
       JSON.parse(res)['result']
     end

@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: abilities
+#
+#  id         :integer          not null, primary key
+#  sheet_id   :integer
+#  fc         :float
+#  exh        :float
+#  h          :float
+#  c          :float
+#  e          :float
+#  aaa        :float
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Ability < ActiveRecord::Base
   belongs_to :sheet
 

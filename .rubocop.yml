@@ -1,26 +1,33 @@
-# 1行の文字列数
-Metrics/LineLength:
-  Max: 120
+inherit_from: rubocop-todo.yml
 
-# メソッドの最大行数
-Metrics/MethodLength:
-  CountComments: false  # count full line comments?
-  Max: 50
-
-# クラスの最大行数
-Metrics/ClassLength:
-  CountComments: false  # count full line comments?
-  Max: 300
-
-# ASCII文字のコメントを許可
-Style/AsciiComments:
-  Description: 'Use only ascii symbols in comments.'
-  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
+# 日本語でのコメントを許可
+AsciiComments:
   Enabled: false
 
-# rails用
+# モジュール名::クラス名の定義を許可
+ClassAndModuleChildren:
+  Enabled: false
+
+# クラスにコメントを残さない
 Documentation:
   Enabled: false
 
-Metrics/AbcSize:
-    Max: 25
+# has_ から始まるメソッドは許可する
+Style/PredicateName:
+  NamePrefixBlacklist:
+    - "is_"
+    - "have_"
+  NamePrefix:
+    - "is_"
+    - "have_"
+
+AllCops:
+  Include:
+    - '**/Rakefile'
+    - '**/config.ru'
+  Exclude:
+    - 'db/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'vendor/bundle/**/*'

@@ -5,8 +5,8 @@ class RegisterWorker
 
   def perform(id)
     user = User.find_by(id: id)
-    puts %(#{ Time.now} #{ user.djname }[#{ user.iidxid }] => score init start)
+    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => score init start)
     Score.score_create(user.iidxid)
-    puts %(#{ Time.now} #{ user.djname }[#{ user.iidxid }] => score init done)
+    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => score init done)
   end
 end

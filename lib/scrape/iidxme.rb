@@ -19,7 +19,7 @@ module Scrape
 
     def user_id_search(iidxid)
       return false unless iidxid =~ /\A\d{4}-\d{4}\z/
-      uri    = URI.parse("http://json.iidx.me/?name=#{ iidxid }")
+      uri    = URI.parse("http://json.iidx.me/?name=#{iidxid}")
       res    = Net::HTTP.get(uri)
       hash = JSON.parse(res)
       return false unless hash['users'].count == 1
@@ -29,7 +29,7 @@ module Scrape
     def data_get(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
-      uri    = URI.parse("http://json.iidx.me/#{ user_id }/sp/level/12/")
+      uri    = URI.parse("http://json.iidx.me/#{user_id}/sp/level/12/")
       res    = Net::HTTP.get(uri)
       JSON.parse(res)
     end

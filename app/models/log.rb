@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: logs
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  sheet_id   :integer
+#  pre_state  :integer
+#  new_state  :integer
+#  pre_score  :integer
+#  new_score  :integer
+#  pre_bp     :integer
+#  new_bp     :integer
+#  version    :integer
+#  created_at :date
+#
+
 class Log < ActiveRecord::Base
   belongs_to :user
   belongs_to :sheet
@@ -5,7 +22,7 @@ class Log < ActiveRecord::Base
 
   include Graph
 
-  def self.data_create(id, sheet_id, state, sc = -2, bp = -2)
+  def self.data_create(id, sheet_id, state, _sc = -2, _bp = -2)
     sheet_id = sheet_id
     scores = User.find_by(id: id).scores
     pre_state = 7

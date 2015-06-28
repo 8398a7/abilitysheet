@@ -37,7 +37,7 @@ module Scrape
     def login
       @agent.get('https://p.eagate.573.jp/gate/p/login.html?path=http%3A%2F%2Fp.eagate.573.jp%2Fgame%2F2dx%2F22%2Fp%2Frival%2Frival_list.html&___REDIRECT=1')
       @agent.page.encoding = 'UTF-8'
-      datas = File.read("#{ Rails.root }/tmp/auth").split(',')
+      datas = File.read("#{Rails.root}/tmp/auth").split(',')
       form = @agent.page.form_with method: 'POST'
       form.KID = datas[0]
       form.pass = datas[1].strip!

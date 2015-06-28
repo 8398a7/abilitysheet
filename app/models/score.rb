@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: scores
+#
+#  id         :integer          not null, primary key
+#  state      :integer          default(7), not null
+#  score      :integer
+#  bp         :integer
+#  sheet_id   :integer          not null
+#  user_id    :integer          not null
+#  version    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Score < ActiveRecord::Base
   belongs_to :sheet
   belongs_to :user
@@ -37,7 +52,7 @@ class Score < ActiveRecord::Base
       sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
     end
 
-    def official_create(title, score, miss, state, user_id)
+    def official_create(title, _score, _miss, state, user_id)
       sheet = Sheet.find_by(title: title)
       return unless sheet
       # p title, score, state, miss, user_id
