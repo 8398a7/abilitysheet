@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
   attr_accessor :login
 
+  include Rival
+
   # usernameを必須・一意とする
   validates_uniqueness_of :username, :iidxid
   validates_presence_of :username, :djname, :iidxid, :grade, :pref

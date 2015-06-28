@@ -8,7 +8,8 @@ table.datatable
     th.center 最終更新日
     th.center 最終更新楽曲
     th.center ランプ情報
-    th.center ライバル情報
+    - if user_signed_in?
+      th.center ライバル情報
   tbody
     - @users.each do |user|
       - user = user.decorate
@@ -21,25 +22,16 @@ table.datatable
         td.center.load id="#{user.id}-updated-at"
         td.center.load id="#{user.id}-music-title"
         td.center.load id="#{user.id}-music-state"
-        td
-          - if user_signed_in? && current_user.rival && user.id != current_user.id
-            - flag = false
-            - current_user.rival.each do |r|
-              - if r == user.iidxid
-                = link_to 'ライバル比較', clear_rival_path(user.iidxid)
-                | &nbsp;|&nbsp;
-                = link_to 'ライバルを外す', remove_rival_path(user.iidxid), method: :post
-                - flag = true
-                - break
-            - unless flag
+        - if user_signed_in?
+          td
+            - if current_user.rival && current_user.rival.include?(user.iidxid)
               = link_to 'ライバル比較', clear_rival_path(user.iidxid)
               | &nbsp;|&nbsp;
-              = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
-          - elsif user_signed_in? && user.id != current_user.id
-            = link_to 'ライバル比較', clear_rival_path(user.iidxid)
-            | &nbsp;|&nbsp;
-            = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post
-
+              = link_to 'ライバルを外す', remove_rival_path(user.iidxid), method: :post, remote: true
+            - elsif current_user.iidxid != user.iidxid
+              = link_to 'ライバル比較', clear_rival_path(user.iidxid)
+              | &nbsp;|&nbsp;
+              = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post, remote: true
 javascript:
   user_ids = "#{@users.pluck(:id)}";
   loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";

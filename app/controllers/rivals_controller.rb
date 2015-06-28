@@ -25,54 +25,19 @@ class RivalsController < ApplicationController
   end
 
   def register
-    u = User.find_by(id: current_user.id)
-    r = User.find_by(iidxid: params[:id])
-    array = []
-    r_array = []
-    res = true
-    if u.rival
-      array = u.rival
-      res = rival_overlap(array)
-      res = false if 9 < u.rival.count
-    end
-
-    if r.reverse_rival
-      r_array = r.reverse_rival
-      res = rival_overlap(r_array)
-    else
-      res = true
-    end
-
+    res = current_user.add_rival(params[:id])
     if res
-      r_array.push(current_user.iidxid)
-      array.push(params[:id])
-      u.rival = array
-      r.reverse_rival = r_array
-      u.save
-      r.save
       flash[:notice] = "ライバル(#{params[:id]})を追加しました"
     else
       flash[:alert] = '既に登録済みのライバルかライバルが10人を超えています'
     end
-    redirect_to :back
+    render :reload
   end
 
   def remove
-    u = User.find_by(id: current_user.id)
-    r = User.find_by(iidxid: params[:id])
-    array = []
-    if u.rival
-      array = u.rival if u.rival
-      r_array = r.reverse_rival
-      array.delete(params[:id])
-      r_array.delete(current_user.iidxid)
-      u.rival = array
-      r.reverse_rival = r_array
-      u.save
-      r.save
-    end
+    current_user.remove_rival(params[:id])
     flash[:alert] = "ライバル(#{params[:id]})を削除しました"
-    redirect_to :back
+    render :reload
   end
 
   private
@@ -93,11 +58,6 @@ class RivalsController < ApplicationController
       @sheets.push(s) if params[:condition] == 'even' && m.state == r.state
       @sheets.push(s) if params[:condition] == 'lose' && m.state > r.state
     end
-  end
-
-  def rival_overlap(rival)
-    rival.each { |r| return false if r == params[:id] }
-    true
   end
 
   def set_sheet
