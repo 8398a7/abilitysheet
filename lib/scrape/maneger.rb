@@ -21,7 +21,7 @@ module Scrape
       user_id = @current_user.id
       score = Score.find_by(user_id: user_id, sheet_id: sheet_id)
       return false if score.state <= state
-      version = AbilitysheetIidx::Application.config.iidx_version
+      version = Abilitysheet::Application.config.iidx_version
       Log.create(
         user_id: user_id, sheet_id: sheet_id,
         pre_state: score.state, new_state: state, version: version
