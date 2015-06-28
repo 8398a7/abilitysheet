@@ -4,15 +4,16 @@ module Scrape
     def initialize(current_user)
       @agent = Mechanize.new
       @base = 'http://beatmania-clearlamp.com/'
-      @current_user = current_user
       @url = []
+      @current_user = current_user
       search
     end
 
     def sync
-      res = go
-      res
+      go
     end
+
+    private
 
     def maneger_register(title, state)
       return false unless Sheet.exists?(title: title)
@@ -20,7 +21,7 @@ module Scrape
       user_id = @current_user.id
       score = Score.find_by(user_id: user_id, sheet_id: sheet_id)
       return false if score.state <= state
-      version = Abilitysheet::Application.config.iidx_version
+      version = AbilitysheetIidx::Application.config.iidx_version
       Log.create(
         user_id: user_id, sheet_id: sheet_id,
         pre_state: score.state, new_state: state, version: version
@@ -39,24 +40,35 @@ module Scrape
       true
     end
 
-    def extract(url)
-      html = Nokogiri::HTML.parse(@agent.get(@base + url).body, nil, 'UTF-8')
-
-      # Level12フォルダの特定
+    def folder_specific(html)
       data = nil
       html.xpath('//div[@class="list"]').each do |node|
         cnt = 0
         node.xpath('dl/dd[@class="level l12"]').each { |_| cnt += 1 }
         data = node if 150 < cnt
       end
+      data
+    end
 
-      # HTMLを整形
+    def data_shaping(data)
       data = data.to_s.split('</table>')
       elems = nil
       data.each do |d|
         next unless d.index('level l12')
         elems = d.split('</dl>')
       end
+      elems
+    end
+
+    def extract(url)
+      html = Nokogiri::HTML.parse(@agent.get(@base + url).body, nil, 'UTF-8')
+
+      # Level12フォルダの特定
+      data = folder_specific(html)
+      return false unless data
+
+      # HTMLを整形
+      elems = data_shaping(data)
       return false unless elems
 
       # HTMLから曲名と状態を抽出し，登録する

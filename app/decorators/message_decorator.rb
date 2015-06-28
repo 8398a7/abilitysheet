@@ -8,7 +8,6 @@ class MessageDecorator < Draper::Decorator
   end
 
   def created_at
-    return '不明' unless object.created_at
     object.created_at.strftime('%Y/%m/%d %H:%M')
   end
 

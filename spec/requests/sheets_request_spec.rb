@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SheetsController, type: :request do
-  let(:user) { FactoryGirl.create(:user, id: 1) }
+  let(:user) { create(:user, id: 1) }
   context 'ログイン時' do
     before { login_as(user, scope: :user, run_callbacks: false) }
 
@@ -74,8 +74,8 @@ RSpec.describe SheetsController, type: :request do
   context '楽曲更新時' do
     before do
       page.driver.allow_url('platform.twitter.com')
-      FactoryGirl.create(:sheet, id: 1, active: true)
-      FactoryGirl.create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6)
+      create(:sheet, id: 1, active: true)
+      create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6)
       login_as(user, scope: :user, run_callbacks: false)
       visit clear_sheets_path(user.iidxid)
     end

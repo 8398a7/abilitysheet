@@ -33,6 +33,7 @@ group :development do
   gem 'bullet'
   gem 'quiet_assets'
   gem 'rack-dev-mark'
+  gem 'annotate'
 end
 
 # HighCharts

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe ScoresController, type: :request do
-  let(:user) { FactoryGirl.create(:user) }
-  before { FactoryGirl.create(:sheet) }
+  let(:user) { create(:user) }
+  before { create(:sheet) }
   context 'ログイン時' do
     before { login_as(user, scope: :user, run_callbacks: false) }
 

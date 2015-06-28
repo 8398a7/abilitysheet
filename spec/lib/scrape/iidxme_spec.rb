@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Scrape::IIDXME do
-  let(:user) { FactoryGirl.create(:user, iidxid) }
+  let(:user) { create(:user, iidxid) }
   let(:iidxme) { Scrape::IIDXME.new }
 
   context '正常系' do

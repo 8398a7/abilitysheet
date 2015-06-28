@@ -1,29 +1,44 @@
+# == Schema Information
+#
+# Table name: scores
+#
+#  id         :integer          not null, primary key
+#  state      :integer          default(7), not null
+#  score      :integer
+#  bp         :integer
+#  sheet_id   :integer          not null
+#  user_id    :integer          not null
+#  version    :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe Score, type: :model do
   before do
-    FactoryGirl.create(:sheet, id: 1, title: 'one', active: true)
-    FactoryGirl.create(:sheet, id: 2, title: 'two', active: true)
-    FactoryGirl.create(:sheet, id: 3, title: 'three')
-    FactoryGirl.create(:user, id: 1)
-    FactoryGirl.create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6, updated_at: '2015-06-23 15:34')
-    FactoryGirl.create(:score, id: 2, user_id: 1, sheet_id: 2, state: 7, updated_at: '2015-06-23 15:35')
-    FactoryGirl.create(:score, id: 3, user_id: 1, sheet_id: 3, state: 7, updated_at: '2015-06-23 15:35')
+    create(:sheet, id: 1, title: 'one', active: true)
+    create(:sheet, id: 2, title: 'two', active: true)
+    create(:sheet, id: 3, title: 'three')
+    create(:user, id: 1)
+    create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6, updated_at: '2015-06-23 15:34')
+    create(:score, id: 2, user_id: 1, sheet_id: 2, state: 7, updated_at: '2015-06-23 15:35')
+    create(:score, id: 3, user_id: 1, sheet_id: 3, state: 7, updated_at: '2015-06-23 15:35')
   end
 
-  context '.last_updated' do
+  describe '.last_updated' do
     it '新しい順かつNOPLAYではないスコアを返す' do
       expect(User.find_by(id: 1).scores.last_updated.id).to eq 1
     end
   end
 
-  context '.is_active' do
+  describe '.is_active' do
     it 'アクティブな楽曲のスコア一覧を返す' do
       expect(User.find_by(id: 1).scores.is_active.count).to eq 2
     end
   end
 
-  context '#active?' do
+  describe '#active?' do
     it 'activeな曲はtrueを返す' do
       expect(Score.find_by(id: 1).active?).to eq true
     end
@@ -32,7 +47,7 @@ RSpec.describe Score, type: :model do
     end
   end
 
-  context '#update_with_logs' do
+  describe '#update_with_logs' do
     it 'logデータも作られている' do
       score_params = { 'sheet_id' => '1', 'state' => '5' }
       User.find_by(id: 1).scores.find_by(id: 1).update_with_logs(score_params)

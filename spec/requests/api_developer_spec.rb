@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe V22::Developer, type: :request do
   include_context 'api'
   describe 'POST /api/v22/developer/sheets' do
-    before { FactoryGirl.create(:sheet, id: 1) }
+    before { create(:sheet, id: 1) }
     let(:url) { '/api/v22/developer/sheets' }
     let(:method) { 'post' }
     context 'admin user以外' do
-      let(:user) { FactoryGirl.create(:user, admin: false) }
+      let(:user) { create(:user, admin: false) }
       context 'パスワードが正しい' do
         let(:parameters) do
           { user: user.username, password: user.password }
@@ -23,7 +23,7 @@ RSpec.describe V22::Developer, type: :request do
     end
 
     context 'admin user' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
       describe 'パスワードが正しい場合はsheet一覧を返す' do
         let(:parameters) do
           { user: user.username, password: user.password }
@@ -54,7 +54,7 @@ RSpec.describe V22::Developer, type: :request do
     end
   end
   describe 'POST /api/v22/developer/users' do
-    before { FactoryGirl.create(:user) }
+    before { create(:user) }
     let(:url) { '/api/v22/developer/users' }
     let(:method) { 'post' }
     describe 'ユーザの人数を返す' do
