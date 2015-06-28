@@ -7,6 +7,7 @@ RSpec.describe MessagesController, type: :controller do
     it '新しいページが正しく開ける' do
       get :new
       expect(assigns(:message)).to be_a_new(Message)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -15,6 +16,7 @@ RSpec.describe MessagesController, type: :controller do
       expect do
         post :create, message: { body: 'test' }
       end.to change(Message, :count).by(1)
+      expect(response).to have_http_status(:redirect)
     end
   end
 end
