@@ -139,7 +139,7 @@ module Scrape
       tmp = ''
       tr.xpath('td').each do |td|
         tmp = td.to_s.split('a href="/')[1].split('"')[0] if cnt == 1
-        tmp = '' if cnt == 6 && td.text != iidxid
+        tmp = '' if cnt == 6 && td.text != @iidxid
         cnt += 1
       end
       @url.push(tmp + 'sp/') unless tmp == ''
@@ -149,8 +149,8 @@ module Scrape
       @agent.get(@base + 'djdata/')
       @agent.page.encoding = 'UTF-8'
       form = @agent.page.forms[2]
-      iidxid = current_user.iidxid.delete('-')
-      form.searchWord = iidxid
+      @iidxid = current_user.iidxid.delete('-')
+      form.searchWord = @iidxid
       @agent.submit(form)
     end
   end
