@@ -40,9 +40,7 @@ Rails.application.routes.draw do
   post '/rival/register/:id' => 'rivals#register', as: :register_rival
 
   # sheet
-  get '/sheets/:iidxid/clear' => 'sheets#clear', as: :clear_sheets
-  get '/sheets/:iidxid/hard' => 'sheets#hard', as: :hard_sheets
-  get '/sheets/:iidxid/power' => 'sheets#power', as: :power_sheets
+  get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet
 
   # score
   resources :scores, only: [:edit, :update]

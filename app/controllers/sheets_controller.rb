@@ -1,6 +1,19 @@
 class SheetsController < ApplicationController
-  before_action :load_sheet, only: [:clear, :hard]
-  before_action :load_state_example, only: [:clear, :hard]
+  def show
+    exist_instance = %w(power clear hard)
+    unless exist_instance.include?(params[:type])
+      return_404
+      return
+    end
+    unless params[:type] == 'power'
+      load_sheet
+      load_state_example
+    end
+    __send__(params[:type])
+    render params[:type]
+  end
+
+  private
 
   def power
     @sheets = Sheet.active.preload(:ability)
@@ -20,8 +33,6 @@ class SheetsController < ApplicationController
     @sheet_type = 1
     write_remain(1)
   end
-
-  private
 
   def write_remain(type)
     if type == 0

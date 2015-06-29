@@ -15,7 +15,7 @@ table.datatable
       - user = user.decorate
       tr
         td.center = user.id
-        td.center = link_to user.djname, clear_sheets_path(user.iidxid)
+        td.center = link_to user.djname, sheet_path(iidxid: user.iidxid, type: 'hard')
         td.center = user.iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
