@@ -1,7 +1,7 @@
 module Scrape
   class Official
     def initialize(user_id, id, pass)
-      @user_id = user_id
+      @user = User.find_by(id: user_id)
       @base = %(http://p.eagate.573.jp/game/2dx/22/p/djdata/music.html)
 
       @agent = Mechanize.new
@@ -35,7 +35,7 @@ module Scrape
     private
 
     def incorrect_user
-      iidxid = User.find_by(id: @user_id).iidxid
+      iidxid = @user.iidxid
       check = @agent.get('http://p.eagate.573.jp/game/2dx/22/p/djdata/status.html')
       data = check.body.kconv(Kconv::UTF8, Kconv::SJIS)
       html = Nokogiri::HTML.parse(data, nil, 'UTF-8')
@@ -82,6 +82,9 @@ module Scrape
 
     # no_value周り要修正
     def data_register(title, score, miss, l_v)
+      sheet = Sheet.find_by(title: title)
+      return unless sheet
+
       pg = pg_s(score)
       g  = g_s(score)
 
@@ -90,7 +93,7 @@ module Scrape
       g    = no_value(g)
 
       score = pg.to_i * 2 + g.to_i
-      Score.official_create(title, score, miss, l_v, @user_id)
+      @user.update_with_logs({ sheet_id: sheet.id, state: l_v }, score, miss)
       @count += 1
     end
 

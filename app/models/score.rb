@@ -23,11 +23,7 @@ class Score < ActiveRecord::Base
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
   def update_with_logs(score_params, sc = -2, bp = -2)
-    Log.data_create(
-      user_id,
-      score_params['sheet_id'], score_params['state'],
-      sc, bp
-    ) if score_params['state'].to_i != state
+    user.logs.attributes(score_params, sc, bp, user)
     update(score_params)
   end
 
@@ -50,13 +46,6 @@ class Score < ActiveRecord::Base
       sheets = Sheet.all
       version = Abilitysheet::Application.config.iidx_version
       sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
-    end
-
-    def official_create(title, _score, _miss, state, user_id)
-      sheet = Sheet.find_by(title: title)
-      return unless sheet
-      # p title, score, state, miss, user_id
-      update(user_id, sheet.id, state)
     end
 
     def stat_info(scores)
@@ -95,18 +84,6 @@ class Score < ActiveRecord::Base
         'FULL COMBO' => 0, 'EXH CLEAR' => 1, 'HARD CLEAR' => 2, CLEAR: 3, 'EASY CLEAR' => 4,
         'ASSIST CLEAR' => 5, FAILED: 6, 'NO PLAY' => 7
       }
-    end
-
-    def update(id, sheet_id, state, sc = -2, bp = -2)
-      version = Abilitysheet::Application.config.iidx_version
-      score = find_by(user_id: id, sheet_id: sheet_id, version: version)
-      Log.data_create(id, sheet_id, state, sc, bp) if score.state != state
-      score = Score.new if score.nil?
-      score.user_id = id
-      score.sheet_id = sheet_id
-      score.state = state
-      score.version = version
-      score.save
     end
   end
 end
