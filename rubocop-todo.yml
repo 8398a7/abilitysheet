@@ -26,6 +26,9 @@ MethodLength:
 ParameterLists:
   Max: 12
 
+Metrics/ModuleLength:
+  Max: 200
+
 AccessorMethodName:
   Enabled: false
 
