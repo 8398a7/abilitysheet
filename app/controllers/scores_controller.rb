@@ -8,12 +8,13 @@ class ScoresController < ApplicationController
       return_404
       return
     end
-    @sheet = Sheet.find_by(id: params[:id])
-    if User.find_by(id: current_user.id).scores.exists?(sheet_id: params[:id], version: @version)
-      @score = User.find_by(id: current_user.id).scores.find_by(sheet_id: params[:id], version: @version)
-    else
-      @score = Score.new
+    unless current_user.scores.exists?(sheet_id: params[:id], version: @version)
+      flash[:alert] = 'この状態が続くようであればお問い合わせください'
+      render :reload
+      return
     end
+    @sheet = Sheet.find_by(id: params[:id])
+    @score = current_user.scores.find_by(sheet_id: params[:id], version: @version)
     render :show_modal
   end
 

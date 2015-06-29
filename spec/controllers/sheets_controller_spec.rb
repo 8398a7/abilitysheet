@@ -5,23 +5,23 @@ RSpec.describe SheetsController, type: :controller do
     @user = create(:user)
   end
 
-  describe 'GET #power' do
+  describe 'GET #show -> power' do
     it 'response ok' do
-      get :power, iidxid: @user.iidxid
+      get :show, iidxid: @user.iidxid, type: 'power'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'GET #clear' do
+  describe 'GET #show -> #clear' do
     it 'response ok' do
-      get :clear, iidxid: @user.iidxid
+      get :show, iidxid: @user.iidxid, type: 'clear'
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe 'GET #hard' do
+  describe 'GET #show -> #hard' do
     it 'response ok' do
-      get :hard, iidxid: @user.iidxid
+      get :show, iidxid: @user.iidxid, type: 'hard'
       expect(response).to have_http_status(:success)
     end
   end

@@ -84,9 +84,6 @@ end
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'dotenv-rails'
 
-# js <=> rails
-gem 'gon'
-
 # errbit
 gem 'airbrake'
 

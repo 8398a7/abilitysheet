@@ -23,6 +23,9 @@
 #  admin                  :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  failed_attempts        :integer          default(0), not null
+#  unlock_token           :string
+#  locked_at              :datetime
 #
 
 class User < ActiveRecord::Base
@@ -31,7 +34,7 @@ class User < ActiveRecord::Base
   serialize :rival
   serialize :reverse_rival
 
-  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable, :lockable
   attr_accessor :login
 
   include Rival

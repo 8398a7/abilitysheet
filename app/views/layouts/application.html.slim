@@ -7,7 +7,6 @@ html
     meta name="keywords" content="iidx,IIDX,beatmania,☆12,☆12参考表,☆12ノマゲ参考表,☆12ハード参考表,地力表"
     meta name="viewport" content="width=device-width, initial-scale=1"
     = stylesheet_link_tag    'application', 'data-turbolinks-track': true, media: 'all'
-    = include_gon
     = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
     = analytics_init if Rails.env.production?
@@ -31,9 +30,9 @@ html
               a = fa_icon 'database', text: 'マイページ'
               .uk-dropdown.uk-dropdown-navbar
                 ul.uk-nav.uk-nav-navbar
-                  li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
-                  li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
-                  li = link_to '地力値参考表', power_sheets_path(current_user.iidxid)
+                  li = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear')
+                  li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
+                  li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
                   li = link_to '更新データ', list_logs_path(current_user.iidxid)
                   - if current_user.logs.exists?
                     li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
@@ -98,9 +97,9 @@ html
           - if user_signed_in?
             li.uk-nav-header
               = fa_icon 'database', text: 'マイページ'
-            li = link_to 'ノマゲ参考表', clear_sheets_path(current_user.iidxid)
-            li = link_to 'ハード参考表', hard_sheets_path(current_user.iidxid)
-            li = link_to '地力値参考表', power_sheets_path(current_user.iidxid)
+            li = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear')
+            li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
+            li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
             li = link_to '更新データ', list_logs_path(current_user.iidxid)
             - if current_user.logs.exists?
               li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
