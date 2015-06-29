@@ -18,16 +18,9 @@ module Scrape
     def maneger_register(title, state)
       return false unless Sheet.exists?(title: title)
       sheet_id = Sheet.find_by(title: title).id
-      user_id = @current_user.id
-      score = Score.find_by(user_id: user_id, sheet_id: sheet_id)
+      score = @current_user.scores.find_by(sheet_id: sheet_id)
       return false if score.state <= state
-      version = Abilitysheet::Application.config.iidx_version
-      Log.create(
-        user_id: user_id, sheet_id: sheet_id,
-        pre_state: score.state, new_state: state, version: version
-      )
-      score.state = state
-      score.save
+      score.update_with_logs({ 'sheet_id' => sheet_id, 'state' => state }, nil, nil)
       true
     end
 
