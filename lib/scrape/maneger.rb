@@ -67,12 +67,16 @@ module Scrape
       # HTMLから曲名と状態を抽出し，登録する
       elems.each do |elem|
         break if elem.index('</div>')
-        state = value(elem.split('<dt class="')[1].split('">')[0])
-        title = title_check(elem.split('<dd class="musicName">')[1].split('</dd>')[0].strip)
-        title = gigadelic_innocentwalls(title, elem)
-        maneger_register(title, state.to_i)
+        preparation_register(elem)
       end
       true
+    end
+
+    def preparation_register(elem)
+      state = value(elem.split('<dt class="')[1].split('">')[0])
+      title = title_check(elem.split('<dd class="musicName">')[1].split('</dd>')[0].strip)
+      title = gigadelic_innocentwalls(title, elem)
+      maneger_register(title, state.to_i)
     end
 
     def gigadelic_innocentwalls(title, e)
@@ -121,25 +125,33 @@ module Scrape
 
     def search(current_user = @current_user)
       # ユーザの探索
-      @agent.get(@base + 'djdata/')
-      @agent.page.encoding = 'UTF-8'
-      form = @agent.page.forms[2]
-      iidxid = current_user.iidxid.delete('-')
-      form.searchWord = iidxid
-      @agent.submit(form)
+      search_user(current_user)
 
       # そのユーザのページのURLを配列に格納
       html = Nokogiri::HTML.parse(@agent.page.body, nil, 'UTF-8')
       html.xpath('//table/tbody/tr').each do |tr|
-        cnt = 0
-        tmp = ''
-        tr.xpath('td').each do |td|
-          tmp = td.to_s.split('a href="/')[1].split('"')[0] if cnt == 1
-          tmp = '' if cnt == 6 && td.text != iidxid
-          cnt += 1
-        end
-        @url.push(tmp + 'sp/') unless tmp == ''
+        collect_user_page(tr)
       end
+    end
+
+    def collect_user_page(tr)
+      cnt = 0
+      tmp = ''
+      tr.xpath('td').each do |td|
+        tmp = td.to_s.split('a href="/')[1].split('"')[0] if cnt == 1
+        tmp = '' if cnt == 6 && td.text != @iidxid
+        cnt += 1
+      end
+      @url.push(tmp + 'sp/') unless tmp == ''
+    end
+
+    def search_user(current_user = @current_user)
+      @agent.get(@base + 'djdata/')
+      @agent.page.encoding = 'UTF-8'
+      form = @agent.page.forms[2]
+      @iidxid = current_user.iidxid.delete('-')
+      form.searchWord = @iidxid
+      @agent.submit(form)
     end
   end
 end
