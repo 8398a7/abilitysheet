@@ -17,10 +17,8 @@ class Admin::UsersController < ApplicationController
     render :reload
   end
 
-  def show
-  end
-
   def edit
+    @check = @user.scores.is_active.select(:id).count == Sheet.active.select(:id).count ? true : false
     render :show_modal_form
   end
 
@@ -31,6 +29,16 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user.destroy
+    render :reload
+  end
+
+  def lock
+    @user.lock_access!
+    render :reload
+  end
+
+  def unlock
+    @user.unlock_access!
     render :reload
   end
 

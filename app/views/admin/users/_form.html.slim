@@ -13,6 +13,10 @@
     .uk-modal-header
       h4.bold
         = fa_icon 'user', text: title
+        - if @check
+          = fa_icon 'check'
+        - else
+          = fa_icon 'ban'
 
     .uk-form-row
       label.uk-form-label アカウント名
