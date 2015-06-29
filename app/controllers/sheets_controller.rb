@@ -11,13 +11,13 @@ class SheetsController < ApplicationController
 
   def clear
     @sheets = @sheets.order(:n_ability, :title)
-    gon.sheet_type = 0
+    @sheet_type = 0
     write_remain(0)
   end
 
   def hard
     @sheets = @sheets.order(:h_ability, :title)
-    gon.sheet_type = 1
+    @sheet_type = 1
     write_remain(1)
   end
 
