@@ -51,13 +51,15 @@ class RivalsController < ApplicationController
     copy = @sheets
     @sheets = []
     rival_id = User.find_by(iidxid: params[:id]).id
-    copy.each do |s|
-      m = s.scores.find_by(user_id: current_user.id)
-      r = s.scores.find_by(user_id: rival_id)
-      @sheets.push(s) if params[:condition] == 'win' && m.state < r.state
-      @sheets.push(s) if params[:condition] == 'even' && m.state == r.state
-      @sheets.push(s) if params[:condition] == 'lose' && m.state > r.state
-    end
+    copy.each { |s| copy_sheets(s, rival_id) }
+  end
+
+  def copy_sheets(s, rival_id)
+    m = s.scores.find_by(user_id: current_user.id)
+    r = s.scores.find_by(user_id: rival_id)
+    @sheets.push(s) if params[:condition] == 'win' && m.state < r.state
+    @sheets.push(s) if params[:condition] == 'even' && m.state == r.state
+    @sheets.push(s) if params[:condition] == 'lose' && m.state > r.state
   end
 
   def set_sheet
