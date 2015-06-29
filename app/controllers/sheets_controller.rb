@@ -1,6 +1,6 @@
 class SheetsController < ApplicationController
-  before_action :set_sheet, only: [:clear, :hard]
-  before_action :set_state_example, only: [:clear, :hard]
+  before_action :load_sheet, only: [:clear, :hard]
+  before_action :load_state_example, only: [:clear, :hard]
 
   def power
     @sheets = Sheet.active.preload(:ability)
@@ -33,24 +33,27 @@ class SheetsController < ApplicationController
     end
   end
 
-  def set_state_example
+  def load_state_example
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
   end
 
-  def set_sheet
+  def load_sheet
     unless User.exists?(iidxid: params[:iidxid])
       render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
       return
     end
+    load_static
     @sheets = Sheet.active
-    s = User.find_by(iidxid: params[:iidxid]).scores.where(sheet_id: @sheets.map(&:id))
-    @color = Score.convert_color(s)
-    @stat = Score.stat_info(s)
+    @scores = User.find_by(iidxid: params[:iidxid]).scores.is_active
+    @color = Score.convert_color(@scores)
+    @stat = Score.stat_info(@scores)
+  end
+
+  def load_static
     @power = Static::POWER
     @list_color = Static::COLOR
     @versions = Static::VERSION
     @versions.push(['ALL', 0]) if @versions.count < 19
-    @scores = User.find_by(iidxid: params[:iidxid]).scores
   end
 end
