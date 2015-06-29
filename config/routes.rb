@@ -18,7 +18,10 @@ Rails.application.routes.draw do
       post :active, on: :member
       post :inactive, on: :member
     end
-    resources :users
+    resources :users do
+      post :lock, on: :member
+      post :unlock, on: :member
+    end
     resources :sidekiq, only: [:index]
     resources :tweets, only: [:new, :create]
     resources :messages, only: [:index] do
