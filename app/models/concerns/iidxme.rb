@@ -7,11 +7,11 @@ module IIDXME
       elems.each do |elem|
         title = gigadelic_innocentwalls(elem['data'])
         title = title_check(title)
-        next unless Sheet.find_by(title: title)
-        sheet_id = Sheet.find_by(title: title).id
+        sheet = Sheet.find_by(title: title)
+        next unless sheet
         state = reverse(elem['clear'])
-        next if user.scores.find_by(sheet_id: sheet_id).state <= state
-        user.logs.update({ 'sheet_id' => sheet_id, 'state' => state }, nil, nil)
+        next if user.scores.find_by(sheet_id: sheet.id).state <= state
+        user.logs.update({ 'sheet_id' => sheet.id, 'state' => state }, nil, nil)
       end
       true
     end
