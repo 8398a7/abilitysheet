@@ -29,6 +29,7 @@ class Log < ActiveRecord::Base
       return
     end
     pre_state = owner.scores.find_by(sheet_id: score_params['sheet_id']).try(:state) || 7
+    return if pre_state == score_params['state'].to_i
     owner.logs.create(
       sheet_id: score_params['sheet_id'],
       pre_state: pre_state, new_state: score_params['state'],
