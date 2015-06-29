@@ -7,13 +7,16 @@ module IRT
     end
 
     def self.update_power(k, v, type)
+      pattern = [
+        { fc: v },
+        { exh: v },
+        { h: v },
+        { c: v },
+        { e: v },
+        { aaa: v }
+      ]
       power = Ability.find_by(sheet_id: k)
-      power.update(fc:   v) if type == 0
-      power.update(exh:  v) if type == 1
-      power.update(h:    v) if type == 2
-      power.update(c:    v) if type == 3
-      power.update(e:    v) if type == 4
-      power.update(aaa:  v) if type == 5
+      power.update(pattern[type])
     end
   end
 end
