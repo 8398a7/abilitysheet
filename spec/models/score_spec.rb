@@ -63,7 +63,8 @@ RSpec.describe Score, type: :model do
     it 'stateが変化しない場合はlogを作らない' do
       score_params = { 'sheet_id' => '1', 'state' => '6' }
       User.find_by(id: 1).scores.find_by(id: 1).update_with_logs(score_params)
-      expect(User.find_by(id: 1).logs.empty?).to eq true
+      User.find_by(id: 1).scores.find_by(id: 1).update_with_logs(score_params)
+      expect(User.find_by(id: 1).logs.count).to eq 1
     end
   end
 end

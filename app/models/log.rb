@@ -23,15 +23,15 @@ class Log < ActiveRecord::Base
   include Graph
 
   def self.attributes(score_params, _sc = -2, _bp = -2, owner)
-    log = find_by(sheet_id: score_params[:sheet_id], created_at: Date.today)
+    log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
     if log
-      log.update(new_state: score_params[:state])
+      log.update(new_state: score_params['state'])
       return
     end
-    pre_state = owner.scores.find_by(sheet_id: score_params[:sheet_id]).try(:state) || 7
+    pre_state = owner.scores.find_by(sheet_id: score_params['sheet_id']).try(:state) || 7
     owner.logs.create(
-      sheet_id: score_params[:sheet_id],
-      pre_state: pre_state, new_state: score_params[:state],
+      sheet_id: score_params['sheet_id'],
+      pre_state: pre_state, new_state: score_params['state'],
       pre_score: nil, new_score: nil, pre_bp: nil, new_bp: nil,
       version: Abilitysheet::Application.config.iidx_version
     )

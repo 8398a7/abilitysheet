@@ -20,18 +20,21 @@ require 'rails_helper'
 RSpec.describe Log, type: :model do
   describe '.attributes' do
     before { create(:sheet, id: 1) }
+    let(:parameter) do
+      { 'sheet_id' => 1, 'state' => 5 }
+    end
     let(:user) { create(:user, id: 1) }
     context '初めての更新の場合' do
       it 'ログデータが作られる' do
-        expect { user.logs.attributes({ sheet_id: 1, state: 5 }, nil, nil, user) }.to change(Log, :count).by(1)
+        expect { user.logs.attributes(parameter, nil, nil, user) }.to change(Log, :count).by(1)
         expect(user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 5)).to eq true
       end
     end
 
     context '同日に同じ楽曲を更新する場合' do
-      before { user.logs.attributes({ sheet_id: 1, state: 5 }, nil, nil, user) }
+      before { user.logs.attributes(parameter, nil, nil, user) }
       it 'ログデータは更新される' do
-        expect { user.logs.attributes({ sheet_id: 1, state: 0 }, nil, nil, user) }.to change(Log, :count).by(0)
+        expect { user.logs.attributes({ 'sheet_id' => 1, 'state' => 0 }, nil, nil, user) }.to change(Log, :count).by(0)
         expect(user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 0)).to eq true
       end
     end
@@ -40,7 +43,7 @@ RSpec.describe Log, type: :model do
       before { create(:log, user_id: 1, sheet_id: 1, created_at: Date.today - 1, pre_state: 7, new_state: 6) }
       it 'ログデータが作られる' do
         create(:score, user_id: 1, sheet_id: 1, state: 6)
-        expect { user.logs.attributes({ sheet_id: 1, state: 5 }, nil, nil, user) }.to change(Log, :count).by(1)
+        expect { user.logs.attributes(parameter, nil, nil, user) }.to change(Log, :count).by(1)
         expect(user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6)).to eq true
         expect(user.logs.exists?(sheet_id: 1, pre_state: 6, new_state: 5)).to eq true
       end

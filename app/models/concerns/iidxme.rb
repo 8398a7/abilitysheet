@@ -11,7 +11,7 @@ module IIDXME
         sheet_id = Sheet.find_by(title: title).id
         state = reverse(elem['clear'])
         next if user.scores.find_by(sheet_id: sheet_id).state <= state
-        user.logs.update({ sheet_id: sheet_id, state: state }, nil, nil)
+        user.logs.update({ 'sheet_id' => sheet_id, 'state' => state }, nil, nil)
       end
       true
     end
