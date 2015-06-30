@@ -22,6 +22,12 @@ RSpec.describe ScoresController, type: :controller do
         expect(response).to have_http_status(:success)
       end
     end
+    context 'xhrリクエストではない' do
+      it 'response redirect' do
+        get :edit, id: 1
+        expect(response).to have_http_status(:redirect)
+      end
+    end
   end
 
   describe 'PUT #update' do
