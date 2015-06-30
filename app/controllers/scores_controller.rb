@@ -2,12 +2,9 @@ class ScoresController < ApplicationController
   before_action :authenticate_user!
   before_action :version_confirm
   before_action :load_score, only: [:update]
+  before_action :check_xhr
 
   def edit
-    unless request.xhr?
-      return_404
-      return
-    end
     unless current_user.scores.exists?(sheet_id: params[:id], version: @version)
       flash[:alert] = 'この状態が続くようであればお問い合わせください'
       render :reload
