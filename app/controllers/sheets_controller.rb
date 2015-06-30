@@ -1,7 +1,11 @@
 class SheetsController < ApplicationController
   def show
-    exist_instance = %w(power clear hard)
-    unless exist_instance.include?(params[:type])
+    action_routes = {
+      'power' => :power,
+      'clear' => :clear,
+      'hard' => :hard
+    }
+    unless action_routes[params[:type]]
       return_404
       return
     end
@@ -9,8 +13,8 @@ class SheetsController < ApplicationController
       load_sheet
       load_state_example
     end
-    __send__(params[:type])
-    render params[:type]
+    __send__(action_routes[params[:type]])
+    render action_routes[params[:type]]
   end
 
   private
