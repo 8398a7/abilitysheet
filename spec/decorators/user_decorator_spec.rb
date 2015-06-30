@@ -1,13 +1,9 @@
 require 'spec_helper'
 
 describe UserDecorator do
-  let(:instance) do
-    described_class.new(user)
-  end
+  let(:instance) { described_class.new(user) }
 
-  let(:user) do
-    create(:user)
-  end
+  let(:user) { create(:user) }
 
   describe '#pref' do
     it 'returns pref of its pref' do
