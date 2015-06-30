@@ -35,3 +35,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
+Capybara::Webkit.configure do |config|
+  config.allow_url('http://platform.twitter.com/widgets.js')
+end
