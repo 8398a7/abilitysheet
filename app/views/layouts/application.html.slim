@@ -16,6 +16,8 @@ html
     .loading-container = image_tag('loading.gif')
     .uk-modal
 
+    - if current_user && current_user.logs.exists?
+      - recent = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
     nav.uk-navbar.uk-navbar-attached
       .uk-container.uk-container-center
         = link_to root_path, class: 'uk-navbar-brand'
@@ -34,9 +36,8 @@ html
                   li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
                   li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
                   li = link_to '更新データ', list_logs_path(current_user.iidxid)
-                  - if current_user.logs.exists?
-                    li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
-
+                  - if recent
+                    li = recent
             li.uk-parent data-uk-dropdown=""
               a = fa_icon 'user-times', text: 'ライバル'
               .uk-dropdown.uk-dropdown-navbar
@@ -101,8 +102,8 @@ html
             li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
             li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
             li = link_to '更新データ', list_logs_path(current_user.iidxid)
-            - if current_user.logs.exists?
-              li = link_to '最近の更新', show_log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_at).last.created_at)
+            - if recent
+              = recent
             li.uk-nav-header
               = fa_icon 'user-times', text: 'ライバル'
             li = link_to 'ライバル一覧', list_rival_path
