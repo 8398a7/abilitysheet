@@ -1,23 +1,25 @@
 class SheetsController < ApplicationController
+  before_filter :check_action
+
   def show
-    action_routes = {
-      'power' => :power,
-      'clear' => :clear,
-      'hard' => :hard
-    }
-    unless action_routes[params[:type]]
-      return_404
-      return
-    end
     unless params[:type] == 'power'
       load_sheet
       load_state_example
     end
-    __send__(action_routes[params[:type]])
-    render action_routes[params[:type]]
+    __send__(@action_routes[params[:type]])
+    render @action_routes[params[:type]]
   end
 
   private
+
+  def check_action
+    @action_routes = {
+      'power' => :power,
+      'clear' => :clear,
+      'hard' => :hard
+    }
+    return_404 unless @action_routes[params[:type]]
+  end
 
   def power
     @sheets = Sheet.active.preload(:ability)
