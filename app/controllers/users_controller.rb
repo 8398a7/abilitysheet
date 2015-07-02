@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     else
       user_ids = Score.order(updated_at: :desc).pluck(:user_id).uniq
       user_ids.slice!(200, user_ids.count - 1)
-      @users = User.where(id: user_ids)
+      @users = User.select(:iidxid, :djname, :pref, :grade, :rival).where(id: user_ids)
     end
     @hoge = @users
   end
@@ -14,15 +14,15 @@ class UsersController < ApplicationController
   def call_back
     json = {}
     color = Static::COLOR
-    users = User.where(id: JSON.parse(params[:id]))
+    users = User.select(:id, :iidxid).where(id: JSON.parse(params[:id]))
     users.each do |user|
       score = user.scores.last_updated
       unless score
-        json[user.id] = { title: '', stateColor: '', updatedAt: '' }
+        json[user.iidxid] = { title: '', stateColor: '', updatedAt: '' }
         next
       end
       score = score.decorate
-      json[user.id] = {
+      json[user.iidxid] = {
         title: score.title,
         stateColor: color[score.state],
         updatedAt: "<a href=\"#{show_log_path(user.iidxid, score.updated_at)}\">#{score.updated_at}</a>"

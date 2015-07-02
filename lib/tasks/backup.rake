@@ -10,23 +10,23 @@ namespace :db do
       class Base
         def dump_to_backup(dirname)
           @dumper.dump(
-            File.new("#{ dirname }/data.#{ @extension }", 'w')
+            File.new("#{dirname}/data.#{@extension}", 'w')
           )
         end
       end
     end
 
     def backup_dir
-      "#{ Rails.root }/tmp/abilitysheet_backup"
+      "#{Rails.root}/tmp/abilitysheet_backup"
     end
 
     def git_checkout(env)
-      system("/bin/zsh -l -c \"cd #{ backup_dir } && git checkout #{ env }\"")
+      system("/bin/zsh -l -c \"cd #{backup_dir} && git checkout #{env} && git pull origin #{env}\"")
     end
 
     def git_exec(env)
-      command = %(git add -A && git commit -m '[#{ env }] backup update' && git push origin #{ env })
-      system("/bin/zsh -l -c \"cd #{ backup_dir } && #{ command }\"")
+      command = %(git add -A && git commit -m '[#{env}] backup update' && git push origin #{env})
+      system("/bin/zsh -l -c \"cd #{backup_dir} && #{command}\"")
     end
 
     def env_init(env)
