@@ -12,6 +12,7 @@ module Users
     def exist_sidekiq
       Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
     rescue
+      NoticeMail.waning_sidekiq.deliver
       flash[:alert] = '何らかの不具合が生じしています．管理人にお問い合わせください．(Twitter->@IIDX_12)'
       redirect_to new_user_registration_path
     end
