@@ -1,12 +1,20 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     after_action :score_create, only: [:create]
+    before_action :exist_sidekiq, only: [:create]
 
     def create
       super
     end
 
     private
+
+    def exist_sidekiq
+      Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
+    rescue
+      flash[:alert] = '何らかの不具合が生じしています．管理人にお問い合わせください．(Twitter->@IIDX_12)'
+      redirect_to new_user_registration_path
+    end
 
     def score_create
       iidxid = env['rack.request.form_hash']['user']['iidxid']
