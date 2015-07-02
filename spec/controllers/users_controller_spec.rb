@@ -24,7 +24,7 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     it 'jsonが返ってくる' do
-      ret = '{"1":{"title":"","stateColor":"","updatedAt":""},"2":{"title":"","stateColor":"","updatedAt":""}}'
+      ret = '{"0000-0001":{"title":"","stateColor":"","updatedAt":""},"0000-0002":{"title":"","stateColor":"","updatedAt":""}}'
       expect(response.body).to eq ret
     end
   end

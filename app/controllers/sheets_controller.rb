@@ -42,10 +42,10 @@ class SheetsController < ApplicationController
 
   def write_remain(type)
     if type == 0
-      remain_num = @scores.select(:state).where(state: 5..7).is_active.count
+      remain_num = @scores.where(state: 5..7).size
       @remain = "☆12ノマゲ参考表(未クリア#{remain_num})"
     else
-      remain_num = @scores.select(:state).where(state: 3..7).is_active.count
+      remain_num = @scores.where(state: 3..7).size
       @remain = "☆12ハード参考表(未難#{remain_num})"
     end
   end
@@ -61,8 +61,8 @@ class SheetsController < ApplicationController
       return
     end
     load_static
-    @sheets = Sheet.active
-    @scores = User.find_by(iidxid: params[:iidxid]).scores.is_active
+    @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
+    @scores = User.select(:id).find_by(iidxid: params[:iidxid]).scores.select(:sheet_id, :state).is_active
     @color = Score.convert_color(@scores)
     @stat = Score.stat_info(@scores)
   end

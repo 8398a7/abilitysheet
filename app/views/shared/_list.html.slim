@@ -1,6 +1,5 @@
 table.datatable
   thead
-    th.center No
     th.center DJNAME
     th.center IIDX-ID
     th.center 段位
@@ -14,14 +13,13 @@ table.datatable
     - @users.each do |user|
       - user = user.decorate
       tr
-        td.center = user.id
         td.center = link_to user.djname, sheet_path(iidxid: user.iidxid, type: 'hard')
         td.center = user.iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        td.center.load id="#{user.id}-updated-at"
-        td.center.load id="#{user.id}-music-title"
-        td.center.load id="#{user.id}-music-state"
+        td.center.load id="#{user.iidxid}-updated-at"
+        td.center.load id="#{user.iidxid}-music-title"
+        td.center.load id="#{user.iidxid}-music-state"
         - if user_signed_in?
           td
             - if current_user.rival && current_user.rival.include?(user.iidxid)
@@ -43,7 +41,7 @@ coffee:
       $("##{k}-music-title").text(v.title)
       $("##{k}-music-state").css('background-color', v.stateColor)
     $('.datatable').dataTable
-      order: [5, 'desc']
+      order: [4, 'desc']
       aLengthMenu: [25]
 
   $.ajax
