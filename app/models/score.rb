@@ -28,7 +28,7 @@ class Score < ActiveRecord::Base
   end
 
   def self.last_updated
-    order(updated_at: :desc).find_by(state: 0..6)
+    order(updated_at: :desc).where('state != ?', 7).first
   end
 
   def lamp_string
