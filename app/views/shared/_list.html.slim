@@ -10,18 +10,20 @@ table.datatable
     - if user_signed_in?
       th.center ライバル情報
   tbody
+    - show_rival_buttons = user_signed_in?
     - @users.each do |user|
       - user = user.decorate
       - score = @scores_map[user.id].decorate
+      - iidxid = user.iidxid
       tr
-        td.center = link_to user.djname, sheet_path(iidxid: user.iidxid, type: 'hard')
-        td.center = user.iidxid
+        td.center = link_to user.djname, sheet_path(iidxid: iidxid, type: 'hard')
+        td.center = iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        td.center.load id="#{user.iidxid}-updated-at" = score.updated_at
-        td.center.load id="#{user.iidxid}-music-title" = score.title
-        td.center.load id="#{user.iidxid}-music-state" style="background-color: #{Static::COLOR[score.state]}"
-        - if user_signed_in?
+        td.center.load = score.updated_at
+        td.center.load = score.title
+        td.center.load style="background-color: #{Static::COLOR[score.state]}"
+        - if show_rival_buttons
           td
             - if current_user.rival && current_user.rival.include?(user.iidxid)
               = link_to 'ライバル比較', clear_rival_path(user.iidxid)

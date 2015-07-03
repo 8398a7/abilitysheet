@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       user_count = 0
       while user_count < 200
         limit_count *= 1.2
-        @scores = Score.where('state <= 6').order(updated_at: :desc).limit(limit_count)
+        @scores = Score.includes(:sheet).where('state <= 6').order(updated_at: :desc).limit(limit_count)
         @scores_map = {}
         user_ids = []
         @scores.each do |score|
