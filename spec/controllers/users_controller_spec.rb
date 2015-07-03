@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   before do
     (1..2).each do |i|
-      create(:user, iidxid: format('0000-%04d', i), username: format('test%d', i))
+      create(:user, id: i, iidxid: format('0000-%04d', i), username: format('test%d', i))
     end
+    create(:score, user_id: 1, state: 6, sheet_id: 1)
   end
   describe 'GET #index' do
     before { get :index }
@@ -13,19 +14,6 @@ RSpec.describe UsersController, type: :controller do
     end
     it 'プレイヤー数の取得が正しい' do
       expect(assigns(:cnt)).to eq 2
-    end
-  end
-
-  describe 'POST #call_back' do
-    before do
-      post :call_back, id: '[1, 2, 3]'
-    end
-    it 'response ok' do
-      expect(response).to have_http_status(:success)
-    end
-    it 'jsonが返ってくる' do
-      ret = '{"0000-0001":{"title":"","stateColor":"","updatedAt":""},"0000-0002":{"title":"","stateColor":"","updatedAt":""}}'
-      expect(response.body).to eq ret
     end
   end
 end

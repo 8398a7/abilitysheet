@@ -4,30 +4,24 @@ class UsersController < ApplicationController
     if params[:query] && params[:query].present?
       @users = User.search_djname(params[:query].upcase)
     else
-      user_ids = Score.order(updated_at: :desc).pluck(:user_id).uniq
-      user_ids.slice!(200, user_ids.count - 1)
-      @users = User.select(:iidxid, :djname, :pref, :grade, :rival).where(id: user_ids)
-    end
-    @hoge = @users
-  end
-
-  def call_back
-    json = {}
-    color = Static::COLOR
-    users = User.select(:id, :iidxid).where(id: JSON.parse(params[:id]))
-    users.each do |user|
-      score = user.scores.last_updated
-      unless score
-        json[user.iidxid] = { title: '', stateColor: '', updatedAt: '' }
-        next
+      limit_count = 4000
+      user_count = 0
+      scores_count = Score.select(:id).count
+      while user_count < 200 && user_count < scores_count
+        limit_count *= 1.2
+        @scores = Score.includes(:sheet).where.not(state: 7).order(updated_at: :desc).limit(limit_count)
+        @scores_map = {}
+        user_ids = []
+        @scores.each do |score|
+          user_ids.push score.user_id
+          @scores_map[score.user_id] ||= score
+          @scores_map[score.user_id] = score if @scores_map[score.user_id].updated_at < score.updated_at
+        end
+        user_ids.uniq!
+        user_count = user_ids.count
       end
-      score = score.decorate
-      json[user.iidxid] = {
-        title: score.title,
-        stateColor: color[score.state],
-        updatedAt: "<a href=\"#{show_log_path(user.iidxid, score.updated_at)}\">#{score.updated_at}</a>"
-      }
+      user_ids.slice!(200, user_ids.count - 1)
+      @users = User.where(id: user_ids)
     end
-    render json: json
   end
 end
