@@ -29,11 +29,26 @@ IIDXのSP☆12の参考表をシステム化したものです．
 * DPへの対応
 * プレイヤーの地力値推定，及び楽曲推薦
 
+## Setting
+
+```sh
+git clone https://github.com/8398a7/abilitysheet.git
+cd abilitysheet
+bundle install -j4 --path vendor/bundle
+rake db:create db:migrate
+rails s
+```
+
 ## Help
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
 [![Join the chat at https://gitter.im/8398a7/abilitysheet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/8398a7/abilitysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
 お気軽にツイッターやgitterで声をかけて下さい，とても喜びます．
+
+## Database
+
+PostgreSQLを採用しています．
+MySQLを使わなかった理由については[issue#130](https://github.com/8398a7/abilitysheet/issues/130)を参照ください．
 
 ## License
 
