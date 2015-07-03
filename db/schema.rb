@@ -13,33 +13,30 @@
 
 ActiveRecord::Schema.define(version: 20150703072925) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "abilities", force: :cascade do |t|
-    t.integer  "sheet_id"
-    t.float    "fc"
-    t.float    "exh"
-    t.float    "h"
-    t.float    "c"
-    t.float    "e"
-    t.float    "aaa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "sheet_id",   limit: 4
+    t.float    "fc",         limit: 24
+    t.float    "exh",        limit: 24
+    t.float    "h",          limit: 24
+    t.float    "c",          limit: 24
+    t.float    "e",          limit: 24
+    t.float    "aaa",        limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   add_index "abilities", ["sheet_id"], name: "index_abilities_on_sheet_id", using: :btree
 
   create_table "logs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sheet_id"
-    t.integer "pre_state"
-    t.integer "new_state"
-    t.integer "pre_score"
-    t.integer "new_score"
-    t.integer "pre_bp"
-    t.integer "new_bp"
-    t.integer "version"
+    t.integer "user_id",    limit: 4
+    t.integer "sheet_id",   limit: 4
+    t.integer "pre_state",  limit: 4
+    t.integer "new_state",  limit: 4
+    t.integer "pre_score",  limit: 4
+    t.integer "new_score",  limit: 4
+    t.integer "pre_bp",     limit: 4
+    t.integer "new_bp",     limit: 4
+    t.integer "version",    limit: 4
     t.date    "created_at"
   end
 
@@ -47,33 +44,33 @@ ActiveRecord::Schema.define(version: 20150703072925) do
   add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
-    t.string   "body"
-    t.string   "email"
-    t.inet     "ip",                         null: false
-    t.integer  "user_id"
-    t.boolean  "state",      default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "body",       limit: 255
+    t.string   "email",      limit: 255
+    t.string   "ip",         limit: 255,                 null: false
+    t.integer  "user_id",    limit: 4
+    t.boolean  "state",                  default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "notices", force: :cascade do |t|
-    t.string  "body"
-    t.integer "state"
-    t.boolean "active",     default: true
+    t.string  "body",       limit: 255
+    t.integer "state",      limit: 4
+    t.boolean "active",                 default: true
     t.date    "created_at"
   end
 
   create_table "scores", force: :cascade do |t|
-    t.integer  "state",      default: 7, null: false
-    t.integer  "score"
-    t.integer  "bp"
-    t.integer  "sheet_id",               null: false
-    t.integer  "user_id",                null: false
-    t.integer  "version",                null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "state",      limit: 4, default: 7, null: false
+    t.integer  "score",      limit: 4
+    t.integer  "bp",         limit: 4
+    t.integer  "sheet_id",   limit: 4,             null: false
+    t.integer  "user_id",    limit: 4,             null: false
+    t.integer  "version",    limit: 4,             null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "scores", ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
@@ -81,39 +78,39 @@ ActiveRecord::Schema.define(version: 20150703072925) do
   add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "sheets", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "n_ability"
-    t.integer  "h_ability"
-    t.integer  "version"
-    t.boolean  "active",     default: true, null: false
-    t.string   "textage"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "title",      limit: 255
+    t.integer  "n_ability",  limit: 4
+    t.integer  "h_ability",  limit: 4
+    t.integer  "version",    limit: 4
+    t.boolean  "active",                 default: true, null: false
+    t.string   "textage",    limit: 255
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+    t.string   "username",               limit: 255,   default: "",    null: false
+    t.string   "encrypted_password",     limit: 255,   default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          limit: 4,     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.string   "iidxid",                                 null: false
-    t.integer  "version",                default: 22,    null: false
-    t.string   "djname",                                 null: false
-    t.integer  "grade"
-    t.integer  "pref",                                   null: false
-    t.text     "rival"
-    t.text     "reverse_rival"
-    t.boolean  "admin",                  default: false, null: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.integer  "failed_attempts",        default: 0,     null: false
-    t.string   "unlock_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "iidxid",                 limit: 255,                   null: false
+    t.integer  "version",                limit: 4,     default: 22,    null: false
+    t.string   "djname",                 limit: 255,                   null: false
+    t.integer  "grade",                  limit: 4
+    t.integer  "pref",                   limit: 4,                     null: false
+    t.text     "rival",                  limit: 65535
+    t.text     "reverse_rival",          limit: 65535
+    t.boolean  "admin",                                default: false, null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.integer  "failed_attempts",        limit: 4,     default: 0,     null: false
+    t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
   end
 
