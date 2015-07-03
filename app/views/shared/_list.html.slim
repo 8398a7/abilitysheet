@@ -12,14 +12,15 @@ table.datatable
   tbody
     - @users.each do |user|
       - user = user.decorate
+      - score = @scores_map[user.id].decorate
       tr
         td.center = link_to user.djname, sheet_path(iidxid: user.iidxid, type: 'hard')
         td.center = user.iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        td.center.load id="#{user.iidxid}-updated-at"
-        td.center.load id="#{user.iidxid}-music-title"
-        td.center.load id="#{user.iidxid}-music-state"
+        td.center.load id="#{user.iidxid}-updated-at" = score.updated_at
+        td.center.load id="#{user.iidxid}-music-title" = score.title
+        td.center.load id="#{user.iidxid}-music-state" style="background-color: #{Static::COLOR[score.state]}"
         - if user_signed_in?
           td
             - if current_user.rival && current_user.rival.include?(user.iidxid)
@@ -35,23 +36,8 @@ javascript:
   loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";
   url = "#{user_call_back_path}"
 coffee:
-  render = (d) ->
-    $.each d, (k, v) ->
-      $("##{k}-updated-at").prepend(v.updatedAt)
-      $("##{k}-music-title").text(v.title)
-      $("##{k}-music-state").css('background-color', v.stateColor)
+  $(window).on('load', ->
     $('.datatable').dataTable
       order: [4, 'desc']
       aLengthMenu: [25]
-
-  $.ajax
-    url: url
-    type: 'POST'
-    data: { id: user_ids }
-    beforeSend: ->
-      $('.load').html("#{loading_gif}")
-    success: (d) ->
-      $('.load').empty()
-      render(d)
-    error: (d) ->
-      console.error(d)
+  )
