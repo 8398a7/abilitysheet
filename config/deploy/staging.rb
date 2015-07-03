@@ -1,6 +1,6 @@
-set :stage, :production
+set :stage, :staging
 set :branch, 'develop'
-set :rails_env, 'production'
+set :rails_env, 'staging'
 set :migration_role, 'db'
 
 server 'bemani', user: 'rails', roles: %w(web app db)

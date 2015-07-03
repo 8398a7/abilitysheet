@@ -16,7 +16,7 @@ preload_app true
 
 before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
-  old_pid = "#{ server.config[:pid] }.oldbin"
+  old_pid = "#{server.config[:pid]}.oldbin"
   unless old_pid == server.pid
     begin
       Process.kill :QUIT, File.read(old_pid).to_i
