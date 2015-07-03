@@ -19,7 +19,7 @@ describe UserDecorator do
 
   describe '#belongs' do
     it 'returns belongs of its pref' do
-      expect(instance.pref).to eq('海外')
+      expect(instance.belongs).to eq('海外')
     end
   end
 
