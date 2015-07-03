@@ -20,7 +20,7 @@ table.datatable
         td.center = iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        td.center.load = score.updated_at
+        td.center.load = link_to score.updated_at, show_log_path(user.iidxid, score.updated_at)
         td.center.load = score.title
         td.center.load style="background-color: #{Static::COLOR[score.state]}"
         - if show_rival_buttons
@@ -38,8 +38,6 @@ javascript:
   loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";
   url = "#{user_call_back_path}"
 coffee:
-  $(window).on('load', ->
-    $('.datatable').dataTable
-      order: [4, 'desc']
-      aLengthMenu: [25]
-  )
+  $('.datatable').dataTable
+    order: [4, 'desc']
+    aLengthMenu: [25]

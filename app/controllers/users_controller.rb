@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   def index
-    @cnt = User.count
+    @cnt = User.select(:id).count
     if params[:query] && params[:query].present?
       @users = User.search_djname(params[:query].upcase)
     else
       limit_count = 4000
       user_count = 0
-      while user_count < 200
+      scores_count = Score.select(:id).count
+      while user_count < 200 && user_count < scores_count
         limit_count *= 1.2
-        @scores = Score.includes(:sheet).where('state <= 6').order(updated_at: :desc).limit(limit_count)
+        @scores = Score.includes(:sheet).where.not(state: 7).order(updated_at: :desc).limit(limit_count)
         @scores_map = {}
         user_ids = []
         @scores.each do |score|
