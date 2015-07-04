@@ -20,6 +20,7 @@ class Score < ActiveRecord::Base
 
   include IIDXME
 
+  scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
   def update_with_logs(score_params, sc = -2, bp = -2)
