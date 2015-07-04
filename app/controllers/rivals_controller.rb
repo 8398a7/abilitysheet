@@ -1,15 +1,15 @@
 class RivalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_sheet, only: [:clear, :hard]
+  before_action :load_sheet, only: [:clear, :hard]
 
   def list
     rivals = User.find_by(id: current_user.id).rival
-    rival_set(rivals)
+    load_rival(rivals)
   end
 
   def reverse_list
     rivals = User.find_by(id: current_user.id).reverse_rival
-    rival_set(rivals)
+    load_rival(rivals)
   end
 
   def clear
@@ -42,8 +42,9 @@ class RivalsController < ApplicationController
 
   private
 
-  def rival_set(rivals)
+  def load_rival(rivals)
     @users = User.where(iidxid: rivals)
+    @scores_map = User.users_list(:rivals, @users)
     @color = Static::COLOR
   end
 
@@ -62,7 +63,7 @@ class RivalsController < ApplicationController
     @sheets.push(s) if params[:condition] == 'lose' && m.state > r.state
   end
 
-  def set_sheet
+  def load_sheet
     @sheets = Sheet.active
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
