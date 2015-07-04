@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
 
   include Rival
+  include List
 
   # usernameを必須・一意とする
   validates_uniqueness_of :username, :iidxid
@@ -72,16 +73,6 @@ class User < ActiveRecord::Base
     Special::USERS.include?(id)
   end
 
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    login = conditions.delete(:login)
-    if login
-      find_by('username = :value OR iidxid = :value', value: login)
-    else
-      find_by(conditions)
-    end
-  end
-
   def update_without_current_password(params, *options)
     params.delete(:current_password)
     params.delete(:password) if params[:password].blank?
@@ -102,6 +93,16 @@ class User < ActiveRecord::Base
       array = []
       Static::PREF.each_with_index { |p, i| array.push([p, i]) }
       array
+    end
+
+    def find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      login = conditions.delete(:login)
+      if login
+        find_by('username = :value OR iidxid = :value', value: login)
+      else
+        find_by(conditions)
+      end
     end
   end
 
