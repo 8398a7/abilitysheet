@@ -16,4 +16,5 @@ RSpec.configure do |config|
 
   config.include ApiHelper, type: :request
   config.include Devise::TestHelpers, type: :controller
+  config.include RequestHelpers, type: :request
 end
