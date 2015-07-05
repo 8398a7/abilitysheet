@@ -1,4 +1,7 @@
 class LogsController < ApplicationController
+  before_action :scores_exists?, only: %w(maneger iidxme)
+  before_action :special_user!, only: %w(update_official)
+
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
@@ -28,11 +31,6 @@ class LogsController < ApplicationController
   end
 
   def update_official
-    unless current_user.special?
-      flash[:alert] = %(不正な操作です。)
-      redirect_to list_logs_path
-      return
-    end
     OfficialWorker.perform_async(current_user.id, params[:kid], params[:password])
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
     redirect_to list_logs_path
