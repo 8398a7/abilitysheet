@@ -16,6 +16,19 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def special_user!
+    return if current_user.special?
+    flash[:alert] = '不正な操作です．'
+    redirect_to list_logs_path
+  end
+
+  def scores_exists?
+    return if current_user.scores.present?
+    flash[:alert] = '処理を受け付けませんでした．'
+    flash[:notice] = 'この状態が続くようであればお問い合わせください'
+    render :reload
+  end
+
   def return_404
     render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
   end

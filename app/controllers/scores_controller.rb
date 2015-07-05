@@ -1,17 +1,11 @@
 class ScoresController < ApplicationController
   before_action :authenticate_user!
-  before_action :version_confirm
-  before_action :load_score, only: [:update]
   before_action :check_xhr
+  before_action :load_score
+  before_action :score_exists?, only: %w(edit)
 
   def edit
-    unless current_user.scores.exists?(sheet_id: params[:id], version: @version)
-      flash[:alert] = 'この状態が続くようであればお問い合わせください'
-      render :reload
-      return
-    end
     @sheet = Sheet.find_by(id: params[:id])
-    @score = current_user.scores.find_by(sheet_id: params[:id], version: @version)
     render :show_modal
   end
 
@@ -22,18 +16,21 @@ class ScoresController < ApplicationController
 
   private
 
+  def score_exists?
+    return if @score
+    flash[:alert] = '処理を受け付けませんでした．'
+    flash[:notice] = 'この状態が続くようであればお問い合わせください'
+    render :reload
+  end
+
   def load_score
-    return unless params[:score][:sheet_id]
-    @score = current_user.scores.find_by(sheet_id: params[:score][:sheet_id])
+    version = Abilitysheet::Application.config.iidx_version
+    @score = current_user.scores.find_by(sheet_id: params[:id], version: version)
   end
 
   def score_params
     params.require(:score).permit(
       :sheet_id, :state
     )
-  end
-
-  def version_confirm
-    @version = Abilitysheet::Application.config.iidx_version
   end
 end

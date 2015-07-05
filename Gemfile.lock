@@ -5,6 +5,30 @@ GIT
     uikit-sass-rails (1.4.1)
       sass-rails (>= 3.1)
 
+GIT
+  remote: git@github.com:intridea/grape.git
+  revision: 735034b2486e4418ce93dc8c354d46ec4309598a
+  specs:
+    grape (0.12.1)
+      activesupport
+      builder
+      hashie (>= 2.1.0)
+      multi_json (>= 1.3.2)
+      multi_xml (>= 0.5.2)
+      rack (>= 1.3.0)
+      rack-accept
+      rack-mount
+      virtus (>= 1.0.0)
+
+GIT
+  remote: https://github.com/pluff/grape-devise.git
+  revision: 607c4a905068d33a7a630503e907c85bd45ec14a
+  specs:
+    grape-devise (0.0.1)
+      activesupport (>= 3.2.6, < 5)
+      devise (> 3.2)
+      grape (> 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,22 +178,14 @@ GEM
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-analytics-rails (0.0.6)
-    grape (0.12.0)
-      activesupport
-      builder
-      hashie (>= 2.1.0)
-      multi_json (>= 1.3.2)
-      multi_xml (>= 0.5.2)
-      rack (>= 1.3.0)
-      rack-accept
-      rack-mount
-      virtus (>= 1.0.0)
     grape-jbuilder (0.2.0)
       grape (>= 0.3)
       i18n
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
+    grape_logging (1.1.2)
+      grape
     haml (4.0.6)
       tilt
     hash-deep-merge (0.1.1)
@@ -492,8 +508,10 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   google-analytics-rails
-  grape
+  grape!
+  grape-devise!
   grape-jbuilder
+  grape_logging
   jbuilder (~> 2.0)
   jquery-datatables-rails
   jquery-rails
@@ -536,4 +554,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.10.3
+   1.10.5

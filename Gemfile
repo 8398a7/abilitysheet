@@ -61,9 +61,11 @@ gem 'sidekiq'
 gem 'sinatra', require: false
 
 # WebAPI
-gem 'grape'
-gem 'rack-cors', require: 'rack/cors'
+gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape-jbuilder'
+gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
+gem 'grape_logging'
+gem 'rack-cors', require: 'rack/cors'
 
 # twitter
 gem 'twitter'

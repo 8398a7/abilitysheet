@@ -32,7 +32,11 @@ module Abilitysheet
 
     # api auto load
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api')]
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    config.middleware.use(Rack::Config) do |env|
+      env['api.tilt.root'] = Rails.root.join('app', 'views', 'api')
+    end
 
     # test_framework
     config.generators.test_framework = 'rspec'

@@ -59,5 +59,5 @@ Rails.application.routes.draw do
   get '/recommends/integration' => 'recommends#integration', as: :integration_recommends
 
   # API
-  mount API => '/'
+  mount Abilitysheet::API => '/api'
 end
