@@ -23,7 +23,7 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
     end
   end
 
-  context '楽曲更新時' do
+  context '楽曲更新時', js: true do
     before do
       create(:sheet, id: 1, active: true)
       create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6)
@@ -31,16 +31,17 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
     end
 
-    it 'モーダルが降りてくる', js: true do
+    it 'モーダルが降りてくる' do
       click_on 'MyString'
       expect(page).to have_content('クリア情報更新')
     end
 
-    it '楽曲が更新でき，ログが作られている', js: true do
+    it '楽曲が更新でき，ログが作られている' do
       expect(Score.find_by(id: 1).state).to eq 6
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 6, new_state: 3)).to eq false
       click_on 'MyString'
       wait_for_ajax
+      sleep(1)
       select 'CLEAR', from: 'score_state'
       click_on '更新'
       visit sheet_path(iidxid: user.iidxid, type: 'clear')
