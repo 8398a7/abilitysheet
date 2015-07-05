@@ -13,16 +13,21 @@ table.datatable
     - show_rival_buttons = user_signed_in?
     - @users.each do |user|
       - user = user.decorate
-      - score = @scores_map[user.id].decorate
+      - score = @scores_map[user.id].try(:decorate)
       - iidxid = user.iidxid
       tr
         td.center = link_to user.djname, sheet_path(iidxid: iidxid, type: 'hard')
         td.center = iidxid
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
-        td.center.load = link_to score.updated_at, show_log_path(user.iidxid, score.updated_at)
-        td.center.load = score.title
-        td.center.load style="background-color: #{Static::COLOR[score.state]}"
+        - if score
+          td.center = link_to score.updated_at, show_log_path(user.iidxid, score.updated_at)
+          td.center = score.title
+          td.center bgcolor=Static::COLOR[score.state]
+        - else
+          td
+          td
+          td
         - if show_rival_buttons
           td
             - if current_user.rival && current_user.rival.include?(user.iidxid)
@@ -33,10 +38,6 @@ table.datatable
               = link_to 'ライバル比較', clear_rival_path(user.iidxid)
               | &nbsp;|&nbsp;
               = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post, remote: true
-javascript:
-  user_ids = "#{@users.pluck(:id)}";
-  loading_gif = "#{escape_javascript(image_tag('ajax-loading.gif'))}";
-  url = "#{user_call_back_path}"
 coffee:
   $('.datatable').dataTable
     order: [4, 'desc']
