@@ -25,7 +25,13 @@ class ScoresController < ApplicationController
 
   def load_score
     version = Abilitysheet::Application.config.iidx_version
-    @score = current_user.scores.find_by(sheet_id: params[:id], version: version)
+    parameters = { version: version }
+    if params[:action] == 'edit'
+      parameters[:sheet_id] = params[:id]
+    else
+      parameters[:id] = params[:id]
+    end
+    @score = current_user.scores.find_by(parameters)
   end
 
   def score_params
