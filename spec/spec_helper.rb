@@ -35,3 +35,7 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, inspector: true)
+end
