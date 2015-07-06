@@ -4,6 +4,11 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'hard') }
 
+  it '存在しないユーザへのアクセス' do
+    visit sheet_path(iidxid: '1111-1111', type: 'hard')
+    expect(page).to have_content('このページは存在しません')
+  end
+
   context 'ログイン時' do
     before { login_as(user, scope: :user, run_callbacks: false) }
     it 'ハード参考表の文字が存在する' do
