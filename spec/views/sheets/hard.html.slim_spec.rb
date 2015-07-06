@@ -4,6 +4,11 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'hard') }
 
+  it '存在しないユーザへのアクセス' do
+    visit sheet_path(iidxid: '1111-1111', type: 'hard')
+    expect(page).to have_content('このページは存在しません')
+  end
+
   context 'ログイン時' do
     before { login_as(user, scope: :user, run_callbacks: false) }
     it 'ハード参考表の文字が存在する' do
@@ -26,7 +31,7 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
   context '楽曲更新時', js: true do
     before do
       create(:sheet, id: 1, active: true)
-      create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6)
+      create(:score, id: 100, user_id: 1, sheet_id: 1, state: 6)
       login_as(user, scope: :user, run_callbacks: false)
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
     end
@@ -38,14 +43,14 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
 
     it '楽曲が更新でき，ログが作られている' do
       wait_for_ajax
-      expect(Score.find_by(id: 1).state).to eq 6
+      expect(Score.find_by(id: 100).state).to eq 6
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 6, new_state: 3)).to eq false
       click_on 'MyString'
       sleep(1)
       select 'CLEAR', from: 'score_state'
       click_on '更新'
       visit sheet_path(iidxid: user.iidxid, type: 'clear')
-      expect(Score.find_by(id: 1).state).to eq 3
+      expect(Score.find_by(id: 100).state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 6, new_state: 3)).to eq true
     end
   end
