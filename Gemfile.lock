@@ -117,12 +117,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (1.6.0)
-      capybara (>= 2.3.0, < 2.5.0)
-      json
     celluloid (0.16.0)
       timers (~> 4.0.0)
     chronic (0.10.2)
+    cliver (0.3.2)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -153,6 +151,8 @@ GEM
     docile (1.1.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    doorkeeper (2.2.1)
+      railties (>= 3.2)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
@@ -214,6 +214,7 @@ GEM
       railties (>= 3.2.16)
     json (1.8.3)
     json_expressions (0.8.3)
+    jwt (1.5.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -258,10 +259,21 @@ GEM
       mini_portile (~> 0.6.0)
     nprogress-rails (0.1.6.7)
     ntlm-http (0.1.1)
+    oauth2 (1.0.0)
+      faraday (>= 0.8, < 0.10)
+      jwt (~> 1.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (~> 1.2)
     orm_adapter (0.5.0)
     parser (2.2.2.5)
       ast (>= 1.1, < 3.0)
     pg (0.18.2)
+    poltergeist (1.6.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     powerpack (0.1.1)
@@ -477,6 +489,9 @@ GEM
     warden (1.2.3)
       rack (>= 1.0)
     webrobots (0.1.1)
+    websocket-driver (0.5.4)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
     xpath (2.0.0)
@@ -498,11 +513,11 @@ DEPENDENCIES
   capistrano-rails
   capistrano-sidekiq
   capybara
-  capybara-webkit
   codeclimate-test-reporter
   coffee-rails
   database_cleaner
   devise
+  doorkeeper
   dotenv-rails
   draper
   factory_girl_rails
@@ -522,7 +537,9 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   nprogress-rails
+  oauth2
   pg
+  poltergeist
   pry-byebug
   pry-rails
   quiet_assets

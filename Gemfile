@@ -65,6 +65,8 @@ gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape-jbuilder'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
+gem 'doorkeeper'
+gem 'oauth2'
 gem 'rack-cors', require: 'rack/cors'
 
 # twitter
@@ -77,7 +79,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'json_expressions'
