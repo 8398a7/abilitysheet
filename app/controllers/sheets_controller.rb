@@ -1,5 +1,6 @@
 class SheetsController < ApplicationController
-  before_filter :check_action
+  before_action :check_action
+  before_action :check_exist_user
 
   def show
     unless params[:type] == 'power'
@@ -11,6 +12,11 @@ class SheetsController < ApplicationController
   end
 
   private
+
+  def check_exist_user
+    return if User.exists?(iidxid: params[:iidxid])
+    return_404
+  end
 
   def check_action
     @action_routes = {
