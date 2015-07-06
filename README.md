@@ -35,7 +35,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 git clone https://github.com/8398a7/abilitysheet.git
 cd abilitysheet
 bundle install -j4 --path vendor/bundle
-rake db:create db:migrate
+rake db:setup
 rails s
 ```
 
@@ -47,7 +47,7 @@ rails s
 
 ## Database
 
-PostgreSQLを採用しています．
+PostgreSQLを採用しています．  
 MySQLを使わなかった理由については[issue#130](https://github.com/8398a7/abilitysheet/issues/130)を参照ください．
 
 ## License
