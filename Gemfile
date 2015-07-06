@@ -65,6 +65,8 @@ gem 'grape', git: 'git@github.com:intridea/grape.git'
 gem 'grape-jbuilder'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
+gem 'doorkeeper'
+gem 'oauth2'
 gem 'rack-cors', require: 'rack/cors'
 
 # twitter
