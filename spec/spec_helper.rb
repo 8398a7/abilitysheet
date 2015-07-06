@@ -2,7 +2,7 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require 'factory_girl_rails'
 require 'capybara/rspec'
-require 'capybara-webkit'
+require 'capybara/poltergeist'
 require 'database_cleaner'
 require 'warden'
 require 'devise'
@@ -22,7 +22,7 @@ RSpec.configure do |config|
 
   config.before(:all) do
     Capybara.default_selector = :css
-    Capybara.javascript_driver = :webkit
+    Capybara.javascript_driver = :poltergeist
   end
 
   config.before(:suite) do
@@ -34,8 +34,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-end
-
-Capybara::Webkit.configure do |config|
-  config.allow_url('http://platform.twitter.com/widgets.js')
 end

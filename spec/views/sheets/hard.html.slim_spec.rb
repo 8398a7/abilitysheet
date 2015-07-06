@@ -37,10 +37,10 @@ RSpec.describe 'sheets/hard.html.slim', type: :request do
     end
 
     it '楽曲が更新でき，ログが作られている' do
+      wait_for_ajax
       expect(Score.find_by(id: 1).state).to eq 6
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 6, new_state: 3)).to eq false
       click_on 'MyString'
-      wait_for_ajax
       sleep(1)
       select 'CLEAR', from: 'score_state'
       click_on '更新'
