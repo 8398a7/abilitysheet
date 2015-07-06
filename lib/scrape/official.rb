@@ -93,7 +93,8 @@ module Scrape
       g    = no_value(g)
 
       score = pg.to_i * 2 + g.to_i
-      @user.update_with_logs({ 'sheet_id' => sheet.id, 'state' => l_v }, score, miss)
+      user_score = @user.scores.find_by(sheet_id: sheet.id)
+      user_score.update_with_logs({ 'sheet_id' => sheet.id, 'state' => l_v }, score, miss)
       @count += 1
     end
 
