@@ -1,4 +1,4 @@
-# [IIDX☆12参考表システム](http://iidx12.tk/abilitysheet)
+# [IIDX☆12参考表システム](https://iidx12.tk/abilitysheet)
 
 ## Status
 
@@ -21,10 +21,11 @@ IIDXのSP☆12の参考表をシステム化したものです．
   * Versionごとにログを取るため，過去のバージョンとの比較も行える
 
 現在はネット上からノマゲ地力表，ハード地力表の反映．  
-また，[iidx.me](http://iidx.me)から集計したデータを元に[項目応答理論](http://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](http://iidxas.tk/abilitysheet/recommends/list)を提供しています．
+また，[iidx.me](http://iidx.me)から集計したデータを元に[項目応答理論](http://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](https://iidx12.tk/abilitysheet/recommends/list)を提供しています．
 
 ## Next
 
+* スコアを登録できるように対応
 * 公式からデータを集計し，地力値表の精度を向上
 * DPへの対応
 * プレイヤーの地力値推定，及び楽曲推薦
@@ -35,7 +36,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 git clone https://github.com/8398a7/abilitysheet.git
 cd abilitysheet
 bundle install -j4 --path vendor/bundle
-rake db:create db:migrate
+rake db:setup
 rails s
 ```
 
@@ -47,7 +48,7 @@ rails s
 
 ## Database
 
-PostgreSQLを採用しています．
+PostgreSQLを採用しています．  
 MySQLを使わなかった理由については[issue#130](https://github.com/8398a7/abilitysheet/issues/130)を参照ください．
 
 ## License

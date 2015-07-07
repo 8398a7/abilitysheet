@@ -27,7 +27,7 @@ class Sheet < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
-  after_create :create_score_and_ability
+  before_save :create_score_and_ability
 
   def create_score_and_ability
     SheetWorker.perform_async(id)
