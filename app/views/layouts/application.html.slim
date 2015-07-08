@@ -118,19 +118,16 @@ html
           li.uk-nav-header
             = fa_icon 'phone', text: '連絡フォーム'
           li = link_to '連絡フォーム', new_message_path
-          - if user_signed_in? && current_user.admin?
+          - if user_signed_in? && current_user.member?
             li.uk-nav-header
               = fa_icon 'gears', text: '管理'
-            - if current_user.member?
-              li = link_to '楽曲管理', admin_sheets_path
-            - if current_user.admin?
-              li = link_to 'ユーザ管理', admin_users_path
-              li = link_to 'メッセージ管理', admin_messages_path
-              li = link_to '問い合わせ返信', new_admin_mail_path
-              li = link_to 'siekiq管理', admin_sidekiq_index_path
-              li = link_to 'RailsAdmin', rails_admin_path
-            - if current_user.owner?
-              li = link_to 'Twitter', new_admin_tweet_path
+            li = link_to '楽曲管理', admin_sheets_path
+            li = link_to 'ユーザ管理', admin_users_path
+            li = link_to 'メッセージ管理', admin_messages_path
+            li = link_to '問い合わせ返信', new_admin_mail_path
+            li = link_to 'siekiq管理', admin_sidekiq_index_path
+            li = link_to 'RailsAdmin', rails_admin_path
+            li = link_to 'Twitter', new_admin_tweet_path
           - if user_signed_in?
             li.uk-nav-header
               = fa_icon 'user fw', text: current_user.djname
