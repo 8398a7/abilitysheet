@@ -16,12 +16,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def special_user!
-    return if current_user.special?
-    flash[:alert] = '不正な操作です．'
-    redirect_to list_logs_path
-  end
-
   def scores_exists?
     return if current_user.scores.present?
     flash[:alert] = '処理を受け付けませんでした．'
@@ -46,6 +40,24 @@ class ApplicationController < ActionController::Base
 
   def admin_user!
     return true if current_user.admin?
+    flash[:alert] = '許可されていないページです'
+    redirect_to root_path
+  end
+
+  def special_user!
+    return if current_user.special?
+    flash[:alert] = '不正な操作です．'
+    redirect_to list_logs_path
+  end
+
+  def owner_user!
+    return if current_user.owner?
+    flash[:alert] = '許可されていないページです'
+    redirect_to root_path
+  end
+
+  def member_user!
+    return if current_user.member?
     flash[:alert] = '許可されていないページです'
     redirect_to root_path
   end
