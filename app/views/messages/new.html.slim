@@ -19,14 +19,18 @@
               | 対応は
               = link_to 'Twitter', 'http://twitter.com/IIDX_12'
               | のほうが迅速です。
-      .uk-form-row.uk-form-icon
+        font color="red"
+          | 迷惑メールに振り分けられていることが有ります．
+          br
+          | @iidx.tkを許可リストに入れるか，迷惑メールも合わせてチェック下さい．
+      .uk-form-row
         = f.label :email, '連絡先(任意)', class: 'uk-form-label'
         .uk-form-controls
-          = f.email_field :email
-      .uk-form-row.uk-form-icon
+          = f.email_field :email, style: 'width: 100%;', placeholder: 'パスワードの再発行時などの返答が必要な際には必ずご記入下さい．'
+      .uk-form-row
         = f.label :body, '内容', class: 'uk-form-label'
         .uk-form-controls
-          = f.text_area :body, rows: 3
+          = f.text_area :body, rows: 3, style: 'width: 100%;'
       .uk-form-row
         .uk-button-group
           button.uk-button.uk-button-primary type="submit"
