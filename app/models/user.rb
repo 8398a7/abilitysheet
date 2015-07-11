@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
   end
 
   def special?
-    Role::OLD_MEMBER == role || Role::OWNER == role
+    Role::SPECIAL == role || Role::OWNER == role
   end
 
   def update_without_current_password(params, *options)
