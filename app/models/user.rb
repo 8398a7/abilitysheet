@@ -69,8 +69,28 @@ class User < ActiveRecord::Base
     USERS = [1, 2, 3, 4, 5, 6, 8, 13, 16, 21, 34, 53, 63, 73, 100]
   end
 
+  module Role
+    OWNER = 100
+    ADMIN = 75
+    MEMBER = 50
+    SPECIAL = 25
+    GENERAL = 0
+  end
+
+  def owner?
+    Role::OWNER <= role
+  end
+
+  def admin?
+    Role::ADMIN <= role
+  end
+
+  def member?
+    Role::MEMBER <= role
+  end
+
   def special?
-    Special::USERS.include?(id)
+    Role::OLD_MEMBER == role || Role::OWNER == role
   end
 
   def update_without_current_password(params, *options)
