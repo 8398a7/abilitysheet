@@ -54,6 +54,7 @@ gem 'yaml_db'
 group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
+  gem 'capistrano-faster-assets'
 end
 
 # sidekiq

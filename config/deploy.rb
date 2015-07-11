@@ -18,6 +18,9 @@ set :rbenv_type, :system
 set :deploy_to, '/home/rails/deploy/abilitysheet'
 set :sidekiq_role, :web
 
+set :conditionally_migrate, true
+set :deploy_via, :remote_cache
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
