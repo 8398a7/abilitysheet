@@ -29,8 +29,9 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :scores
-  has_many :logs
+  has_many :scores, dependent: :delete_all
+  has_many :logs, dependent: :delete_all
+
   serialize :rival
   serialize :reverse_rival
 
