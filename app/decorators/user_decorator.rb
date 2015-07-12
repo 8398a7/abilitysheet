@@ -25,10 +25,12 @@ class UserDecorator < Draper::Decorator
   end
 
   def current
+    return '未ログイン' unless object.current_sign_in_at
     "#{object.current_sign_in_at.strftime('%Y/%m/%d %H:%M')}/#{object.current_sign_in_ip}"
   end
 
   def last
+    return '未ログイン' unless object.last_sign_in_at
     "#{object.last_sign_in_at.strftime('%Y/%m/%d %H:%M')}/#{object.last_sign_in_ip}"
   end
 end

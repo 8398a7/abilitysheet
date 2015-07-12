@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user!
+  before_action :check_xhr, except: [:index]
   before_action :load_user, except: [:index, :new, :create]
 
   def index
@@ -13,7 +14,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    @sheet = User.create(user_params)
+    @user = User.new(user_params)
+    @user.save
     render :reload
   end
 
@@ -46,7 +48,7 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :username, :djname, :grade, :pref, :password
+      :iidxid, :username, :djname, :grade, :pref, :password
     )
   end
 
