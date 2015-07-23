@@ -21,6 +21,13 @@ RSpec.describe ScoresController, type: :controller do
         expect(assigns(:score)).to eq @score
         expect(response).to have_http_status(:success)
       end
+
+      it 'スコアレコードが存在しない時はリダイレクト' do
+        sign_in @user
+        xhr :get, :edit, id: 2
+        expect(response).to have_http_status(:success)
+        expect(flash['alert']).to eq '処理を受け付けませんでした．'
+      end
     end
     context 'xhrリクエストではない' do
       it 'response redirect' do
