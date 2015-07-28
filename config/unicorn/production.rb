@@ -12,9 +12,13 @@ stderr_path "#{app_shared_path}/log/unicorn.stderr.log"
 
 pid "#{app_shared_path}/tmp/pids/unicorn.pid"
 
+before_exec do
+  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+end
+
 preload_app true
 
-before_fork do |server, worker|
+before_fork do |server, _|
   ActiveRecord::Base.connection.disconnect! if defined?(ActiveRecord::Base)
   old_pid = "#{server.config[:pid]}.oldbin"
   unless old_pid == server.pid
@@ -25,6 +29,6 @@ before_fork do |server, worker|
   end
 end
 
-after_fork do |server, worker|
+after_fork do
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end
