@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :shift_domain
   before_action :miniprofiler
+  before_action :load_nav_routes
 
   def shift_domain
     host = 'iidxas.tk'
@@ -12,6 +13,17 @@ class ApplicationController < ActionController::Base
     num += 1
     File.write(path, num)
     redirect_to request.url.gsub(host, 'iidx12.tk')
+  end
+
+  def load_nav_routes
+    @paths = {}
+    @paths[:root] = root_path
+    @paths[:users] = users_path
+    return unless user_signed_in?
+    @paths[:clear_sheet] = sheet_path(current_user.iidxid, type: 'clear')
+    @paths[:hard_sheet] = sheet_path(current_user.iidxid, type: 'hard')
+    @paths[:power_sheet] = sheet_path(current_user.iidxid, type: 'power')
+    @paths[:logs_list] = list_logs_path(current_user.iidxid)
   end
 
   protected
