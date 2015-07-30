@@ -106,7 +106,7 @@ html
             li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
             li = link_to '更新データ', list_logs_path(current_user.iidxid)
             - if recent
-              = recent
+              li = recent
             li.uk-nav-header
               = fa_icon 'user-times', text: 'ライバル'
             li = link_to 'ライバル一覧', list_rival_path
