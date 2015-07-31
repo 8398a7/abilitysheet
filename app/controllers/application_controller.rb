@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     @paths[:hard_sheet] = sheet_path(current_user.iidxid, type: 'hard')
     @paths[:power_sheet] = sheet_path(current_user.iidxid, type: 'power')
     @paths[:logs_list] = list_logs_path(current_user.iidxid)
+    @paths[:rival_list] = list_rival_path
+    @paths[:reverse_rival_list] = reverse_list_rival_path
   end
 
   protected
