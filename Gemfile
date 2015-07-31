@@ -39,7 +39,6 @@ end
 gem 'airbrake'
 gem 'newrelic_rpm'
 
-
 gem 'devise'
 gem 'rails_admin'
 
