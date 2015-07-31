@@ -11,21 +11,11 @@
     if @props.current_user is null
       return false
     <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-database"></i>マイページ</a>
+      <a><i className="fa fa-level-up"></i>地力値関係</a>
       <div className="uk-dropdown uk-dropdown-navbar">
         <ul className="uk-nav uk-nav-navbar">
-          <li><a href={@props.paths.clear_sheet}>ノマゲ参考表</a></li>
-          <li><a href={@props.paths.hard_sheet}>ハード参考表</a></li>
-          <li><a href={@props.paths.power_sheet}>地力値参考表</a></li>
-          <li><a href={@props.paths.logs_list}>更新データ</a></li>
-          <li className="recent"></li>
+          <li><a href={@props.paths.recommend}>☆12+AAA</a></li>
+          <li><a href={@props.paths.integration_recommend}>統合表</a></li>
         </ul>
       </div>
     </li>
-
-#          li.uk-parent data-uk-dropdown=""
-#            a = fa_icon 'level-up', text: '地力値関係'
-#            .uk-dropdown.uk-dropdown-navbar
-#              ul.uk-nav.uk-nav-navbar
-#                li = link_to '☆12 地力値+AAA', list_recommends_path
-#                li = link_to '統合表', integration_recommends_path
