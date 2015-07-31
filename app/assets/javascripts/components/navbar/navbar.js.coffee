@@ -24,7 +24,7 @@
         <Rival paths={@props.paths} />
         <Irt paths={@props.paths} />
         <Conntact paths={@props.paths} />
-        <Admin paths={@props.paths} />
+        <Admin paths={@props.paths} current_user={@props.current_user} />
       </ul>
       <div className="uk-navbar-flip uk-hidden-small">
         <ul className="uk-navbar-nav">

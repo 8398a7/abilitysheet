@@ -6,35 +6,23 @@
     current_user: React.PropTypes.object
 
   componentDidMount: ->
+    if 75 <= @props.current_user.role
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_users}>ユーザ管理</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_messages}>メッセージ管理</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.new_admin_mail}>問い合わせ返信</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_sidekiq}>sidekiq管理</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.rails_admin}>RailsAdmin</a></li>")
+    if @props.current_user.role is 100
+      $('.admin-nav').append("<li><a href=#{@props.paths.new_admin_tweet}>Twitter</a></li>")
 
   render: ->
-    if @props.current_user is null
+    if @props.current_user.role < 50
       return false
     <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-database"></i>マイページ</a>
+      <a><i className="fa fa-gears"></i>管理</a>
       <div className="uk-dropdown uk-dropdown-navbar">
-        <ul className="uk-nav uk-nav-navbar">
-          <li><a href={@props.paths.clear_sheet}>ノマゲ参考表</a></li>
-          <li><a href={@props.paths.hard_sheet}>ハード参考表</a></li>
-          <li><a href={@props.paths.power_sheet}>地力値参考表</a></li>
-          <li><a href={@props.paths.logs_list}>更新データ</a></li>
-          <li className="recent"></li>
+        <ul className="uk-nav uk-nav-navbar admin-nav">
+          <li><a href={@props.paths.admin_sheets}>楽曲管理</a></li>
         </ul>
       </div>
     </li>
-
-#          - if user_signed_in? && current_user.member?
-#            li.uk-parent#nav-admin data-uk-dropdown=""
-#              a = fa_icon 'gears', text: '管理'
-#              .uk-dropdown.uk-dropdown-navbar
-#                ul.uk-nav.uk-nav-navbar
-#                  - if current_user.admin?
-#                    li = link_to 'ユーザ管理', admin_users_path
-#                    li = link_to 'メッセージ管理', admin_messages_path
-#                    li = link_to '問い合わせ返信', new_admin_mail_path
-#                    li = link_to 'siekiq管理', admin_sidekiq_index_path
-#                    li = link_to  'RailsAdmin', rails_admin_path
-#                  - if current_user.member?
-#                    li = link_to '楽曲管理', admin_sheets_path
-#                  - if current_user.owner?
-#                    li = link_to 'Twitter', new_admin_tweet_path

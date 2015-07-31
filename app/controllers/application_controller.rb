@@ -29,6 +29,16 @@ class ApplicationController < ActionController::Base
     @paths[:logs_list] = list_logs_path(current_user.iidxid)
     @paths[:rival_list] = list_rival_path
     @paths[:reverse_rival_list] = reverse_list_rival_path
+    return unless current_user.member?
+    @paths[:admin_sheets] = admin_sheets_path
+    return unless current_user.admin?
+    @paths[:admin_users] = admin_users_path
+    @paths[:admin_messages] = admin_messages_path
+    @paths[:new_admin_mail] = new_admin_mail_path
+    @paths[:admin_sidekiq] = admin_sidekiq_index_path
+    @paths[:rails_admin] = rails_admin_path
+    return unless current_user.owner?
+    @paths[:new_admin_tweet] = new_admin_tweet_path
   end
 
   protected
