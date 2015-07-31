@@ -27,9 +27,7 @@
         <Admin paths={@props.paths} current_user={@props.current_user} />
       </ul>
       <div className="uk-navbar-flip uk-hidden-small">
-        <ul className="uk-navbar-nav">
-          <User paths={@props.paths} />
-        </ul>
+        <User paths={@props.paths} current_user={@props.current_user} />
       </div>
     </div>
 #        .uk-navbar-flip.uk-visible-small

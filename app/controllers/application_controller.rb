@@ -29,6 +29,9 @@ class ApplicationController < ActionController::Base
     @paths[:logs_list] = list_logs_path(current_user.iidxid)
     @paths[:rival_list] = list_rival_path
     @paths[:reverse_rival_list] = reverse_list_rival_path
+    @paths[:new_message] = new_message_path
+    @paths[:edit_user] = edit_user_registration_path
+    @paths[:sign_out] = destroy_user_session_path
     return unless current_user.member?
     @paths[:admin_sheets] = admin_sheets_path
     return unless current_user.admin?

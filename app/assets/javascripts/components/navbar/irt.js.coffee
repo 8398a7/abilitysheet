@@ -3,13 +3,10 @@
 
   propTypes:
     paths: React.PropTypes.object
-    current_user: React.PropTypes.object
 
   componentDidMount: ->
 
   render: ->
-    if @props.current_user is null
-      return false
     <li className="uk-parent" data-uk-dropdown="">
       <a><i className="fa fa-level-up"></i>地力値関係</a>
       <div className="uk-dropdown uk-dropdown-navbar">

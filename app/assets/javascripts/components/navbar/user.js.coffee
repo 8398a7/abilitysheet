@@ -6,39 +6,16 @@
     current_user: React.PropTypes.object
 
   componentDidMount: ->
+    unless @props.current_user
+      $('.edit-user').append("<li><a href=#{@props.paths.clear_sheet}><i class='fa fa-sign-in'></i>ログイン</a></li>")
+    else
+      parent = $('.edit-user')
+      $(parent).append("<li class='uk-parent' data-uk-dropdown=''><a><i class='fa fa-user'></i>#{@props.current_user.djname}</a>")
+      $(parent).children('.uk-parent').append('<div class="uk-dropdown uk-dropdown-navbar">')
+      $(parent).children('.uk-parent').children('.uk-dropdown').append('<ul class="uk-nav uk-nav-navbar">')
+      $(parent).children('.uk-parent').children('.uk-dropdown').children('.uk-nav').append("<li><a href=#{@props.paths.edit_user}><i class='fa fa-pencil'></i>編集</a></li>")
+      $(parent).children('.uk-parent').children('.uk-dropdown').children('.uk-nav').append("<li><a rel='nofollow' data-method='delete' href=#{@props.paths.sign_out}><i class='fa fa-sign-out'></i>ログアウト</a></li>")
 
   render: ->
-    if @props.current_user is null
-      return false
-    <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-database"></i>マイページ</a>
-      <div className="uk-dropdown uk-dropdown-navbar">
-        <ul className="uk-nav uk-nav-navbar">
-          <li><a href={@props.paths.clear_sheet}>ノマゲ参考表</a></li>
-          <li><a href={@props.paths.hard_sheet}>ハード参考表</a></li>
-          <li><a href={@props.paths.power_sheet}>地力値参考表</a></li>
-          <li><a href={@props.paths.logs_list}>更新データ</a></li>
-          <li className="recent"></li>
-        </ul>
-      </div>
-    </li>
-
-#        .uk-navbar-flip.uk-hidden-small
-#          ul.uk-navbar-nav
-#            - if user_signed_in?
-#              li.uk-parent data-uk-dropdown=""
-#                a
-#                  = fa_icon 'user', text: current_user.djname
-#                .uk-dropdown.uk-dropdown-navbar
-#                  ul.uk-nav.uk-nav-navbar
-#                    li
-#                      = link_to edit_user_registration_path
-#                        = fa_icon 'pencil fw', text: '編集'
-#                    li
-#                      = link_to destroy_user_session_path, method: :delete
-#                        = fa_icon 'sign-out fw', text: 'ログアウト'
-#            - else
-#              li
-#                = link_to new_user_session_path
-#                  = fa_icon 'sign-in', text: 'ログイン'
-#
+    <ul className="uk-navbar-nav edit-user">
+    </ul>
