@@ -17,11 +17,11 @@
         <li>
           <a href={@props.paths.users}>
             <i className="fa fa-refresh"></i>
-            最近更新したユーザ
+            &nbsp;最近更新したユーザ
           </a>
         </li>
         <MyPage current_user={@props.current_user} paths={@props.paths} recent={@props.recent} />
-        <Rival paths={@props.paths} />
+        <Rival paths={@props.paths} current_user={@props.current_user} />
         <Irt paths={@props.paths} />
         <Conntact paths={@props.paths} />
         <Admin paths={@props.paths} current_user={@props.current_user} />
@@ -29,7 +29,7 @@
       <div className="uk-navbar-flip uk-hidden-small">
         <User paths={@props.paths} current_user={@props.current_user} />
       </div>
+      <div className="uk-navbar-flip uk-visible-small">
+        <a className="uk-navbar-toggle" href="#navbar-offcanvas" data-uk-offcanvas=""></a>
+      </div>
     </div>
-#        .uk-navbar-flip.uk-visible-small
-#          a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""
-

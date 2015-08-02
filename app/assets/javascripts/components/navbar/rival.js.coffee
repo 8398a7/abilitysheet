@@ -8,10 +8,10 @@
   componentDidMount: ->
 
   render: ->
-    if @props.current_user is null
+    unless @props.current_user?
       return false
     <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-user-times"></i>ライバル</a>
+      <a><i className="fa fa-user-times"></i>&nbsp;ライバル</a>
       <div className="uk-dropdown uk-dropdown-navbar">
         <ul className="uk-nav uk-nav-navbar">
           <li><a href={@props.paths.rival_list}>ライバル一覧</a></li>

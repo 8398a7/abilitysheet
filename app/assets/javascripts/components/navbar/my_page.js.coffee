@@ -15,7 +15,7 @@
     if @props.current_user is null
       return false
     <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-database"></i>マイページ</a>
+      <a><i className="fa fa-database"></i>&nbsp;マイページ</a>
       <div className="uk-dropdown uk-dropdown-navbar">
         <ul className="uk-nav uk-nav-navbar">
           <li><a href={@props.paths.clear_sheet}>ノマゲ参考表</a></li>

@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
   def load_nav_routes
     @paths = {}
     @paths[:root] = root_path
+    @paths[:sign_in] = new_user_session_path
     @paths[:users] = users_path
     @paths[:recommend] = list_recommends_path
     @paths[:integration_recommend] = integration_recommends_path
