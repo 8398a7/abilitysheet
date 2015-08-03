@@ -25,6 +25,8 @@ gem 'rack-mini-profiler', require: false
 gem 'nprogress-rails'
 gem 'lazy_high_charts'
 gem 'jquery-datatables-rails'
+gem 'react-rails'
+gem 'sprockets-coffee-react'
 
 group :development do
   gem 'better_errors'
@@ -36,7 +38,6 @@ group :development do
 end
 gem 'airbrake'
 gem 'newrelic_rpm'
-
 
 gem 'devise'
 gem 'rails_admin'

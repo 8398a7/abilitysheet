@@ -91,4 +91,6 @@ Rails.application.configure do
 
   # font-awesome-rails
   config.action_controller.relative_url_root = '/abilitysheet'
+
+  config.react.variant = :production
 end

@@ -1,0 +1,14 @@
+#= require jquery
+#= require jquery_ujs
+#= require react
+#= require react_ujs
+#= require_tree ./components
+#= require dataTables/jquery.dataTables
+#= require highcharts/highcharts
+#= require uikit
+#= require select2
+#= require highcharts/highcharts-more
+#= require nprogress
+#= require nprogress-turbolinks
+#= require turbolinks
+#= require_tree .
