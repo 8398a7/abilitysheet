@@ -3,6 +3,9 @@
     label
       input type="checkbox" value=v[1] name="check" checked=true
         = v[0]
+  label
+    input type="checkbox" value="0" name="reverse" checked=(session['reverse_sheet'] == 1 ? true: false)
+      | 逆順表示
 table.uk-table.uk-table-bordered align="center"
   tr
     td bgcolor='#ff8c00' FC

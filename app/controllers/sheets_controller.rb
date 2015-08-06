@@ -35,15 +35,24 @@ class SheetsController < ApplicationController
   end
 
   def clear
-    @sheets = @sheets.order(:n_ability, :title)
     @sheet_type = 0
-    write_remain(0)
+    reverse_check(@sheet_type)
+    write_remain(@sheet_type)
   end
 
   def hard
-    @sheets = @sheets.order(:h_ability, :title)
     @sheet_type = 1
-    write_remain(1)
+    reverse_check(@sheet_type)
+    write_remain(@sheet_type)
+  end
+
+  def reverse_check(type)
+    @power.reverse! if session['reverse_sheet'] == 1
+    if type == 0
+      @sheets = session['reverse_sheet'] == 0 ? @sheets.order(:n_ability, :title) : @sheets.order(n_ability: :desc, title: :asc)
+    else
+      @sheets = session['reverse_sheet'] == 0 ? @sheets.order(:h_ability, :title) : @sheets.order(h_ability: :desc, title: :asc)
+    end
   end
 
   def write_remain(type)
