@@ -1,6 +1,6 @@
 class SheetsController < ApplicationController
-  before_action :check_action
-  before_action :check_exist_user
+  before_action :check_action, except: :change_reverse
+  before_action :check_exist_user, except: :change_reverse
 
   def show
     unless params[:type] == 'power'
@@ -35,15 +35,24 @@ class SheetsController < ApplicationController
   end
 
   def clear
-    @sheets = @sheets.order(:n_ability, :title)
     @sheet_type = 0
-    write_remain(0)
+    reverse_check(@sheet_type)
+    write_remain(@sheet_type)
   end
 
   def hard
-    @sheets = @sheets.order(:h_ability, :title)
     @sheet_type = 1
-    write_remain(1)
+    reverse_check(@sheet_type)
+    write_remain(@sheet_type)
+  end
+
+  def reverse_check(type)
+    @power.reverse! if params['reverse_sheet']
+    if type == 0
+      @sheets = params['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
+    else
+      @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
+    end
   end
 
   def write_remain(type)
@@ -74,7 +83,7 @@ class SheetsController < ApplicationController
   end
 
   def load_static
-    @power = Static::POWER
+    @power = Static::POWER.dup
     @list_color = Static::COLOR
     @versions = Static::VERSION
     @versions.push(['ALL', 0]) if @versions.count < 19

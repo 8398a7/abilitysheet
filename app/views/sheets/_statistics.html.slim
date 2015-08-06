@@ -3,6 +3,9 @@
     label
       input type="checkbox" value=v[1] name="check" checked=true
         = v[0]
+  label
+    input type="checkbox" value="0" name="reverse" checked=params['reverse_sheet'] onchange="reverse()"
+      | 逆順表示
 table.uk-table.uk-table-bordered align="center"
   tr
     td bgcolor='#ff8c00' FC
@@ -26,3 +29,14 @@ table.uk-table.uk-table-bordered align="center"
     - if !current_user.nil? && current_user.iidxid == params[:iidxid]
       td style="width:120px"
         a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{current_user.djname} #{@remain}" data-lang="ja" data-size="large" data-related="IIDX_12"
+
+javascript:
+  state = "#{params['reverse_sheet']}"
+coffee:
+  @reverse = ->
+    url = location.href
+    if state is 'true'
+      url = url.split('?')[0]
+      location.href = url
+    else
+      location.href = url + '?reverse_sheet=true'

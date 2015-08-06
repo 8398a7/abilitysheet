@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'abilitysheet'
-set :repo_url, 'git@github.com:8398a7/abilitysheet.git'
+set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
 set :scm, :git
 set :format, :pretty

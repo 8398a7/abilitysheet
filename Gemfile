@@ -16,7 +16,7 @@ gem 'nokogiri'
 gem 'mechanize'
 
 gem 'font-awesome-rails'
-gem 'uikit-sass-rails', git: 'git://github.com/8398a7/uikit-sass-rails'
+gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
 gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
@@ -48,7 +48,7 @@ group :deployment do
   gem 'capistrano-faster-assets'
 end
 
-gem 'grape', git: 'git@github.com:intridea/grape.git'
+gem 'grape', git: 'https://github.com/intridea/grape.git'
 gem 'grape-jbuilder'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'

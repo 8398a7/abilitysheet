@@ -1,13 +1,13 @@
 GIT
-  remote: git://github.com/8398a7/uikit-sass-rails
+  remote: https://github.com/8398a7/uikit-sass-rails
   revision: cf5607b0c7081fe5a2754577dc976fd40cbb5474
   specs:
     uikit-sass-rails (1.4.1)
       sass-rails (>= 3.1)
 
 GIT
-  remote: git@github.com:intridea/grape.git
-  revision: 735034b2486e4418ce93dc8c354d46ec4309598a
+  remote: https://github.com/intridea/grape.git
+  revision: 0dfc1cc1cc2f43d49e09d14f737397f087668577
   specs:
     grape (0.12.1)
       activesupport
