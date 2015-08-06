@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   # sheet
   get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet
+  post '/sheets/change_reverse' => 'sheets#change_reverse', as: :change_reverse_sheet
 
   # score
   resources :scores, only: [:edit, :update]
