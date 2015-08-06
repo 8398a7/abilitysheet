@@ -1,6 +1,6 @@
 class SheetsController < ApplicationController
-  before_action :check_action
-  before_action :check_exist_user
+  before_action :check_action, except: :change_reverse
+  before_action :check_exist_user, except: :change_reverse
 
   def show
     unless params[:type] == 'power'
@@ -9,6 +9,12 @@ class SheetsController < ApplicationController
     end
     __send__(@action_routes[params[:type]])
     render @action_routes[params[:type]]
+  end
+
+  def change_reverse
+    session['reverse_sheet'] = false unless session['reverse_sheet']
+    session['reverse_sheet'] = !session['reverse_sheet']
+    render json: { result: 'success' }
   end
 
   private
@@ -47,11 +53,11 @@ class SheetsController < ApplicationController
   end
 
   def reverse_check(type)
-    @power.reverse! if session['reverse_sheet'] == 1
+    @power.reverse! if session['reverse_sheet']
     if type == 0
-      @sheets = session['reverse_sheet'] == 0 ? @sheets.order(:n_ability, :title) : @sheets.order(n_ability: :desc, title: :asc)
+      @sheets = session['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
     else
-      @sheets = session['reverse_sheet'] == 0 ? @sheets.order(:h_ability, :title) : @sheets.order(h_ability: :desc, title: :asc)
+      @sheets = session['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
     end
   end
 

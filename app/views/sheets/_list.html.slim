@@ -6,7 +6,6 @@ table.uk-table.uk-table-responsive.uk-table-bordered
     = render 'shared/state_example'
     - cnt = 0
     - @power.each do |title, ab|
-      - puts title, ab
       tr
         - if cnt < @sheets.size && return_ability(cnt) == ab
           th colspan=5 height=10 bgcolor="#f5deb3"

@@ -4,7 +4,7 @@
       input type="checkbox" value=v[1] name="check" checked=true
         = v[0]
   label
-    input type="checkbox" value="0" name="reverse" checked=(session['reverse_sheet'] == 1 ? true: false)
+    input type="checkbox" value="0" name="reverse" checked=session['reverse_sheet'] onchange="reverse()"
       | 逆順表示
 table.uk-table.uk-table-bordered align="center"
   tr
@@ -29,3 +29,16 @@ table.uk-table.uk-table-bordered align="center"
     - if !current_user.nil? && current_user.iidxid == params[:iidxid]
       td style="width:120px"
         a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{current_user.djname} #{@remain}" data-lang="ja" data-size="large" data-related="IIDX_12"
+
+javascript:
+  url = "#{change_reverse_sheet_path}"
+
+coffee:
+  @reverse = ->
+    $.ajax
+      type: 'POST'
+      url: url
+      success: (result, type) ->
+        location.reload(true)
+      error: (XMLHttpRequest, textStatus, errorThrown) ->
+        console.error(textStatus)
