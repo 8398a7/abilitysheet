@@ -1,26 +1,28 @@
 - width , height = 150, 50
+- signed_in = user_signed_in?
 table.uk-table.uk-table-responsive.uk-table-bordered
   thead
   tbody
     = render 'shared/state_example'
     - cnt = 0
-    - (0..19).each do |ab|
+    - @power.each do |title, ab|
       tr
         - if cnt < @sheets.size && return_ability(cnt) == ab
           th colspan=5 height=10 bgcolor="#f5deb3"
-            center = @power[ab][0]
+            center = title
       - while cnt < @sheets.size && return_ability(cnt) == ab
         tr
         - (1..5).each do |i|
-          - if cnt < @sheets.size && return_ability(cnt) == ab
-            - s = @sheets[cnt]
-            td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
-              - if user_signed_in? && current_user.iidxid == params[:iidxid]
-                = link_to edit_score_path(s.id), remote: true, class: 'music_link'
-                  = fa_icon 'external-link', text: s.title
-              - else
-                = s.title
-            - cnt += 1
+          - if @sheets.size <= cnt || return_ability(cnt) != ab
+            - break
+          - s = @sheets[cnt]
+          td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
+            - if signed_in && current_user.iidxid == params[:iidxid]
+              = link_to edit_score_path(s.id), remote: true, class: 'music_link'
+                = fa_icon 'external-link', text: s.title
+            - else
+              = s.title
+          - cnt += 1
 
 javascript:
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
