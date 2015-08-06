@@ -11,12 +11,6 @@ class SheetsController < ApplicationController
     render @action_routes[params[:type]]
   end
 
-  def change_reverse
-    session['reverse_sheet'] = false unless session['reverse_sheet']
-    session['reverse_sheet'] = !session['reverse_sheet']
-    render json: { result: 'success' }
-  end
-
   private
 
   def check_exist_user
@@ -53,11 +47,11 @@ class SheetsController < ApplicationController
   end
 
   def reverse_check(type)
-    @power.reverse! if session['reverse_sheet']
+    @power.reverse! if params['reverse_sheet']
     if type == 0
-      @sheets = session['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
+      @sheets = params['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
     else
-      @sheets = session['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
+      @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
     end
   end
 
