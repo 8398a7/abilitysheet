@@ -43,7 +43,11 @@ class LogsController < ApplicationController
       return_404
       return
     end
-    user_id = User.find_by(iidxid: params[:iidxid]).id
+    user_id = User.find_by(iidxid: params[:iidxid]).try(:id)
+    unless user_id
+      return_404
+      return
+    end
     @logs = Log.where(user_id: user_id, created_at: date).preload(:sheet)
     unless @logs.present?
       return_404
