@@ -66,6 +66,13 @@ module Static
     一級 二級 三級 四級 五級 六級 七級
   )
 
+  GRADECOLOR = %w(
+    #ffd900
+    #ff6347 #ff6347
+    #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
+    #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
+  )
+
   COLOR = %w(
     #ff8c00
     #ffd900

@@ -1,0 +1,37 @@
+table.datatable
+  thead
+    th.center DJNAME
+    th.center IIDX-ID
+    th.center 段位
+    th.center 所属
+    th.center 最終更新日
+    th.center 最終更新楽曲
+    th.center ランプ情報
+    - if user_signed_in?
+      th.center ライバル情報
+  tbody
+    - show_rival_buttons = user_signed_in?
+    - @users.each do |user|
+      - iidxid = user['iidxid']
+      tr
+        td.center = link_to user['djname'], sheet_path(iidxid: iidxid, type: 'hard')
+        td.center = iidxid
+        td.center bgcolor=Static::GRADECOLOR[user['grade'].to_i] = Static::GRADE[user['grade'].to_i]
+        td.center = Static::PREF[user['pref'].to_i]
+        td.center = link_to user['updated_at'], show_log_path(iidxid, user['updated_at'])
+        td.center = user['title']
+        td.center bgcolor=Static::COLOR[user['state'].to_i]
+        - if show_rival_buttons
+          td
+            - if current_user.rival && current_user.rival.include?(iidxid)
+              = link_to 'ライバル比較', clear_rival_path(iidxid)
+              | &nbsp;|&nbsp;
+              = link_to 'ライバルを外す', remove_rival_path(iidxid), method: :post, remote: true
+            - elsif current_user.iidxid != iidxid
+              = link_to 'ライバル比較', clear_rival_path(iidxid)
+              | &nbsp;|&nbsp;
+              = link_to 'ライバルにする', register_rival_path(iidxid), method: :post, remote: true
+coffee:
+  $('.datatable').dataTable
+    order: [4, 'desc']
+    aLengthMenu: [25]
