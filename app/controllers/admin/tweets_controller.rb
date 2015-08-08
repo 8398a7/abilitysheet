@@ -1,6 +1,6 @@
 class Admin::TweetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :admin_owner!
+  before_action :owner_user!
 
   def new
   end
