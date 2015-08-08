@@ -8,4 +8,7 @@ p 現在の利用者総数は#{@cnt}人です
     = text_field_tag :query, params[:query], place: 'DJNAME'
     button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
       = fa_icon 'search', text: '検索'
-= render 'users/list'
+- if @scores_map
+  = render 'shared/list'
+- else
+  = render 'users/list'
