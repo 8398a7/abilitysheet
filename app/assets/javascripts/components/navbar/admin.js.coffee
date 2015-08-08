@@ -8,6 +8,9 @@
   componentDidMount: ->
     unless @props.current_user
       return
+    if 50 <= @props.current_user.role
+      $('.admin-parent').append('<a><i class="fa fa-gears"></i>&nbsp;管理</a><div class="uk-dropdown uk-dropdown-navbar"><ul class="uk-nav uk-nav-navbar admin-nav"></ul></div>')
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_sheets}>楽曲管理</a></li>")
     if 75 <= @props.current_user.role
       $('.admin-nav').append("<li><a href=#{@props.paths.admin_users}>ユーザ管理</a></li>")
       $('.admin-nav').append("<li><a href=#{@props.paths.admin_messages}>メッセージ管理</a></li>")
@@ -22,11 +25,5 @@
       return false
     if @props.current_user.role < 50
       return false
-    <li className="uk-parent" data-uk-dropdown="">
-      <a><i className="fa fa-gears"></i>&nbsp;管理</a>
-      <div className="uk-dropdown uk-dropdown-navbar">
-        <ul className="uk-nav uk-nav-navbar admin-nav">
-          <li><a href={@props.paths.admin_sheets}>楽曲管理</a></li>
-        </ul>
-      </div>
+    <li className="uk-parent admin-parent" data-uk-dropdown="">
     </li>
