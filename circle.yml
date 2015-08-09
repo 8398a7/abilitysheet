@@ -12,5 +12,8 @@ machine:
     version: 2.2.2
 test:
   override:
+    - "git submodule update --init"
+    - "cd api-abilitysheet && crystal deps && cd ../"
+    - "crystal api-abilitysheet/src/app.cr"
     - "bundle exec bin/rubocop_parallel": { parallel: true }
     - "bin/rspec --color --format documentation"
