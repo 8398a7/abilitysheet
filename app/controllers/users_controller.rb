@@ -5,8 +5,9 @@ class UsersController < ApplicationController
       @users = User.search_djname(params[:query].upcase)
       @scores_map = User.users_list(:rivals, @users)
     else
-      @scores_map, user_ids = User.users_list(:users)
-      @users = User.where(id: user_ids)
+      uri    = URI.parse('http://localhost:8080/api/v1/users/recent200')
+      res    = Net::HTTP.get(uri)
+      @users = JSON.parse(res)
     end
   end
 end
