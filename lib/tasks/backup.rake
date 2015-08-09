@@ -17,7 +17,7 @@ namespace :db do
     end
 
     def backup_dir
-      "#{Rails.root}/tmp/abilitysheet_backup"
+      "#{Rails.root}/.submodules/backup-abilitysheet"
     end
 
     def git_checkout(env)

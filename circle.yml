@@ -15,9 +15,9 @@ machine:
 test:
   override:
     - "git submodule update --init"
-    - "sed -i 's/abilitysheet-iidx/ubuntu/g' api-abilitysheet/src/app.cr"
-    - "sed -i 's/ubuntu_production/circle_ruby_test/g' api-abilitysheet/src/app.cr"
-    - "cd api-abilitysheet && crystal deps"
-    - "cd api-abilitysheet && crystal src/app.cr": { background: true }
+    - "sed -i 's/abilitysheet-iidx/ubuntu/g' .submodules/api-abilitysheet/src/app.cr"
+    - "sed -i 's/ubuntu_production/circle_ruby_test/g' .submodules/api-abilitysheet/src/app.cr"
+    - "cd .submodules/api-abilitysheet && crystal deps"
+    - "cd .submodules/api-abilitysheet && crystal src/app.cr": { background: true }
     - "bundle exec bin/rubocop_parallel": { parallel: true }
     - "bin/rspec --color --format documentation"
