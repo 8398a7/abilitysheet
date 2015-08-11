@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_nav_routes
+    return if params[:controller].index('rails_admin/')
     @paths = {}
     @paths[:root] = root_path
     @paths[:sign_in] = new_user_session_path
