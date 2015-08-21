@@ -34,7 +34,7 @@ describe 'lib/scrape/maneger.rb' do
   end
 
   context '異常系' do
-    let(:res) { Scrape::Maneger.new(build(:user)) }
+    let(:res) { Scrape::Maneger.new(build(:user, iidxid: '4935-9422')) }
     it '登録されていない場合は空の配列を返す' do
       expect(res.url.empty?).to eq true
     end
