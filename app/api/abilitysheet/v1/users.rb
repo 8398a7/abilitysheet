@@ -1,9 +1,9 @@
 module Abilitysheet::V1
   class Users < Grape::API
     resource :users do
-      desc 'userの人数を取得'
-      get '', jbuilder: 'users/index' do
-        @count = User.select(:id).count
+      desc 'userのログイン状態を取得'
+      get 'status' do
+        { status: current_user.try(:iidxid) }
       end
     end
   end

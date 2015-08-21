@@ -4,7 +4,6 @@ module Abilitysheet::V1
   class Base < Grape::API
     version 'v1', using: :path
     format :json
-    formatter :json, Grape::Formatter::Jbuilder
 
     helpers Grape::Devise::Helpers
     include Grape::Devise::Endpoints
