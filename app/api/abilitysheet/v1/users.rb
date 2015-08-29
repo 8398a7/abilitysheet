@@ -5,6 +5,11 @@ module Abilitysheet::V1
       get 'status' do
         { status: current_user.try(:iidxid) }
       end
+
+      desc 'score viewerのデータをimport'
+      post 'score_viewer' do
+        { status: 'ok' }
+      end
     end
   end
 end
