@@ -7,7 +7,13 @@ module Abilitysheet::V1
       end
 
       desc 'score viewerのデータをimport'
+      params do
+        requires :id, type: String, desc: 'iidxid'
+        requires :state, type: String, desc: '楽曲情報'
+      end
       post 'score_viewer' do
+        authenticate!
+        error! '401 Unauthorized', 401 if current_user.iidxid != params[:id]
         { status: 'ok' }
       end
     end
