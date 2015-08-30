@@ -13,7 +13,7 @@ module Abilitysheet::V1
       end
       post 'score_viewer' do
         authenticate!
-        error! '401 Unauthorized', 401 if current_user.iidxid != params[:id]
+        error! '403 Forbidden', 403 if current_user.iidxid != params[:id]
         { status: 'ok' }
       end
     end

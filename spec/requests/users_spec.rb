@@ -54,7 +54,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
               'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}"
             }
           end
-          it_behaves_like '401 Unauthorized'
+          it_behaves_like '403 Forbidden'
         end
         context '楽曲情報が存在していない場合' do
           before { login_as(user, scope: :user, run_callbacks: false) }
