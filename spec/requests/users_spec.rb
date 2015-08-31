@@ -69,6 +69,32 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq elems[sheet_id - 1]['pg'] * 2 + elems[sheet_id - 1]['g']
           end
         end
+        it 'BPが反映されている' do
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq nil
+          end
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq elems[sheet_id - 1]['miss']
+          end
+        end
+        it 'ログが反映されている' do
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Log.exists?(sheet_id: sheet_id, user_id: 1, created_at: Date.today)).to eq false
+          end
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          (1..SHEET_NUM).each do |sheet_id|
+            log = Log.find_by(sheet_id: sheet_id, user_id: 1, created_at: Date.today)
+            expect(log.pre_bp).to eq nil
+            expect(log.pre_score).to eq nil
+            expect(log.pre_state).to eq 7
+            expect(log.new_bp).to eq elems[sheet_id - 1]['miss']
+            expect(log.new_score).to eq elems[sheet_id - 1]['pg'] * 2 + elems[sheet_id - 1]['g']
+            expect(log.new_state).to eq elems[sheet_id - 1]['cl']
+          end
+        end
       end
       context 'データが不正な場合' do
         context 'iidxidが現在登録されているユーザと違う場合' do
