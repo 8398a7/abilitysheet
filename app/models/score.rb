@@ -23,8 +23,8 @@ class Score < ActiveRecord::Base
   scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
-  def update_with_logs(score_params, sc = -2, bp = -2)
-    user.logs.attributes(score_params, sc, bp, user)
+  def update_with_logs(score_params)
+    user.logs.attributes(score_params, user)
     update(score_params)
   end
 

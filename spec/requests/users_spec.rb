@@ -59,6 +59,16 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq elems[sheet_id - 1]['cl']
           end
         end
+        it 'スコアが反映されている' do
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq nil
+          end
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq elems[sheet_id - 1]['pg'] * 2 + elems[sheet_id - 1]['g']
+          end
+        end
       end
       context 'データが不正な場合' do
         context 'iidxidが現在登録されているユーザと違う場合' do
