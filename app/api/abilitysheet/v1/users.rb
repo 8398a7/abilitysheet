@@ -26,6 +26,7 @@ module Abilitysheet::V1
           score_params = { 'sheet_id' => e['id'], 'state' => e['cl'], 'score' => e['pg'] * 2 + e['g'], 'bp' => e['miss'] }
           # TODO: 存在しないsheet_idを渡された時の例外処理
           score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
+          error! '404 Not Found', 404 unless score
           score.update_with_logs(score_params)
         end
         { status: 'ok' }
