@@ -26,23 +26,38 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
   end
 
   describe 'POST /api/v1/users/score_viewer' do
-    let(:user) { create(:user) }
+    SHEET_NUM = 2
+    let(:user) { create(:user, id: 1) }
     let(:url) { '/api/v1/users/score_viewer' }
     let(:method) { 'post' }
     context 'ログインしている' do
       before { login_as(user, scope: :user, run_callbacks: false) }
       context 'データが正常な場合' do
+        before do
+          (1..SHEET_NUM).each do |sheet_id|
+            create(:sheet, id: sheet_id)
+            create(:score, sheet_id: sheet_id, user_id: 1)
+          end
+        end
         let(:parameters) do
           {
             'id' => user.iidxid,
-            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}"
+            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}]"
           }
         end
-        describe '正常なレスポンスを返す' do
-          let(:result) do
-            { status: 'ok' }
+        let(:result) do
+          { status: 'ok' }
+        end
+        it_behaves_like '201 Created'
+        it 'クリアランプが反映されている' do
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq 7
           end
-          it_behaves_like '201 Created'
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          (1..SHEET_NUM).each do |sheet_id|
+            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq elems[sheet_id - 1]['cl']
+          end
         end
       end
       context 'データが不正な場合' do
