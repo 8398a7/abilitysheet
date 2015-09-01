@@ -19,6 +19,7 @@ class Score < ActiveRecord::Base
   delegate :title,   to: :sheet
 
   include IIDXME
+  include ScoreViewer
 
   scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
