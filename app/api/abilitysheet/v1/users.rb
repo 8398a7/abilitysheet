@@ -23,6 +23,12 @@ module Abilitysheet::V1
         # TODO: この辺りは今後はsidekiq処理にするべきかも
         elems.each do |e|
           score_params = { 'sheet_id' => e['id'], 'state' => e['cl'], 'score' => e['pg'] * 2 + e['g'], 'bp' => e['miss'] }
+          score_params['score'] = nil if e['pg'] == -1 && e['g'] == -1
+          score_params['bp'] = nil if e['miss'] == -1
+
+          # スコアが理論値である場合の処理
+          score_params['score'] = e['pg'] * 2 if e['pg'] != -1 && e['g'] == -1
+
           score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
           error! '404 Not Found', 404 unless score
           score.update_with_logs(score_params)

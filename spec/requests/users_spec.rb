@@ -96,6 +96,105 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
           end
         end
       end
+      context 'スコアが理論値の場合' do
+        before do
+          create(:sheet, id: 1)
+          create(:score, sheet_id: 1, user_id: 1)
+        end
+        let(:parameters) do
+          {
+            'id' => user.iidxid,
+            'state' => "[{\"id\":\"1\",\"cl\":0,\"pg\":100,\"g\":-1,\"miss\":0}]"
+          }
+        end
+        let(:result) do
+          { status: 'ok' }
+        end
+        it_behaves_like '201 Created'
+        it 'BPは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq elems[0]['miss']
+        end
+        it 'スコアは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2
+        end
+        it 'クリアランプは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
+        end
+      end
+      context 'クリアランプだけ存在する場合' do
+        before do
+          create(:sheet, id: 1)
+          create(:score, sheet_id: 1, user_id: 1)
+        end
+        let(:parameters) do
+          {
+            'id' => user.iidxid,
+            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":-1,\"g\":-1,\"miss\":-1}]"
+          }
+        end
+        let(:result) do
+          { status: 'ok' }
+        end
+        it_behaves_like '201 Created'
+        it 'BPはnilのままである' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
+          post(url, parameters, rack_env)
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
+        end
+        it 'スコアはnilのままである' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
+          post(url, parameters, rack_env)
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
+        end
+        it 'クリアランプは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
+        end
+      end
+      context 'ハード落ちなどでBPがない場合' do
+        before do
+          create(:sheet, id: 1)
+          create(:score, sheet_id: 1, user_id: 1)
+        end
+        let(:parameters) do
+          {
+            'id' => user.iidxid,
+            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":-1}]"
+          }
+        end
+        let(:result) do
+          { status: 'ok' }
+        end
+        it_behaves_like '201 Created'
+        it 'BPはnilのままである' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
+          post(url, parameters, rack_env)
+          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
+        end
+        it 'スコアは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2 + elems[0]['g']
+        end
+        it 'クリアランプは反映されている' do
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
+          post(url, parameters, rack_env)
+          elems = JSON.parse(parameters['state'])
+          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
+        end
+      end
       context 'データが不正な場合' do
         context 'iidxidが現在登録されているユーザと違う場合' do
           before { login_as(user, scope: :user, run_callbacks: false) }
