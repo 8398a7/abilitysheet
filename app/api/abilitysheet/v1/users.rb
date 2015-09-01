@@ -28,8 +28,7 @@ module Abilitysheet::V1
           score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
           error! '404 Not Found', 404 unless score
         end
-        # TODO: この辺りは今後はsidekiq処理にするべきかも
-        Score.api_score_viewer(elems, current_user)
+        ScoreViewerWorker.perform_async(elems, current_user.id)
         { status: 'ok' }
       end
     end
