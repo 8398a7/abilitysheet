@@ -196,8 +196,8 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         end
       end
       context 'データが不正な場合' do
+        before { login_as(user, scope: :user, run_callbacks: false) }
         context 'iidxidが現在登録されているユーザと違う場合' do
-          before { login_as(user, scope: :user, run_callbacks: false) }
           let(:parameters) do
             {
               'id' => '0000-0000',
@@ -223,6 +223,24 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             }
           end
           it_behaves_like '404 Not Found'
+        end
+        context 'パラメータに不足がある場合' do
+          let(:parameters) do
+            {
+              'id' => user.iidxid,
+              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373}]"
+            }
+          end
+          it_behaves_like '400 Bad Request'
+        end
+        context 'パラメータに余分なモノがある場合' do
+          let(:parameters) do
+            {
+              'id' => user.iidxid,
+              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373, \"miss\": 10, \"hoge\": 10}]"
+            }
+          end
+          it_behaves_like '400 Bad Request'
         end
       end
     end

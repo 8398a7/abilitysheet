@@ -19,8 +19,13 @@ module Abilitysheet::V1
         rescue
           error! '400 Bad Request', 400
         end
-        # TODO: elemsの要素検証をした方が良いかも
         # TODO: この辺りは今後はsidekiq処理にするべきかも
+        elems.each do |e|
+          # パラメータが不足している
+          error! '400 Bad Request', 400 if !e['id'] || !e['cl'] || !e['pg'] || !e['g'] || !e['miss']
+          # パラメータに余分な物がある
+          error! '400 Bad Request', 400 if 5 < e.size
+        end
         elems.each do |e|
           score_params = { 'sheet_id' => e['id'], 'state' => e['cl'], 'score' => e['pg'] * 2 + e['g'], 'bp' => e['miss'] }
           score_params['score'] = nil if e['pg'] == -1 && e['g'] == -1
