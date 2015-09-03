@@ -26,8 +26,8 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
   end
 
   describe 'POST /api/v1/users/score_viewer' do
+    Sidekiq::Testing.inline!
     SHEET_NUM = 2
-    SLEEP = 0.7
     let(:user) { create(:user, id: 1) }
     let(:url) { '/api/v1/users/score_viewer' }
     let(:method) { 'post' }
@@ -55,7 +55,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq 7
           end
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq elems[sheet_id - 1]['cl']
@@ -66,7 +65,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq nil
           end
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq elems[sheet_id - 1]['pg'] * 2 + elems[sheet_id - 1]['g']
@@ -77,7 +75,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq nil
           end
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq elems[sheet_id - 1]['miss']
@@ -88,7 +85,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
             expect(Log.exists?(sheet_id: sheet_id, user_id: 1, created_at: Date.today)).to eq false
           end
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             log = Log.find_by(sheet_id: sheet_id, user_id: 1, created_at: Date.today)
@@ -119,7 +115,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         it 'BPは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq elems[0]['miss']
         end
@@ -127,13 +122,11 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2
         end
         it 'クリアランプは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end
@@ -156,20 +149,17 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         it 'BPはnilのままである' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアはnilのままである' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
         end
         it 'クリアランプは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end
       end
@@ -191,20 +181,17 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         it 'BPはnilのままである' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
-          sleep(SLEEP)
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2 + elems[0]['g']
         end
         it 'クリアランプは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
-          sleep(SLEEP)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end
