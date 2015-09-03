@@ -37,6 +37,8 @@ RSpec.configure do |config|
   end
 end
 
+Sidekiq::Testing.inline!
+
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, inspector: true)
 end

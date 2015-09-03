@@ -26,7 +26,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
   end
 
   describe 'POST /api/v1/users/score_viewer' do
-    Sidekiq::Testing.inline!
     SHEET_NUM = 2
     let(:user) { create(:user, id: 1) }
     let(:url) { '/api/v1/users/score_viewer' }

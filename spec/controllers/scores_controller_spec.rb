@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe ScoresController, type: :controller do
+  SCORE_ID = 10
   before do
     @user = create(:user, id: 1)
     create(:sheet, id: 1)
-    @score = create(:score, id: 1, user_id: 1, sheet_id: 1, state: 7)
+    @score = create(:score, id: SCORE_ID, user_id: 1, sheet_id: 1, state: 7)
   end
 
   describe 'GET #edit' do
@@ -40,16 +41,16 @@ RSpec.describe ScoresController, type: :controller do
   describe 'PUT #update' do
     context 'ログインしていない' do
       it 'response ng' do
-        xhr :patch, :update, id: 1, score: { sheet_id: 1, state: 5 }
+        xhr :patch, :update, id: SCORE_ID, score: { sheet_id: 1, state: 5 }
         expect(response).to have_http_status(401)
       end
     end
     context 'ログインしている' do
       it 'response ok' do
         sign_in @user
-        xhr :patch, :update, id: 1, score: { sheet_id: 1, state: 5 }
+        xhr :patch, :update, id: SCORE_ID, score: { sheet_id: 1, state: 5 }
         expect(response).to have_http_status(:success)
-        expect(Score.find_by(id: 1).state).to eq 5
+        expect(Score.find_by(id: SCORE_ID).state).to eq 5
       end
     end
   end
