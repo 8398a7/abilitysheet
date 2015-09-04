@@ -19,4 +19,4 @@ test:
     - "cd .submodules/api-abilitysheet && crystal deps"
     - "cd .submodules/api-abilitysheet && crystal src/app.cr": { background: true }
     - "bundle exec bin/rubocop_parallel": { parallel: true }
-    - "bin/rspec --color --format documentation"
+    - bundle exec rspec

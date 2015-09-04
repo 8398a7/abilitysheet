@@ -6,10 +6,19 @@ GIT
       sass-rails (>= 3.1)
 
 GIT
-  remote: https://github.com/intridea/grape.git
-  revision: 0dfc1cc1cc2f43d49e09d14f737397f087668577
+  remote: https://github.com/pluff/grape-devise.git
+  revision: 607c4a905068d33a7a630503e907c85bd45ec14a
   specs:
-    grape (0.12.1)
+    grape-devise (0.0.1)
+      activesupport (>= 3.2.6, < 5)
+      devise (> 3.2)
+      grape (> 0.7)
+
+GIT
+  remote: https://github.com/ruby-grape/grape.git
+  revision: 0063e622c0cf7ffc957f229c900132de3fd23298
+  specs:
+    grape (0.13.1)
       activesupport
       builder
       hashie (>= 2.1.0)
@@ -19,15 +28,6 @@ GIT
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
-
-GIT
-  remote: https://github.com/pluff/grape-devise.git
-  revision: 607c4a905068d33a7a630503e907c85bd45ec14a
-  specs:
-    grape-devise (0.0.1)
-      activesupport (>= 3.2.6, < 5)
-      devise (> 3.2)
-      grape (> 0.7)
 
 GEM
   remote: https://rubygems.org/
@@ -584,4 +584,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
