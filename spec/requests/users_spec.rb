@@ -36,7 +36,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         before do
           (1..SHEET_NUM).each do |sheet_id|
             create(:sheet, id: sheet_id)
-            create(:score, sheet_id: sheet_id, user_id: 1)
           end
         end
         let(:parameters) do
@@ -99,7 +98,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
       context 'スコアが理論値の場合' do
         before do
           create(:sheet, id: 1)
-          create(:score, sheet_id: 1, user_id: 1)
         end
         let(:parameters) do
           {
@@ -133,7 +131,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
       context 'クリアランプだけ存在する場合' do
         before do
           create(:sheet, id: 1)
-          create(:score, sheet_id: 1, user_id: 1)
         end
         let(:parameters) do
           {
@@ -165,7 +162,6 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
       context 'ハード落ちなどでBPがない場合' do
         before do
           create(:sheet, id: 1)
-          create(:score, sheet_id: 1, user_id: 1)
         end
         let(:parameters) do
           {
