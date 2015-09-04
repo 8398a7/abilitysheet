@@ -28,6 +28,13 @@ module Abilitysheet::V1
           score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
           error! '404 Not Found', 404 unless score
         end
+        unless Rails.env.test?
+          begin
+            Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
+          rescue
+            error! '503 Service Unavailable', 503
+          end
+        end
         ScoreViewerWorker.perform_async(elems, current_user.id)
         { status: 'ok' }
       end
