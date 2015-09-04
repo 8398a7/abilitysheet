@@ -48,7 +48,7 @@ group :deployment do
   gem 'capistrano-faster-assets'
 end
 
-gem 'grape', git: 'https://github.com/intridea/grape.git'
+gem 'grape', git: 'https://github.com/ruby-grape/grape.git'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 gem 'doorkeeper'
