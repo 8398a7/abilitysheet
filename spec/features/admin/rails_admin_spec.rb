@@ -1,6 +1,6 @@
-RSpec.describe RailsAdmin, type: :request do
+RSpec.describe RailsAdmin, type: :feature do
   let(:user) { create(:user, id: 1) }
-  before { login_as(user, scope: :user, run_callbacks: false) }
+  before { login(user) }
 
   context '管理者の場合' do
     before do

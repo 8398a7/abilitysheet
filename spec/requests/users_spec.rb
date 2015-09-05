@@ -29,7 +29,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
     let(:url) { '/api/v1/users/score_viewer' }
     let(:method) { 'post' }
     context 'ログインしている' do
-      before { login_as(user, scope: :user, run_callbacks: false) }
+      before { login(user) }
       context 'データが正常な場合' do
         before do
           (1..SHEET_NUM).each do |sheet_id|
@@ -190,7 +190,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         end
       end
       context 'データが不正な場合' do
-        before { login_as(user, scope: :user, run_callbacks: false) }
+        before { login(user) }
         context 'iidxidが現在登録されているユーザと違う場合' do
           let(:parameters) do
             {
@@ -201,7 +201,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
           it_behaves_like '403 Forbidden'
         end
         context 'paramsに楽曲情報が存在していない場合' do
-          before { login_as(user, scope: :user, run_callbacks: false) }
+          before { login(user) }
           let(:parameters) do
             {
               'id' => user.iidxid

@@ -8,7 +8,7 @@ RSpec.describe 'ノマゲ地力表', type: :feature do
   end
 
   context 'ログイン時' do
-    before { login_as(user, scope: :user, run_callbacks: false) }
+    before { login(user) }
     it 'ノマゲ参考表の文字が存在する' do
       expect(page).to have_content('ノマゲ参考表')
     end

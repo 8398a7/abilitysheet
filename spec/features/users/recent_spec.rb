@@ -36,7 +36,7 @@ RSpec.describe '最近更新したユーザ200人一覧', type: :feature do
 
   context 'ログイン時' do
     before do
-      login_as(user, scope: :user, run_callbacks: false)
+      login(user)
       visit users_path
     end
     it 'ライバルのカラムが存在する' do

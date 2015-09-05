@@ -8,7 +8,7 @@ RSpec.describe 'ハード地力表', type: :feature do
   end
 
   context 'ログイン時' do
-    before { login_as(user, scope: :user, run_callbacks: false) }
+    before { login(user) }
     it 'ハード参考表の文字が存在する' do
       expect(page).to have_content('ハード参考表')
     end
@@ -29,7 +29,7 @@ RSpec.describe 'ハード地力表', type: :feature do
   context '楽曲更新時', js: true do
     before do
       create(:sheet, id: 1, active: true)
-      login_as(user, scope: :user, run_callbacks: false)
+      login(user)
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
     end
 

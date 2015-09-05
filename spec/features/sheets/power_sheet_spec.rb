@@ -8,7 +8,7 @@ RSpec.describe '地力値表', type: :feature do
   end
 
   context 'ログイン時' do
-    before { login_as(user, scope: :user, run_callbacks: false) }
+    before { login(user) }
     it 'iidx.meの文字が存在する' do
       expect(page).to have_content('iidx.me')
     end

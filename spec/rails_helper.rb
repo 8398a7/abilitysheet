@@ -13,7 +13,7 @@ RSpec.configure do |config|
   config.order = :random
 
   config.include Devise::TestHelpers, type: :controller
-  config.include RequestHelpers, type: :request
+  config.include SessionHelpers
   config.include ApiHelper, type: :request
   config.include Warden::Test::Helpers
   config.include FactoryGirl::Syntax::Methods
