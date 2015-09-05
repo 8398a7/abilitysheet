@@ -22,7 +22,8 @@ class Log < ActiveRecord::Base
 
   include Graph
 
-  def self.attributes(score_params, _sc = -2, _bp = -2, owner)
+  def self.attributes(score_params, owner)
+    score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
     log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
     if log
       log.update(new_state: score_params['state'])
@@ -34,6 +35,25 @@ class Log < ActiveRecord::Base
       sheet_id: score_params['sheet_id'],
       pre_state: pre_state, new_state: score_params['state'],
       pre_score: nil, new_score: nil, pre_bp: nil, new_bp: nil,
+      version: Abilitysheet::Application.config.iidx_version
+    )
+  end
+
+  def self.score_attributes(score_params, owner)
+    log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
+    if log
+      log.update(new_score: score_params['score'], new_bp: score_params['bp'])
+      return
+    end
+    now_score = owner.scores.find_by(sheet_id: score_params['sheet_id'])
+    pre_state = now_score.try(:state) || 7
+    pre_score = now_score.try(:score) || -1
+    pre_bp = now_score.try(:bp) || 9999
+    return if score_params['score'] < pre_score && pre_bp < score_params['bp']
+    owner.logs.create(
+      sheet_id: score_params['sheet_id'],
+      pre_state: pre_state, new_state: score_params['state'],
+      pre_score: now_score.score, new_score: score_params['score'], pre_bp: now_score.bp, new_bp: score_params['bp'],
       version: Abilitysheet::Application.config.iidx_version
     )
   end

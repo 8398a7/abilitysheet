@@ -74,7 +74,7 @@ module ApiHelper
 
     describe '#body' do
       subject { super().body }
-      it { is_expected.to match_json_expression(message: '404 Not Found') }
+      it { is_expected.to match_json_expression(error: '404 Not Found') }
     end
   end
 
