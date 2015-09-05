@@ -45,7 +45,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         let(:result) do
           { status: 'ok' }
         end
-        it_behaves_like '201 Created'
+        it_behaves_like '202 Accepted'
         it 'クリアランプが反映されている' do
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq 7
@@ -106,7 +106,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         let(:result) do
           { status: 'ok' }
         end
-        it_behaves_like '201 Created'
+        it_behaves_like '202 Accepted'
         it 'BPは反映されている' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
@@ -139,7 +139,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         let(:result) do
           { status: 'ok' }
         end
-        it_behaves_like '201 Created'
+        it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
@@ -170,7 +170,7 @@ RSpec.describe Abilitysheet::V1::Users, type: :request do
         let(:result) do
           { status: 'ok' }
         end
-        it_behaves_like '201 Created'
+        it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)

@@ -39,6 +39,11 @@ module ApiHelper
     its(:body)   { is_expected.to match_json_expression(result) }
   end
 
+  shared_examples_for '202 Accepted' do
+    its(:status) { is_expected.to be(202) }
+    its(:body)   { is_expected.to match_json_expression(result) }
+  end
+
   shared_examples_for '204 No Content' do
     describe '#status' do
       subject { super().status }

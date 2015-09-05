@@ -12,6 +12,7 @@ module Abilitysheet::V1
         requires :state, type: String, desc: '楽曲情報'
       end
       post 'score_viewer' do
+        status 202
         authenticate!
         error! '403 Forbidden', 403 if current_user.iidxid != params[:id]
         begin
