@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'sheets/clear.html.slim', type: :request do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'clear') }

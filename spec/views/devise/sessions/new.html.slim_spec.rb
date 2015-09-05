@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'devise/sessions/new.html.slim', type: :view do
   before do
     create(:user, id: 1)

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Admin::UsersController, type: :controller do
   let(:user) { create(:user, role: User::Role::ADMIN, id: 2) }
   describe 'GET #index' do

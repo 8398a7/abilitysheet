@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'users/index.html.slim', type: :view do
   let(:user) { create(:user, id: 1) }
   before do

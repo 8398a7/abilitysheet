@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RecommendsController, type: :controller do
   describe 'GET #list' do
     before { get :list }

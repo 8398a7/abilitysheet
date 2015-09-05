@@ -15,8 +15,6 @@
 #  created_at :date
 #
 
-require 'rails_helper'
-
 RSpec.describe Log, type: :model do
   describe '.attributes' do
     before { create(:sheet, id: 1) }

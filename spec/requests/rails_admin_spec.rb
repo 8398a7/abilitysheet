@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RailsAdmin, type: :request do
   let(:user) { create(:user, id: 1) }
   before { login_as(user, scope: :user, run_callbacks: false) }

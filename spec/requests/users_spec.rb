@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Abilitysheet::V1::Users, type: :request do
   include_context 'api'
 

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe SheetsController, type: :controller do
   before do
     @user = create(:user)

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe MessageDecorator do
   before { create(:user, id: 1) }
 

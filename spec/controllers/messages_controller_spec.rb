@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe MessagesController, type: :controller do
   describe 'GET #new' do
     before { get :new }

@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe ScoresController, type: :controller do
   before do
     @user = create(:user, id: 1)

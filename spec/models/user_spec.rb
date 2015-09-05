@@ -28,8 +28,6 @@
 #  locked_at              :datetime
 #
 
-require 'rails_helper'
-
 RSpec.describe User, type: :model do
   describe '#add_rival' do
     before do

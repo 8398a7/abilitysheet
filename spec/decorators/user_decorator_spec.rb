@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe UserDecorator do
   let(:instance) { described_class.new(user) }
 

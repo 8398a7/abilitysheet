@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'lib/scrape/maneger.rb' do
   let(:agent) { Mechanize.new }
 

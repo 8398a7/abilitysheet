@@ -13,8 +13,6 @@
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
-
 RSpec.describe Score, type: :model do
   before do
     create(:sheet, id: 1, title: 'one', active: true)

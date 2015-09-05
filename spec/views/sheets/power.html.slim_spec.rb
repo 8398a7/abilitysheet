@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'sheets/power.html.slim', type: :view do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'power') }
