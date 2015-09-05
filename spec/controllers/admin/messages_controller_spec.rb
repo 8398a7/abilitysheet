@@ -1,4 +1,4 @@
-RSpec.describe Admin::MessagesController, type: :controller do
+describe Admin::MessagesController, type: :controller do
   before { create(:message, id: 1) }
   describe 'GET #index' do
     context '非ログイン' do

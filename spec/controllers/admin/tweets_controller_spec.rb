@@ -1,2 +1,2 @@
-RSpec.describe Admin::TweetsController, type: :controller do
+describe Admin::TweetsController, type: :controller do
 end

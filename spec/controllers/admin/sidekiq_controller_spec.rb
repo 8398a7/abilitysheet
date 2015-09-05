@@ -1,2 +1,2 @@
-RSpec.describe Admin::SidekiqController, type: :controller do
+describe Admin::SidekiqController, type: :controller do
 end

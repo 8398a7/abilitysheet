@@ -1,4 +1,4 @@
-RSpec.describe WelcomesController, type: :controller do
+describe WelcomesController, type: :controller do
   describe 'GET #index' do
     before { get :index }
     it 'response ok' do

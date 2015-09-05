@@ -1,4 +1,4 @@
-RSpec.describe RecommendsController, type: :controller do
+describe RecommendsController, type: :controller do
   describe 'GET #list' do
     before { get :list }
     it 'response ok' do

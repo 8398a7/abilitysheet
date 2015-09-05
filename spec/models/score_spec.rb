@@ -13,7 +13,7 @@
 #  updated_at :datetime         not null
 #
 
-RSpec.describe Score, type: :model do
+describe Score, type: :model do
   before do
     create(:sheet, id: 1, title: 'one', active: true)
     create(:sheet, id: 2, title: 'two', active: true)

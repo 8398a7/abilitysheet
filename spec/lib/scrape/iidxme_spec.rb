@@ -1,4 +1,4 @@
-RSpec.describe Scrape::IIDXME do
+describe Scrape::IIDXME do
   let(:user) { create(:user, iidxid) }
   let(:iidxme) { Scrape::IIDXME.new }
 

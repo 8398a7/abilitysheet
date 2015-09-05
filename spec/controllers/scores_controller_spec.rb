@@ -1,4 +1,4 @@
-RSpec.describe ScoresController, type: :controller do
+describe ScoresController, type: :controller do
   before do
     @user = create(:user, id: 1)
     create(:sheet, id: 1)

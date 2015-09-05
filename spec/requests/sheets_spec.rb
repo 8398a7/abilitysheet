@@ -1,4 +1,4 @@
-RSpec.describe Abilitysheet::V1::Sheets, type: :request do
+describe Abilitysheet::V1::Sheets, type: :request do
   include_context 'api'
 
   # describe 'GET /api/v1/sheets' do

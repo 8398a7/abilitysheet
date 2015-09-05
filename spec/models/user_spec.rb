@@ -28,7 +28,7 @@
 #  locked_at              :datetime
 #
 
-RSpec.describe User, type: :model do
+describe User, type: :model do
   describe '#add_rival' do
     before do
       (1..12).each do |i|

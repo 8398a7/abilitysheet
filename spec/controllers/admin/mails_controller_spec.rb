@@ -1,2 +1,2 @@
-RSpec.describe Admin::MailsController, type: :controller do
+describe Admin::MailsController, type: :controller do
 end

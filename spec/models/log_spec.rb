@@ -15,7 +15,7 @@
 #  created_at :date
 #
 
-RSpec.describe Log, type: :model do
+describe Log, type: :model do
   describe '.attributes' do
     before { create(:sheet, id: 1) }
     let(:parameter) do

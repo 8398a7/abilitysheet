@@ -1,4 +1,4 @@
-RSpec.describe Admin::UsersController, type: :controller do
+describe Admin::UsersController, type: :controller do
   let(:user) { create(:user, role: User::Role::ADMIN, id: 2) }
   describe 'GET #index' do
     context '非ログイン' do
