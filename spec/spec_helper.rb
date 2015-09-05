@@ -1,6 +1,5 @@
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-require 'capybara/rspec'
 require 'capybara/poltergeist'
 require 'sidekiq/testing'
 
