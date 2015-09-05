@@ -18,7 +18,7 @@ describe Score, type: :model do
     create(:sheet, id: 1, title: 'one', active: true)
     create(:sheet, id: 2, title: 'two', active: true)
     create(:sheet, id: 3, title: 'three')
-    create(:user, id: 1)
+    @user = create(:user, id: 1)
     create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6, updated_at: '2015-06-23 15:34')
     create(:score, id: 2, user_id: 1, sheet_id: 2, state: 7, updated_at: '2015-06-23 15:35')
     create(:score, id: 3, user_id: 1, sheet_id: 3, state: 7, updated_at: '2015-06-23 15:35')
@@ -26,13 +26,13 @@ describe Score, type: :model do
 
   describe '.last_updated' do
     it '新しい順かつNOPLAYではないスコアを返す' do
-      expect(User.find_by(id: 1).scores.last_updated.id).to eq 1
+      expect(@user.scores.last_updated.id).to eq 1
     end
   end
 
   describe '.is_active' do
     it 'アクティブな楽曲のスコア一覧を返す' do
-      expect(User.find_by(id: 1).scores.is_active.count).to eq 2
+      expect(@user.scores.is_active.count).to eq 2
     end
   end
 
@@ -48,7 +48,7 @@ describe Score, type: :model do
   describe '#update_with_logs' do
     it 'logデータも作られている' do
       score_params = { 'sheet_id' => '1', 'state' => '5' }
-      User.find_by(id: 1).scores.find_by(id: 1).update_with_logs(score_params)
+      @user.scores.find_by(id: 1).update_with_logs(score_params)
       ret = {
         user_id: 1, sheet_id: 1,
         pre_state: 6, new_state: 5,
@@ -56,12 +56,12 @@ describe Score, type: :model do
         pre_bp: nil, new_bp: nil,
         version: 22
       }
-      expect(User.find_by(id: 1).logs.exists?(ret)).to eq true
+      expect(@user.logs.exists?(ret)).to eq true
     end
     it 'stateが変化しない場合はlogを作らない' do
       score_params = { 'sheet_id' => '1', 'state' => '6' }
-      User.find_by(id: 1).scores.find_by(id: 1).update_with_logs(score_params)
-      expect(User.find_by(id: 1).logs.count).to eq 0
+      @user.scores.find_by(id: 1).update_with_logs(score_params)
+      expect(@user.logs.count).to eq 0
     end
   end
 end
