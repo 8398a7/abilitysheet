@@ -12,8 +12,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.include Capybara::DSL
-
   Capybara.default_selector = :css
   Capybara.javascript_driver = :poltergeist
   Capybara.register_driver :poltergeist do |app|

@@ -1,4 +1,4 @@
-RSpec.describe 'sheets/hard.html.slim', type: :request do
+RSpec.describe 'ハード地力表', type: :feature do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'hard') }
 

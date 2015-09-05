@@ -1,4 +1,4 @@
-RSpec.describe 'users/index.html.slim', type: :view do
+RSpec.describe '最近更新したユーザ200人一覧', type: :feature do
   let(:user) { create(:user, id: 1) }
   before do
     create(:score, user_id: 1, sheet_id: 1)

@@ -1,4 +1,4 @@
-RSpec.describe 'devise/sessions/new.html.slim', type: :view do
+RSpec.describe 'ログイン処理', type: :feature do
   before do
     create(:user, id: 1)
     visit new_user_session_path

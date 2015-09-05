@@ -1,4 +1,4 @@
-RSpec.describe 'sheets/clear.html.slim', type: :request do
+RSpec.describe 'ノマゲ地力表', type: :feature do
   let(:user) { create(:user, id: 1) }
   before { visit sheet_path(iidxid: user.iidxid, type: 'clear') }
 

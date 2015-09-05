@@ -17,6 +17,7 @@ RSpec.configure do |config|
   config.include ApiHelper, type: :request
   config.include Warden::Test::Helpers
   config.include FactoryGirl::Syntax::Methods
+  config.include WaitForAjax, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
