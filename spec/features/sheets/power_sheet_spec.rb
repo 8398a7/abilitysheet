@@ -1,21 +1,21 @@
-RSpec.describe '地力値表', type: :feature do
-  let(:user) { create(:user, id: 1) }
-  before { visit sheet_path(iidxid: user.iidxid, type: 'power') }
+feature '地力値表' do
+  given(:user) { create(:user, id: 1) }
+  background { visit sheet_path(iidxid: user.iidxid, type: 'power') }
 
-  it '存在しないユーザへのアクセス' do
+  scenario '存在しないユーザへのアクセス' do
     visit sheet_path(iidxid: '1111-1111', type: 'power')
     expect(page).to have_content('このページは存在しません')
   end
 
   context 'ログイン時' do
-    before { login(user) }
-    it 'iidx.meの文字が存在する' do
+    background { login(user) }
+    scenario 'iidx.meの文字が存在する' do
       expect(page).to have_content('iidx.me')
     end
   end
 
   context '非ログイン時' do
-    it 'iidx.meの文字が存在する' do
+    scenario 'iidx.meの文字が存在する' do
       expect(page).to have_content('iidx.me')
     end
   end

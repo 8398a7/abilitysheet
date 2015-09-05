@@ -1,11 +1,11 @@
-RSpec.describe 'ログイン処理', type: :feature do
-  before do
+feature 'ログイン処理' do
+  background do
     create(:user, id: 1)
     visit new_user_session_path
   end
-  let(:user) { User.find_by(id: 1) }
+  given(:user) { User.find_by(id: 1) }
   context 'iidxidでログイン' do
-    it 'response ok' do
+    scenario 'response ok' do
       fill_in 'user_login', with: user.iidxid
       fill_in 'user_password', with: 'hogehoge'
       click_button 'ログイン'
@@ -16,7 +16,7 @@ RSpec.describe 'ログイン処理', type: :feature do
   end
 
   context 'usernameでログイン' do
-    it 'response ok' do
+    scenario 'response ok' do
       fill_in 'user_login', with: user.username
       fill_in 'user_password', with: 'hogehoge'
       click_button 'ログイン'
