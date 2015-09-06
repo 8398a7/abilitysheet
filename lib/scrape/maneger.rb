@@ -20,7 +20,7 @@ module Scrape
       sheet_id = Sheet.find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id)
       return false if score.state <= state
-      score.update_with_logs({ 'sheet_id' => sheet_id, 'state' => state }, nil, nil)
+      score.update_with_logs('sheet_id' => sheet_id, 'state' => state)
       true
     end
 

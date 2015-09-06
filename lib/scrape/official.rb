@@ -94,7 +94,7 @@ module Scrape
 
       score = pg.to_i * 2 + g.to_i
       user_score = @user.scores.find_by(sheet_id: sheet.id)
-      user_score.update_with_logs({ 'sheet_id' => sheet.id, 'state' => l_v }, score, miss)
+      user_score.update_with_logs('sheet_id' => sheet.id, 'state' => l_v, 'score' => score, 'bp' => miss)
       @count += 1
     end
 
@@ -143,12 +143,12 @@ module Scrape
     end
 
     def error_title_check(title)
-      return %(†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)) if title.index('渚')
-      return %(キャトられ恋はモ～モク)                      if title.index('キャトられ')
-      return %(カゴノトリ～弐式～)                          if title.index('カゴノトリ')
-      return %(PARANOiA ～HADES～)                          if title.index('HADES')
-      return %(quell～the seventh slave～)                  if title.index('quell')
-      return %(旋律のドグマ ～Misérables～)                 if title.index('旋律')
+      return '†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT)' if title.index('渚')
+      return 'キャトられ恋はモ～モク'                      if title.index('キャトられ')
+      return 'カゴノトリ～弐式～'                          if title.index('カゴノトリ')
+      return 'PARANOiA ～HADES～'                          if title.index('HADES')
+      return 'quell～the seventh slave～'                  if title.index('quell')
+      return '旋律のドグマ ～Misérables～'                 if title.index('旋律')
       title
     end
 
