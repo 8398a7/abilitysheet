@@ -65,7 +65,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    allow_parameters = %w(username iidxid djname grade pref)
+    allow_parameters = %w(email username iidxid djname grade pref)
     devise_parameter_sanitizer.for(:sign_up) << allow_parameters
     devise_parameter_sanitizer.for(:account_update) << allow_parameters
   end
