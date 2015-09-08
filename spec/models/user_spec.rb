@@ -162,6 +162,18 @@ describe User, type: :model do
     it 'iidxid, version, djname, pref, grade, username, passwordがあれば有効な状態であること' do
       expect(create(:user)).to be_valid
     end
+    it 'ユーザごとに重複したemailを許可しないこと' do
+      create(:user, email: 'validate@iidx.tk')
+      user = build(:user, iidxid: '9384-2982', username: 'test2', email: 'validate@iidx.tk')
+
+      user.valid?
+      expect(user.errors[:email]).to include('はすでに存在します。')
+    end
+    it 'emailがなければ無効な状態であること' do
+      user = User.new(email: '')
+      user.valid?
+      expect(user.errors[:email]).to include('を入力してください。')
+    end
     it 'ユーザごとに重複したiidxidを許可しないこと' do
       create(:user)
       user = build(:user, username: 'test2')
