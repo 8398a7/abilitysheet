@@ -11,6 +11,10 @@
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
       = devise_error_messages!
       .uk-form-row.uk-form-icon
+        label.uk-form-label メールアドレス
+        .uk-form-controls
+          = f.email_field :email, autofocus: true
+      .uk-form-row.uk-form-icon
         label.uk-form-label アカウント名(半角英数字)
         .uk-form-controls
           = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample'
