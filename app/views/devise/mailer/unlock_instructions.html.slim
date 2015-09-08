@@ -1,10 +1,10 @@
 p
-  | Hello 
+  | こんにちは
   = @resource.email
   | !
 p
-  | Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+  | 貴方のアカウントはログインの失敗回数が上限に達したため，凍結されました．
 p
-  | Click the link below to unlock your account:
+  | 下記のリンクより貴方のアカウント凍結を解除することが出来ます．
 p
-  = link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token)
+  = link_to 'アカウント凍結の解除', unlock_url(@resource, unlock_token: @token)
