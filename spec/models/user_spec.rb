@@ -26,6 +26,7 @@
 #  unlock_token           :string
 #  locked_at              :datetime
 #  role                   :integer          default(0), not null
+#  email                  :string           default(""), not null
 #
 
 describe User, type: :model do
