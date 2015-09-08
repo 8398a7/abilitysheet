@@ -42,7 +42,7 @@ describe Admin::UsersController, type: :controller do
     before { sign_in user }
     it 'creates a new User' do
       expect do
-        xhr :post, :create, user: { iidxid: '3472-4938', djname: 'BAR', password: 'hogehoge', username: 'admin_test', pref: 0, grade: 0 }
+        xhr :post, :create, user: { email: 'hoge@iidx.tk', iidxid: '3472-4938', djname: 'BAR', password: 'hogehoge', username: 'admin_test', pref: 0, grade: 0 }
       end.to change(User, :count).by(1)
       expect(response).to have_http_status(:success)
     end

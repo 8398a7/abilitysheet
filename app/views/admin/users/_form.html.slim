@@ -19,6 +19,10 @@
           = fa_icon 'ban'
 
     .uk-form-row
+      label.uk-form-label メールアドレス
+      .uk-form-controls
+        = f.text_field :email, class: 'uk-width-1-1'
+    .uk-form-row
       label.uk-form-label アカウント名
       .uk-form-controls
         = f.text_field :username, class: 'uk-width-1-1'
