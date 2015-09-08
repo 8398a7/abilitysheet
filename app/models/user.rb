@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
   include List
 
   # usernameを必須・一意とする
-  validates_uniqueness_of :username, :iidxid
-  validates_presence_of :username, :djname, :iidxid, :grade, :pref
+  validates_uniqueness_of :username, :iidxid, :email
+  validates_presence_of :username, :djname, :iidxid, :grade, :pref, :email
 
   validates :iidxid, format: {
     with: /\A\d{4}-\d{4}\z/,
