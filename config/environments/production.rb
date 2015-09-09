@@ -93,4 +93,5 @@ Rails.application.configure do
   config.action_controller.relative_url_root = '/abilitysheet'
 
   config.react.variant = :production
+  routes.default_url_options = { host: 'iidx12.tk' }
 end
