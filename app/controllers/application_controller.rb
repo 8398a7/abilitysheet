@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   before_action :shift_domain
   before_action :miniprofiler
   before_action :load_nav_routes
+  before_action :check_email, unless: :devise_controller?
+
+  def check_email
+    return unless current_user
+    return if current_user.email.present?
+    return if '2015/09/30 23:59' < current_user.current_sign_in_at
+    flash[:notice] = 'パスワード再発行用にemailの設定が推奨されています'
+    flash[:alert] = '設定されていない場合、再発行されない可能性があります'
+    redirect_to edit_user_registration_path
+  end
 
   def shift_domain
     host = 'iidxas.tk'
