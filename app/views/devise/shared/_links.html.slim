@@ -1,5 +1,6 @@
 - if controller_name != 'sessions'
-  = link_to 'ログイン', new_session_path(resource_name), class: 'btn btn-success'
+  = link_to new_session_path(resource_name), class: 'uk-button uk-button-primary'
+    = fa_icon 'sign-in', text: 'ログイン'
 - if devise_mapping.registerable? && controller_name != 'registrations'
   = link_to new_user_registration_path, class: 'uk-button uk-button-success'
     = fa_icon 'plus', text: '新規作成'
