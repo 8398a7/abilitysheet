@@ -26,6 +26,7 @@
 #  unlock_token           :string
 #  locked_at              :datetime
 #  role                   :integer          default(0), not null
+#  email                  :string           default(""), not null
 #
 
 class User < ActiveRecord::Base
@@ -35,15 +36,15 @@ class User < ActiveRecord::Base
   serialize :rival
   serialize :reverse_rival
 
-  devise :database_authenticatable, :registerable, :rememberable, :trackable, :validatable, :lockable
+  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
 
   include Rival
   include List
 
   # usernameを必須・一意とする
-  validates_uniqueness_of :username, :iidxid
-  validates_presence_of :username, :djname, :iidxid, :grade, :pref
+  validates_uniqueness_of :username, :iidxid, :email
+  validates_presence_of :username, :djname, :iidxid, :grade, :pref, :email
 
   validates :iidxid, format: {
     with: /\A\d{4}-\d{4}\z/,

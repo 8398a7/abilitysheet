@@ -1,0 +1,10 @@
+p
+  | こんにちは
+  = @resource.email
+  | !
+p
+  | 貴方のアカウントはログインの失敗回数が上限に達したため，凍結されました．
+p
+  | 下記のリンクより貴方のアカウント凍結を解除することが出来ます．
+p
+  = link_to 'アカウント凍結の解除', unlock_url(@resource, unlock_token: @token)

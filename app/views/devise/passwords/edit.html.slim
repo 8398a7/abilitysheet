@@ -1,0 +1,24 @@
+- @title = 'パスワード再発行'
+
+.uk-width-medium-1-2.uk-container-center
+  .uk-panel.uk-panel-box
+    .uk-panel-title.bold
+      = fa_icon 'key', text: @title
+
+    .uk-nav-side
+      .uk-nav-divider
+
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'uk-form uk-form-stacked' }) do |f|
+      = devise_error_messages!
+      = f.hidden_field :reset_password_token
+      .uk-form-row.uk-form-icon
+        i.uk-icon-key
+        = f.password_field :password, autofocus: true, placeholder: "新しいパスワード(#{@minimum_password_length}文字以上)", autocomplete: 'off'
+      .uk-form-row.uk-form-icon
+        i.uk-icon-key
+        = f.password_field :password_confirmation, autofocus: true, placeholder: "新しいパスワード(確認)", autocomplete: 'off'
+      .uk-form-row
+        .uk-button-group
+          button.uk-button.uk-button-danger type="submit"
+            = fa_icon 'refresh', text: 'パスワード変更'
+          = render 'devise/shared/links'

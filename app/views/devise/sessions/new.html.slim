@@ -22,5 +22,4 @@
         .uk-button-group
           button.uk-button.uk-button-primary type="submit"
             = fa_icon 'sign-in', text: 'ログイン'
-          = link_to new_user_registration_path, class: 'uk-button uk-button-success'
-            = fa_icon 'sign-up', text: '新規作成'
+          = render 'devise/shared/links'
