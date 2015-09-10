@@ -4,7 +4,7 @@ h2.bold
   = fa_stacked_icon 'users inverse', base: 'square', text: @title
 
 = search_form_for [:admin, @search], class: 'uk-form right' do |f|
-  = fa_icon 'search', text: '曲名から絞込'
+  = fa_icon 'search', text: 'DJNAMEから絞込'
   .uk-form-row
     = f.select :id_eq, User.all.map { |u| [u.djname, u.id] }, {}, class: 'select2', style: 'width: 300px'
     button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
