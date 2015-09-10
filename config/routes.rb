@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
   end
   namespace :admin do
+    resources :dashboards, only: [:index]
     resources :sheets do
       post :active, on: :member
       post :inactive, on: :member

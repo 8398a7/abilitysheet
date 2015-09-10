@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
     @paths[:rails_admin] = rails_admin_path
     return unless current_user.owner?
     @paths[:new_admin_tweet] = new_admin_tweet_path
+    @paths[:admin_dashboards] = admin_dashboards_path
   end
 
   protected

@@ -19,6 +19,7 @@
       $('.admin-nav').append("<li><a href=#{@props.paths.rails_admin}>RailsAdmin</a></li>")
     if @props.current_user.role is 100
       $('.admin-nav').append("<li><a href=#{@props.paths.new_admin_tweet}>Twitter</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_dashboards}>Dashboard</a></li>")
 
   render: ->
     unless @props.current_user?
