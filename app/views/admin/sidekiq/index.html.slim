@@ -1,4 +1,10 @@
 - @title = 'Sidekiq'
+
+- if @sidekiq
+  button.uk-button.uk-button-success active
+- else
+  = link_to 'inactive', start_admin_sidekiq_path(true), class: 'uk-button uk-button-danger', remote: true, method: :post
+
 iframe.uk-panel.uk-panel-box src=sidekiq_admin_path
 
 coffee:
