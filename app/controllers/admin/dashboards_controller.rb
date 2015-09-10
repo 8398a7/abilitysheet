@@ -13,8 +13,8 @@ class Admin::DashboardsController < ApplicationController
     @message = Message.where(state: false).count
     @user = User.where(current_sign_in_at: Date.today..Date.today + 1).count
     @app_memory = (`ps -o rss= -p #{Process.pid}`.to_i / 1024.0).round(2)
-    @sidekiq_memory = (`ps -o rss= -p #{@sidekiq + 1}`.to_i / 1024.0).round(2) if @sidekiq
+    @sidekiq_memory = (`ps -o rss= -p #{@sidekiq}`.to_i / 1024.0).round(2) if @sidekiq
     @used_memory = (`ps aux | tail -n +2 | awk -F' ' '{sum += $6} END {print sum}'`.to_i / 1024.0).round(2)
-    @margin_memory = ENV['MEMORY'].to_i - @used_memory
+    @margin_memory = (ENV['MEMORY'].to_i - @used_memory).round(2)
   end
 end
