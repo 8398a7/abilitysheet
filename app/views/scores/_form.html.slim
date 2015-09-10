@@ -12,6 +12,14 @@
         .uk-form-controls
           text_field.form-control readonly="true" = sheet.title
       .uk-form-row
+        label.uk-form-label スコア
+        .uk-form-controls
+          text_field.form-control readonly="true" = score.score
+      .uk-form-row
+        label.uk-form-label BP
+        .uk-form-controls
+          text_field.form-control readonly="true" = score.bp
+      .uk-form-row
         = f.label :state, 'ランプ状況', class: 'uk-form-label'
         .uk-form-controls
           = f.select :state, Score.select_state, { selected: score.state }
