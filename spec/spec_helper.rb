@@ -2,6 +2,7 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require 'capybara/poltergeist'
 require 'sidekiq/testing'
+require 'tilt/coffee'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
