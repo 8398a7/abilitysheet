@@ -16,7 +16,6 @@ gem 'nokogiri'
 gem 'mechanize'
 
 gem 'font-awesome-rails'
-gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
 gem 'active_link_to'
 gem 'ransack'
 gem 'draper'

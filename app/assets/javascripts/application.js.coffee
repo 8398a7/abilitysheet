@@ -2,7 +2,7 @@
 #= require jquery_ujs
 #= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
-#= require uikit
+#= require uikit/js/uikit.min
 #= require select2
 #= require highcharts/highcharts-more
 #= require nprogress
