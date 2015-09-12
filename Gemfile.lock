@@ -95,6 +95,7 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bower-rails (0.10.0)
     buftok (0.2.0)
     builder (3.2.2)
     bullet (4.14.7)
@@ -560,6 +561,7 @@ DEPENDENCIES
   annotate
   better_errors
   binding_of_caller
+  bower-rails
   bullet
   capistrano-faster-assets
   capistrano-rails
@@ -579,7 +581,6 @@ DEPENDENCIES
   grape-devise!
   grape_logging
   jbuilder (~> 2.0)
-  jquery-rails
   json_expressions
   launchy
   lazy_high_charts

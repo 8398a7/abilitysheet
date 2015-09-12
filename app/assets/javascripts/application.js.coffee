@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require dataTables/jquery.dataTables
+#= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
 #= require uikit
 #= require select2

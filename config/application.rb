@@ -37,5 +37,7 @@ module Abilitysheet
 
     # test_framework
     config.generators.test_framework = 'rspec'
+
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
   end
 end

@@ -26,6 +26,7 @@ gem 'nprogress-rails'
 gem 'lazy_high_charts'
 gem 'react-rails'
 gem 'sprockets-coffee-react'
+gem 'bower-rails'
 
 group :development do
   gem 'better_errors'
@@ -74,7 +75,6 @@ gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'therubyracer',  platforms: :ruby
-gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc

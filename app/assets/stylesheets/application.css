@@ -17,6 +17,6 @@
  *= require select2
  *= require nprogress
  *= require nprogress-bootstrap
- *= require dataTables/jquery.dataTables
+ *= require datatables/media/css/jquery.dataTables
  *= require_self
  */
