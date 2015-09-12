@@ -24,7 +24,6 @@ gem 'select2-rails'
 gem 'rack-mini-profiler', require: false
 gem 'nprogress-rails'
 gem 'lazy_high_charts'
-gem 'jquery-datatables-rails'
 gem 'react-rails'
 gem 'sprockets-coffee-react'
 

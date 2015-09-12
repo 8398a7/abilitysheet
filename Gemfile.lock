@@ -246,11 +246,6 @@ GEM
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
-    jquery-datatables-rails (3.3.0)
-      actionpack (>= 3.1)
-      jquery-rails
-      railties (>= 3.1)
-      sass-rails
     jquery-rails (4.0.5)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -584,7 +579,6 @@ DEPENDENCIES
   grape-devise!
   grape_logging
   jbuilder (~> 2.0)
-  jquery-datatables-rails
   jquery-rails
   json_expressions
   launchy
