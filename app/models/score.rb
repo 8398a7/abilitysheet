@@ -16,7 +16,7 @@
 class Score < ActiveRecord::Base
   belongs_to :sheet
   belongs_to :user
-  delegate :title,   to: :sheet
+  delegate :title, to: :sheet
 
   include IIDXME
   include ScoreViewer
