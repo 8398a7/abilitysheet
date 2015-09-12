@@ -16,7 +16,6 @@ gem 'nokogiri'
 gem 'mechanize'
 
 gem 'font-awesome-rails'
-gem 'uikit-sass-rails', git: 'https://github.com/8398a7/uikit-sass-rails'
 gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
@@ -26,6 +25,7 @@ gem 'nprogress-rails'
 gem 'lazy_high_charts'
 gem 'react-rails'
 gem 'sprockets-coffee-react'
+gem 'bower-rails'
 
 group :development do
   gem 'better_errors'
@@ -74,7 +74,6 @@ gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
 gem 'therubyracer',  platforms: :ruby
-gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc

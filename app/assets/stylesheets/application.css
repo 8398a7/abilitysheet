@@ -12,11 +12,11 @@
  *
  *= require_tree .
  *= require font-awesome
- *= require uikit
- *= require uikit/almost-flat
+ *= require uikit/css/uikit.min
+ *= require uikit/css/uikit.almost-flat.min
  *= require select2
  *= require nprogress
  *= require nprogress-bootstrap
- *= require dataTables/jquery.dataTables
+ *= require datatables/media/css/jquery.dataTables
  *= require_self
  */
