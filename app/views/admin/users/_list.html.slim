@@ -27,7 +27,10 @@
                 = fa_icon 'level-up', text: '有効化'
               = link_to admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
                 = fa_icon 'trash', text: '削除'
-          td = user.id
+          td
+            = user.id
+            - if user.email.present?
+              = fa_icon 'check'
           td = user.djname
           td = user.iidxid
           td = user.pref
