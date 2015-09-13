@@ -1,12 +1,12 @@
 - @title = @logs.first.created_at
 p
   - if @prev_update
-    = link_to @prev_update, show_log_path(params[:iidxid], @prev_update)
+    = link_to @prev_update, log_path(params[:id], @prev_update)
     | &nbsp;<&nbsp;
   = @logs.first.created_at
   - if @next_update
     | &nbsp;>&nbsp;
-    = link_to @next_update, show_log_path(params[:iidxid], @next_update)
+    = link_to @next_update, log_path(params[:id], @next_update)
 table.table.datatable
   thead
     th 楽曲名

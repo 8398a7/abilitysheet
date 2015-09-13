@@ -52,14 +52,16 @@ Rails.application.routes.draw do
   resources :scores, only: [:edit, :update]
 
   # log
-  get '/logs/:iidxid/graph' => 'logs#graph', as: :graph_logs
-  get '/logs/:iidxid/list' => 'logs#list', as: :list_logs
-  post '/logs/:iidxid/maneger' => 'logs#maneger', as: :maneger_logs
-  post '/logs/:iidxid/iidxme' => 'logs#iidxme', as: :iidxme_logs
-  post '/logs/:iidxid/update_official' => 'logs#update_official', as: :update_official_logs
-  post '/logs/:iidxid/official' => 'logs#official', as: :official_logs
-  get '/logs/:iidxid/sheet' => 'logs#sheet', as: :sheet_log
-  get '/logs/:iidxid/:date' => 'logs#show', as: :show_log
+  resources :logs, only: [] do
+    get :graph, on: :member
+    get :list, on: :member
+    get :sheet, on: :member
+    post :official, on: :member
+    post :manager, on: :member
+    post :iidxme, on: :member
+    post :update_official, on: :member
+  end
+  get '/logs/:id/:date' => 'logs#show', as: :log
 
   # recommends
   get '/recommends/list' => 'recommends#list', as: :list_recommends

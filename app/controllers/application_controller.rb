@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     @paths[:clear_sheet] = sheet_path(current_user.iidxid, type: 'clear')
     @paths[:hard_sheet] = sheet_path(current_user.iidxid, type: 'hard')
     @paths[:power_sheet] = sheet_path(current_user.iidxid, type: 'power')
-    @paths[:logs_list] = list_logs_path(current_user.iidxid)
+    @paths[:logs_list] = list_log_path(current_user.iidxid)
     @paths[:rival_list] = list_rival_path
     @paths[:reverse_rival_list] = reverse_list_rival_path
     @paths[:new_message] = new_message_path
@@ -90,7 +90,7 @@ class ApplicationController < ActionController::Base
   def special_user!
     return if current_user.special?
     flash[:alert] = '不正な操作です．'
-    redirect_to list_logs_path
+    redirect_to list_log_path
   end
 
   def owner_user!

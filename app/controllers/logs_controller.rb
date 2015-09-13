@@ -5,15 +5,15 @@ class LogsController < ApplicationController
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
-    @id = User.find_by(iidxid: params[:iidxid]).id
+    @id = User.find_by(iidxid: params[:id]).id
   end
 
   def list
-    @logs = User.find_by(iidxid: params[:iidxid]).logs
+    @logs = User.find_by(iidxid: params[:id]).logs
   end
 
-  def maneger
-    ManegerWorker.perform_async(current_user.id)
+  def manager
+    ManagerWorker.perform_async(current_user.id)
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
     flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
     render :reload
@@ -33,7 +33,7 @@ class LogsController < ApplicationController
   def update_official
     OfficialWorker.perform_async(current_user.id, params[:kid], params[:password])
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    redirect_to list_logs_path
+    redirect_to list_log_path
   end
 
   def show
@@ -43,7 +43,7 @@ class LogsController < ApplicationController
       return_404
       return
     end
-    user_id = User.find_by(iidxid: params[:iidxid]).try(:id)
+    user_id = User.find_by(iidxid: params[:id]).try(:id)
     unless user_id
       return_404
       return
@@ -53,13 +53,13 @@ class LogsController < ApplicationController
       return_404
       return
     end
-    # list = User.find_by(iidxid: params[:iidxid]).logs.pluck(:created_at).uniq
+    # list = User.find_by(iidxid: params[:id]).logs.pluck(:created_at).uniq
     @prev_update, @next_update = prev_next(user_id, date)
     @color = Static::COLOR
   end
 
   def graph
-    user = User.find_by(iidxid: params[:iidxid])
+    user = User.find_by(iidxid: params[:id])
     unless user
       return_404
       return
@@ -67,7 +67,7 @@ class LogsController < ApplicationController
     user_id = user.id
     unless Log.exists?(user_id: user_id)
       flash[:alert] = '更新データがありません！'
-      redirect_to list_logs_path
+      redirect_to list_log_path
       return
     end
     @column = Log.column(user_id)

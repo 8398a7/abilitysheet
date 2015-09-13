@@ -3,7 +3,7 @@
 :logfile: ./log/sidekiq.log
 :concurrency: 5
 :queues:
-  - maneger
+  - manager
   - register
   - iidxme
   - official

@@ -21,7 +21,7 @@ table.datatable
         td.center bgcolor=user.dan_color = user.dan
         td.center = user.belongs
         - if score
-          td.center = link_to score.updated_at, show_log_path(user.iidxid, score.updated_at)
+          td.center = link_to score.updated_at, log_path(user.iidxid, score.updated_at)
           td.center = score.title
           td.center bgcolor=Static::COLOR[score.state]
         - else

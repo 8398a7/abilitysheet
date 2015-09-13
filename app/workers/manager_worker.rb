@@ -1,6 +1,6 @@
-class ManegerWorker
+class ManagerWorker
   include Sidekiq::Worker
-  sidekiq_options queue: :maneger
+  sidekiq_options queue: :manager
   sidekiq_options retry: false
 
   def perform(id)
