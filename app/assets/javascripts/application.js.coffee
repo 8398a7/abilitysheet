@@ -4,7 +4,7 @@
 #= require highcharts/highcharts
 #= require uikit/js/uikit.min
 #= require uikit/js/components/notify.min
-#= require select2
+#= require select2/select2.min
 #= require highcharts/highcharts-more
 #= require nprogress
 #= require nprogress-turbolinks

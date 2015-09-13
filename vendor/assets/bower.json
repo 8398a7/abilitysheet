@@ -2,6 +2,7 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "datatables": "1.10.9",
-    "uikit": "2.22.0"
+    "uikit": "2.22.0",
+    "select2": "3.5.4"
   }
 }

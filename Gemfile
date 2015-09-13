@@ -19,7 +19,6 @@ gem 'font-awesome-rails'
 gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
-gem 'select2-rails'
 gem 'rack-mini-profiler', require: false
 gem 'nprogress-rails'
 gem 'lazy_high_charts'
