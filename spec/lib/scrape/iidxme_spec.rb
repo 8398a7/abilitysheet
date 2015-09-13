@@ -1,12 +1,20 @@
 describe Scrape::IIDXME do
-  let(:user) { create(:user, iidxid) }
+  let(:user) { create(:user, id: 1, iidxid: iidxid) }
   let(:iidxme) { Scrape::IIDXME.new }
 
   context '正常系' do
     describe '存在するIIDXIDで処理を行う場合' do
-      let(:iidxid) { { iidxid: '7289-4932' } }
+      let(:iidxid) { '8594-9652' }
       it '#async' do
+        create(:sheet, id: 1, title: 'F')
+        create(:score, id: 1, user_id: 1, sheet_id: 1)
+        expect(Score.find(1).state).to eq 7
+        expect(Score.find(1).score).to eq nil
+        expect(Score.find(1).bp).to eq nil
         expect(iidxme.async(user.iidxid)).to be_truthy
+        expect(Score.find(1).state).to eq 0
+        expect(Score.find(1).score).not_to eq nil
+        expect(Score.find(1).bp).not_to eq nil
       end
       it '#process' do
         expect(iidxme.send(:process, user.iidxid)).to be_truthy
@@ -36,7 +44,7 @@ describe Scrape::IIDXME do
       end
     end
     describe '存在しないIIDXIDで処理を行う場合' do
-      let(:iidxid) { { iidxid: '0000-0000' } }
+      let(:iidxid) { '0000-0000' }
       it '#async' do
         expect(iidxme.async(user.iidxid)).to be_falsy
       end

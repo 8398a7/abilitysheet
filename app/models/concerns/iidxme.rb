@@ -12,7 +12,7 @@ module IIDXME
         state = reverse(elem['clear'])
         score = user.scores.find_by(sheet_id: sheet.id)
         next if score.state <= state
-        score.update_with_logs('sheet_id' => sheet.id, 'state' => state)
+        score.update_with_logs('sheet_id' => sheet.id, 'state' => state, 'score' => elem['score'], 'bp' => elem['miss'])
       end
       true
     end
