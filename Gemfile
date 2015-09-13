@@ -16,7 +16,6 @@ gem 'nokogiri'
 gem 'mechanize'
 
 gem 'font-awesome-rails'
-gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
 gem 'rack-mini-profiler', require: false
