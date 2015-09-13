@@ -1,3 +1,4 @@
 asset 'datatables', '1.10.9'
 asset 'uikit', '2.22.0'
 asset 'select2', '3.5.4'
+asset 'nprogress', '0.2.0'

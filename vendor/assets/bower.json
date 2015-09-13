@@ -3,6 +3,7 @@
   "dependencies": {
     "datatables": "1.10.9",
     "uikit": "2.22.0",
-    "select2": "3.5.4"
+    "select2": "3.5.4",
+    "nprogress": "0.2.0"
   }
 }

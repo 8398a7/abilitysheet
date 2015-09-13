@@ -20,7 +20,6 @@ gem 'active_link_to'
 gem 'ransack'
 gem 'draper'
 gem 'rack-mini-profiler', require: false
-gem 'nprogress-rails'
 gem 'lazy_high_charts'
 gem 'react-rails'
 gem 'sprockets-coffee-react'
@@ -72,8 +71,8 @@ gem 'pg'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
-gem 'therubyracer',  platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0',          group: :doc
-gem 'spring',        group: :development
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'spring', group: :development

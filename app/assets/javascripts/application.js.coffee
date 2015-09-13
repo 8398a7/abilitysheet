@@ -6,8 +6,7 @@
 #= require uikit/js/components/notify.min
 #= require select2/select2.min
 #= require highcharts/highcharts-more
-#= require nprogress
-#= require nprogress-turbolinks
+#= require nprogress/nprogress
 #= require turbolinks
 #= require react
 #= require react_ujs
