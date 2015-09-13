@@ -2,10 +2,7 @@ class RecommendsController < ApplicationController
   before_action :load_color
   before_action :load_sheets
 
-  def list
-  end
-
-  def integration
+  def index
   end
 
   private

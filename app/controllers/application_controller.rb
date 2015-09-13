@@ -31,8 +31,7 @@ class ApplicationController < ActionController::Base
     @paths[:root] = root_path
     @paths[:sign_in] = new_user_session_path
     @paths[:users] = users_path
-    @paths[:recommend] = list_recommends_path
-    @paths[:integration_recommend] = integration_recommends_path
+    @paths[:recommend] = recommends_path
     @paths[:new_message] = new_message_path
     return unless user_signed_in?
     @paths[:clear_sheet] = sheet_path(current_user.iidxid, type: 'clear')

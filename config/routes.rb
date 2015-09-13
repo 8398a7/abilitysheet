@@ -64,8 +64,7 @@ Rails.application.routes.draw do
   get '/logs/:id/:date' => 'logs#show', as: :log
 
   # recommends
-  get '/recommends/list' => 'recommends#list', as: :list_recommends
-  get '/recommends/integration' => 'recommends#integration', as: :integration_recommends
+  resources :recommends, only: [:index]
 
   # API
   mount Abilitysheet::API => '/api'
