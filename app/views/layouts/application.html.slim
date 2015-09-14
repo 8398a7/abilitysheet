@@ -76,15 +76,7 @@ html
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
 
-    .uk-container.uk-container-center.uk-margin-bottom
-      footer
-        .relative
-          .uk-panel.panel-default align="center"
-            span style="float:left;" = link_to 'http://twitter.com/IIDX_12'
-              = fa_icon 'twitter', text: 'Twitter'
-            span &copy; IIDX☆12参考表 by839 2014-2015
-            - unless Rails.env.production?
-              span style="float:right;" rev.#{ Abilitysheet::Application.config.git_revision }
+    = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
 - if notice
   javascript:
     UIkit.notify({ message: '#{notice}', timeout: 3000 });
