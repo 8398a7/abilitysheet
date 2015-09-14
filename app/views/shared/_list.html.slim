@@ -38,7 +38,41 @@ table.datatable
               = link_to 'ライバル比較', clear_rival_path(user.iidxid)
               | &nbsp;|&nbsp;
               = link_to 'ライバルにする', register_rival_path(user.iidxid), method: :post, remote: true
+
+coffee:
+  grade_sort = {
+    '皆伝': 0
+    '十段': 1
+    '九段': 2
+    '八段': 3
+    '七段': 4
+    '六段': 5
+    '五段': 6
+    '四段': 7
+    '三段': 8
+    '二段': 9
+    '初段': 10
+    '初級': 11
+    '二級': 12
+    '三級': 13
+    '四級': 14
+    '五級': 15
+    '六級': 16
+    '七級': 17
+  }
+  $.extend $.fn.DataTable.ext.oSort,
+    'custom': (a) ->
+      a
+    'custom-asc': (x, y) ->
+      x = grade_sort[x]
+      y = grade_sort[y]
+      if x < y then -1 else if x > y then 1 else 0
+    'custom-desc': (x, y) ->
+      x = grade_sort[x]
+      y = grade_sort[y]
+      if x < y then 1 else if x > y then -1 else 0
 coffee:
   $('.datatable').dataTable
     order: [4, 'desc']
     aLengthMenu: [25]
+    columnDefs: [{type: 'custom', targets: [2]}]
