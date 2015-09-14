@@ -59,6 +59,7 @@ html
             li = link_to 'siekiq管理', admin_sidekiq_index_path
             li = link_to 'RailsAdmin', rails_admin_path
             li = link_to 'Twitter', new_admin_tweet_path
+            li = link_to 'Dashboard', admin_dashboards_path
           - if user_signed_in?
             li.uk-nav-header
               = fa_icon 'user fw', text: current_user.djname
