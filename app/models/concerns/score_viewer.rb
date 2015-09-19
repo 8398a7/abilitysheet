@@ -12,6 +12,7 @@ module ScoreViewer
         score_params['score'] = e['pg'] * 2 if e['pg'] != -1 && e['g'] == -1
 
         score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
+        score_params['state'] = score.state
         score_params['state'] = e['cl'] if e['cl'].to_i < score.state
         score.update_with_logs(score_params)
       end

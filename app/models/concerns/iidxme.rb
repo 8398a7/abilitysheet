@@ -11,7 +11,7 @@ module IIDXME
         next unless sheet
         state = reverse(elem['clear'])
         score = user.scores.find_by(sheet_id: sheet.id)
-        iidxme_params = { 'sheet_id' => sheet.id, 'score' => elem['score'], 'bp' => elem['miss'] }
+        iidxme_params = { 'sheet_id' => sheet.id, 'state' => score.state, 'score' => elem['score'], 'bp' => elem['miss'] }
         iidxme_params['state'] = state if state < score.state
         score.update_with_logs(iidxme_params)
       end

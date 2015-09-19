@@ -63,5 +63,9 @@ describe Score, type: :model do
       @user.scores.find_by(id: 1).update_with_logs(score_params)
       expect(@user.logs.count).to eq 0
     end
+    it '状態が変化しない場合はupdateされない' do
+      score_params = { 'sheet_id' => '1', 'state' => '6' }
+      expect(@user.scores.find_by(id: 1).update_with_logs(score_params)).to be_falsy
+    end
   end
 end
