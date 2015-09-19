@@ -1,0 +1,9 @@
+<% if current_page.first? %>
+  <li class="uk-disabled">
+    <%= raw(t 'views.pagination.first') %>
+  </li>
+<% else %>
+  <li>
+    <%= link_to raw(t 'views.pagination.first'), url, remote: remote %>
+  </li>
+<% end %>

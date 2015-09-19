@@ -569,6 +569,7 @@ DEPENDENCIES
   grape_logging
   jbuilder (~> 2.0)
   json_expressions
+  kaminari
   launchy
   lazy_high_charts
   mechanize

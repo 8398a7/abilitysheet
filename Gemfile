@@ -33,6 +33,7 @@ gem 'nokogiri'
 gem 'mechanize'
 
 gem 'font-awesome-rails'
+gem 'kaminari'
 gem 'ransack'
 gem 'draper'
 gem 'rack-mini-profiler', require: false

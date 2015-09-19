@@ -1,15 +1,19 @@
 class LogsController < ApplicationController
   before_action :scores_exists?, only: %w(maneger iidxme)
   before_action :special_user!, only: %w(update_official)
+  before_action :load_user, only: %w(sheet list)
 
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
-    @id = User.find_by(iidxid: params[:id]).id
+    @id = @user.id
   end
 
   def list
-    @logs = User.find_by(iidxid: params[:id]).logs
+    per_num = 10
+    logs = @user.logs.order(created_at: :desc).select(:created_at).uniq
+    @logs = logs.page(params[:page]).per(per_num)
+    @total_pages = (logs.count / per_num.to_f).ceil
   end
 
   def manager
@@ -75,6 +79,10 @@ class LogsController < ApplicationController
   end
 
   private
+
+  def load_user
+    @user = User.find_by(iidxid: params[:id])
+  end
 
   def prev_next(user_id, created_at)
     logs = User.find_by(id: user_id).logs.order(:created_at).pluck(:created_at).uniq

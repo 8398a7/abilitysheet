@@ -1,0 +1,9 @@
+<% if page.current? %>
+  <li class="uk-active">
+    <span><%= page %></span>
+  </li>
+<% else %>
+  <li>
+    <%= link_to page, page.current? ? '#' : url, {remote: remote, rel: page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
+  </li>
+<% end %>

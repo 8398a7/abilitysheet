@@ -17,15 +17,13 @@
               - if user_signed_in? && current_user.special?
                 li = link_to '公式との同期', official_log_path, data: { disable_with: '同期中', confirm: '有料会員状態でないと同期できませんが、よろしいですか?' }, method: :post, remote: true
       h2 更新履歴
-      table.table.datatable
+      table.uk-table
         thead
           th 更新日付
           th 更新個数
         tbody
-          - @logs.pluck(:created_at).uniq.each do |log|
+          - @logs.each do |log|
             tr
-              td = link_to log, log_path(params[:id], log)
-              td = @logs.select(:created_at).where(created_at: log).count
-coffee:
-  $('.datatable').dataTable
-    order: [0, 'desc']
+              td = link_to log.created_at, log_path(params[:id], log.created_at)
+              td = @user.logs.select(:id).where(created_at: log.created_at).count
+      = paginate @logs, total_pages: @total_pages
