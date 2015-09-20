@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def load_nav_routes
+    @message = Message.where(state: false).count
     return if params[:controller].index('rails_admin/')
     @paths = {}
     @paths[:root] = root_path
