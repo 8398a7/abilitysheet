@@ -63,12 +63,12 @@ class LogsController < ApplicationController
   end
 
   def graph
-    user = User.find_by(iidxid: params[:id])
-    unless user
+    @user = User.find_by(iidxid: params[:id])
+    unless @user
       return_404
       return
     end
-    user_id = user.id
+    user_id = @user.id
     unless Log.exists?(user_id: user_id)
       flash[:alert] = '更新データがありません！'
       redirect_to list_log_path
