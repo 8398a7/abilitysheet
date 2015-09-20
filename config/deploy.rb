@@ -15,10 +15,10 @@ set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'vendor/assets/bower_components')
 set :keep_releases, 5
 
-set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH' }
+set :default_env, path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'
 set :rbenv_type, :system
 
-set :deploy_to, '/home/rails/deploy/abilitysheet'
+set :deploy_to, ENV['DEPLOY_TO']
 set :sidekiq_role, :web
 
 set :conditionally_migrate, true
