@@ -1,4 +1,4 @@
-app_path = '/home/rails/deploy/abilitysheet'
+app_path = ENV['DEPLOY_TO']
 app_shared_path = "#{app_path}/shared"
 
 worker_processes 3
