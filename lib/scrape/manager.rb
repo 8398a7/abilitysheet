@@ -1,5 +1,5 @@
 module Scrape
-  class Maneger
+  class Manager
     attr_reader :agent, :url
     def initialize(current_user)
       @agent = Mechanize.new
@@ -15,7 +15,7 @@ module Scrape
 
     private
 
-    def maneger_register(title, state)
+    def manager_register(title, state)
       return false unless Sheet.exists?(title: title)
       sheet_id = Sheet.find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id)
@@ -76,7 +76,7 @@ module Scrape
       state = value(elem.split('<dt class="')[1].split('">')[0])
       title = title_check(elem.split('<dd class="musicName">')[1].split('</dd>')[0].strip)
       title = gigadelic_innocentwalls(title, elem)
-      maneger_register(title, state.to_i)
+      manager_register(title, state.to_i)
     end
 
     def gigadelic_innocentwalls(title, e)

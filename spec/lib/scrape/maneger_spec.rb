@@ -1,27 +1,27 @@
-describe 'lib/scrape/maneger.rb' do
+describe 'lib/scrape/manager.rb' do
   let(:agent) { Mechanize.new }
 
   context '正常系' do
     it '登録されている場合は/sp/を含むページの配列を1つ返す' do
       user = build(:user, iidxid: '6570-6412')
-      res = Scrape::Maneger.new(user)
+      res = Scrape::Manager.new(user)
       expect(res.url.count).to eq 1
       expect(res.url.first).to include('/sp/')
     end
     it '複数登録されている場合は/sp/を含む複数配列を返す' do
       user = build(:user, iidxid: '9447-8955')
-      res = Scrape::Maneger.new(user)
+      res = Scrape::Manager.new(user)
       expect(res.url.count).to be >= 2
       res.url.each do |url|
         expect(url).to include('/sp/')
       end
     end
     it '全て一から問題なく通ることの確認のテスト' do
-      res = Scrape::Maneger.new(build(:user, iidxid: '3223-5186'))
+      res = Scrape::Manager.new(build(:user, iidxid: '3223-5186'))
       expect(res.sync).to eq true
     end
     it '12フォルダが存在すればnokogiriのクラスを返す' do
-      res = Scrape::Maneger.new(build(:user, iidxid: '3223-5186'))
+      res = Scrape::Manager.new(build(:user, iidxid: '3223-5186'))
       html = Nokogiri::HTML.parse(
         agent.get('http://beatmania-clearlamp.com/djdata/lib_sheet/sp/').body,
         nil,
@@ -32,7 +32,7 @@ describe 'lib/scrape/maneger.rb' do
   end
 
   context '異常系' do
-    let(:res) { Scrape::Maneger.new(build(:user, iidxid: '4935-9422')) }
+    let(:res) { Scrape::Manager.new(build(:user, iidxid: '4935-9422')) }
     it '登録されていない場合は空の配列を返す' do
       expect(res.url.empty?).to eq true
     end
@@ -54,11 +54,11 @@ describe 'lib/scrape/maneger.rb' do
 
   describe '#gigadelic_innocentwalls' do
     it 'incorrect' do
-      res = Scrape::Maneger.new(build(:user))
+      res = Scrape::Manager.new(build(:user))
       expect(res.send(:gigadelic_innocentwalls, 'test', 'elem')).to include('test')
     end
     it 'correct' do
-      res = Scrape::Maneger.new(build(:user))
+      res = Scrape::Manager.new(build(:user))
       elem = %(
         <dl class="731 hyper" style="background-image: url(http://beatmania-clearlamp.com/common/img/bg_mypage-music_on.png);">
         <dt class="EX"><span>.</span></dt>
