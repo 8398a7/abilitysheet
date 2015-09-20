@@ -13,6 +13,7 @@
       $('.admin-nav').append("<li><a href=#{@props.paths.admin_sheets}>楽曲管理</a></li>")
     if 75 <= @props.current_user.role
       $('.admin-nav').append("<li><a href=#{@props.paths.admin_users}>ユーザ管理</a></li>")
+      $('.admin-nav').append("<li><a href=#{@props.paths.admin_messages}>メッセージ管理</a></li>")
       $('.admin-nav').append("<li><a href=#{@props.paths.new_admin_mail}>問い合わせ返信</a></li>")
       $('.admin-nav').append("<li><a href=#{@props.paths.admin_sidekiq}>sidekiq管理</a></li>")
       $('.admin-nav').append("<li><a href=#{@props.paths.rails_admin}>RailsAdmin</a></li>")
