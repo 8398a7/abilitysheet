@@ -26,7 +26,7 @@
         <Irt paths={@props.paths} />
         <Conntact paths={@props.paths} />
         <Admin paths={@props.paths} current_user={@props.current_user} />
-        <Message current_user={@props.current_user} message={@props.message} />
+        <Message paths={@props.paths} current_user={@props.current_user} message={@props.message} />
       </ul>
       <div className="uk-navbar-flip uk-hidden-small">
         <User paths={@props.paths} current_user={@props.current_user} />
