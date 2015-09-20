@@ -1,4 +1,7 @@
-app_path = '/home/rails/deploy/abilitysheet'
+require 'dotenv'
+Dotenv.overload
+
+app_path = ENV['DEPLOY_TO']
 app_shared_path = "#{app_path}/shared"
 
 worker_processes 3
