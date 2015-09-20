@@ -1,6 +1,9 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
+require 'dotenv'
+Dotenv.overload
+
 set :application, 'abilitysheet'
 set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
