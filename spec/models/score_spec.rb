@@ -19,9 +19,10 @@ describe Score, type: :model do
     create(:sheet, id: 2, title: 'two', active: true)
     create(:sheet, id: 3, title: 'three')
     @user = create(:user, id: 1)
-    create(:score, id: 1, user_id: 1, sheet_id: 1, state: 6, updated_at: '2015-06-23 15:34')
+    create(:score, id: 1, user_id: 1, sheet_id: 1, state: 7, updated_at: '2015-06-23 15:34')
     create(:score, id: 2, user_id: 1, sheet_id: 2, state: 7, updated_at: '2015-06-23 15:35')
     create(:score, id: 3, user_id: 1, sheet_id: 3, state: 7, updated_at: '2015-06-23 15:35')
+    Score.find(1).update_with_logs(sheet_id: 1, state: 6, score: 100, bp: 5)
   end
 
   describe '.last_updated' do
@@ -47,25 +48,30 @@ describe Score, type: :model do
 
   describe '#update_with_logs' do
     it 'logデータも作られている' do
-      score_params = { 'sheet_id' => '1', 'state' => '5' }
-      @user.scores.find_by(id: 1).update_with_logs(score_params)
+      @user.scores.find_by(id: 1).update_with_logs(sheet_id: 1, state: 5)
       ret = {
         user_id: 1, sheet_id: 1,
-        pre_state: 6, new_state: 5,
-        pre_score: nil, new_score: nil,
-        pre_bp: nil, new_bp: nil,
-        version: 22
+        pre_state: 7, new_state: 5,
+        pre_score: nil, new_score: 100,
+        pre_bp: nil, new_bp: 5
       }
       expect(@user.logs.exists?(ret)).to eq true
-    end
-    it 'stateが変化しない場合はlogを作らない' do
-      score_params = { 'sheet_id' => '1', 'state' => '6' }
-      @user.scores.find_by(id: 1).update_with_logs(score_params)
-      expect(@user.logs.count).to eq 0
     end
     it '状態が変化しない場合はupdateされない' do
       score_params = { 'sheet_id' => '1', 'state' => '6' }
       expect(@user.scores.find_by(id: 1).update_with_logs(score_params)).to be_falsy
+    end
+    context '一部の状態が変化する場合' do
+      it 'scoreのみが変化する' do
+        expect(@user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6, new_score: 100, new_bp: 5)).to be_truthy
+        @user.scores.find_by(id: 1).update_with_logs(sheet_id: 1, state: 6, score: 101, bp: 5)
+        expect(@user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6, pre_score: nil, new_score: 101, new_bp: 5)).to be_truthy
+      end
+      it 'bpのみが変化する' do
+        expect(@user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6, new_score: 100, new_bp: 5)).to be_truthy
+        @user.scores.find_by(id: 1).update_with_logs(sheet_id: 1, state: 6, score: 100, bp: 101)
+        expect(@user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6, pre_bp: nil, new_bp: 101)).to be_truthy
+      end
     end
   end
 end

@@ -25,9 +25,11 @@ class Score < ActiveRecord::Base
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
   def update_with_logs(score_params)
+    score_params.stringify_keys!
     # 何も変更がない状態は反映しない
     duplicate = true
     score_params.each do |k, v|
+      return false if k == 'state' && v.nil?
       if try(k) != v.to_i
         duplicate = false
         break

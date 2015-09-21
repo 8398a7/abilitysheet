@@ -1,0 +1,10 @@
+table.uk-table.uk-table-hover.uk-table-striped.uk-table-condensed
+  thead
+    th 更新日付
+    th 更新個数
+  tbody
+    - @logs.each do |log|
+      tr
+        td = link_to log.created_at, log_path(params[:id], log.created_at)
+        td = @user.logs.select(:id).where(created_at: log.created_at).count
+= paginate @logs, remote: true, total_pages: @total_pages
