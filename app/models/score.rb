@@ -26,14 +26,7 @@ class Score < ActiveRecord::Base
 
   def update_with_logs(score_params)
     # 何も変更がない状態は反映しない
-    duplicate = true
-    score_params.each do |k, v|
-      if try(k) != v.to_i
-        duplicate = false
-        break
-      end
-    end
-    return false if duplicate
+    return false if score_params['score'] == score && (score_params['state'] == state || score_params['state'].nil?) && score_params['bp'] == bp
 
     user.logs.attributes(score_params, user)
     update(score_params)
