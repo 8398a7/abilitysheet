@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/ruby-grape/grape.git
-  revision: 318b4d08fe8ccd7f5f7dba39c4cbda34b4e82e49
+  revision: 210b4e110b7fa1b7a33e3fed3b6fcded6fdef8eb
   specs:
     grape (0.13.1)
       activesupport
