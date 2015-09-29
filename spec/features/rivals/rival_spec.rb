@@ -12,4 +12,10 @@ feature 'ライバル情報' do
     click_link 'ライバル比較'
     expect(page).to have_title('vs RIVALU')
   end
+
+  scenario '楽曲情報が正しくロードされている' do
+    sync_sheet
+    visit clear_rival_path(user.iidxid)
+    expect(page).to have_selector('td[@name="music"]', count: Sheet.active.count)
+  end
 end
