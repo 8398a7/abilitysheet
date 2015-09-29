@@ -41,5 +41,9 @@ a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新�
   | 更新履歴をツイート
 javascript:
   !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+javascript:
+  logs_count = '#{@logs.count}'
 coffee:
-  $('.datatable').dataTable()
+  $('.datatable').dataTable(
+    aLengthMenu: [logs_count]
+  )
