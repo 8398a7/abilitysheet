@@ -65,7 +65,7 @@ module Graph
       between = common(user_id)
       return false unless between
       st = between.first[0]
-      all = Sheet.active.select(:id).count
+      all_sheet = Sheet.active
       category = []
       fc_cnt = []
       exh_cnt = []
@@ -77,6 +77,7 @@ module Graph
       c_t = []
       e_t = []
       between.each do |b|
+        all = all_sheet.where('created_at < ?', b[1]).count
         category.push(b[0].strftime('%Y-%m').slice(2, 5))
         cl_cnt.push(all - lamp_where_count(user_id, 0..4, st..b[1]))
         hd_cnt.push(all - lamp_where_count(user_id, 0..2, st..b[1]))
@@ -92,7 +93,7 @@ module Graph
         f.title(text: '未達成推移')
         f.chart(type: 'spline')
         f.xAxis(categories: category)
-        f.yAxis(allowDecimals: false, max: all, title: { text: '未達成数' })
+        f.yAxis(allowDecimals: false, max: all_sheet.count, title: { text: '未達成数' })
         f.legend(layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0)
         f.series(name: '未クリア', data: cl_cnt, color: '#afeeee')
         f.series(name: '未難', data: hd_cnt, color: '#ff6347')
