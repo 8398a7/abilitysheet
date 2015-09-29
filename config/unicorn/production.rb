@@ -1,3 +1,4 @@
+require 'tilt/coffee'
 require 'dotenv'
 Dotenv.overload
 
