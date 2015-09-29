@@ -18,6 +18,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include FactoryGirl::Syntax::Methods
   config.include WaitForAjax, type: :feature
+  config.include SheetsHelper
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
@@ -35,3 +36,5 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 end
+
+RedisHelper.load_sheets_data

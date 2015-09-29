@@ -1,23 +1,21 @@
 - width, height, diff = 150, 50, 20
-table.uk-table.table-responsive border=1
+table.uk-table.uk-table-responsive.uk-table-bordered
   thead
   tbody
     = render 'shared/state_example_rival'
     - cnt = 0
-    - (0..19).each do |ab|
+    - @power.each do |title, ab|
       tr
-        - if cnt < @sheets.size && return_ability(cnt) == ab
+        - if cnt < @sheets.size && return_ability_rival(cnt) == ab
           th colspan=10 height=10 bgcolor="#f5deb3"
-            center = @power[ab][0]
-      - while cnt < @sheets.size && return_ability(cnt) == ab
+            center = title
+      - while cnt < @sheets.size && return_ability_rival(cnt) == ab
         tr
         - (1..5).each do |i|
+          - if @sheets.size <= cnt || return_ability_rival(cnt) != ab
+            - break
           - s = @sheets[cnt]
-          - if cnt < @sheets.size && return_ability(cnt) == ab
-            td width=width-diff height=height align="center" bgcolor=@my_color[s.id]
-              = s.title
-            td width=diff height=height bgcolor=@rival_color[s.id]
-            - cnt += 1
-          - else
-            td width=width-diff
-            td width=diff
+          td width=width height=height align="center" bgcolor=@my_color[s.id] class=s.version name="music"
+            = s.title
+          td width=diff height=height bgcolor=@rival_color[s.id]
+          - cnt += 1
