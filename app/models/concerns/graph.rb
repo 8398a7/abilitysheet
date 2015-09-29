@@ -40,11 +40,11 @@ module Graph
       e_count = []
       between.each do |b|
         category.push(b[0].strftime('%Y-%m').slice(2, 5))
-        fc_count.push(Log.where(user_id: user_id, new_state: 0, created_at: b[0]..b[1]).count)
-        exh_count.push(Log.where(user_id: user_id, new_state: 1, created_at: b[0]..b[1]).count)
-        h_count.push(Log.where(user_id: user_id, new_state: 2, created_at: b[0]..b[1]).count)
-        c_count.push(Log.where(user_id: user_id, new_state: 3, created_at: b[0]..b[1]).count)
-        e_count.push(Log.where(user_id: user_id, new_state: 4, created_at: b[0]..b[1]).count)
+        fc_count.push(lamp_where_count(user_id, 0, b[0]..b[1]))
+        exh_count.push(lamp_where_count(user_id, 1, b[0]..b[1]))
+        h_count.push(lamp_where_count(user_id, 2, b[0]..b[1]))
+        c_count.push(lamp_where_count(user_id, 3, b[0]..b[1]))
+        e_count.push(lamp_where_count(user_id, 4, b[0]..b[1]))
       end
       g = LazyHighCharts::HighChart.new('column') do |f|
         f.title(text: '月別更新数')
@@ -78,10 +78,10 @@ module Graph
       e_t = []
       between.each do |b|
         category.push(b[0].strftime('%Y-%m').slice(2, 5))
-        cl_cnt.push(all - Log.where(user_id: user_id, new_state: 0..4, created_at: st..b[1]).select(:sheet_id).uniq.count)
-        hd_cnt.push(all - Log.where(user_id: user_id, new_state: 0..2, created_at: st..b[1]).select(:sheet_id).uniq.count)
-        exh_cnt.push(all - Log.where(user_id: user_id, new_state: 0..1, created_at: st..b[1]).select(:sheet_id).uniq.count)
-        fc_cnt.push(all - Log.where(user_id: user_id, new_state: 0, created_at: st..b[1]).select(:sheet_id).uniq.count)
+        cl_cnt.push(all - lamp_where_count(user_id, 0..4, st..b[1]))
+        hd_cnt.push(all - lamp_where_count(user_id, 0..2, st..b[1]))
+        exh_cnt.push(all - lamp_where_count(user_id, 0..1, st..b[1]))
+        fc_cnt.push(all - lamp_where_count(user_id, 0, st..b[1]))
         fc_t += title_push(user_id, 0, b)
         exh_t += title_push(user_id, 1, b)
         h_t += title_push(user_id, 2, b)
@@ -103,6 +103,18 @@ module Graph
     end
 
     private
+
+    def self.lamp_where_count(user_id, state, between)
+      count = 0
+      sheet_ids = []
+      where(user_id: user_id, new_state: state, created_at: between).each do |instance|
+        next if sheet_ids.include?(instance.sheet_id)
+        next if instance.new_state == instance.pre_state
+        sheet_ids.push(instance.sheet_id)
+        count += 1
+      end
+      count
+    end
 
     def self.between_create(o, l)
       array = []
