@@ -51,10 +51,10 @@ class Sheet < ActiveRecord::Base
       18 => '2010/9/15',
       19 => '2011/9/15',
       20 => '2012/9/19',
-      21 => '2013/11/13',
-      22 => '2014/9/17'
+      21 => '2013/11/13'
     }
     Sheet.all.each do |s|
+      next if s.version == 22
       s.update(created_at: version[s.version])
     end
   end
