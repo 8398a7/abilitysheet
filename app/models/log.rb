@@ -22,6 +22,12 @@ class Log < ActiveRecord::Base
 
   include Graph
 
+  def self.prev_next(user_id, date)
+    p = where(user_id: user_id).order(created_at: :desc).find_by('created_at < ?', date).try(:created_at)
+    n = where(user_id: user_id).order(:created_at).find_by('created_at > ?', date).try(:created_at)
+    [p, n]
+  end
+
   def self.attributes(score_params, owner)
     score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
     log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
