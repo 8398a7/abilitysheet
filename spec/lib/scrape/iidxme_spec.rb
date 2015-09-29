@@ -52,6 +52,22 @@ describe Scrape::IIDXME do
         expect(Score.find(1).bp).to eq 2
       end
     end
+    context '不要なログが作成されない' do
+      let(:iidxid) { '8594-9652' }
+      before do
+        res = JSON.parse(File.read("#{iidxme_mock_root}/correct"))
+        allow(@iidxme).to receive(:data_get).and_return(res)
+        user
+        sync_sheet
+        JSON.parse(File.read("#{iidxme_mock_root}/score")).each { |s| user.scores.find_by(sheet_id: s['sheet_id']).update_with_logs(s) }
+      end
+      it 'Score#update_with_logs' do
+        count = 0
+        Log.all.each { |l| count += 1 if l.pre_state == l.new_state && l.pre_score == l.new_score && l.pre_bp == l.new_bp }
+        expect(count).to eq 0
+      end
+    end
+
     context 'IIDXIDの書式が正しくない場合' do
       let(:iidxids) { %w(1 1110) }
       before do

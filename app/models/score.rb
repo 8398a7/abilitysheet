@@ -27,14 +27,7 @@ class Score < ActiveRecord::Base
   def update_with_logs(score_params)
     score_params.stringify_keys!
     # 何も変更がない状態は反映しない
-    duplicate = true
-    score_params.each do |k, v|
-      return false if k == 'state' && v.nil?
-      if try(k) != v.to_i
-        duplicate = false
-        break
-      end
-    end
+    duplicate = check_duplicate(score_params)
     return false if duplicate
 
     user.logs.attributes(score_params, user)
@@ -99,5 +92,16 @@ class Score < ActiveRecord::Base
         'ASSIST CLEAR' => 5, FAILED: 6, 'NO PLAY' => 7
       }
     end
+  end
+
+  private
+
+  def check_duplicate(s)
+    s.each do |k, v|
+      v = v.to_i unless v.class == NilClass
+      return false if k == 'state' && try(k).nil? && v.to_i == 7
+      return false if try(k) != v
+    end
+    true
   end
 end
