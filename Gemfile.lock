@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/ruby-grape/grape.git
-  revision: 05d697c614bb9903b9f21197f504302e52c89883
+  revision: a7e4b2c5155cd9c1249036e87384c345f327a53b
   specs:
     grape (0.13.1)
       activesupport
@@ -164,7 +164,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    domain_name (0.5.24)
+    domain_name (0.5.25)
       unf (>= 0.0.5, < 1.0.0)
     doorkeeper (3.0.1)
       railties (>= 3.2)
@@ -442,7 +442,7 @@ GEM
     spring (1.4.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    sprockets (3.3.5)
+    sprockets (3.4.0)
       rack (> 1, < 3)
     sprockets-coffee-react (3.0.1)
       coffee-react (>= 3.0.1)
