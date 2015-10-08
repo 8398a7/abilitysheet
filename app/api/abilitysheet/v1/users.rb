@@ -6,6 +6,11 @@ module Abilitysheet::V1
         { status: current_user.try(:iidxid) }
       end
 
+      desc 'userの登録者数を取得'
+      get 'count' do
+        { users: User.select(:id).count }
+      end
+
       desc 'score viewerのデータをimport'
       params do
         requires :id, type: String, desc: 'iidxid'

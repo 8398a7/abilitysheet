@@ -1,6 +1,30 @@
 describe Abilitysheet::V1::Sheets, type: :request do
   include_context 'api'
 
+  describe 'GET /api/v1/sheets' do
+    before { @sheet = create(:sheet, id: 1) }
+    let(:url) { '/api/v1/sheets' }
+    let(:method) { 'get' }
+    let(:result) do
+      {
+        'sheets' => [
+          {
+            'id' => 1,
+            'title' => 'MyString',
+            'n_ability' => 1,
+            'h_ability' => 1,
+            'version' => 1,
+            'active' => false,
+            'textage' => 'MyString',
+            'created_at' => JSON.parse(@sheet.to_json)['created_at'],
+            'updated_at' => JSON.parse(@sheet.to_json)['updated_at']
+          }
+        ]
+      }
+    end
+    it_behaves_like '200 Success'
+  end
+
   # describe 'GET /api/v1/sheets' do
   #   before { create(:sheet, id: 1) }
   #   let(:url) { '/api/v1/sheets' }
