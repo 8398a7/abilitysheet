@@ -1,6 +1,3 @@
-[submodule ".submodules/api-abilitysheet"]
-	path = .submodules/api-abilitysheet
-	url = https://github.com/8398a7/api-abilitysheet.git
 [submodule ".submodules/backup-abilitysheet"]
 	path = .submodules/backup-abilitysheet
 	url = git@github.com:8398a7/backup-abilitysheet.git
