@@ -17,13 +17,13 @@ namespace :db do
     end
 
     def backup_dir
-      "#{Rails.root}/tmp"
+      "#{Rails.root}/tmp/backup"
     end
 
     task s3_backup: :environment do
       format_class = ENV['class'] || 'YamlDb::Helper'
       SerializationHelper::Base.new(format_class.constantize).dump_to_backup backup_dir
-      s3 = Aws::S3::Encryption::Client.new(encryption_key: OpenSSL::PKey::RSA.new(ENV['AWS_ENCRYPTION_KEY']))
+      s3 = Aws::S3::Encryption::Client.new
       file_open = File.open("#{backup_dir}/data.yml")
       file_name = File.basename("abilitysheet_#{ENV['RAILS_ENV']}.yml")
       uri = URI.parse(ENV['AWS_SLACK'])
@@ -54,8 +54,7 @@ namespace :db do
 
     desc 'Load contents of db/data_dir into database'
     task load_backup: :environment do
-      s3 = Aws::S3::Encryption::Client.new(encryption_key: OpenSSL::PKey::RSA.new(ENV['AWS_ENCRYPTION_KEY']))
-      File.write(s3.get_object(bucket: 'abilitysheet', key: "#{ENV['RAILS_ENV']}.yml").body.read, backup_dir)
+      system "aws s3 cp s3://abilitysheet/abilitysheet_#{ENV['RAILS_ENV']}.yml #{backup_dir}/data.yml"
       format_class = ENV['class'] || 'YamlDb::Helper'
       SerializationHelper::Base.new(format_class.constantize).load_from_dir backup_dir
     end
