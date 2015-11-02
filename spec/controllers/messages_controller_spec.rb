@@ -11,6 +11,7 @@ describe MessagesController, type: :controller do
 
   describe 'POST #create' do
     it 'creates a new Message' do
+      allow(Slack::MessageDispatcher).to receive(:send).and_return(true)
       expect do
         post :create, message: { body: 'test' }
       end.to change(Message, :count).by(1)

@@ -9,18 +9,6 @@ class NoticeMail < ActionMailer::Base
     mail subject: '新規登録者'
   end
 
-  def new_message(message_id)
-    @message = Message.find_by(id: message_id)
-
-    mail to: '8398a7@gmail.com'
-    mail subject: '新規問合せ'
-  end
-
-  def warning_sidekiq
-    mail to: '8398a7@gmail.com'
-    mail subject: 'sidekiq down!'
-  end
-
   def form_deal(email, subject, body)
     @body = body + "\r\n"
     @body += '---------------------------------------------------' + "\r\n"
