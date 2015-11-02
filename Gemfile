@@ -48,6 +48,7 @@ gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 gem 'doorkeeper'
 gem 'oauth2'
+gem 'aws-sdk'
 
 gem 'rack-cors', require: 'rack/cors'
 group :development do

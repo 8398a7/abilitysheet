@@ -17,36 +17,45 @@ namespace :db do
     end
 
     def backup_dir
-      "#{Rails.root}/.submodules/backup-abilitysheet"
+      "#{Rails.root}/tmp"
     end
 
-    def git_checkout(env)
-      system("/bin/zsh -l -c \"cd #{backup_dir} && git checkout #{env} && git pull origin #{env}\"")
-    end
-
-    def git_exec(env)
-      command = %(git add -A && git commit -m '[#{env}] backup update' && git push origin #{env})
-      system("/bin/zsh -l -c \"cd #{backup_dir} && #{command}\"")
-    end
-
-    def env_init(env)
-      return env if ENV['RAILS_ENV']
-      'development'
-    end
-
-    desc 'Dump contents of database to curr_dir_name/tablename.extension (defaults to yaml)'
-    task dump_backup: :environment do
-      env = env_init(ENV['RAILS_ENV'])
-      git_checkout(env)
+    task s3_backup: :environment do
       format_class = ENV['class'] || 'YamlDb::Helper'
       SerializationHelper::Base.new(format_class.constantize).dump_to_backup backup_dir
-      git_exec(env)
+      s3 = Aws::S3::Encryption::Client.new(encryption_key: OpenSSL::PKey::RSA.new(ENV['AWS_ENCRYPTION_KEY']))
+      file_open = File.open("#{backup_dir}/data.yml")
+      file_name = File.basename("abilitysheet_#{ENV['RAILS_ENV']}.yml")
+      uri = URI.parse(ENV['AWS_SLACK'])
+      req = Net::HTTP::Post.new uri
+      begin
+        s3.put_object(
+          bucket: 'abilitysheet',
+          body: file_open,
+          key: file_name
+        )
+        req.body = { text: "#{DateTime.now} production backup complete!" }.to_json
+
+        Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+          http.ssl_version = :SSLv3
+          http.request req
+        end
+      rescue
+        req.body = { text: "#{DateTime.now} production backup failed..." }.to_json
+
+        Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
+          http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+          http.ssl_version = :SSLv3
+          http.request req
+        end
+      end
     end
 
     desc 'Load contents of db/data_dir into database'
     task load_backup: :environment do
-      env = env_init(ENV['RAILS_ENV'])
-      git_checkout(env)
+      s3 = Aws::S3::Encryption::Client.new(encryption_key: OpenSSL::PKey::RSA.new(ENV['AWS_ENCRYPTION_KEY']))
+      File.write(s3.get_object(bucket: 'abilitysheet', key: "#{ENV['RAILS_ENV']}.yml").body.read, backup_dir)
       format_class = ENV['class'] || 'YamlDb::Helper'
       SerializationHelper::Base.new(format_class.constantize).load_from_dir backup_dir
     end
