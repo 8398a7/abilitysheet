@@ -29,11 +29,11 @@
       .uk-form-row.uk-form-icon
         label.uk-form-label 段位
         .uk-form-controls
-          = f.select :grade, User.dan, {}
+          = f.select :grade, User.dan, {}, { class: 'searchable grade' }
       .uk-form-row.uk-form-icon
         label.uk-form-label 所属
         .uk-form-controls
-          = f.select :pref, User.belongs, {}, { class: 'form-control' }
+          = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
       .uk-form-row.uk-form-icon
         label.uk-form-label 現在のパスワード
         i.uk-icon-key

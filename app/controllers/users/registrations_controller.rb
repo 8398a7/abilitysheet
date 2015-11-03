@@ -10,7 +10,7 @@ module Users
     private
 
     def exist_sidekiq
-      Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
+      Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i) unless Rails.env.test?
     rescue
       Slack::SidekiqDispatcher.notify
       flash[:alert] = '何らかの不具合が生じています．管理人にお問い合わせください．(Twitter->@IIDX_12)'
@@ -24,7 +24,7 @@ module Users
       # もし既に登録されていた場合はスコアを作らない
       return if Score.exists?(user_id: user_id)
       RegisterWorker.perform_async(user_id)
-      Slack::UserDispacther.new_register_notify(user.id)
+      Slack::UserDispatcher.new_register_notify(user_id)
       ManagerWorker.perform_in(30.second, user_id)
     end
   end
