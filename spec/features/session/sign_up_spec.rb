@@ -2,6 +2,8 @@ feature 'sign up' do
   background do
     visit new_user_registration_path
     sync_sheet
+    allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
+    allow(ManagerWorker).to receive(:perform_in).and_return(true)
   end
   scenario '新規登録を行う' do
     expect(User.count).to eq 0
@@ -15,7 +17,7 @@ feature 'sign up' do
     select '九段', from: 'user_grade'
     click_button '登録'
     expect(User.count).to eq 1
-    expect(User.exists?(email: 'sign_up_spec@iidx12.tk')).to eq 1
-    expect(User.scores.count).to eq Sheet.count
+    expect(User.exists?(email: 'sign_up_spec@iidx12.tk')).to eq true
+    expect(User.find_by(email: 'sign_up_spec@iidx12.tk').scores.count).to eq Sheet.count
   end
 end
