@@ -10,7 +10,7 @@ module Users
     private
 
     def exist_sidekiq
-      Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
+      Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i) unless Rails.env.test?
     rescue
       Slack::SidekiqDispatcher.notify
       flash[:alert] = '何らかの不具合が生じています．管理人にお問い合わせください．(Twitter->@IIDX_12)'
