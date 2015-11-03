@@ -29,8 +29,8 @@
         label.uk-form-label 所属/段位
         .uk-form-controls.uk-form-controls-text
           p.uk-form-controls-condensed
-            = f.select :pref, User.belongs, {}, { class: 'searchable' }
-            = f.select :grade, User.dan, {}, { class: 'searchable' }
+            = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
+            = f.select :grade, User.dan, {}, { class: 'searchable grade' }
         .uk-form-controls
       .uk-form-row.uk-form-icon
         i.uk-icon-key
@@ -43,5 +43,3 @@
           button.uk-button.uk-button-success type="submit"
             = fa_icon 'plus', text: '登録'
           = render 'devise/shared/links'
-coffee:
-  $('.searchable').select2()
