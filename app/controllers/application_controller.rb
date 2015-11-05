@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :shift_domain
   before_action :miniprofiler
   before_action :load_nav_routes
   before_action :check_email, unless: :devise_controller?
@@ -12,16 +11,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = 'パスワード再発行用にemailの設定が必要です'
     flash[:alert] = '設定されていない場合、再発行されない可能性があります'
     redirect_to edit_user_registration_path
-  end
-
-  def shift_domain
-    host = 'iidxas.tk'
-    return unless request.url.include?(host)
-    path = Rails.root.join('tmp', 'shift_domain')
-    num = File.read(path).to_i
-    num += 1
-    File.write(path, num)
-    redirect_to request.url.gsub(host, 'iidx12.tk')
   end
 
   def load_nav_routes
