@@ -7,6 +7,11 @@ module Users
       super
     end
 
+    def destroy
+      Slack::UserDispatcher.delete_user_notify(current_user.id)
+      super
+    end
+
     private
 
     def exist_sidekiq

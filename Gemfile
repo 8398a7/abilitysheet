@@ -43,7 +43,7 @@ gem 'sprockets-coffee-react'
 gem 'bower-rails'
 gem 'rails_admin'
 
-gem 'grape', git: 'https://github.com/ruby-grape/grape.git'
+gem 'grape'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 gem 'doorkeeper'
