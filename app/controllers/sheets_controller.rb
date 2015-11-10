@@ -85,7 +85,7 @@ class SheetsController < ApplicationController
   def load_static
     @power = Static::POWER.dup
     @list_color = Static::COLOR
-    @versions = Static::VERSION
-    @versions.push(['ALL', 0]) if @versions.count < 19
+    @versions = Static::VERSION.dup
+    @versions.push(['ALL', 0])
   end
 end

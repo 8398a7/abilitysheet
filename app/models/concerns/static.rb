@@ -40,7 +40,8 @@ module Static
     ['Lin',  19],
     ['tri',  20],
     ['SPD',  21],
-    ['PEN',  22]
+    ['PEN',  22],
+    ['COP',  23]
   ]
 
   PREF = %w(
@@ -64,6 +65,7 @@ module Static
     十段 九段
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
+    無段位
   )
 
   GRADECOLOR = %w(
@@ -71,6 +73,7 @@ module Static
     #ff6347 #ff6347
     #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
     #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
+    #fbefef
   )
 
   COLOR = %w(
