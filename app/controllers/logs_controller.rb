@@ -11,7 +11,7 @@ class LogsController < ApplicationController
 
   def list
     per_num = 10
-    logs = @user.logs.order(created_at: :desc).select(:created_at).uniq
+    logs = @user.logs.order(created_date: :desc).select(:created_date).uniq
     @logs = logs.page(params[:page]).per(per_num)
     @total_pages = (logs.count / per_num.to_f).ceil
   end
@@ -24,9 +24,11 @@ class LogsController < ApplicationController
   end
 
   def iidxme
-    IidxmeWorker.perform_async(current_user.id)
-    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
+    # IidxmeWorker.perform_async(current_user.id)
+    # flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    # flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
+    # TODO: spec変更
+    flash[:alert] = %(新バージョンにつき対応中です。申し訳ありません。)
     render :reload
   end
 
@@ -51,7 +53,7 @@ class LogsController < ApplicationController
       return_404
       return
     end
-    @logs = Log.where(user_id: @user.id, created_at: date).preload(:sheet)
+    @logs = Log.where(user_id: @user.id, created_date: date).preload(:sheet)
     unless @logs.present?
       return_404
       return

@@ -1,6 +1,6 @@
-class CreateStatics < ActiveRecord::Migration
+class CreateAbilities < ActiveRecord::Migration
   def change
-    create_table :statics do |t|
+    create_table :abilities do |t|
       t.integer :sheet_id
       t.float :fc
       t.float :exh
@@ -11,6 +11,6 @@ class CreateStatics < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :statics, :sheet_id
+    add_index :abilities, :sheet_id
   end
 end

@@ -39,13 +39,13 @@ feature 'ハード地力表' do
     end
 
     scenario '楽曲が更新でき，ログが作られている' do
-      wait_for_ajax
       expect(user.scores.first.state).to eq 7
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq false
       click_on 'MyString'
-      sleep(1)
+      wait_for_ajax
       select 'CLEAR', from: 'score_state'
       click_on '更新'
+      wait_for_ajax
       visit sheet_path(iidxid: user.iidxid, type: 'clear')
       expect(user.scores.first.state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq true

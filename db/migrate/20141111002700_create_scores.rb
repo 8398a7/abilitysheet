@@ -13,5 +13,6 @@ class CreateScores < ActiveRecord::Migration
 
     add_index :scores, :sheet_id
     add_index :scores, :user_id
+    add_index :scores, :updated_at
   end
 end

@@ -22,10 +22,10 @@ module Abilitysheet
     config.git_revision = `git log --abbrev-commit --pretty=oneline | head -1 | cut -d' ' -f1`
 
     # Current IIDX version
-    config.iidx_version = 22
+    config.iidx_version = ENV['IIDX_VERSION'].to_i
 
     # Current IIDX grade
-    config.iidx_grade = 0
+    config.iidx_grade = ENV['IIDX_GRADE'].to_i
 
     # lib auto load
     config.autoload_paths += %W(#{config.root}/lib)

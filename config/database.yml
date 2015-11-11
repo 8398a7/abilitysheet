@@ -5,20 +5,20 @@ default: &default
 
 development:
   <<: *default
-  database: abilitysheet-iidx_development
+  database: abilitysheet_development
 
 test:
   <<: *default
-  database: abilitysheet-iidx_test
+  database: abilitysheet_test
 
 staging:
   <<: *default
-  database: abilitysheet-iidx_production
-  username: abilitysheet-iidx
-  password: <%= ENV['ABILITYSHEET-IIDX_DATABASE_PASSWORD'] %>
+  database: abilitysheet_production
+  username: abilitysheet
+  password: <%= ENV['ABILITYSHEET_DATABASE_PASSWORD'] %>
 
 production:
   <<: *default
-  database: abilitysheet-iidx_production
-  username: abilitysheet-iidx
-  password: <%= ENV['ABILITYSHEET-IIDX_DATABASE_PASSWORD'] %>
+  database: abilitysheet_production
+  username: abilitysheet
+  password: <%= ENV['ABILITYSHEET_DATABASE_PASSWORD'] %>

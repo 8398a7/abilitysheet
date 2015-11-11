@@ -2,17 +2,17 @@
 #
 # Table name: logs
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  sheet_id   :integer
-#  pre_state  :integer
-#  new_state  :integer
-#  pre_score  :integer
-#  new_score  :integer
-#  pre_bp     :integer
-#  new_bp     :integer
-#  version    :integer
-#  created_at :date
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  sheet_id     :integer
+#  pre_state    :integer
+#  new_state    :integer
+#  pre_score    :integer
+#  new_score    :integer
+#  pre_bp       :integer
+#  new_bp       :integer
+#  version      :integer
+#  created_date :date
 #
 
 describe Log, type: :model do
@@ -38,7 +38,7 @@ describe Log, type: :model do
     end
 
     context '違う日に同じ楽曲を更新する場合' do
-      before { create(:log, user_id: 1, sheet_id: 1, created_at: Date.today - 1, pre_state: 7, new_state: 6) }
+      before { create(:log, user_id: 1, sheet_id: 1, created_date: Date.today - 1, pre_state: 7, new_state: 6) }
       it 'ログデータが作られる' do
         create(:score, user_id: 1, sheet_id: 1, state: 6)
         expect { user.logs.attributes(parameter, user) }.to change(Log, :count).by(1)
@@ -50,11 +50,11 @@ describe Log, type: :model do
 
   describe '.prev_next' do
     before do
-      create(:log, created_at: '2015/09/30', user_id: 1)
-      create(:log, created_at: '2015/08/30', user_id: 2)
-      create(:log, created_at: '2015/07/30', user_id: 1)
-      create(:log, created_at: '2015/07/20', user_id: 2)
-      create(:log, created_at: '2015/06/30', user_id: 1)
+      create(:log, created_date: '2015/09/30', user_id: 1)
+      create(:log, created_date: '2015/08/30', user_id: 2)
+      create(:log, created_date: '2015/07/30', user_id: 1)
+      create(:log, created_date: '2015/07/20', user_id: 2)
+      create(:log, created_date: '2015/06/30', user_id: 1)
     end
     it '間に他のユーザのデータが有ってもログの前後関係が正しい' do
       expect(Log.prev_next(1, '2015/07/30')).to eq ['2015/06/30'.to_date, '2015/09/30'.to_date]

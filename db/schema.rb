@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150908173046) do
+ActiveRecord::Schema.define(version: 20150706032225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150908173046) do
     t.integer "pre_bp"
     t.integer "new_bp"
     t.integer "version"
-    t.date    "created_at"
+    t.date    "created_date"
   end
 
   add_index "logs", ["sheet_id"], name: "index_logs_on_sheet_id", using: :btree
@@ -57,13 +57,6 @@ ActiveRecord::Schema.define(version: 20150908173046) do
   end
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
-  create_table "notices", force: :cascade do |t|
-    t.string  "body"
-    t.integer "state"
-    t.boolean "active",     default: true
-    t.date    "created_at"
-  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -132,6 +125,7 @@ ActiveRecord::Schema.define(version: 20150908173046) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
     t.string   "username",               default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -149,13 +143,12 @@ ActiveRecord::Schema.define(version: 20150908173046) do
     t.integer  "pref",                                null: false
     t.text     "rival"
     t.text     "reverse_rival"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "role",                   default: 0,  null: false
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.integer  "role",                   default: 0,  null: false
-    t.string   "email",                  default: "", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["iidxid"], name: "index_users_on_iidxid", unique: true, using: :btree
