@@ -77,7 +77,7 @@ module Graph
       c_t = []
       e_t = []
       between.each do |b|
-        all = all_sheet.where('created_at < ?', b[1]).count
+        all = all_sheet.where('created_date < ?', b[1]).count
         category.push(b[0].strftime('%Y-%m').slice(2, 5))
         cl_cnt.push(all - lamp_where_count(user_id, 0..4, st..b[1]))
         hd_cnt.push(all - lamp_where_count(user_id, 0..2, st..b[1]))
@@ -108,7 +108,7 @@ module Graph
     def self.lamp_where_count(user_id, state, between)
       count = 0
       sheet_ids = []
-      where(user_id: user_id, new_state: state, created_at: between).each do |instance|
+      where(user_id: user_id, new_state: state, created_date: between).each do |instance|
         next if sheet_ids.include?(instance.sheet_id)
         next if instance.new_state == instance.pre_state
         sheet_ids.push(instance.sheet_id)
@@ -131,14 +131,14 @@ module Graph
 
     def self.title_push(user_id, state, b)
       array = []
-      Log.where(user_id: user_id, new_state: state, created_at: b[0]..b[1]).each { |log| array.push([Sheet.find_by(id: log.sheet_id).title, 1]) }
+      Log.where(user_id: user_id, new_state: state, created_date: b[0]..b[1]).each { |log| array.push([Sheet.find_by(id: log.sheet_id).title, 1]) }
       array
     end
 
     def self.common(user_id)
       user = User.find_by(id: user_id)
       return false if user.nil? || user.logs.nil? || user.logs.empty?
-      oldest = (user.logs.order(created_at: :desc).last.created_at.strftime('%Y-%m') + '-01').to_date
+      oldest = (user.logs.order(created_date: :desc).last.created_date.strftime('%Y-%m') + '-01').to_date
       now = Time.now.strftime('%Y-%m')
       lastest = (now + '-01').to_date
       between_create(oldest, lastest)
