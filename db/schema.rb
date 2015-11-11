@@ -58,13 +58,6 @@ ActiveRecord::Schema.define(version: 20150908173046) do
 
   add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
-  create_table "notices", force: :cascade do |t|
-    t.string  "body"
-    t.integer "state"
-    t.boolean "active",     default: true
-    t.date    "created_at"
-  end
-
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
