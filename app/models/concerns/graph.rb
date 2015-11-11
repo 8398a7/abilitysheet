@@ -77,7 +77,7 @@ module Graph
       c_t = []
       e_t = []
       between.each do |b|
-        all = all_sheet.where('created_date < ?', b[1]).count
+        all = all_sheet.where('created_at < ?', b[1]).count
         category.push(b[0].strftime('%Y-%m').slice(2, 5))
         cl_cnt.push(all - lamp_where_count(user_id, 0..4, st..b[1]))
         hd_cnt.push(all - lamp_where_count(user_id, 0..2, st..b[1]))
