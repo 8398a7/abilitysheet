@@ -11,7 +11,7 @@ class CreateLogs < ActiveRecord::Migration
       t.integer :new_bp
       t.integer :version
 
-      t.date :created_at
+      t.date :created_date
     end
 
     add_index :logs, :user_id

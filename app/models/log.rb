@@ -2,17 +2,17 @@
 #
 # Table name: logs
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  sheet_id   :integer
-#  pre_state  :integer
-#  new_state  :integer
-#  pre_score  :integer
-#  new_score  :integer
-#  pre_bp     :integer
-#  new_bp     :integer
-#  version    :integer
-#  created_at :date
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  sheet_id     :integer
+#  pre_state    :integer
+#  new_state    :integer
+#  pre_score    :integer
+#  new_score    :integer
+#  pre_bp       :integer
+#  new_bp       :integer
+#  version      :integer
+#  created_date :date
 #
 
 class Log < ActiveRecord::Base
@@ -23,14 +23,14 @@ class Log < ActiveRecord::Base
   include Graph
 
   def self.prev_next(user_id, date)
-    p = where(user_id: user_id).order(created_at: :desc).find_by('created_at < ?', date).try(:created_at)
-    n = where(user_id: user_id).order(:created_at).find_by('created_at > ?', date).try(:created_at)
+    p = where(user_id: user_id).order(created_date: :desc).find_by('created_date < ?', date).try(:created_date)
+    n = where(user_id: user_id).order(:created_date).find_by('created_date > ?', date).try(:created_date)
     [p, n]
   end
 
   def self.attributes(score_params, owner)
     score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
-    log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
+    log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
       log.update(new_state: score_params['state'])
       return true
@@ -45,7 +45,7 @@ class Log < ActiveRecord::Base
   end
 
   def self.score_attributes(score_params, owner)
-    log = find_by(sheet_id: score_params['sheet_id'], created_at: Date.today)
+    log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
       log.update(new_score: score_params['score'], new_bp: score_params['bp'])
       return true

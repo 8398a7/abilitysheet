@@ -101,12 +101,12 @@ describe Abilitysheet::V1::Users, type: :request do
         end
         it 'ログが反映されている' do
           (1..SHEET_NUM).each do |sheet_id|
-            expect(Log.exists?(sheet_id: sheet_id, user_id: 1, created_at: Date.today)).to eq false
+            expect(Log.exists?(sheet_id: sheet_id, user_id: 1, created_date: Date.today)).to eq false
           end
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
-            log = Log.find_by(sheet_id: sheet_id, user_id: 1, created_at: Date.today)
+            log = Log.find_by(sheet_id: sheet_id, user_id: 1, created_date: Date.today)
             expect(log.pre_bp).to eq nil
             expect(log.pre_score).to eq nil
             expect(log.pre_state).to eq 7
