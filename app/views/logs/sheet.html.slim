@@ -11,7 +11,7 @@ table.datatable
   tbody
     - @sheets.each do |s|
       - logs = s.logs.where(user_id: @id)
-      - u = logs.order(created_at: :desc).first.created_at if logs.present?
+      - u = logs.order(created_date: :desc).first.created_date if logs.present?
       - e = logs.find_by(new_state: 4).created_at if logs.exists?(new_state: 4)
       - c = logs.find_by(new_state: 3).created_at if logs.exists?(new_state: 3)
       - h = logs.find_by(new_state: 2).created_at if logs.exists?(new_state: 2)

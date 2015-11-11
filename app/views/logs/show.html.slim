@@ -1,9 +1,9 @@
-- @title = @logs.first.created_at
+- @title = @logs.first.created_date
 p
   - if @prev_update
     = link_to @prev_update, log_path(params[:id], @prev_update)
     | &nbsp;<&nbsp;
-  = @logs.first.created_at
+  = @logs.first.created_date
   - if @next_update
     | &nbsp;>&nbsp;
     = link_to @next_update, log_path(params[:id], @next_update)
