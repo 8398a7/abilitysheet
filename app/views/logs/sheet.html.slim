@@ -12,11 +12,11 @@ table.datatable
     - @sheets.each do |s|
       - logs = s.logs.where(user_id: @id)
       - u = logs.order(created_date: :desc).first.created_date if logs.present?
-      - e = logs.find_by(new_state: 4).created_at if logs.exists?(new_state: 4)
-      - c = logs.find_by(new_state: 3).created_at if logs.exists?(new_state: 3)
-      - h = logs.find_by(new_state: 2).created_at if logs.exists?(new_state: 2)
-      - ex = logs.find_by(new_state: 1).created_at if logs.exists?(new_state: 1)
-      - f = logs.find_by(new_state: 0).created_at if logs.exists?(new_state: 0)
+      - e = logs.find_by(new_state: 4).created_date if logs.exists?(new_state: 4)
+      - c = logs.find_by(new_state: 3).created_date if logs.exists?(new_state: 3)
+      - h = logs.find_by(new_state: 2).created_date if logs.exists?(new_state: 2)
+      - ex = logs.find_by(new_state: 1).created_date if logs.exists?(new_state: 1)
+      - f = logs.find_by(new_state: 0).created_date if logs.exists?(new_state: 0)
       tr
         td = s.title
         td bgcolor=@color[4] = e
