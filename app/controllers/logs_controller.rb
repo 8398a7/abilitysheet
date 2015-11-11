@@ -11,7 +11,7 @@ class LogsController < ApplicationController
 
   def list
     per_num = 10
-    logs = @user.logs.order(created_at: :desc).select(:created_at).uniq
+    logs = @user.logs.order(created_date: :desc).select(:created_date).uniq
     @logs = logs.page(params[:page]).per(per_num)
     @total_pages = (logs.count / per_num.to_f).ceil
   end
@@ -53,7 +53,7 @@ class LogsController < ApplicationController
       return_404
       return
     end
-    @logs = Log.where(user_id: @user.id, created_at: date).preload(:sheet)
+    @logs = Log.where(user_id: @user.id, created_date: date).preload(:sheet)
     unless @logs.present?
       return_404
       return

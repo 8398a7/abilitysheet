@@ -40,7 +40,8 @@ class Log < ActiveRecord::Base
       sheet_id: score_params['sheet_id'],
       pre_state: pre_state, new_state: score_params['state'],
       pre_score: nil, new_score: nil, pre_bp: nil, new_bp: nil,
-      version: Abilitysheet::Application.config.iidx_version
+      version: Abilitysheet::Application.config.iidx_version,
+      created_date: Date.today
     )
   end
 
@@ -56,7 +57,8 @@ class Log < ActiveRecord::Base
       sheet_id: score_params['sheet_id'],
       pre_state: pre_state, new_state: score_params['state'],
       pre_score: now_score.score, new_score: score_params['score'], pre_bp: now_score.bp, new_bp: score_params['bp'],
-      version: Abilitysheet::Application.config.iidx_version
+      version: Abilitysheet::Application.config.iidx_version,
+      created_date: Date.today
     )
   end
 end
