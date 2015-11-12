@@ -30,7 +30,7 @@ class SheetsController < ApplicationController
   def power
     @sheets = Sheet.active.preload(:ability)
     @color = Score.convert_color(
-      User.find_by(iidxid: params[:iidxid]).scores.where(version: Abilitysheet::Application.config.iidx_version)
+      User.find_by(iidxid: params[:iidxid]).scores.is_current_version
     )
   end
 
@@ -77,7 +77,7 @@ class SheetsController < ApplicationController
     end
     load_static
     @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
-    @scores = User.select(:id).find_by(iidxid: params[:iidxid]).scores.select(:sheet_id, :state).is_active
+    @scores = User.select(:id).find_by(iidxid: params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active
     @color = Score.convert_color(@scores)
     @stat = Score.stat_info(@scores)
   end

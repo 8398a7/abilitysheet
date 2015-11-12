@@ -25,6 +25,7 @@ class Score < ActiveRecord::Base
 
   scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
+  scope :is_current_version, -> { where(version: Abilitysheet::Application.config.iidx_version) }
 
   def update_with_logs(score_params)
     score_params.stringify_keys!
