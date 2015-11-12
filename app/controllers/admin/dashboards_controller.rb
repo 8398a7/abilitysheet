@@ -3,11 +3,7 @@ class Admin::DashboardsController < ApplicationController
   before_action :owner_user!
 
   def index
-    begin
-      @sidekiq = Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").to_i)
-    rescue
-      @sidekiq = false
-    end
+    @sidekiq = SidekiqDispatcher.exists?
 
     @email = User.where.not(email: '').count
     @message = Message.where(state: false).count

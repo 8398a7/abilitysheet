@@ -3,9 +3,7 @@ class Admin::SidekiqController < ApplicationController
   before_action :admin_user!
 
   def index
-    @sidekiq = Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
-  rescue
-    @sidekiq = false
+    @sidekiq = SidekiqDispatcher.exists?
   end
 
   def start

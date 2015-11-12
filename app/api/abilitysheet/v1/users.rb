@@ -35,11 +35,8 @@ module Abilitysheet::V1
           error! '404 Not Found', 404 unless score
         end
         unless Rails.env.test?
-          begin
-            Process.getpgid(File.read("#{Rails.root}/tmp/pids/sidekiq.pid").chomp!.to_i)
-          rescue
-            error! '503 Service Unavailable', 503
-          end
+          sidekiq = SidekiqDispatcher.exists?
+          error! '503 Service Unavailable', 503 unless sidekiq
         end
         ScoreViewerWorker.perform_async(elems, current_user.id)
         { status: 'ok' }
