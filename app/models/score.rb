@@ -21,6 +21,8 @@ class Score < ActiveRecord::Base
   include IIDXME
   include ScoreViewer
 
+  validates :sheet_id, uniqueness: { scope: [:version, :user_id] }
+
   scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
 
