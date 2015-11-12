@@ -16,7 +16,7 @@ module Users
 
     def exist_sidekiq
       sidekiq = SidekiqDispatcher.exists? unless Rails.env.test?
-      return if sidekiq
+      return if sidekiq || Rails.env.test?
       Slack::SidekiqDispatcher.notify
       flash[:alert] = '何らかの不具合が生じています．管理人にお問い合わせください．(Twitter->@IIDX_12)'
       redirect_to new_user_registration_path
