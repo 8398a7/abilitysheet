@@ -31,20 +31,16 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 ## Requires
 
-- ruby 2.2.2
+- ruby 2.2.3
 - rails 4.2.4
-- crystal 0.7.7
 
 ## Setting
 
 ```sh
 git clone https://github.com/8398a7/abilitysheet.git
 cd abilitysheet
-git submodule update --init
 bundle install -j4 --path vendor/bundle
 rake db:setup
-# require env setting
-cd .submodules/api-abilitysheet && crystal src/app.cr
 rails s
 ```
 
