@@ -140,6 +140,19 @@ class User < ActiveRecord::Base
       end
       ret
     end
+
+    def version_up
+      User.includes(:scores).find_each do |user|
+        version_up_score_create(user, user.scores)
+      end
+    end
+
+    def version_up_score_create(user, scores)
+      scores.each do |score|
+        next if user.scores.exists?(sheet_id: score.sheet_id, version: Abilitysheet::Application.config.iidx_version)
+        user.scores.create(sheet_id: score.sheet_id, state: score.state, version: Abilitysheet::Application.config.iidx_version)
+      end
+    end
   end
 
   # 登録時にemailを不要とする
