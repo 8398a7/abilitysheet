@@ -14,7 +14,7 @@ feature 'sign up' do
     fill_in 'user_password', with: 'hogehoge'
     fill_in 'user_password_confirmation', with: 'hogehoge'
     select '京都府', from: 'user_pref'
-    select '九段', from: 'user_grade'
+    select '八段', from: 'user_grade'
     click_button '登録'
     expect(User.count).to eq 1
     expect(User.exists?(email: 'sign_up_spec@iidx12.tk')).to eq true
