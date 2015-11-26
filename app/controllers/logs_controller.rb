@@ -24,11 +24,9 @@ class LogsController < ApplicationController
   end
 
   def iidxme
-    # IidxmeWorker.perform_async(current_user.id)
-    # flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    # flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
-    # TODO: spec変更
-    flash[:alert] = %(新バージョンにつき対応中です。申し訳ありません。)
+    IidxmeWorker.perform_async(current_user.id)
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
     render :reload
   end
 
