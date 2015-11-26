@@ -14,11 +14,15 @@
       .uk-form-row
         label.uk-form-label スコア
         .uk-form-controls
-          text_field.form-control readonly="true" = score.score
+          text_field.form-control readonly="true"
+            = score.score
+            | (#{sprintf('%+d', score.score.to_i - pre_score.score.to_i)})
       .uk-form-row
         label.uk-form-label BP
         .uk-form-controls
-          text_field.form-control readonly="true" = score.bp
+          text_field.form-control readonly="true"
+            = score.bp
+            | (#{sprintf('%+d', pre_score.bp.to_i - score.bp.to_i)})
       .uk-form-row
         = f.label :state, 'ランプ状況', class: 'uk-form-label'
         .uk-form-controls

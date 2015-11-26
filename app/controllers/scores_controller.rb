@@ -6,6 +6,7 @@ class ScoresController < ApplicationController
 
   def edit
     @sheet = Sheet.find_by(id: params[:id])
+    @pre_score = current_user.scores.find_by(sheet_id: params[:id], version: Abilitysheet::Application.config.iidx_version - 1)
     render :show_modal
   end
 
@@ -32,6 +33,7 @@ class ScoresController < ApplicationController
       parameters[:id] = params[:id]
     end
     @score = current_user.scores.find_by(parameters)
+    parameters[:version] = version - 1
   end
 
   def score_params
