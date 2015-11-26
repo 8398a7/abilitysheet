@@ -15,6 +15,6 @@
 
 FactoryGirl.define do
   factory :score do
-    version 22
+    version Abilitysheet::Application.config.iidx_version
   end
 end
