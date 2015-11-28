@@ -33,7 +33,6 @@ class ScoresController < ApplicationController
       parameters[:id] = params[:id]
     end
     @score = current_user.scores.find_by(parameters)
-    parameters[:version] = version - 1
   end
 
   def score_params
