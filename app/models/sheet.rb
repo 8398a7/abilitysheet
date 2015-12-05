@@ -27,10 +27,14 @@ class Sheet < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
-  after_create :create_score_and_ability
+  after_create :create_ability
 
-  def create_score_and_ability
-    SheetWorker.perform_async(id)
+  def create_ability
+    d = 99.99
+    Ability.create(
+      sheet_id: id,
+      fc: d, exh: d, h: d, c: d, e: d, aaa: d
+    )
   end
 
   def self.sync_created_at

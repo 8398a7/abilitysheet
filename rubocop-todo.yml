@@ -34,3 +34,6 @@ AccessorMethodName:
 
 Metrics/AbcSize:
   Max: 65
+
+PerceivedComplexity:
+  Max: 10

@@ -57,6 +57,7 @@ describe Abilitysheet::V1::Users, type: :request do
         before do
           (1..SHEET_NUM).each do |sheet_id|
             create(:sheet, id: sheet_id)
+            expect(Score.exists?(sheet_id: sheet_id, user_id: 1)).to eq false
           end
         end
         let(:parameters) do
@@ -70,9 +71,6 @@ describe Abilitysheet::V1::Users, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'クリアランプが反映されている' do
-          (1..SHEET_NUM).each do |sheet_id|
-            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq 7
-          end
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
@@ -80,9 +78,6 @@ describe Abilitysheet::V1::Users, type: :request do
           end
         end
         it 'スコアが反映されている' do
-          (1..SHEET_NUM).each do |sheet_id|
-            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq nil
-          end
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
@@ -90,9 +85,6 @@ describe Abilitysheet::V1::Users, type: :request do
           end
         end
         it 'BPが反映されている' do
-          (1..SHEET_NUM).each do |sheet_id|
-            expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq nil
-          end
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
@@ -119,6 +111,7 @@ describe Abilitysheet::V1::Users, type: :request do
       context 'スコアが理論値の場合' do
         before do
           create(:sheet, id: 1)
+          expect(Score.exists?(sheet_id: 1, user_id: 1)).to eq false
         end
         let(:parameters) do
           {
@@ -131,19 +124,16 @@ describe Abilitysheet::V1::Users, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq elems[0]['miss']
         end
         it 'スコアは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2
         end
         it 'クリアランプは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
@@ -152,6 +142,7 @@ describe Abilitysheet::V1::Users, type: :request do
       context 'クリアランプだけ存在する場合' do
         before do
           create(:sheet, id: 1)
+          expect(Score.exists?(sheet_id: 1, user_id: 1)).to eq false
         end
         let(:parameters) do
           {
@@ -164,17 +155,14 @@ describe Abilitysheet::V1::Users, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアはnilのままである' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
         end
         it 'クリアランプは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
@@ -183,6 +171,7 @@ describe Abilitysheet::V1::Users, type: :request do
       context 'ハード落ちなどでBPがない場合' do
         before do
           create(:sheet, id: 1)
+          expect(Score.exists?(sheet_id: 1, user_id: 1)).to eq false
         end
         let(:parameters) do
           {
@@ -195,18 +184,15 @@ describe Abilitysheet::V1::Users, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
           post(url, parameters, rack_env)
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2 + elems[0]['g']
         end
         it 'クリアランプは反映されている' do
-          expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq 7
           post(url, parameters, rack_env)
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']

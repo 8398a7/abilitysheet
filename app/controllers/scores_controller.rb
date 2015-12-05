@@ -19,9 +19,7 @@ class ScoresController < ApplicationController
 
   def score_exists?
     return if @score
-    flash[:alert] = '処理を受け付けませんでした．'
-    flash[:notice] = 'この状態が続くようであればお問い合わせください'
-    render :reload
+    @score = current_user.scores.create!(version: Abilitysheet::Application.config.iidx_version, sheet_id: params[:id])
   end
 
   def load_score

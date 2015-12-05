@@ -11,7 +11,9 @@ module ScoreViewer
         # スコアが理論値である場合の処理
         score_params['score'] = e['pg'] * 2 if e['pg'] != -1 && e['g'] == -1
 
-        score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
+        score = current_user.scores.find_by(sheet_id: e['id'], version: Abilitysheet::Application.config.iidx_version)
+        score = current_user.scores.create!(sheet_id: e['id'], version: Abilitysheet::Application.config.iidx_version) unless score
+
         score_params['state'] = score.state
         score_params['state'] = e['cl'] if e['cl'].to_i < score.state
         score.update_with_logs(score_params)

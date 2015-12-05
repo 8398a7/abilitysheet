@@ -31,8 +31,7 @@ module Abilitysheet::V1
           # パラメータに余分な物がある
           error! '400 Bad Request', 400 if 5 < e.size
           # 楽曲が存在していない
-          score = Score.find_by(user_id: current_user.id, sheet_id: e['id'])
-          error! '404 Not Found', 404 unless score
+          error! '404 Not Found', 404 unless Sheet.exists?(id: e['id'])
         end
         unless Rails.env.test?
           sidekiq = SidekiqDispatcher.exists?
