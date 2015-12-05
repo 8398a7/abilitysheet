@@ -1,13 +1,13 @@
-@Navbar = React.createClass
-  displayName: 'Navbar'
+class @Navbar extends React.Component
+  constructor: (props) ->
+    @state =
+      paths: null
 
-  propTypes:
-    paths: React.PropTypes.object
-    current_user: React.PropTypes.object
-    recent: React.PropTypes.string
-    message: React.PropTypes.number
+  onChange: =>
+    @setState paths: PathStore.all()
 
   componentDidMount: ->
+    PathStore.addChangeListener(@onChange)
 
   render: ->
     <div className="uk-container uk-container-center">
@@ -35,3 +35,10 @@
         <a className="uk-navbar-toggle" href="#navbar-offcanvas" data-uk-offcanvas=""></a>
       </div>
     </div>
+
+Navbar.displayName = 'Navbar'
+Navbar.propTypes =
+  paths: React.PropTypes.object.isRequired
+  current_user: React.PropTypes.object
+  recent: React.PropTypes.string
+  message: React.PropTypes.number.isRequired

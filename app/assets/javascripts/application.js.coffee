@@ -10,5 +10,11 @@
 #= require turbolinks
 #= require react
 #= require react_ujs
+#= require flux/dist/Flux
+#= require eventemitter2/lib/eventemitter2
+#= require_tree ./constants
+#= require_tree ./dispatcher
+#= require_tree ./actions
+#= require_tree ./stores
 #= require_tree ./components
-#= require_tree .
+#= require sheets
