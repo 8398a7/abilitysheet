@@ -18,13 +18,6 @@ describe ScoresController, type: :controller do
         expect(assigns(:score)).to eq @user.scores.first
         expect(response).to have_http_status(:success)
       end
-
-      it 'スコアレコードが存在しない時はリダイレクト' do
-        sign_in @user
-        xhr :get, :edit, id: 2
-        expect(response).to have_http_status(:success)
-        expect(flash['alert']).to eq '処理を受け付けませんでした．'
-      end
     end
     context 'xhrリクエストではない' do
       it 'response redirect' do
@@ -35,6 +28,7 @@ describe ScoresController, type: :controller do
   end
 
   describe 'PUT #update' do
+    before { create(:score, sheet_id: 1, user_id: 1) }
     context 'ログインしていない' do
       it 'response ng' do
         xhr :patch, :update, id: @user.scores.first.id, score: { sheet_id: 1, state: 5 }

@@ -14,7 +14,5 @@
                 li.uk-nav-header = fa_icon 'refresh', text: '同期'
                 li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
                 li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
-              - if user_signed_in? && current_user.special?
-                li = link_to '公式との同期', official_log_path, data: { disable_with: '同期中', confirm: '有料会員状態でないと同期できませんが、よろしいですか?' }, method: :post, remote: true
       h2 更新履歴
       #logs = render partial: 'logs/logs'

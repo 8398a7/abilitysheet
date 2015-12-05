@@ -56,10 +56,8 @@ Rails.application.routes.draw do
     get :graph, on: :member
     get :list, on: :member
     get :sheet, on: :member
-    post :official, on: :member
     post :manager, on: :member
     post :iidxme, on: :member
-    post :update_official, on: :member
   end
   get '/logs/:id/:date' => 'logs#show', as: :log
 

@@ -59,7 +59,9 @@ describe Scrape::IIDXME do
         allow(@iidxme).to receive(:data_get).and_return(res)
         user
         sync_sheet
-        JSON.parse(File.read("#{iidxme_mock_root}/score")).each { |s| user.scores.find_by(sheet_id: s['sheet_id']).update_with_logs(s) }
+        JSON.parse(File.read("#{iidxme_mock_root}/score")).each do |s|
+          create(:score, user_id: user.id, sheet_id: s['sheet_id']).update_with_logs(s)
+        end
       end
       it 'Score#update_with_logs' do
         count = 0

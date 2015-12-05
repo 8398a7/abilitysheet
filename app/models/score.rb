@@ -51,13 +51,6 @@ class Score < ActiveRecord::Base
   end
 
   class << self
-    def score_create(iidxid)
-      user_id = User.find_by(iidxid: iidxid).id
-      sheets = Sheet.all
-      version = Abilitysheet::Application.config.iidx_version
-      sheets.each { |s| Score.create(sheet_id: s.id, user_id: user_id, version: version) }
-    end
-
     def stat_info(scores)
       hash = { 'FC' => 0, 'EXH' => 0, 'H' => 0, 'C' => 0, 'E' => 0, 'A' => 0, 'F' => 0, 'N' => 0 }
       count = 0

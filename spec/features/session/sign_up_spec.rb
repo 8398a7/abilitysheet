@@ -18,6 +18,5 @@ feature 'sign up' do
     click_button '登録'
     expect(User.count).to eq 1
     expect(User.exists?(email: 'sign_up_spec@iidx12.tk')).to eq true
-    expect(User.find_by(email: 'sign_up_spec@iidx12.tk').scores.count).to eq Sheet.count
   end
 end
