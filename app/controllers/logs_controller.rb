@@ -30,16 +30,6 @@ class LogsController < ApplicationController
     render :reload
   end
 
-  def official
-    render :show_modal
-  end
-
-  def update_official
-    OfficialWorker.perform_async(current_user.id, params[:kid], params[:password])
-    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    redirect_to list_log_path
-  end
-
   def show
     begin
       date = params[:date].to_date
