@@ -40,6 +40,11 @@ module Abilitysheet::V1
         ScoreViewerWorker.perform_async(elems, current_user.id)
         { status: 'ok' }
       end
+      resource :routing do
+        get do
+          [Rails.application.routes.url_helpers.root_path, current_user.try(:iidxid)]
+        end
+      end
     end
   end
 end

@@ -15,7 +15,7 @@
  *= require uikit/css/uikit.min
  *= require uikit/css/uikit.almost-flat.min
  *= require uikit/css/components/notify.almost-flat.min
- *= require select2/select2
+ *= require select2/dist/css/select2.min
  *= require nprogress/nprogress
  *= require datatables/media/css/jquery.dataTables
  *= require_self
