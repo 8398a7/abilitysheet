@@ -2,7 +2,6 @@ feature 'ログイン処理' do
   background do
     create(:user, id: 1)
     visit new_user_session_path
-    wait_for_ajax
   end
   given(:user) { User.find_by(id: 1) }
   context 'iidxidでログイン' do

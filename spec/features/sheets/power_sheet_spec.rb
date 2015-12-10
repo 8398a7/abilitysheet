@@ -1,8 +1,7 @@
 feature '地力値表' do
   given(:user) { create(:user, id: 1) }
-  background  do
+  background do
     visit sheet_path(iidxid: user.iidxid, type: 'power')
-    wait_for_ajax
   end
 
   scenario '存在しないユーザへのアクセス' do

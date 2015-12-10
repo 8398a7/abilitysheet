@@ -1,7 +1,6 @@
 feature 'sign up' do
   background do
     visit new_user_registration_path
-    wait_for_ajax
     sync_sheet
     allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
     allow(ManagerWorker).to receive(:perform_in).and_return(true)

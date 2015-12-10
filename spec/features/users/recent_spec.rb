@@ -3,11 +3,13 @@ feature '最近更新したユーザ200人一覧' do
   background do
     create(:score, user_id: 1, sheet_id: 1)
     visit users_path
-    wait_for_ajax
   end
 
   context 'DJNAME検索時', js: true do
-    background { create(:user, id: 1) }
+    background do
+      wait_for_ajax
+      create(:user, id: 1)
+    end
     scenario '該当件数が0であること返す' do
       fill_in 'query', with: 'HOGE'
       click_button '検索'
@@ -39,7 +41,6 @@ feature '最近更新したユーザ200人一覧' do
     background do
       login(user)
       visit users_path
-      wait_for_ajax
     end
     scenario 'ライバルのカラムが存在する' do
       expect(page).to have_content('ライバル情報')
