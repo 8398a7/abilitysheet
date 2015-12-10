@@ -1,12 +1,20 @@
 class @Navbar extends React.Component
   constructor: (props) ->
+    @state =
+      current_user: null
 
-  onChange: =>
+  onChangeCurrentUser: =>
+    @setState current_user: UserStore.get()
 
-  componentDidMount: ->
+  componentWillMount: ->
+    UserStore.addChangeListener(@onChangeCurrentUser)
+    UserActionCreators.getMe()
+
+  componentWillUnmount: ->
+    UserStore.removeChangeListener(@onChangeCurrentUser)
 
   render: ->
-    <div className='uk-container uk-container-center'>
+    <div className='uk-container uk-container-center react'>
       <a href={root_path()} className='uk-navbar-brand'>
         <span className='brand bold'>☆12参考表</span>
       </a>
@@ -17,15 +25,15 @@ class @Navbar extends React.Component
             最近更新したユーザ
           </a>
         </li>
-        <MyPage current_user={@props.current_user} recent={@props.recent} />
-        <Rival current_user={@props.current_user} />
+        <MyPage current_user={@state.current_user} recent={@props.recent} />
+        <Rival current_user={@state.current_user} />
         <Irt />
         <Conntact />
-        <Admin current_user={@props.current_user} />
-        <Message current_user={@props.current_user} message={@props.message} />
+        <Admin current_user={@state.current_user} />
+        <Message current_user={@state.current_user} />
       </ul>
       <div className='uk-navbar-flip uk-hidden-small'>
-        <User current_user={@props.current_user} />
+        <User current_user={@state.current_user} />
       </div>
       <div className='uk-navbar-flip uk-visible-small'>
         <a className='uk-navbar-toggle' href='#navbar-offcanvas' data-uk-offcanvas=''></a>
@@ -34,6 +42,4 @@ class @Navbar extends React.Component
 
 Navbar.displayName = 'Navbar'
 Navbar.propTypes =
-  current_user: React.PropTypes.object
   recent: React.PropTypes.string
-  message: React.PropTypes.number.isRequired

@@ -1,18 +1,23 @@
 class @User extends React.Component
-  componentDidMount: ->
+  userDom: ->
     unless @props.current_user
-      $('.edit-user').append("<li><a href=#{new_user_session_path()}><i class='fa fa-sign-in'></i>&nbsp;ログイン</a></li>")
+      <li><a href={new_user_session_path()}><i className='fa fa-sign-in' />ログイン</a></li>
     else
-      parent = $('.edit-user')
-      $(parent).append("<li class='uk-parent' data-uk-dropdown=''><a><i class='fa fa-user'></i>&nbsp;#{@props.current_user.djname}</a>")
-      $(parent).children('.uk-parent').append('<div class="uk-dropdown uk-dropdown-navbar">')
-      $(parent).children('.uk-parent').children('.uk-dropdown').append('<ul class="uk-nav uk-nav-navbar">')
-      $(parent).children('.uk-parent').children('.uk-dropdown').children('.uk-nav').append("<li><a href=#{edit_user_registration_path()}><i class='fa fa-pencil'></i>編集</a></li>")
-      $(parent).children('.uk-parent').children('.uk-dropdown').children('.uk-nav').append("<li><a rel='nofollow' data-method='delete' href=#{destroy_user_session_path()}><i class='fa fa-sign-out'></i>ログアウト</a></li>")
+      <li className='uk-parent' data-uk-dropdown=''>
+        <a><i className='fa fa-user' />{@props.current_user.djname}</a>
+        <div className='uk-dropdown uk-dropdown-navbar'>
+          <ul className='uk-nav uk-nav-navbar'>
+            <li><a href={edit_user_registration_path()}><i className='fa fa-pencil' />編集</a></li>
+            <li><a rel='nofollow' data-method='delete' href={destroy_user_session_path()}><i className='fa fa-sign-out' />ログアウト</a></li>
+          </ul>
+        </div>
+      </li>
 
   render: ->
-    <ul className="uk-navbar-nav edit-user">
+    <ul className='uk-navbar-nav edit-user'>
+      {@userDom()}
     </ul>
+
 User.displayName = 'User'
 User.propTypes =
   current_user: React.PropTypes.object

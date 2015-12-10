@@ -27,5 +27,6 @@ module Abilitysheet::V1
     mount Sheets
     mount Users
     mount Scores
+    mount Messages
   end
 end

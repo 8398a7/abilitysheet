@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :miniprofiler
-  before_action :load_nav_routes
   before_action :check_email, unless: :devise_controller?
 
   def check_email
@@ -11,11 +10,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = 'パスワード再発行用にemailの設定が必要です'
     flash[:alert] = '設定されていない場合、再発行されない可能性があります'
     redirect_to edit_user_registration_path
-  end
-
-  def load_nav_routes
-    return if params[:controller].index('rails_admin/')
-    @message_number = Message.where(state: false).count
   end
 
   protected

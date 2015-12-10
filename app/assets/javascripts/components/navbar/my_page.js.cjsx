@@ -1,8 +1,7 @@
 class @MyPage extends React.Component
-
-  componentDidMount: ->
+  recentDom: ->
     return if @props.recent is null
-    $('.recent').append("<a href='#{@props.recent}'>最近の更新</a>")
+    <a href={@props.recent}>最近の更新</a>
 
   render: ->
     return null if @props.current_user is null
@@ -14,7 +13,9 @@ class @MyPage extends React.Component
           <li><a href={sheet_path(@props.current_user.iidxid, type: 'hard')}>ハード参考表</a></li>
           <li><a href={sheet_path(@props.current_user.iidxid, type: 'power')}>地力値参考表</a></li>
           <li><a href={list_log_path(@props.current_user.iidxid)}>更新データ</a></li>
-          <li className='recent'></li>
+          <li className='recent'>
+            {@recentDom()}
+          </li>
         </ul>
       </div>
     </li>
