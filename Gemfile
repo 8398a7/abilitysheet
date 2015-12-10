@@ -49,6 +49,7 @@ gem 'grape_logging'
 gem 'doorkeeper'
 gem 'oauth2'
 gem 'aws-sdk'
+gem 'js-routes'
 
 gem 'rack-cors', require: 'rack/cors'
 group :development do

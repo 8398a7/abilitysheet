@@ -11,9 +11,8 @@
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
       = devise_error_messages!
       .uk-form-row.uk-form-icon
-        label.uk-form-label メールアドレス
-        .uk-form-controls
-          = f.email_field :email, autofocus: true
+        i.uk-icon-envelope
+        = f.email_field :email, autofocus: true
       .uk-form-row.uk-form-icon
         label.uk-form-label アカウント名(半角英数字)
         .uk-form-controls
@@ -26,29 +25,30 @@
         label.uk-form-label IIDXID
         .uk-form-controls
           = f.text_field :iidxid, autofocus: true, placeholder: '1234-5678'
-      .uk-form-row.uk-form-icon
-        label.uk-form-label 段位
-        .uk-form-controls
-          = f.select :grade, User.dan, {}, { class: 'searchable grade' }
-      .uk-form-row.uk-form-icon
-        label.uk-form-label 所属
-        .uk-form-controls
-          = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
-      .uk-form-row.uk-form-icon
+      .uk-form-row
+        label.uk-form-label 所属/段位
+        .uk-form-controls.uk-form-controls-text
+          p.uk-form-controls-condensed
+            = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
+            = f.select :grade, User.dan, {}, { class: 'searchable grade' }
+      .uk-form-row
         label.uk-form-label 現在のパスワード
-        i.uk-icon-key
-        = f.password_field :current_password, autocomplete: 'off', placeholder: "パスワード"
-      .uk-form-row.uk-form-icon
-        label.uk-form-label パスワード(更新しない場合は空のまま)
-        i.uk-icon-key
-        = f.password_field :password, autocomplete: 'off', placeholder: "パスワード"
-      .uk-form-row.uk-form-icon
-        label.uk-form-label パスワード(確認)
-        i.uk-icon-key
-        = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード'
+        .uk-form-icon
+          i.uk-icon-key
+          = f.password_field :current_password, autocomplete: 'off', placeholder: "パスワード"
+      .uk-form-row
+        label.uk-form-label パスワードの変更(変更しない場合は空のまま)
+        .uk-form-icon
+          i.uk-icon-key
+          = f.password_field :password, autocomplete: 'off', placeholder: "パスワード"
+      .uk-form-row
+        label.uk-form-label パスワードの変更(変更する場合の確認)
+        .uk-form-icon
+          i.uk-icon-key
+          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード'
       .uk-form-row
         .uk-button-group
-          button.uk-button.uk-button-primary type="submit"
+          button.uk-button.uk-button-primary type='submit'
             = fa_icon 'refresh', text: '更新'
           = link_to registration_path(resource_name), class: 'uk-button uk-button-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete
             = fa_icon 'trash', text: '削除'

@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :miniprofiler
-  before_action :load_nav_routes
   before_action :check_email, unless: :devise_controller?
 
   def check_email
@@ -11,38 +10,6 @@ class ApplicationController < ActionController::Base
     flash[:notice] = 'パスワード再発行用にemailの設定が必要です'
     flash[:alert] = '設定されていない場合、再発行されない可能性があります'
     redirect_to edit_user_registration_path
-  end
-
-  def load_nav_routes
-    @message = Message.where(state: false).count
-    return if params[:controller].index('rails_admin/')
-    @paths = {}
-    @paths[:root] = root_path
-    @paths[:sign_in] = new_user_session_path
-    @paths[:users] = users_path
-    @paths[:recommend] = recommends_path
-    @paths[:new_message] = new_message_path
-    return unless user_signed_in?
-    @paths[:clear_sheet] = sheet_path(current_user.iidxid, type: 'clear')
-    @paths[:hard_sheet] = sheet_path(current_user.iidxid, type: 'hard')
-    @paths[:power_sheet] = sheet_path(current_user.iidxid, type: 'power')
-    @paths[:logs_list] = list_log_path(current_user.iidxid)
-    @paths[:rival_list] = list_rival_path
-    @paths[:reverse_rival_list] = reverse_list_rival_path
-    @paths[:new_message] = new_message_path
-    @paths[:edit_user] = edit_user_registration_path
-    @paths[:sign_out] = destroy_user_session_path
-    return unless current_user.member?
-    @paths[:admin_sheets] = admin_sheets_path
-    return unless current_user.admin?
-    @paths[:admin_users] = admin_users_path
-    @paths[:admin_messages] = admin_messages_path
-    @paths[:new_admin_mail] = new_admin_mail_path
-    @paths[:admin_sidekiq] = admin_sidekiq_index_path
-    @paths[:rails_admin] = rails_admin_path
-    return unless current_user.owner?
-    @paths[:new_admin_tweet] = new_admin_tweet_path
-    @paths[:admin_dashboards] = admin_dashboards_path
   end
 
   protected

@@ -202,6 +202,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
+    js-routes (1.1.2)
+      railties (>= 3.2)
+      sprockets-rails
     json (1.8.3)
     json_expressions (0.8.3)
     jwt (1.5.2)
@@ -523,6 +526,7 @@ DEPENDENCIES
   grape-devise!
   grape_logging
   jbuilder (~> 2.0)
+  js-routes
   json_expressions
   kaminari
   launchy

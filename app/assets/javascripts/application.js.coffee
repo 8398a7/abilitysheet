@@ -7,11 +7,13 @@
 #= require select2/dist/js/select2.min
 #= require highcharts/highcharts-more
 #= require nprogress/nprogress
+#= require js-routes
 #= require turbolinks
 #= require react
 #= require react_ujs
 #= require flux/dist/Flux
 #= require eventemitter2/lib/eventemitter2
+#= require_tree ./utils
 #= require_tree ./constants
 #= require_tree ./dispatcher
 #= require_tree ./actions

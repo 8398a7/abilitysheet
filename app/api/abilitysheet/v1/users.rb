@@ -6,6 +6,11 @@ module Abilitysheet::V1
         { status: current_user.try(:iidxid) }
       end
 
+      desc '自分の状態を取得'
+      get 'me' do
+        { current_user: current_user }
+      end
+
       desc 'userの登録者数を取得'
       get 'count' do
         { users: User.select(:id).count }

@@ -1,12 +1,6 @@
-@Conntact = React.createClass
-  displayName: 'Conntact'
-
-  propTypes:
-    paths: React.PropTypes.object
-
-  componentDidMount: ->
-
+class @Conntact extends React.Component
   render: ->
     <li>
-      <a href={@props.paths.new_message}><i className="fa fa-phone"></i>&nbsp;連絡フォーム</a>
+      <a href={new_message_path()}><i className='fa fa-phone' />連絡フォーム</a>
     </li>
+Conntact.displayName = 'Conntact'
