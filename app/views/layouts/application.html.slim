@@ -16,13 +16,11 @@ html
     .loading-container = image_tag('loading.gif')
     .uk-modal
 
-    - root = link_to root_path, class: 'uk-navbar-brand'
-      span.brand.bold ☆12参考表
     - tmp_recent = nil
     - if current_user && current_user.logs.exists?
       - recent = link_to '最近の更新', log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
       - tmp_recent = log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
-    = react_component 'Navbar', { paths: @paths, current_user: current_user, recent: tmp_recent, message: @message }, { class: 'uk-navbar uk-navbar-attached', tag: :nav }
+    = react_component 'Navbar', { current_user: current_user, recent: tmp_recent, message: @message_number }, { class: 'uk-navbar uk-navbar-attached', tag: :nav }
 
     .uk-offcanvas#navbar-offcanvas
       .uk-offcanvas-bar.uk-offcanvas-bar-flip

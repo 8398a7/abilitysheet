@@ -1,12 +1,6 @@
-@Irt = React.createClass
-  displayName: 'Irt'
-
-  propTypes:
-    paths: React.PropTypes.object
-
-  componentDidMount: ->
-
+class @Irt extends React.Component
   render: ->
     <li>
-      <a href={@props.paths.recommend}><i className="fa fa-level-up"></i>&nbsp;地力値表</a>
+      <a href={recommends_path()}><i className='fa fa-level-up' />地力値表</a>
     </li>
+Irt.displayName = 'Irt'

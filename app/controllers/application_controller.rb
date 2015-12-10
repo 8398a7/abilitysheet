@@ -14,35 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_nav_routes
-    @message = Message.where(state: false).count
     return if params[:controller].index('rails_admin/')
-    @paths = {}
-    @paths[:root] = root_path
-    @paths[:sign_in] = new_user_session_path
-    @paths[:users] = users_path
-    @paths[:recommend] = recommends_path
-    @paths[:new_message] = new_message_path
-    return unless user_signed_in?
-    @paths[:clear_sheet] = sheet_path(current_user.iidxid, type: 'clear')
-    @paths[:hard_sheet] = sheet_path(current_user.iidxid, type: 'hard')
-    @paths[:power_sheet] = sheet_path(current_user.iidxid, type: 'power')
-    @paths[:logs_list] = list_log_path(current_user.iidxid)
-    @paths[:rival_list] = list_rival_path
-    @paths[:reverse_rival_list] = reverse_list_rival_path
-    @paths[:new_message] = new_message_path
-    @paths[:edit_user] = edit_user_registration_path
-    @paths[:sign_out] = destroy_user_session_path
-    return unless current_user.member?
-    @paths[:admin_sheets] = admin_sheets_path
-    return unless current_user.admin?
-    @paths[:admin_users] = admin_users_path
-    @paths[:admin_messages] = admin_messages_path
-    @paths[:new_admin_mail] = new_admin_mail_path
-    @paths[:admin_sidekiq] = admin_sidekiq_index_path
-    @paths[:rails_admin] = rails_admin_path
-    return unless current_user.owner?
-    @paths[:new_admin_tweet] = new_admin_tweet_path
-    @paths[:admin_dashboards] = admin_dashboards_path
+    @message_number = Message.where(state: false).count
   end
 
   protected
