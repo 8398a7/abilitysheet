@@ -11,11 +11,5 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  Capybara.default_selector = :css
-  Capybara.javascript_driver = :webkit
-  Capybara::Webkit.configure do |webkit|
-    webkit.allow_url %w(platform.twitter.com)
-  end
-
   Sidekiq::Testing.inline!
 end
