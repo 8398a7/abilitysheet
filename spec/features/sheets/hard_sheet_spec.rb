@@ -1,6 +1,8 @@
 feature 'ハード地力表' do
   given(:user) { create(:user, id: 1) }
-  background { visit sheet_path(iidxid: user.iidxid, type: 'hard') }
+  background do
+    visit sheet_path(iidxid: user.iidxid, type: 'hard')
+  end
 
   scenario '存在しないユーザへのアクセス' do
     visit sheet_path(iidxid: '1111-1111', type: 'hard')
@@ -31,6 +33,7 @@ feature 'ハード地力表' do
       create(:sheet, id: 1, active: true)
       login(user)
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
+      wait_for_ajax
     end
 
     scenario 'モーダルが降りてくる' do
@@ -47,6 +50,7 @@ feature 'ハード地力表' do
       click_on '更新'
       wait_for_ajax
       visit sheet_path(iidxid: user.iidxid, type: 'clear')
+      wait_for_ajax
       expect(user.scores.first.state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq true
     end

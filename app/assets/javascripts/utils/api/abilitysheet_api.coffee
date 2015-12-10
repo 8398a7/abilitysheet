@@ -1,6 +1,8 @@
 class @AbilitysheetAPI
   @server = location.protocol + '//' + location.host
-  @apiPath = '/api/v1'
+  subDir = Routes.root_path().split('/')[1]
+  subDir = '/' + subDir if 0 < subDir.length
+  @apiPath = "#{subDir}/api/v1"
 
   @AjaxCall: (api, option = null) ->
     option = {}         unless option?

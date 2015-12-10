@@ -6,7 +6,10 @@ feature '最近更新したユーザ200人一覧' do
   end
 
   context 'DJNAME検索時', js: true do
-    background { create(:user, id: 1) }
+    background do
+      wait_for_ajax
+      create(:user, id: 1)
+    end
     scenario '該当件数が0であること返す' do
       fill_in 'query', with: 'HOGE'
       click_button '検索'
