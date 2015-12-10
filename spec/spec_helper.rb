@@ -1,6 +1,5 @@
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-require 'capybara/poltergeist'
 require 'sidekiq/testing'
 require 'tilt/coffee'
 
@@ -13,9 +12,9 @@ RSpec.configure do |config|
   end
 
   Capybara.default_selector = :css
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: true)
+  Capybara.javascript_driver = :webkit
+  Capybara::Webkit.configure do |webkit|
+    webkit.allow_url %w(platform.twitter.com)
   end
 
   Sidekiq::Testing.inline!
