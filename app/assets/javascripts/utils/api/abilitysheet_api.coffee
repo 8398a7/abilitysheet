@@ -1,7 +1,6 @@
 class @AbilitysheetAPI
   @server = location.protocol + '//' + location.host
-  window.subDir = location.pathname.split('/')[1]
-  window.subDir = '/' + window.subDir if 0 < window.subDir.length
+  subDir = '/abilitysheet' if env is 'production' or env is 'staging'
   @apiPath = "#{subDir}/api/v1"
 
   @AjaxCall: (api, option = null) ->
