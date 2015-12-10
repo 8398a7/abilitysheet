@@ -14,7 +14,7 @@ class @User extends React.Component
       </li>
 
   render: ->
-    return null if @props.current_user.unmount?
+    return null if @props.current_user? and @props.current_user.unmount?
     <ul className='uk-navbar-nav edit-user'>
       {@userDom()}
     </ul>
