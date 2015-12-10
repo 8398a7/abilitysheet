@@ -9,10 +9,10 @@ class @MyPage extends React.Component
       <a><i className='fa fa-database' />マイページ</a>
       <div className='uk-dropdown uk-dropdown-navbar'>
         <ul className='uk-nav uk-nav-navbar'>
-          <li><a href={sheet_path(@props.current_user.iidxid, type: 'clear')}>ノマゲ参考表</a></li>
-          <li><a href={sheet_path(@props.current_user.iidxid, type: 'hard')}>ハード参考表</a></li>
-          <li><a href={sheet_path(@props.current_user.iidxid, type: 'power')}>地力値参考表</a></li>
-          <li><a href={list_log_path(@props.current_user.iidxid)}>更新データ</a></li>
+          <li><a href={'.' + sheet_path(@props.current_user.iidxid, type: 'clear')}>ノマゲ参考表</a></li>
+          <li><a href={'.' + sheet_path(@props.current_user.iidxid, type: 'hard')}>ハード参考表</a></li>
+          <li><a href={'.' + sheet_path(@props.current_user.iidxid, type: 'power')}>地力値参考表</a></li>
+          <li><a href={'.' + list_log_path(@props.current_user.iidxid)}>更新データ</a></li>
           <li className='recent'>
             {@recentDom()}
           </li>

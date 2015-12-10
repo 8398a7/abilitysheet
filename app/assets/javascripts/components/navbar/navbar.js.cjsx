@@ -15,12 +15,12 @@ class @Navbar extends React.Component
 
   render: ->
     <div className='uk-container uk-container-center react'>
-      <a href={root_path()} className='uk-navbar-brand'>
+      <a href={'.' + root_path()} className='uk-navbar-brand'>
         <span className='brand bold'>☆12参考表</span>
       </a>
       <ul className='uk-navbar-nav uk-hidden-small'>
         <li>
-          <a href={users_path()}>
+          <a href={'.' + users_path()}>
             <i className='fa fa-refresh' />
             最近更新したユーザ
           </a>
