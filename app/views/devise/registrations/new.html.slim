@@ -8,7 +8,7 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: registration_path(resource_name) do |f|
       = devise_error_messages!
       .uk-form-row.uk-form-icon
         i.uk-icon-envelope
@@ -18,13 +18,10 @@
         .uk-form-controls
           = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample'
       .uk-form-row
-        label.uk-form-label DJNAME(半角英数大文字)
+        label.uk-form-label DJNAME/IIDXID
         .uk-form-controls
-          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE'
-      .uk-form-row
-        label.uk-form-label IIDXID
-        .uk-form-controls
-          = f.text_field :iidxid, autofocus: true, placeholder: 'ex. 1234-5678'
+          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE', class: 'half-input'
+          = f.text_field :iidxid, autofocus: true, placeholder: 'ex. 1234-5678', class: 'half-input'
       .uk-form-row
         label.uk-form-label 所属/段位
         .uk-form-controls.uk-form-controls-text
@@ -32,12 +29,13 @@
             = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
             = f.select :grade, User.dan, {}, { class: 'searchable grade' }
       .uk-form-row
-        .uk-form-icon
+        label.uk-form-label パスワード
+        .uk-form-icon.half-input
           i.uk-icon-key
           = f.password_field :password, autocomplete: 'off', placeholder: "パスワード(#{@minimum_password_length}文字以上)"
-      .uk-form-row.uk-form-icon
-        i.uk-icon-key
-        = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード(確認用)'
+        .uk-form-icon.half-input
+          i.uk-icon-key
+          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード(確認用)'
       .uk-form-row
         .uk-button-group
           button.uk-button.uk-button-success type="submit"

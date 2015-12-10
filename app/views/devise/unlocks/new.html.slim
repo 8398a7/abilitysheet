@@ -8,11 +8,12 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'uk-form uk-form-stacked' }) do |f|
+    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'uk-form uk-form-stacked devise' }) do |f|
       = devise_error_messages!
-      .uk-form-row.uk-form-icon
-        i.uk-icon-envelope
-        = f.email_field :email, autofocus: true, placeholder: '登録したメールアドレス'
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-envelope
+          = f.email_field :email, autofocus: true, placeholder: '登録したメールアドレス'
       .uk-form-row
         .uk-button-group
           button.uk-button.uk-button-warning type="submit"

@@ -8,13 +8,15 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: session_path(resource_name) do |f|
-      .uk-form-row.uk-form-icon
-        i.uk-icon-user
-        = f.text_field :login, autofocus: true, placeholder: 'アカウント名 or IIDXID'
-      .uk-form-row.uk-form-icon
-        i.uk-icon-key
-        = f.password_field :password, autocomplete: 'off', placeholder: 'パスワード'
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: session_path(resource_name) do |f|
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-user
+          = f.text_field :login, autofocus: true, placeholder: 'アカウント名 or IIDXID'
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-key
+          = f.password_field :password, autocomplete: 'off', placeholder: 'パスワード'
       .uk-form-row
         = f.label :remember_me
         = f.check_box :remember_me

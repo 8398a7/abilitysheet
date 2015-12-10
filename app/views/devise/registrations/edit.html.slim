@@ -8,45 +8,41 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked' }, url: registration_path(resource_name) do |f|
+    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: registration_path(resource_name) do |f|
       = devise_error_messages!
-      .uk-form-row.uk-form-icon
-        i.uk-icon-envelope
-        = f.email_field :email, autofocus: true
-      .uk-form-row.uk-form-icon
+      .uk-form-row
+        .uk-form-icon
+          i.uk-icon-envelope
+          = f.email_field :email, autofocus: true
+      .uk-form-row
         label.uk-form-label アカウント名(半角英数字)
         .uk-form-controls
           = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample'
-      .uk-form-row.uk-form-icon
-        label.uk-form-label DJNAME(半角英数大文字)
+      .uk-form-row
+        label.uk-form-label DJNAME(半角英数大文字)/IIDXID
         .uk-form-controls
-          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE'
-      .uk-form-row.uk-form-icon
-        label.uk-form-label IIDXID
-        .uk-form-controls
-          = f.text_field :iidxid, autofocus: true, placeholder: '1234-5678'
+          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE', class: 'half-input'
+          = f.text_field :iidxid, autofocus: true, placeholder: '1234-5678', class: 'half-input'
       .uk-form-row
         label.uk-form-label 所属/段位
-        .uk-form-controls.uk-form-controls-text
-          p.uk-form-controls-condensed
-            = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
-            = f.select :grade, User.dan, {}, { class: 'searchable grade' }
+        .uk-form-controls
+          = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
+          = f.select :grade, User.dan, {}, { class: 'searchable grade' }
       .uk-form-row
         label.uk-form-label 現在のパスワード
         .uk-form-icon
           i.uk-icon-key
-          = f.password_field :current_password, autocomplete: 'off', placeholder: "パスワード"
+          = f.password_field :current_password, autocomplete: 'off', placeholder: 'パスワード'
       .uk-form-row
         label.uk-form-label パスワードの変更(変更しない場合は空のまま)
-        .uk-form-icon
+        .uk-form-icon.half-input
           i.uk-icon-key
-          = f.password_field :password, autocomplete: 'off', placeholder: "パスワード"
-      .uk-form-row
-        label.uk-form-label パスワードの変更(変更する場合の確認)
-        .uk-form-icon
+          = f.password_field :password, autocomplete: 'off', placeholder: '変更するパスワード'
+        .uk-form-icon.half-input
           i.uk-icon-key
-          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード'
-      .uk-form-row
+          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: '確認用'
+      hr
+      .uk-form-row.center
         .uk-button-group
           button.uk-button.uk-button-primary type='submit'
             = fa_icon 'refresh', text: '更新'

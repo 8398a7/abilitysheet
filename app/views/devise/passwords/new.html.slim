@@ -8,7 +8,7 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :post, class: 'uk-form uk-form-stacked' }) do |f|
+    = form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :post, class: 'uk-form uk-form-stacked devise' }) do |f|
       = devise_error_messages!
       .uk-form-row.uk-form-icon
         i.uk-icon-envelope
