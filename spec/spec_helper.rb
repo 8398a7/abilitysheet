@@ -1,6 +1,5 @@
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-require 'capybara/poltergeist'
 require 'sidekiq/testing'
 require 'tilt/coffee'
 
@@ -10,12 +9,6 @@ RSpec.configure do |config|
   end
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
-  end
-
-  Capybara.default_selector = :css
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: true)
   end
 
   Sidekiq::Testing.inline!

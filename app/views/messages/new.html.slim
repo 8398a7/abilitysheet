@@ -8,29 +8,30 @@
     .uk-nav-side
       .uk-nav-divider
 
-    = form_for @message, html: { class: 'uk-form uk-form-stacked' } do |f|
+    = form_for @message, html: { class: 'uk-form uk-form-stacked conntact' } do |f|
       fieldset
         legend
-          連絡フォーム
-            ul
-              li パスワードを忘れた
-              li 既にiidxidが使われている
-              li 何らかの不具合やバグ報告など
-              | 対応は
-              = link_to 'Twitter', 'http://twitter.com/IIDX_12'
-              | のほうが迅速です。
-        font color="red"
-          | 迷惑メールに振り分けられていることが有ります．
+          ul
+            li 既にiidxidが使われている
+            li 何らかの不具合やバグ報告など
+          | 対応は
+          = link_to 'http://twitter.com/IIDX_12'
+            = fa_icon 'twitter', text: 'Twitter'
+          | のほうが迅速なことが多いです．
+        font color='red'
+          | 返信が迷惑メールに振り分けられていることが有ります．
           br
           | @iidx.tkを許可リストに入れるか，迷惑メールも合わせてチェック下さい．
+        hr
       .uk-form-row
         = f.label :email, '連絡先(任意)', class: 'uk-form-label'
-        .uk-form-controls
-          = f.email_field :email, style: 'width: 100%;', placeholder: 'パスワードの再発行時などの返答が必要な際には必ずご記入下さい．'
+        .uk-form-icon
+          i.uk-icon-envelope
+          = f.email_field :email, placeholder: '返答が必要な際には必ずご記入下さい．'
       .uk-form-row
         = f.label :body, '内容', class: 'uk-form-label'
         .uk-form-controls
-          = f.text_area :body, rows: 3, style: 'width: 100%;'
+          = f.text_area :body, rows: 3
       .uk-form-row
         .uk-button-group
           button.uk-button.uk-button-primary type="submit"

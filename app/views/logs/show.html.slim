@@ -7,36 +7,33 @@ p
   - if @next_update
     | &nbsp;>&nbsp;
     = link_to @next_update, log_path(params[:id], @next_update)
-table.table.datatable
-  thead
-    tr
-      th rowspan=2 楽曲名
-      th rowspan=2 スコア
-      th rowspan=2 BP
-      th colspan=2 ランプ
-    tr
-      th 旧ランプ
-      th 新ランプ
-  tbody
-    - @logs.each do |log|
+form.uk-form
+  table.uk-table.datatable
+    thead
       tr
-        td = log.title
-        td
-          = log.new_score
-          - diff = log.new_score.to_i - log.pre_score.to_i
-          - if diff != 0
-            | (+
-            = diff
-            | )
-        td
-          = log.new_bp
-          - diff = log.pre_bp.to_i - log.new_bp.to_i
-          - if 0 < diff
-            | (
-            = diff * -1
-            | )
-        td bgcolor=@color[log.pre_state]
-        td bgcolor=@color[log.new_state]
+        th rowspan=2 楽曲名
+        th rowspan=2 スコア
+        th rowspan=2 BP
+        th colspan=2 ランプ
+      tr
+        th 旧ランプ
+        th 新ランプ
+    tbody
+      - @logs.each do |log|
+        tr
+          td = log.title
+          td
+            = log.new_score
+            - diff = log.new_score.to_i - log.pre_score.to_i
+            - if diff != 0
+              = sprintf('(%+d)', diff)
+          td
+            = log.new_bp
+            - diff = log.pre_bp.to_i - log.new_bp.to_i
+            - if 0 < diff
+              = sprintf('(%+d)', diff * -1)
+          td bgcolor=@color[log.pre_state]
+          td bgcolor=@color[log.new_state]
 a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新履歴" data-lang="ja" data-size="large" data-related="IIDX_12" data-hashtags="iidx_12"
   | 更新履歴をツイート
 javascript:

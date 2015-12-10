@@ -1,27 +1,29 @@
 - @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - 参考表"
-h2
-  | サンプルデータはiidx.meより1100人程度を利用
-table.datatable
-  thead
-    th.center TITLE
-    th.center EASY
-    th.center CLEAR
-    th.center HARD
-    th.center EXH CLEAR
-    th.center FULL COMBO
-    th.center AAA
-  tbody
-    - @sheets.each do |sheet|
+h3.right サンプルデータはiidx.meより
+hr
+form.uk-form
+  table.datatable
+    thead
       tr
-        - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
-        - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
-        td.center = sheet.title
-        td.center bgcolor=@color[sheet.id] = val[0]
-        td.center bgcolor=@color[sheet.id] = val[1]
-        td.center bgcolor=@color[sheet.id] = val[2]
-        td.center bgcolor=@color[sheet.id] = val[3]
-        td.center bgcolor=@color[sheet.id] = val[4]
-        td.center = val[5]
+        th.center TITLE
+        th.center EASY
+        th.center CLEAR
+        th.center HARD
+        th.center EXH CLEAR
+        th.center FULL COMBO
+        th.center AAA
+    tbody
+      - @sheets.each do |sheet|
+        tr
+          - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
+          - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
+          td.center = sheet.title
+          td.center bgcolor=@color[sheet.id] = val[0]
+          td.center bgcolor=@color[sheet.id] = val[1]
+          td.center bgcolor=@color[sheet.id] = val[2]
+          td.center bgcolor=@color[sheet.id] = val[3]
+          td.center bgcolor=@color[sheet.id] = val[4]
+          td.center = val[5]
 coffee:
   $.extend $.fn.DataTable.ext.oSort,
     'custom': (a) ->
