@@ -4,7 +4,7 @@ class @MyPage extends React.Component
     <a href={@props.recent}>最近の更新</a>
 
   render: ->
-    return null if @props.current_user is null
+    return null if @props.current_user is null or @props.current_user.unmount?
     <li className='uk-parent' data-uk-dropdown=''>
       <a><i className='fa fa-database' />マイページ</a>
       <div className='uk-dropdown uk-dropdown-navbar'>
