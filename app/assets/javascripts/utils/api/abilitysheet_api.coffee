@@ -1,7 +1,6 @@
 class @AbilitysheetAPI
   @server = location.protocol + '//' + location.host
-  subDir = '/abilitysheet' if env is 'production' or env is 'staging'
-  @apiPath = "#{subDir}/api/v1"
+  @apiPath = "#{Routes.root_path().split('/')[1]}/api/v1"
 
   @AjaxCall: (api, option = null) ->
     option = {}         unless option?
