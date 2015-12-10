@@ -1,5 +1,6 @@
 class @Admin extends React.Component
   render: ->
+    return null if @props.current_user? and @props.current_user.unmount?
     return null unless @props.current_user?
     role = @props.current_user.role
     return null if role < 50
