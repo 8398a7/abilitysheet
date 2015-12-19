@@ -13,7 +13,7 @@ class @Admin extends React.Component
           {<li><a href={admin_messages_path()}>メッセージ管理</a></li> if 75 <= role}
           {<li><a href={new_admin_mail_path()}>問い合わせ返信</a></li> if 75 <= role}
           {<li><a href={admin_sidekiq_index_path()}>sidekiq管理</a></li> if 75 <= role}
-          {<li><a href={root_path() + '/admin/model'}>RailsAdmin</a></li> if 75 <= role}
+          {<li><a href={'/admin/model'}>RailsAdmin</a></li> if 75 <= role}
           {<li><a href={new_admin_tweet_path()}>Twitter</a></li> if role is 100}
           {<li><a href={admin_dashboards_path()}>Dashboard</a></li> if role is 100}
         </ul>
