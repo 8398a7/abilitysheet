@@ -1,4 +1,4 @@
-# [IIDX☆12参考表システム](https://iidx12.tk/abilitysheet)
+# [IIDX☆12参考表システム](https://iidx12.tk)
 
 ## Status
 
