@@ -10,7 +10,6 @@ table.datatable
     - if user_signed_in?
       th.center ライバル情報
   tbody
-    - show_rival_buttons = user_signed_in?
     - @users.each do |user|
       - iidxid = user['iidxid']
       tr
@@ -21,9 +20,9 @@ table.datatable
         td.center = link_to user['updated_at'], log_path(iidxid, user['updated_at'])
         td.center = user['title']
         td.center bgcolor=Static::COLOR[user['state'].to_i]
-        - if show_rival_buttons
+        - if user_signed_in?
           td
-            - if current_user.rival && current_user.rival.include?(iidxid)
+            - if current_user.following?(user['id'].to_i)
               = link_to 'ライバル比較', clear_rival_path(iidxid)
               | &nbsp;|&nbsp;
               = link_to 'ライバルを外す', remove_rival_path(iidxid), method: :post, remote: true

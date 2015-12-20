@@ -22,6 +22,8 @@
                 = fa_icon 'pencil', text: '編集'
               = link_to lock_admin_user_path(user.id), class: 'uk-button uk-button-mini', method: :post, remote: true
                 = fa_icon 'lock', text: '無効化'
+              = link_to login_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-primary'
+                = fa_icon 'sign-in', text: 'ログイン'
             - else
               = link_to unlock_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-primary uk-margin-small-right', method: :post, remote: true
                 = fa_icon 'level-up', text: '有効化'
@@ -40,3 +42,7 @@
 coffee:
   $('.datatables').dataTable
     order: [1, 'asc']
+    columnDefs: [
+      targets: [0]
+      orderable: false
+    ]
