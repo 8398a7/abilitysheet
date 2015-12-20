@@ -3,6 +3,7 @@
 # Table name: users
 #
 #  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
 #  username               :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  reset_password_token   :string
@@ -18,15 +19,12 @@
 #  djname                 :string           not null
 #  grade                  :integer
 #  pref                   :integer          not null
-#  rival                  :text
-#  reverse_rival          :text
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  role                   :integer          default(0), not null
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
-#  role                   :integer          default(0), not null
-#  email                  :string           default(""), not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 
 describe User, type: :model do
