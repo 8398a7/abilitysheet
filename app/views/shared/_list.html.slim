@@ -10,7 +10,6 @@ table.datatable
     - if user_signed_in?
       th.center ライバル情報
   tbody
-    - show_rival_buttons = user_signed_in?
     - @users.each do |user|
       - user = user.decorate
       - score = @scores_map[user.id].try(:decorate)
@@ -28,9 +27,9 @@ table.datatable
           td
           td
           td
-        - if show_rival_buttons
+        - if user_signed_in?
           td
-            - if current_user.rival && current_user.rival.include?(user.iidxid)
+            - if current_user.following?(user.id)
               = link_to 'ライバル比較', clear_rival_path(user.iidxid)
               | &nbsp;|&nbsp;
               = link_to 'ライバルを外す', remove_rival_path(user.iidxid), method: :post, remote: true
