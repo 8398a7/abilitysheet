@@ -1,7 +1,9 @@
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 require 'sidekiq/testing'
+require 'capybara/poltergeist'
 require 'tilt/coffee'
+require 'rspec/retry'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -9,6 +11,20 @@ RSpec.configure do |config|
   end
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
+  end
+
+  # capybara setting
+  Capybara.default_selector = :css
+  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, inspector: true)
+  end
+
+  # rspec retry setting
+  config.verbose_retry = true
+  config.display_try_failure_messages = true
+  config.around :each do |ex|
+    ex.run_with_retry retry: 3
   end
 
   Sidekiq::Testing.inline!

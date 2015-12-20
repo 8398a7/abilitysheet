@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219233629) do
+ActiveRecord::Schema.define(version: 20151220005402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,8 +150,6 @@ ActiveRecord::Schema.define(version: 20151219233629) do
     t.string   "djname",                              null: false
     t.integer  "grade"
     t.integer  "pref",                                null: false
-    t.text     "rival"
-    t.text     "reverse_rival"
     t.integer  "role",                   default: 0,  null: false
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
