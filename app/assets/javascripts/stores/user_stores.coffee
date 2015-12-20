@@ -21,5 +21,5 @@ $.extend @UserStore,
       if payload.user.current_user?
         user = payload.user.current_user
       else
-        user = null
+        user = {}
       UserStore.emitChange()

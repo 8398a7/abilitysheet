@@ -13,5 +13,3 @@ class @Footer extends React.Component
         <span>&copy; IIDX☆12参考表 by839 2014-{year}</span>
       </div>
     </div>
-
-Footer.displayName = 'Footer'
