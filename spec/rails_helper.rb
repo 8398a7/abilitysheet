@@ -19,12 +19,6 @@ RSpec.configure do |config|
   config.include WaitForAjax, type: :feature
   config.include SheetsHelper
 
-  Capybara.default_selector = :css
-  Capybara.javascript_driver = :webkit
-  Capybara::Webkit.configure do |webkit|
-    webkit.allow_url %w(platform.twitter.com)
-  end
-
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
