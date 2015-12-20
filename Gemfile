@@ -77,7 +77,7 @@ group :test do
   gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'json_expressions'
