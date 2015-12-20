@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :users do
       post :lock, on: :member
       post :unlock, on: :member
+      get :login, on: :member
     end
     resources :sidekiq, only: [:index] do
       post :start, on: :member

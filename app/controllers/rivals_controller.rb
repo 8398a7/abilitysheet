@@ -3,13 +3,13 @@ class RivalsController < ApplicationController
   before_action :load_sheet, only: [:clear, :hard]
 
   def list
-    rivals = User.find_by(id: current_user.id).rival
-    load_rival(rivals)
+    @users = current_user.following
+    load_rival
   end
 
   def reverse_list
-    rivals = User.find_by(id: current_user.id).reverse_rival
-    load_rival(rivals)
+    @users = current_user.followers
+    load_rival
   end
 
   def clear
@@ -25,25 +25,18 @@ class RivalsController < ApplicationController
   end
 
   def register
-    res = current_user.add_rival(params[:id])
-    if res
-      flash[:notice] = "ライバル(#{params[:id]})を追加しました"
-    else
-      flash[:alert] = '既に登録済みのライバルかライバルが10人を超えています'
-    end
+    current_user.follow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を追加しました" : flash[:alert] = '既に登録済みのライバルです'
     render :reload
   end
 
   def remove
-    current_user.remove_rival(params[:id])
-    flash[:alert] = "ライバル(#{params[:id]})を削除しました"
+    current_user.unfollow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を削除しました" : flash[:alert] = 'ライバルに登録されていません'
     render :reload
   end
 
   private
 
-  def load_rival(rivals)
-    @users = User.where(iidxid: rivals)
+  def load_rival
     @scores_map = User.users_list(:rivals, @users)
     @color = Static::COLOR
   end

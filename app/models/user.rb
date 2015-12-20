@@ -32,6 +32,7 @@
 class User < ActiveRecord::Base
   has_many :scores, dependent: :delete_all
   has_many :logs, dependent: :delete_all
+  has_many :follows, dependent: :delete_all
 
   serialize :rival
   serialize :reverse_rival
@@ -39,8 +40,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
 
-  include Rival
   include List
+  include User::FollowMethods
 
   # usernameを必須・一意とする
   validates_uniqueness_of :username, :iidxid, :email
