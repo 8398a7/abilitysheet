@@ -73,6 +73,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
+  gem 'rspec-retry'
   gem 'spring-commands-rspec'
   gem 'factory_girl_rails'
   gem 'capybara'
