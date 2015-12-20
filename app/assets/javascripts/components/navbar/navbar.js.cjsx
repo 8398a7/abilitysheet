@@ -1,7 +1,7 @@
 class @Navbar extends React.Component
   constructor: (props) ->
     @state =
-      current_user: { unmount: true }
+      current_user: UserStore.get()
 
   onChangeCurrentUser: =>
     @setState current_user: UserStore.get()
@@ -40,6 +40,5 @@ class @Navbar extends React.Component
       </div>
     </div>
 
-Navbar.displayName = 'Navbar'
 Navbar.propTypes =
   recent: React.PropTypes.string
