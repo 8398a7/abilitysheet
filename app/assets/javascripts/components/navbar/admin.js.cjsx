@@ -1,6 +1,6 @@
 class @Admin extends React.Component
   render: ->
-    return null unless @props.current_user?
+    return null unless @props.current_user.id?
     role = @props.current_user.role
     return null if role < 50
     <li className='uk-parent admin-parent' data-uk-dropdown=''>

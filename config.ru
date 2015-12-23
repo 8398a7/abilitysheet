@@ -11,7 +11,7 @@ require 'rack/cors'
 use Rack::Cors do
   allow do
     if Rails.env.production?
-      origins '8398a7.github.io'
+      origins 'husq.tk'
     else
       origins '*'
     end
