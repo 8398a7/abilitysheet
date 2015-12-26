@@ -17,5 +17,13 @@ feature 'ライバル情報' do
     sync_sheet
     visit clear_rival_path(user.iidxid)
     expect(page).to have_selector('td[@name="music"]', count: Sheet.active.count)
+    click_link 'Win'
+    expect(page).to have_selector('td[@name="music"]', count: 0)
+    click_link 'Even'
+    expect(page).to have_selector('td[@name="music"]', count: Sheet.active.count)
+    click_link 'Lose'
+    expect(page).to have_selector('td[@name="music"]', count: 0)
+    click_link 'ALL'
+    expect(page).to have_selector('td[@name="music"]', count: Sheet.active.count)
   end
 end
