@@ -23,7 +23,7 @@ require 'capistrano/rails/assets'
 require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/sidekiq'
-require 'airbrake/capistrano3'
+require 'airbrake/capistrano/tasks'
 # require 'whenever/capistrano'
 # require 'capistrano/passenger'
 
