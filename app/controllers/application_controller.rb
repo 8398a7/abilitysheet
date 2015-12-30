@@ -63,4 +63,9 @@ class ApplicationController < ActionController::Base
   def miniprofiler
     Rack::MiniProfiler.authorize_request if user_signed_in? && current_user.admin?
   end
+
+  def handle_unverified_request
+    flash[:alert] = 'ページのトークンが切れています，再度お試し下さい'
+    render :reload
+  end
 end
