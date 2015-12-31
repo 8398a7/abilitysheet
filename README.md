@@ -31,7 +31,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 ## Requires
 
-- ruby 2.2.3
+- ruby 2.3.0
 - rails 4.2.5
 
 ## Setting
