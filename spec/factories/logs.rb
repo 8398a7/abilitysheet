@@ -17,6 +17,7 @@
 
 FactoryGirl.define do
   factory :log do
-    version 22
+    version Abilitysheet::Application.config.iidx_version
+    created_date Date.today
   end
 end
