@@ -49,8 +49,8 @@ GEM
     airbrake (5.0.1)
       airbrake-ruby (~> 1.0)
     airbrake-ruby (1.0.1)
-    annotate (2.6.10)
-      activerecord (>= 3.2, <= 4.3)
+    annotate (2.7.0)
+      activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
     arel (6.0.3)
     ast (2.2.0)
@@ -202,9 +202,9 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    js-routes (1.2.0)
+    js-routes (1.2.1)
       railties (>= 3.2)
-      sprockets-rails
+      sprockets-rails (< 3)
     json (1.8.3)
     json_expressions (0.8.3)
     jwt (1.5.2)
@@ -222,13 +222,13 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mechanize (2.7.3)
+    mechanize (2.7.4)
       domain_name (~> 0.5, >= 0.5.1)
       http-cookie (~> 1.0)
-      mime-types (~> 2.0)
+      mime-types (>= 1.17.2, < 3)
       net-http-digest_auth (~> 1.1, >= 1.1.1)
       net-http-persistent (~> 2.5, >= 2.5.2)
-      nokogiri (~> 1.4)
+      nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
     memoizable (0.4.2)
@@ -246,7 +246,7 @@ GEM
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
-    net-ssh (3.0.1)
+    net-ssh (3.0.2)
     newrelic_rpm (3.14.1.311)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
@@ -345,7 +345,6 @@ GEM
       i18n
       polyamorous (~> 1.2)
     rdoc (4.2.1)
-      json (~> 1.4)
     react-rails (1.5.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
@@ -436,10 +435,10 @@ GEM
       coffee-script
       sprockets
       tilt
-    sprockets-rails (3.0.0)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (>= 3.0.0)
+    sprockets-rails (2.3.3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
     sshkit (1.8.1)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
@@ -571,4 +570,4 @@ DEPENDENCIES
   yaml_db
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
