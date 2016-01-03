@@ -15,7 +15,7 @@ class @Navbar extends React.Component
 
   render: ->
     <div className='uk-container uk-container-center react'>
-      <a href={root_path()} className='uk-navbar-brand' data-no-turbolink=true>
+      <a href={root_path()} className='uk-navbar-brand'>
         <span className='brand bold'>☆12参考表</span>
       </a>
       <ul className='uk-navbar-nav uk-hidden-small'>
