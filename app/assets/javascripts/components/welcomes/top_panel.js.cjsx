@@ -19,7 +19,7 @@ class @TopPanel extends React.Component
     </div>
 
   render: ->
-    <div className='uk-block uk-block-secondary uk-contrast uk-block-large'>
+    <div className='uk-block uk-contrast uk-block-large top-panel'>
       <div className='uk-container'>
         <h1>
           ☆12参考表(地力表)支援サイト
