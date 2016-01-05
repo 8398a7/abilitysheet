@@ -120,8 +120,7 @@ module Scrape
     end
 
     def value(e)
-      hash = { 'FC' => 0, 'EX' => 1, 'H' => 2, 'C' => 3, 'E' => 4, 'A' => 5, 'F' => 6, 'NO' => 7 }
-      hash[e]
+      Static::LAMP_HASH[e]
     end
 
     def search(current_user = @current_user)

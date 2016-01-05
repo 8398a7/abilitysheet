@@ -20,7 +20,7 @@ class Log < ActiveRecord::Base
   belongs_to :sheet
   delegate :title, to: :sheet
 
-  include Graph
+  include Log::Graph
 
   def self.prev_next(user_id, date)
     p = where(user_id: user_id).order(created_date: :desc).find_by('created_date < ?', date).try(:created_date)
