@@ -1,4 +1,4 @@
-module IIDXME
+module Score::IIDXME
   extend ActiveSupport::Concern
 
   included do

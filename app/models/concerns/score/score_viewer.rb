@@ -1,4 +1,4 @@
-module ScoreViewer
+module Score::ScoreViewer
   extend ActiveSupport::Concern
 
   included do

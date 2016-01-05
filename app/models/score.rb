@@ -18,8 +18,8 @@ class Score < ActiveRecord::Base
   belongs_to :user
   delegate :title, to: :sheet
 
-  include IIDXME
-  include ScoreViewer
+  include Score::IIDXME
+  include Score::ScoreViewer
 
   validates :sheet_id, uniqueness: { scope: [:version, :user_id] }
 
@@ -38,12 +38,11 @@ class Score < ActiveRecord::Base
   end
 
   def self.last_updated
-    order(updated_at: :desc).where('state != ?', 7).first
+    order(updated_at: :desc).where.not(state: 7).first
   end
 
   def lamp_string
-    str = %w(FC EXH H C E A F N)
-    str[state]
+    Static::LAMP[state]
   end
 
   def active?
@@ -52,14 +51,13 @@ class Score < ActiveRecord::Base
 
   class << self
     def stat_info(scores)
-      hash = { 'FC' => 0, 'EXH' => 0, 'H' => 0, 'C' => 0, 'E' => 0, 'A' => 0, 'F' => 0, 'N' => 0 }
+      hash = Static::LAMP.map { |e| [e, 0] }.to_h
       count = 0
       scores.each do |s|
         next unless s.active?
         hash[s.lamp_string] += 1
         count += 1
       end
-      # hash['N'] += Sheet.active.count - count
       hash
     end
 
@@ -83,10 +81,7 @@ class Score < ActiveRecord::Base
     end
 
     def select_state
-      {
-        'FULL COMBO' => 0, 'EXH CLEAR' => 1, 'HARD CLEAR' => 2, CLEAR: 3, 'EASY CLEAR' => 4,
-        'ASSIST CLEAR' => 5, FAILED: 6, 'NO PLAY' => 7
-      }
+      list_name.map.with_index(0) { |e, i| [e, i] }.to_h
     end
   end
 

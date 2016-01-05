@@ -1,4 +1,8 @@
 module Static
+  LAMP = %w(FC EXH H C E A F N)
+
+  LAMP_HASH = LAMP.map.with_index(0) { |e, i| [e, i] }.to_h
+
   POWER = [
     ['地力S+', 0],
     ['個人差S+', 1],
