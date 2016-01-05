@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
 
+  include User::API
   include User::DeviseMethods
   include User::FollowMethods
   include User::List

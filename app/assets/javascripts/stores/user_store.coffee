@@ -12,14 +12,11 @@ $.extend @UserStore,
     @removeListener(AbilitysheetConstants.CHANGE_EVENT, callback)
 
   get: ->
-    user
+    objectCopy user
 
 @UserStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_CURRENT_USER
-      if payload.user.current_user?
-        user = payload.user.current_user
-      else
-        user = {}
+      user = if payload.user.current_user? then payload.user.current_user else {}
       UserStore.emitChange()
