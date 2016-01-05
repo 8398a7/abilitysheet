@@ -12,7 +12,7 @@ $.extend @UserStore,
     @removeListener(AbilitysheetConstants.CHANGE_EVENT, callback)
 
   get: ->
-    user
+    JSON.parse(JSON.stringify(user))
 
 @UserStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

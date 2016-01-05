@@ -8,7 +8,7 @@ module Abilitysheet::V1
 
       desc '自分の状態を取得'
       get 'me' do
-        { current_user: current_user }
+        { current_user: current_user.try(:schema) }
       end
 
       desc 'userの登録者数を取得'
