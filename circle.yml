@@ -11,6 +11,11 @@ machine:
   ruby:
     version: 2.3.0
 
+database:
+  post:
+    - cat config/database.circleci.yml >> config/database.yml
+    - RAILS_ENV=production bundle exec rake db:setup
+
 test:
   pre:
     - bundle exec rake bower:install
@@ -18,3 +23,4 @@ test:
   override:
     - "bundle exec bin/rubocop_parallel": { parallel: true }
     - bundle exec rspec
+    - RAILS_ENV=production bundle exec rake unicorn:start

@@ -1,0 +1,7 @@
+production:
+  database: circle_ruby_production
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: ubuntu
+  host: localhost
