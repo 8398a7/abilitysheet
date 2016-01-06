@@ -6,6 +6,6 @@ module RedisHelper
     redis.set('sheets', sheets.to_json)
   rescue
     puts '本番サーバが稼働していません'
-    redis.set('sheets', '[]')
+    redis.set('sheets', '{"sheets":[]}')
   end
 end
