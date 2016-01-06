@@ -17,6 +17,9 @@ feature 'ハード地力表' do
     scenario 'クリア参考表のリンクが存在する' do
       expect(page).to have_link('CLEAR', sheet_path(iidxid: user.iidxid, type: 'clear'))
     end
+    scenario '未難の表記が素材する', js: true do
+      expect(page).to have_content('未難')
+    end
   end
 
   context '非ログイン時' do
@@ -25,6 +28,9 @@ feature 'ハード地力表' do
     end
     scenario 'クリア参考表のリンクが存在する' do
       expect(page).to have_link('CLEAR', sheet_path(iidxid: user.iidxid, type: 'clear'))
+    end
+    scenario '未難の表記が素材する', js: true do
+      expect(page).to have_content('未難')
     end
   end
 
