@@ -31,7 +31,6 @@ namespace :deploy do
   end
 
   after :publishing, :restart
-  after 'deploy:finished', 'airbrake:deploy'
 end
 
 namespace :bower do
