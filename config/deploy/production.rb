@@ -6,7 +6,7 @@ set :migration_role, 'db'
 server ENV['PRODUCTION_SERVER'], user: ENV['PRODUCTION_USER'], roles: %w(web app db)
 
 set :ssh_options, {
-  keys: [File.expand_path('~/.ssh/id_rsa')],
+  keys: [File.expand_path(ENV['RSA_KEY'])],
   forward_agent: true,
   auth_methods: %w(publickey)
 }
