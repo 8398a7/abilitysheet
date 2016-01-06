@@ -24,3 +24,9 @@ test:
     - "bundle exec bin/rubocop_parallel": { parallel: true }
     - bundle exec rspec
     - RAILS_ENV=production bundle exec rake unicorn:start
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - bundle exec cap production deploy
