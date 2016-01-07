@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require airbrake_client
 #= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
 #= require uikit/js/uikit.min
@@ -8,6 +9,7 @@
 #= require highcharts/highcharts-more
 #= require nprogress/nprogress
 #= require js-routes
+#= require airbrake-js-client/dist/client
 #= require turbolinks
 #= require react
 #= require react_ujs
