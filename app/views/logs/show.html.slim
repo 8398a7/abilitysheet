@@ -22,7 +22,7 @@ form.uk-form
       - @logs.each do |log|
         tr
           td
-            - if current_user.iidxid == params[:id] || current_user.owner?
+            - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
               = link_to log_path(log.id), method: :delete, remote: true, class: 'uk-button uk-button-mini uk-button-danger',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
                 = fa_icon 'trash', text: '削除'
               |&nbsp;&nbsp;
