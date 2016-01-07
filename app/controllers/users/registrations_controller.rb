@@ -18,6 +18,10 @@ module Users
       return unless User.exists?(iidxid: iidxid)
       user_id = User.find_by(iidxid: iidxid).id
       Slack::UserDispatcher.new_register_notify(user_id)
+      unless SidekiqDispatcher.exists?
+        Slack::SidekiqDispatcher.notify
+        return
+      end
       ManagerWorker.perform_async(user_id)
       IidxmeWorker.perform_async(user_id)
     end

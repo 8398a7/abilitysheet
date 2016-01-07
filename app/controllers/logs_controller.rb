@@ -17,16 +17,24 @@ class LogsController < ApplicationController
   end
 
   def manager
-    ManagerWorker.perform_async(current_user.id)
-    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
+    if SidekiqDispatcher.exists?
+      ManagerWorker.perform_async(current_user.id)
+      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+      flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
+    else
+      sidekiq_notify
+    end
     render :reload
   end
 
   def iidxme
-    IidxmeWorker.perform_async(current_user.id)
-    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
+    if SidekiqDispatcher.exists?
+      IidxmeWorker.perform_async(current_user.id)
+      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+      flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
+    else
+      sidekiq_notify
+    end
     render :reload
   end
 
@@ -67,6 +75,11 @@ class LogsController < ApplicationController
   end
 
   private
+
+  def sidekiq_notify
+    flash[:alert] = '不具合により更新できませんでした。しばらくこの症状が続く場合はお手数ですがご一報下さい'
+    Slack::SidekiqDispatcher.notify
+  end
 
   def load_user
     @user = User.find_by(iidxid: params[:id])
