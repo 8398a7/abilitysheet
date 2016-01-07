@@ -6,6 +6,7 @@
     "select2": "latest",
     "nprogress": "latest",
     "flux": "latest",
-    "eventemitter2": "latest"
+    "eventemitter2": "latest",
+    "airbrake-js-client": "latest"
   }
 }

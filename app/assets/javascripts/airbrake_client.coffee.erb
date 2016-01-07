@@ -1,0 +1,13 @@
+$(@).on 'page:change', ->
+  setAirbrakeNotify()
+
+setAirbrakeNotify = ->
+  return null if '<%= ENV['ERRBIT_FRONT_API_KEY'] %>'.length is 0
+  airbrake = new airbrakeJs.Client
+    projectId: true
+    projectKey: '<%= ENV['ERRBIT_FRONT_API_KEY'] %>'
+    host: '<%= ENV['ERRBIT_HOST'] %>'
+  airbrake.addFilter (notice) ->
+    return null if '<%= Rails.env %>' isnt 'production'
+    notice.context.environment = '<%= Rails.env %>'
+    notice
