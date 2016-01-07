@@ -18,13 +18,13 @@ module User::List
         query << 'ORDER BY scores.updated_at DESC LIMIT 6400'
         users = ActiveRecord::Base.connection.execute(query).to_a
         recent_users = []
-        ret = []
+        ret = {}
         users.each do |user|
           break if 200 <= recent_users.size
           next if recent_users.include?(user['id'])
           recent_users.push(user['id'])
           user['updated_at'] = user['updated_at'].split[0]
-          ret.push(user)
+          ret[user['id']] = user
         end
         ret
       end

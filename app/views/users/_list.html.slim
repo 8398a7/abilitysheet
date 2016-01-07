@@ -10,19 +10,20 @@ table.datatable
     - if user_signed_in?
       th.center ライバル情報
   tbody
-    - @users.each do |user|
-      - iidxid = user['iidxid']
+    - @users.each_key do |key|
+      - user = @users[key]
+      - iidxid = user[:iidxid]
       tr
-        td.center = link_to user['djname'], sheet_path(iidxid: iidxid, type: 'hard')
+        td.center = link_to user[:djname], sheet_path(iidxid: iidxid, type: 'hard')
         td.center = iidxid
-        td.center bgcolor=Static::GRADECOLOR[user['grade'].to_i] = Static::GRADE[user['grade'].to_i]
-        td.center = Static::PREF[user['pref'].to_i]
-        td.center = link_to user['updated_at'], log_path(iidxid, user['updated_at'])
-        td.center = user['title']
-        td.center bgcolor=Static::COLOR[user['state'].to_i]
+        td.center bgcolor=Static::GRADECOLOR[user[:grade].to_i] = Static::GRADE[user[:grade].to_i]
+        td.center = Static::PREF[user[:pref].to_i]
+        td.center = link_to user[:updated_at], log_path(iidxid, user[:updated_at])
+        td.center = user[:title]
+        td.center bgcolor=Static::COLOR[user[:state].to_i]
         - if user_signed_in?
           td
-            - if current_user.following?(user['id'].to_i)
+            - if current_user.following?(user[:id].to_i)
               = link_to 'ライバル比較', clear_rival_path(iidxid)
               | &nbsp;|&nbsp;
               = link_to 'ライバルを外す', remove_rival_path(iidxid), method: :post, remote: true

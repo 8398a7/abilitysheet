@@ -27,6 +27,14 @@ class Score < ActiveRecord::Base
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
   scope :is_current_version, -> { where(version: Abilitysheet::Application.config.iidx_version) }
 
+  def update(attributes)
+    pre_updated_at = updated_at
+    res = super
+    after_updated_at = updated_at
+    RedisLibrary.set_recent200(user) unless pre_updated_at == after_updated_at
+    res
+  end
+
   def update_with_logs(score_params)
     score_params.stringify_keys!
     # 何も変更がない状態は反映しない
