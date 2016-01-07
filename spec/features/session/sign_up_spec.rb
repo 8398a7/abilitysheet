@@ -2,6 +2,7 @@ feature 'sign up' do
   background do
     visit new_user_registration_path
     sync_sheet
+    allow(SidekiqDispatcher).to receive(:exists?).and_return(true)
     allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
     allow(ManagerWorker).to receive(:perform_in).and_return(true)
   end

@@ -38,10 +38,7 @@ module Abilitysheet::V1
           # 楽曲が存在していない
           error! '404 Not Found', 404 unless Sheet.exists?(id: e['id'])
         end
-        unless Rails.env.test?
-          sidekiq = SidekiqDispatcher.exists?
-          error! '503 Service Unavailable', 503 unless sidekiq
-        end
+        error! '503 Service Unavailable', 503 unless SidekiqDispatcher.exists?
         ScoreViewerWorker.perform_async(elems, current_user.id)
         { status: 'ok' }
       end
