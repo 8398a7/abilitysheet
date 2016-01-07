@@ -1,5 +1,7 @@
 #= require jquery
 #= require jquery_ujs
+#= require airbrake-js-client/dist/client
+#= require airbrake_client
 #= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
 #= require uikit/js/uikit.min
