@@ -1,12 +1,12 @@
 - @title = @logs.first.created_date
 p
   - if @prev_update
-    = link_to @prev_update, log_path(params[:id], @prev_update)
+    = link_to @prev_update, logs_path(params[:id], @prev_update)
     | &nbsp;<&nbsp;
   = @logs.first.created_date
   - if @next_update
     | &nbsp;>&nbsp;
-    = link_to @next_update, log_path(params[:id], @next_update)
+    = link_to @next_update, logs_path(params[:id], @next_update)
 form.uk-form
   table.uk-table.datatable
     thead
@@ -21,7 +21,12 @@ form.uk-form
     tbody
       - @logs.each do |log|
         tr
-          td = log.title
+          td
+            - if current_user.iidxid == params[:id] || current_user.owner?
+              = link_to log_path(log.id), method: :delete, remote: true, class: 'uk-button uk-button-mini uk-button-danger',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
+                = fa_icon 'trash', text: '削除'
+              |&nbsp;&nbsp;
+            = log.title
           td
             = log.new_score
             - diff = log.new_score.to_i - log.pre_score.to_i
