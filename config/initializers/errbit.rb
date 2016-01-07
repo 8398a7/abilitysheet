@@ -10,6 +10,8 @@ def get_revision
     revision = line.match(/[a-z0-9]{7}/)[0]
   end
   '@' + revision
+rescue
+  return ''
 end
 
 Airbrake.configure do |config|
