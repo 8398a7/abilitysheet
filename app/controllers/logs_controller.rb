@@ -18,9 +18,10 @@ class LogsController < ApplicationController
 
   def manager
     if SidekiqDispatcher.exists?
-      ManagerWorker.perform_async(current_user.id)
-      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-      flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
+      # ManagerWorker.perform_async(current_user.id)
+      # flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+      # flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
+      flash[:alert] = '現在不具合が確認されており調査中です．今しばらくお待ち下さい'
     else
       sidekiq_notify
     end
