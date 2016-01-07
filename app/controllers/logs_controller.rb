@@ -59,6 +59,20 @@ class LogsController < ApplicationController
     @color = Static::COLOR
   end
 
+  def destroy
+    if current_user.owner?
+      log = Log.find(params[:id])
+      Score.find_by(user_id: log.user_id, sheet_id: log.sheet_id, version: Abilitysheet::Application.config.iidx_version).update_column(:state, log.pre_state)
+    else
+      log = current_user.logs.find_by(id: params[:id])
+      current_user.scores.find_by(sheet_id: log.sheet_id, version: Abilitysheet::Application.config.iidx_version).update_column(:state, log.pre_state)
+    end
+    Redis.new.set(:recent200, User.recent200.to_json)
+    flash[:notice] = "#{Sheet.find(log.sheet_id).title}のログを削除し，状態を戻しました"
+    log.destroy
+    render :reload
+  end
+
   def graph
     @user = User.find_by(iidxid: params[:id])
     unless @user
