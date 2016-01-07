@@ -5,6 +5,6 @@ table.uk-table.uk-table-hover.uk-table-striped.uk-table-condensed
   tbody
     - @logs.each do |log|
       tr
-        td = link_to log.created_date, log_path(params[:id], log.created_date)
+        td = link_to log.created_date, logs_path(params[:id], log.created_date)
         td = @user.logs.select(:id).where(created_date: log.created_date).count
 = paginate @logs, remote: true, total_pages: @total_pages

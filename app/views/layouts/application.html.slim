@@ -18,8 +18,8 @@ html
 
     - tmp_recent = nil
     - if current_user && current_user.logs.exists?
-      - recent = link_to '最近の更新', log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
-      - tmp_recent = log_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
+      - recent = link_to '最近の更新', logs_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
+      - tmp_recent = logs_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
     = react_component 'Navbar', { recent: tmp_recent }, { class: 'uk-navbar uk-navbar-attached', tag: :nav }
 
     .uk-offcanvas#navbar-offcanvas

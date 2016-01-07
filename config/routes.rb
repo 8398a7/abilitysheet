@@ -53,14 +53,14 @@ Rails.application.routes.draw do
   resources :scores, only: [:edit, :update]
 
   # log
-  resources :logs, only: [] do
+  resources :logs, only: :destroy do
     get :graph, on: :member
     get :list, on: :member
     get :sheet, on: :member
     post :manager, on: :member
     post :iidxme, on: :member
   end
-  get '/logs/:id/:date' => 'logs#show', as: :log
+  get '/logs/:id/:date' => 'logs#show', as: :logs
 
   # recommends
   resources :recommends, only: [:index]
