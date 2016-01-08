@@ -1,6 +1,6 @@
 env :PATH, ENV['PATH']
 set :output, ENV['CRON_LOG_FILE']
-set :enviroment, :production
+set :enviroment, ENV['RAILS_ENV'] || :production
 set :job_template, "/bin/zsh -l -c ':job'"
 
 # 毎日5時にDBのバックアップを取る
