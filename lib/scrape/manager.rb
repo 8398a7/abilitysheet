@@ -1,6 +1,7 @@
 module Scrape
   class Manager
     attr_reader :agent, :url
+
     def initialize(current_user)
       @agent = Mechanize.new
       @base = 'http://beatmania-clearlamp.com/'
@@ -17,7 +18,7 @@ module Scrape
 
     def manager_register(title, state)
       return false unless Sheet.exists?(title: title)
-      sheet_id = Sheet.find_by(title: title).id
+      sheet_id = Sheet.select(:id).find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
       score = @current_user.scores.create!(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version) unless score
       return false if score.state <= state
@@ -75,6 +76,7 @@ module Scrape
 
     def preparation_register(elem)
       state = value(elem.split('<dt class="')[1].split('">')[0])
+      return false if state.nil?
       title = title_check(elem.split('<dd class="musicName">')[1].split('</dd>')[0].strip)
       title = gigadelic_innocentwalls(title, elem)
       manager_register(title, state.to_i)
@@ -120,6 +122,8 @@ module Scrape
     end
 
     def value(e)
+      e = 'N' if e == 'NO'
+      e = 'EXH' if e == 'EX'
       Static::LAMP_HASH[e]
     end
 
