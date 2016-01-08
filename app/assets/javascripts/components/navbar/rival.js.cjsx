@@ -1,6 +1,6 @@
 class @Rival extends React.Component
   render: ->
-    return null unless @props.current_user?
+    return null unless @props.current_user.id?
     <li className='uk-parent' data-uk-dropdown=''>
       <a><i className='fa fa-user-times' />ライバル</a>
       <div className='uk-dropdown uk-dropdown-navbar'>

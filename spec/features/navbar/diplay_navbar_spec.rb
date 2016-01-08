@@ -7,6 +7,9 @@ feature 'Navbarの閲覧可能コンテンツ', js: true do
     scenario '管理項目が表示されていない' do
       expect(page).to have_no_css('.admin-parent')
     end
+    scenario 'ライバル欄が存在しない' do
+      expect(page).to have_no_content('ライバル')
+    end
   end
   context 'Role::GENERALでログインしている場合' do
     background do
@@ -18,6 +21,9 @@ feature 'Navbarの閲覧可能コンテンツ', js: true do
     scenario '管理項目が表示されていない' do
       expect(page).to have_no_css('.admin-parent')
     end
+    scenario 'ライバル欄が存在する' do
+      expect(page).to have_content('ライバル')
+    end
   end
   context 'Role::OWNERでログインしている場合' do
     background do
@@ -28,6 +34,9 @@ feature 'Navbarの閲覧可能コンテンツ', js: true do
     end
     scenario '管理項目が表示されている' do
       expect(page).to have_css('.admin-parent')
+    end
+    scenario 'ライバル欄が存在する' do
+      expect(page).to have_content('ライバル')
     end
   end
 end
