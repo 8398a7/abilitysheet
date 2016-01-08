@@ -10,6 +10,7 @@ module Score::IIDXME
         sheet = Sheet.find_by(title: title)
         next unless sheet
         state = reverse(elem['clear'])
+        next if state == 7
         score = user.scores.find_by(sheet_id: sheet.id, version: Abilitysheet::Application.config.iidx_version)
         score = user.scores.create!(sheet_id: sheet.id, version: Abilitysheet::Application.config.iidx_version) unless score
         iidxme_params = { 'sheet_id' => sheet.id, 'state' => score.state, 'score' => elem['score'], 'bp' => elem['miss'] }
