@@ -16,9 +16,11 @@ describe 'lib/scrape/manager.rb' do
         expect(url).to include('/sp/')
       end
     end
-    it '全て一から問題なく通ることの確認のテスト' do
-      res = Scrape::Manager.new(build(:user, iidxid: '3223-5186'))
-      expect(res.sync).to eq true
+    it '正しく楽曲が反映されている' do
+      sync_sheet
+      user = create(:user, iidxid: '2222-2222')
+      expect(Scrape::Manager.new(user).sync).to be_truthy
+      (0..6).each { |state| expect(user.scores.where(state: state).count).to eq 1 }
     end
     it '12フォルダが存在すればnokogiriのクラスを返す' do
       res = Scrape::Manager.new(build(:user, iidxid: '3223-5186'))
