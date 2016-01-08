@@ -22,7 +22,7 @@ module Users
         Slack::SidekiqDispatcher.notify
         return
       end
-      # ManagerWorker.perform_async(user_id)
+      ManagerWorker.perform_async(user_id)
       IidxmeWorker.perform_async(user_id)
     end
   end
