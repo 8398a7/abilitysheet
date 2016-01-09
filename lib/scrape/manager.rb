@@ -18,6 +18,7 @@ module Scrape
 
     def manager_register(title, state)
       return false unless Sheet.exists?(title: title)
+      return false if state == 7
       sheet_id = Sheet.select(:id).find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
       score = @current_user.scores.create!(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version) unless score

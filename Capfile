@@ -24,7 +24,7 @@ require 'capistrano/faster_assets'
 require 'capistrano/rails/migrations'
 require 'capistrano/sidekiq'
 require 'airbrake/capistrano/tasks'
-# require 'whenever/capistrano'
+require 'whenever/capistrano'
 # require 'capistrano/passenger'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
