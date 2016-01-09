@@ -1,8 +1,6 @@
 require 'tilt/coffee'
-require 'dotenv'
-Dotenv.overload
 
-app_path = ENV['DEPLOY_TO']
+app_path = '/var/www/app/abilitysheet'
 app_shared_path = "#{app_path}/shared"
 
 worker_processes 3
