@@ -4,9 +4,9 @@ set :rails_env, 'production'
 set :migration_role, 'db'
 
 if ENV['PRODUCTION_PORT']
-  server ENV['PRODUCTION_SERVER'], user: ENV['PRODUCTION_USER'], port: ENV['PRODUCTION_PORT'], roles: %w(web app db)
+  server ENV['PRODUCTION_SERVER'], user: 'deploy', port: ENV['PRODUCTION_PORT'], roles: %w(web app db)
 else
-  server ENV['PRODUCTION_SERVER'], user: ENV['PRODUCTION_USER'], roles: %w(web app db)
+  server ENV['PRODUCTION_SERVER'], user: 'deploy', roles: %w(web app db)
 end
 
 set :ssh_options, {
