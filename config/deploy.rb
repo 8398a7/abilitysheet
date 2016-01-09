@@ -1,9 +1,6 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-require 'dotenv'
-Dotenv.overload
-
 set :application, 'abilitysheet'
 set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
@@ -18,7 +15,7 @@ set :keep_releases, 5
 set :default_env, path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'
 set :rbenv_type, :system
 
-set :deploy_to, ENV['DEPLOY_TO']
+set :deploy_to, '/var/www/app/abilitysheet'
 set :sidekiq_role, :web
 
 set :conditionally_migrate, true

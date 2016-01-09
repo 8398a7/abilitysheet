@@ -27,5 +27,8 @@ require 'airbrake/capistrano/tasks'
 require 'whenever/capistrano'
 # require 'capistrano/passenger'
 
+require 'dotenv'
+Dotenv.overload
+
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
