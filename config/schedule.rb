@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.overload
+
 env :PATH, ENV['PATH']
 set :output, ENV['CRON_LOG_FILE']
 set :enviroment, ENV['RAILS_ENV'] || :production

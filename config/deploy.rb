@@ -39,8 +39,7 @@ namespace :bower do
   task :install do
     on roles(:web) do
       within release_path do
-        execute :rake, 'bower:install CI=true'
-        execute :rake, 'bower:resolve CI=true'
+        execute :rake, 'bower:install bower:resolve CI=true'
       end
     end
   end
