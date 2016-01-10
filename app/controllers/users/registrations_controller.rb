@@ -15,8 +15,8 @@ module Users
 
     def sync_score
       iidxid = env['rack.request.form_hash']['user']['iidxid']
-      return unless User.exists?(iidxid: iidxid)
-      user_id = User.find_by(iidxid: iidxid).id
+      user_id = User.find_by(iidxid: iidxid).try(:id)
+      return unless user_id
       Slack::UserDispatcher.new_register_notify(user_id)
       unless SidekiqDispatcher.exists?
         Slack::SidekiqDispatcher.notify
