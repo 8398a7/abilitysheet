@@ -27,6 +27,16 @@ class Score < ActiveRecord::Base
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }
   scope :is_current_version, -> { where(version: Abilitysheet::Application.config.iidx_version) }
 
+  def self.remain(type)
+    state = type == :hard ? 2 : 4
+    Sheet.active.size - where(state: 0..state).size
+  end
+
+  def self.remain_string(type)
+    hash = { clear: '☆12ノマゲ参考表(未クリア', hard: '☆12ハード参考表(未難' }
+    hash[type] + "#{remain(type)})"
+  end
+
   def update(attributes)
     pre_updated_at = updated_at
     res = super
