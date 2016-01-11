@@ -78,6 +78,7 @@ html
     = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
 
     - unless user_signed_in? && current_user.special?
+      p.center sponsored links
       script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
       ins.adsbygoogle.center style='display:block; background-color:white' data-ad-client='ca-pub-5751776715932993' data-ad-slot='6480128066' data-ad-format='auto'
       javascript:
