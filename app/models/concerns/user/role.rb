@@ -21,7 +21,7 @@ module User::Role
     end
 
     def special?
-      SPECIAL == role || Role::OWNER == role
+      SPECIAL == role || OWNER == role
     end
   end
 end
