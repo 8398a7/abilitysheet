@@ -24,9 +24,11 @@ feature 'ログの詳細画面', js: true do
         wait_for_ajax
         expect(page).to have_content('削除')
       end
-      scenario 'ログが削除できる' do
+      scenario '何もしなければログはデフォルトである' do
         expect(Log.where(user_id: @user.id).count).to eq 2
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq false
+      end
+      scenario 'ログが削除できる' do
         click_link '削除', match: :first
         wait_for_ajax
         expect(Log.where(user_id: @user.id).count).to eq 1
@@ -57,9 +59,11 @@ feature 'ログの詳細画面', js: true do
         scenario '削除ボタンが存在する' do
           expect(page).to have_content('削除')
         end
-        scenario 'ログが削除できる' do
+        scenario '何もしなければログはデフォルトである' do
           expect(Log.where(user_id: @user2.id).count).to eq 2
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq false
+        end
+        scenario 'ログが削除できる' do
           click_link '削除', match: :first
           wait_for_ajax
           expect(Log.where(user_id: @user2.id).count).to eq 1
