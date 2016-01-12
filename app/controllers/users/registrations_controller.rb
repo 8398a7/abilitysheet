@@ -1,9 +1,8 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    after_action :sync_score, only: :create
-
     def create
       super
+      sync_score
     end
 
     def destroy
