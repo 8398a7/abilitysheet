@@ -13,7 +13,7 @@ module User::Static
     香川県 愛媛県   高知県 福岡県
     佐賀県 長崎県   熊本県 大分県
     宮崎県 鹿児島県 沖縄県
-  )
+  ).freeze
 
   GRADE = %w(
     皆伝 中伝
@@ -21,7 +21,7 @@ module User::Static
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
     無段位
-  )
+  ).freeze
 
   GRADE_COLOR = %w(
     #ffd900 #dcdddd
@@ -29,5 +29,5 @@ module User::Static
     #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
     #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
     #fbefef
-  )
+  ).freeze
 end

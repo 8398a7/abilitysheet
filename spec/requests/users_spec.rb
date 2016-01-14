@@ -93,7 +93,7 @@ describe Abilitysheet::V1::Users, type: :request do
         let(:parameters) do
           {
             'id' => user.iidxid,
-            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}]"
+            'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":6},{"id":"2","cl":6,"pg":1362,"g":584,"miss":83}]'
           }
         end
         let(:result) do
@@ -146,7 +146,7 @@ describe Abilitysheet::V1::Users, type: :request do
         let(:parameters) do
           {
             'id' => user.iidxid,
-            'state' => "[{\"id\":\"1\",\"cl\":0,\"pg\":100,\"g\":-1,\"miss\":0}]"
+            'state' => '[{"id":"1","cl":0,"pg":100,"g":-1,"miss":0}]'
           }
         end
         let(:result) do
@@ -177,7 +177,7 @@ describe Abilitysheet::V1::Users, type: :request do
         let(:parameters) do
           {
             'id' => user.iidxid,
-            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":-1,\"g\":-1,\"miss\":-1}]"
+            'state' => '[{"id":"1","cl":1,"pg":-1,"g":-1,"miss":-1}]'
           }
         end
         let(:result) do
@@ -206,7 +206,7 @@ describe Abilitysheet::V1::Users, type: :request do
         let(:parameters) do
           {
             'id' => user.iidxid,
-            'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":-1}]"
+            'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":-1}]'
           }
         end
         let(:result) do
@@ -234,7 +234,7 @@ describe Abilitysheet::V1::Users, type: :request do
           let(:parameters) do
             {
               'id' => '0000-0000',
-              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}]"
+              'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":6},{"id":"2","cl":6,"pg":1362,"g":584,"miss":83}]'
             }
           end
           it_behaves_like '403 Forbidden'
@@ -252,7 +252,7 @@ describe Abilitysheet::V1::Users, type: :request do
           let(:parameters) do
             {
               'id' => user.iidxid,
-              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"3\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}]"
+              'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":6},{"id":"3","cl":6,"pg":1362,"g":584,"miss":83}]'
             }
           end
           it_behaves_like '404 Not Found'
@@ -261,7 +261,7 @@ describe Abilitysheet::V1::Users, type: :request do
           let(:parameters) do
             {
               'id' => user.iidxid,
-              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373}]"
+              'state' => '[{"id":"1","cl":1,"pg":1158,"g":373}]'
             }
           end
           it_behaves_like '400 Bad Request'
@@ -270,7 +270,7 @@ describe Abilitysheet::V1::Users, type: :request do
           let(:parameters) do
             {
               'id' => user.iidxid,
-              'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373, \"miss\": 10, \"hoge\": 10}]"
+              'state' => '[{"id":"1","cl":1,"pg":1158,"g":373, "miss": 10, "hoge": 10}]'
             }
           end
           it_behaves_like '400 Bad Request'
@@ -281,7 +281,7 @@ describe Abilitysheet::V1::Users, type: :request do
       let(:parameters) do
         {
           'id' => '0000-0000',
-          'state' => "[{\"id\":\"1\",\"cl\":1,\"pg\":1158,\"g\":373,\"miss\":6},{\"id\":\"2\",\"cl\":6,\"pg\":1362,\"g\":584,\"miss\":83}"
+          'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":6},{"id":"2","cl":6,"pg":1362,"g":584,"miss":83}'
         }
       end
       it_behaves_like '401 Unauthorized'

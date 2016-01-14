@@ -7,17 +7,17 @@ describe Abilitysheet::V1::Sheets, type: :request do
     let(:method) { 'get' }
     let(:result) do
       {
-        'sheets' => [
+        sheets: [
           {
-            'id' => 1,
-            'title' => 'MyString',
-            'n_ability' => 1,
-            'h_ability' => 1,
-            'version' => 1,
-            'active' => false,
-            'textage' => 'MyString',
-            'created_at' => JSON.parse(@sheet.to_json)['created_at'],
-            'updated_at' => JSON.parse(@sheet.to_json)['updated_at']
+            id: 1,
+            title: 'MyString',
+            n_ability: 1,
+            h_ability: 1,
+            version: 1,
+            active: false,
+            textage: 'MyString',
+            created_at: JSON.parse(@sheet.to_json)['created_at'],
+            updated_at: JSON.parse(@sheet.to_json)['updated_at']
           }
         ]
       }
@@ -47,15 +47,15 @@ describe Abilitysheet::V1::Sheets, type: :request do
   #       describe 'パスワードが正しい場合はsheet一覧を返す' do
   #         let(:result) do
   #           {
-  #             'sheets' => [
+  #             sheets: [
   #               {
-  #                 'id' => 1,
-  #                 'title' => 'MyString',
-  #                 'n_ability' => 1,
-  #                 'h_ability' => 1,
-  #                 'version' => 1,
-  #                 'active' => false,
-  #                 'textage' => 'MyString'
+  #                 id: 1,
+  #                 title: 'MyString',
+  #                 n_ability: 1,
+  #                 h_ability: 1,
+  #                 version: 1,
+  #                 active: false,
+  #                 textage: 'MyString'
   #               }
   #             ]
   #           }
