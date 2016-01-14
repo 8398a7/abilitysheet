@@ -1,4 +1,4 @@
-feature 'ログの詳細画面', js: true, retry: 10, retry_wait: 3 do
+feature 'ログの詳細画面', js: true do
   background do
     @user = create(:user, id: 1, iidxid: '1234-5678', role: User::Role::GENERAL)
     create(:sheet, id: 1, title: 'log spec1')
@@ -24,7 +24,7 @@ feature 'ログの詳細画面', js: true, retry: 10, retry_wait: 3 do
         wait_for_ajax
         expect(page).to have_content('削除')
       end
-      scenario 'ログが削除できる' do
+      scenario 'ログが削除できる', retry_wait: 3 do
         expect(Log.where(user_id: @user.id).count).to eq 2
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq false
         visit logs_path(@user.iidxid, Date.today.to_s)
@@ -59,7 +59,7 @@ feature 'ログの詳細画面', js: true, retry: 10, retry_wait: 3 do
         scenario '削除ボタンが存在する' do
           expect(page).to have_content('削除')
         end
-        scenario 'ログが削除できる' do
+        scenario 'ログが削除できる', retry_wait: 3 do
           expect(Log.where(user_id: @user2.id).count).to eq 2
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq false
           click_link '削除', match: :first
