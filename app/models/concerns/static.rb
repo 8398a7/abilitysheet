@@ -65,7 +65,7 @@ module Static
   )
 
   GRADE = %w(
-    皆伝
+    皆伝 中伝
     十段 九段
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
@@ -73,7 +73,7 @@ module Static
   )
 
   GRADECOLOR = %w(
-    #ffd900
+    #ffd900 #dcdddd
     #ff6347 #ff6347
     #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
     #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
