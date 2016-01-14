@@ -35,7 +35,7 @@ describe User, type: :model do
     end
   end
   describe '.dan' do
-    it "段位を配列で返すこと[['皆伝', 0], ['十段', 1]..]" do
+    it "段位を配列で返すこと[['皆伝', 0], ['中伝', 1], ['十段', 2]..]" do
       dan = Static::GRADE
       User.dan.each { |d| expect(dan[d[1]]).to eq d[0] }
     end
@@ -112,9 +112,9 @@ describe User, type: :model do
       user.valid?
       expect(user.errors[:grade]).to include('を入力してください。')
     end
-    it 'gradeが設定値..17であれば有効な状態であること' do
+    it 'gradeが設定値..19であれば有効な状態であること' do
       set_value = Abilitysheet::Application.config.iidx_grade
-      (set_value..17).each { |grade| expect(build(:user, grade: grade)).to be_valid }
+      (set_value..19).each { |grade| expect(build(:user, grade: grade)).to be_valid }
     end
     it 'usernameがなければ無効な状態であること' do
       user = User.new(username: nil)

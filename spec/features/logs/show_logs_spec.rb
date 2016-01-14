@@ -22,6 +22,7 @@ feature 'ログの詳細画面', js: true do
       scenario '削除ボタンが存在する' do
         visit logs_path(@user.iidxid, Date.today.to_s)
         wait_for_ajax
+        click_button '表示'
         expect(page).to have_content('削除')
       end
       scenario 'ログが削除できる', retry_wait: 3 do
@@ -29,6 +30,7 @@ feature 'ログの詳細画面', js: true do
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq false
         visit logs_path(@user.iidxid, Date.today.to_s)
         wait_for_ajax
+        click_button '表示'
         click_link '削除', match: :first
         wait_for_ajax
         expect(Log.where(user_id: @user.id).count).to eq 1
@@ -57,11 +59,13 @@ feature 'ログの詳細画面', js: true do
           wait_for_ajax
         end
         scenario '削除ボタンが存在する' do
+          click_button '表示'
           expect(page).to have_content('削除')
         end
         scenario 'ログが削除できる', retry_wait: 3 do
           expect(Log.where(user_id: @user2.id).count).to eq 2
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq false
+          click_button '表示'
           click_link '削除', match: :first
           wait_for_ajax
           expect(Log.where(user_id: @user2.id).count).to eq 1

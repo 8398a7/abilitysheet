@@ -7,23 +7,28 @@ p
   - if @next_update
     | &nbsp;>&nbsp;
     = link_to @next_update, logs_path(params[:id], @next_update)
+
+
+- if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
+  p style='margin-bottom: 0px' 削除ボタン
+  = react_component 'DestroyButtonDisplayToggle'
+a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新履歴" data-lang="ja" data-size="large" data-related="IIDX_12" data-hashtags="iidx_12"
+
 form.uk-form
   table.uk-table.datatable
     thead
       tr
-        th rowspan=2 楽曲名
-        th rowspan=2 スコア
-        th rowspan=2 BP
-        th colspan=2 ランプ
-      tr
-        th 旧ランプ
-        th 新ランプ
+        th 楽曲
+        th スコア
+        th BP
+        th 旧
+        th 新
     tbody
       - @logs.each do |log|
         tr
           td
             - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
-              = link_to log_path(log.id), method: :delete, remote: true, class: 'uk-button uk-button-mini uk-button-danger',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
+              = link_to log_path(log.id), method: :delete, remote: true, class: 'uk-button uk-button-mini uk-button-danger destroy-button', style: 'display: none',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
                 = fa_icon 'trash', text: '削除'
               |&nbsp;&nbsp;
             = log.title
@@ -39,13 +44,13 @@ form.uk-form
               = sprintf('(%+d)', diff * -1)
           td bgcolor=@color[log.pre_state]
           td bgcolor=@color[log.new_state]
-a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新履歴" data-lang="ja" data-size="large" data-related="IIDX_12" data-hashtags="iidx_12"
-  | 更新履歴をツイート
-javascript:
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
 javascript:
   logs_count = '#{@logs.count}'
 coffee:
-  $('.datatable').dataTable(
+  $('.datatable').dataTable
     aLengthMenu: [logs_count]
-  )
+    columnDefs: [
+      targets: [3, 4]
+      orderable: false
+    ]

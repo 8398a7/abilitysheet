@@ -1,7 +1,7 @@
 - @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - ハード地力表"
 .center
   h2 ハード参考表
-  = link_to 'CLEAR', sheet_path(type: 'clear'), class: 'uk-button uk-button-primary', data: { 'no-turbolink': true }
+  = link_to 'CLEAR', sheet_path(type: 'clear'), class: 'uk-button uk-button-primary'
   | &nbsp;
   button.uk-buton.uk-button-danger HARD
   br
