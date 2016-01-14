@@ -26,6 +26,7 @@ require 'capistrano/sidekiq'
 require 'airbrake/capistrano/tasks'
 require 'whenever/capistrano'
 # require 'capistrano/passenger'
+require 'capistrano/slackify'
 
 require 'dotenv'
 Dotenv.overload
