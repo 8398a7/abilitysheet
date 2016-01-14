@@ -22,6 +22,14 @@ set :conditionally_migrate, true
 set :deploy_via, :remote_cache
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
+# slack notify
+set :slack_username, 'Deploy Dispatcher'
+set :slack_channel, '#abilitysheet'
+set :slack_emoji, ''
+set :slack_deploy_finished_color, 'good'
+set :slack_deploy_failed_color, 'danger'
+set :slack_url, ENV['NOTIFY_SLACK_URL']
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do

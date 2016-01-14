@@ -53,6 +53,8 @@ gem 'aws-sdk'
 gem 'js-routes'
 
 gem 'rack-cors', require: 'rack/cors'
+gem 'capistrano-slackify', require: false
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
