@@ -85,12 +85,7 @@ module Scrape
 
     def gigadelic_innocentwalls(title, e)
       return title if title != 'gigadelic' && title != 'Innocent Walls'
-      if e.split('<dl class="')[1].split('">')[0].index('hyper')
-        title += '[H]'
-      else
-        title += '[A]'
-      end
-      title
+      e.split('<dl class="')[1].split('">')[0].index('hyper') ? title + '[H]' : title + '[A]'
     end
 
     # クリアランプマネージャとの表記ゆれに対応

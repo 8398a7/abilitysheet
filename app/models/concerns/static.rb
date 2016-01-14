@@ -1,5 +1,5 @@
 module Static
-  LAMP = %w(FC EXH H C E A F N)
+  LAMP = %w(FC EXH H C E A F N).freeze
 
   LAMP_HASH = LAMP.map.with_index(0) { |e, i| [e, i] }.to_h
 
@@ -24,7 +24,7 @@ module Static
     ['個人差E', 17],
     ['地力F', 18],
     ['難易度未定', 19]
-  ]
+  ].freeze
 
   VERSION = [
     ['5',    5],
@@ -46,7 +46,7 @@ module Static
     ['SPD',  21],
     ['PEN',  22],
     ['COP',  23]
-  ]
+  ].freeze
 
   COLOR = %w(
     #ff8c00
@@ -57,5 +57,5 @@ module Static
     #9595ff
     #c0c0c0
     #ffffff
-  )
+  ).freeze
 end

@@ -50,9 +50,9 @@ class SheetsController < ApplicationController
     @power.reverse! if params['reverse_sheet']
     if type == 0
       @sheets = params['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
-    else
-      @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
+      return
     end
+    @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
   end
 
   def write_remain(type)
