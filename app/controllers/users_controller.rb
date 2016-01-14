@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       @users = User.search_djname(params[:query].upcase)
       @scores_map = User.users_list(:rivals, @users)
     else
-      @users = JSON.parse(Redis.new.get(:recent200), symbolize_names: true)
+      @users = User.recent200.deep_symbolize_keys
     end
   end
 end
