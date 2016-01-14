@@ -44,8 +44,7 @@ form.uk-form
               = sprintf('(%+d)', diff * -1)
           td bgcolor=@color[log.pre_state]
           td bgcolor=@color[log.new_state]
-javascript:
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
 javascript:
   logs_count = '#{@logs.count}'
 coffee:
