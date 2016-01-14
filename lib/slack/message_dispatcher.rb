@@ -2,7 +2,7 @@ module Slack
   class MessageDispatcher
     def self.send(id)
       message = Message.find(id)
-      user = User.find_by_id(message.user_id)
+      user = message.user
       user_information = nil
       user_information = "#{user.djname}[#{user.iidxid}]" if user
       admin_messages_url = 'https://iidx12.tk/abilitysheet/admin/messages'

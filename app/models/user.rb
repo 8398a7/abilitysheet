@@ -36,10 +36,12 @@ class User < ActiveRecord::Base
   include User::FollowMethods
   include User::List
   include User::Role
+  include User::Static
 
   has_many :scores, dependent: :delete_all
   has_many :logs, dependent: :delete_all
   has_many :follows, dependent: :delete_all
+  has_many :messages, dependent: :delete_all
 
   # usernameを必須・一意とする
   validates_uniqueness_of :username, :iidxid, :email

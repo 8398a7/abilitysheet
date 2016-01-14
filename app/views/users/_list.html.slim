@@ -16,8 +16,8 @@ table.datatable
       tr
         td.center = link_to user[:djname], sheet_path(iidxid: iidxid, type: 'hard')
         td.center = iidxid
-        td.center bgcolor=Static::GRADECOLOR[user[:grade].to_i] = Static::GRADE[user[:grade].to_i]
-        td.center = Static::PREF[user[:pref].to_i]
+        td.center bgcolor=User::Static::GRADE_COLOR[user[:grade].to_i] = User::Static::GRADE[user[:grade].to_i]
+        td.center = User::Static::PREF[user[:pref].to_i]
         td.center = link_to user[:updated_at], logs_path(iidxid, user[:updated_at])
         td.center = user[:title]
         td.center bgcolor=Static::COLOR[user[:state].to_i]
