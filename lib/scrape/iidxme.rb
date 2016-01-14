@@ -18,16 +18,16 @@ module Scrape
       Score.iidxme_async(user_id, elems['musicdata'])
     end
 
-    def search_api(iidxid)
-      uri = URI.parse("http://json.iidx.me/?name=#{iidxid}")
-      JSON.parse(Net::HTTP.get(uri))
+    def search_api
+      uri = URI.parse('http://json.iidx.me/!/userlist')
+      JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
     end
 
     def user_id_search(iidxid)
       return false unless iidxid =~ /\A\d{4}-\d{4}\z/
-      hash = search_api(iidxid)
-      return false unless hash['users'].count == 1
-      hash['users'][0]['userid']
+      user = search_api[:users].find { |u| u[:iidxid] == iidxid }
+      return user[:userid] if user
+      user
     end
 
     def data_get(iidxid)

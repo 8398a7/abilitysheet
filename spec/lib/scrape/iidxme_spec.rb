@@ -37,7 +37,7 @@ describe Scrape::IIDXME do
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
       before do
-        res = JSON.parse(File.read("#{iidxme_mock_root}/correct"))
+        res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
       it '#async' do
@@ -55,11 +55,11 @@ describe Scrape::IIDXME do
     context '不要なログが作成されない' do
       let(:iidxid) { '8594-9652' }
       before do
-        res = JSON.parse(File.read("#{iidxme_mock_root}/correct"))
+        res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
         user
         sync_sheet
-        JSON.parse(File.read("#{iidxme_mock_root}/score")).each do |s|
+        JSON.parse(File.read("#{iidxme_mock_root}/score.json")).each do |s|
           create(:score, user_id: user.id, sheet_id: s['sheet_id']).update_with_logs(s)
         end
       end
@@ -73,7 +73,7 @@ describe Scrape::IIDXME do
     context 'IIDXIDの書式が正しくない場合' do
       let(:iidxids) { %w(1 1110) }
       before do
-        res = JSON.parse(File.read("#{iidxme_mock_root}/correct"))
+        res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
       it '#async' do
@@ -83,7 +83,7 @@ describe Scrape::IIDXME do
     context '存在しないIIDXIDで処理を行う場合' do
       let(:iidxid) { '0000-0000' }
       before do
-        res = JSON.parse(File.read("#{iidxme_mock_root}/not_found"))
+        res = JSON.parse(File.read("#{iidxme_mock_root}/userlist.json"), symbolize_names: true)
         allow(@iidxme).to receive(:search_api).and_return(res)
       end
       it '#async' do
