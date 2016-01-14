@@ -8,10 +8,11 @@ p
     | &nbsp;>&nbsp;
     = link_to @next_update, logs_path(params[:id], @next_update)
 
-p style='margin-bottom: 0px' 削除ボタン
-= react_component 'DestroyButtonDisplayToggle'
+
+- if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
+  p style='margin-bottom: 0px' 削除ボタン
+  = react_component 'DestroyButtonDisplayToggle'
 a.twitter-share-button href="https://twitter.com/share" data-text="☆12更新履歴" data-lang="ja" data-size="large" data-related="IIDX_12" data-hashtags="iidx_12"
-  | 更新履歴をツイート
 
 form.uk-form
   table.uk-table.datatable
