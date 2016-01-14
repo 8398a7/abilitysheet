@@ -1,4 +1,4 @@
-feature 'ログの詳細画面', js: true, retry: 10 do
+feature 'ログの詳細画面', js: true, retry: 10, retry_wait: 3 do
   background do
     @user = create(:user, id: 1, iidxid: '1234-5678', role: User::Role::GENERAL)
     create(:sheet, id: 1, title: 'log spec1')
