@@ -56,7 +56,7 @@ class Score < ActiveRecord::Base
   end
 
   def active?
-    Sheet.find_by(id: sheet_id).active
+    sheet.active
   end
 
   class << self
