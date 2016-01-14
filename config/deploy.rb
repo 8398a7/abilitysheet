@@ -6,7 +6,7 @@ set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
 set :scm, :git
 set :format, :pretty
-set :log_level, :info
+set :log_level, :warn
 set :pty, true
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle', 'vendor/assets/bower_components')
