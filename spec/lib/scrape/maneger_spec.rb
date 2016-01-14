@@ -20,7 +20,9 @@ describe 'lib/scrape/manager.rb' do
       sync_sheet
       user = create(:user, iidxid: '2222-2222')
       expect(Scrape::Manager.new(user).sync).to be_truthy
-      (0..6).each { |state| expect(user.scores.where(state: state).count).to eq 1 }
+      (0..6).each do |state|
+        expect(user.scores.where(state: state).count).to eq 1
+      end
     end
     it '12フォルダが存在すればnokogiriのクラスを返す' do
       res = Scrape::Manager.new(build(:user, iidxid: '3223-5186'))
