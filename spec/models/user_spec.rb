@@ -30,13 +30,13 @@
 describe User, type: :model do
   describe '.belongs' do
     it "所属を配列で返すこと[['海外', 0], ['北海道', 1]..]" do
-      pref = Static::PREF
+      pref = User::Static::PREF
       User.belongs.each { |p| expect(pref[p[1]]).to eq p[0] }
     end
   end
   describe '.dan' do
     it "段位を配列で返すこと[['皆伝', 0], ['中伝', 1], ['十段', 2]..]" do
-      dan = Static::GRADE
+      dan = User::Static::GRADE
       User.dan.each { |d| expect(dan[d[1]]).to eq d[0] }
     end
   end

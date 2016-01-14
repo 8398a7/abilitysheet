@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   include User::FollowMethods
   include User::List
   include User::Role
+  include User::Static
 
   has_many :scores, dependent: :delete_all
   has_many :logs, dependent: :delete_all

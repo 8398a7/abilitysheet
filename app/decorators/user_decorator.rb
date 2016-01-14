@@ -2,19 +2,19 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def pref
-    "#{Static::PREF[object.pref]}"
+    "#{User::Static::PREF[object.pref]}"
   end
 
   def grade
-    "#{Static::GRADE[object.grade]}"
+    "#{User::Static::GRADE[object.grade]}"
   end
 
   def belongs
-    "#{Static::PREF[object.pref]}"
+    "#{User::Static::PREF[object.pref]}"
   end
 
   def dan
-    "#{Static::GRADE[object.grade]}"
+    "#{User::Static::GRADE[object.grade]}"
   end
 
   def dan_color
