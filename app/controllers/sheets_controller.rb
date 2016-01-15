@@ -1,6 +1,7 @@
 class SheetsController < ApplicationController
   before_action :check_action, except: :change_reverse
   before_action :check_exist_user, except: :change_reverse
+  before_action :detect_device_variant, only: :show
 
   def show
     unless params[:type] == 'power'

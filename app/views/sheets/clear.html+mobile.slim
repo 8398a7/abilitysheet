@@ -1,0 +1,10 @@
+- @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - ノマゲ地力表"
+.center
+  h2 ノマゲ参考表
+  button.uk-buton.uk-button-primary CLEAR
+  | &nbsp;
+  = link_to 'HARD', sheet_path(type: 'hard'), class: 'uk-button uk-button-danger'
+  br
+  br
+  = render 'statistics'
+= render 'sheets/list'
