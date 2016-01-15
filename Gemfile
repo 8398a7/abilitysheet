@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-# a-g {{{
+# a,b,c,d,e,f,g {{{
 gem 'airbrake'
 gem 'aws-sdk'
 gem 'bower-rails'
@@ -17,7 +17,7 @@ gem 'grape'
 gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 # }}}
-# h-n {{{
+# h,i,j,k,l,m,n {{{
 gem 'jbuilder', '~> 2.0'
 gem 'js-routes'
 gem 'kaminari'
@@ -27,7 +27,7 @@ gem 'mobylette'
 gem 'newrelic_rpm'
 gem 'nokogiri'
 # }}}
-# o-u {{{
+# o,p,q,r,s,t,u {{{
 gem 'oauth2'
 gem 'pg'
 gem 'pry-rails'
@@ -51,7 +51,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'unicorn-worker-killer'
 # }}}
-# v-z {{{
+# v,w,x,y,z {{{
 gem 'whenever', require: false
 gem 'yaml_db'
 # }}}
