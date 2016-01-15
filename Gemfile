@@ -54,6 +54,7 @@ gem 'js-routes'
 
 gem 'rack-cors', require: 'rack/cors'
 gem 'capistrano-slackify', require: false
+gem 'mobylette'
 
 group :development do
   gem 'better_errors'

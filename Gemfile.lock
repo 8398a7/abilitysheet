@@ -238,6 +238,8 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    mobylette (3.5)
+      actionpack (>= 3.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -531,6 +533,7 @@ DEPENDENCIES
   launchy
   lazy_high_charts
   mechanize
+  mobylette
   newrelic_rpm
   nokogiri
   oauth2
