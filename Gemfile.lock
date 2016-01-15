@@ -54,12 +54,12 @@ GEM
       rake (~> 10.4)
     arel (6.0.3)
     ast (2.2.0)
-    aws-sdk (2.2.10)
-      aws-sdk-resources (= 2.2.10)
-    aws-sdk-core (2.2.10)
+    aws-sdk (2.2.11)
+      aws-sdk-resources (= 2.2.11)
+    aws-sdk-core (2.2.11)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.10)
-      aws-sdk-core (= 2.2.10)
+    aws-sdk-resources (2.2.11)
+      aws-sdk-core (= 2.2.11)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -193,9 +193,6 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     ice_nine (0.11.1)
-    jbuilder (2.4.0)
-      activesupport (>= 3.0.0, < 5.1)
-      multi_json (~> 1.2)
     jmespath (1.1.3)
     jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
@@ -238,6 +235,8 @@ GEM
     mime-types (2.99)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
+    mobylette (3.5)
+      actionpack (>= 3.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -259,7 +258,7 @@ GEM
       multi_xml (~> 0.5)
       rack (~> 1.2)
     orm_adapter (0.5.0)
-    parser (2.3.0.0)
+    parser (2.3.0.1)
       ast (~> 2.2)
     pg (0.18.4)
     poltergeist (1.8.1)
@@ -345,7 +344,6 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
-    rdoc (4.2.1)
     react-rails (1.5.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
@@ -395,9 +393,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sdoc (0.4.1)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
     sidekiq (4.0.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -524,13 +519,13 @@ DEPENDENCIES
   grape
   grape-devise!
   grape_logging
-  jbuilder (~> 2.0)
   js-routes
   json_expressions
   kaminari
   launchy
   lazy_high_charts
   mechanize
+  mobylette
   newrelic_rpm
   nokogiri
   oauth2
@@ -551,7 +546,6 @@ DEPENDENCIES
   rspec-retry
   rubocop
   sass-rails
-  sdoc (~> 0.4.0)
   sidekiq
   sinatra
   slim-rails
