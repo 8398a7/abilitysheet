@@ -22,7 +22,6 @@ gem 'js-routes'
 gem 'kaminari'
 gem 'lazy_high_charts'
 gem 'mechanize'
-gem 'mobylette'
 gem 'newrelic_rpm'
 gem 'nokogiri'
 # }}}
