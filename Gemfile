@@ -18,7 +18,6 @@ gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 # }}}
 # h,i,j,k,l,m,n {{{
-gem 'jbuilder', '~> 2.0'
 gem 'js-routes'
 gem 'kaminari'
 gem 'lazy_high_charts'
@@ -39,7 +38,6 @@ gem 'rails_admin'
 gem 'ransack'
 gem 'react-rails'
 gem 'sass-rails'
-gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim-rails'
