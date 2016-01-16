@@ -139,7 +139,7 @@ module Graph
       user = User.find_by(id: user_id)
       return false if user.nil? || user.logs.nil? || user.logs.empty?
       oldest = (user.logs.order(created_date: :desc).last.created_date.strftime('%Y-%m') + '-01').to_date
-      now = Time.now.strftime('%Y-%m')
+      now = Time.zone.now.strftime('%Y-%m')
       lastest = (now + '-01').to_date
       between_create(oldest, lastest)
     end
