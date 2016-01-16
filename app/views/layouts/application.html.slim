@@ -8,6 +8,7 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1"
     = stylesheet_link_tag    'application', 'data-turbolinks-track': true, media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track': true
+    script src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
     = csrf_meta_tags
     = analytics_init if Rails.env.production?
     = favicon_link_tag 'favicon.ico'
@@ -76,13 +77,6 @@ html
       = yield
 
     = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
-
-    - unless user_signed_in? && current_user.special?
-      p.center sponsored links
-      script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      ins.adsbygoogle.center style='display:block; background-color:white' data-ad-client='ca-pub-5751776715932993' data-ad-slot='6480128066' data-ad-format='auto'
-      javascript:
-        (adsbygoogle = window.adsbygoogle || []).push({});
 
 - if notice
   javascript:
