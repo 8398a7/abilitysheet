@@ -1,10 +1,15 @@
-- @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - ハード地力表"
+- @title = "#{@user.djname} - ハード参考表"
 .center
-  h2 ハード参考表
+  h2
+    = fa_icon 'table', text: 'ハード参考表'
+    span#remain
+  h3
+    | DJ.#{@user.djname}(#{@user.iidxid})
+    - if !current_user.nil? && current_user.iidxid == params[:iidxid]
+      .
+        a.twitter-share-button href='https://twitter.com/share' data-text="DJ.#{current_user.djname} #{@remain}" data-lang='ja' data-size='large' data-related='IIDX_12'
   = link_to 'CLEAR', sheet_path(type: 'clear'), class: 'uk-button uk-button-primary'
-  | &nbsp;
-  button.uk-buton.uk-button-danger HARD
   br
   br
   = render 'statistics'
-= render 'sheets/list'
+= render 'list'
