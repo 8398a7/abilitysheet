@@ -1,0 +1,42 @@
+.checkbox
+  - @versions.each do |v|
+    label
+      input type="checkbox" value=v[1] name="check" checked=true
+        = v[0]
+  label
+    input type="checkbox" value="0" name="reverse" checked=params['reverse_sheet'] onchange="reverse()"
+      | 逆順表示
+
+.uk-overflow-container
+  table.uk-table.uk-table-bordered align="center"
+    tr
+      td bgcolor='#ff8c00' FC
+      td.statistic#fc
+      td bgcolor='#ffd900' EXH
+      td.statistic#exh
+      td bgcolor='#ff6347' H
+      td.statistic#h
+    tr
+      td bgcolor='#afeeee' C
+      td.statistic#c
+      td bgcolor='#98fb98' E
+      td.statistic#e
+      td bgcolor='#9595ff' A
+      td.statistic#a
+    tr
+      td bgcolor='#c0c0c0' F
+      td.statistic#f
+      td bgcolor='#ffffff' N
+      td.statistic#n
+      td#per bgcolor='#7fffd4'
+
+javascript:
+  state = "#{params['reverse_sheet']}"
+coffee:
+  @reverse = ->
+    url = location.href
+    if state is 'true'
+      url = url.split('?')[0]
+      location.href = url
+    else
+      location.href = url + '?reverse_sheet=true'
