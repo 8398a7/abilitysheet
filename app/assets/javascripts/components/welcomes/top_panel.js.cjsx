@@ -21,14 +21,11 @@ class @TopPanel extends React.Component
   render: ->
     <div className='uk-block uk-contrast uk-block-large top-panel'>
       <div className='uk-container'>
-        <h1>
-          ☆12参考表
-          <image src={image_path('letsencrypt-logo.png')} style={height: '40px'} />
-        </h1>
+        <h1>☆12参考表</h1>
         <div className='uk-grid uk-grid-match' data-uk-grid-margin=''>
-          <div className='uk-width-medium-1-3'>2chスレッドで議論された地力表を反映</div>
-          <div className='uk-width-medium-1-3'>IRTによる地力値を用いた参考表コンテンツ</div>
-          <div className='uk-width-medium-1-3'>クリアランプ管理をグラフで可視化</div>
+          <div className='uk-width-medium-1-3'>掲示板で議論された地力表を反映</div>
+          <div className='uk-width-medium-1-3'>地力値を用いた参考表コンテンツ</div>
+          <div className='uk-width-medium-1-3'>ランプ管理をグラフで可視化</div>
           <div className='uk-width-medium-1-3' />
           {@renderRegister()}
         </div>
