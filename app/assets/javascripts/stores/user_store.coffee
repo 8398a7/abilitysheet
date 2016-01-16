@@ -14,6 +14,11 @@ $.extend @UserStore,
   get: ->
     objectCopy user
 
+  renderAds: ->
+    return true unless user.id?
+    return false if user.role is 25 || user.role is 100
+    true
+
 @UserStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action

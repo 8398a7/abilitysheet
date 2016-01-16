@@ -9,7 +9,7 @@ module Slack
             color: :good,
             title: 'backup success',
             pretext: '_AWS S3_',
-            text: "#{DateTime.now} #{env} backup success!",
+            text: "#{Time.zone.now} #{env} backup success!",
             mrkdwn_in: %w(pretext)
           }
         ]
@@ -26,7 +26,7 @@ module Slack
             color: :danger,
             title: 'backup failed',
             pretext: '_AWS S3_',
-            text: "#{DateTime.now} #{env} backup failed...\n#{ex}",
+            text: "#{Time.zone.now} #{env} backup failed...\n#{ex}",
             mrkdwn_in: %w(pretext)
           }
         ]

@@ -2,15 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :miniprofiler
-  before_action :check_email, unless: :devise_controller?
-
-  def check_email
-    return unless current_user
-    return if current_user.email.present?
-    flash[:notice] = 'パスワード再発行用にemailの設定が必要です'
-    flash[:alert] = '設定されていない場合、再発行されない可能性があります'
-    redirect_to edit_user_registration_path
-  end
 
   protected
 
