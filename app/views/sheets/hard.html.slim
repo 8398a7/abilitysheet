@@ -9,6 +9,10 @@
       .
         a.twitter-share-button href='https://twitter.com/share' data-text="DJ.#{current_user.djname} #{@remain}" data-lang='ja' data-size='large' data-related='IIDX_12'
   = link_to 'CLEAR', sheet_path(type: 'clear'), class: 'uk-button uk-button-primary'
+  - if mobile?
+    = link_to 'PC', sheet_path(type: 'hard', device: 'pc'), class: 'uk-button'
+  - elsif device_mobile?
+    = link_to 'モバイル', sheet_path(type: 'hard'), class: 'uk-button'
   hr
   - unless user_signed_in? && current_user.special?
     = react_component 'GoogleAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
