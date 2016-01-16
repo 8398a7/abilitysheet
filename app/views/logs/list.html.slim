@@ -2,7 +2,6 @@
 .relative
   .uk-grid
     .uk-width-medium-10-10
-      button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
       .uk-offcanvas#mobile-menu
         .uk-offcanvas-bar
           .uk-panel
@@ -14,5 +13,10 @@
                 li.uk-nav-header = fa_icon 'refresh', text: '同期'
                 li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
                 li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
-      h2 更新履歴
+      h2 = fa_icon 'refresh', text: '更新履歴'
+      button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
+      hr
+      - unless user_signed_in? && current_user.special?
+        = react_component 'GoogleAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+        hr
       #logs = render partial: 'logs/logs'
