@@ -5,8 +5,8 @@ class IidxmeWorker
 
   def perform(id)
     user = User.find_by(id: id)
-    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => iidxme async start)
+    puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => iidxme async start)
     Scrape::IIDXME.new.async(user.iidxid)
-    puts %(#{Time.now} #{user.djname}[#{user.iidxid}] => iidxme async done)
+    puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => iidxme async done)
   end
 end

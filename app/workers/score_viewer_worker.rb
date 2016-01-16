@@ -5,8 +5,8 @@ class ScoreViewerWorker
 
   def perform(elems, id)
     current_user = User.find_by(id: id)
-    puts %(#{Time.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import start)
+    puts %(#{Time.zone.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import start)
     Score.api_score_viewer(elems, current_user)
-    puts %(#{Time.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import done)
+    puts %(#{Time.zone.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import done)
   end
 end
