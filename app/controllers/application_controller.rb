@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def detect_device_variant
+    return if params[:device] == 'pc'
     case request.user_agent
     when /iPhone|Android|Nokia|Mobile/
       request.variant = :mobile
