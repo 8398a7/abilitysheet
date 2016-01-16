@@ -17,6 +17,6 @@ class @WelcomeIndex extends React.Component
       <TopPanel />
       <hr />
       {<GoogleAdsense client='ca-pub-5751776715932993' slot='6704745267' /> if @state.renderAds}
-      <hr />
+      {<hr /> if @state.renderAds}
       <TwitterContents />
     </div>
