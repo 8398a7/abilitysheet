@@ -1,8 +1,6 @@
-- @title = '最近更新した200人'
 .uk-grid.uk-grid-match data-uk-grid-margin=""
   .uk-width-medium-1-2
     h2 = fa_icon 'users', text: @title
-    p 現在の利用者総数は#{@cnt}人です
   .uk-width-medium-1-2
     = form_tag users_path, method: :get, class: 'uk-form right djname-search'
       = fa_icon 'search', text: 'DJNAMEから検索'
