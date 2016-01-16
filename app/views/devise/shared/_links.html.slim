@@ -3,7 +3,7 @@
     = fa_icon 'sign-in', text: 'ログイン'
 - if devise_mapping.registerable? && controller_name != 'registrations'
   = link_to new_user_registration_path, class: 'uk-button uk-button-success'
-    = fa_icon 'plus', text: '新規作成'
+    = fa_icon 'plus', text: '登録'
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   = link_to new_user_password_path(resource_name), class: 'uk-button uk-button-danger'
     = fa_icon 'mail-forward', text: '再発行'
