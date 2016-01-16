@@ -22,7 +22,7 @@ class @TopPanel extends React.Component
     <div className='uk-block uk-contrast uk-block-large top-panel'>
       <div className='uk-container'>
         <h1>
-          ☆12参考表(地力表)支援サイト
+          ☆12参考表
           <image src={image_path('letsencrypt-logo.png')} style={height: '40px'} />
         </h1>
         <div className='uk-grid uk-grid-match' data-uk-grid-margin=''>
