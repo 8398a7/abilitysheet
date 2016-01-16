@@ -6,29 +6,27 @@
   label
     input type="checkbox" value="0" name="reverse" checked=params['reverse_sheet'] onchange="reverse()"
       | 逆順表示
-table.uk-table.uk-table-bordered align="center"
-  tr
-    td bgcolor='#ff8c00' FC
-    td.statistic#fc
-    td bgcolor='#ffd900' EXH
-    td.statistic#exh
-    td bgcolor='#ff6347' H
-    td.statistic#h
-    td bgcolor='#afeeee' C
-    td.statistic#c
-    td bgcolor='#98fb98' E
-    td.statistic#e
-    td bgcolor='#9595ff' A
-    td.statistic#a
-    td bgcolor='#c0c0c0' F
-    td.statistic#f
-    td bgcolor='#ffffff' N
-    td.statistic#n
-    td#per bgcolor='#7fffd4'
-    td#remain bgcolor='#00ff7f'
-    - if !current_user.nil? && current_user.iidxid == params[:iidxid]
-      td style="width:120px"
-        a.twitter-share-button href="https://twitter.com/share" data-text="DJ.#{current_user.djname} #{@remain}" data-lang="ja" data-size="large" data-related="IIDX_12"
+
+.uk-overflow-container
+  table.uk-table.uk-table-bordered align="center"
+    tr
+      td bgcolor='#ff8c00' FC
+      td.statistic#fc
+      td bgcolor='#ffd900' EXH
+      td.statistic#exh
+      td bgcolor='#ff6347' H
+      td.statistic#h
+      td bgcolor='#afeeee' C
+      td.statistic#c
+      td bgcolor='#98fb98' E
+      td.statistic#e
+      td bgcolor='#9595ff' A
+      td.statistic#a
+      td bgcolor='#c0c0c0' F
+      td.statistic#f
+      td bgcolor='#ffffff' N
+      td.statistic#n
+      td#per bgcolor='#7fffd4'
 
 javascript:
   state = "#{params['reverse_sheet']}"
