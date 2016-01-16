@@ -1,88 +1,35 @@
+hr
 - width , height = 150, 50
 - signed_in = user_signed_in?
-table.uk-table.uk-table-responsive.uk-table-bordered
-  thead
-  tbody
-    = render 'shared/state_example'
-    - cnt = 0
-    - @power.each do |title, ab|
-      tr
-        - if cnt < @sheets.size && return_ability(cnt) == ab
-          th colspan=5 height=10 bgcolor="#f5deb3"
-            center = title
-      - while cnt < @sheets.size && return_ability(cnt) == ab
+.uk-overflow-container
+  table.uk-table.uk-table-bordered
+    thead
+    tbody
+      = render 'shared/state_example'
+      - cnt = 0
+      - @power.each do |title, ab|
         tr
-        - (1..5).each do |i|
-          - if @sheets.size <= cnt || return_ability(cnt) != ab
-            - break
-          - s = @sheets[cnt]
-          td width=width height=height align="center" bgcolor=@color[s.id] class=s.version name="music"
-            - if signed_in && current_user.iidxid == params[:iidxid]
-              = link_to edit_score_path(s.id), remote: true, class: 'music_link'
-                = fa_icon 'external-link', text: s.title
-            - else
-              = s.title
-          - cnt += 1
-
-javascript:
-  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+          - if cnt < @sheets.size && return_ability(cnt) == ab
+            th colspan=5 height=10 bgcolor="#f5deb3"
+              center = title
+        - while cnt < @sheets.size && return_ability(cnt) == ab
+          tr
+          - (1..5).each do |i|
+            - if @sheets.size <= cnt || return_ability(cnt) != ab
+              - break
+            - s = @sheets[cnt]
+            td width=width height=height align='center' bgcolor=@color[s.id] class=s.version name='music'
+              = link_to_if signed_in && current_user.iidxid == params[:iidxid], s.title, edit_score_path(s.id), remote: true, class: 'music_link'
+            - cnt += 1
 
 javascript:
   sheet_type = parseInt("#{@sheet_type}")
 
 coffee:
-  music_show = (obj) ->
-    $(".#{obj.value}").show()
-  music_hide = (obj) ->
-    $(".#{obj.value}").hide()
-  music_change = (obj) ->
-    if obj.checked
-      music_show(obj)
-      state_counter()
-    else
-      music_hide(obj)
-      state_counter()
-
-
   $('input[name="check"]').click ->
-    if this.value is '0'
-      $('input[name="check"]').prop('checked', this.checked)
+    if @value is '0'
+      $('input[name="check"]').prop 'checked', @checked
       for obj in $('input[name="check"]')
-        music_change(obj)
-    music_change(this)
-
-  state_counter = ->
-    tds = $('td[name="music"]')
-    all = fc = exh = h = c = e = a = f = 0
-
-    for td in tds
-      continue if td.style.cssText is 'display: none;'
-      all++
-      fc++  if td.bgColor is '#ff8c00'
-      exh++ if td.bgColor is '#ffd900'
-      h++   if td.bgColor is '#ff6347'
-      c++   if td.bgColor is '#afeeee'
-      e++   if td.bgColor is '#98fb98'
-      a++   if td.bgColor is '#9595ff'
-      f++   if td.bgColor is '#c0c0c0'
-    n = all - fc - exh - h - c - e - a - f
-    $('td#fc').text(fc)
-    $('td#exh').text(exh)
-    $('td#h').text(h)
-    $('td#c').text(c)
-    $('td#e').text(e)
-    $('td#a').text(a)
-    $('td#f').text(f)
-    $('td#n').text(n)
-    per = 0
-    remain = ''
-    if sheet_type is 0
-      per = fc + exh + h + c + e
-      remain = "未クリア#{a + f + n}"
-    else
-      per = fc + exh + h
-      remain = "未難#{c + e + a + f + n}"
-    $('td#per').text("(#{per}/#{all})")
-    $('td#remain').text(remain)
-
-  state_counter()
+        Sheet.music_change obj
+    Sheet.music_change @
+  Sheet.state_counter sheet_type

@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def detect_device_variant
+    case request.user_agent
+    when /iPhone|Android|Nokia|Mobile/
+      request.variant = :mobile
+    end
+  end
+
   def scores_exists?
     return if current_user.scores.present?
     flash[:alert] = '処理を受け付けませんでした．'
