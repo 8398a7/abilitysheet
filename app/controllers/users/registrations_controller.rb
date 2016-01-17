@@ -1,7 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
+    pre_user = User.select(:id).count
     super
-    sync_score
+    after_user = User.select(:id).count
+    sync_score if pre_user < after_user
   end
 
   def destroy
