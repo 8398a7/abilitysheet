@@ -30,6 +30,10 @@
       label.uk-form-label バージョン
       .uk-form-controls
         = f.select :version, Static::VERSION, { selected: sheet.version ? sheet.version : Abilitysheet::Application.config.iidx_version }, { class: 'uk-width-1-1 searchable' }
+    .uk-form-row
+      label.uk-form-label textage
+      .uk-form-controls
+        = f.text_field :textage, placeholder: 'textage link', class: 'uk-width-1-1'
     .uk-modal-footer.uk-text-right
       .uk-button-group
         button.uk-button.uk-button-primary
