@@ -1,6 +1,9 @@
 - @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - 参考表"
 h3.right サンプルデータはiidx.meより
 hr
+- unless user_signed_in? && current_user.special?
+  = react_component 'GoogleAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+  hr
 form.uk-form
   table.datatable
     thead

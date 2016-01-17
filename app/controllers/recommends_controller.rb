@@ -3,6 +3,7 @@ class RecommendsController < ApplicationController
   before_action :load_sheets
 
   def index
+    @title = '地力値表'
   end
 
   private
