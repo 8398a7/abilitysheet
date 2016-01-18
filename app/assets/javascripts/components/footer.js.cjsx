@@ -16,6 +16,7 @@ class @Footer extends React.Component
     now = new Date()
     year = now.getFullYear()
     <div className='footer'>
+      {<GoogleAdsense client='ca-pub-5751776715932993' slot='6480128066' /> if @state.renderAds}
       <div className='relative'>
         <div className='uk-panel panel-default'>
           <span className='left-position'>
@@ -27,5 +28,4 @@ class @Footer extends React.Component
           <span>&copy; IIDX☆12参考表 by839 2014-{year} <a href='https://github.com/8398a7/abilitysheet' target='_blank'><i className='fa fa-github' /></a></span>
         </div>
       </div>
-      {<GoogleAdsense client='ca-pub-5751776715932993' slot='6480128066' /> if @state.renderAds}
     </div>
