@@ -56,3 +56,5 @@
           = fa_icon 'floppy-o', text: submit
         button.uk-button.uk-modal-close
           = fa_icon 'times', text: 'キャンセル'
+        = link_to admin_user_path(user.id), class: 'uk-button uk-button-danger', method: :delete, remote: true
+          = fa_icon 'trash', text: '削除'
