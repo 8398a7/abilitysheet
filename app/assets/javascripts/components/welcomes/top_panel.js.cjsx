@@ -1,16 +1,29 @@
 class @TopPanel extends React.Component
-  constructor: ->
+  constructor: (props) ->
+    super
     @state =
       current_user: UserStore.get()
+      title: '☆12参考表(地力表)支援サイト'
+      one: '掲示板で議論された地力表を自分のランプで反映'
+      two: '地力値を用いて楽曲の難しさを数値化'
+      three: 'ランプの遷移をグラフで可視化'
 
   onChangeCurrentUser: =>
     @setState current_user: UserStore.get()
 
   componentWillMount: ->
+    @mobileContent() if @props.mobile
     UserStore.addChangeListener(@onChangeCurrentUser)
 
   componentWillUnmount: ->
     UserStore.removeChangeListener(@onChangeCurrentUser)
+
+  mobileContent: ->
+    @setState
+      title: '☆12参考表'
+      one: '掲示板で議論された地力表を反映'
+      two: '地力値を用いた楽曲難易度'
+      three: 'ランプ遷移をグラフで可視化'
 
   renderRegister: ->
     return null if @state.current_user.id?
@@ -21,13 +34,16 @@ class @TopPanel extends React.Component
   render: ->
     <div className='uk-block uk-contrast uk-block-large top-panel'>
       <div className='uk-container'>
-        <h1>☆12参考表</h1>
+        <h1>{@state.title}</h1>
         <div className='uk-grid uk-grid-match' data-uk-grid-margin=''>
-          <div className='uk-width-medium-1-3'>掲示板で議論された地力表を反映</div>
-          <div className='uk-width-medium-1-3'>地力値を用いた参考表コンテンツ</div>
-          <div className='uk-width-medium-1-3'>ランプ管理をグラフで可視化</div>
+          <div className='uk-width-medium-1-3'>{@state.one}</div>
+          <div className='uk-width-medium-1-3'>{@state.two}</div>
+          <div className='uk-width-medium-1-3'>{@state.three}</div>
           <div className='uk-width-medium-1-3' />
           {@renderRegister()}
         </div>
       </div>
     </div>
+
+TopPanel.propTypes =
+  mobile: React.PropTypes.bool.isRequired
