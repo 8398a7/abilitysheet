@@ -1,5 +1,5 @@
-class @UserAPI
-  @getMe: (callback) ->
+@UserAPI =
+  getMe: (callback) ->
     option =
       type: 'GET'
       callback: callback
