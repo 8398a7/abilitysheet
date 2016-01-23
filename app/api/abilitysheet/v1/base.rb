@@ -2,6 +2,8 @@ require 'doorkeeper/grape/helpers'
 
 module Abilitysheet::V1
   class Base < Grape::API
+    use Rack::JSONP
+
     version 'v1', using: :path
     format :json
 
