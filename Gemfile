@@ -30,7 +30,7 @@ gem 'oauth2'
 gem 'pg'
 gem 'pry-rails'
 gem 'pry-byebug'
-gem 'rack-cors', require: 'rack/cors'
+gem 'rack-contrib'
 gem 'rack-mini-profiler', require: false
 gem 'rails'
 gem 'rails_admin'
