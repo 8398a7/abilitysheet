@@ -1,5 +1,6 @@
 class @WelcomeIndex extends React.Component
-  constructor: ->
+  constructor: (props) ->
+    super
     @state =
       renderAds: UserStore.renderAds()
 
@@ -14,9 +15,12 @@ class @WelcomeIndex extends React.Component
 
   render: ->
     <div className='welcome-index'>
-      <TopPanel />
+      <TopPanel mobile={@props.mobile} />
       <hr />
       {<GoogleAdsense client='ca-pub-5751776715932993' slot='6704745267' /> if @state.renderAds}
       {<hr /> if @state.renderAds}
       <TwitterContents />
     </div>
+
+WelcomeIndex.propTypes =
+  mobile: React.PropTypes.bool.isRequired
