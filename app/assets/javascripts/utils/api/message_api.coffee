@@ -1,5 +1,5 @@
-class @MessageAPI
-  @fetch: (callback) ->
+@MessageAPI =
+  fetch: (callback) ->
     option =
       type: 'GET'
       callback: callback
