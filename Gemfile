@@ -14,7 +14,6 @@ gem 'draper'
 gem 'font-awesome-rails'
 gem 'google-analytics-rails'
 gem 'grape'
-gem 'grape-devise', git: 'https://github.com/pluff/grape-devise.git'
 gem 'grape_logging'
 # }}}
 # h,i,j,k,l,m,n {{{
