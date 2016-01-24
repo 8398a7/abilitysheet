@@ -65,6 +65,6 @@ class ApplicationController < ActionController::Base
 
   def handle_unverified_request
     flash[:alert] = 'ページのトークンが切れています，再度お試し下さい'
-    render :reload
+    redirect_to root_path
   end
 end
