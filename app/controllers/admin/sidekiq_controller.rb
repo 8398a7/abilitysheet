@@ -8,7 +8,7 @@ class Admin::SidekiqController < ApplicationController
 
   def start
     flash[:notice] = 'sidekiq start'
-    system "/usr/bin/env bundle exec sidekiq --index 0 --pidfile #{ENV['SIDEKIQ_PID_PATH']} --environment #{Rails.env} --logfile #{ENV['SIDEKIQ_LOG_PATH']} --daemon"
+    SidekiqDispatcher.start!
     render :reload
   end
 end
