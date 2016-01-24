@@ -8,6 +8,8 @@
 [![Issue Count](https://codeclimate.com/github/8398a7/abilitysheet/badges/issue_count.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 [![security](https://hakiri.io/github/8398a7/abilitysheet/master.svg)](https://hakiri.io/github/8398a7/abilitysheet/master)
 [![Dependency Status](https://gemnasium.com/8398a7/abilitysheet.svg)](https://gemnasium.com/8398a7/abilitysheet)
+[![Release](https://img.shields.io/github/release/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/releases/latest)
+[![License](https://img.shields.io/github/license/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/blob/master/LICENSE.txt)
 
 ## About
 
