@@ -1,12 +1,3 @@
-GIT
-  remote: https://github.com/pluff/grape-devise.git
-  revision: 607c4a905068d33a7a630503e907c85bd45ec14a
-  specs:
-    grape-devise (0.0.1)
-      activesupport (>= 3.2.6, < 5)
-      devise (> 3.2)
-      grape (> 0.7)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -519,7 +510,6 @@ DEPENDENCIES
   font-awesome-rails
   google-analytics-rails
   grape
-  grape-devise!
   grape_logging
   js-routes
   json_expressions

@@ -1,19 +1,24 @@
 require 'doorkeeper/grape/helpers'
 
-module Abilitysheet::V1
-  class Base < Grape::API
+module Abilitysheet
+  class V1::Base < Grape::API
     use Rack::JSONP
-
     version 'v1', using: :path
     format :json
 
-    helpers Grape::Devise::Helpers
-    include Grape::Devise::Endpoints
     helpers Doorkeeper::Grape::Helpers
 
     helpers do
       def authenticate!
         error!('Unauthorized.', 401) unless current_user
+      end
+
+      def warden
+        env['warden']
+      end
+
+      def current_user
+        warden.user
       end
 
       def current_resource_owner
