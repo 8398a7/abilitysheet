@@ -4,7 +4,7 @@ html
     title #{@title} | ☆12参考表
     meta charset="utf-8"
     meta name="description" content="beatmania IIDXの☆12参考表支援サイトです．ノマゲ地力表，ハード地力表の他に，楽曲の地力値情報，プレイヤーの状態管理などのサービスを提供します．"
-    meta name="keywords" content="iidx,IIDX,beatmania,☆12,☆12参考表,☆12ノマゲ参考表,☆12ハード参考表,地力表"
+    meta name="keywords" content="iidx,IIDX,beatmania,☆12,ハード地力表,ノマゲ地力表,☆12参考表,☆12ノマゲ参考表,☆12ハード参考表,地力表"
     meta name="viewport" content="width=device-width, initial-scale=1"
     = stylesheet_link_tag    'application', 'data-turbolinks-track': true, media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track': true
@@ -57,7 +57,6 @@ html
             li = link_to '問い合わせ返信', new_admin_mail_path
             li = link_to 'sidekiq管理', admin_sidekiq_index_path
             li = link_to 'RailsAdmin', rails_admin_path
-            li = link_to 'Twitter', new_admin_tweet_path
             li = link_to 'Dashboard', admin_dashboards_path
           - if user_signed_in?
             li.uk-nav-header

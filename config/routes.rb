@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
   end
   namespace :admin do
-    resources :dashboards, only: [:index]
+    resources :dashboards, only: :index
     resources :sheets do
       post :active, on: :member
       post :inactive, on: :member
@@ -27,15 +27,14 @@ Rails.application.routes.draw do
       post :unlock, on: :member
       get :login, on: :member
     end
-    resources :sidekiq, only: [:index] do
+    resources :sidekiq, only: :index do
       post :start, on: :member
     end
-    resources :tweets, only: [:new, :create]
-    resources :messages, only: [:index] do
+    resources :messages, only: :index do
       post :active, on: :member
       post :inactive, on: :member
     end
-    resources :mails, only: [:new, :create]
+    resources :mails, only: %i(new create)
   end
 
   # rival
@@ -50,7 +49,7 @@ Rails.application.routes.draw do
   get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet
 
   # score
-  resources :scores, only: [:edit, :update]
+  resources :scores, only: %i(edit update)
 
   # log
   resources :logs, only: :destroy do
@@ -63,7 +62,7 @@ Rails.application.routes.draw do
   get '/logs/:id/:date' => 'logs#show', as: :logs
 
   # recommends
-  resources :recommends, only: [:index]
+  resources :recommends, only: :index
 
   # API
   mount Abilitysheet::API => '/api'
