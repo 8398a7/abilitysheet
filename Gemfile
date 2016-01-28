@@ -42,7 +42,6 @@ gem 'slim-rails'
 gem 'sprockets-coffee-react'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
-gem 'twitter'
 gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 gem 'unicorn-worker-killer'
