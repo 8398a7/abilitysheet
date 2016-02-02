@@ -25,7 +25,7 @@ class @Footer extends React.Component
               Twitter
             </a>
           </span>
-          <span>&copy; IIDX☆12参考表 by839 2014-{year} <a href='https://github.com/8398a7/abilitysheet' target='_blank'><i className='fa fa-github' /></a></span>
+          <span>&copy; IIDX☆12参考表 8398a7 2014-{year} <a href='https://github.com/8398a7/abilitysheet' target='_blank'><i className='fa fa-github' /></a></span>
         </div>
       </div>
     </div>
