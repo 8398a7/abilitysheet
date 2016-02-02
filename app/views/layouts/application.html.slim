@@ -73,7 +73,8 @@ html
               = link_to new_user_session_path
                 = fa_icon 'sign-in fw', text: 'ログイン'
 
-    = render 'peek/bar'
+    - unless Rails.env.test?
+      = render 'peek/bar'
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
 
