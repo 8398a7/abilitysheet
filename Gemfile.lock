@@ -249,8 +249,6 @@ GEM
       peek
     peek-git (1.0.2)
       peek
-    peek-host (1.0.0)
-      peek
     peek-performance_bar (1.2.0)
       peek (>= 0.1.0)
     peek-pg (1.1.0)
@@ -260,14 +258,6 @@ GEM
     peek-rblineprof (0.1.2)
       peek
       rblineprof
-    peek-redis (1.1.0)
-      atomic (>= 1.0.0)
-      peek
-      redis
-    peek-sidekiq (1.0.3)
-      atomic (>= 1.0.0)
-      peek
-      sidekiq
     pg (0.18.4)
     poltergeist (1.8.1)
       capybara (~> 2.1)
@@ -528,12 +518,9 @@ DEPENDENCIES
   peek
   peek-gc
   peek-git
-  peek-host
   peek-performance_bar
   peek-pg
   peek-rblineprof
-  peek-redis
-  peek-sidekiq
   pg
   poltergeist
   pry-byebug
