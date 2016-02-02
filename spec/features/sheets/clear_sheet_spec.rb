@@ -17,7 +17,7 @@ feature 'ノマゲ地力表' do
     scenario 'ハード参考表のリンクが存在する' do
       expect(page).to have_link('HARD', sheet_path(iidxid: user.iidxid, type: 'hard'))
     end
-    scenario '未クリアの表記が素材する', js: true do
+    scenario '未クリアの表記が存在する', js: true do
       expect(page).to have_content('未クリア')
     end
   end
@@ -29,7 +29,7 @@ feature 'ノマゲ地力表' do
     scenario 'ハード参考表のリンクが存在する' do
       expect(page).to have_link('HARD', sheet_path(iidxid: user.iidxid, type: 'hard'))
     end
-    scenario '未クリアの表記が素材する', js: true do
+    scenario '未クリアの表記が存在する', js: true do
       expect(page).to have_content('未クリア')
     end
   end

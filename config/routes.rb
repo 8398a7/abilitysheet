@@ -72,4 +72,6 @@ Rails.application.routes.draw do
   get '/abilitysheet/:p1', to: 'welcomes#migrate_domain'
   get '/abilitysheet/:p1/:p2', to: 'welcomes#migrate_domain'
   get '/abilitysheet/:p1/:p2/:p3', to: 'welcomes#migrate_domain'
+
+  mount Peek::Railtie => '/peek'
 end
