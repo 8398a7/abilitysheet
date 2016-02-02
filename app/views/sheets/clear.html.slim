@@ -9,6 +9,7 @@
       .
         a.twitter-share-button href='https://twitter.com/share' data-text="DJ.#{current_user.djname} #{@remain}" data-lang='ja' data-size='large' data-related='IIDX_12'
   = link_to 'HARD', sheet_path(type: 'hard'), class: 'uk-button uk-button-danger'
+  = react_component 'ScreenShot', {}, tag: 'span'
   - if mobile?
     = link_to 'PCサイト版', sheet_path(type: 'clear', device: 'pc'), class: 'uk-button'
   - elsif device_mobile?

@@ -4,6 +4,7 @@
 #= require airbrake_client
 #= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
+#= require html2canvas/build/html2canvas
 #= require uikit/js/uikit.min
 #= require uikit/js/components/notify.min
 #= require select2/dist/js/select2.min

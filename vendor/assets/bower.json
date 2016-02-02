@@ -7,6 +7,7 @@
     "nprogress": "latest",
     "flux": "latest",
     "eventemitter2": "latest",
-    "airbrake-js-client": "latest"
+    "airbrake-js-client": "latest",
+    "html2canvas": "latest"
   }
 }
