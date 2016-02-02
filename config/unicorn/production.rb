@@ -32,6 +32,5 @@ before_fork do |server, _|
 end
 
 after_fork do |_, _|
-  GC.disable if Rails.env.staging? || Rails.env.production?
   ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
 end
