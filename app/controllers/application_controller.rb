@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :miniprofiler
 
   protected
+
+  def peek_enabled?
+    current_user.try(:owner?)
+  end
 
   def detect_device_variant
     return if params[:device] == 'pc'
@@ -57,10 +60,6 @@ class ApplicationController < ActionController::Base
     return if current_user.member?
     flash[:alert] = '許可されていないページです'
     redirect_to root_path
-  end
-
-  def miniprofiler
-    Rack::MiniProfiler.authorize_request if user_signed_in? && current_user.admin?
   end
 
   def handle_unverified_request

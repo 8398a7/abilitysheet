@@ -45,6 +45,7 @@ GEM
       rake (~> 10.4)
     arel (6.0.3)
     ast (2.2.0)
+    atomic (1.1.99)
     aws-sdk (2.2.14)
       aws-sdk-resources (= 2.2.14)
     aws-sdk-core (2.2.14)
@@ -117,6 +118,7 @@ GEM
     connection_pool (2.2.0)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    debugger-ruby_core_source (1.3.8)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (3.5.6)
@@ -240,6 +242,32 @@ GEM
     orm_adapter (0.5.0)
     parser (2.3.0.2)
       ast (~> 2.2)
+    peek (0.1.10)
+      atomic (>= 1.0.0)
+      railties (>= 3.0.0)
+    peek-gc (0.0.2)
+      peek
+    peek-git (1.0.2)
+      peek
+    peek-host (1.0.0)
+      peek
+    peek-performance_bar (1.2.0)
+      peek (>= 0.1.0)
+    peek-pg (1.1.0)
+      atomic (>= 1.0.0)
+      peek
+      pg
+    peek-rblineprof (0.1.2)
+      peek
+      rblineprof
+    peek-redis (1.1.0)
+      atomic (>= 1.0.0)
+      peek
+      redis
+    peek-sidekiq (1.0.3)
+      atomic (>= 1.0.0)
+      peek
+      sidekiq
     pg (0.18.4)
     poltergeist (1.8.1)
       capybara (~> 2.1)
@@ -268,8 +296,6 @@ GEM
       rack (~> 1.4)
     rack-dev-mark (0.7.4)
       rack (>= 1.1)
-    rack-mini-profiler (0.9.8)
-      rack (>= 1.1.3)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rack-pjax (0.8.0)
@@ -326,6 +352,8 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.2)
+    rblineprof (0.3.6)
+      debugger-ruby_core_source (~> 1.3)
     react-rails (1.5.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
@@ -497,6 +525,15 @@ DEPENDENCIES
   newrelic_rpm
   nokogiri
   oauth2
+  peek
+  peek-gc
+  peek-git
+  peek-host
+  peek-performance_bar
+  peek-pg
+  peek-rblineprof
+  peek-redis
+  peek-sidekiq
   pg
   poltergeist
   pry-byebug
@@ -504,7 +541,6 @@ DEPENDENCIES
   quiet_assets
   rack-contrib
   rack-dev-mark
-  rack-mini-profiler
   rails
   rails_admin
   ransack
