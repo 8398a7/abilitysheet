@@ -11,7 +11,7 @@ dependencies:
     - chmod a+x /home/ubuntu/bin/phantomjs-2.0.1-linux-x86_64-dynamic
     - sudo ln -s --force /home/ubuntu/bin/phantomjs-2.0.1-linux-x86_64-dynamic /usr/local/bin/phantomjs
   post:
-    - bundle exec rake bower:install bower:resolve: { background: true }
+    - bundle exec rake bower:install bower:resolve
 
 database:
   post:
