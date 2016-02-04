@@ -4,7 +4,7 @@ feature RailsAdmin do
 
   context '管理者の場合' do
     background do
-      user.update(role: 100)
+      user.update!(role: 100)
       visit rails_admin_path
     end
 

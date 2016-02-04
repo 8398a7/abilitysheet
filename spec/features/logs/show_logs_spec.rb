@@ -54,7 +54,7 @@ feature 'ログの詳細画面', js: true do
       end
       context 'User::Role::OWNERの場合' do
         background do
-          @user.update(role: User::Role::OWNER)
+          @user.update!(role: User::Role::OWNER)
           visit logs_path(@user2.iidxid, Date.today.to_s)
           wait_for_ajax
         end

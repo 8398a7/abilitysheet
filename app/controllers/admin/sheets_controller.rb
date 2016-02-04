@@ -35,12 +35,12 @@ class Admin::SheetsController < ApplicationController
   end
 
   def inactive
-    @sheet.update(active: false)
+    @sheet.update!(active: false)
     render :reload
   end
 
   def active
-    @sheet.update(active: true)
+    @sheet.update!(active: true)
     render :reload
   end
 

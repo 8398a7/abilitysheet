@@ -9,12 +9,12 @@ class Admin::MessagesController < ApplicationController
   end
 
   def active
-    @message.update(state: true)
+    @message.update!(state: true)
     redirect_to admin_messages_path
   end
 
   def inactive
-    @message.update(state: false)
+    @message.update!(state: false)
     redirect_to admin_messages_path
   end
 
