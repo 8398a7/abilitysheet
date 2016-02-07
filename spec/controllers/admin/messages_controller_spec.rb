@@ -48,7 +48,7 @@ describe Admin::MessagesController, type: :controller do
     context '管理人' do
       let(:user) { create(:user, role: User::Role::ADMIN) }
       before do
-        Message.find_by(id: 1).update(state: false)
+        Message.find_by(id: 1).update!(state: false)
         sign_in user
         get :active, id: 1
       end
@@ -80,7 +80,7 @@ describe Admin::MessagesController, type: :controller do
     context '管理人' do
       let(:user) { create(:user, role: User::Role::ADMIN) }
       before do
-        Message.find_by(id: 1).update(state: true)
+        Message.find_by(id: 1).update!(state: true)
         sign_in user
         get :inactive, id: 1
       end

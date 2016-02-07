@@ -32,7 +32,7 @@ class Log < ActiveRecord::Base
     score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
     log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
-      log.update(new_state: score_params['state'])
+      log.update!(new_state: score_params['state'])
       return true
     end
     pre_state = owner.scores.find_by(sheet_id: score_params['sheet_id']).try(:state) || 7
@@ -50,7 +50,7 @@ class Log < ActiveRecord::Base
   def self.score_attributes(score_params, owner)
     log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
-      log.update(new_score: score_params['score'], new_bp: score_params['bp'])
+      log.update!(new_score: score_params['score'], new_bp: score_params['bp'])
       return true
     end
     now_score = owner.scores.find_by(sheet_id: score_params['sheet_id'])

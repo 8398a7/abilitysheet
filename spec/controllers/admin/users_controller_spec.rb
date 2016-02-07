@@ -9,7 +9,7 @@ describe Admin::UsersController, type: :controller do
     end
     context '管理人以外' do
       before do
-        user.update(role: user.role - 1)
+        user.update!(role: user.role - 1)
         sign_in user
         get :index
       end

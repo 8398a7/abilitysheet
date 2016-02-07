@@ -28,17 +28,17 @@ describe Score, type: :model do
   describe '#remain' do
     it '未難の数を正しく返す' do
       expect(@user.scores.remain(:hard)).to eq Sheet.active.count
-      Score.find(1).update(state: 5)
+      Score.find(1).update!(state: 5)
       expect(@user.scores.remain(:hard)).to eq Sheet.active.count
-      Score.find(1).update(state: 2)
+      Score.find(1).update!(state: 2)
       expect(@user.scores.remain(:hard)).to eq Sheet.active.count - 1
       expect(@user.scores.remain_string(:hard)).to eq "☆12ハード参考表(未難#{Sheet.active.count - 1})"
     end
     it '未クリアの数を正しく返す' do
       expect(@user.scores.remain(:clear)).to eq Sheet.active.count
-      Score.find(1).update(state: 6)
+      Score.find(1).update!(state: 6)
       expect(@user.scores.remain(:clear)).to eq Sheet.active.count
-      Score.find(1).update(state: 4)
+      Score.find(1).update!(state: 4)
       expect(@user.scores.remain(:clear)).to eq Sheet.active.count - 1
       expect(@user.scores.remain_string(:clear)).to eq "☆12ノマゲ参考表(未クリア#{Sheet.active.count - 1})"
     end
