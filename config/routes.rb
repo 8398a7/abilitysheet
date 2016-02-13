@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   resources :scores, only: %i(edit update)
 
   # log
-  resources :logs, only: :destroy do
+  resources :logs, only: %i(edit update destroy) do
     get :graph, on: :member
     get :list, on: :member
     get :sheet, on: :member

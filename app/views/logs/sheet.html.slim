@@ -11,16 +11,18 @@ table.datatable
   tbody
     - @sheets.each do |s|
       - logs = s.logs.where(user_id: @id)
-      - u = logs.order(created_date: :desc).first.created_date if logs.present?
+      - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.present?
+      - logs = logs.order(:created_date)
       - hash = {}
       - 4.downto(0).each do |state|
-        - hash[state] = logs.find_by(new_state: state).created_date if logs.exists?(new_state: state)
+        - hash[state] = logs.find_by(new_state: state) if logs.exists?(new_state: state)
       tr
         td = s.title
         - 4.downto(0).each do |index|
           td bgcolor=@color[index]
-            - if hash[index]
-              = link_to hash[index], logs_path(params[:id], hash[index]), style: 'color: #444'
+            - created_date = hash[index].try(:created_date)
+            - if created_date
+              = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
 
         td = u
 javascript:
