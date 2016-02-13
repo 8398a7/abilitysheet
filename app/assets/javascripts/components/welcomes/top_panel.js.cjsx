@@ -3,7 +3,7 @@ class @TopPanel extends React.Component
     super
     @state =
       current_user: UserStore.get()
-      title: '☆12参考表(地力表)支援サイト'
+      title: 'SP☆12参考表(地力表)支援サイト'
       one: '掲示板で議論された地力表を自分のランプで反映'
       two: '地力値を用いて楽曲の難しさを数値化'
       three: 'ランプの遷移をグラフで可視化'
@@ -20,7 +20,7 @@ class @TopPanel extends React.Component
 
   mobileContent: ->
     @setState
-      title: '☆12参考表'
+      title: 'SP☆12参考表'
       one: '掲示板で議論された地力表を反映'
       two: '地力値を用いた楽曲難易度'
       three: 'ランプ遷移をグラフで可視化'
