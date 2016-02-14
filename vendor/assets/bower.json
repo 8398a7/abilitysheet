@@ -8,6 +8,7 @@
     "flux": "latest",
     "eventemitter2": "latest",
     "airbrake-js-client": "latest",
-    "html2canvas": "latest"
+    "html2canvas": "latest",
+    "jquery-ui": "latest"
   }
 }

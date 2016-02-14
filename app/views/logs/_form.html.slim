@@ -18,10 +18,14 @@
       .uk-form-row
         label.uk-form-label 日付
         .uk-form-controls
-          = f.date_field :created_date
+          = f.text_field :created_date, id: 'datepicker'
       hr
       button.uk-button.uk-button-primary type='submit'
         = fa_icon 'refresh', text: '更新'
   .uk-modal-footer.uk-text-right
     button.uk-button.uk-modal-close
       = fa_icon 'times', text: '閉じる'
+
+coffee:
+  $('#datepicker').datepicker
+    dateFormat: 'yy-mm-dd'
