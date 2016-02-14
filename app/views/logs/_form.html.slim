@@ -1,0 +1,31 @@
+.uk-modal-dialog.uk-modal-dialog
+  a.uk-modal-close.uk-close
+
+  .uk-modal-header
+    span.uk-h4.bold
+      = fa_icon 'refresh', text: 'ログ情報更新'
+
+  .uk-text-center
+    = form_for log, html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
+      .uk-form-row
+        label.uk-form-label 曲名
+        .uk-form-controls
+          text_field.form-control readonly='true' = log.sheet.title
+      .uk-form-row
+        label.uk-form-label クリアランプ
+        .uk-form-controls
+          text_field.form-control readonly='true' = Static::LAMP[log.new_state]
+      .uk-form-row
+        label.uk-form-label 日付
+        .uk-form-controls
+          = f.text_field :created_date, id: 'datepicker'
+      hr
+      button.uk-button.uk-button-primary type='submit'
+        = fa_icon 'refresh', text: '更新'
+  .uk-modal-footer.uk-text-right
+    button.uk-button.uk-modal-close
+      = fa_icon 'times', text: '閉じる'
+
+coffee:
+  $('#datepicker').datepicker
+    dateFormat: 'yy-mm-dd'
