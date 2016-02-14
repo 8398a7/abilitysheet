@@ -19,6 +19,11 @@ feature 'ログの詳細画面', js: true do
   context 'ログイン時' do
     background { login(@user) }
     context '自分のログページの場合' do
+      scenario 'ログ編集ボタンのリンクが存在する' do
+        visit logs_path(@user.iidxid, Date.today.to_s)
+        wait_for_ajax
+        expect(page).to have_link('log spec1')
+      end
       scenario '削除ボタンが存在する' do
         visit logs_path(@user.iidxid, Date.today.to_s)
         wait_for_ajax
@@ -46,6 +51,9 @@ feature 'ログの詳細画面', js: true do
         create(:log, sheet_id: 2, user_id: 2, created_date: Date.today, pre_state: 7, new_state: 6)
         visit logs_path(@user2.iidxid, Date.today.to_s)
         wait_for_ajax
+      end
+      scenario 'ログ編集ボタンのリンクが存在しない' do
+        expect(page).to have_no_link('log spec1')
       end
       context 'User::Role::GENERALの場合' do
         scenario '削除ボタンが存在しない' do

@@ -3,6 +3,20 @@ class LogsController < ApplicationController
   before_action :special_user!, only: %w(update_official)
   before_action :load_user, only: %w(sheet list show)
 
+  def edit
+    @log = current_user.logs.find_by(id: params[:id])
+    render :show_modal
+  end
+
+  def update
+    log = current_user.logs.find_by(id: params[:id])
+    begin
+      log.update(log_params) if params['log']['created_date'].to_date
+    rescue
+    end
+    render :reload
+  end
+
   def sheet
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
@@ -96,5 +110,9 @@ class LogsController < ApplicationController
 
   def load_user
     @user = User.find_by(iidxid: params[:id])
+  end
+
+  def log_params
+    params.require(:log).permit(:created_date)
   end
 end
