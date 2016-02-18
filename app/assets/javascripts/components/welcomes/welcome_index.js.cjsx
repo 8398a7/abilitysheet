@@ -16,9 +16,16 @@ class @WelcomeIndex extends React.Component
   render: ->
     <div className='welcome-index'>
       <TopPanel mobile={@props.mobile} />
-      <hr />
-      {<GoogleAdsense client='ca-pub-5751776715932993' slot='6704745267' /> if @state.renderAds}
-      {<hr /> if @state.renderAds}
+      <hr style={margin: '10px 0'} />
+      {
+        <RectangleAdsense
+          client='ca-pub-5751776715932993'
+          slot='4549839260'
+          slot2='3454772069'
+          mobile={@props.mobile}
+        /> if @state.renderAds
+      }
+      {<hr style={margin: '10px 0'} /> if @state.renderAds}
       <TwitterContents />
     </div>
 

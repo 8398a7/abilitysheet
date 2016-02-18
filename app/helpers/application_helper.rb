@@ -16,4 +16,12 @@ module ApplicationHelper
     return true if request.user_agent =~ /iPhone|Android|Nokia|Mobile/
     false
   end
+
+  def rectangle_adsense
+    react_component 'RectangleAdsense', client: 'ca-pub-5751776715932993', slot: '4549839260', slot2: '3454772069', mobile: mobile?
+  end
+
+  def responsive_adsense
+    react_component 'ResponsiveAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+  end
 end
