@@ -1,4 +1,8 @@
-- @title = 'クリア推移表'
+h2 = fa_icon 'calendar-check-o', text: @title
+hr
+- unless user_signed_in? && current_user.special?
+  = rectangle_adsense
+  hr
 table.datatable
   thead
     th TITLE

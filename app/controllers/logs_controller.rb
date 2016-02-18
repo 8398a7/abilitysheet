@@ -21,6 +21,7 @@ class LogsController < ApplicationController
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
     @id = @user.id
+    @title = 'クリア推移表'
   end
 
   def list
