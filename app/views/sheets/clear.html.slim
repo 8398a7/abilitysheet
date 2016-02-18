@@ -16,7 +16,7 @@
     = link_to 'モバイル版', sheet_path(type: 'clear'), class: 'uk-button'
   hr
   - unless user_signed_in? && current_user.special?
-    = react_component 'GoogleAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+    = rectangle_adsense
     hr
 
   = render 'statistics'

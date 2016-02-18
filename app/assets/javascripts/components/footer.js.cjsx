@@ -16,7 +16,7 @@ class @Footer extends React.Component
     now = new Date()
     year = now.getFullYear()
     <div className='footer'>
-      {<GoogleAdsense client='ca-pub-5751776715932993' slot='6480128066' /> if @state.renderAds}
+      {<ResponsiveAdsense client='ca-pub-5751776715932993' slot='6480128066' /> if @state.renderAds}
       <div className='relative'>
         <div className='uk-panel panel-default'>
           <span className='left-position'>

@@ -17,6 +17,6 @@
       button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
       hr
       - unless user_signed_in? && current_user.special?
-        = react_component 'GoogleAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+        = rectangle_adsense
         hr
       #logs = render partial: 'logs/logs'

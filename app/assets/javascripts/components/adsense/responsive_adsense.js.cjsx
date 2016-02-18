@@ -1,4 +1,4 @@
-class @GoogleAdsense extends React.Component
+class @ResponsiveAdsense extends React.Component
   constructor: (props) ->
     super
 
@@ -8,15 +8,15 @@ class @GoogleAdsense extends React.Component
   render: ->
     <div className='google-adsense'>
       <p className='center'>sponsored links</p>
-      <ins
-        className='adsbygoogle center'
-        style={display: 'block', backgroundColor: 'white'}
-        data-ad-client={@props.client}
-        data-ad-slot={@props.slot}
-        data-ad-format='auto'
+      <GoogleAdsenseIns
+        client={@props.client}
+        slot={@props.slot}
+        className='center'
+        style={display: 'block'}
+        format='auto'
       />
     </div>
 
-GoogleAdsense.propTypes =
+ResponsiveAdsense.propTypes =
   client: React.PropTypes.string.isRequired
   slot: React.PropTypes.string.isRequired
