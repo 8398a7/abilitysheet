@@ -1,5 +1,4 @@
 class LogsController < ApplicationController
-  # before_action :scores_exists?, only: %w(manager iidxme)
   before_action :special_user!, only: %w(update_official)
   before_action :load_user, only: %w(sheet list show)
 
