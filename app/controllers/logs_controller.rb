@@ -1,5 +1,4 @@
 class LogsController < ApplicationController
-  # before_action :scores_exists?, only: %w(manager iidxme)
   before_action :special_user!, only: %w(update_official)
   before_action :load_user, only: %w(sheet list show)
 
@@ -21,6 +20,7 @@ class LogsController < ApplicationController
     @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
     @id = @user.id
+    @title = 'クリア推移表'
   end
 
   def list

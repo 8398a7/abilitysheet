@@ -1,4 +1,8 @@
-- @title = 'クリア推移表'
+h2 = fa_icon 'calendar-check-o', text: @title
+hr
+- unless user_signed_in? && current_user.special?
+  = rectangle_adsense
+  hr
 table.datatable
   thead
     th TITLE
@@ -11,7 +15,7 @@ table.datatable
   tbody
     - @sheets.each do |s|
       - logs = s.logs.where(user_id: @id)
-      - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.present?
+      - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.where('pre_state != new_state').present?
       - logs = logs.order(:created_date)
       - hash = {}
       - 4.downto(0).each do |state|
