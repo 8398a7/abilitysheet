@@ -2,6 +2,12 @@ class @GoogleAdsenseIns extends React.Component
   constructor: (props) ->
     super
 
+  componentDidMount: ->
+    @pushAd()
+
+  pushAd: ->
+    (adsbygoogle = window.adsbygoogle || []).push {}
+
   render: ->
     style = $.extend true, {}, @props.style
     style['backgroundColor'] = 'white'

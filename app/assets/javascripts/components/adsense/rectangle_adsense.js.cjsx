@@ -2,9 +2,6 @@ class @RectangleAdsense extends React.Component
   constructor: (props) ->
     super
 
-  componentDidMount: ->
-    (adsbygoogle = window.adsbygoogle || []).push {}
-
   renderSecondRectangle: ->
     return null if @props.mobile
     <GoogleAdsenseIns
