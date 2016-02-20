@@ -16,7 +16,14 @@ class @Footer extends React.Component
     now = new Date()
     year = now.getFullYear()
     <div className='footer'>
-      {<ResponsiveAdsense client='ca-pub-5751776715932993' slot='6480128066' /> if @state.renderAds}
+      {
+        <RectangleAdsense
+          client='ca-pub-5751776715932993'
+          slot='9876188066'
+          slot2='6503919265'
+          mobile={@props.mobile}
+        /> if @state.renderAds
+      }
       <div className='relative'>
         <div className='uk-panel panel-default'>
           <span className='left-position'>
@@ -29,3 +36,6 @@ class @Footer extends React.Component
         </div>
       </div>
     </div>
+
+Footer.propTypes =
+  mobile: React.PropTypes.bool.isRequired
