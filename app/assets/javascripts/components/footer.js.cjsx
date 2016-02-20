@@ -24,6 +24,7 @@ class @Footer extends React.Component
           mobile={@props.mobile}
         /> if @state.renderAds
       }
+      <div style={display: 'none'}><ResponsiveAdsense client='a' slot='b' /></div>
       <div className='relative'>
         <div className='uk-panel panel-default'>
           <span className='left-position'>
