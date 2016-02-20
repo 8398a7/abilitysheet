@@ -5,6 +5,10 @@ class @GoogleAdsenseIns extends React.Component
   componentDidMount: ->
     @pushAd()
 
+  componentDidUpdate: ->
+    try
+      @pushAd()
+
   pushAd: ->
     (adsbygoogle = window.adsbygoogle || []).push {}
 
