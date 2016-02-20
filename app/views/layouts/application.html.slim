@@ -78,7 +78,7 @@ html
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
 
-    = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
+    = react_component 'Footer', { mobile: mobile? }, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
 
 - if notice
   javascript:
