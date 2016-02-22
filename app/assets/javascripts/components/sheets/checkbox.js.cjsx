@@ -40,12 +40,35 @@ class @Checkbox extends React.Component
       </label>
     dom
 
+  onChangeLamp: (e) =>
+    if e.target.checked
+      $(".state-#{e.target.value}").show()
+    else
+      $(".state-#{e.target.value}").hide()
+    Sheet.state_counter @props.sheetType
+
+  renderLampCheckbox: ->
+    dom = []
+    key = 0
+    for lamp in @props.lamp
+      dom.push <label key={'lamp-checkbox-' + key}>
+          <input type='checkbox' value={key++} name='lamp-check' defaultChecked=true onChange={@onChangeLamp} />
+          {lamp}
+        </label>
+    dom
+
   render: ->
-    <div className='version-checkbox'>
-      {@renderVersionCheckbox()}
+    <div className='checkbox'>
+      <div className='version-checkbox'>
+        {@renderVersionCheckbox()}
+      </div>
+      <div className='lamp-checkbox'>
+        {@renderLampCheckbox()}
+      </div>
     </div>
 
 Checkbox.propTypes =
   versions: React.PropTypes.array.isRequired
   reverseSheet: React.PropTypes.bool.isRequired
   sheetType: React.PropTypes.number.isRequired
+  lamp: React.PropTypes.array.isRequired
