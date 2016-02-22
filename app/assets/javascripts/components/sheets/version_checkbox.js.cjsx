@@ -54,3 +54,4 @@ class @VersionCheckbox extends React.Component
 VersionCheckbox.propTypes =
   versions: React.PropTypes.array.isRequired
   stateCounter: React.PropTypes.func.isRequired
+  reverseSheet: React.PropTypes.bool.isRequired
