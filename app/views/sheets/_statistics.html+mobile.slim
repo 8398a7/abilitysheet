@@ -1,4 +1,4 @@
-= react_component 'Checkbox', versions: @versions, reverse_sheet: params['reverse_sheet'] ? true : false
+= react_component 'Checkbox', versions: @versions, reverse_sheet: params['reverse_sheet'] ? true : false, sheet_type: @sheet_type
 
 .uk-overflow-container
   table.uk-table.uk-table-bordered align='center'
@@ -22,14 +22,3 @@
       td bgcolor='#ffffff' N
       td.statistic#n
       td#per bgcolor='#7fffd4'
-
-javascript:
-  state = "#{params['reverse_sheet']}"
-coffee:
-  @reverse = ->
-    url = location.href
-    if state is 'true'
-      url = url.split('?')[0]
-      location.href = url
-    else
-      location.href = url + '?reverse_sheet=true'

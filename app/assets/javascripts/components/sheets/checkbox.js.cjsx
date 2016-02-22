@@ -7,7 +7,11 @@ class @Checkbox extends React.Component
       $(".#{e.target.value}").show()
     else
       $(".#{e.target.value}").hide()
-    Sheet.state_counter()
+    if e.target.value is '0'
+      $('input[name="version-check"]').prop 'checked', e.target.checked
+      for obj in $('input[name="version-check"]')
+        Sheet.music_change obj
+    Sheet.state_counter @props.sheetType
 
   onChangeReverse: =>
     params = getQueryParams location.search
@@ -19,12 +23,15 @@ class @Checkbox extends React.Component
       params.reverse_sheet = true
       location.href = mergeQueryParams url, params
 
+  componentDidMount: ->
+    Sheet.state_counter @props.sheetType
+
   renderVersionCheckbox: ->
     dom = []
     key = 1
     for version in @props.versions
       dom.push <label key={'version-checkbox-' + key++}>
-          <input type='checkbox' value={version[1]} name='check' defaultChecked=true onChange={@onChangeVersion} />
+          <input type='checkbox' value={version[1]} name='version-check' defaultChecked=true onChange={@onChangeVersion} />
           {version[0]}
         </label>
     dom.push <label key={'version-checkbox-' + key}>
@@ -41,3 +48,4 @@ class @Checkbox extends React.Component
 Checkbox.propTypes =
   versions: React.PropTypes.array.isRequired
   reverseSheet: React.PropTypes.bool.isRequired
+  sheetType: React.PropTypes.number.isRequired
