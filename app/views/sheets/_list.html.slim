@@ -9,7 +9,7 @@ table.uk-table.uk-table-bordered
     - @power.each do |title, ab|
       tr
         - if cnt < @sheets.size && return_ability(cnt) == ab
-          th colspan=5 height=10 bgcolor="#f5deb3"
+          th colspan=5 height=10 bgcolor='#f5deb3'
             center = title
       - while cnt < @sheets.size && return_ability(cnt) == ab
         tr
@@ -17,18 +17,6 @@ table.uk-table.uk-table-bordered
           - if @sheets.size <= cnt || return_ability(cnt) != ab
             - break
           - s = @sheets[cnt]
-          td width=width height=height align='center' bgcolor=@color[s.id] class=s.version name='music'
+          td width=width height=height align='center' bgcolor=@color[s.id] class="#{s.version} state-#{Static::COLOR.index(@color[s.id])}" name='music'
             = link_to_if signed_in && current_user.iidxid == params[:iidxid], s.title, edit_score_path(s.id), remote: true, class: 'music_link'
           - cnt += 1
-
-javascript:
-  sheet_type = parseInt("#{@sheet_type}")
-
-coffee:
-  $('input[name="check"]').click ->
-    if @value is '0'
-      $('input[name="check"]').prop 'checked', @checked
-      for obj in $('input[name="check"]')
-        Sheet.music_change obj
-    Sheet.music_change @
-  Sheet.state_counter sheet_type

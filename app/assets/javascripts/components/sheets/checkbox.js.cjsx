@@ -1,12 +1,8 @@
-@Sheet =
-  music_change: (obj) ->
-    if obj.checked
-      $(".#{obj.value}").show()
-    else
-      $(".#{obj.value}").hide()
-    @state_counter()
+class @Checkbox extends React.Component
+  constructor: (props) ->
+    super
 
-  state_counter: (sheet_type) ->
+  stateCounter: =>
     tds = $('td[name="music"]')
     all = fc = exh = h = c = e = a = f = 0
 
@@ -31,7 +27,7 @@
     $('td#n').text(n)
     per = 0
     remain = ''
-    if sheet_type is 0
+    if @props.sheetType is 0
       per = fc + exh + h + c + e
       remain = "(未クリア#{a + f + n})"
     else
@@ -39,3 +35,28 @@
       remain = "(未難#{c + e + a + f + n})"
     $('td#per').text("(#{per}/#{all})")
     $('#remain').text(remain)
+
+  onChangeReverse: =>
+    params = getQueryParams location.search
+    url = location.origin + location.pathname
+    if @props.reverseSheet is true
+      delete params.reverse_sheet
+      location.href = mergeQueryParams url, params
+    else
+      params.reverse_sheet = true
+      location.href = mergeQueryParams url, params
+
+  componentDidMount: ->
+    @stateCounter()
+
+  render: ->
+    <div className='checkbox'>
+      <VersionCheckbox versions={@props.versions} stateCounter={@stateCounter} />
+      <LampCheckbox lamp={@props.lamp} stateCounter={@stateCounter} />
+    </div>
+
+Checkbox.propTypes =
+  versions: React.PropTypes.array.isRequired
+  reverseSheet: React.PropTypes.bool.isRequired
+  sheetType: React.PropTypes.number.isRequired
+  lamp: React.PropTypes.array.isRequired
