@@ -1,8 +1,0 @@
-.checkbox
-  - @versions.each do |v|
-    label
-      input type='checkbox' value=v[1] name='check' checked=true
-        = v[0]
-  label
-    input type='checkbox' value='0' name='reverse' checked=params['reverse_sheet'] onchange='reverse()'
-      | 逆順表示
