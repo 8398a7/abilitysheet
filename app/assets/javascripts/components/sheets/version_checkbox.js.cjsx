@@ -15,6 +15,16 @@ class @VersionCheckbox extends React.Component
         @onChangeVersion tmp
     @props.stateCounter()
 
+  onChangeReverse: =>
+    params = getQueryParams location.search
+    url = location.origin + location.pathname
+    if @props.reverseSheet is true
+      delete params.reverse_sheet
+      location.href = mergeQueryParams url, params
+    else
+      params.reverse_sheet = true
+      location.href = mergeQueryParams url, params
+
   renderVersionCheckbox: ->
     dom = []
     key = 1
