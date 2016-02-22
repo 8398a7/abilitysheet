@@ -18,6 +18,6 @@ hr
               - break
             - s = @sheets[cnt]
             tr
-              td colspan=8 align='center' bgcolor=@color[s.id] class="#{s.version} #{@color[s.id]}" name='music'
+              td colspan=8 align='center' bgcolor=@color[s.id] class="#{s.version} state-#{Static::COLOR.index(@color[s.id])}" name='music'
                 = link_to_if signed_in && current_user.iidxid == params[:iidxid], s.title, edit_score_path(s.id), remote: true, class: 'music_link'
             - cnt += 1
