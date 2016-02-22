@@ -2,7 +2,7 @@ class @Checkbox extends React.Component
   constructor: (props) ->
     super
 
-  state_counter: (sheet_type) ->
+  stateCounter: =>
     tds = $('td[name="music"]')
     all = fc = exh = h = c = e = a = f = 0
 
@@ -27,7 +27,7 @@ class @Checkbox extends React.Component
     $('td#n').text(n)
     per = 0
     remain = ''
-    if sheet_type is 0
+    if @props.sheetType is 0
       per = fc + exh + h + c + e
       remain = "(未クリア#{a + f + n})"
     else
@@ -35,19 +35,6 @@ class @Checkbox extends React.Component
       remain = "(未難#{c + e + a + f + n})"
     $('td#per').text("(#{per}/#{all})")
     $('#remain').text(remain)
-
-  onChangeVersion: (e) =>
-    if e.target.checked
-      $(".#{e.target.value}").show()
-    else
-      $(".#{e.target.value}").hide()
-    if e.target.value is '0'
-      $('input[name="version-check"]').prop 'checked', e.target.checked
-      for obj in $('input[name="version-check"]')
-        tmp = {}
-        tmp.target = obj
-        @onChangeVersion tmp
-    @state_counter @props.sheetType
 
   onChangeReverse: =>
     params = getQueryParams location.search
@@ -60,71 +47,12 @@ class @Checkbox extends React.Component
       location.href = mergeQueryParams url, params
 
   componentDidMount: ->
-    @state_counter @props.sheetType
-
-  renderVersionCheckbox: ->
-    dom = []
-    key = 1
-    for version in @props.versions
-      dom.push <label key={'version-checkbox-' + key++}>
-          <input type='checkbox' value={version[1]} name='version-check' defaultChecked=true onChange={@onChangeVersion} />
-          {version[0]}
-        </label>
-    dom.push <label key={'version-checkbox-' + key}>
-        <input type='checkbox' value='0' name='reverse' checked={@props.reverseSheet} onChange={@onChangeReverse} />
-        逆順表示
-      </label>
-    dom
-
-  onChangeLamp: (e) =>
-    if e.target.checked
-      $(".state-#{e.target.value}").show()
-    else
-      $(".state-#{e.target.value}").hide()
-    if e.target.value is '8' and e.target.checked
-      $('input[name="lamp-check"]').prop 'checked', false
-      for num in [3..7]
-        $("input[id=\"state-#{num}\"]").prop 'checked', true
-      for obj in $('input[name="lamp-check"]')
-        tmp = {}
-        tmp.target = obj
-        @onChangeLamp tmp
-    if e.target.value is '9' and e.target.checked
-      $('input[name="lamp-check"]').prop 'checked', false
-      for num in [5..7]
-        $("input[id=\"state-#{num}\"]").prop 'checked', true
-      for obj in $('input[name="lamp-check"]')
-        tmp = {}
-        tmp.target = obj
-        @onChangeLamp tmp
-    @state_counter @props.sheetType
-
-  renderLampCheckbox: ->
-    dom = []
-    key = 0
-    for lamp in @props.lamp
-      dom.push <label key={'lamp-checkbox-' + key}>
-          <input id={'state-' + key} type='checkbox' value={key++} name='lamp-check' defaultChecked=true onChange={@onChangeLamp} />
-          {lamp}
-        </label>
-    dom.push <label key={'lamp-checkbox-' + key}>
-        <input type='checkbox' value={key++} name='remain-lamp-check' defaultChecked=false onChange={@onChangeLamp} />
-        未難
-      </label>
-    dom.push <label key={'lamp-checkbox-' + key}>
-        <input type='checkbox' value={key++} name='remain-lamp-check' defaultChecked=false onChange={@onChangeLamp} />
-        未クリア
-      </label>
-    dom
+    @stateCounter()
 
   render: ->
     <div className='checkbox'>
-      <div className='version-checkbox'>
-        {@renderVersionCheckbox()}
-      </div>
-      <div className='lamp-checkbox'>
-        {@renderLampCheckbox()}
-      </div>
+      <VersionCheckbox versions={@props.versions} stateCounter={@stateCounter} />
+      <LampCheckbox lamp={@props.lamp} stateCounter={@stateCounter} />
     </div>
 
 Checkbox.propTypes =
