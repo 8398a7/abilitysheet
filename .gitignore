@@ -30,3 +30,4 @@
 /vendor/assets/bower_components
 data.yml
 /node_modules/*
+npm-debug.log
