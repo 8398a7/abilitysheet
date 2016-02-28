@@ -18,7 +18,7 @@
       .uk-form-row
         label.uk-form-label 日付
         .uk-form-controls
-          = f.text_field :created_date, id: 'datepicker'
+          = f.text_field :created_date, id: 'datepicker', readonly: true
       hr
       button.uk-button.uk-button-primary type='submit'
         = fa_icon 'refresh', text: '更新'
