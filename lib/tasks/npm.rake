@@ -14,13 +14,13 @@ namespace :npm do
     Rails.root.to_s + '/node_modules'
   end
 
-  def resolve_asset_paths
+  def resolve_asset_paths(root_directory = components_directory)
     Dir["#{components_directory}/**/*.css"].each do |filename|
       contents = File.read(filename) if FileTest.file?(filename)
       url_regex = /url\((?!\#)\s*['"]?(?![a-z]+:)([^'"\)]*)['"]?\s*\)/
 
       next unless contents =~ url_regex
-      directory_path = Pathname.new(File.dirname(filename))
+      directory_path = Pathname.new(File.dirname(filename)).relative_path_from(Pathname.new(root_directory))
 
       new_contents = contents.gsub(url_regex) do |match|
         relative_path = Regexp.last_match[1]
