@@ -4,7 +4,6 @@ ruby '2.3.0'
 # a,b,c,d,e,f,g {{{
 gem 'airbrake'
 gem 'aws-sdk'
-gem 'bower-rails'
 gem 'capistrano-slackify', require: false
 gem 'coffee-rails'
 gem 'devise'
