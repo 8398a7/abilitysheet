@@ -1,11 +1,7 @@
 {
   "name": "abilitysheet",
-  "version": "1.0.0",
-  "description": "## Status",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "2.0.0",
+  "description": "This app is ability sheet for beatmania iidx music of level 12. ",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/8398a7/abilitysheet.git"
