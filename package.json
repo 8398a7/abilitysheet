@@ -1,0 +1,27 @@
+{
+  "name": "abilitysheet",
+  "version": "2.0.0",
+  "description": "This app is ability sheet for beatmania iidx music of level 12. ",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8398a7/abilitysheet.git"
+  },
+  "author": "8398a7",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/8398a7/abilitysheet/issues"
+  },
+  "homepage": "https://github.com/8398a7/abilitysheet#readme",
+  "dependencies": {
+    "airbrake-js": "^0.5.8",
+    "datatables": "^1.10.9",
+    "eventemitter2": "^1.0.0",
+    "flux": "^2.1.1",
+    "html2canvas": "^0.5.0-beta4",
+    "jquery-ui": "^1.12.0-beta.1",
+    "nprogress": "^0.2.0",
+    "react": "^0.14.7",
+    "select2": "^4.0.2-rc.1",
+    "uikit": "^2.25.0"
+  }
+}

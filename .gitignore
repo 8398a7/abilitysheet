@@ -29,3 +29,4 @@
 .DS_Store
 /vendor/assets/bower_components
 data.yml
+/node_modules/*

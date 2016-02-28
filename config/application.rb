@@ -38,7 +38,7 @@ module Abilitysheet
     # test_framework
     config.generators.test_framework = 'rspec'
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths << Rails.root.join('node_modules')
     SLACK_URI = URI.parse(ENV['NOTIFY_SLACK_URL']) if ENV['NOTIFY_SLACK_URL']
 
     config.react.camelize_props = true
