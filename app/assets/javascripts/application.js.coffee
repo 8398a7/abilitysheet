@@ -1,5 +1,6 @@
 #= require jquery/dist/jquery
 #= require jquery-ui/datepicker
+#= require jquery-ui/ui/i18n/datepicker-ja
 #= require jquery_ujs
 #= require peek
 #= require peek/views/performance_bar
