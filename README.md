@@ -37,6 +37,8 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 - ruby 2.3.0
 - rails 4.2.5.1
+- node 5.6.0
+- npm 3.6.0
 
 ## Setting
 
