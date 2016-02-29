@@ -35,5 +35,6 @@ module Abilitysheet::V1
     mount Users
     mount Scores
     mount Messages
+    mount Logs
   end
 end
