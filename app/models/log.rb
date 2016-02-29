@@ -63,4 +63,12 @@ class Log < ActiveRecord::Base
       created_date: Date.today
     )
   end
+
+  def schema
+    {
+      state: new_state,
+      title: title,
+      created_date: created_date
+    }
+  end
 end

@@ -19,4 +19,5 @@
       - unless user_signed_in? && current_user.special?
         = rectangle_adsense
         hr
+      = react_component 'LogCalendar', iidxid: params[:id]
       #logs = render partial: 'logs/logs'

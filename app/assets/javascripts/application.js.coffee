@@ -1,7 +1,12 @@
 #= require jquery/dist/jquery
+#= require qtip2/dist/jquery.qtip
 #= require jquery-ui/ui/widgets/datepicker
 #= require jquery-ui/ui/i18n/datepicker-ja
 #= require jquery_ujs
+#= require moment/moment
+#= require moment/locale/ja
+#= require fullcalendar/dist/fullcalendar
+#= require fullcalendar/dist/lang/ja
 #= require peek
 #= require peek/views/performance_bar
 #= require peek/views/rblineprof
@@ -11,6 +16,7 @@
 #= require html2canvas/dist/html2canvas
 #= require uikit/dist/js/uikit.min
 #= require uikit/dist/js/components/notify.min
+#= require uikit/dist/js/components/accordion.min
 #= require select2/dist/js/select2.min
 #= require highcharts/highcharts-more
 #= require nprogress/nprogress
