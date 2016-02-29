@@ -8,7 +8,6 @@ p
     | &nbsp;>&nbsp;
     = link_to @next_update, logs_path(params[:id], @next_update)
 
-
 - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
   p style='margin-bottom: 0px' 削除ボタン
   = react_component 'DestroyButtonDisplayToggle'
@@ -17,6 +16,8 @@ hr
 - unless user_signed_in? && current_user.special?
   = rectangle_adsense
   hr
+
+= react_component 'LogCalendar'
 
 form.uk-form
   table.uk-table.datatable
