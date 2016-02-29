@@ -21,7 +21,6 @@ class Log < ActiveRecord::Base
   delegate :title, to: :sheet
 
   include Graph
-  include Log::API
 
   def self.prev_next(user_id, date)
     p = where(user_id: user_id).order(created_date: :desc).find_by('created_date < ?', date).try(:created_date)
@@ -63,5 +62,14 @@ class Log < ActiveRecord::Base
       version: Abilitysheet::Application.config.iidx_version,
       created_date: Date.today
     )
+  end
+
+  def schema
+    {
+      id: id,
+      state: new_state,
+      title: title,
+      created_date: created_date
+    }
   end
 end
