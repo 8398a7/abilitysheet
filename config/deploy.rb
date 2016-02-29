@@ -9,7 +9,7 @@ set :format, :pretty
 set :log_level, :warn
 set :pty, true
 set :linked_files, fetch(:linked_files, []).push('.env')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle', 'node_modules')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle')
 set :keep_releases, 5
 
 set :default_env, path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'
@@ -39,8 +39,8 @@ namespace :deploy do
   after :publishing, :restart
 end
 
-namespace :bower do
-  desc 'Install bower'
+namespace :npm do
+  desc 'Install npm'
   task :install do
     on roles(:web) do
       within release_path do
@@ -49,4 +49,4 @@ namespace :bower do
     end
   end
 end
-before 'deploy:compile_assets', 'bower:install'
+before 'deploy:compile_assets', 'npm:install'
