@@ -66,7 +66,6 @@ class Log < ActiveRecord::Base
 
   def schema
     {
-      id: id,
       state: new_state,
       title: title,
       created_date: created_date
