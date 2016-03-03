@@ -1,5 +1,5 @@
 describe Scrape::IIDXME do
-  let(:user) { create(:user, id: 1, iidxid: iidxid) }
+  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 2, iidxid: iidxid) }
 
   context 'real' do
     let(:iidxme) { Scrape::IIDXME.new }
@@ -11,10 +11,15 @@ describe Scrape::IIDXME do
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
         expect(Score.find(1).bp).to eq nil
+        expect(user.grade).to eq 2
+        expect(user.djname).to eq 'TEST'
         expect(iidxme.async(user.iidxid)).to be_truthy
         expect(Score.find(1).state).not_to eq 7
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
+        user.reload
+        expect(user.grade).to eq 0
+        expect(user.djname).to eq 'HUSL1L'
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
