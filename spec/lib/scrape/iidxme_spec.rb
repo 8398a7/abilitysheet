@@ -8,13 +8,16 @@ describe Scrape::IIDXME do
       it '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
+        user.update!(grade: 2)
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
         expect(Score.find(1).bp).to eq nil
+        expect(User.find(1).grade).to eq 2
         expect(iidxme.async(user.iidxid)).to be_truthy
         expect(Score.find(1).state).not_to eq 7
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
+        expect(User.find(1).grade).to eq 0
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }

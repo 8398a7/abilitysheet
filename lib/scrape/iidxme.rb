@@ -1,5 +1,7 @@
 module Scrape
   class IIDXME
+    GRADE_MAX = 20
+
     def initialize
       @agent = Mechanize.new
     end
@@ -14,8 +16,9 @@ module Scrape
       return false unless User.exists?(iidxid: iidxid)
       elems = data_get(iidxid)
       return false unless elems
-      user_id = User.find_by(iidxid: iidxid).id
-      Score.iidxme_async(user_id, elems['musicdata'])
+      user = User.find_by(iidxid: iidxid)
+      user.update!(grade: (elems['userdata']['spclass'] - GRADE_MAX).abs)
+      Score.iidxme_async(user.id, elems['musicdata'])
     end
 
     def search_api
