@@ -61,9 +61,9 @@ class RivalsController < ApplicationController
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
     @power = Static::POWER.dup
-    s = User.find_by(iidxid: params[:id]).scores
+    s = User.find_by(iidxid: params[:id]).scores.is_current_version
     @rival_color = Score.convert_color(s)
-    s = User.find_by(id: current_user.id).scores
+    s = User.find_by(id: current_user.id).scores.is_current_version
     @my_color = Score.convert_color(s)
     @list_color = Static::COLOR
   end
