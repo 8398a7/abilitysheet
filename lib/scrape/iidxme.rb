@@ -17,7 +17,7 @@ module Scrape
       elems = data_get(iidxid)
       return false unless elems
       user = User.find_by(iidxid: iidxid)
-      user.update!(grade: (elems['userdata']['spclass'] - GRADE_MAX).abs)
+      user.update!(djname: elems['userdata']['djname'], grade: (elems['userdata']['spclass'] - GRADE_MAX).abs)
       Score.iidxme_async(user.id, elems['musicdata'])
     end
 
