@@ -8,4 +8,8 @@ class UsersController < ApplicationController
       @users = User.recent200.deep_symbolize_keys
     end
   end
+
+  def show
+    @user = User.find_by(iidxid: params[:id])
+  end
 end

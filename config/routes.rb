@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # all visitor
   root 'welcomes#index'
-  resources :users, only: [:index]
+  resources :users, only: %i(index show)
   resources :messages, only: [:new, :create]
 
   # admin
