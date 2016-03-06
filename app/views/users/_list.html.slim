@@ -7,30 +7,18 @@ table.datatable
     th.center 最終更新日
     th.center 最終更新楽曲
     th.center ランプ情報
-    - if user_signed_in?
-      th.center ライバル情報
   tbody
     - @users.each_key do |key|
       - user = @users[key]
       - iidxid = user[:iidxid]
       tr
-        td.center = link_to user[:djname], sheet_path(iidxid: iidxid, type: 'hard')
+        td.center = link_to user[:djname], user_path(iidxid)
         td.center = iidxid
         td.center bgcolor=User::Static::GRADE_COLOR[user[:grade].to_i] = User::Static::GRADE[user[:grade].to_i]
         td.center = User::Static::PREF[user[:pref].to_i]
         td.center = link_to user[:updated_at], logs_path(iidxid, user[:updated_at])
         td.center = user[:title]
         td.center bgcolor=Static::COLOR[user[:state].to_i]
-        - if user_signed_in?
-          td
-            - if current_user.following?(user[:id].to_i)
-              = link_to 'ライバル比較', clear_rival_path(iidxid)
-              | &nbsp;|&nbsp;
-              = link_to 'ライバルを外す', remove_rival_path(iidxid), method: :post, remote: true
-            - elsif current_user.iidxid != iidxid
-              = link_to 'ライバル比較', clear_rival_path(iidxid)
-              | &nbsp;|&nbsp;
-              = link_to 'ライバルにする', register_rival_path(iidxid), method: :post, remote: true
 coffee:
   grade_sort = {
     '皆伝': 0

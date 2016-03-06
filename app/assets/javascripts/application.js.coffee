@@ -5,6 +5,8 @@
 #= require jquery_ujs
 #= require moment/moment
 #= require moment/locale/ja
+#= require d3/d3
+#= require cal-heatmap/cal-heatmap
 #= require fullcalendar/dist/fullcalendar
 #= require fullcalendar/dist/lang/ja
 #= require peek

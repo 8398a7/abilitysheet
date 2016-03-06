@@ -22,7 +22,13 @@ describe Abilitysheet::V1::Users, type: :request do
               id: Integer,
               iidxid: String,
               djname: String,
-              role: Integer
+              role: Integer,
+              follows: Array,
+              grade: Integer,
+              pref: Integer,
+              created_at: String,
+              followers: Array,
+              image_url: nil
             }
           }
         end
