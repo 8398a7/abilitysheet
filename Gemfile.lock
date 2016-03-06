@@ -46,13 +46,12 @@ GEM
       rake (~> 10.4)
     arel (6.0.3)
     ast (2.2.0)
-    atomic (1.1.99)
-    aws-sdk (2.2.22)
-      aws-sdk-resources (= 2.2.22)
-    aws-sdk-core (2.2.22)
+    aws-sdk (2.2.24)
+      aws-sdk-resources (= 2.2.24)
+    aws-sdk-core (2.2.24)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.22)
-      aws-sdk-core (= 2.2.22)
+    aws-sdk-resources (2.2.24)
+      aws-sdk-core (= 2.2.24)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -61,7 +60,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-    bcrypt (3.1.10)
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -120,6 +119,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
+    concurrent-ruby-ext (1.0.1)
+      concurrent-ruby (~> 1.0.1)
     connection_pool (2.2.0)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
@@ -195,7 +196,7 @@ GEM
     fog-atmos (0.1.0)
       fog-core
       fog-xml
-    fog-aws (0.9.0)
+    fog-aws (0.9.1)
       fog-core (~> 1.27)
       fog-json (~> 1.0)
       fog-xml (~> 0.1)
@@ -261,7 +262,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.6.0)
+    fog-vsphere (0.6.1)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -362,17 +363,20 @@ GEM
     orm_adapter (0.5.0)
     parser (2.3.0.6)
       ast (~> 2.2)
-    peek (0.1.10)
-      atomic (>= 1.0.0)
+    peek (0.2.0)
+      coffee-rails
+      concurrent-ruby (>= 0.9.0)
+      concurrent-ruby-ext (>= 0.9.0)
       railties (>= 3.0.0)
     peek-gc (0.0.2)
       peek
     peek-git (1.0.2)
       peek
-    peek-performance_bar (1.2.0)
+    peek-performance_bar (1.2.1)
       peek (>= 0.1.0)
-    peek-pg (1.1.0)
-      atomic (>= 1.0.0)
+    peek-pg (1.2.0)
+      concurrent-ruby
+      concurrent-ruby-ext
       peek
       pg
     peek-rblineprof (0.1.2)
@@ -518,7 +522,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sidekiq (4.1.0)
+    sidekiq (4.1.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
