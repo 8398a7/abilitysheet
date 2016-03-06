@@ -6,7 +6,16 @@ CarrierWave.configure do |config|
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory = 'abilitysheet'
-  config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/abilitysheet'
+  case Rails.env
+  when 'production'
+    config.fog_directory = 'abilitysheet'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/abilitysheet'
+  when 'development'
+    config.fog_directory = 'dev.abilitysheet'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/dev.abilitysheet'
+  when 'test'
+    config.fog_directory = 'test.abilitysheet'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/test.abilitysheet'
+  end
   config.fog_attributes = { 'Cache-Control' => 'public' }
 end
