@@ -1,3 +1,1 @@
-h2 users#show
-
-= react_component 'UserProfile', user: @user
+= react_component 'UserProfile', user: @user.schema, graphDom: high_chart('spline', @spline), mobile: mobile?

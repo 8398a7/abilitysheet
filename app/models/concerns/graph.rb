@@ -93,7 +93,7 @@ module Graph
         f.title(text: '未達成推移')
         f.chart(type: 'spline')
         f.xAxis(categories: category)
-        f.yAxis(allowDecimals: false, max: all_sheet.count, title: { text: '未達成数' })
+        f.yAxis(allowDecimals: false, min: 0, max: all_sheet.count, title: { text: '未達成数' })
         f.legend(layout: 'vertical', align: 'right', verticalAlign: 'middle', borderWidth: 0)
         f.series(name: '未クリア', data: cl_cnt, color: '#afeeee')
         f.series(name: '未難', data: hd_cnt, color: '#ff6347')

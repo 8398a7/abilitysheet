@@ -7,7 +7,13 @@ module User::API
         id: id,
         iidxid: iidxid,
         role: role,
-        djname: djname
+        djname: djname,
+        grade: grade,
+        pref: pref,
+        image_url: image.url,
+        created_at: created_at,
+        follows: following.pluck(:iidxid),
+        followers: followers.pluck(:iidxid)
       }
     end
   end
