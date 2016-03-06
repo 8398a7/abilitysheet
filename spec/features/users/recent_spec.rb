@@ -36,20 +36,4 @@ feature '最近更新したユーザ200人一覧' do
       expect(page).to have_content('Showing 1 to 1 of 1 entries')
     end
   end
-
-  context 'ログイン時' do
-    background do
-      login(user)
-      visit users_path
-    end
-    scenario 'ライバルのカラムが存在する' do
-      expect(page).to have_content('ライバル情報')
-    end
-  end
-
-  context '非ログイン時' do
-    scenario 'ライバルのカラムが存在しない' do
-      expect(page.has_content?('ライバル情報')).to eq false
-    end
-  end
 end
