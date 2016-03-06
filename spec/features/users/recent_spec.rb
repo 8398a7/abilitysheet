@@ -1,15 +1,17 @@
-feature '最近更新したユーザ200人一覧' do
-  given(:user) { create(:user, id: 1) }
+feature '最近更新したユーザ200人一覧', js: true do
   background do
-    create(:score, user_id: 1, sheet_id: 1)
+    create(:user, id: 1)
+    create(:sheet, id: 1)
+    create(:score, user_id: 1, sheet_id: 1, state: 5)
     visit users_path
+    wait_for_ajax
   end
 
-  context 'DJNAME検索時', js: true do
-    background do
-      wait_for_ajax
-      create(:user, id: 1)
-    end
+  scenario 'プロフィールページへのリンクが存在する' do
+    expect(page).to have_link('TEST')
+  end
+
+  context 'DJNAME検索時' do
     scenario '該当件数が0であること返す' do
       fill_in 'query', with: 'HOGE'
       click_button '検索'

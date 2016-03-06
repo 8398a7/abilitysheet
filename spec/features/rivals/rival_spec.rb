@@ -6,6 +6,12 @@ feature 'ライバル情報' do
     login(user)
   end
 
+  scenario 'プロフィールページへのリンクが存在する', js: true do
+    visit list_rival_path
+    wait_for_ajax
+    expect(page).to have_link('TEST')
+  end
+
   scenario '楽曲情報が正しくロードされている' do
     sync_sheet
     visit clear_rival_path(user.iidxid)
