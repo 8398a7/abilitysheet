@@ -12,12 +12,21 @@ module Scrape
 
     private
 
+    def download_profile_image(user)
+      User.find(user.id).remove_image!
+      open("http://iidx.me/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
+    end
+
     def process(iidxid)
       return false unless User.exists?(iidxid: iidxid)
       elems = data_get(iidxid)
       return false unless elems
       user = User.find_by(iidxid: iidxid)
-      user.update!(djname: elems['userdata']['djname'], grade: (elems['userdata']['spclass'] - GRADE_MAX).abs)
+      user.update!(
+        djname: elems['userdata']['djname'],
+        grade: (elems['userdata']['spclass'] - GRADE_MAX).abs,
+        image: download_profile_image(user)
+      )
       Score.iidxme_async(user.id, elems['musicdata'])
     end
 

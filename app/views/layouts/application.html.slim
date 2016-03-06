@@ -65,6 +65,9 @@ html
             li.uk-nav-header
               = fa_icon 'user fw', text: current_user.djname
             li
+              = link_to user_path(current_user.iidxid)
+                = fa_icon 'code fw', text: 'マイページ'
+            li
               = link_to edit_user_registration_path(current_user.id)
                 = fa_icon 'pencil fw', text: '設定'
             li

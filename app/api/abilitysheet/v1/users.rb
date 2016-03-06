@@ -16,6 +16,18 @@ module Abilitysheet::V1
         { users: User.select(:id).count }
       end
 
+      desc 'ライバル情報を変更'
+      params do
+        requires :iidxid, type: String, desc: 'iidxid'
+      end
+      put 'change_rival/:iidxid' do
+        authenticate!
+        target_user = User.find_by(iidxid: params[:iidxid])
+        error! '404 Not Found', 404 unless target_user
+        current_user.following?(target_user.id) ? current_user.unfollow(target_user.iidxid) : current_user.follow(target_user.iidxid)
+        { current_user: current_user.try(:schema), target_user: target_user.try(:schema) }
+      end
+
       desc 'score viewerのデータをimport'
       params do
         requires :id, type: String, desc: 'iidxid'

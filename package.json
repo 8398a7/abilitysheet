@@ -14,6 +14,7 @@
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
     "airbrake-js": "^0.5.8",
+    "cal-heatmap": "^3.5.4",
     "datatables": "^1.10.11",
     "eventemitter2": "^1.0.0",
     "flux": "^2.1.1",
