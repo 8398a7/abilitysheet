@@ -34,6 +34,7 @@ gem 'peek-rblineprof'
 gem 'pg'
 gem 'pry-rails'
 gem 'pry-byebug'
+gem 'puma'
 gem 'rack-contrib'
 gem 'rails'
 gem 'rails_admin'
@@ -47,8 +48,6 @@ gem 'sprockets-coffee-react'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
-gem 'unicorn'
-gem 'unicorn-worker-killer'
 # }}}
 # v,w,x,y,z {{{
 gem 'whenever', require: false
@@ -70,6 +69,7 @@ end
 
 group :deployment do
   gem 'capistrano-rails'
+  gem 'capistrano3-puma'
   gem 'capistrano-sidekiq'
   gem 'capistrano-faster-assets'
 end

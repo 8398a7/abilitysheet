@@ -30,10 +30,17 @@ set :slack_deploy_finished_color, 'good'
 set :slack_deploy_failed_color, 'danger'
 set :slack_url, ENV['NOTIFY_SLACK_URL']
 
+# puma settings
+set :puma_preload_app, true
+set :puma_init_active_record, true
+set :puma_threads, [8, 32]
+set :puma_workers, 3
+set :puma_worker_timeout, 15
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'puma:restart'
   end
 
   after :publishing, :restart
@@ -49,4 +56,5 @@ namespace :npm do
     end
   end
 end
+before 'puma:check', 'puma:config'
 before 'deploy:compile_assets', 'npm:install'
