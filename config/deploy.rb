@@ -35,6 +35,7 @@ set :puma_preload_app, true
 set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
+set :puma_worker_timeout, 15
 
 namespace :deploy do
   desc 'Restart application'
