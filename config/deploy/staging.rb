@@ -1,5 +1,5 @@
 set :stage, :staging
-set :branch, 'develop'
+set :branch, ENV['STAGING_BRANCH']
 set :rails_env, 'staging'
 set :migration_role, 'db'
 set :log_level, :info

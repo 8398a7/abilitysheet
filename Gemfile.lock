@@ -90,6 +90,9 @@ GEM
     capistrano-slackify (2.6.0)
       capistrano (>= 3.2.0)
       multi_json
+    capistrano3-puma (1.2.1)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -615,6 +618,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-sidekiq
   capistrano-slackify
+  capistrano3-puma
   capybara
   carrierwave
   codeclimate-test-reporter

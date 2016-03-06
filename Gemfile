@@ -69,6 +69,7 @@ end
 
 group :deployment do
   gem 'capistrano-rails'
+  gem 'capistrano3-puma'
   gem 'capistrano-sidekiq'
   gem 'capistrano-faster-assets'
 end
