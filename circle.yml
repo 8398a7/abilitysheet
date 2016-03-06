@@ -26,7 +26,7 @@ test:
   override:
     - bundle exec bin/rubocop_parallel
     - bundle exec rspec
-    - bundle exec pumactl start
+    - RAILS_ENV=production bundle exec pumactl start
 
 deployment:
   production:
