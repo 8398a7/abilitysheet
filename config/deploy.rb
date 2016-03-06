@@ -55,4 +55,5 @@ namespace :npm do
     end
   end
 end
+before 'puma:check', 'puma:config'
 before 'deploy:compile_assets', 'npm:install'
