@@ -6,8 +6,8 @@ class @RivalNumber extends React.Component
     <table style={margin: '0 auto', textAlign: 'center'}>
       <tbody>
         <tr>
-          <td><h2>{@props.user.follows.length}</h2></td>
-          <td><h2>{@props.user.followers.length}</h2></td>
+          <td><h2 id='rival-number'>{@props.user.follows.length}</h2></td>
+          <td><h2 id='reverse-rival-number'>{@props.user.followers.length}</h2></td>
         </tr>
         <tr>
           <td>ライバル</td>

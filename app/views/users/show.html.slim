@@ -1,1 +1,3 @@
-= react_component 'UserProfile', user: @user.schema, graphDom: high_chart('spline', @spline), mobile: mobile?
+- high_chart_dom = ''
+- high_chart_dom = high_chart('spline', @spline) if @spline
+= react_component 'UserProfile', { user: @user.schema, graphDom: high_chart_dom, mobile: mobile? }
