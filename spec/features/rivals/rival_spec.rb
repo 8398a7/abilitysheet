@@ -6,13 +6,6 @@ feature 'ライバル情報' do
     login(user)
   end
 
-  scenario 'ライバルリストページにライバル相手が存在し，詳細ページに遷移できる' do
-    visit list_rival_path
-    expect(page).to have_content('RIVALU')
-    click_link 'ライバル比較'
-    expect(page).to have_title('vs RIVALU')
-  end
-
   scenario '楽曲情報が正しくロードされている' do
     sync_sheet
     visit clear_rival_path(user.iidxid)
