@@ -53,7 +53,7 @@ class Log < ActiveRecord::Base
       log.update!(new_score: score_params['score'], new_bp: score_params['bp'])
       return true
     end
-    now_score = owner.scores.find_by(sheet_id: score_params['sheet_id'])
+    now_score = owner.scores.is_current_version.find_by(sheet_id: score_params['sheet_id'])
     pre_state = now_score.try(:state) || 7
     owner.logs.create(
       sheet_id: score_params['sheet_id'],
