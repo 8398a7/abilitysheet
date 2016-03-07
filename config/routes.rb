@@ -65,7 +65,16 @@ Rails.application.routes.draw do
   resources :recommends, only: :index
 
   # API
-  mount Abilitysheet::API => '/api'
+  namespace :api do
+    namespace :v1 do
+      get '/users/status' => 'users#status'
+      get '/users/me' => 'users#me'
+      get '/users/count' => 'users#count'
+      put '/users/change_rival/:iidxid' => 'users#change_rival'
+      post '/users/score_viewer' => 'users#score_viewer'
+    end
+  end
+  # mount Abilitysheet::API => '/api'
 
   # TODO: support 1 year(start: 15/12/20)
   get '/abilitysheet', to: 'welcomes#migrate_domain'
