@@ -9,10 +9,6 @@ class Api::V1::UsersController < Api::V1::BaseController
     render json: { current_user: current_user.try(:schema) }
   end
 
-  def count
-    render json: { users: User.select(:id).count }
-  end
-
   def change_rival
     target_user = User.find_by!(iidxid: params[:iidxid])
 

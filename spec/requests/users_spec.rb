@@ -140,29 +140,6 @@ describe Abilitysheet::V1::Users, type: :request do
     end
   end
 
-  describe 'GET /api/v1/users/count' do
-    describe '登録者数を返す' do
-      let(:url) { '/api/v1/users/count' }
-      let(:method) { 'get' }
-      context '0人の場合' do
-        let(:result) do
-          { users: 0 }
-        end
-        it_behaves_like '200 Success'
-      end
-      context '複数人の場合' do
-        before do
-          create(:user)
-          create(:user, iidxid: '1111-1111', djname: 'TEST2', username: 'test2')
-        end
-        let(:result) do
-          { users: 2 }
-        end
-        it_behaves_like '200 Success'
-      end
-    end
-  end
-
   describe 'POST /api/v1/users/score_viewer' do
     SHEET_NUM = 2
     let(:user) { create(:user, id: 1) }
