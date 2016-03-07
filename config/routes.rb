@@ -79,6 +79,8 @@ Rails.application.routes.draw do
       get '/logs/cal-heatmap/:iidxid' => 'logs#cal_heatmap'
       # statics
       resources :statics, only: :index
+      # sheets
+      resources :sheets, only: :index
     end
   end
   # mount Abilitysheet::API => '/api'

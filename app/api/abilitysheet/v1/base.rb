@@ -31,7 +31,6 @@ module Abilitysheet::V1
       # doorkeeper_authorize!
     end
 
-    mount Sheets
     mount Scores
   end
 end
