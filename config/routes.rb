@@ -69,9 +69,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/users/status' => 'users#status'
       get '/users/me' => 'users#me'
-      get '/users/count' => 'users#count'
       put '/users/change_rival/:iidxid' => 'users#change_rival'
       post '/users/score_viewer' => 'users#score_viewer'
+      resources :messages, only: :index
     end
   end
   # mount Abilitysheet::API => '/api'

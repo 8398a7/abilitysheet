@@ -14,6 +14,11 @@ class Api::ApiController < ApplicationController
     raise UnauthorizedError unless current_user
   end
 
+  def authenticate_member!
+    raise UnauthorizedError unless current_user
+    raise UnauthorizedError if current_user.role < User::Role::MEMBER
+  end
+
   private
 
   def render_503
