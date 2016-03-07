@@ -12,7 +12,7 @@ class Api::V1::UsersController < Api::V1::BaseController
   def change_rival
     target_user = User.find_by!(iidxid: params[:iidxid])
 
-    current_user.following?(target_user.id) ? current_user.unfollow(target_user.iidxid) : current_user.follow(target_user.iidxid)
+    current_user.change_follow(target_user)
     render json: { current_user: current_user.try(:schema), target_user: target_user.try(:schema) }
   end
 
