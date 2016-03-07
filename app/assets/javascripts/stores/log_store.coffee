@@ -1,5 +1,4 @@
 logs = {}
-id = 1
 
 @LogStore = new EventEmitter2()
 $.extend @LogStore,
@@ -21,5 +20,6 @@ $.extend @LogStore,
     when AbilitysheetConstants.RECEIVED_LOG_DATA
       for log in payload.logs
         logs[log.created_date] ||= []
+        continue unless logs[log.created_date].indexOf(log.title) is -1
         logs[log.created_date].push log.title
       LogStore.emitChange()
