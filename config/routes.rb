@@ -81,6 +81,8 @@ Rails.application.routes.draw do
       resources :statics, only: :index
       # sheets
       resources :sheets, only: :index
+      # scores
+      post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
     end
   end
   # mount Abilitysheet::API => '/api'
