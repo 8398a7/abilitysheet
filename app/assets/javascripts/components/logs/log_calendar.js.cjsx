@@ -36,6 +36,8 @@ class @LogCalendar extends React.Component
       @onClickPrevNext()
     $('.fc-next-button').on 'click', =>
       @onClickPrevNext()
+    $('.fc-today-button').on 'click', =>
+      @onClickPrevNext()
 
   onClickPrevNext: ->
     dates = $('.fc-left').text().replace(/年/g, '').replace('月', '').split(' ')
