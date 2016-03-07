@@ -8,7 +8,7 @@ class Api::ApiController < ApplicationController
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
   rescue_from Forbidden, with: :render_403
   rescue_from UnauthorizedError, with: :render_401
-  rescue_from BadRequest, JSON::ParserError, TypeError, with: :render_400
+  rescue_from BadRequest, JSON::ParserError, TypeError, ArgumentError, with: :render_400
 
   def authenticate!
     raise UnauthorizedError unless current_user
