@@ -33,6 +33,5 @@ module Abilitysheet::V1
 
     mount Sheets
     mount Scores
-    mount Statics
   end
 end

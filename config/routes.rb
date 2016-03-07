@@ -77,6 +77,8 @@ Rails.application.routes.draw do
       # logs
       get '/logs/:iidxid/:year/:month' => 'logs#full_calendar'
       get '/logs/cal-heatmap/:iidxid' => 'logs#cal_heatmap'
+      # statics
+      resources :statics, only: :index
     end
   end
   # mount Abilitysheet::API => '/api'
