@@ -65,7 +65,27 @@ Rails.application.routes.draw do
   resources :recommends, only: :index
 
   # API
-  mount Abilitysheet::API => '/api'
+  namespace :api do
+    namespace :v1 do
+      # users
+      get '/users/status' => 'users#status'
+      get '/users/me' => 'users#me'
+      put '/users/change_rival/:iidxid' => 'users#change_rival'
+      post '/users/score_viewer' => 'users#score_viewer'
+      # messages
+      resources :messages, only: :index
+      # logs
+      get '/logs/:iidxid/:year/:month' => 'logs#full_calendar'
+      get '/logs/cal-heatmap/:iidxid' => 'logs#cal_heatmap'
+      # statics
+      resources :statics, only: :index
+      # sheets
+      resources :sheets, only: :index
+      # scores
+      post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
+    end
+  end
+  # mount Abilitysheet::API => '/api'
 
   # TODO: support 1 year(start: 15/12/20)
   get '/abilitysheet', to: 'welcomes#migrate_domain'

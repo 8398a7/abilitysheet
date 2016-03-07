@@ -1,4 +1,4 @@
-describe Abilitysheet::V1::Logs, type: :request do
+describe Api::V1::LogsController, type: :request do
   include_context 'api'
 
   describe 'GET /api/v1/logs/1111-1111/2016/3' do

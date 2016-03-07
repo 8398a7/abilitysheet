@@ -3,4 +3,4 @@
     option =
       type: 'GET'
       callback: callback
-    AbilitysheetAPI.AjaxCall '/messages/number', option
+    AbilitysheetAPI.AjaxCall '/messages', option

@@ -1,6 +1,87 @@
-describe Abilitysheet::V1::Users, type: :request do
+describe Api::V1::UsersController, type: :request do
   include_context 'api'
   before { allow(SidekiqDispatcher).to receive(:exists?).and_return(true) }
+
+  describe 'PUT /api/v1/users/change_rival/:iidxid' do
+    before do
+      @user = create(:user)
+      @user2 = create(:user, username: 'user2', iidxid: '1111-1111')
+    end
+    describe 'ライバル情報を変更できる' do
+      let(:url) { "/api/v1/users/change_rival/#{@user2.iidxid}" }
+      let(:method) { 'put' }
+      context 'ログインしていない場合' do
+        it_behaves_like '401 Unauthorized'
+      end
+
+      context 'ログインしている場合' do
+        before { login(@user) }
+        context 'ライバルに追加する場合' do
+          let(:result) do
+            {
+              current_user: {
+                id: Integer,
+                iidxid: String,
+                djname: String,
+                role: Integer,
+                grade: Integer,
+                pref: Integer,
+                created_at: String,
+                follows: [@user2.iidxid],
+                followers: [],
+                image_url: nil
+              },
+              target_user: {
+                id: Integer,
+                iidxid: String,
+                djname: String,
+                role: Integer,
+                grade: Integer,
+                pref: Integer,
+                created_at: String,
+                follows: [],
+                followers: [@user.iidxid],
+                image_url: nil
+              }
+            }
+          end
+          it_behaves_like '200 Success'
+        end
+        context 'ライバルから削除する場合' do
+          before { @user.follow(@user2.iidxid) }
+          let(:result) do
+            {
+              current_user: {
+                id: Integer,
+                iidxid: String,
+                djname: String,
+                role: Integer,
+                grade: Integer,
+                pref: Integer,
+                created_at: String,
+                follows: [],
+                followers: [],
+                image_url: nil
+              },
+              target_user: {
+                id: Integer,
+                iidxid: String,
+                djname: String,
+                role: Integer,
+                grade: Integer,
+                pref: Integer,
+                created_at: String,
+                follows: [],
+                followers: [],
+                image_url: nil
+              }
+            }
+          end
+          it_behaves_like '200 Success'
+        end
+      end
+    end
+  end
 
   describe 'GET /api/v1/users/me' do
     before { create(:user) }
@@ -53,29 +134,6 @@ describe Abilitysheet::V1::Users, type: :request do
         before { login(User.first) }
         let(:result) do
           { status: User.first.iidxid }
-        end
-        it_behaves_like '200 Success'
-      end
-    end
-  end
-
-  describe 'GET /api/v1/users/count' do
-    describe '登録者数を返す' do
-      let(:url) { '/api/v1/users/count' }
-      let(:method) { 'get' }
-      context '0人の場合' do
-        let(:result) do
-          { users: 0 }
-        end
-        it_behaves_like '200 Success'
-      end
-      context '複数人の場合' do
-        before do
-          create(:user)
-          create(:user, iidxid: '1111-1111', djname: 'TEST2', username: 'test2')
-        end
-        let(:result) do
-          { users: 2 }
         end
         it_behaves_like '200 Success'
       end
@@ -254,6 +312,15 @@ describe Abilitysheet::V1::Users, type: :request do
           end
           it_behaves_like '400 Bad Request'
         end
+        context 'paramsにユーザ情報が存在していない場合' do
+          before { login(user) }
+          let(:parameters) do
+            {
+              'state' => '[{"id":"1","cl":1,"pg":1158,"g":373,"miss":6},{"id":"3","cl":6,"pg":1362,"g":584,"miss":83}]'
+            }
+          end
+          it_behaves_like '403 Forbidden'
+        end
         context '楽曲情報が存在していない場合' do
           let(:parameters) do
             {
@@ -263,7 +330,7 @@ describe Abilitysheet::V1::Users, type: :request do
           end
           it_behaves_like '404 Not Found'
         end
-        context 'パラメータに不足がある場合' do
+        context 'パラメータの一部に不足がある場合' do
           let(:parameters) do
             {
               'id' => user.iidxid,
