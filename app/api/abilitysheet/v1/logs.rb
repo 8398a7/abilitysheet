@@ -18,7 +18,7 @@ module Abilitysheet::V1
         end_date = start_date + 1.month
         logs = user.logs.where(created_date: start_date..end_date)
         ret = []
-        logs.each do |log|
+        logs.preload(:sheet).each do |log|
           ret.push(log.schema)
         end
         ret
