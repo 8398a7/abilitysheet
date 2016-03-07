@@ -1,6 +1,10 @@
 module User::FollowMethods
   extend ActiveSupport::Concern
   included do
+    def change_follow(target_user)
+      following?(target_user.id) ? unfollow(target_user.iidxid) : follow(target_user.iidxid)
+    end
+
     def following
       User.where(id: Follow.where(user_id: id).pluck(:target_user_id))
     end

@@ -1,4 +1,4 @@
-describe Abilitysheet::V1::Sheets, type: :request do
+describe Api::V1::SheetsController, type: :request do
   include_context 'api'
 
   describe 'GET /api/v1/sheets' do
