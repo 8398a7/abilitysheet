@@ -11,7 +11,6 @@ gem 'devise'
 gem 'doorkeeper'
 gem 'dotenv-rails'
 gem 'draper'
-gem 'fog'
 gem 'font-awesome-rails'
 gem 'google-analytics-rails'
 # }}}
