@@ -16,6 +16,21 @@
 #
 
 describe Log, type: :model do
+  describe '.cleanup!' do
+    before do
+      create(:user, id: 1)
+      create(:sheet, id: 1)
+      create(:log, id: 1, user_id: 1, sheet_id: 1, pre_bp: 22, new_bp: 25, pre_score: 140, new_score: 120, created_date: '2000-01-01')
+      create(:log, id: 2, user_id: 1, sheet_id: 1, pre_bp: 22, new_bp: 20, pre_score: 140, new_score: 140, created_date: '2000-01-02')
+      create(:log, id: 3, user_id: 1, sheet_id: 1, pre_bp: 22, new_bp: 15, pre_score: 140, new_score: 160, created_date: '2000-01-03')
+    end
+    it 'ログデータのスコアが正しい数値に整形される' do
+      User.find(1).logs.cleanup!(Abilitysheet::Application.config.iidx_version)
+      expect(Log.exists?(id: 1, pre_bp: 22, new_bp: 25, pre_score: 140, new_score: 120)).to eq true
+      expect(Log.exists?(id: 2, pre_bp: 25, new_bp: 20, pre_score: 120, new_score: 140)).to eq true
+      expect(Log.exists?(id: 3, pre_bp: 20, new_bp: 15, pre_score: 140, new_score: 160)).to eq true
+    end
+  end
   describe '.attributes' do
     before { create(:sheet, id: 1) }
     let(:parameter) do

@@ -64,6 +64,16 @@ class Log < ActiveRecord::Base
     )
   end
 
+  # Usage: User.first.logs.cleanup!(23)
+  def self.cleanup!(version)
+    logs = where(version: version)
+    Sheet.all.each do |sheet|
+      logs.where(sheet_id: sheet.id).order(:created_date).each_cons(2) do |p_log, n_log|
+        n_log.update!(pre_score: p_log.new_score, pre_bp: p_log.new_bp)
+      end
+    end
+  end
+
   def schema
     {
       state: new_state,
