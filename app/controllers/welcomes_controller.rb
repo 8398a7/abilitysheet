@@ -1,8 +1,6 @@
 class WelcomesController < ApplicationController
   def index
     @title = 'TOP'
-    @column = Graph::TOP_COLUMN
-    @spline = Graph::TOP_SPLINE
   end
 
   # TODO: support 1 year(start: 15/12/20)

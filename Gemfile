@@ -17,7 +17,6 @@ gem 'google-analytics-rails'
 # h,i,j,k,l,m,n {{{
 gem 'js-routes'
 gem 'kaminari'
-gem 'lazy_high_charts'
 gem 'mechanize'
 gem 'mini_magick'
 gem 'newrelic_rpm'
