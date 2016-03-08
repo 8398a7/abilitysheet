@@ -12,6 +12,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_scores_on_sheet_id    (sheet_id)
+#  index_scores_on_updated_at  (updated_at)
+#  index_scores_on_user_id     (user_id)
+#
 
 class Score < ActiveRecord::Base
   belongs_to :sheet

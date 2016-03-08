@@ -14,6 +14,11 @@
 #  version      :integer
 #  created_date :date
 #
+# Indexes
+#
+#  index_logs_on_sheet_id  (sheet_id)
+#  index_logs_on_user_id   (user_id)
+#
 
 class Log < ActiveRecord::Base
   belongs_to :user
