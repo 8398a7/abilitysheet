@@ -14,6 +14,11 @@
 #  version      :integer
 #  created_date :date
 #
+# Indexes
+#
+#  index_logs_on_sheet_id  (sheet_id)
+#  index_logs_on_user_id   (user_id)
+#
 
 class Log < ActiveRecord::Base
   belongs_to :user
@@ -62,6 +67,16 @@ class Log < ActiveRecord::Base
       version: Abilitysheet::Application.config.iidx_version,
       created_date: Date.today
     )
+  end
+
+  # Usage: User.first.logs.cleanup!(23)
+  def self.cleanup!(version)
+    logs = where(version: version)
+    Sheet.all.each do |sheet|
+      logs.where(sheet_id: sheet.id).order(:created_date).each_cons(2) do |p_log, n_log|
+        n_log.update!(pre_score: p_log.new_score, pre_bp: p_log.new_bp)
+      end
+    end
   end
 
   def schema
