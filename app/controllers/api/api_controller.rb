@@ -2,7 +2,7 @@ class UnauthorizedError < RuntimeError; end
 class Forbidden < RuntimeError; end
 class BadRequest < RuntimeError; end
 class ServiceUnavailable < RuntimeError; end
-class Api::ApiController < ApplicationController
+class Api::ApiController < ActionController::Base
   protect_from_forgery with: :null_session
 
   rescue_from ServiceUnavailable, with: :render_503
