@@ -51,7 +51,7 @@ namespace :npm do
   task :install do
     on roles(:web) do
       within release_path do
-        execute :rake, 'npm:install npm:resolve'
+        execute :rake, 'npm:install npm:resolve RAILS_ENV=production'
       end
     end
   end
