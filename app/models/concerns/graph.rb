@@ -24,7 +24,7 @@ module Graph
     def self.spline(start_month, end_month)
       between = create_between(start_month, end_month)
       st = order(:created_date).first.try(:created_date)
-      return [0, 0, 0, 0] unless st
+      return [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]] unless st
       all_sheet = Sheet.active
       fc_cnt = []
       exh_cnt = []
