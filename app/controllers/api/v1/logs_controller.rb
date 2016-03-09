@@ -12,4 +12,12 @@ class Api::V1::LogsController < Api::V1::BaseController
     logs = user.logs.where(created_date: params[:start]..params[:stop]).map { |c| c.created_date.to_time.to_i }
     render json: logs.each_with_object(Hash.new(0)) { |tm, h| h[tm] += 1 }
   end
+
+  def graph
+    user = User.find_by_iidxid!(params[:iidxid])
+    scores = user.scores.is_active.is_current_version
+    render json: {
+      pie: scores.pie
+    }
+  end
 end

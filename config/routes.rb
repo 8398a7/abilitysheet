@@ -204,6 +204,7 @@ Rails.application.routes.draw do
       # logs
       get '/logs/:iidxid/:year/:month' => 'logs#full_calendar'
       get '/logs/cal-heatmap/:iidxid' => 'logs#cal_heatmap'
+      get '/logs/:iidxid/graph' => 'logs#graph'
       # statics
       resources :statics, only: :index
       # sheets
