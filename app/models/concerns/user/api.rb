@@ -6,7 +6,7 @@ module User::API
       categories = logs.create_between(start_month, end_month).map { |b| (b[0] - 1.month).to_s.slice(0, 7) }
       column = logs.column(start_month, end_month)
       spline = logs.spline(start_month, end_month)
-      render json: {
+      {
         categories: categories,
         pie: scores.is_active.is_current_version.pie,
         column: column,

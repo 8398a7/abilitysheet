@@ -3,8 +3,8 @@ class SheetsController < ApplicationController
   before_action :detect_device_variant, only: :show
 
   def show
+    @user = User.find_by_iidxid!(params[:iidxid])
     unless params[:type] == 'power'
-      @user = User.find_by_iidxid!(params[:iidxid])
       load_sheet
       load_state_example
     end

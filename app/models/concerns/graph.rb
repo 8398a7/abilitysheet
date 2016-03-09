@@ -4,7 +4,6 @@ module Graph
   included do
     def self.column(start_month, end_month)
       between = create_between(start_month, end_month)
-      return false unless between
       category = []
       fc_count = []
       exh_count = []
@@ -24,7 +23,8 @@ module Graph
 
     def self.spline(start_month, end_month)
       between = create_between(start_month, end_month)
-      st = order(:created_date).first.created_date
+      st = order(:created_date).first.try(:created_date)
+      return [0, 0, 0, 0] unless st
       all_sheet = Sheet.active
       fc_cnt = []
       exh_cnt = []
