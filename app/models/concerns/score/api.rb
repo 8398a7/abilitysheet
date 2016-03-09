@@ -3,11 +3,7 @@ module Score::API
 
   included do
     def self.pie
-      pie = {}
-      (0..7).each do |state|
-        pie[Static::LAMP[state]] = where(state: state).count
-      end
-      pie
+      (0..7).each.map { |state| where(state: state).count }
     end
   end
 end

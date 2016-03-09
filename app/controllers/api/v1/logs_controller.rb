@@ -15,9 +15,18 @@ class Api::V1::LogsController < Api::V1::BaseController
 
   def graph
     user = User.find_by_iidxid!(params[:iidxid])
-    scores = user.scores.is_active.is_current_version
+    end_month = "#{params[:year]}-#{params[:month]}-01".to_date + 1.month
+    start_month = end_month - 2.months
+    categories = user.logs.create_between(start_month, end_month).map { |b| (b[0] - 1.month).to_s.slice(0, 7) }
+    column = user.logs.column(start_month, end_month)
+    spline = user.logs.spline(start_month, end_month)
     render json: {
-      pie: scores.pie
+      categories: categories,
+      pie: user.scores.is_active.is_current_version.pie,
+      column: column,
+      column_max: column.flatten.max,
+      spline: spline,
+      spline_max: spline.flatten.max
     }
   end
 end
