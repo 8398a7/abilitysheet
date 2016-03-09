@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
+  rescue_from ArgumentError, with: :render_400
+
   protected
 
   def peek_enabled?
@@ -16,13 +19,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def return_404
+  def render_400
+    render file: Rails.root.join('public', '400.html'), status: 400, layout: true, content_type: 'text/html'
+  end
+
+  def render_404
     render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
   end
 
   def check_xhr
     return if request.xhr?
-    return_404
+    render_404
   end
 
   def configure_permitted_parameters

@@ -1,11 +1,10 @@
 class SheetsController < ApplicationController
   before_action :check_action, except: :change_reverse
-  before_action :check_exist_user, except: :change_reverse
   before_action :detect_device_variant, only: :show
 
   def show
+    @user = User.find_by_iidxid!(params[:iidxid])
     unless params[:type] == 'power'
-      @user = User.find_by(iidxid: params[:iidxid])
       load_sheet
       load_state_example
     end
@@ -14,11 +13,6 @@ class SheetsController < ApplicationController
   end
 
   private
-
-  def check_exist_user
-    return if User.exists?(iidxid: params[:iidxid])
-    return_404
-  end
 
   def check_action
     @action_routes = {
@@ -31,9 +25,7 @@ class SheetsController < ApplicationController
 
   def power
     @sheets = Sheet.active.preload(:ability)
-    @color = Score.convert_color(
-      User.find_by(iidxid: params[:iidxid]).scores.is_current_version
-    )
+    @color = Score.convert_color(@user.scores.is_current_version)
   end
 
   def clear
@@ -67,10 +59,6 @@ class SheetsController < ApplicationController
   end
 
   def load_sheet
-    unless User.exists?(iidxid: params[:iidxid])
-      render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
-      return
-    end
     load_static
     @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
     @scores = User.select(:id).find_by(iidxid: params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active

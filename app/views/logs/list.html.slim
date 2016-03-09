@@ -8,7 +8,6 @@
             ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
               li.uk-nav-header = fa_icon 'bar-chart', text: 'コンテンツ'
               li = link_to 'クリア推移', sheet_log_path
-              li = link_to '月別グラフ', graph_log_path
               - if user_signed_in? && current_user.iidxid == params[:id] && notice != '同期処理を承りました。逐次反映を行います。 '
                 li.uk-nav-header = fa_icon 'refresh', text: '同期'
                 li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true

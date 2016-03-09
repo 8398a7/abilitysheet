@@ -15,7 +15,7 @@ dependencies:
   post:
     - rm -rf node_modules
     - npm install -g npm@3.6.0
-    - bundle exec rake npm:install npm:resolve
+    - bundle exec rake npm:install npm:resolve bower:install bower:resolve
 
 database:
   post:

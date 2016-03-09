@@ -4,6 +4,7 @@ ruby '2.3.0'
 # a,b,c,d,e,f,g {{{
 gem 'airbrake'
 gem 'aws-sdk'
+gem 'bower-rails'
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
@@ -17,7 +18,6 @@ gem 'google-analytics-rails'
 # h,i,j,k,l,m,n {{{
 gem 'js-routes'
 gem 'kaminari'
-gem 'lazy_high_charts'
 gem 'mechanize'
 gem 'mini_magick'
 gem 'newrelic_rpm'

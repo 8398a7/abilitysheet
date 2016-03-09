@@ -3,32 +3,33 @@ hr
 - unless user_signed_in? && current_user.special?
   = rectangle_adsense
   hr
-table.datatable
-  thead
-    th TITLE
-    th EASY CLEAR
-    th CLEAR
-    th HARD CLEAR
-    th EXH CLEAR
-    th FULL COMBO
-    th UPDATE
-  tbody
-    - @sheets.each do |s|
-      - logs = s.logs.where(user_id: @id)
-      - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.where('pre_state != new_state').present?
-      - logs = logs.order(:created_date)
-      - hash = {}
-      - 4.downto(0).each do |state|
-        - hash[state] = logs.find_by(new_state: state) if logs.exists?(new_state: state)
-      tr
-        td = s.title
-        - 4.downto(0).each do |index|
-          td bgcolor=@color[index]
-            - created_date = hash[index].try(:created_date)
-            - if created_date
-              = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
+.uk-overflow-container
+  table.uk-table.uk-table-hover.uk-table-striped.datatable
+    thead
+      th TITLE
+      th EASY CLEAR
+      th CLEAR
+      th HARD CLEAR
+      th EXH CLEAR
+      th FULL COMBO
+      th UPDATE
+    tbody
+      - @sheets.each do |s|
+        - logs = s.logs.where(user_id: @id)
+        - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.where('pre_state != new_state').present?
+        - logs = logs.order(:created_date)
+        - hash = {}
+        - 4.downto(0).each do |state|
+          - hash[state] = logs.find_by(new_state: state) if logs.exists?(new_state: state)
+        tr
+          td = s.title
+          - 4.downto(0).each do |index|
+            td bgcolor=@color[index]
+              - created_date = hash[index].try(:created_date)
+              - if created_date
+                = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
 
-        td = u
+          td = u
 javascript:
   sheets_count = '#{@sheets.select(:id).count}'
 coffee:

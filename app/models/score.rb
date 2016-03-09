@@ -24,6 +24,7 @@ class Score < ActiveRecord::Base
   belongs_to :user
   delegate :title, to: :sheet
 
+  include Score::API
   include Score::IIDXME
   include Score::ScoreViewer
 

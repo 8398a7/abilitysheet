@@ -33,7 +33,7 @@ AccessorMethodName:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 65
+  Max: 40
 
 PerceivedComplexity:
   Max: 10

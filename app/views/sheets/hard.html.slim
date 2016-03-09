@@ -4,7 +4,7 @@
     = fa_icon 'table', text: 'ハード参考表'
     span#remain
   h3
-    | DJ.#{@user.djname}(#{@user.iidxid})
+    = link_to "DJ.#{@user.djname}(#{@user.iidxid})", user_path(@user.iidxid)
     - if !current_user.nil? && current_user.iidxid == params[:iidxid]
       .
         a.twitter-share-button href='https://twitter.com/share' data-text="DJ.#{current_user.djname} #{@remain}" data-lang='ja' data-size='large' data-related='IIDX_12'
