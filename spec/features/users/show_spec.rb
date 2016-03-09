@@ -27,6 +27,9 @@ feature 'プロフィールページ', js: true do
     scenario '登録日が存在する' do
       expect(page).to have_content('Joined on 2016/3/6')
     end
+    scenario '統計情報が存在する' do
+      expect(page).to have_content('統計情報')
+    end
     scenario 'ノマゲ比較が存在しない' do
       expect(page).to have_no_content('ノマゲ比較')
     end
@@ -69,6 +72,9 @@ feature 'プロフィールページ', js: true do
     end
     scenario '登録日が存在する' do
       expect(page).to have_content('Joined on 2016/3/6')
+    end
+    scenario '統計情報が存在する' do
+      expect(page).to have_content('統計情報')
     end
     scenario 'ノマゲ比較が存在する' do
       expect(page).to have_content('ノマゲ比較')
