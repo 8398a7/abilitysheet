@@ -125,8 +125,8 @@ class @SplineGraph extends React.Component
   render: ->
     <div>
       <div id='spline-graph' />
-      <button className='uk-button uk-button-danger' onClick={@onClickPrev}>prev</button>
-      <button className='uk-button uk-button-primary' onClick={@onClickNext}>next</button>
+      {<button className='uk-button uk-button-danger' onClick={@onClickPrev}>prev</button> unless @props.initialRender}
+      {<button className='uk-button uk-button-primary' onClick={@onClickNext}>next</button> unless @props.initialRender}
     </div>
 
 SplineGraph.propTypes =
