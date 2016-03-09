@@ -73,17 +73,6 @@ class LogsController < ApplicationController
     render :reload
   end
 
-  def graph
-    user_id = @user.id
-    unless Log.exists?(user_id: user_id)
-      flash[:alert] = '更新データがありません！'
-      redirect_to list_log_path
-      return
-    end
-    @column = Log.column(user_id)
-    @spline = Log.spline(user_id)
-  end
-
   private
 
   def sidekiq_notify
