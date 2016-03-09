@@ -10,8 +10,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(iidxid: params[:id])
-    @spline = Log.spline(@user.id)
+    @user = User.find_by_iidxid!(params[:id])
+    # @spline = Log.spline(@user.id)
     @title = "DJ.#{@user.djname} プロフィール"
   end
 end

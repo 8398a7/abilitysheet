@@ -159,7 +159,6 @@ GEM
     google-analytics-rails (1.1.0)
     haml (4.0.7)
       tilt
-    hash-deep-merge (0.1.1)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -181,8 +180,6 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
-    lazy_high_charts (1.5.5)
-      hash-deep-merge
     libv8 (3.16.14.13)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -477,7 +474,6 @@ DEPENDENCIES
   json_expressions
   kaminari
   launchy
-  lazy_high_charts
   mechanize
   mini_magick
   newrelic_rpm

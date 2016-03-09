@@ -26,7 +26,14 @@ class @WelcomeIndex extends React.Component
         /> if @state.renderAds
       }
       {<hr style={margin: '10px 0'} /> if @state.renderAds}
-      <TwitterContents />
+        <TwitterContents />
+      <br />
+      <div className='uk-panel uk-panel-box'>
+        <h3 className='uk-panel-title'>可視化例</h3>
+        <div className='center'>
+          <SplineGraph initialRender=true />
+        </div>
+      </div>
     </div>
 
 WelcomeIndex.propTypes =

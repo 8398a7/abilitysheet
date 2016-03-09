@@ -15,6 +15,7 @@
 #= require airbrake-js/dist/client
 #= require datatables/media/js/jquery.dataTables
 #= require highcharts/highcharts
+#= require highcharts/themes/grid-light
 #= require html2canvas/dist/html2canvas
 #= require uikit/dist/js/uikit.min
 #= require uikit/dist/js/components/notify.min
