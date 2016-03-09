@@ -3,16 +3,13 @@ class LogsController < ApplicationController
   before_action :load_user, only: %w(sheet list show)
 
   def edit
-    @log = current_user.logs.find_by(id: params[:id])
+    @log = current_user.logs.find(params[:id])
     render :show_modal
   end
 
   def update
-    log = current_user.logs.find_by(id: params[:id])
-    begin
-      log.update(log_params) if params['log']['created_date'].to_date
-    rescue
-    end
+    log = current_user.logs.find(params[:id])
+    log.update(log_params) if params['log']['created_date'].to_date
     render :reload
   end
 
@@ -53,19 +50,10 @@ class LogsController < ApplicationController
   end
 
   def show
-    begin
-      date = params[:date].to_date
-    rescue
-      return_404
-      return
-    end
-    unless @user
-      return_404
-      return
-    end
+    date = params[:date].to_date
     @logs = Log.where(user_id: @user.id, created_date: date).preload(:sheet)
     unless @logs.present?
-      return_404
+      render_404
       return
     end
     @prev_update, @next_update = Log.prev_next(@user.id, date)
@@ -86,11 +74,6 @@ class LogsController < ApplicationController
   end
 
   def graph
-    @user = User.find_by(iidxid: params[:id])
-    unless @user
-      return_404
-      return
-    end
     user_id = @user.id
     unless Log.exists?(user_id: user_id)
       flash[:alert] = '更新データがありません！'
@@ -109,7 +92,7 @@ class LogsController < ApplicationController
   end
 
   def load_user
-    @user = User.find_by(iidxid: params[:id])
+    @user = User.find_by_iidxid!(params[:id])
   end
 
   def log_params
