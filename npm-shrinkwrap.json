@@ -32,11 +32,6 @@
       "from": "d3@>=3.0.6",
       "resolved": "https://registry.npmjs.org/d3/-/d3-3.5.16.tgz"
     },
-    "datatables": {
-      "version": "1.10.11",
-      "from": "datatables@>=1.10.11 <2.0.0",
-      "resolved": "https://registry.npmjs.org/datatables/-/datatables-1.10.11.tgz"
-    },
     "encoding": {
       "version": "0.1.12",
       "from": "encoding@>=0.1.11 <0.2.0",
