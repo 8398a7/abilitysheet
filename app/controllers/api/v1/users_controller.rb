@@ -27,7 +27,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       # 楽曲が存在していない
       Sheet.find(e['id'])
     end
-    error! '503 Service Unavailable', 503 unless SidekiqDispatcher.exists?
+    raise ServiceUnavailable unless SidekiqDispatcher.exists?
     ScoreViewerWorker.perform_async(elems, current_user.id)
     render json: { status: 'ok' }, status: 202
   end
