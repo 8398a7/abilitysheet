@@ -167,9 +167,9 @@
       "resolved": "https://registry.npmjs.org/qtip2/-/qtip2-3.0.2.tgz"
     },
     "select2": {
-      "version": "4.0.2-rc.1",
-      "from": "select2@>=4.0.2-rc.1 <5.0.0",
-      "resolved": "https://registry.npmjs.org/select2/-/select2-4.0.2-rc.1.tgz"
+      "version": "4.0.2",
+      "from": "select2@4.0.2",
+      "resolved": "https://registry.npmjs.org/select2/-/select2-4.0.2.tgz"
     },
     "ua-parser-js": {
       "version": "0.7.10",
