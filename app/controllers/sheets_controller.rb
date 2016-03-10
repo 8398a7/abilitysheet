@@ -20,7 +20,7 @@ class SheetsController < ApplicationController
       'clear' => :clear,
       'hard' => :hard
     }
-    return_404 unless @action_routes[params[:type]]
+    raise ActionController::RoutingError unless @action_routes[params[:type]]
   end
 
   def power
