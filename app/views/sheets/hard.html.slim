@@ -5,9 +5,7 @@
     span#remain
   h3
     = link_to "DJ.#{@user.djname}(#{@user.iidxid})", user_path(@user.iidxid)
-    - if !current_user.nil? && current_user.iidxid == params[:iidxid]
-      .
-        a.twitter-share-button href='https://twitter.com/share' data-text="DJ.#{current_user.djname} #{@remain}" data-lang='ja' data-size='large' data-related='IIDX_12'
+    = react_component 'TwitterSharedButton', text: "DJ.#{@user.djname} #{@remain}"
   = link_to 'CLEAR', sheet_path(type: 'clear'), class: 'uk-button uk-button-primary'
   = react_component 'ScreenShot', {}, tag: 'span'
   - if mobile?

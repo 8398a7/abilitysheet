@@ -5,7 +5,7 @@ class ScoresController < ApplicationController
   before_action :score_exists?, only: %w(edit)
 
   def edit
-    @sheet = Sheet.find_by(id: params[:id])
+    @sheet = Sheet.find(params[:id])
     @pre_score = current_user.scores.find_by(sheet_id: params[:id], version: Abilitysheet::Application.config.iidx_version - 1)
     render :show_modal
   end

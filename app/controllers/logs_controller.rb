@@ -61,7 +61,7 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    log = current_user.owner? ? Log.find_by(id: params[:id]) : current_user.logs.find_by(id: params[:id])
+    log = current_user.owner? ? Log.find(params[:id]) : current_user.logs.find(params[:id])
     if log
       score = Score.find_by(user_id: log.user_id, sheet_id: log.sheet_id, version: Abilitysheet::Application.config.iidx_version)
       score.update_column(:state, log.pre_state)

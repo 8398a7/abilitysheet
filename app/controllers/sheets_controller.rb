@@ -20,7 +20,7 @@ class SheetsController < ApplicationController
       'clear' => :clear,
       'hard' => :hard
     }
-    return_404 unless @action_routes[params[:type]]
+    raise ActionController::RoutingError unless @action_routes[params[:type]]
   end
 
   def power
@@ -61,7 +61,7 @@ class SheetsController < ApplicationController
   def load_sheet
     load_static
     @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
-    @scores = User.select(:id).find_by(iidxid: params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active
+    @scores = User.select(:id).find_by_iidxid!(params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active
     @color = Score.convert_color(@scores)
     @stat = Score.stat_info(@scores)
   end
