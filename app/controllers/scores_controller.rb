@@ -30,7 +30,7 @@ class ScoresController < ApplicationController
     else
       parameters[:id] = params[:id]
     end
-    @score = current_user.scores.find_by!(parameters)
+    @score = current_user.scores.find_by(parameters)
   end
 
   def score_params
