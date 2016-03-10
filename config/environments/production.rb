@@ -90,4 +90,5 @@ Rails.application.configure do
 
   config.react.variant = :production
   routes.default_url_options = { host: 'iidx12.tk' }
+  config.peek.adapter = :redis
 end
