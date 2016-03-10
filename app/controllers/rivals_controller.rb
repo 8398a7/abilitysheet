@@ -44,13 +44,13 @@ class RivalsController < ApplicationController
   def condition
     copy = @sheets
     @sheets = []
-    rival_id = User.find_by(iidxid: params[:id]).id
+    rival_id = User.find_by_iidxid!(params[:id]).id
     copy.each { |s| copy_sheets(s, rival_id) }
   end
 
   def copy_sheets(s, rival_id)
-    m_state = s.scores.find_by(user_id: current_user.id).try(:state) || 7
-    r_state = s.scores.find_by(user_id: rival_id).try(:state) || 7
+    m_state = s.scores.find_by_user_id!(current_user.id).try(:state) || 7
+    r_state = s.scores.find_by_user_id!(rival_id).try(:state) || 7
     @sheets.push(s) if params[:condition] == 'win' && m_state < r_state
     @sheets.push(s) if params[:condition] == 'even' && m_state == r_state
     @sheets.push(s) if params[:condition] == 'lose' && m_state > r_state
@@ -61,9 +61,9 @@ class RivalsController < ApplicationController
     @state_examples = {}
     7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
     @power = Static::POWER.dup
-    s = User.find_by(iidxid: params[:id]).scores.is_current_version
+    s = User.find_by_iidxid!(params[:id]).scores.is_current_version
     @rival_color = Score.convert_color(s)
-    s = User.find_by(id: current_user.id).scores.is_current_version
+    s = current_user.scores.is_current_version
     @my_color = Score.convert_color(s)
     @list_color = Static::COLOR
   end
