@@ -45,6 +45,7 @@ GEM
       rake (~> 10.4)
     arel (6.0.3)
     ast (2.2.0)
+    atomic (1.1.99)
     aws-sdk (2.2.25)
       aws-sdk-resources (= 2.2.25)
     aws-sdk-core (2.2.25)
@@ -241,6 +242,14 @@ GEM
     peek-rblineprof (0.1.2)
       peek
       rblineprof
+    peek-redis (1.1.0)
+      atomic (>= 1.0.0)
+      peek
+      redis
+    peek-sidekiq (1.0.3)
+      atomic (>= 1.0.0)
+      peek
+      sidekiq
     pg (0.18.4)
     poltergeist (1.9.0)
       capybara (~> 2.1)
@@ -487,6 +496,8 @@ DEPENDENCIES
   peek-performance_bar
   peek-pg
   peek-rblineprof
+  peek-redis
+  peek-sidekiq
   pg
   poltergeist
   pry-byebug
