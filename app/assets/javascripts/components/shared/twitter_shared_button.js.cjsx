@@ -7,7 +7,7 @@ class @TwitterSharedButton extends React.Component
 
   componentDidMount: ->
     if twttr?
-      twttr.widgets.load()
+      twttr.widgets.load $('#twitter-shared-button')
     else
       twitterjs = document.createElement 'script'
       twitterjs.async = true
@@ -15,10 +15,11 @@ class @TwitterSharedButton extends React.Component
       document.getElementsByTagName('body')[0].appendChild twitterjs
 
   componentDidUpdate: ->
-    @setState display: 'block'
+    @setState display: 'block' if @state.display is 'none'
 
   render: ->
     <a
+      id='twitter-shared-button'
       style={display: @state.display}
       href='https://twitter.com/share'
       data-text={@state.text}

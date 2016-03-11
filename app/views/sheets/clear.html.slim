@@ -1,21 +1,5 @@
 - @title = "#{@user.djname} - ノマゲ参考表"
-.center
-  h2
-    = fa_icon 'table', text: 'ノマゲ参考表'
-    span#remain
-  h3
-    = link_to "DJ.#{@user.djname}(#{@user.iidxid})", user_path(@user.iidxid)
-    = react_component 'TwitterSharedButton', text: "DJ.#{@user.djname} #{@remain}"
-  = link_to 'HARD', sheet_path(type: 'hard'), class: 'uk-button uk-button-danger'
-  = react_component 'ScreenShot', {}, tag: 'span'
-  - if mobile?
-    = link_to 'PCサイト版', sheet_path(type: 'clear', device: 'pc'), class: 'uk-button'
-  - elsif device_mobile?
-    = link_to 'モバイル版', sheet_path(type: 'clear'), class: 'uk-button'
-  hr
-  - unless user_signed_in? && current_user.special?
-    = rectangle_adsense
-    hr
-
-  = render 'statistics'
-= render 'list'
+= react_component 'Sheet',
+  type: 'clear', user: @user.schema, mobile: mobile?,
+  versions: @versions, reverse_sheet: params['reverse_sheet'] ? true : false, sheet_type: @sheet_type, lamp: Static::LAMP
+/= render 'list'

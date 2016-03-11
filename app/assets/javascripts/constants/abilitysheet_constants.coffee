@@ -10,3 +10,4 @@
 
   RECEIVED_GRADE_DATA: 'received_grade_data'
   RECEIVED_GRAPH_DATA: 'received_graph_data'
+  RECEIVED_SHEETS_DATA: 'received_sheets_data'
