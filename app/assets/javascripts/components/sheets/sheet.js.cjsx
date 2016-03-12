@@ -42,4 +42,3 @@ class @Sheet extends React.Component
 Sheet.propTypes =
   type: React.PropTypes.string.isRequired
   user: React.PropTypes.object.isRequired
-  mobile: React.PropTypes.bool.isRequired

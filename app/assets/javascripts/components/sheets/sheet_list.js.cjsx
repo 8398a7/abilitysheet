@@ -7,6 +7,10 @@ class @SheetList extends React.Component
       displaySelect: ''
       renderAds: UserStore.renderAds()
       sortKey: 'asc'
+      viewport: EnvironmentStore.findBy 'viewport'
+
+  onChangeViewPort: =>
+    @setState viewport: EnvironmentStore.findBy 'viewport'
 
   onChangeCurrentUser: =>
     @setState renderAds: UserStore.renderAds()
@@ -21,11 +25,13 @@ class @SheetList extends React.Component
     SheetStore.addChangeListener @onChangeSheet
     ScoreStore.addChangeListener @onChangeScore
     UserStore.addChangeListener @onChangeCurrentUser
+    EnvironmentStore.addChangeListener @onChangeViewPort
 
   componentWillUnmount: ->
     SheetStore.removeChangeListener @onChangeSheet
     ScoreStore.removeChangeListener @onChangeScore
     UserStore.removeChangeListener @onChangeCurrentUser
+    EnvironmentStore.removeChangeListener @onChangeViewPort
 
   classificationSheet: ->
     sheets = {}
@@ -48,16 +54,30 @@ class @SheetList extends React.Component
       for array in keys.chunk(5)
         count = 0
         dom.push <tr key={array[count]}>
-            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd width=150 height=50 iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd width=150 height=50 iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd width=150 height=50 iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd width=150 height=50 iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd width=150 height=50 iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
           </tr>
     dom
 
   onClickSelect: =>
     @setState displaySelect: if @state.displaySelect is '' then 'none' else ''
+
+  renderMobileSheet: ->
+    dom = []
+    sheets = @classificationSheet()
+    for ability, objects of sheets
+      dom.push <tr key={"#{@props.type}_#{ability}"}>
+          <th style={textAlign: 'center', backgroundColor: '#f5deb3'}>{objects.string}</th>
+        </tr>
+      delete objects.string
+      for key in Object.sortedKeys objects, 'title', @state.sortKey
+        dom.push <tr key={key}>
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={key} />
+          </tr>
+    dom
 
   render: ->
     <div>
@@ -73,7 +93,12 @@ class @SheetList extends React.Component
       <button onClick={@onClickSelect} className='uk-button uk-button-primary'>編集ボタン表示切替</button>
       <table className='uk-table uk-table-bordered'>
         <tbody>
-          {@renderSheet()}
+          {
+            if _ua.Mobile and @state.viewport
+              @renderMobileSheet()
+            else
+              @renderSheet()
+          }
         </tbody>
       </table>
     </div>

@@ -16,8 +16,8 @@ class @LampTd extends React.Component
   render: ->
     return <td style={display: 'none'} /> unless @props.objects[@props.index]?
     <td
-      width='150px'
-      height='50px'
+      width={@props.width}
+      height={@props.height}
       style={
         display: @props.scores[@props.index]?.display
         backgroundColor: @props.scores[@props.index]?.color
@@ -33,3 +33,5 @@ LampTd.propTypes =
   scores: React.PropTypes.object.isRequired
   display: React.PropTypes.string.isRequired
   iidxid: React.PropTypes.string.isRequired
+  width: React.PropTypes.number
+  height: React.PropTypes.number
