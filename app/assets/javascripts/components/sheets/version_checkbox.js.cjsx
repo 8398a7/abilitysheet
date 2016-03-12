@@ -4,9 +4,9 @@ class @VersionCheckbox extends React.Component
 
   onChangeVersion: (e) =>
     if e.target.checked
-      $(".#{e.target.value}").show()
+      SheetActionCreators.show parseInt e.target.value
     else
-      $(".#{e.target.value}").hide()
+      SheetActionCreators.hide parseInt e.target.value
     if e.target.value is '0'
       $('input[name="version-check"]').prop 'checked', e.target.checked
       for obj in $('input[name="version-check"]')

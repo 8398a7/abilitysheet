@@ -4,9 +4,9 @@ class @LampCheckbox extends React.Component
 
   onChangeLamp: (e) =>
     if e.target.checked
-      $(".state-#{e.target.value}").show()
+      ScoreActionCreators.show parseInt e.target.value
     else
-      $(".state-#{e.target.value}").hide()
+      ScoreActionCreators.hide parseInt e.target.value
     if e.target.value is '8' and e.target.checked
       $('input[name="lamp-check"]').prop 'checked', false
       for num in [3..7]
@@ -23,7 +23,6 @@ class @LampCheckbox extends React.Component
         tmp = {}
         tmp.target = obj
         @onChangeLamp tmp
-    @props.stateCounter()
 
   renderLampCheckbox: ->
     dom = []
@@ -50,4 +49,3 @@ class @LampCheckbox extends React.Component
 
 LampCheckbox.propTypes =
   lamp: React.PropTypes.array.isRequired
-  stateCounter: React.PropTypes.func.isRequired

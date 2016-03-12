@@ -29,6 +29,7 @@ class Score < ActiveRecord::Base
   include Score::ScoreViewer
 
   validates :sheet_id, uniqueness: { scope: [:version, :user_id] }
+  validates :state, numericality: { only_integer: true }, inclusion: { in: 0..7, message: 'のパラメタが異常です。' }, presence: true
 
   scope :is_not_noplay, -> { where.not(state: 7) }
   scope :is_active, -> { where(sheet_id: Sheet.active.pluck(:id)) }

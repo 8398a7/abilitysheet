@@ -41,34 +41,34 @@ class SheetsController < ApplicationController
   end
 
   def reverse_check(type)
-    @power.reverse! if params['reverse_sheet']
-    if type == 0
-      @sheets = params['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
-      return
-    end
-    @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
+    # @power.reverse! if params['reverse_sheet']
+    # if type == 0
+    #   @sheets = params['reverse_sheet'] ? @sheets.order(n_ability: :desc, title: :asc) : @sheets.order(:n_ability, :title)
+    #   return
+    # end
+    # @sheets = params['reverse_sheet'] ? @sheets.order(h_ability: :desc, title: :asc) : @sheets.order(:h_ability, :title)
   end
 
   def write_remain(type)
-    @remain = @scores.remain_string([:clear, :hard][type])
+    # @remain = @scores.remain_string([:clear, :hard][type])
   end
 
   def load_state_example
-    @state_examples = {}
-    7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
+    # @state_examples = {}
+    # 7.downto(0) { |j| @state_examples[Score.list_name[j]] = Static::COLOR[j] }
   end
 
   def load_sheet
     load_static
-    @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
-    @scores = User.select(:id).find_by_iidxid!(params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active
-    @color = Score.convert_color(@scores)
-    @stat = Score.stat_info(@scores)
+    # @sheets = Sheet.select(:id, :n_ability, :h_ability, :version, :title).active
+    # @scores = User.select(:id).find_by_iidxid!(params[:iidxid]).scores.is_current_version.select(:sheet_id, :state).is_active
+    # @color = Score.convert_color(@scores)
+    # @stat = Score.stat_info(@scores)
   end
 
   def load_static
-    @power = Static::POWER.dup
-    @list_color = Static::COLOR
+    # @power = Static::POWER.dup
+    # @list_color = Static::COLOR
     @versions = Static::VERSION.dup
     @versions.push(['ALL', 0])
   end

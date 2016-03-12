@@ -2,17 +2,30 @@ class @SheetList extends React.Component
   constructor: (props) ->
     super
     @state =
-      sheets: {}
+      sheets: SheetStore.get()
+      scores: ScoreStore.get()
+      displaySelect: ''
+      renderAds: UserStore.renderAds()
+      sortKey: 'asc'
+
+  onChangeCurrentUser: =>
+    @setState renderAds: UserStore.renderAds()
 
   onChangeSheet: =>
     @setState sheets: SheetStore.get()
 
+  onChangeScore: =>
+    @setState scores: ScoreStore.get()
+
   componentWillMount: ->
     SheetStore.addChangeListener @onChangeSheet
-    SheetActionCreators.get()
+    ScoreStore.addChangeListener @onChangeScore
+    UserStore.addChangeListener @onChangeCurrentUser
 
   componentWillUnmount: ->
     SheetStore.removeChangeListener @onChangeSheet
+    ScoreStore.removeChangeListener @onChangeScore
+    UserStore.removeChangeListener @onChangeCurrentUser
 
   classificationSheet: ->
     sheets = {}
@@ -26,31 +39,45 @@ class @SheetList extends React.Component
     sheets = @classificationSheet()
 
     dom = []
-    for ability, object of sheets
+    for ability, objects of sheets
       dom.push <tr key={"#{@props.type}_#{ability}"}>
-          <th colSpan=5 style={textAlign: 'center', backgroundColor: '#f5deb3'}>{object.string}</th>
+          <th colSpan=5 style={textAlign: 'center', backgroundColor: '#f5deb3'}>{objects.string}</th>
         </tr>
-      delete object.string
-      keys = Object.sortedKeys object, 'title', 'asc'
+      delete objects.string
+      keys = Object.sortedKeys objects, 'title', @state.sortKey
       for array in keys.chunk(5)
-        console.log array if ability is '3'
-        dom.push <tr>
-            <td>{object[array[0]]?.title}</td>
-            <td>{object[array[1]]?.title}</td>
-            <td>{object[array[2]]?.title}</td>
-            <td>{object[array[3]]?.title}</td>
-            <td>{object[array[4]]?.title}</td>
+        count = 0
+        dom.push <tr key={array[count]}>
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={array[count++]} />
           </tr>
     dom
 
+  onClickSelect: =>
+    @setState displaySelect: if @state.displaySelect is '' then 'none' else ''
+
   render: ->
     <div>
+      {
+        <RectangleAdsense
+          client='ca-pub-5751776715932993'
+          slot='4549839260'
+          slot2='3454772069'
+          mobile=false
+        /> if @state.renderAds
+      }
+      {<hr style={margin: '10px 0'} /> if @state.renderAds}
+      <button onClick={@onClickSelect} className='uk-button uk-button-primary'>編集ボタン表示切替</button>
       <table className='uk-table uk-table-bordered'>
         <tbody>
-        {@renderSheet()}
+          {@renderSheet()}
         </tbody>
       </table>
     </div>
 
 SheetList.propTypes =
   type: React.PropTypes.string.isRequired
+  user: React.PropTypes.object.isRequired

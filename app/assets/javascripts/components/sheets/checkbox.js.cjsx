@@ -42,7 +42,7 @@ class @Checkbox extends React.Component
   render: ->
     <div className='checkbox'>
       <VersionCheckbox versions={@props.versions} stateCounter={@stateCounter} reverseSheet={@props.reverseSheet} />
-      <LampCheckbox lamp={@props.lamp} stateCounter={@stateCounter} />
+      <LampCheckbox lamp={@props.lamp} />
     </div>
 
 Checkbox.propTypes =

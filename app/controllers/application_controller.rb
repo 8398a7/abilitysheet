@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def peek_enabled?
-    current_user.try(:owner?)
+    Rails.env.development? ? true : current_user.try(:owner?)
   end
 
   def detect_device_variant

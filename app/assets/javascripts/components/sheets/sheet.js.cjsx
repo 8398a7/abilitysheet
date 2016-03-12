@@ -11,17 +11,10 @@ class @Sheet extends React.Component
           name: 'ハード参考表'
           link: 'clear'
           button: 'uk-button-primary'
-      renderAds: UserStore.renderAds()
-
-  onChangeCurrentUser: =>
-    @setState renderAds: UserStore.renderAds()
 
   componentWillMount: ->
     SheetActionCreators.get()
-    UserStore.addChangeListener @onChangeCurrentUser
-
-  componentWillUnmount: ->
-    UserStore.removeChangeListener @onChangeCurrentUser
+    ScoreActionCreators.get iidxid: @props.user.iidxid
 
   render: ->
     <div className='react'>
@@ -34,24 +27,15 @@ class @Sheet extends React.Component
           <a href={user_path(@props.user.iidxid)}>{"DJ.#{@props.user.djname}(#{@props.user.iidxid})"}</a>
         </h3>
         <TwitterSharedButton text="#{@props.user.djname} remain" />
+        <ScreenShot />
         <a className="uk-button #{@state.type[@props.type].button}" href={sheet_path(iidxid: @props.user.iidxid, type: @state.type[@props.type].link)}>
           {@state.type[@props.type].link.toUpperCase()}
         </a>
-        <ScreenShot />
         <hr />
-        {
-          <RectangleAdsense
-            client='ca-pub-5751776715932993'
-            slot='4549839260'
-            slot2='3454772069'
-            mobile={@props.mobile}
-          /> if @state.renderAds
-        }
-        {<hr style={margin: '10px 0'} /> if @state.renderAds}
         <Checkbox versions={@props.versions} reverseSheet={@props.reverseSheet} sheetType={@props.sheetType} lamp={@props.lamp} />
-        <LampStatistics mobile={@props.mobile} />
+        <LampStatistics type={@props.type} />
         <h3 />
-        <SheetList type={@props.type} />
+        <SheetList type={@props.type} user={@props.user} />
       </div>
     </div>
 

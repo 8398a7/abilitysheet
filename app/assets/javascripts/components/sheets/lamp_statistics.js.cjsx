@@ -1,6 +1,27 @@
 class @LampStatistics extends React.Component
   constructor: (props) ->
     super
+    @state =
+      threshold: if props.type is 'clear' then 4 else 2
+      statistics: { fc: 0, exh: 0, h: 0, c: 0, e: 0, a: 0, f: 0, n: 0, remain: 0, all: 0 }
+      keyValue: ['fc', 'exh', 'h', 'c', 'e', 'a', 'f', 'n']
+
+  onChangeScore: =>
+    statistics = { fc: 0, exh: 0, h: 0, c: 0, e: 0, a: 0, f: 0, n: 0, remain: 0, all: 0 }
+
+    for id, score of ScoreStore.get()
+      continue unless score.display is ''
+      statistics.all++
+      statistics.remain++ if score.state <= @state.threshold
+      statistics[@state.keyValue[score.state]]++
+    @setState statistics: statistics
+
+
+  componentWillMount: ->
+    ScoreStore.addChangeListener @onChangeScore
+
+  componentWillUnmount: ->
+    ScoreStore.removeChangeListener @onChangeScore
 
   render: ->
     <div className='uk-overflow-container'>
@@ -8,23 +29,26 @@ class @LampStatistics extends React.Component
         <tbody>
           <tr>
             <td style={backgroundColor: '#ff8c00'}>FC</td>
-            <td className='statistics' id='fc' />
+            <td>{@state.statistics.fc}</td>
             <td style={backgroundColor: '#ffd900'}>EXH</td>
-            <td className='statistics' id='exh' />
+            <td>{@state.statistics.exh}</td>
             <td style={backgroundColor: '#ff6347'}>H</td>
-            <td className='statistics' id='h' />
+            <td>{@state.statistics.h}</td>
             <td style={backgroundColor: '#afeeee'}>C</td>
-            <td className='statistics' id='c' />
+            <td>{@state.statistics.c}</td>
             <td style={backgroundColor: '#98fb98'}>E</td>
-            <td className='statistics' id='e' />
+            <td>{@state.statistics.e}</td>
             <td style={backgroundColor: '#9595ff'}>A</td>
-            <td className='statistics' id='a' />
+            <td>{@state.statistics.a}</td>
             <td style={backgroundColor: '#c0c0c0'}>F</td>
-            <td className='statistics' id='f' />
+            <td>{@state.statistics.f}</td>
             <td style={backgroundColor: '#ffffff'}>N</td>
-            <td className='statistics' id='n' />
-            <td id='per' style={backgroundColor: '#7fffd4'} />
+            <td>{@state.statistics.n}</td>
+            <td style={backgroundColor: '#7fffd4'}>({@state.statistics.remain}/{@state.statistics.all})</td>
           </tr>
         </tbody>
       </table>
     </div>
+
+LampStatistics.propTypes =
+  type: React.PropTypes.string.isRequired

@@ -209,6 +209,8 @@ Rails.application.routes.draw do
       # sheets
       resources :sheets, only: :index
       # scores
+      get '/scores/:iidxid' => 'scores#show'
+      put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
     end
   end
