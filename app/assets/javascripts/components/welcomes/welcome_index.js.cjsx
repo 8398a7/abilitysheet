@@ -3,26 +3,31 @@ class @WelcomeIndex extends React.Component
     super
     @state =
       renderAds: UserStore.renderAds()
+      viewport: EnvironmentStore.findBy 'viewport'
+
+  onChangeViewPort: =>
+    @setState viewport: EnvironmentStore.findBy 'viewport'
 
   onChangeCurrentUser: =>
     @setState renderAds: UserStore.renderAds()
 
   componentWillMount: ->
-    UserStore.addChangeListener(@onChangeCurrentUser)
+    EnvironmentStore.addChangeListener @onChangeViewPort
+    UserStore.addChangeListener @onChangeCurrentUser
 
   componentWillUnmount: ->
-    UserStore.removeChangeListener(@onChangeCurrentUser)
+    EnvironmentStore.removeChangeListener @onChangeViewPort
+    UserStore.removeChangeListener @onChangeCurrentUser
 
   render: ->
     <div className='welcome-index'>
-      <TopPanel mobile={@props.mobile} />
+      <TopPanel viewport={@state.viewport} />
       <hr style={margin: '10px 0'} />
       {
         <RectangleAdsense
           client='ca-pub-5751776715932993'
           slot='4549839260'
           slot2='3454772069'
-          mobile={@props.mobile}
         /> if @state.renderAds
       }
       {<hr style={margin: '10px 0'} /> if @state.renderAds}
@@ -35,6 +40,3 @@ class @WelcomeIndex extends React.Component
         </div>
       </div>
     </div>
-
-WelcomeIndex.propTypes =
-  mobile: React.PropTypes.bool.isRequired

@@ -7,10 +7,10 @@ class @Footer extends React.Component
     @setState renderAds: UserStore.renderAds()
 
   componentWillMount: ->
-    UserStore.addChangeListener(@onChangeCurrentUser)
+    UserStore.addChangeListener @onChangeCurrentUser
 
   componentWillUnmount: ->
-    UserStore.removeChangeListener(@onChangeCurrentUser)
+    UserStore.removeChangeListener @onChangeCurrentUser
 
   render: ->
     now = new Date()
@@ -21,7 +21,6 @@ class @Footer extends React.Component
           client='ca-pub-5751776715932993'
           slot='9876188066'
           slot2='6503919265'
-          mobile={@props.mobile}
         /> if @state.renderAds
       }
       <div className='relative'>
@@ -36,6 +35,3 @@ class @Footer extends React.Component
         </div>
       </div>
     </div>
-
-Footer.propTypes =
-  mobile: React.PropTypes.bool.isRequired
