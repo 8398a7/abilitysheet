@@ -1,7 +1,7 @@
 graph = {}
 
 @GraphStore = new EventEmitter2()
-$.extend @GraphStore,
+$.extend GraphStore,
   emitChange: ->
     @emit AbilitysheetConstants.CHANGE_EVENT
 
@@ -14,7 +14,7 @@ $.extend @GraphStore,
   get: ->
     objectCopy graph
 
-@GraphStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
+GraphStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_GRAPH_DATA

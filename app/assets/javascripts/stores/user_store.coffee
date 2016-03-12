@@ -6,13 +6,13 @@ UserStore.setMaxListeners 0
 
 $.extend UserStore,
   emitChange: ->
-    @emit(AbilitysheetConstants.CHANGE_EVENT)
+    @emit AbilitysheetConstants.CHANGE_EVENT
 
   addChangeListener: (callback) ->
-    @on(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @on AbilitysheetConstants.CHANGE_EVENT, callback
 
   removeChangeListener: (callback) ->
-    @removeListener(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
     objectCopy user

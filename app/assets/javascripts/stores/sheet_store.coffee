@@ -1,7 +1,7 @@
 sheets = {}
 
 @SheetStore = new EventEmitter2()
-$.extend @SheetStore,
+$.extend SheetStore,
   emitChange: ->
     @emit AbilitysheetConstants.CHANGE_EVENT
 
@@ -14,7 +14,7 @@ $.extend @SheetStore,
   get: ->
     objectCopy sheets
 
-@SheetStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
+SheetStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_SHEETS_DATA
