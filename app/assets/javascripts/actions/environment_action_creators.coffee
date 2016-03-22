@@ -15,3 +15,8 @@
     AbilitysheetDispatcher.dispatch
       action: AbilitysheetConstants.JUDGE_REVERSE
       reverseSheet: reverse
+
+  changeViewport: (viewport) ->
+    AbilitysheetDispatcher.dispatch
+      action: AbilitysheetConstants.JUDGE_MODE
+      viewport: viewport
