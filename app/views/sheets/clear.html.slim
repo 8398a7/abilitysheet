@@ -1,5 +1,4 @@
 - @title = "#{@user.djname} - ノマゲ参考表"
 = react_component 'Sheet',
   type: 'clear', user: @user.schema,
-  versions: @versions, reverse_sheet: params['reverse_sheet'] ? true : false, sheet_type: @sheet_type, lamp: Static::LAMP
-/= render 'list'
+  versions: @versions, sheet_type: @sheet_type, lamp: Static::LAMP

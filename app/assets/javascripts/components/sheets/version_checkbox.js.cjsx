@@ -1,6 +1,17 @@
 class @VersionCheckbox extends React.Component
   constructor: (props) ->
     super
+    @state =
+      reverse: EnvironmentStore.findBy 'reverseSheet'
+
+  onChangeReverseState: =>
+    @setState reverse: EnvironmentStore.findBy 'reverseSheet'
+
+  componentWillMount: ->
+    EnvironmentStore.addChangeListener @onChangeReverseState
+
+  componentWillUnmountMount: ->
+    EnvironmentStore.removeChangeListener @onChangeReverseState
 
   onChangeVersion: (e) =>
     if e.target.checked
@@ -13,17 +24,17 @@ class @VersionCheckbox extends React.Component
         tmp = {}
         tmp.target = obj
         @onChangeVersion tmp
-    @props.stateCounter()
 
   onChangeReverse: =>
     params = getQueryParams location.search
     url = location.origin + location.pathname
-    if @props.reverseSheet is true
+    if @state.reverse is true
       delete params.reverse_sheet
-      location.href = mergeQueryParams url, params
+      history.pushState '', '', mergeQueryParams url, params
     else
       params.reverse_sheet = true
-      location.href = mergeQueryParams url, params
+      history.pushState '', '', mergeQueryParams url, params
+    EnvironmentActionCreators.changeReverse !@state.reverse
 
   renderVersionCheckbox: ->
     dom = []
@@ -41,7 +52,7 @@ class @VersionCheckbox extends React.Component
           {version[0]}
         </label>
     dom.push <label key={'version-checkbox-' + key}>
-        <input type='checkbox' value='0' name='reverse' checked={@props.reverseSheet} onChange={@onChangeReverse} />
+        <input type='checkbox' value='0' name='reverse' checked={@state.reverse} onChange={@onChangeReverse} />
         逆順表示
       </label>
     dom
@@ -53,5 +64,3 @@ class @VersionCheckbox extends React.Component
 
 VersionCheckbox.propTypes =
   versions: React.PropTypes.array.isRequired
-  stateCounter: React.PropTypes.func.isRequired
-  reverseSheet: React.PropTypes.bool.isRequired

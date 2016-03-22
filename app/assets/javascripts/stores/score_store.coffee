@@ -14,6 +14,13 @@ $.extend ScoreStore,
   get: ->
     objectCopy scores
 
+  remain: (type) ->
+    threshold = if type is 'clear' then 4 else 2
+    remain = 0
+    for id, score of scores
+      remain++ if threshold < score.state
+    remain
+
 setScore = (score) ->
   sheetId = score.sheet_id
   delete score.sheet_id

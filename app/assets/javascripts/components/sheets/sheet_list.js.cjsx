@@ -6,11 +6,13 @@ class @SheetList extends React.Component
       scores: ScoreStore.get()
       displaySelect: ''
       renderAds: UserStore.renderAds()
-      sortKey: 'asc'
       viewport: EnvironmentStore.findBy 'viewport'
+      reverse: EnvironmentStore.findBy 'reverseSheet'
 
-  onChangeViewPort: =>
-    @setState viewport: EnvironmentStore.findBy 'viewport'
+  onChangeViewPortAndReverse: =>
+    @setState
+      viewport: EnvironmentStore.findBy 'viewport'
+      reverse: EnvironmentStore.findBy 'reverseSheet'
 
   onChangeCurrentUser: =>
     @setState renderAds: UserStore.renderAds()
@@ -25,7 +27,7 @@ class @SheetList extends React.Component
     SheetStore.addChangeListener @onChangeSheet
     ScoreStore.addChangeListener @onChangeScore
     UserStore.addChangeListener @onChangeCurrentUser
-    EnvironmentStore.addChangeListener @onChangeViewPort
+    EnvironmentStore.addChangeListener @onChangeViewPortAndReverse
 
   componentWillUnmount: ->
     SheetStore.removeChangeListener @onChangeSheet
@@ -41,16 +43,23 @@ class @SheetList extends React.Component
       sheets[sheet[@props.type]].string = sheet["#{@props.type}_string"]
     sheets
 
+  setAbilities: (sheets) ->
+    abilities = Object.keys(sheets).map (ability) => parseInt ability
+    abilities = abilities.reverse() if @state.reverse
+    abilities
+
   renderSheet: ->
     sheets = @classificationSheet()
+    abilities = @setAbilities sheets
 
     dom = []
-    for ability, objects of sheets
+    for ability in abilities
+      objects = sheets[ability]
       dom.push <tr key={"#{@props.type}_#{ability}"}>
           <th colSpan=5 style={textAlign: 'center', backgroundColor: '#f5deb3'}>{objects.string}</th>
         </tr>
       delete objects.string
-      keys = Object.sortedKeys objects, 'title', @state.sortKey
+      keys = Object.sortedKeys objects, 'title', 'asc'
       for array in keys.chunk(5)
         count = 0
         dom.push <tr key={array[count]}>
@@ -66,14 +75,17 @@ class @SheetList extends React.Component
     @setState displaySelect: if @state.displaySelect is '' then 'none' else ''
 
   renderMobileSheet: ->
-    dom = []
     sheets = @classificationSheet()
-    for ability, objects of sheets
+    abilities = @setAbilities sheets
+
+    dom = []
+    for ability in abilities
+      objects = sheets[ability]
       dom.push <tr key={"#{@props.type}_#{ability}"}>
           <th style={textAlign: 'center', backgroundColor: '#f5deb3'}>{objects.string}</th>
         </tr>
       delete objects.string
-      for key in Object.sortedKeys objects, 'title', @state.sortKey
+      for key in Object.sortedKeys objects, 'title', 'asc'
         dom.push <tr key={key}>
             <LampTd iidxid={@props.user.iidxid} scores={@state.scores} display={@state.displaySelect} objects={objects} index={key} />
           </tr>
