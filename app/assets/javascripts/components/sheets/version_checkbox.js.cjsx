@@ -28,12 +28,9 @@ class @VersionCheckbox extends React.Component
   onChangeReverse: =>
     params = getQueryParams location.search
     url = location.origin + location.pathname
-    if @state.reverse is true
-      delete params.reverse_sheet
-      history.pushState '', '', mergeQueryParams url, params
-    else
-      params.reverse_sheet = true
-      history.pushState '', '', mergeQueryParams url, params
+    # parameterの付与/削除
+    if @state.reverse is true then delete params.reverse_sheet else params.reverse_sheet = true
+    history.replaceState '', '', mergeQueryParams url, params
     EnvironmentActionCreators.changeReverse !@state.reverse
 
   renderVersionCheckbox: ->
