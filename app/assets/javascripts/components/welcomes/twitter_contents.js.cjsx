@@ -1,10 +1,11 @@
 class @TwitterContents extends React.Component
+  shouldComponentUpdate: (nextProps, nextState) ->
+    false
+
   componentDidMount: ->
     if twttr?
       twttr.widgets.load $('#search-timeline')
-      setTimeout ->
-        twttr.widgets.load $('#owner-timeline')
-      , 1000
+      twttr.widgets.load $('#owner-timeline')
     else
       twitterjs = document.createElement 'script'
       twitterjs.async = true
@@ -17,6 +18,6 @@ class @TwitterContents extends React.Component
         <a id='search-timeline' className='twitter-timeline' data-widget-id='551580128916946944' href='https://twitter.com/search?q=iidx12.tk' />
       </div>
       <div className='uk-width-medium-5-10'>
-        <a id='owner-timeline' className='twitter-timeline' data-widget-id='707837001911808000' href='https://twitter.com/search?q=%40IIDX_12' />
+        <a id='owner-timeline' className='twitter-timeline' data-widget-id='602894937776988160' href='https://twitter.com/IIDX_12' />
       </div>
     </div>

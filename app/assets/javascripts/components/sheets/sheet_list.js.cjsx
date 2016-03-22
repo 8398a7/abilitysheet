@@ -33,7 +33,7 @@ class @SheetList extends React.Component
     SheetStore.removeChangeListener @onChangeSheet
     ScoreStore.removeChangeListener @onChangeScore
     UserStore.removeChangeListener @onChangeCurrentUser
-    EnvironmentStore.removeChangeListener @onChangeViewPort
+    EnvironmentStore.removeChangeListener @onChangeViewPortAndReverse
 
   classificationSheet: ->
     sheets = {}

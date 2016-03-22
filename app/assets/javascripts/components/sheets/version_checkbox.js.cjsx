@@ -10,7 +10,7 @@ class @VersionCheckbox extends React.Component
   componentWillMount: ->
     EnvironmentStore.addChangeListener @onChangeReverseState
 
-  componentWillUnmountMount: ->
+  componentWillUnmount: ->
     EnvironmentStore.removeChangeListener @onChangeReverseState
 
   onChangeVersion: (e) =>

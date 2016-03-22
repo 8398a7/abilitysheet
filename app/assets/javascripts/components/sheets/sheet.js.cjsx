@@ -40,7 +40,7 @@ class @Sheet extends React.Component
         <h3>
           <a href={user_path(@props.user.iidxid)}>{"DJ.#{@props.user.djname}(#{@props.user.iidxid})"}</a>
         </h3>
-        {<TwitterSharedButton text="DJ.#{@props.user.djname} ☆12#{@state.type[@props.type].name}(#{@state.type[@props.type].remain}#{@state.twitterRemain})" /> if @state.remain isnt false}
+        <TwitterSharedButton text="DJ.#{@props.user.djname} ☆12#{@state.type[@props.type].name}(#{@state.type[@props.type].remain}#{@state.twitterRemain})" />
         <ScreenShot />
         <a className="uk-button #{@state.type[@props.type].button}" href={sheet_path(iidxid: @props.user.iidxid, type: @state.type[@props.type].link)}>
           {@state.type[@props.type].link.toUpperCase()}
