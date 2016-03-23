@@ -8,6 +8,7 @@ class @SheetList extends React.Component
       renderAds: UserStore.renderAds()
       viewport: EnvironmentStore.findBy 'viewport'
       reverse: EnvironmentStore.findBy 'reverseSheet'
+      currentUser: {}
 
   onChangeViewPortAndReverse: =>
     @setState
@@ -15,7 +16,9 @@ class @SheetList extends React.Component
       reverse: EnvironmentStore.findBy 'reverseSheet'
 
   onChangeCurrentUser: =>
-    @setState renderAds: UserStore.renderAds()
+    @setState
+      renderAds: UserStore.renderAds()
+      currentUser: UserStore.get()
 
   onChangeSheet: =>
     @setState sheets: SheetStore.get()
@@ -103,7 +106,7 @@ class @SheetList extends React.Component
         /> if @state.renderAds
       }
       {<hr style={margin: '10px 0'} /> if @state.renderAds}
-      <button onClick={@onClickSelect} className='uk-button uk-button-primary'>編集ボタン表示切替</button>
+      {<button onClick={@onClickSelect} className='uk-button uk-button-primary'>編集ボタン表示切替</button> if @state.currentUser.iidxid is @props.user.iidxid}
       <table className='uk-table uk-table-bordered'>
         <tbody>
           {
