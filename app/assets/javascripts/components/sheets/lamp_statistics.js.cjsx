@@ -13,8 +13,13 @@ class @LampStatistics extends React.Component
   onChangeScore: =>
     statistics = { fc: 0, exh: 0, h: 0, c: 0, e: 0, a: 0, f: 0, n: 0, remain: 0, all: 0 }
 
-    for id, score of ScoreStore.get()
-      continue unless score.display is ''
+    scores = ScoreStore.get()
+    for id, _ of SheetStore.get()
+      score = scores[id]
+      score ||= {}
+      score.display ||= ''
+      score.state ||= 7
+      continue if score.display isnt ''
       statistics.all++
       statistics.remain++ if score.state <= @state.threshold
       statistics[@state.keyValue[score.state]]++
