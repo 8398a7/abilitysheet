@@ -8,7 +8,7 @@ class @SheetList extends React.Component
       renderAds: UserStore.renderAds()
       viewport: EnvironmentStore.findBy 'viewport'
       reverse: EnvironmentStore.findBy 'reverseSheet'
-      currentUser: {}
+      currentUser: UserStore.get()
 
   onChangeViewPortAndReverse: =>
     @setState
