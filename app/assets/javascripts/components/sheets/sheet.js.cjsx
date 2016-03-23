@@ -14,7 +14,6 @@ class @Sheet extends React.Component
           remain: '未難'
           button: 'uk-button-primary'
       remain: false
-      twitterRemain: false
       viewport: EnvironmentStore.findBy 'viewport'
 
   onClickViewPort: =>
@@ -27,7 +26,6 @@ class @Sheet extends React.Component
 
   onChangeScore: =>
     @setState remain: ScoreStore.remain @props.type
-    @setState twitterRemain: ScoreStore.remain @props.type if @state.remain is false
 
   onChangeViewPort: =>
     @setState viewport: EnvironmentStore.findBy 'viewport'
@@ -61,7 +59,7 @@ class @Sheet extends React.Component
         <h3>
           <a href={user_path(@props.user.iidxid)}>{"DJ.#{@props.user.djname}(#{@props.user.iidxid})"}</a>
         </h3>
-        <TwitterSharedButton text="DJ.#{@props.user.djname} ☆12#{@state.type[@props.type].name}(#{@state.type[@props.type].remain}#{@state.twitterRemain})" />
+        {<TwitterSharedButton text="DJ.#{@props.user.djname} ☆12#{@state.type[@props.type].name}(#{@state.type[@props.type].remain}#{@state.remain})" /> if @state.remain isnt false}
         <ScreenShot />
         <a className="uk-button #{@state.type[@props.type].button}" href={sheet_path(iidxid: @props.user.iidxid, type: @state.type[@props.type].link)}>
           {@state.type[@props.type].link.toUpperCase()}
