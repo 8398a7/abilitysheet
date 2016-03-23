@@ -103,6 +103,7 @@
 #                               GET    /api/v1/logs/graph/:iidxid/:year/:month(.:format) api/v1/logs#graph
 #                api_v1_statics GET    /api/v1/statics(.:format)                         api/v1/statics#index
 #                 api_v1_sheets GET    /api/v1/sheets(.:format)                          api/v1/sheets#index
+#            api_v1_sheets_list GET    /api/v1/sheets/list(.:format)                     api/v1/sheets#list
 #                               GET    /api/v1/scores/:iidxid(.:format)                  api/v1/scores#show
 #                               PUT    /api/v1/scores/:iidxid/:sheet_id/:state(.:format) api/v1/scores#update
 #                               POST   /api/v1/scores/sync/iidxme/:iidxid(.:format)      api/v1/scores#sync_iidxme
@@ -212,6 +213,7 @@ Rails.application.routes.draw do
       resources :statics, only: :index
       # sheets
       resources :sheets, only: :index
+      get '/sheets/list' => 'sheets#list'
       # scores
       get '/scores/:iidxid' => 'scores#show'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
