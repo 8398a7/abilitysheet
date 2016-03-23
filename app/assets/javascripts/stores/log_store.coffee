@@ -1,20 +1,20 @@
 logs = {}
 
 @LogStore = new EventEmitter2()
-$.extend @LogStore,
+$.extend LogStore,
   emitChange: ->
-    @emit(AbilitysheetConstants.CHANGE_EVENT)
+    @emit AbilitysheetConstants.CHANGE_EVENT
 
   addChangeListener: (callback) ->
-    @on(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @on AbilitysheetConstants.CHANGE_EVENT, callback
 
   removeChangeListener: (callback) ->
-    @removeListener(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
     objectCopy logs
 
-@LogStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
+LogStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_LOG_DATA

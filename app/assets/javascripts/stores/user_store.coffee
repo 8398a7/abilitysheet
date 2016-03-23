@@ -2,15 +2,17 @@ user = {}
 targetUser = {}
 
 @UserStore = new EventEmitter2()
-$.extend @UserStore,
+UserStore.setMaxListeners 0
+
+$.extend UserStore,
   emitChange: ->
-    @emit(AbilitysheetConstants.CHANGE_EVENT)
+    @emit AbilitysheetConstants.CHANGE_EVENT
 
   addChangeListener: (callback) ->
-    @on(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @on AbilitysheetConstants.CHANGE_EVENT, callback
 
   removeChangeListener: (callback) ->
-    @removeListener(AbilitysheetConstants.CHANGE_EVENT, callback)
+    @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
     objectCopy user
@@ -23,7 +25,7 @@ $.extend @UserStore,
     return false if user.role is 25 || user.role is 100
     true
 
-@UserStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
+UserStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_CURRENT_USER

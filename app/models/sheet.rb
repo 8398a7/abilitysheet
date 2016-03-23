@@ -25,6 +25,8 @@ class Sheet < ActiveRecord::Base
   delegate :fc,  to: :ability
   delegate :aaa, to: :ability
 
+  include Sheet::API
+
   scope :active, -> { where(active: true) }
 
   after_create :create_ability

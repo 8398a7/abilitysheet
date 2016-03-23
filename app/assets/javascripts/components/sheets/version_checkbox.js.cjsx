@@ -1,29 +1,37 @@
 class @VersionCheckbox extends React.Component
   constructor: (props) ->
     super
+    @state =
+      reverse: EnvironmentStore.findBy 'reverseSheet'
+
+  onChangeReverseState: =>
+    @setState reverse: EnvironmentStore.findBy 'reverseSheet'
+
+  componentWillMount: ->
+    EnvironmentStore.addChangeListener @onChangeReverseState
+
+  componentWillUnmount: ->
+    EnvironmentStore.removeChangeListener @onChangeReverseState
 
   onChangeVersion: (e) =>
     if e.target.checked
-      $(".#{e.target.value}").show()
+      SheetActionCreators.show parseInt e.target.value
     else
-      $(".#{e.target.value}").hide()
+      SheetActionCreators.hide parseInt e.target.value
     if e.target.value is '0'
       $('input[name="version-check"]').prop 'checked', e.target.checked
       for obj in $('input[name="version-check"]')
         tmp = {}
         tmp.target = obj
         @onChangeVersion tmp
-    @props.stateCounter()
 
   onChangeReverse: =>
     params = getQueryParams location.search
     url = location.origin + location.pathname
-    if @props.reverseSheet is true
-      delete params.reverse_sheet
-      location.href = mergeQueryParams url, params
-    else
-      params.reverse_sheet = true
-      location.href = mergeQueryParams url, params
+    # parameterの付与/削除
+    if @state.reverse is true then delete params.reverse_sheet else params.reverse_sheet = true
+    history.replaceState '', '', mergeQueryParams url, params
+    EnvironmentActionCreators.changeReverse !@state.reverse
 
   renderVersionCheckbox: ->
     dom = []
@@ -41,7 +49,7 @@ class @VersionCheckbox extends React.Component
           {version[0]}
         </label>
     dom.push <label key={'version-checkbox-' + key}>
-        <input type='checkbox' value='0' name='reverse' checked={@props.reverseSheet} onChange={@onChangeReverse} />
+        <input type='checkbox' value='0' name='reverse' checked={@state.reverse} onChange={@onChangeReverse} />
         逆順表示
       </label>
     dom
@@ -53,5 +61,3 @@ class @VersionCheckbox extends React.Component
 
 VersionCheckbox.propTypes =
   versions: React.PropTypes.array.isRequired
-  stateCounter: React.PropTypes.func.isRequired
-  reverseSheet: React.PropTypes.bool.isRequired

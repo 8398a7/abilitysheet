@@ -9,6 +9,7 @@ class @Navbar extends React.Component
   componentWillMount: ->
     UserStore.addChangeListener(@onChangeCurrentUser)
     UserActionCreators.getMe()
+    EnvironmentActionCreators.judgeMode()
 
   componentWillUnmount: ->
     UserStore.removeChangeListener(@onChangeCurrentUser)

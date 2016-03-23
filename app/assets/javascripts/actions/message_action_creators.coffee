@@ -1,5 +1,5 @@
-class @MessageActionCreators
-  @fetch: ->
+@MessageActionCreators =
+  fetch: ->
     MessageAPI.fetch (data) ->
       AbilitysheetDispatcher.dispatch
         action: AbilitysheetConstants.FETCHED_MESSAGE_NUMBER

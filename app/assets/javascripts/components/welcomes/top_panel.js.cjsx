@@ -12,11 +12,11 @@ class @TopPanel extends React.Component
     @setState current_user: UserStore.get()
 
   componentWillMount: ->
-    @mobileContent() if @props.mobile
-    UserStore.addChangeListener(@onChangeCurrentUser)
+    @mobileContent() if _ua.Mobile and @props.viewport
+    UserStore.addChangeListener @onChangeCurrentUser
 
   componentWillUnmount: ->
-    UserStore.removeChangeListener(@onChangeCurrentUser)
+    UserStore.removeChangeListener @onChangeCurrentUser
 
   mobileContent: ->
     @setState
@@ -46,4 +46,4 @@ class @TopPanel extends React.Component
     </div>
 
 TopPanel.propTypes =
-  mobile: React.PropTypes.bool.isRequired
+  viewport: React.PropTypes.bool.isRequired

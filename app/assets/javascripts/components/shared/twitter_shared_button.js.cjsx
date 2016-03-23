@@ -5,6 +5,10 @@ class @TwitterSharedButton extends React.Component
       text: props.text
       display: 'none'
 
+  # 一度コンポーネントが描画されたら再描画は行わない
+  shouldComponentUpdate: (nextProps, nextState) ->
+    false
+
   componentDidMount: ->
     if twttr?
       twttr.widgets.load $('#twitter-shared-button')

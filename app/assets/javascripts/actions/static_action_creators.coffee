@@ -1,5 +1,5 @@
-class @StaticActionCreators
-  @get: ->
+@StaticActionCreators =
+  get: ->
     return if StaticStore.get().grade?
     StaticAPI.get (data) ->
       AbilitysheetDispatcher.dispatch
