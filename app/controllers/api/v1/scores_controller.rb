@@ -17,7 +17,7 @@ class Api::V1::ScoresController < Api::V1::BaseController
     sheet = Sheet.find(params[:sheet_id])
     score = @user.scores.is_current_version.find_by_sheet_id(sheet.id)
     score ||= @user.scores.create(sheet_id: sheet.id, version: Abilitysheet::Application.config.iidx_version)
-    score.update!(state: params[:state])
+    score.update_with_logs(sheet_id: sheet.id, state: params[:state])
     render json: score.schema
   end
 

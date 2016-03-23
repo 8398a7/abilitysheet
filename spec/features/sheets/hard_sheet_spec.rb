@@ -44,7 +44,13 @@ feature 'ハード地力表', js: true do
 
     scenario 'モーダルが降りてくる' do
       click_on 'MyString'
-      expect(page).to have_content('クリア情報更新')
+      wait_for_ajax
+      expect(page).to have_content('MyString')
+      expect(page).to have_content('state')
+      expect(page).to have_content('bp')
+      expect(page).to have_content('score')
+      expect(page).to have_content('version')
+      expect(page).to have_content('updated at')
     end
 
     scenario '楽曲が更新でき，ログが作られている' do
@@ -52,10 +58,7 @@ feature 'ハード地力表', js: true do
       expect(user.logs.empty?).to eq true
       click_on 'MyString'
       wait_for_ajax
-      select 'CLEAR', from: 'score_state'
-      click_on '更新'
-      wait_for_ajax
-      visit sheet_path(iidxid: user.iidxid, type: 'clear')
+      select 'C', from: 'select_1'
       wait_for_ajax
       expect(user.scores.first.state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq true

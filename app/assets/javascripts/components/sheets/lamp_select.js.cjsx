@@ -6,12 +6,11 @@ class @LampSelect extends React.Component
     ScoreActionCreators.update sheetId: sheetId, state: e.target.value, iidxid: @props.iidxid
 
   render: ->
-    return null unless @props.score
     <form className='uk-form'>
-      <select
-        onChange={(e) => @onChangeLamp e, @props.score.sheetId}
-        style={display: @props.display, backgroundColor: @props.score.color}
-        defaultValue={@props.score.state}
+      <select id="select_#{@props.sheetId}"
+        onChange={(e) => @onChangeLamp e, @props.sheetId}
+        style={display: @props.display, backgroundColor: @props.score?.color}
+        value={if @props.score then @props.score.state else 7}
       >
         <option value=0>FC</option>
         <option value=1>EXH</option>
@@ -25,6 +24,7 @@ class @LampSelect extends React.Component
     </form>
 
 LampSelect.propTypes =
+  sheetId: React.PropTypes.number.isRequired
   score: React.PropTypes.object
   display: React.PropTypes.string.isRequired
   iidxid: React.PropTypes.string.isRequired

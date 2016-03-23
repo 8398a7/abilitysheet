@@ -27,7 +27,14 @@ class @LampTd extends React.Component
       }
     >
       <a style={color: '#555555'} onClick={() => @onClick @props.objects[@props.index].id} href='#sheet-modal' data-uk-modal>{@props.objects[@props.index].title}</a>
-      {<LampSelect display={@props.display} score={@props.scores[@props.index]} iidxid={@props.iidxid} /> if @state.currentUser.iidxid is @props.iidxid}
+      {
+        <LampSelect
+          sheetId={parseInt @props.index}
+          display={@props.display}
+          score={@props.scores[@props.index]}
+          iidxid={@props.iidxid}
+        /> if @state.currentUser.iidxid is @props.iidxid
+      }
     </td>
 
 LampTd.propTypes =
