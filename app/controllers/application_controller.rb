@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_404
-    render file: Rails.root.join('public', '404.html'), status: 404, layout: true, content_type: 'text/html'
+    render file: Rails.root.join('public', '404.html'), status: 404, layout: false, content_type: 'text/html'
   end
 
   def check_xhr
