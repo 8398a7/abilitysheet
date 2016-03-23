@@ -4,6 +4,8 @@ class SheetsController < ApplicationController
 
   def show
     load_static unless params[:type] == 'power'
+    # FIXME: params[:type]から判別できるのでpower以外はコントローラ通さなくて良い
+    # フロント部分も結構変更が必要かも
     __send__(@action_routes[params[:type]])
     render @action_routes[params[:type]]
   end

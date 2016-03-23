@@ -15,7 +15,13 @@ module Score::API
     end
 
     def self.pie
-      (0..7).each.map { |state| where(state: state).count }
+      ret = Array.new(8, 0)
+      Sheet.active.each do |sheet|
+        state = find_by(sheet_id: sheet.id).try(:state)
+        state ||= 7
+        ret[state] += 1
+      end
+      ret
     end
   end
 end
