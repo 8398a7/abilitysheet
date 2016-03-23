@@ -8,7 +8,8 @@ module Score::API
         title: title,
         state: state,
         score: score,
-        bp: bp
+        bp: bp,
+        version: version
       }
     end
 

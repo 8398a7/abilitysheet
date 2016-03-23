@@ -41,6 +41,7 @@ class @SheetList extends React.Component
       sheets[sheet[@props.type]] ||= {}
       sheets[sheet[@props.type]][id] = sheet
       sheets[sheet[@props.type]].string = sheet["#{@props.type}_string"]
+      sheets[sheet[@props.type]][id].id = parseInt id
     sheets
 
   setAbilities: (sheets) ->

@@ -79,6 +79,7 @@
 #                  remove_rival POST   /rival/remove/:id(.:format)                       rivals#remove
 #                register_rival POST   /rival/register/:id(.:format)                     rivals#register
 #                         sheet GET    /sheets/:iidxid/:type(.:format)                   sheets#show
+#                  detail_sheet GET    /sheets/:iidxid/detail/:sheet_id(.:format)        sheets#detail
 #                    edit_score GET    /scores/:id/edit(.:format)                        scores#edit
 #                         score PATCH  /scores/:id(.:format)                             scores#update
 #                               PUT    /scores/:id(.:format)                             scores#update
@@ -102,6 +103,8 @@
 #                               GET    /api/v1/logs/graph/:iidxid/:year/:month(.:format) api/v1/logs#graph
 #                api_v1_statics GET    /api/v1/statics(.:format)                         api/v1/statics#index
 #                 api_v1_sheets GET    /api/v1/sheets(.:format)                          api/v1/sheets#index
+#                               GET    /api/v1/scores/:iidxid(.:format)                  api/v1/scores#show
+#                               PUT    /api/v1/scores/:iidxid/:sheet_id/:state(.:format) api/v1/scores#update
 #                               POST   /api/v1/scores/sync/iidxme/:iidxid(.:format)      api/v1/scores#sync_iidxme
 #                  abilitysheet GET    /abilitysheet(.:format)                           welcomes#migrate_domain
 #                               GET    /abilitysheet/:p1(.:format)                       welcomes#migrate_domain
@@ -174,6 +177,7 @@ Rails.application.routes.draw do
 
   # sheet
   get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet
+  get '/sheets/:iidxid/detail/:sheet_id' => 'sheets#detail', as: :detail_sheet
 
   # score
   resources :scores, only: %i(edit update)
@@ -214,7 +218,6 @@ Rails.application.routes.draw do
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
     end
   end
-  # mount Abilitysheet::API => '/api'
 
   # TODO: support 1 year(start: 15/12/20)
   get '/abilitysheet', to: 'welcomes#migrate_domain'

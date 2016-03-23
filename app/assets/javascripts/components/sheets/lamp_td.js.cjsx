@@ -23,7 +23,7 @@ class @LampTd extends React.Component
         backgroundColor: @props.scores[@props.index]?.color
       }
     >
-      {@props.objects[@props.index].title}
+      <a style={color: '#555555'} href={detail_sheet_path(iidxid: @props.iidxid, sheet_id: @props.objects[@props.index].id)}>{@props.objects[@props.index].title}</a>
       {<LampSelect display={@props.display} score={@props.scores[@props.index]} iidxid={@props.iidxid} /> if @state.currentUser.iidxid is @props.iidxid}
     </td>
 
