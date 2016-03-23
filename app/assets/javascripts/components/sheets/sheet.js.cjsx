@@ -51,6 +51,7 @@ class @Sheet extends React.Component
 
   render: ->
     <div className='react'>
+      <SheetModal />
       <div className='center'>
         <h2>
           <i className='fa fa-table' />

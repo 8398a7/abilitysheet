@@ -6,6 +6,13 @@ class Api::V1::ScoresController < Api::V1::BaseController
     render json: @user.scores.is_active.is_current_version.preload(:sheet).map(&:schema)
   end
 
+  def detail
+    render json: {
+      title: Sheet.find(params[:sheet_id]).title,
+      scores: @user.scores.where(sheet_id: params[:sheet_id]).order(version: :desc).map(&:schema)
+    }
+  end
+
   def update
     sheet = Sheet.find(params[:sheet_id])
     score = @user.scores.is_current_version.find_by_sheet_id(sheet.id)

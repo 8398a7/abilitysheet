@@ -9,7 +9,8 @@ module Score::API
         state: state,
         score: score,
         bp: bp,
-        version: version
+        version: version,
+        updated_at: updated_at
       }
     end
 

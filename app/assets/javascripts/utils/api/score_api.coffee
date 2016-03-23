@@ -10,3 +10,9 @@
       type: 'PUT'
       callback: callback
     AbilitysheetAPI.AjaxCall "/scores/#{params.iidxid}/#{params.sheetId}/#{params.state}", option
+
+  getModal: (params, callback) ->
+    option =
+      type: 'GET'
+      callback: callback
+    AbilitysheetAPI.AjaxCall "/scores/#{params.iidxid}/#{params.sheetId}", option

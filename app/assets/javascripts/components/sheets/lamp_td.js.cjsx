@@ -13,6 +13,9 @@ class @LampTd extends React.Component
   componentWillUnmount: ->
     UserStore.removeChangeListener @onChangeCurrentUser
 
+  onClick: (id) =>
+    SheetModalActionCreators.get iidxid: @props.iidxid, sheetId: id
+
   render: ->
     return <td style={display: 'none'} /> unless @props.objects[@props.index]?
     <td
@@ -23,7 +26,7 @@ class @LampTd extends React.Component
         backgroundColor: @props.scores[@props.index]?.color
       }
     >
-      <a style={color: '#555555'} href={detail_sheet_path(iidxid: @props.iidxid, sheet_id: @props.objects[@props.index].id)}>{@props.objects[@props.index].title}</a>
+      <a style={color: '#555555'} onClick={() => @onClick @props.objects[@props.index].id} href='#sheet-modal' data-uk-modal>{@props.objects[@props.index].title}</a>
       {<LampSelect display={@props.display} score={@props.scores[@props.index]} iidxid={@props.iidxid} /> if @state.currentUser.iidxid is @props.iidxid}
     </td>
 

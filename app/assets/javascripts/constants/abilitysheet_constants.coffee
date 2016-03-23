@@ -19,6 +19,7 @@
   HIDE_SHEET_DATA: 'hide_sheet_data'
   JUDGE_MODE: 'judge_mode'
   JUDGE_REVERSE: 'judge_reverse'
+  RECEIVED_SHEET_MODAL_DATA: 'received_sheet_modal_data'
 
 @Env =
   color: [

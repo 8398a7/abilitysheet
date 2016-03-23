@@ -1,4 +1,4 @@
-feature 'ハード地力表' do
+feature 'ハード地力表', js: true do
   given(:user) { create(:user, id: 1) }
   background do
     visit sheet_path(iidxid: user.iidxid, type: 'hard')
@@ -34,7 +34,7 @@ feature 'ハード地力表' do
     end
   end
 
-  context '楽曲更新時', js: true do
+  context '楽曲更新時' do
     background do
       create(:sheet, id: 1, active: true)
       login(user)

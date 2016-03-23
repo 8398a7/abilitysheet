@@ -178,7 +178,6 @@ Rails.application.routes.draw do
 
   # sheet
   get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet
-  get '/sheets/:iidxid/detail/:sheet_id' => 'sheets#detail', as: :detail_sheet
 
   # score
   resources :scores, only: %i(edit update)
@@ -216,6 +215,7 @@ Rails.application.routes.draw do
       get '/sheets/list' => 'sheets#list'
       # scores
       get '/scores/:iidxid' => 'scores#show'
+      get '/scores/:iidxid/:sheet_id' => 'scores#detail'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
     end

@@ -34,6 +34,7 @@ ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_SCORE_DATA
+      scores = {}
       setScore score for score in payload.scores
       ScoreStore.emitChange()
     when AbilitysheetConstants.UPDATED_SCORE_DATA

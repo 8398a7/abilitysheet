@@ -8,11 +8,6 @@ class SheetsController < ApplicationController
     render @action_routes[params[:type]]
   end
 
-  def detail
-    @scores = @user.scores.where(sheet_id: params[:sheet_id]).order(version: :desc).map(&:schema)
-    @title = Sheet.select(:title).find(params[:sheet_id]).title
-  end
-
   private
 
   def load_user
