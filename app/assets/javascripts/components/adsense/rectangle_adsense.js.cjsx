@@ -1,9 +1,20 @@
 class @RectangleAdsense extends React.Component
   constructor: (props) ->
     super
+    @state =
+      viewport: EnvironmentStore.findBy 'viewport'
+
+  onChangeViewPort: =>
+    @setState viewport: EnvironmentStore.findBy 'viewport'
+
+  componentWillMount: ->
+    EnvironmentStore.addChangeListener @onChangeViewPort
+
+  componentWillUnmount: ->
+    EnvironmentStore.removeChangeListener @onChangeViewPort
 
   renderSecondRectangle: ->
-    return null if @props.mobile
+    return null if _ua.Mobile and @state.viewport
     <GoogleAdsenseIns
       className='adslot_1'
       style={display: 'inline-block', marginLeft: '20px'}
@@ -24,7 +35,6 @@ class @RectangleAdsense extends React.Component
     </div>
 
 RectangleAdsense.propTypes =
-  mobile: React.PropTypes.bool.isRequired
   client: React.PropTypes.string.isRequired
   slot: React.PropTypes.string.isRequired
   slot2: React.PropTypes.string.isRequired

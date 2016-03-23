@@ -27,7 +27,7 @@
 #= require turbolinks
 #= require react
 #= require react_ujs
-#= require flux/dist/Flux.min
+#= require flux/dist/Flux
 #= require eventemitter2/lib/eventemitter2
 #= require_tree ./utils
 #= require_tree ./constants

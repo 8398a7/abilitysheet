@@ -1,7 +1,7 @@
-message = 0
+sheets = {}
 
-@MessageStore = new EventEmitter2()
-$.extend MessageStore,
+@SheetModalStore = new EventEmitter2()
+$.extend SheetModalStore,
   emitChange: ->
     @emit AbilitysheetConstants.CHANGE_EVENT
 
@@ -12,11 +12,11 @@ $.extend MessageStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy message
+    objectCopy sheets
 
-MessageStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
+SheetModalStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
-    when AbilitysheetConstants.FETCHED_MESSAGE_NUMBER
-      message = payload.message
-      MessageStore.emitChange()
+    when AbilitysheetConstants.RECEIVED_SHEET_MODAL_DATA
+      sheets = payload.sheets
+      SheetModalStore.emitChange()

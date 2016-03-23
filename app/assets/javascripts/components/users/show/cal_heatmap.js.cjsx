@@ -6,7 +6,7 @@ class @CalHeatmap extends React.Component
     cal = new CalHeatMap()
     startDate = new Date()
     range = 0
-    if @props.mobile
+    if _ua.Mobile and @props.viewport
       range = 3
     else
       range = 12
@@ -29,4 +29,4 @@ class @CalHeatmap extends React.Component
 
 CalHeatmap.proptypes =
   user: React.PropTypes.object.isRequired
-  mobile: React.PropTypes.bool.isRequired
+  viewport: React.PropTypes.bool.isRequired

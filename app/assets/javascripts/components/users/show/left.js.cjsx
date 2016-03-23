@@ -12,13 +12,11 @@ class @UserProfileLeft extends React.Component
       compareNormal: 'ノマゲ比較'
       compareHard: 'ハード比較'
 
-
-
   componentWillMount: ->
-    StaticStore.addChangeListener(@onChangeGrade)
+    StaticStore.addChangeListener @onChangeGrade
     StaticActionCreators.get()
     @setGrade()
-    if @props.mobile
+    if _ua.Mobile and @props.viewport
       @setState
         addRival: '追加'
         removeRival: '削除'
@@ -28,7 +26,7 @@ class @UserProfileLeft extends React.Component
         compareHard: '比較'
 
   componentWillUnmount: ->
-    StaticStore.removeChangeListener(@onChangeGrade)
+    StaticStore.removeChangeListener @onChangeGrade
 
   onChangeGrade: =>
     @setGrade()
@@ -83,4 +81,4 @@ class @UserProfileLeft extends React.Component
 UserProfileLeft.proptypes =
   user: React.PropTypes.object.isRequired
   currentUser: React.PropTypes.object
-  mobile: React.PropTypes.bool.isRequired
+  viewport: React.PropTypes.bool.isRequired
