@@ -37,7 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    airbrake (5.2.1)
+    airbrake (5.2.2)
       airbrake-ruby (~> 1.2)
     airbrake-ruby (1.2.1)
     annotate (2.7.0)
@@ -46,12 +46,12 @@ GEM
     arel (6.0.3)
     ast (2.2.0)
     atomic (1.1.99)
-    aws-sdk (2.2.29)
-      aws-sdk-resources (= 2.2.29)
-    aws-sdk-core (2.2.29)
+    aws-sdk (2.2.30)
+      aws-sdk-resources (= 2.2.30)
+    aws-sdk-core (2.2.30)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.2.29)
-      aws-sdk-core (= 2.2.29)
+    aws-sdk-resources (2.2.30)
+      aws-sdk-core (= 2.2.30)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -63,7 +63,6 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bower-rails (0.10.0)
     builder (3.2.2)
     bullet (5.0.0)
       activesupport (>= 3.0.0)
@@ -171,7 +170,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    js-routes (1.2.4)
+    js-routes (1.2.5)
       railties (>= 3.2)
       sprockets-rails
     json (1.8.3)
@@ -461,7 +460,6 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
-  bower-rails
   bullet
   capistrano-faster-assets
   capistrano-rails
