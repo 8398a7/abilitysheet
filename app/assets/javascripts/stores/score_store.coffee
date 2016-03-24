@@ -18,7 +18,7 @@ $.extend ScoreStore,
     threshold = if type is 'clear' then 4 else 2
     remain = 0
     for id, _ of SheetStore.get()
-      score = objectCopy scores[id]
+      score = scores[id]
       score ||=
         state: 7
       remain++ if threshold < score.state
