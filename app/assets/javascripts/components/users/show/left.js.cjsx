@@ -65,7 +65,12 @@ class @UserProfileLeft extends React.Component
       <image className='icon' src={@props.user.imageUrl} />
       <div style={marginTop: '20px'}><h2><b>{@props.user.djname}</b></h2></div>
       <div><h3>{@props.user.iidxid}&nbsp;{@renderRival()}</h3></div>
-      <div>
+      <div style={paddingBottom: '3px'}>
+        <TwitterSharedButton
+          text="DJ.#{@props.user.djname} ☆12参考表プロフィール"
+        />
+      </div>
+      <div style={paddingBottom: '3px'}>
         <a className='uk-button uk-button-primary' href={sheet_path(@props.user.iidxid, type: 'clear')}>{@state.normal}</a>
         <a className='uk-button uk-button-danger' href={sheet_path(@props.user.iidxid, type: 'hard')}>{@state.hard}</a>
       </div>
