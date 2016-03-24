@@ -19,8 +19,8 @@ $.extend ScoreStore,
     remain = 0
     for id, _ of SheetStore.get()
       score = objectCopy scores[id]
-      score ||= {}
-      score.state ||= 7
+      score ||=
+        state: 7
       remain++ if threshold < score.state
     remain
 
