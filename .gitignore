@@ -28,7 +28,7 @@
 *.rdb
 
 .DS_Store
-/vendor/assets/bower_components
+/bower_components
 data.yml
 /node_modules
 npm-debug.log

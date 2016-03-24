@@ -46,15 +46,15 @@ namespace :deploy do
   after :publishing, :restart
 end
 
-namespace :npm do
+namespace :assets do
   desc 'Install npm'
   task :install do
     on roles(:web) do
       within release_path do
-        execute :rake, 'npm:install npm:resolve bower:install bower:resolve RAILS_ENV=production'
+        execute :rake, 'assets:components:install assets:components:resolve RAILS_ENV=production'
       end
     end
   end
 end
 before 'puma:check', 'puma:config'
-before 'deploy:compile_assets', 'npm:install'
+before 'deploy:compile_assets', 'assets:install'
