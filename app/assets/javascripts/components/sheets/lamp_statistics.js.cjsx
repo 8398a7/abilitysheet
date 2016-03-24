@@ -16,9 +16,9 @@ class @LampStatistics extends React.Component
     scores = ScoreStore.get()
     for id, _ of SheetStore.get()
       score = scores[id]
-      score ||= {}
-      score.display ||= ''
-      score.state ||= 7
+      score ||=
+        display: ''
+        state: 7
       continue if score.display isnt ''
       statistics.all++
       statistics.remain++ if score.state <= @state.threshold
