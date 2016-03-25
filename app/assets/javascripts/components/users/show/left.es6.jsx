@@ -13,6 +13,7 @@ class UserProfileLeft extends React.Component {
       compareHard: 'ハード比較'
     }
     this.onChangeGrade = this.onChangeGrade.bind(this)
+    this.changeRival = this.changeRival.bind(this)
   }
 
   componentWillMount() {
@@ -42,7 +43,7 @@ class UserProfileLeft extends React.Component {
 
   setGrade() {
     if (StaticStore.get().grade === undefined) { return null }
-    let grades = StaticStore.get().grade
+    let grades = StaticStore.get().grade[this.props.user.grade]
     Object.keys(grades).forEach(gradeString => {
       let gradeColor = grades[gradeString]
       this.setState({
