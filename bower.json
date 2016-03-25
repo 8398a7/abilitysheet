@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "datatables": "^1.10.11",
-    "jquery": "^2.2.2"
+    "jquery": "^2.2.2",
+    "babel": "*"
   }
 }
