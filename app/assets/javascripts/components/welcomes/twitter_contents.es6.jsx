@@ -10,8 +10,8 @@ class TwitterContents extends React.Component {
       twitterjs.src = '//platform.twitter.com/widgets.js'
       document.getElementsByTagName('body')[0].appendChild(twitterjs)
     } else {
-      twttr.widgets.load($('#search-timeline'))
-      twttr.widgets.load($('#owner-timeline'))
+      twttr.widgets.load(document.getElementById('search-timeline'))
+      twttr.widgets.load(document.getElementById('owner-timeline'))
     }
   }
 
