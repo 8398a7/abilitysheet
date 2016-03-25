@@ -16,7 +16,7 @@ class UserProfile extends React.Component {
 
   onChangeCurrentUser() {
     targetUser = UserStore.getTargetUser()
-    if (typeof(targetUser.id) === 'undefined') {
+    if (targetUser.id === undefined) {
       this.setState({currentUser: UserStore.get()})
     } else {
       this.setState({
