@@ -45,7 +45,7 @@ class Navbar extends React.Component {
           <User currentUser={this.state.currentUser} />
         </div>
         <div className='uk-navbar-flip uk-visible-small'>
-          <a className='uk-navbar-toggle' href='#navbar-offcanvas' data-uk-offcanvas=''></a>
+          <a className='uk-navbar-toggle' href='#navbar-offcanvas' data-uk-offcanvas></a>
         </div>
       </div>
     )

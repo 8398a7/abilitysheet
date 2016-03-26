@@ -2,7 +2,7 @@ class User extends React.Component {
   userDom() {
     if (this.props.currentUser.id) {
       return (
-        <li className='uk-parent' data-uk-dropdown=''>
+        <li className='uk-parent' data-uk-dropdown>
           <a><i className='fa fa-user' />{this.props.currentUser.djname}</a>
           <div className='uk-dropdown uk-dropdown-navbar'>
             <ul className='uk-nav uk-nav-navbar'>

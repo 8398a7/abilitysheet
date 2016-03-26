@@ -7,7 +7,7 @@ class MyPage extends React.Component {
   render() {
     if (!this.props.currentUser.id) { return null }
     return (
-      <li className='uk-parent' data-uk-dropdown=''>
+      <li className='uk-parent' data-uk-dropdown>
         <a><i className='fa fa-database' />マイページ</a>
         <div className='uk-dropdown uk-dropdown-navbar'>
           <ul className='uk-nav uk-nav-navbar'>

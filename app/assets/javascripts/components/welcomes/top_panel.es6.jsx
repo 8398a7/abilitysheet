@@ -53,7 +53,7 @@ class TopPanel extends React.Component {
       <div className='uk-block uk-contrast uk-block-large top-panel'>
         <div className='uk-container'>
           <h1>{this.state.title}</h1>
-          <div className='uk-grid uk-grid-match' data-uk-grid-margin=''>
+          <div className='uk-grid uk-grid-match' data-uk-grid-margin>
             <div className='uk-width-medium-1-3'>{this.state.one}</div>
             <div className='uk-width-medium-1-3'>{this.state.two}</div>
             <div className='uk-width-medium-1-3'>{this.state.three}</div>

@@ -4,7 +4,7 @@ class Admin extends React.Component {
     let role = this.props.currentUser.role
     if (role < 50) { return null }
     return (
-      <li className='uk-parent admin-parent' data-uk-dropdown=''>
+      <li className='uk-parent admin-parent' data-uk-dropdown>
         <a><i className='fa fa-gears' />管理</a>
         <div className='uk-dropdown uk-dropdown-navbar'>
           <ul className='uk-nav uk-nav-navbar admin-nav'>
