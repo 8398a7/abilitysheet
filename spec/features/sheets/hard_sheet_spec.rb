@@ -36,7 +36,7 @@ feature 'ハード地力表', js: true do
 
   context '楽曲更新時' do
     background do
-      create(:sheet, id: 1, active: true)
+      create(:sheet, id: 1, active: true, textage: 'hoge')
       login(user)
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
       wait_for_ajax
@@ -51,6 +51,8 @@ feature 'ハード地力表', js: true do
       expect(page).to have_content('score')
       expect(page).to have_content('version')
       expect(page).to have_content('updated at')
+      expect(page).to have_content('textage(1P)')
+      expect(page).to have_content('textage(2P)')
     end
 
     scenario '楽曲が更新でき，ログが作られている' do
