@@ -27,6 +27,7 @@
 #= require turbolinks
 #= require react
 #= require react_ujs
+#= require babel/browser-polyfill.min
 #= require flux/dist/Flux
 #= require eventemitter2/lib/eventemitter2
 #= require_tree ./utils

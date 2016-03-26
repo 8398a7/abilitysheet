@@ -10,6 +10,9 @@
 [![Dependency Status](https://gemnasium.com/8398a7/abilitysheet.svg)](https://gemnasium.com/8398a7/abilitysheet)
 [![Release](https://img.shields.io/github/release/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/releases/latest)
 [![License](https://img.shields.io/github/license/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/blob/master/LICENSE.txt)
+[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)
+
+![](https://cloud.githubusercontent.com/assets/8043276/14033422/789679c2-f25d-11e5-923a-a6b24d459a48.png)
 
 ## About
 
@@ -30,15 +33,15 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Next
 
 * プレイヤーの地力値推定，及び楽曲推薦
-* 全体的なReact化
 * スコアやBPの遷移グラフ
 
 ## Requires
 
 - ruby 2.3.0
-- rails 4.2.5.1
-- node 5.6.0
-- npm 3.6.0
+- rails 4.2.6
+- node 5.9.0
+- npm 3.7.3
+- bower 1.7.7
 
 ## Setting
 
@@ -53,8 +56,8 @@ rails s
 ## Help
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-[![Join the chat at https://gitter.im/8398a7/abilitysheet](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/8398a7/abilitysheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)  
-お気軽にツイッターやgitterで声をかけて下さい，とても喜びます．
+[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)  
+お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
 
 ## Database
 
