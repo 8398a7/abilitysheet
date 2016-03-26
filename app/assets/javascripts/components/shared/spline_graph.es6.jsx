@@ -3,6 +3,8 @@ class SplineGraph extends React.Component {
     super()
     let today = new Date()
     this.onChangeGraph = this.onChangeGraph.bind(this)
+    this.onClickPrev = this.onClickPrev.bind(this)
+    this.onClickNext = this.onClickNext.bind(this)
     this.state = {
       year: today.getFullYear(),
       month: today.getMonth() + 1,
@@ -53,6 +55,12 @@ class SplineGraph extends React.Component {
         ]
       }
     }
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
   }
 
   onChangePie(options, graph) {

@@ -1,4 +1,10 @@
 class MyPage extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   recentDom() {
     if (this.props.recent === null) { return null }
     return (<a href={this.props.recent}>最近の更新</a>)

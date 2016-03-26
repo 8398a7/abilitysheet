@@ -7,6 +7,12 @@ class Message extends React.Component {
     this.onChangeMessage = this.onChangeMessage.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   componentDidMount() {
     MessageStore.addChangeListener(this.onChangeMessage)
   }

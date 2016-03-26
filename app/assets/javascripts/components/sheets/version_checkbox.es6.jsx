@@ -9,6 +9,12 @@ class VersionCheckbox extends React.Component {
     this.onChangeReverse = this.onChangeReverse.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   onChangeReverseState() {
     this.setState({reverse: EnvironmentStore.findBy('reverseSheet')})
   }

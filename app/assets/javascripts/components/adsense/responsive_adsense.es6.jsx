@@ -1,8 +1,4 @@
 class ResponsiveAdsense extends React.Component {
-  constructor(props) {
-    super()
-  }
-
   render() {
     return (
       <div className='google-adsense'>

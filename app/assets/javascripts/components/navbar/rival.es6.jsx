@@ -1,4 +1,10 @@
 class Rival extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   render() {
     if (!this.props.currentUser.id) { return null }
     return (

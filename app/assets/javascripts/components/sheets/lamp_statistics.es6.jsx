@@ -11,6 +11,12 @@ class LampStatistics extends React.Component {
     this.onChangeScore = this.onChangeScore.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   onChangeViewPort() {
     this.setState({viewport: EnvironmentStore.findBy('viewport')})
   }

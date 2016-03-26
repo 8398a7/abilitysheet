@@ -24,6 +24,12 @@ class Sheet extends React.Component {
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   onClickViewPort() {
     params = getQueryParams(location.search)
     let url = location.origin + location.pathname
@@ -77,7 +83,7 @@ class Sheet extends React.Component {
             <a href={user_path(this.props.user.iidxid)}>{'DJ.' + this.props.user.djname + '(' + this.props.user.iidxid + ')'}</a>
           </h3>
           {
-            this.state.remain === true ?
+            this.state.remain !== false ?
               <TwitterSharedButton text={'DJ.' + this.props.user.djname + ' ☆12' + this.state.type[this.props.type].name + '(' + this.state.type[this.props.type].remain + this.state.remain + ')'} /> : null
           }
           <ScreenShot />

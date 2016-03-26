@@ -1,8 +1,4 @@
 class GoogleAdsenseIns extends React.Component {
-  constructor(props) {
-    super()
-  }
-
   componentDidMount() {
     this.pushAd()
   }

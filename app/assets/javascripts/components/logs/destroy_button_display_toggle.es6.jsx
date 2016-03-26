@@ -7,6 +7,12 @@ class DestroyButtonDisplayToggle extends React.Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
+  }
+
   toggleDisplay(type) {
     $('.destroy-button').each((index, elem) => type === 'display' ? $(elem).show() : $(elem).hide())
   }

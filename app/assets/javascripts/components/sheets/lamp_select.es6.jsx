@@ -1,6 +1,8 @@
 class LampSelect extends React.Component {
-  constructor(props) {
-    super()
+  shouldComponentUpdate(nextProps, nextState) {
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
   }
 
   onChangeLamp(e, sheetId) {

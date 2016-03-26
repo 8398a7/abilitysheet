@@ -9,7 +9,9 @@ class Footer extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.state.renderAds !== nextState.renderAds ? true : false
+    props = !Immutable.is(nextProps, this.props)
+    state = !Immutable.is(nextState, this.state)
+    return props || state
   }
 
   onChangeCurrentUser() {
