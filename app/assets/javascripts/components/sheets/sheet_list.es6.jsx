@@ -80,7 +80,7 @@ class SheetList extends React.Component {
       objects = sheets[ability]
       dom.push(<tr key={this.props.type + '_' + ability}>
           <th colSpan={5} style={{textAlign: 'center', backgroundColor: '#f5deb3'}}>{objects.string}</th>
-        f (Immutable.is(this.state, nextState) !== false )  return true</tr>)
+        </tr>)
       delete objects.string
       keys = Object.sortedKeys(objects, 'title', 'asc')
       keys.chunk(5).forEach(array => {
