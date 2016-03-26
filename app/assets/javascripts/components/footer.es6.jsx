@@ -40,12 +40,22 @@ class Footer extends React.Component {
         <div className='relative'>
           <div className='uk-panel panel-default'>
             <span className='left-position'>
-              <a href='http://twitter.com/IIDX_12'>
+              <a href='https://twitter.com/IIDX_12'>
                 <i className='fa fa-twitter' />
                 Twitter
               </a>
             </span>
-            <span>&copy; IIDX☆12参考表 8398a7 2014-{this.state.year} <a href='https://github.com/8398a7/abilitysheet' target='_blank'><i className='fa fa-github' /></a></span>
+            <span>
+              &copy; IIDX☆12参考表 8398a7 2014-{this.state.year}
+              &nbsp;
+              <a href='https://github.com/8398a7/abilitysheet' target='_blank'>
+                <i className='fa fa-github' />
+              </a>
+              &nbsp;
+              <a href='https://slack.iidx12.tk'>
+                <i className='fa fa-slack' />
+              </a>
+            </span>
           </div>
         </div>
       </div>
