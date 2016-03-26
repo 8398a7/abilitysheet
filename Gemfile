@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # a,b,c,d,e,f,g {{{
-gem 'airbrake'
 gem 'aws-sdk'
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
@@ -62,6 +61,10 @@ group :development do
   gem 'quiet_assets'
   gem 'rack-dev-mark'
   gem 'spring'
+end
+
+group :staging, :production do
+  gem 'airbrake'
 end
 
 group :deployment do
