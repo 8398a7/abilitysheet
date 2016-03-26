@@ -1,4 +1,6 @@
 class GoogleAdsenseIns extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
+
   componentDidMount() {
     this.pushAd()
   }

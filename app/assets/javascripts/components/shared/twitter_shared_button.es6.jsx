@@ -8,9 +8,7 @@ class TwitterSharedButton extends React.Component {
   }
 
   // 一度コンポーネントが描画されたら再描画は行わない
-  shouldComponentUpdate(nextProps, nextState) {
-    return false
-  }
+  shouldComponentUpdate(nextProps, nextState) { return false }
 
   componentDidMount() {
     if (typeof(twttr) === 'undefined') {

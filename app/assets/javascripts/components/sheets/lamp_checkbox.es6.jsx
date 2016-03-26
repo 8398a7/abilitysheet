@@ -4,11 +4,7 @@ class LampCheckbox extends React.Component {
     this.onChangeLamp = this.onChangeLamp.bind(this)
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   recChangeLamp(array) {
     $('input[name="lamp-check"]').prop('checked', false);

@@ -1,9 +1,5 @@
 class LampSelect extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeLamp(e, sheetId) {
     ScoreActionCreators.update({sheetId: sheetId, state: e.target.value, iidxid: this.props.iidxid})

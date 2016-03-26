@@ -1,9 +1,5 @@
 class RivalNumber extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   render() {
     return (

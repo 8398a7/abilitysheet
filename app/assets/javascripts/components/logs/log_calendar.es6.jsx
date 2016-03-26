@@ -4,11 +4,7 @@ class LogCalendar extends React.Component {
     this.onChangeLogs = this.onChangeLogs.bind(this)
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   componentWillMount() {
     LogStore.addChangeListener(this.onChangeLogs)

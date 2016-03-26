@@ -57,11 +57,7 @@ class SplineGraph extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangePie(options, graph) {
     for (let index in options.series[9].data) {

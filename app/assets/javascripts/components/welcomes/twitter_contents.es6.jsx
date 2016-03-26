@@ -1,7 +1,5 @@
 class TwitterContents extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return false
-  }
+  shouldComponentUpdate(nextProps, nextState) { return false }
 
   componentDidMount() {
     if (typeof(twttr) === 'undefined') {

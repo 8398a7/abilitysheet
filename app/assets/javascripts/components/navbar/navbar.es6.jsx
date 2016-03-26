@@ -7,11 +7,7 @@ class Navbar extends React.Component {
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeCurrentUser() {
     this.setState({currentUser: UserStore.get()})

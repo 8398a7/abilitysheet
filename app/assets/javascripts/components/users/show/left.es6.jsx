@@ -16,11 +16,7 @@ class UserProfileLeft extends React.Component {
     this.changeRival = this.changeRival.bind(this)
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    props = !Immutable.is(nextProps, this.props)
-    state = !Immutable.is(nextState, this.state)
-    return props || state
-  }
+  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   componentWillMount() {
     StaticStore.addChangeListener(this.onChangeGrade)
