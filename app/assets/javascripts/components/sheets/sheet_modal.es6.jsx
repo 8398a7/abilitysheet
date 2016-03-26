@@ -36,6 +36,14 @@ class SheetModal extends React.Component {
     })
   }
 
+  renderTextage() {
+    if (!this.state.textage) return null
+    dom = []
+    dom.push(<a key='textage-1p' href={this.state.textage + '?1AC00'} target='_blank' className='uk-button uk-button-danger'>textage(1P)</a>)
+    dom.push(<a key='textage-2p' href={this.state.textage + '?2AC00'} target='_blank' className='uk-button uk-button-primary'>textage(2P)</a>)
+    return dom
+  }
+
   render() {
     return (
       <div id='sheet-modal' className='uk-modal'>
@@ -59,7 +67,8 @@ class SheetModal extends React.Component {
             </tbody>
           </table>
           <div className='uk-modal-footer center'>
-            <button className='uk-button uk-button-danger uk-modal-close'>Close</button>
+            {this.renderTextage()}
+            <button className='uk-button uk-modal-close'><i className='fa fa-times' />Close</button>
           </div>
         </div>
       </div>
