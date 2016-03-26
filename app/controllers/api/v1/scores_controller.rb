@@ -7,9 +7,11 @@ class Api::V1::ScoresController < Api::V1::BaseController
   end
 
   def detail
+    sheet = Sheet.find(params[:sheet_id])
     render json: {
-      title: Sheet.find(params[:sheet_id]).title,
-      scores: @user.scores.where(sheet_id: params[:sheet_id]).order(version: :desc).map(&:schema)
+      title: sheet.title,
+      scores: @user.scores.includes(:sheet).where(sheet_id: params[:sheet_id]).order(version: :desc).map(&:schema),
+      textage: sheet.textage
     }
   end
 
