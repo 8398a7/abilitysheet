@@ -56,7 +56,7 @@ rails s
 ## Help
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)
+[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)  
 お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
 
 ## Database
