@@ -57,6 +57,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'meta_request'
   gem 'peek-git'
   gem 'quiet_assets'
   gem 'rack-dev-mark'

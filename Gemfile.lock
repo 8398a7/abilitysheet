@@ -68,6 +68,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
+    callsite (0.0.11)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -155,6 +156,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
+    git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     google-analytics-rails (1.1.0)
@@ -195,6 +197,10 @@ GEM
       nokogiri (~> 1.6)
       ntlm-http (~> 0.1, >= 0.1.1)
       webrobots (>= 0.0.9, < 0.2)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (2.99.1)
     mini_magick (4.5.1)
@@ -271,6 +277,9 @@ GEM
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rack-dev-mark (0.7.4)
       rack (>= 1.1)
     rack-pjax (0.8.0)
@@ -483,6 +492,7 @@ DEPENDENCIES
   kaminari
   launchy
   mechanize
+  meta_request
   mini_magick
   newrelic_rpm
   nokogiri
