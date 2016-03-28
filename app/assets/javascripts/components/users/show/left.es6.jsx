@@ -88,7 +88,7 @@ class UserProfileLeft extends React.Component {
         <div><h3>{this.props.user.iidxid}&nbsp;{this.renderRival()}</h3></div>
         <div style={{paddingBottom: '3px'}}>
           <TwitterSharedButton
-            text="DJ.#{this.props.user.djname} ☆12参考表プロフィール"
+            text={'DJ.' + this.props.user.djname + ' ☆12参考表プロフィール'}
           />
         </div>
         <div style={{paddingBottom: '3px'}}>
