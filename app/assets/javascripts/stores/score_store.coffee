@@ -46,20 +46,24 @@ ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
     when AbilitysheetConstants.SHOW_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
+        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
+        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
     when AbilitysheetConstants.SHOW_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
+        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
+        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
