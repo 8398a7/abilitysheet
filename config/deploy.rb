@@ -46,15 +46,15 @@ namespace :deploy do
   after :publishing, :restart
 end
 
-namespace :assets do
-  desc 'Install npm'
+namespace :assets_rails do
+  desc 'Install assets and resolve assets'
   task :install do
     on roles(:web) do
       within release_path do
-        execute :rake, 'assets:components:install assets:components:resolve RAILS_ENV=production'
+        execute :rake, 'assets_rails:install assets_rails:resolve RAILS_ENV=production'
       end
     end
   end
 end
 before 'puma:check', 'puma:config'
-before 'deploy:compile_assets', 'assets:install'
+before 'deploy:compile_assets', 'assets_rails:install'
