@@ -275,6 +275,9 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
+    pry-stack_explorer (0.4.9.2)
+      binding_of_caller (>= 0.7)
+      pry (>= 0.9.11)
     puma (3.2.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -512,6 +515,7 @@ DEPENDENCIES
   poltergeist
   pry-byebug
   pry-rails
+  pry-stack_explorer
   puma
   quiet_assets
   rack-dev-mark
