@@ -6,7 +6,7 @@ class LampCheckbox extends BaseComponent {
 
   recChangeLamp(array) {
     $('input[name="check-lamp"]').prop('checked', false);
-    array.forEach(num => $('input[id="state-' + num + '"]').prop('checked', true))
+    array.forEach(num => $(`input[id='state-${num}']`).prop('checked', true))
     $('input[name="check-lamp"]').each(index => {
       obj = $('input[name="check-lamp"]')[index]
       let tmp = {}
@@ -26,7 +26,7 @@ class LampCheckbox extends BaseComponent {
     let key = 0
     dom = this.props.lamp.map(lamp => {
       return (
-        <label key={'lamp-checkbox-' + key}>
+        <label key={`lamp-checkbox-${key}`}>
           <input id={'state-' + key} type='checkbox' value={key++} name='check-lamp' defaultChecked={true} onChange={this.onChangeLamp} />
           {lamp}
         </label>

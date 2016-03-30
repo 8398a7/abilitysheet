@@ -49,8 +49,8 @@ class RivalsController < ApplicationController
   end
 
   def copy_sheets(s, rival_id)
-    m_state = s.scores.find_by_user_id(current_user.id).try(:state) || 7
-    r_state = s.scores.find_by_user_id(rival_id).try(:state) || 7
+    m_state = s.scores.is_current_version.find_by_user_id(current_user.id).try(:state) || 7
+    r_state = s.scores.is_current_version.find_by_user_id(rival_id).try(:state) || 7
     @sheets.push(s) if params[:condition] == 'win' && m_state < r_state
     @sheets.push(s) if params[:condition] == 'even' && m_state == r_state
     @sheets.push(s) if params[:condition] == 'lose' && m_state > r_state

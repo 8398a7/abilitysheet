@@ -60,6 +60,7 @@ group :development do
   gem 'bullet'
   gem 'meta_request'
   gem 'peek-git'
+  gem 'pry-stack_explorer'
   gem 'quiet_assets'
   gem 'rack-dev-mark'
   gem 'spring'

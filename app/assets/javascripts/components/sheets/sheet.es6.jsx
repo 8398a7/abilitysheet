@@ -74,14 +74,14 @@ class Sheet extends BaseComponent {
             ({this.state.type[this.props.type].remain}{this.state.remain})
           </h2>
           <h3>
-            <a href={user_path(this.props.user.iidxid)}>{'DJ.' + this.props.user.djname + '(' + this.props.user.iidxid + ')'}</a>
+            <a href={user_path(this.props.user.iidxid)}>{`DJ.${this.props.user.djname}(${this.props.user.iidxid})`}</a>
           </h3>
           {
             this.state.remain !== false ?
-              <TwitterSharedButton text={'DJ.' + this.props.user.djname + ' ☆12' + this.state.type[this.props.type].name + '(' + this.state.type[this.props.type].remain + this.state.remain + ')'} /> : null
+              <TwitterSharedButton text={`DJ.${this.props.user.djname} ☆12${this.state.type[this.props.type].name}(${this.state.type[this.props.type].remain}${this.state.remain})`} /> : null
           }
           <ScreenShot />
-          <a className={'uk-button ' + this.state.type[this.props.type].button} href={sheet_path({iidxid: this.props.user.iidxid, type: this.state.type[this.props.type].link})}>
+          <a className={`uk-button ${this.state.type[this.props.type].button}`} href={sheet_path({iidxid: this.props.user.iidxid, type: this.state.type[this.props.type].link})}>
             {this.state.type[this.props.type].link.toUpperCase()}
           </a>
           {_ua.Mobile ? this.renderSwitchViewPort() : null}
