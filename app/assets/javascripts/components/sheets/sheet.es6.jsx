@@ -1,4 +1,4 @@
-class Sheet extends React.Component {
+class Sheet extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -23,8 +23,6 @@ class Sheet extends React.Component {
     this.onChangeScore = this.onChangeScore.bind(this)
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onClickViewPort() {
     params = getQueryParams(location.search)

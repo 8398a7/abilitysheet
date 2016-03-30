@@ -1,6 +1,4 @@
-class ResponsiveAdsense extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class ResponsiveAdsense extends BaseComponent {
   render() {
     return (
       <div className='google-adsense'>

@@ -1,4 +1,4 @@
-class UserProfileLeft extends React.Component {
+class UserProfileLeft extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -15,8 +15,6 @@ class UserProfileLeft extends React.Component {
     this.onChangeGrade = this.onChangeGrade.bind(this)
     this.changeRival = this.changeRival.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   componentWillMount() {
     StaticStore.addChangeListener(this.onChangeGrade)

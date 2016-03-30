@@ -1,6 +1,4 @@
-class Irt extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class Irt extends BaseComponent {
   render() {
     return (
       <li>

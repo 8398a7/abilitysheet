@@ -1,4 +1,4 @@
-class SheetList extends React.Component {
+class SheetList extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -16,8 +16,6 @@ class SheetList extends React.Component {
     this.onChangeScore = this.onChangeScore.bind(this)
     this.onClickSelect = this.onClickSelect.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPortAndReverse() {
     this.setState({

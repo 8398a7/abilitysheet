@@ -1,6 +1,4 @@
-class LampSelect extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class LampSelect extends BaseComponent {
   onChangeLamp(e, sheetId) {
     ScoreActionCreators.update({sheetId: sheetId, state: e.target.value, iidxid: this.props.iidxid})
   }

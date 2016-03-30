@@ -1,4 +1,4 @@
-class LampStatistics extends React.Component {
+class LampStatistics extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -10,8 +10,6 @@ class LampStatistics extends React.Component {
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
     this.onChangeScore = this.onChangeScore.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPort() {
     this.setState({viewport: EnvironmentStore.findBy('viewport')})

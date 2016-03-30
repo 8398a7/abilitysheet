@@ -1,4 +1,4 @@
-class TwitterSharedButton extends React.Component {
+class TwitterSharedButton extends BaseComponent {
   constructor(props)  {
     super()
     this.state = {

@@ -1,4 +1,4 @@
-class Footer extends React.Component {
+class Footer extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -7,8 +7,6 @@ class Footer extends React.Component {
     }
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeCurrentUser() {
     this.setState({

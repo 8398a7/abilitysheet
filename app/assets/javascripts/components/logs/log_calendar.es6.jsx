@@ -1,10 +1,8 @@
-class LogCalendar extends React.Component {
+class LogCalendar extends BaseComponent {
   constructor(props) {
     super()
     this.onChangeLogs = this.onChangeLogs.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   componentWillMount() {
     LogStore.addChangeListener(this.onChangeLogs)

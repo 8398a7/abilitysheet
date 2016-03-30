@@ -1,4 +1,4 @@
-class VersionCheckbox extends React.Component {
+class VersionCheckbox extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -8,8 +8,6 @@ class VersionCheckbox extends React.Component {
     this.onChangeVersion = this.onChangeVersion.bind(this)
     this.onChangeReverse = this.onChangeReverse.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeReverseState() {
     this.setState({reverse: EnvironmentStore.findBy('reverseSheet')})

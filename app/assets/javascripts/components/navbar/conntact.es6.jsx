@@ -1,6 +1,4 @@
-class Conntact extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class Conntact extends BaseComponent {
   render() {
     return (
       <li>

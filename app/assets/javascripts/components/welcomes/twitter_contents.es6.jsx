@@ -1,4 +1,4 @@
-class TwitterContents extends React.Component {
+class TwitterContents extends BaseComponent {
   shouldComponentUpdate(nextProps, nextState) { return false }
 
   componentDidMount() {

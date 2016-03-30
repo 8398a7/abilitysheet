@@ -1,6 +1,4 @@
-class CalHeatmap extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class CalHeatmap extends BaseComponent {
   componentDidMount() {
     let cal = new CalHeatMap()
     let startDate = new Date()

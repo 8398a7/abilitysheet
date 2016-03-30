@@ -1,6 +1,4 @@
-class UserProfileRight extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class UserProfileRight extends BaseComponent {
   render() {
     return (
       <div className='uk-width-7-10'>

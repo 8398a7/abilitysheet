@@ -1,10 +1,8 @@
-class Admin extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class Admin extends BaseComponent {
   render() {
-    if (!this.props.currentUser.id) { return null }
+    if (!this.props.currentUser.id) return null
     let role = this.props.currentUser.role
-    if (role < 50) { return null }
+    if (role < 50) return null
     return (
       <li className='uk-parent admin-parent' data-uk-dropdown>
         <a><i className='fa fa-gears' />管理</a>

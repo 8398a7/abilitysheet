@@ -1,6 +1,4 @@
-class RivalNumber extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class RivalNumber extends BaseComponent {
   render() {
     return (
       <table style={{margin: '0 auto', textAlign: 'center'}}>

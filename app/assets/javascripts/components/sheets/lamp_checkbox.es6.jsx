@@ -1,10 +1,8 @@
-class LampCheckbox extends React.Component {
+class LampCheckbox extends BaseComponent {
   constructor(props) {
     super()
     this.onChangeLamp = this.onChangeLamp.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   recChangeLamp(array) {
     $('input[name="check-lamp"]').prop('checked', false);

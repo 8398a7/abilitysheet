@@ -1,4 +1,4 @@
-class LampTd extends React.Component {
+class LampTd extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -7,8 +7,6 @@ class LampTd extends React.Component {
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
     this.onClick = this.onClick.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeCurrentUser() {
     this.setState({currentUser: UserStore.get()})
