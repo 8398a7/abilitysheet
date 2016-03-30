@@ -33,11 +33,11 @@ setScore = (score) ->
 
 initScore = ->
   for sheetId, _ of SheetStore.get()
-    scores[sheetId] ||=
-      state: Env.NO_PLAY
+    scores[parseInt sheetId] ||=
+      state: Env.NOPLAY
       display: ''
       sheetId: sheetId
-      color: Env.color[Env.NO_PLAY]
+      color: Env.color[Env.NOPLAY]
 
 ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
