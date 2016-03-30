@@ -19,25 +19,31 @@ $.extend ScoreStore,
     remain = 0
     for id, _ of SheetStore.get()
       score = scores[id]
-      score ||=
-        state: 7
       remain++ if threshold < score.state
     remain
 
 setScore = (score) ->
   sheetId = score.sheet_id
   delete score.sheet_id
-  scores[sheetId] ||= {}
   score.color = Env.color[score.state]
   score.display = ''
   score.sheetId = sheetId
   scores[sheetId] = score
+
+initScore = ->
+  for sheetId, _ of SheetStore.get()
+    scores[sheetId] ||=
+      state: 7
+      display: ''
+      sheetId: sheetId
+      color: Env.color[7]
 
 ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_SCORE_DATA
       scores = {}
+      initScore()
       setScore score for score in payload.scores
       ScoreStore.emitChange()
     when AbilitysheetConstants.UPDATED_SCORE_DATA
@@ -46,24 +52,20 @@ ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
     when AbilitysheetConstants.SHOW_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
-        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
-        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
     when AbilitysheetConstants.SHOW_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
-        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
-        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
