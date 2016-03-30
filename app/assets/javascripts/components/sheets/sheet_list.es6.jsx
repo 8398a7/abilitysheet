@@ -1,4 +1,4 @@
-class SheetList extends React.Component {
+class SheetList extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -16,8 +16,6 @@ class SheetList extends React.Component {
     this.onChangeScore = this.onChangeScore.bind(this)
     this.onClickSelect = this.onClickSelect.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPortAndReverse() {
     this.setState({
@@ -85,7 +83,7 @@ class SheetList extends React.Component {
         </tr>)
       delete objects.string
       keys = Object.sortedKeys(objects, 'title', 'asc')
-      keys.chunk(5).forEach(array => {
+      _.chunk(keys, 5).forEach(array => {
         count = 0
         dom.push(<tr key={array[count]}>
             <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />

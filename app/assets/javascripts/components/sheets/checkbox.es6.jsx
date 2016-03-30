@@ -1,6 +1,4 @@
-class Checkbox extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class Checkbox extends BaseComponent {
   render() {
     return (
       <div className='checkbox'>

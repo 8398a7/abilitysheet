@@ -1,4 +1,4 @@
-class SplineGraph extends React.Component {
+class SplineGraph extends BaseComponent {
   constructor(props) {
     super()
     let today = new Date()
@@ -56,8 +56,6 @@ class SplineGraph extends React.Component {
       }
     }
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangePie(options, graph) {
     for (let index in options.series[9].data) {

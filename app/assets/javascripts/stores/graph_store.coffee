@@ -12,7 +12,7 @@ $.extend GraphStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy graph
+    _.cloneDeep graph
 
 GraphStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

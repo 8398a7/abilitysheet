@@ -12,7 +12,7 @@ $.extend MessageStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy message
+    _.cloneDeep message
 
 MessageStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

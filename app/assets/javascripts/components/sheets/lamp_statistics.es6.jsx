@@ -1,8 +1,8 @@
-class LampStatistics extends React.Component {
+class LampStatistics extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
-      threshold: props.type === 'clear' ? 4 : 2,
+      threshold: props.type === 'clear' ? Env.EASY : Env.HARD,
       statistics: { fc: 0, exh: 0, h: 0, c: 0, e: 0, a: 0, f: 0, n: 0, remain: 0, all: 0 },
       keyValue: ['fc', 'exh', 'h', 'c', 'e', 'a', 'f', 'n'],
       viewport: EnvironmentStore.findBy('viewport')
@@ -10,8 +10,6 @@ class LampStatistics extends React.Component {
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
     this.onChangeScore = this.onChangeScore.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPort() {
     this.setState({viewport: EnvironmentStore.findBy('viewport')})
@@ -26,7 +24,7 @@ class LampStatistics extends React.Component {
       if (score === undefined) {
         score = {
           display: '',
-          state: 7
+          state: Env.NOPLAY
         }
       }
       if (score.display !== '') { return null }

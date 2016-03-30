@@ -1,4 +1,4 @@
-class Navbar extends React.Component {
+class Navbar extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -6,8 +6,6 @@ class Navbar extends React.Component {
     }
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeCurrentUser() {
     this.setState({currentUser: UserStore.get()})

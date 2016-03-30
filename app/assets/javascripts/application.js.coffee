@@ -23,10 +23,12 @@
 #= require uikit/dist/js/components/accordion.min
 #= require select2/dist/js/select2.min
 #= require nprogress/nprogress
+#= require lodash/dist/lodash.min
 #= require js-routes
 #= require turbolinks
 #= require react
 #= require react_ujs
+#= require components/base_component
 #= require babel/browser-polyfill.min
 #= require flux/dist/Flux
 #= require eventemitter2/lib/eventemitter2

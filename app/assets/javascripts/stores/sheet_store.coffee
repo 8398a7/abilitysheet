@@ -12,7 +12,7 @@ $.extend SheetStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy sheets
+    _.cloneDeep sheets
 
 SheetStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

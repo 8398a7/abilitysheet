@@ -1,6 +1,4 @@
-class User extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class User extends BaseComponent {
   userDom() {
     if (this.props.currentUser.id) {
       return (

@@ -1,6 +1,4 @@
-class MyPage extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class MyPage extends BaseComponent {
   recentDom() {
     if (this.props.recent === null) { return null }
     return (<a href={this.props.recent}>最近の更新</a>)

@@ -1,4 +1,4 @@
-class ScreenShot extends React.Component {
+class ScreenShot extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -9,8 +9,6 @@ class ScreenShot extends React.Component {
     }
     this.onClick = this.onClick.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onClick() {
     if (this.state.capture) { return null }

@@ -1,4 +1,4 @@
-class ViewPort extends React.Component {
+class ViewPort extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -6,8 +6,6 @@ class ViewPort extends React.Component {
     }
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPort() {
     this.setState({

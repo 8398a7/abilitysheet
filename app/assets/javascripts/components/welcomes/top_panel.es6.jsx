@@ -1,4 +1,4 @@
-class TopPanel extends React.Component {
+class TopPanel extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -10,8 +10,6 @@ class TopPanel extends React.Component {
     }
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeCurrentUser() {
     this.setState({

@@ -1,6 +1,4 @@
-class Rival extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
-
+class Rival extends BaseComponent {
   render() {
     if (!this.props.currentUser.id) { return null }
     return (

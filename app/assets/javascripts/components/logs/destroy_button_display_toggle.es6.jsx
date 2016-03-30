@@ -1,4 +1,4 @@
-class DestroyButtonDisplayToggle extends React.Component {
+class DestroyButtonDisplayToggle extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -6,8 +6,6 @@ class DestroyButtonDisplayToggle extends React.Component {
       display: false
     }
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   toggleDisplay(type) {
     $('.destroy-button').each((index, elem) => type === 'display' ? $(elem).show() : $(elem).hide())

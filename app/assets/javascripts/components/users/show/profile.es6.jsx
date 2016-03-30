@@ -1,4 +1,4 @@
-class UserProfile extends React.Component {
+class UserProfile extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
@@ -9,8 +9,6 @@ class UserProfile extends React.Component {
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
     this.onChangeCurrentUser = this.onChangeCurrentUser.bind(this)
   }
-
-  shouldComponentUpdate(nextProps, nextState) { return CheckComponentUpdate(this.props, nextProps, this.state, nextState) }
 
   onChangeViewPort() {
     this.setState({viewport: EnvironmentStore.findBy('viewport')})

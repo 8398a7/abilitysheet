@@ -12,32 +12,39 @@ $.extend ScoreStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy scores
+    _.cloneDeep scores
 
   remain: (type) ->
-    threshold = if type is 'clear' then 4 else 2
+    threshold = if type is 'clear' then Env.EASY else Env.HARD
     remain = 0
     for id, _ of SheetStore.get()
       score = scores[id]
-      score ||=
-        state: 7
+      score = { state: 7 } unless score
       remain++ if threshold < score.state
     remain
 
 setScore = (score) ->
   sheetId = score.sheet_id
   delete score.sheet_id
-  scores[sheetId] ||= {}
   score.color = Env.color[score.state]
   score.display = ''
   score.sheetId = sheetId
   scores[sheetId] = score
+
+initScore = ->
+  for sheetId, _ of SheetStore.get()
+    scores[parseInt sheetId] ||=
+      state: Env.NOPLAY
+      display: ''
+      sheetId: sheetId
+      color: Env.color[Env.NOPLAY]
 
 ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
   switch action
     when AbilitysheetConstants.RECEIVED_SCORE_DATA
       scores = {}
+      initScore()
       setScore score for score in payload.scores
       ScoreStore.emitChange()
     when AbilitysheetConstants.UPDATED_SCORE_DATA
@@ -46,24 +53,20 @@ ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
     when AbilitysheetConstants.SHOW_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
-        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SCORE_DATA
       for id, score of scores
         continue unless score.state is payload.state
-        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
     when AbilitysheetConstants.SHOW_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
-        scores[id] ||= {}
         scores[id].display = ''
       ScoreStore.emitChange()
     when AbilitysheetConstants.HIDE_SHEET_DATA
       for id, sheet of SheetStore.get()
         continue unless sheet.version is payload.version
-        scores[id] ||= {}
         scores[id].display = 'none'
       ScoreStore.emitChange()
