@@ -11,16 +11,16 @@ class LampSelect extends React.Component {
         <select id={'select_' + this.props.sheetId}
           onChange={(e) => this.onChangeLamp(e, this.props.sheetId)}
           style={{display: this.props.display, backgroundColor: this.props.score ? this.props.score.color : ''}}
-          value={this.props.score ? this.props.score.state : 7}
+          value={this.props.score ? this.props.score.state : Env.NOPLAY}
         >
-          <option value={0}>FC</option>
-          <option value={1}>EXH</option>
-          <option value={2}>H</option>
-          <option value={3}>C</option>
-          <option value={4}>E</option>
-          <option value={5}>A</option>
-          <option value={6}>F</option>
-          <option value={7}>N</option>
+          <option value={Env.FC}>FC</option>
+          <option value={Env.EXH}>EXH</option>
+          <option value={Env.HARD}>H</option>
+          <option value={Env.CLEAR}>C</option>
+          <option value={Env.EASY}>E</option>
+          <option value={Env.ASSIST}>A</option>
+          <option value={Env.FAILED}>F</option>
+          <option value={Env.NOPLAY}>N</option>
         </select>
       </form>
     )

@@ -22,6 +22,14 @@
   RECEIVED_SHEET_MODAL_DATA: 'received_sheet_modal_data'
 
 @Env =
+  FC: 0
+  EXH: 1
+  HARD: 2
+  CLEAR: 3
+  EASY: 4
+  ASSIST: 5
+  FAILED: 6
+  NOPLAY: 7
   color: [
     '#ff8c00'
     '#ffd900'

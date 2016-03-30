@@ -15,10 +15,11 @@ $.extend ScoreStore,
     objectCopy scores
 
   remain: (type) ->
-    threshold = if type is 'clear' then 4 else 2
+    threshold = if type is 'clear' then Env.EASY else Env.HARD
     remain = 0
     for id, _ of SheetStore.get()
       score = scores[id]
+      score = { state: 7 } unless score
       remain++ if threshold < score.state
     remain
 
@@ -33,10 +34,10 @@ setScore = (score) ->
 initScore = ->
   for sheetId, _ of SheetStore.get()
     scores[sheetId] ||=
-      state: 7
+      state: Env.NO_PLAY
       display: ''
       sheetId: sheetId
-      color: Env.color[7]
+      color: Env.color[Env.NO_PLAY]
 
 ScoreStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action
