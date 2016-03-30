@@ -14,7 +14,7 @@ $.extend EnvironmentStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   findBy: (key) ->
-    objectCopy environments[key]
+    _.cloneDeep environments[key]
 
 EnvironmentStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

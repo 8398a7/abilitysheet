@@ -83,7 +83,7 @@ class SheetList extends BaseComponent {
         </tr>)
       delete objects.string
       keys = Object.sortedKeys(objects, 'title', 'asc')
-      keys.chunk(5).forEach(array => {
+      _.chunk(keys, 5).forEach(array => {
         count = 0
         dom.push(<tr key={array[count]}>
             <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />

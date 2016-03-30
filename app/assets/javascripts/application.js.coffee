@@ -23,6 +23,7 @@
 #= require uikit/dist/js/components/accordion.min
 #= require select2/dist/js/select2.min
 #= require nprogress/nprogress
+#= require lodash/dist/lodash.min
 #= require js-routes
 #= require turbolinks
 #= require react

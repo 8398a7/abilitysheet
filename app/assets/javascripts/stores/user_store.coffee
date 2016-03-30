@@ -15,10 +15,10 @@ $.extend UserStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy user
+    _.cloneDeep user
 
   getTargetUser: ->
-    objectCopy targetUser
+    _.cloneDeep targetUser
 
   renderAds: ->
     return true unless user.id?

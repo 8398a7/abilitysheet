@@ -12,7 +12,7 @@ $.extend  StaticStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy statics
+    _.cloneDeep statics
 
 StaticStore.dispatchToken = AbilitysheetDispatcher.register (payload) ->
   action = payload.action

@@ -12,7 +12,7 @@ $.extend ScoreStore,
     @removeListener AbilitysheetConstants.CHANGE_EVENT, callback
 
   get: ->
-    objectCopy scores
+    _.cloneDeep scores
 
   remain: (type) ->
     threshold = if type is 'clear' then Env.EASY else Env.HARD
