@@ -7,7 +7,7 @@ class CalHeatmap extends BaseComponent {
     cal.init({
       domain: 'month',
       subDomain: 'day',
-      data: '/api/v1/logs/cal-heatmap/' + this.props.user.iidxid + '?start={{d:start}}&stop={{d:end}}',
+      data: `/api/v1/logs/cal-heatmap/${this.props.user.iidxid}?start={{d:start}}&stop={{d:end}}`,
       start: startDate,
       range: range,
       tooltip: true,

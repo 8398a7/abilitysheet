@@ -6,7 +6,7 @@ class LampSelect extends BaseComponent {
   render() {
     return (
       <form className='uk-form'>
-        <select id={'select_' + this.props.sheetId}
+        <select id={`select_${this.props.sheetId}`}
           onChange={(e) => this.onChangeLamp(e, this.props.sheetId)}
           style={{display: this.props.display, backgroundColor: this.props.score ? this.props.score.color : ''}}
           value={this.props.score ? this.props.score.state : Env.NOPLAY}
