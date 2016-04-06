@@ -14,7 +14,7 @@ class Api::V1::LogsController < Api::V1::BaseController
   end
 
   def graph
-    end_month = "#{params[:year]}-#{params[:month]}-01".to_date + 1.month
+    end_month = "#{params[:year]}-#{params[:month]}-01".to_date
     start_month = end_month - 2.months
     render json: @user.graph(start_month, end_month)
   end
