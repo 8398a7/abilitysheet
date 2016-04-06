@@ -54,16 +54,16 @@ module Graph
       count
     end
 
-    def self.create_between(o, l)
-      array = []
-      s = o
+    def self.create_between(received_start, received_end)
+      range = []
+      new_start = received_start
       loop do
-        e = s + 1.month - 1.days
-        array.push([s, e])
-        s += 1.month
-        break if s == l + 1.month
+        new_end = new_start + 1.month - 1.days
+        range.push([new_start, new_end])
+        new_start += 1.month
+        break if new_start == received_end + 1.month
       end
-      array
+      range
     end
   end
 end

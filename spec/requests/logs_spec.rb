@@ -1,7 +1,7 @@
 describe Api::V1::LogsController, type: :request do
   include_context 'api'
 
-  describe 'GET /api/v1/logs/graph/1111-1111/2016/3' do
+  describe 'GET /api/v1/logs/graph/1111-1111/2016/2' do
     before do
       create(:user, iidxid: '1111-1111', id: 1)
     end

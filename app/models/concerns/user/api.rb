@@ -3,7 +3,7 @@ module User::API
 
   included do
     def graph(start_month, end_month)
-      categories = logs.create_between(start_month, end_month).map { |b| (b[0] - 1.month).to_s.slice(0, 7) }
+      categories = logs.create_between(start_month, end_month).map { |b| b[0].to_s.slice(0, 7) }
       column = logs.column(start_month, end_month)
       spline = logs.spline(start_month, end_month)
       {
