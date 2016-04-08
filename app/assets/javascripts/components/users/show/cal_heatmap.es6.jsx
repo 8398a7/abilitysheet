@@ -1,4 +1,12 @@
 class CalHeatmap extends BaseComponent {
+  constructor() {
+    super()
+    this.state = {
+      items: null,
+      date: null
+    }
+  }
+
   componentDidMount() {
     let cal = new CalHeatMap()
     let startDate = new Date()
@@ -12,8 +20,26 @@ class CalHeatmap extends BaseComponent {
       range: range,
       tooltip: true,
       cellSize: 9,
-      domainLabelFormat: '%Y-%m'
+      domainLabelFormat: '%Y-%m',
+      onClick: (date, nb) => {
+        this.setState({
+          items: nb,
+          date: `${date}`
+        })
+      }
     })
+  }
+
+  renderDetail() {
+    if (!this.state.items) return null
+    targetDate = new Date(this.state.date)
+    text = `${targetDate.getFullYear()}-${targetDate.getMonth() + 1}-${targetDate.getDay()}`
+    return (
+      <div className='center'>
+        <i className='fa fa-refresh' />
+        <a href={logs_path(this.props.user.iidxid, text)}>{text}</a>の更新数は{this.state.items}個です
+      </div>
+    )
   }
 
   render() {
@@ -21,6 +47,7 @@ class CalHeatmap extends BaseComponent {
       <div className='uk-panel uk-panel-box'>
         <h3 className='uk-panel-title'>更新履歴</h3>
         <div id='cal-heatmap' />
+        {this.renderDetail()}
       </div>
     )
   }
