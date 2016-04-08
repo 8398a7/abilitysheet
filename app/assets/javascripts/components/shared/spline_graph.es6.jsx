@@ -61,7 +61,7 @@ class SplineGraph extends BaseComponent {
     for (let index in options.series[9].data) {
       options.series[9].data[index].y = graph.pie[index]
     }
-    options.series[9].center = [50, 40]
+    options.series[9].center = [200, 40]
   }
 
   onChangeColumn(options, graph) {
