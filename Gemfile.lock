@@ -86,7 +86,7 @@ GEM
     capistrano-sidekiq (0.5.4)
       capistrano
       sidekiq (>= 3.4)
-    capistrano-slackify (2.6.1)
+    capistrano-slackify (2.7.0)
       capistrano (>= 3.2.0)
       multi_json
     capistrano3-puma (1.2.1)
