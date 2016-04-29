@@ -53,7 +53,8 @@ class User < ActiveRecord::Base
   has_many :follows, dependent: :delete_all
   has_many :messages, dependent: :delete_all
 
-  validates :email, uniqueness: true, presence: true, format: { with: /\A[^@]+@[^@]+\z/, message: 'が正しくありません。' }
+  validates :email, uniqueness: true, presence: true, format: { with: Devise.email_regexp, message: 'が正しくありません。' }
+
   validates :iidxid, format: { with: /\A\d{4}-\d{4}\z/, message: 'が正しくありません。' }, length: { is: 9 }, uniqueness: true, presence: true
   validates :grade, numericality: { only_integer: true }, inclusion: { in: Abilitysheet::Application.config.iidx_grade..19, message: 'のパラメタが異常です。' }, presence: true
   validates :pref, numericality: { only_integer: true }, inclusion: { in: 0..47, message: 'のパラメタが異常です。' }, presence: true
