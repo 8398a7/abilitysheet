@@ -13,11 +13,12 @@ html
     = analytics_init if Rails.env.production?
     = favicon_link_tag 'favicon.ico'
     = favicon_link_tag 'icon.png', rel: 'apple-touch-icon', type: 'image/png'
-    javascript:
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-5751776715932993",
-        enable_page_level_ads: true
-      });
+    - unless current_user && current_user.special?
+      javascript:
+        (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-5751776715932993",
+          enable_page_level_ads: true
+        });
 
   body
     .loading-container = image_tag('loading.gif')
