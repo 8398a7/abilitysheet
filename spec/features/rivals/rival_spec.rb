@@ -1,7 +1,7 @@
 feature 'ライバル情報' do
   given(:user) { create(:user, id: 1) }
   background do
-    user2 = create(:user, id: 2, djname: 'RIVALU', iidxid: '1111-1111', username: 'rival')
+    user2 = create(:user, id: 2, djname: 'RIVAL', iidxid: '1111-1111', username: 'rival')
     user.follow(user2.iidxid)
     login(user)
   end
@@ -9,7 +9,7 @@ feature 'ライバル情報' do
   scenario 'プロフィールページへのリンクが存在する', js: true do
     visit list_rival_path
     wait_for_ajax
-    expect(page).to have_link('TEST')
+    expect(page).to have_link('RIVAL')
   end
 
   scenario '楽曲情報が正しくロードされている' do
