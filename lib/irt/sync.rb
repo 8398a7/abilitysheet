@@ -1,13 +1,13 @@
 module IRT
-  class Async
+  class Sync
     def self.run
       hash = fetch
-      Ability.async(hash)
+      Ability.sync(hash)
     end
 
     def self.fetch
       # token  = ENV['IRT_TOKEN']
-      uri    = URI.parse('http://localhost:13000/api/v1/auth/power?token')
+      uri    = URI.parse(ENV['RECOMMEND_SERVER'])
       res    = Net::HTTP.get(uri)
       JSON.parse(res)['result']
     end
