@@ -3,6 +3,8 @@ module IRT
     def self.run
       hash = fetch
       Ability.sync(hash)
+      twitter = TwitterDispatcher.new
+      twitter.tweet('地力値表を更新しました')
     end
 
     def self.fetch
