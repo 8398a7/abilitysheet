@@ -22,6 +22,20 @@ feature 'ノマゲ地力表', js: true do
     scenario '未クリアの表記が存在する', js: true do
       expect(page).to have_content('未クリア')
     end
+
+    context 'モバイル' do
+      background do
+        resize_window_to_iphone6
+        sync_sheet
+        visit sheet_path(iidxid: user.iidxid, type: 'clear')
+        wait_for_ajax
+      end
+      scenario 'PC版に切り替えたときのレイアウトが正しい' do
+        expect(page).to have_content('PCサイト版')
+        click_on 'PCサイト版'
+        expect(page).to have_content('モバイル版')
+      end
+    end
   end
 
   context '非ログイン時' do
