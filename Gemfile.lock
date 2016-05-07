@@ -168,7 +168,6 @@ GEM
     git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    google-analytics-rails (1.1.0)
     haml (4.0.7)
       tilt
     http (1.0.4)
@@ -524,7 +523,6 @@ DEPENDENCIES
   draper
   factory_girl_rails
   font-awesome-rails
-  google-analytics-rails
   js-routes
   json_expressions
   kaminari

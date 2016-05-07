@@ -12,7 +12,6 @@ gem 'doorkeeper'
 gem 'dotenv-rails'
 gem 'draper'
 gem 'font-awesome-rails'
-gem 'google-analytics-rails'
 # }}}
 # h,i,j,k,l,m,n {{{
 gem 'js-routes'
