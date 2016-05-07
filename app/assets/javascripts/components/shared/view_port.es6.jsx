@@ -23,7 +23,7 @@ class ViewPort extends BaseComponent {
 
   render() {
     if (!this.state.viewport) {
-      return (<meta name='viewport' />)
+      return (<meta name='viewport' content='' />)
     }
     return (<meta name='viewport' content='width=device-width, initial-scale=1' />)
   }
