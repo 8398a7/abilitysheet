@@ -18,6 +18,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include WaitForAjax, type: :feature
   config.include SheetsHelper
+  config.include ResponsiveHelper, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

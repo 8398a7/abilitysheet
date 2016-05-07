@@ -85,9 +85,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # Google Analytics
-  GA.tracker = 'UA-56797171-1'
-
   config.react.variant = :production
   routes.default_url_options = { host: 'iidx12.tk' }
   config.peek.adapter = :redis
