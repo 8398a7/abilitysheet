@@ -40,8 +40,6 @@ module Graph
       [fc_cnt, exh_cnt, h_cnt, c_cnt]
     end
 
-    private
-
     def self.lamp_where_count(state, between)
       count = 0
       sheet_ids = []
