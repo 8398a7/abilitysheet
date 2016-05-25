@@ -50,12 +50,12 @@ GEM
       rails
     ast (2.2.0)
     atomic (1.1.99)
-    aws-sdk (2.3.7)
-      aws-sdk-resources (= 2.3.7)
-    aws-sdk-core (2.3.7)
+    aws-sdk (2.3.8)
+      aws-sdk-resources (= 2.3.8)
+    aws-sdk-core (2.3.8)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.7)
-      aws-sdk-core (= 2.3.7)
+    aws-sdk-resources (2.3.8)
+      aws-sdk-core (= 2.3.8)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -571,5 +571,8 @@ DEPENDENCIES
   whenever
   yaml_db
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.12.4
