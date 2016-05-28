@@ -13,10 +13,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-# Indexes
-#
-#  index_abilities_on_sheet_id  (sheet_id)
-#
 
 class Ability < ActiveRecord::Base
   belongs_to :sheet
