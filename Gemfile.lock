@@ -72,7 +72,7 @@ GEM
     bullet (5.1.0)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
-    byebug (9.0.4)
+    byebug (9.0.5)
     callsite (0.0.11)
     capistrano (3.5.0)
       airbrussh (>= 1.0.0)
