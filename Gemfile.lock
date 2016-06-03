@@ -50,12 +50,12 @@ GEM
       rails
     ast (2.2.0)
     atomic (1.1.99)
-    aws-sdk (2.3.9)
-      aws-sdk-resources (= 2.3.9)
-    aws-sdk-core (2.3.9)
+    aws-sdk (2.3.11)
+      aws-sdk-resources (= 2.3.11)
+    aws-sdk-core (2.3.11)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.9)
-      aws-sdk-core (= 2.3.9)
+    aws-sdk-resources (2.3.11)
+      aws-sdk-core (= 2.3.11)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -188,7 +188,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    js-routes (1.2.5)
+    js-routes (1.2.6)
       railties (>= 3.2)
       sprockets-rails
     json (1.8.3)
@@ -247,7 +247,7 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     orm_adapter (0.5.0)
-    parser (2.3.1.1)
+    parser (2.3.1.2)
       ast (~> 2.2)
     peek (0.2.0)
       coffee-rails
@@ -459,7 +459,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.4)
+    tilt (2.0.5)
     turbolinks (2.5.3)
       coffee-rails
     twitter (5.16.0)
