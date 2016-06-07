@@ -13,12 +13,12 @@ def get_revision
 rescue
   return ''
 end
-if Rails.env.staging? || Rails.env.production?
+if !defined?(Airbrake).nil? && (Rails.env.staging? || Rails.env.production?)
   Airbrake.configure do |config|
     config.environment = Rails.env + get_revision
     config.ignore_environments = %w(development test)
     config.host        = ENV['ERRBIT_HOST']
-    config.project_id  = true
+    config.project_id  = -1
     config.project_key = ENV['ERRBIT_API_KEY']
   end
 end
