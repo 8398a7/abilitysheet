@@ -8,10 +8,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-# Indexes
-#
-#  index_follows_on_user_id_and_target_user_id  (user_id,target_user_id) UNIQUE
-#
 
 class Follow < ActiveRecord::Base
   belongs_to :user
