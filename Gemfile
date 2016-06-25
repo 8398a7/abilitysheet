@@ -8,6 +8,7 @@ gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
 gem 'devise'
+gem 'dogapi'
 gem 'doorkeeper'
 gem 'dotenv-rails'
 gem 'draper'
