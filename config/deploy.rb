@@ -37,6 +37,8 @@ set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
 
+set :datadog_api_key, ENV['DATADOG_API_KEY']
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
