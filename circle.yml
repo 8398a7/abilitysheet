@@ -15,6 +15,7 @@ dependencies:
   post:
     - rm -rf node_modules
     - npm install -g npm@3.9.5
+    - npm install -g bower@1.7.9
     - bundle exec rake assets_rails:install assets_rails:resolve
 
 database:
