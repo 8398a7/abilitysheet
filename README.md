@@ -37,11 +37,11 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 ## Requires
 
-- ruby 2.3.0
+- ruby 2.3.1
 - rails 4.2.6
-- node 5.9.0
-- npm 3.7.3
-- bower 1.7.7
+- node 6.2.2
+- npm 3.9.5
+- bower 1.7.9
 
 ## Setting
 
