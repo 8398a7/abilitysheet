@@ -16,9 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "datatables": "^1.10.11",
-    "jquery": "^2.2.2",
+    "datatables": "1.10.11",
+    "jquery": "2.2.4",
     "babel": "*",
-    "lodash": "^4.6.1"
+    "lodash": "4.6.1"
   }
 }
