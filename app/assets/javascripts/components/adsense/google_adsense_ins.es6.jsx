@@ -4,14 +4,11 @@ class GoogleAdsenseIns extends BaseComponent {
   }
 
   componentDidUpdate() {
-    try {
-      this.pushAd()
-    } catch(e) {
-    }
+    this.pushAd()
   }
 
   pushAd() {
-    (adsbygoogle = window.adsbygoogle || []).push({})
+    window.adsbygoogle.push({})
   }
 
   render() {
