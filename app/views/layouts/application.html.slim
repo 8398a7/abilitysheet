@@ -110,5 +110,5 @@ html
 
 - if render_ads? && !Rails.env.test?
   coffee:
-    $(window).on 'page:load page:restore page:change', ->
-      adsenseLoad()
+    $(window).on 'turbolinks:load turbolinks:render', ->
+      (adsbygoogle = window.adsbygoogle || []).push({})
