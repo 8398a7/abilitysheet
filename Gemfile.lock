@@ -559,7 +559,7 @@ DEPENDENCIES
   rspec-its
   rspec-rails
   rspec-retry
-  rubocop
+  rubocop (= 0.40.0)
   sass-rails
   sidekiq
   sinatra
