@@ -1,4 +1,6 @@
 machine:
+  services:
+    - redis
   timezone:
     Asia/Tokyo
   ruby:
