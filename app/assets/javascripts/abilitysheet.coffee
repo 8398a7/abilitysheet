@@ -41,3 +41,6 @@ $.extend $.fn.DataTable.ext.oSort,
     x = gradeSort[x]
     y = gradeSort[y]
     if x < y then 1 else if x > y then -1 else 0
+
+@adsenseLoad = ->
+  (adsbygoogle = window.adsbygoogle || []).push({})

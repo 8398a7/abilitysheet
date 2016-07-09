@@ -10,4 +10,9 @@ module ApplicationHelper
   def responsive_adsense
     react_component 'ResponsiveAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
   end
+
+  def render_ads?
+    return true unless current_user
+    !(current_user.special? || current_user.owner?)
+  end
 end
