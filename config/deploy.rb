@@ -4,20 +4,24 @@ lock '3.5.0'
 set :application, 'abilitysheet'
 set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
+ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :deploy_to, '/var/www/app/abilitysheet'
 set :scm, :git
-set :format, :pretty
+
 set :log_level, ENV['DEPLOY_LOG_LEVEL'].to_sym
+set :format, :airbrussh
+set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
 set :pty, true
+
 set :linked_files, fetch(:linked_files, []).push('.env')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle', 'public/uploads')
-set :keep_releases, 5
 
 set :default_env, path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'
 set :rbenv_type, :system
 
-set :deploy_to, '/var/www/app/abilitysheet'
-set :sidekiq_role, :web
+set :keep_releases, 5
 
+set :sidekiq_role, :web
 set :conditionally_migrate, true
 set :deploy_via, :remote_cache
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
@@ -36,8 +40,6 @@ set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
-
-set :datadog_api_key, ENV['DATADOG_API_KEY']
 
 namespace :deploy do
   desc 'Restart application'

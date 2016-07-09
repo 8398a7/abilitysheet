@@ -149,8 +149,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dogapi (1.22.0)
-      multi_json
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     doorkeeper (4.0.0)
@@ -525,7 +523,6 @@ DEPENDENCIES
   coffee-rails
   database_cleaner
   devise
-  dogapi
   doorkeeper
   dotenv-rails
   draper

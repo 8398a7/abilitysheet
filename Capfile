@@ -28,7 +28,6 @@ require 'whenever/capistrano'
 # require 'capistrano/passenger'
 require 'capistrano/slackify'
 require 'capistrano/puma'
-require 'capistrano/datadog'
 
 require 'dotenv'
 Dotenv.overload
