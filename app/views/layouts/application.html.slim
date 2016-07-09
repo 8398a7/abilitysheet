@@ -108,7 +108,7 @@ html
   javascript:
     UIkit.notify({ message: '#{alert}', timeout: 3000, status: 'danger' });
 
-- if render_ads?
+- if render_ads? && !Rails.env.test?
   coffee:
     $(window).on 'page:load page:restore page:change', ->
       adsenseLoad()
