@@ -55,8 +55,8 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
     arel (6.0.3)
-    assets_rails (0.1.0)
-      rails
+    assets_rails (1.0.3)
+      rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
     aws-sdk (2.3.16)
