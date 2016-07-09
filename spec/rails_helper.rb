@@ -11,7 +11,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.order = :random
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include SessionHelpers
   config.include ApiHelper, type: :request
   config.include Warden::Test::Helpers
