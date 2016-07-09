@@ -1,16 +1,4 @@
 class GoogleAdsenseIns extends BaseComponent {
-  componentDidMount() {
-    this.pushAd()
-  }
-
-  componentDidUpdate() {
-    this.pushAd()
-  }
-
-  pushAd() {
-    window.adsbygoogle.push({})
-  }
-
   render() {
     style = $.extend(true, {}, this.props.style)
     style['backgroundColor'] = 'white'
