@@ -5,7 +5,7 @@ describe Scrape::IIDXME do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      xit '#async' do
+      it '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -23,13 +23,13 @@ describe Scrape::IIDXME do
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
-        xit '#async' do
+        it '#async' do
           iidxids.each { |iidxid| expect(iidxme.async(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        xit '#async' do
+        it '#async' do
           expect(iidxme.async(user.iidxid)).to be_falsy
         end
       end
@@ -45,7 +45,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      xit '#async' do
+      it '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7

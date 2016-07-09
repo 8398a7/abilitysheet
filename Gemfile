@@ -89,6 +89,6 @@ group :test do
   gem 'rspec-rails'
   gem 'rspec-its'
   gem 'rspec-retry'
-  gem 'rubocop'
+  gem 'rubocop', '0.40.0'
   gem 'spring-commands-rspec'
 end
