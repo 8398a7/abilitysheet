@@ -111,4 +111,6 @@ html
 - if render_ads? && !Rails.env.test?
   coffee:
     $(window).on 'page:load page:restore page:change', ->
-      adsenseLoad()
+      setTimeout ->
+        adsenseLoad()
+      , 100
