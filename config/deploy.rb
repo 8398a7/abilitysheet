@@ -9,8 +9,11 @@ set :deploy_to, '/var/www/app/abilitysheet'
 set :scm, :git
 
 set :log_level, ENV['DEPLOY_LOG_LEVEL'].to_sym
-set :format, :airbrussh
-set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+set :format, :pretty
+if ENV['DEPLOY_OUTPUT'] == 'true'
+  set :format, :airbrussh
+  set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+end
 set :pty, true
 
 set :linked_files, fetch(:linked_files, []).push('.env')
