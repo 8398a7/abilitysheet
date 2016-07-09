@@ -6,7 +6,7 @@ feature 'sign up' do
     allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
     allow(ManagerWorker).to receive(:perform_in).and_return(true)
   end
-  xscenario '新規登録を行う' do
+  scenario '新規登録を行う' do
     expect(User.count).to eq 0
     fill_in 'user_email', with: 'sign_up_spec@iidx12.tk'
     fill_in 'user_username', with: 'signup'
