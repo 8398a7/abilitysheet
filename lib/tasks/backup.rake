@@ -6,25 +6,10 @@ namespace :db do
   task(load: ['db:schema:load', 'db:data:load'])
 
   namespace :data do
-    module SerializationHelper
-      class Base
-        def dump_to_backup(dirname)
-          @dumper.dump(
-            File.new("#{dirname}/data.#{@extension}", 'w')
-          )
-        end
-      end
-    end
-
-    def backup_dir
-      "#{Rails.root}/tmp/backup"
-    end
-
     task s3_backup: :environment do
-      format_class = ENV['class'] || 'YamlDb::Helper'
-      SerializationHelper::Base.new(format_class.constantize).dump_to_backup backup_dir
+      Rake::Task['db:data:dump'].invoke
       s3 = Aws::S3::Client.new
-      file_open = File.open("#{backup_dir}/data.yml")
+      file_open = File.open("#{Rails.root}/db/data.yml")
       file_name = File.basename("abilitysheet_#{ENV['RAILS_ENV']}.yml")
       begin
         s3.put_object(
