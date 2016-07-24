@@ -50,7 +50,7 @@ gem 'uglifier', '>= 1.3.0'
 # }}}
 # v,w,x,y,z {{{
 gem 'whenever', require: false
-gem 'yaml_db', git: 'https://github.com/dnrce/yaml_db.git', ref: '4d5c6fe72469f947491ed3d2693955cd20e8eef2'
+gem 'yaml_db'
 # }}}
 
 group :development do
