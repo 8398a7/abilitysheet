@@ -5,7 +5,7 @@
 #= require jquery_ujs
 #= require moment/moment
 #= require moment/locale/ja
-#= require d3/build/d3.min
+#= require d3/d3.min
 #= require cal-heatmap/cal-heatmap.min
 #= require fullcalendar/dist/fullcalendar.min
 #= require fullcalendar/dist/lang/ja
