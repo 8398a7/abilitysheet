@@ -25,9 +25,9 @@ namespace :db do
 
     desc 'Load contents of db/data_dir into database'
     task load_backup: :environment do
-      system "aws s3 cp s3://abilitysheet/abilitysheet_#{ENV['RAILS_ENV']}.yml #{backup_dir}/data.yml"
-      format_class = ENV['class'] || 'YamlDb::Helper'
-      SerializationHelper::Base.new(format_class.constantize).load_from_dir backup_dir
+      env = ENV['RAILS_ENV'] || 'production'
+      system "aws s3 cp s3://abilitysheet/abilitysheet_#{env}.yml #{Rails.root}/db/data.yml"
+      Rake::Task['db:data:load'].invoke
     end
   end
 end

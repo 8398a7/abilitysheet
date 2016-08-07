@@ -13,7 +13,7 @@ test:
 
 staging:
   <<: *default
-  database: abilitysheet_production
+  database: abilitysheet_staging
   username: abilitysheet
   password: <%= ENV['ABILITYSHEET_DATABASE_PASSWORD'] %>
 

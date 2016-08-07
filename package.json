@@ -14,16 +14,16 @@
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
     "airbrake-js": "^0.5.9",
-    "cal-heatmap": "^3.5.4",
+    "cal-heatmap": "^3.6.0",
     "eventemitter2": "^1.0.5",
     "flux": "^2.1.1",
-    "fullcalendar": "^2.8.0",
-    "highcharts": "^4.2.3",
+    "fullcalendar": "^2.9.0",
+    "highcharts": "^4.2.5",
     "html2canvas": "^0.5.0-beta4",
-    "jquery-ui": "^1.12.0-rc.1",
+    "jquery-ui": "^1.12.0",
     "nprogress": "^0.2.0",
-    "qtip2": "^3.0.2",
+    "qtip2": "^3.0.3",
     "select2": "^4.0.3",
-    "uikit": "^2.26.2"
+    "uikit": "^2.26.4"
   }
 }
