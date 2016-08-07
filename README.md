@@ -38,8 +38,8 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Requires
 
 - ruby 2.3.1
-- rails 4.2.6
-- node 6.3.0
+- rails 4.2.7
+- node 6.3.1
 - npm 3.10.3
 - bower 1.7.9
 
