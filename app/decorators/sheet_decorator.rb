@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SheetDecorator < Draper::Decorator
   delegate_all
 

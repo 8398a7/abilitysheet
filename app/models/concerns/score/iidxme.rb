@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Score::IIDXME
   extend ActiveSupport::Concern
 

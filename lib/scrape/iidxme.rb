@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Scrape
   class IIDXME
     GRADE_MAX = 20

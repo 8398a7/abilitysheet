@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 feature '地力値表', js: true do
   given(:user) { create(:user, id: 1) }
   background do

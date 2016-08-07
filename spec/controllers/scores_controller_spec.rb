@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe ScoresController, type: :controller do
   before do
     @user = create(:user, id: 1)

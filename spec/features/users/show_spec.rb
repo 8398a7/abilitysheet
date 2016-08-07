@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 feature 'プロフィールページ', js: true do
   given(:user) { create(:user, id: 1, djname: 'PROF', iidxid: '1111-1111', pref: 0, grade: 0, created_at: '2016-03-06') }
   context '非ログイン時' do

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module SheetsHelper
   def sync_sheet
     redis = Redis.new

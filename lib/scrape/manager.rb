@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Scrape
   class Manager
     attr_reader :agent, :url
@@ -29,7 +30,7 @@ module Scrape
 
     def go(url = @url)
       # @urlがなければ収集終了
-      return false if url.count == 0
+      return false if url.count.zero?
 
       # 配列の数だけ収集
       url.each { |u| extract(u) }

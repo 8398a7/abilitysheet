@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 feature 'ログの詳細画面', js: true do
   background do
     @user = create(:user, id: 1, iidxid: '1234-5678', role: User::Role::GENERAL)

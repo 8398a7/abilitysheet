@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class UserDecorator < Draper::Decorator
   delegate_all
 
@@ -20,7 +21,7 @@ class UserDecorator < Draper::Decorator
   def dan_color
     return '#afeeee' if 3 <= object.grade && object.grade <= 10
     return '#ff6347' if object.grade == 1 || object.grade == 2
-    return '#ffd900' if object.grade == 0
+    return '#ffd900' if object.grade.zero?
     '#98fb98'
   end
 

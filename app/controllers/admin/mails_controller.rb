@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Admin::MailsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user!

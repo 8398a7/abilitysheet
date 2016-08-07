@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Devise::Mailer < Devise.parent_mailer.constantize
   include Devise::Mailers::Helpers
 

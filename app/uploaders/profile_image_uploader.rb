@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ProfileImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   storage :file

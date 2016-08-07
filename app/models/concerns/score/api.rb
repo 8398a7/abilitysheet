@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Score::API
   extend ActiveSupport::Concern
 

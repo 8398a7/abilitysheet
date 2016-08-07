@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Slack
   class MessageDispatcher
     def self.send(id)

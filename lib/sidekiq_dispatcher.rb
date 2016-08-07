@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class SidekiqDispatcher
   PID = Rails.env.development? ? 'sidekiq.pid' : 'sidekiq-0.pid'
   def self.exists?
