@@ -10,13 +10,13 @@ module User::List
 
       def recent200
         query = 'SELECT '
-        query << 'users.id,users.djname,users.iidxid,users.pref,users.grade,'
-        query << 'scores.updated_at, scores.state, sheets.title '
-        query << 'FROM users, scores, sheets '
-        query << 'WHERE users.id = scores.user_id '
-        query << 'AND scores.state != 7 '
-        query << 'AND sheets.id = scores.sheet_id '
-        query << 'ORDER BY scores.updated_at DESC LIMIT 6400'
+        query += 'users.id,users.djname,users.iidxid,users.pref,users.grade,'
+        query += 'scores.updated_at, scores.state, sheets.title '
+        query += 'FROM users, scores, sheets '
+        query += 'WHERE users.id = scores.user_id '
+        query += 'AND scores.state != 7 '
+        query += 'AND sheets.id = scores.sheet_id '
+        query += 'ORDER BY scores.updated_at DESC LIMIT 6400'
         users = ActiveRecord::Base.connection.execute(query).to_a
         recent_users = []
         ret = {}
