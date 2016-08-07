@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module IRT
   class Sync
     def self.run

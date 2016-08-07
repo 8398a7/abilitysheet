@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 feature '連絡フォーム' do
   given(:user) { create(:user, id: 1) }
   background do

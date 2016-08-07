@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class NoticeMail < ActionMailer::Base
   default from: 'abilitysheet@iidx12.tk'
 

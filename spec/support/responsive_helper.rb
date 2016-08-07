@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module ResponsiveHelper
   def resize_window_to_iphone6
     Capybara.current_session.driver.headers = { 'User-Agent' => 'iPhone' }

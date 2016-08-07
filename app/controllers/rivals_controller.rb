@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class RivalsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_sheet, only: [:clear, :hard]

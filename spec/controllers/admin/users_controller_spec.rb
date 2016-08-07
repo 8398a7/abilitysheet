@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe Admin::UsersController, type: :controller do
   let(:user) { create(:user, role: User::Role::ADMIN, id: 2) }
   describe 'GET #index' do

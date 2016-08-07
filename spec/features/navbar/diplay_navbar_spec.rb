@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 feature 'Navbarの閲覧可能コンテンツ', js: true do
   context 'ログインしていない場合' do
     background do

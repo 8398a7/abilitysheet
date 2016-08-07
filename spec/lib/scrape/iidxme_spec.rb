@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 describe Scrape::IIDXME do
   let(:user) { create(:user, id: 1, djname: 'TEST', grade: 2, iidxid: iidxid) }
 

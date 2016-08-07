@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module User::List
   extend ActiveSupport::Concern
 
@@ -8,15 +9,19 @@ module User::List
       end
 
       def recent200
-        query = 'SELECT '
-        query << 'users.id,users.djname,users.iidxid,users.pref,users.grade,'
-        query << 'scores.updated_at, scores.state, sheets.title '
-        query << 'FROM users, scores, sheets '
-        query << 'WHERE users.id = scores.user_id '
-        query << 'AND scores.state != 7 '
-        query << 'AND sheets.id = scores.sheet_id '
-        query << 'ORDER BY scores.updated_at DESC LIMIT 6400'
-        users = ActiveRecord::Base.connection.execute(query).to_a
+        query = <<-EOF
+SELECT
+users.id, users.djname, users.iidxid, users.pref, users.grade,
+scores.updated_at, scores.state, sheets.title
+FROM users, scores, sheets
+WHERE users.id = scores.user_id
+AND scores.state != 7
+AND sheets.id = scores.sheet_id
+ORDER BY scores.updated_at DESC
+LIMIT 6400
+        EOF
+        query.chomp.tr("\n", ' ')
+        users = ActiveRecord::Base.connection.execute(query.chomp.tr("\n", ' ')).to_a
         recent_users = []
         ret = {}
         users.each do |user|

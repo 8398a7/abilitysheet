@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Admin::SheetsController < ApplicationController
   before_action :authenticate_user!
   before_action :member_user!

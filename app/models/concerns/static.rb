@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Static
   LAMP = %w(FC EXH H C E A F N).freeze
 
