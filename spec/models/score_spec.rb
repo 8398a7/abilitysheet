@@ -107,7 +107,11 @@ describe Score, type: :model do
         expect do
           Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
           score = Score.new(id: 100, user_id: 99, sheet_id: 1, version: 1)
-          score.save(validate: false)
+          begin
+            score.save(validate: false)
+          rescue => e
+            expect(e.message.include?('PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint')).to eq true
+          end
         end.to change(Score, :count).by(1)
       end
     end
