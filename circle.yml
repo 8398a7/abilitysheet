@@ -32,5 +32,3 @@ deployment:
     branch: master
     commands:
       - bundle exec cap production deploy
-      - bundle exec cap production puma:restart
-      - bundle exec cap production sidekiq:restart
