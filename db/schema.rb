@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304053101) do
+ActiveRecord::Schema.define(version: 20160814172615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20160304053101) do
   add_index "scores", ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
   add_index "scores", ["updated_at"], name: "index_scores_on_updated_at", using: :btree
   add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
+  add_index "scores", ["version", "sheet_id", "user_id"], name: "index_scores_on_version_and_sheet_id_and_user_id", unique: true, using: :btree
 
   create_table "sheets", force: :cascade do |t|
     t.string   "title"
