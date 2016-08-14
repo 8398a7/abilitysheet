@@ -96,11 +96,24 @@ describe Score, type: :model do
   end
 
   context 'validate' do
-    it '一つのバージョンでユーザは同じ楽曲を複数持たない' do
-      expect do
-        Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
-        Score.create(id: 100, user_id: 99, sheet_id: 1, version: 1)
-      end.to change(Score, :count).by(1)
+    context '一つのバージョンでユーザは同じ楽曲を複数持たない' do
+      it 'rails側のvalidationに引っかかること' do
+        expect do
+          Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
+          Score.create(id: 100, user_id: 99, sheet_id: 1, version: 1)
+        end.to change(Score, :count).by(1)
+      end
+      it 'rdb側のvalidationに引っかかること' do
+        expect do
+          Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
+          score = Score.new(id: 100, user_id: 99, sheet_id: 1, version: 1)
+          begin
+            score.save(validate: false)
+          rescue => e
+            expect(e.message.include?('PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint')).to eq true
+          end
+        end.to change(Score, :count).by(1)
+      end
     end
   end
 end
