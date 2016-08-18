@@ -62,6 +62,7 @@ group :development do
   gem 'pry-stack_explorer'
   gem 'quiet_assets'
   gem 'rack-dev-mark'
+  gem 'rails-erd'
   gem 'spring'
 end
 
