@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
@@ -24,7 +25,7 @@ set :rbenv_type, :system
 
 set :keep_releases, 5
 
-set :sidekiq_role, :web
+set :sidekiq_role, :app
 set :conditionally_migrate, true
 set :deploy_via, :remote_cache
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
@@ -43,25 +44,3 @@ set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
-
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    invoke 'puma:restart'
-  end
-
-  after :publishing, :restart
-end
-
-namespace :assets_rails do
-  desc 'Install assets and resolve assets'
-  task :install do
-    on roles(:web) do
-      within release_path do
-        execute :rake, 'assets_rails:install assets_rails:resolve RAILS_ENV=production'
-      end
-    end
-  end
-end
-before 'puma:check', 'puma:config'
-before 'deploy:compile_assets', 'assets_rails:install'

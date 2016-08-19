@@ -5,6 +5,8 @@ module Scrape
 
     def initialize
       @agent = Mechanize.new
+      @iidxme_domain = 'https://iidx.me'
+      @json_iidxme_domain = 'http://json.iidx.me'
     end
 
     def async(iidxid)
@@ -15,7 +17,7 @@ module Scrape
 
     def download_profile_image(user)
       User.find(user.id).remove_image!
-      open("http://iidx.me/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
+      open("#{@iidxme_domain}/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
     end
 
     def process(iidxid)
@@ -32,7 +34,7 @@ module Scrape
     end
 
     def search_api
-      uri = URI.parse('http://json.iidx.me/!/userlist')
+      uri = URI.parse("#{@json_iidxme_domain}/!/userlist")
       JSON.parse(Net::HTTP.get(uri), symbolize_names: true)
     end
 
@@ -46,7 +48,7 @@ module Scrape
     def data_get(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
-      uri    = URI.parse("http://json.iidx.me/#{user_id}/sp/level/12/")
+      uri    = URI.parse("#{@json_iidxme_domain}/#{user_id}/sp/level/12/")
       res    = Net::HTTP.get(uri)
       JSON.parse(res)
     end
