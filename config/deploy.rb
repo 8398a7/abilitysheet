@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # config valid only for current version of Capistrano
 lock '3.6.0'
 
@@ -43,15 +44,6 @@ set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
-
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    invoke 'puma:restart'
-  end
-
-  after :publishing, :restart
-end
 
 namespace :assets_rails do
   desc 'Install assets and resolve assets'
