@@ -44,5 +44,3 @@ set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
-
-before 'puma:check', 'puma:config'
