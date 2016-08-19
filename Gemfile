@@ -8,7 +8,7 @@ gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
 gem 'devise'
-gem 'doorkeeper'
+gem 'doorkeeper', '>= 4.2.0'
 gem 'dotenv-rails'
 gem 'draper'
 gem 'font-awesome-rails'
