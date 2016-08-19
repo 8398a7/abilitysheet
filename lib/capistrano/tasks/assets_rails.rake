@@ -8,3 +8,4 @@ namespace :assets_rails do
     end
   end
 end
+before 'deploy:compile_assets', 'assets_rails:install'
