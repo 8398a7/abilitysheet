@@ -25,7 +25,7 @@ set :rbenv_type, :system
 
 set :keep_releases, 5
 
-set :sidekiq_role, :web
+set :sidekiq_role, :app
 set :conditionally_migrate, true
 set :deploy_via, :remote_cache
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
