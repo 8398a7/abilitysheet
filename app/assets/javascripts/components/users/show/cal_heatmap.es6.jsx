@@ -33,7 +33,7 @@ class CalHeatmap extends BaseComponent {
   renderDetail() {
     if (!this.state.items) return null
     targetDate = new Date(this.state.date)
-    text = `${targetDate.getFullYear()}-${targetDate.getMonth() + 1}-${targetDate.getDay()}`
+    text = `${targetDate.getFullYear()}-${('00' + (targetDate.getMonth() + 1)).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`
     return (
       <div className='center'>
         <i className='fa fa-refresh' />
