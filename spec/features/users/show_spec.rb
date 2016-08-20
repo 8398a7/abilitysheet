@@ -31,6 +31,9 @@ feature 'プロフィールページ', js: true do
     scenario '統計情報が存在する' do
       expect(page).to have_content('統計情報')
     end
+    scenario '更新履歴が存在する' do
+      expect(page).to have_content('更新履歴')
+    end
     scenario 'ノマゲ比較が存在しない' do
       expect(page).to have_no_content('ノマゲ比較')
     end
@@ -76,6 +79,9 @@ feature 'プロフィールページ', js: true do
     end
     scenario '統計情報が存在する' do
       expect(page).to have_content('統計情報')
+    end
+    scenario '更新履歴が存在する' do
+      expect(page).to have_content('更新履歴')
     end
     scenario 'ノマゲ比較が存在する' do
       expect(page).to have_content('ノマゲ比較')
