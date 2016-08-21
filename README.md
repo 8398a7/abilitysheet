@@ -18,6 +18,9 @@
 
 ![](https://raw.githubusercontent.com/8398a7/abilitysheet/master/docs/erd.png)
 
+## Throughput
+
+[![Throughput Graph](https://graphs.waffle.io/8398a7/abilitysheet/throughput.svg)](https://waffle.io/8398a7/abilitysheet/metrics/throughput)
 
 ## About
 
@@ -33,7 +36,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
   * Versionごとにログを取るため，過去のバージョンとの比較も行える
 
 現在はネット上からノマゲ地力表，ハード地力表の反映．  
-また，[iidx.me](http://iidx.me)から集計したデータを元に[項目応答理論](http://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](https://iidx12.tk/abilitysheet/recommends/list)を提供しています．
+また，[iidx.me](https://iidx.me)から集計したデータを元に[項目応答理論](https://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](https://iidx12.tk/recommends)を提供しています．
 
 ## Next
 
@@ -43,9 +46,8 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Requires
 
 - ruby 2.3.1
-- rails 4.2.7
-- node 6.3.1
-- npm 3.10.3
+- rails 4.2.7.1
+- node 6.4.0
 - bower 1.7.9
 
 ## Setting
