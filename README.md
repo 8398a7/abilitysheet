@@ -10,7 +10,7 @@
 [![Dependency Status](https://gemnasium.com/8398a7/abilitysheet.svg)](https://gemnasium.com/8398a7/abilitysheet)
 [![Release](https://img.shields.io/github/release/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/releases/latest)
 [![License](https://img.shields.io/github/license/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/blob/master/LICENSE.txt)
-[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)
+[![Slack](https://slackin-abilitysheet.herokuapp.com/badge.svg)](https://slackin-abilitysheet.herokuapp.com/)
 
 ![](https://cloud.githubusercontent.com/assets/8043276/14033422/789679c2-f25d-11e5-923a-a6b24d459a48.png)
 
@@ -63,7 +63,7 @@ rails s
 ## Help
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-[![Slack](https://slack.iidx12.tk/badge.svg)](https://slack.iidx12.tk)  
+[![Slack](https://slackin-abilitysheet.herokuapp.com/badge.svg)](https://slackin-abilitysheet.herokuapp.com/)
 お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
 
 ## Database
