@@ -10,6 +10,14 @@
 [![Dependency Status](https://gemnasium.com/8398a7/abilitysheet.svg)](https://gemnasium.com/8398a7/abilitysheet)
 [![Release](https://img.shields.io/github/release/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/releases/latest)
 [![License](https://img.shields.io/github/license/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/blob/master/LICENSE.txt)
+
+
+## Join to Development
+
+### [共同開発者随時募集中](http://twitter.com/IIDX_12)
+
+お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
+
 [![Slack](https://slackin-abilitysheet.herokuapp.com/badge.svg)](https://slackin-abilitysheet.herokuapp.com/)
 
 ![](https://cloud.githubusercontent.com/assets/8043276/14033422/789679c2-f25d-11e5-923a-a6b24d459a48.png)
@@ -59,12 +67,6 @@ bundle install -j4 --path vendor/bundle
 rake db:setup
 rails s
 ```
-
-## Help
-
-### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-[![Slack](https://slackin-abilitysheet.herokuapp.com/badge.svg)](https://slackin-abilitysheet.herokuapp.com/)
-お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
 
 ## Database
 
