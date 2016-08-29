@@ -48,7 +48,7 @@ class Footer extends BaseComponent {
                 <i className='fa fa-github' />
               </a>
               &nbsp;
-              <a href='https://slackckin-abilitysheet.herokuapp.com'>
+              <a href='https://slackin-abilitysheet.herokuapp.com'>
                 <i className='fa fa-slack' />
               </a>
             </span>
