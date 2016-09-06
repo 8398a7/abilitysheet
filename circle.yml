@@ -6,14 +6,12 @@ machine:
   ruby:
     version: 2.3.1
   node:
-    version: 6.3.1
-  pre:
-    - sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+    version: 6.5.0
 
 dependencies:
   post:
     - rm -rf node_modules
-    - npm install -g bower@1.7.9
+    - npm install -g bower@1.7.9 phantomjs-prebuilt
     - bundle exec rake assets_rails:install assets_rails:resolve
 
 database:
