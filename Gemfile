@@ -42,7 +42,6 @@ gem 'sass-rails'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim-rails'
-gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
 gem 'twitter'
 gem 'uglifier', '>= 1.3.0'
