@@ -10,7 +10,7 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'doorkeeper', '>= 4.2.0'
 gem 'dotenv-rails'
-# gem 'draper'
+gem 'draper', '3.0.0.pre1'
 gem 'font-awesome-rails'
 # }}}
 # h,i,j,k,l,m,n {{{
