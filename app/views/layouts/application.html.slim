@@ -76,7 +76,7 @@ html
             li = link_to 'メッセージ管理', admin_messages_path
             li = link_to '問い合わせ返信', new_admin_mail_path
             li = link_to 'sidekiq管理', admin_sidekiq_index_path
-            li = link_to 'RailsAdmin', rails_admin_path
+            / li = link_to 'RailsAdmin', rails_admin_path
             li = link_to 'Dashboard', admin_dashboards_path
           - if user_signed_in?
             li.uk-nav-header
