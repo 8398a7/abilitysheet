@@ -3,9 +3,7 @@ class UnauthorizedError < RuntimeError; end
 class Forbidden < RuntimeError; end
 class BadRequest < RuntimeError; end
 class ServiceUnavailable < RuntimeError; end
-class Api::ApiController < ActionController::Base
-  protect_from_forgery with: :null_session, if: proc { |c| c.request.format == 'application/json' }
-
+class Api::ApiController < ActionController::API
   rescue_from ServiceUnavailable, with: :render_503
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
   rescue_from Forbidden, with: :render_403
