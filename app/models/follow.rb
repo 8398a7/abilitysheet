@@ -10,6 +10,6 @@
 #  updated_at     :datetime         not null
 #
 
-class Follow < ActiveRecord::Base
+class Follow < ApplicationRecord
   belongs_to :user
 end

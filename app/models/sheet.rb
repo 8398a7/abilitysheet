@@ -14,7 +14,7 @@
 #  updated_at :datetime         not null
 #
 
-class Sheet < ActiveRecord::Base
+class Sheet < ApplicationRecord
   has_many :scores
   has_many :logs
   has_one :ability

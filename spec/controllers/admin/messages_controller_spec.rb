@@ -31,7 +31,7 @@ describe Admin::MessagesController, type: :controller do
   end
   describe 'POST #active' do
     context '非ログイン' do
-      before { post :active, id: 1 }
+      before { post :active, params: { id: 1 } }
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
       end
@@ -40,7 +40,7 @@ describe Admin::MessagesController, type: :controller do
       let(:user) { create(:user, role: User::Role::ADMIN - 1) }
       before do
         sign_in user
-        get :active, id: 1
+        get :active, params: { id: 1 }
       end
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
@@ -51,7 +51,7 @@ describe Admin::MessagesController, type: :controller do
       before do
         Message.find_by(id: 1).update!(state: false)
         sign_in user
-        get :active, id: 1
+        get :active, params: { id: 1 }
       end
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
@@ -63,7 +63,7 @@ describe Admin::MessagesController, type: :controller do
   end
   describe 'POST #inactive' do
     context '非ログイン' do
-      before { post :inactive, id: 1 }
+      before { post :inactive, params: { id: 1 } }
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
       end
@@ -72,7 +72,7 @@ describe Admin::MessagesController, type: :controller do
       let(:user) { create(:user, role: User::Role::ADMIN - 1) }
       before do
         sign_in user
-        get :inactive, id: 1
+        get :inactive, params: { id: 1 }
       end
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
@@ -83,7 +83,7 @@ describe Admin::MessagesController, type: :controller do
       before do
         Message.find_by(id: 1).update!(state: true)
         sign_in user
-        get :inactive, id: 1
+        get :inactive, params: { id: 1 }
       end
       it 'response redirect' do
         expect(response).to have_http_status(:redirect)
