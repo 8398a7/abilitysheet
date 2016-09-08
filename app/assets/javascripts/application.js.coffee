@@ -1,4 +1,5 @@
 #= require jquery/dist/jquery.min
+#= require jquery_ujs
 #= require qtip2/dist/jquery.qtip.min
 #= require jquery-ui/ui/widgets/datepicker
 #= require jquery-ui/ui/i18n/datepicker-ja

@@ -15,6 +15,7 @@ gem 'font-awesome-rails'
 # }}}
 # h,i,j,k,l,m,n {{{
 gem 'js-routes'
+gem 'jquery-rails'
 gem 'kaminari'
 gem 'mechanize'
 gem 'mini_magick'
