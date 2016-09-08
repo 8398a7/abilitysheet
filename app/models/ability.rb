@@ -15,7 +15,7 @@
 #  updated_at :datetime         not null
 #
 
-class Ability < ActiveRecord::Base
+class Ability < ApplicationRecord
   belongs_to :sheet
 
   def self.sync(data)

@@ -14,7 +14,7 @@
 #  updated_at :datetime         not null
 #
 
-class Score < ActiveRecord::Base
+class Score < ApplicationRecord
   belongs_to :sheet
   belongs_to :user
   delegate :title, to: :sheet

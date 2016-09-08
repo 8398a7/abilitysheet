@@ -16,7 +16,7 @@
 #  created_date :date
 #
 
-class Log < ActiveRecord::Base
+class Log < ApplicationRecord
   belongs_to :user
   belongs_to :sheet
   delegate :title, to: :sheet
