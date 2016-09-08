@@ -5,6 +5,7 @@
 //= require jquery-ui/ui/i18n/datepicker-ja
 //= require moment/moment
 //= require moment/locale/ja
+//= require momentLocale
 //= require d3/d3.min
 //= require cal-heatmap/cal-heatmap.min
 //= require fullcalendar/dist/fullcalendar.min
