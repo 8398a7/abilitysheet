@@ -1,3 +1,22 @@
+GIT
+  remote: https://github.com/sferik/rails_admin.git
+  revision: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
+  ref: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
+  specs:
+    rails_admin (1.0.0.rc)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.0)
+      sass-rails (>= 4.0, < 6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -341,19 +360,6 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    rails_admin (1.0.0.rc)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 4.0, < 6)
-      remotipart (~> 1.0)
-      sass-rails (>= 4.0, < 6)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -548,7 +554,7 @@ DEPENDENCIES
   rails
   rails-controller-testing
   rails-erd
-  rails_admin (= 1.0.0.rc)
+  rails_admin!
   ransack
   react-rails
   rspec-its
@@ -568,7 +574,7 @@ DEPENDENCIES
   yaml_db
 
 RUBY VERSION
-   ruby 2.3.0p0
+   ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.0.rc.2
