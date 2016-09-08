@@ -70,7 +70,7 @@ describe Admin::UsersController, type: :controller do
     end
     context '非xhrリクエスト' do
       it 'response redirect' do
-        get :edit, id: 2
+        get :edit, params: { id: 2 }
         expect(response).to have_http_status(404)
       end
     end
