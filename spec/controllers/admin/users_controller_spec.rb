@@ -32,7 +32,7 @@ describe Admin::UsersController, type: :controller do
   describe 'GET #new' do
     before do
       sign_in user
-      xhr :get, :new
+      get :new, xhr: true
     end
     it 'response ok' do
       expect(response).to have_http_status(:success)
@@ -43,7 +43,17 @@ describe Admin::UsersController, type: :controller do
     before { sign_in user }
     it 'creates a new User' do
       expect do
-        xhr :post, :create, user: { email: 'hoge@iidx.tk', iidxid: '3472-4938', djname: 'BAR', password: 'hogehoge', username: 'admin_test', pref: 0, grade: Abilitysheet::Application.config.iidx_grade }
+        post :create, xhr: true, params: {
+          user: {
+            email: 'hoge@iidx.tk',
+            iidxid: '3472-4938',
+            djname: 'BAR',
+            password: 'hogehoge',
+            username: 'admin_test',
+            pref: 0,
+            grade: Abilitysheet::Application.config.iidx_grade
+          }
+        }
       end.to change(User, :count).by(1)
       expect(response).to have_http_status(:success)
     end
@@ -53,7 +63,7 @@ describe Admin::UsersController, type: :controller do
     before { sign_in user }
     context 'xhrリクエスト' do
       it 'response ok' do
-        xhr :get, :edit, id: 2
+        get :edit, xhr: true, params: { id: 2 }
         expect(assigns(:score)).to eq @score
         expect(response).to have_http_status(:success)
       end
@@ -69,7 +79,7 @@ describe Admin::UsersController, type: :controller do
   describe 'PUT #update' do
     before { sign_in user }
     it 'response ok' do
-      xhr :patch, :update, id: 2, user: { grade: 5 }
+      patch :update, xhr: true, params: { id: 2, user: { grade: 5 } }
       expect(response).to have_http_status(:success)
       expect(User.find_by(id: 2).grade).to eq 5
     end
@@ -82,7 +92,7 @@ describe Admin::UsersController, type: :controller do
     end
     it 'response ok' do
       expect(User.exists?(id: 3)).to eq true
-      xhr :delete, :destroy, id: 3
+      delete :destroy, xhr: true, params: { id: 3 }
       expect(response).to have_http_status(:success)
       expect(User.exists?(id: 3)).to eq false
     end
@@ -95,7 +105,7 @@ describe Admin::UsersController, type: :controller do
     end
     it 'response ok' do
       expect(User.find_by(id: 3).access_locked?).to eq false
-      xhr :post, :lock, id: 3
+      post :lock, xhr: true, params: { id: 3 }
       expect(response).to have_http_status(:success)
       expect(User.find_by(id: 3).access_locked?).to eq true
     end
@@ -109,7 +119,7 @@ describe Admin::UsersController, type: :controller do
     end
     it 'response ok' do
       expect(User.find_by(id: 3).access_locked?).to eq true
-      xhr :post, :unlock, id: 3
+      post :unlock, xhr: true, params: { id: 3 }
       expect(response).to have_http_status(:success)
       expect(User.find_by(id: 3).access_locked?).to eq false
     end
