@@ -30,18 +30,18 @@ class Log < ApplicationRecord
   end
 
   def self.attributes(score_params, owner)
-    score_attributes(score_params, owner) if score_params[:score] && score_params[:bp]
-    log = find_by(sheet_id: score_params[:sheet_id], created_date: Date.today)
+    score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
+    log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
-      log.update!(new_state: score_params[:state])
+      log.update!(new_state: score_params['state'])
       return true
     end
-    pre_state = owner.scores.find_by(sheet_id: score_params[:sheet_id]).try(:state) || 7
+    pre_state = owner.scores.find_by(sheet_id: score_params['sheet_id']).try(:state) || 7
     # スコアBPの更新がなく，状態が変わっていない場合はログを作らない
-    return false if pre_state == score_params[:state].to_i
+    return false if pre_state == score_params['state'].to_i
     owner.logs.create(
-      sheet_id: score_params[:sheet_id],
-      pre_state: pre_state, new_state: score_params[:state],
+      sheet_id: score_params['sheet_id'],
+      pre_state: pre_state, new_state: score_params['state'],
       pre_score: nil, new_score: nil, pre_bp: nil, new_bp: nil,
       version: Abilitysheet::Application.config.iidx_version,
       created_date: Date.today
@@ -49,17 +49,17 @@ class Log < ApplicationRecord
   end
 
   def self.score_attributes(score_params, owner)
-    log = find_by(sheet_id: score_params[:sheet_id], created_date: Date.today)
+    log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
-      log.update!(new_score: score_params[:score], new_bp: score_params[:bp])
+      log.update!(new_score: score_params['score'], new_bp: score_params['bp'])
       return true
     end
-    now_score = owner.scores.is_current_version.find_by(sheet_id: score_params[:sheet_id])
+    now_score = owner.scores.is_current_version.find_by(sheet_id: score_params['sheet_id'])
     pre_state = now_score.try(:state) || 7
     owner.logs.create(
-      sheet_id: score_params[:sheet_id],
-      pre_state: pre_state, new_state: score_params[:state],
-      pre_score: now_score.score, new_score: score_params[:score], pre_bp: now_score.bp, new_bp: score_params[:bp],
+      sheet_id: score_params['sheet_id'],
+      pre_state: pre_state, new_state: score_params['state'],
+      pre_score: now_score.score, new_score: score_params['score'], pre_bp: now_score.bp, new_bp: score_params['bp'],
       version: Abilitysheet::Application.config.iidx_version,
       created_date: Date.today
     )
