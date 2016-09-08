@@ -11,11 +11,11 @@ Rails.application.routes.draw do
   resources :messages, only: [:new, :create]
 
   # admin
-  # require 'sidekiq/web'
-  # authenticate :user, -> (u) { u.admin? } do
-  #   mount RailsAdmin::Engine => '/admin/model', as: :rails_admin
-  #   mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
-  # end
+  require 'sidekiq/web'
+  authenticate :user, -> (u) { u.admin? } do
+    mount RailsAdmin::Engine => '/admin/model', as: :rails_admin
+    mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
+  end
   namespace :admin do
     resources :dashboards, only: :index
     resources :sheets do
