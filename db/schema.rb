@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -26,18 +25,16 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.float    "aaa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sheet_id"], name: "index_abilities_on_sheet_id", using: :btree
   end
-
-  add_index "abilities", ["sheet_id"], name: "index_abilities_on_sheet_id", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "target_user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["user_id", "target_user_id"], name: "index_follows_on_user_id_and_target_user_id", unique: true, using: :btree
   end
-
-  add_index "follows", ["user_id", "target_user_id"], name: "index_follows_on_user_id_and_target_user_id", unique: true, using: :btree
 
   create_table "logs", force: :cascade do |t|
     t.integer "user_id"
@@ -50,10 +47,9 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.integer "new_bp"
     t.integer "version"
     t.date    "created_date"
+    t.index ["sheet_id"], name: "index_logs_on_sheet_id", using: :btree
+    t.index ["user_id"], name: "index_logs_on_user_id", using: :btree
   end
-
-  add_index "logs", ["sheet_id"], name: "index_logs_on_sheet_id", using: :btree
-  add_index "logs", ["user_id"], name: "index_logs_on_user_id", using: :btree
 
   create_table "messages", force: :cascade do |t|
     t.string   "body"
@@ -63,9 +59,8 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.boolean  "state",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
-
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
@@ -76,9 +71,8 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.datetime "created_at",        null: false
     t.datetime "revoked_at"
     t.string   "scopes"
+    t.index ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
   end
-
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
   create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id"
@@ -89,11 +83,10 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.datetime "revoked_at"
     t.datetime "created_at",        null: false
     t.string   "scopes"
+    t.index ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+    t.index ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+    t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
   end
-
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
-  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade do |t|
     t.string   "name",                      null: false
@@ -103,9 +96,8 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.string   "scopes",       default: "", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
-
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
   create_table "scores", force: :cascade do |t|
     t.integer  "state",      default: 7, null: false
@@ -116,12 +108,11 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.integer  "version",                null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
+    t.index ["updated_at"], name: "index_scores_on_updated_at", using: :btree
+    t.index ["user_id"], name: "index_scores_on_user_id", using: :btree
+    t.index ["version", "sheet_id", "user_id"], name: "index_scores_on_version_and_sheet_id_and_user_id", unique: true, using: :btree
   end
-
-  add_index "scores", ["sheet_id"], name: "index_scores_on_sheet_id", using: :btree
-  add_index "scores", ["updated_at"], name: "index_scores_on_updated_at", using: :btree
-  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
-  add_index "scores", ["version", "sheet_id", "user_id"], name: "index_scores_on_version_and_sheet_id_and_user_id", unique: true, using: :btree
 
   create_table "sheets", force: :cascade do |t|
     t.string   "title"
@@ -157,13 +148,11 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.text     "profile_image"
     t.string   "image"
+    t.index ["iidxid"], name: "index_users_on_iidxid", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
-
-  add_index "users", ["iidxid"], name: "index_users_on_iidxid", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
 end
