@@ -1,4 +1,10 @@
 GIT
+  remote: https://github.com/mshibuya/remotipart.git
+  revision: 88d9a7d55bde66acb6cf3a3c6036a5a1fc991d5e
+  specs:
+    remotipart (1.2.1)
+
+GIT
   remote: https://github.com/sferik/rails_admin.git
   revision: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
   ref: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
@@ -384,7 +390,6 @@ GEM
       railties (>= 3.2)
       tilt
     redis (3.3.1)
-    remotipart (1.2.1)
     request_store (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -557,6 +562,7 @@ DEPENDENCIES
   rails_admin!
   ransack
   react-rails
+  remotipart!
   rspec-its
   rspec-rails
   rspec-retry

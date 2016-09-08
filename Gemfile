@@ -38,6 +38,7 @@ gem 'rails'
 gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git', ref: 'ffa30e0563e86a91bf88a312911b77d1bfffc2dc'
 gem 'ransack'
 gem 'react-rails'
+gem 'remotipart', git: 'https://github.com/mshibuya/remotipart.git'
 gem 'sass-rails'
 gem 'sidekiq'
 gem 'sinatra', require: false
