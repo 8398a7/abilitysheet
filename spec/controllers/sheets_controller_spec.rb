@@ -6,21 +6,21 @@ describe SheetsController, type: :controller do
 
   describe 'GET #show -> power' do
     it 'response ok' do
-      get :show, iidxid: @user.iidxid, type: 'power'
+      get :show, params: { iidxid: @user.iidxid, type: 'power' }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'GET #show -> #clear' do
     it 'response ok' do
-      get :show, iidxid: @user.iidxid, type: 'clear'
+      get :show, params: { iidxid: @user.iidxid, type: 'clear' }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe 'GET #show -> #hard' do
     it 'response ok' do
-      get :show, iidxid: @user.iidxid, type: 'hard'
+      get :show, params: { iidxid: @user.iidxid, type: 'hard' }
       expect(response).to have_http_status(:success)
     end
   end
