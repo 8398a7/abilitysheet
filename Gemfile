@@ -41,7 +41,7 @@ gem 'react-rails'
 gem 'remotipart', git: 'https://github.com/mshibuya/remotipart.git'
 gem 'sass-rails'
 gem 'sidekiq'
-gem 'sinatra', require: false
+gem 'sinatra', '2.0.0.beta2', require: false
 gem 'slim-rails'
 gem 'turbolinks'
 gem 'twitter'
