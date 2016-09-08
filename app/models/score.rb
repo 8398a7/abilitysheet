@@ -14,7 +14,7 @@
 #  updated_at :datetime         not null
 #
 
-class Score < ActiveRecord::Base
+class Score < ApplicationRecord
   belongs_to :sheet
   belongs_to :user
   delegate :title, to: :sheet
@@ -41,7 +41,7 @@ class Score < ActiveRecord::Base
   end
 
   def update_with_logs(score_params)
-    score_params.stringify_keys!
+    score_params.stringify_keys! unless score_params.class == ActionController::Parameters
     # 何も変更がない状態は反映しない
     duplicate = check_duplicate(score_params)
     return false if duplicate

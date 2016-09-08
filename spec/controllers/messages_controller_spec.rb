@@ -14,7 +14,7 @@ describe MessagesController, type: :controller do
     it 'creates a new Message' do
       allow(Slack::MessageDispatcher).to receive(:send).and_return(true)
       expect do
-        post :create, message: { body: 'test' }
+        post :create, params: { message: { body: 'test' } }
       end.to change(Message, :count).by(1)
       expect(response).to have_http_status(:redirect)
     end

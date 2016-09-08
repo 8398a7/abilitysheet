@@ -30,7 +30,7 @@
 #  image                  :string
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
   mount_uploader :image, ProfileImageUploader
