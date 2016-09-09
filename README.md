@@ -54,8 +54,8 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Requires
 
 - ruby 2.3.1
-- rails 4.2.7.1
-- node 6.4.0
+- rails 5.0.0.1
+- node 6.5.0
 - bower 1.7.9
 
 ## Setting
@@ -64,7 +64,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 git clone https://github.com/8398a7/abilitysheet.git
 cd abilitysheet
 bundle install -j4 --path vendor/bundle
-rake db:setup
+rails db:setup
 rails s
 ```
 

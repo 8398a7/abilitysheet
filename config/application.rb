@@ -22,6 +22,7 @@ module Abilitysheet
 
     # lib auto load
     config.autoload_paths += %W(#{config.root}/lib)
+    config.eager_load_paths += %W(#{config.root}/lib)
 
     # test_framework
     config.generators.test_framework = :rspec
