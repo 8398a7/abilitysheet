@@ -81,7 +81,6 @@ class ThreadParser
     @titles.each do |sheet_id, base_title|
       sim = Levenshtein.similarity(base_title, title)
       next unless best[:sim] < sim
-      sim = Levenshtein.similarity(base_title, title)
       best[:sim] = sim
       best[:sheet_id] = sheet_id
     end
