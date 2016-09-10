@@ -23,6 +23,8 @@ class ThreadParser
     check
   end
 
+  private
+
   def parse
     @query.each_line do |line|
       line.chomp!
