@@ -229,6 +229,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.4.3)
       addressable (~> 2.3)
+    levenshtein (0.2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -542,6 +543,7 @@ DEPENDENCIES
   json_expressions
   kaminari
   launchy
+  levenshtein
   mechanize
   meta_request
   mini_magick
