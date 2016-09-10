@@ -2,7 +2,18 @@
 
 h2.bold
   = fa_stacked_icon 'list-ul inverse', base: 'square', text: @title
-
+h2.bold
+  form.uk-form.uk-form-stacked
+    .uk-form-row
+      .uk-form-controls
+        textarea id='diff-query'
+    .uk-form-row
+      .uk-form-controls
+        select#diff-type
+         option value='n_ability' NORMAL
+         option value='h_ability' HARD
+    #diff-submit.uk-button.uk-button-mini.uk-button-success.uk-margin-small-right
+      = fa_icon 'pencil', text: '差分確認'
 = search_form_for [:admin, @search], class: 'uk-form right' do |f|
   = fa_icon 'search', text: '曲名から絞込'
   .uk-form-row
@@ -15,3 +26,26 @@ hr
 coffee:
   $('#nav-admin').addClass('uk-active')
   $('.select2').select2()
+
+  $('#diff-submit').click ->
+    $.ajax
+      type: 'get'
+      xhrFields:
+        withCredentials: true
+      url: '/admin/sheets/diff'
+      data:
+        query: $('#diff-query').val()
+        type: $('#diff-type').val()
+    .done (result, type) ->
+      console.log(result)
+      if $('.uk-notify-message').length is 0
+        UIkit.notify
+          message: JSON.stringify result
+          status: 'info'
+          timeout: 5000
+    .fail (XMLHttpRequest, textStatus, errorThrown) ->
+      if $('.uk-notify-message').length is 0
+        UIkit.notify
+          message: XMLHttpRequest.responseText
+          status: 'danger'
+          timeout: 5000
