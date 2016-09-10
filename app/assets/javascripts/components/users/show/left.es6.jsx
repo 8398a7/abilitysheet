@@ -81,7 +81,7 @@ class UserProfileLeft extends BaseComponent {
   render() {
     return (
       <div className='uk-width-3-10'>
-        <image className='icon' src={this.props.user.imageUrl} />
+        <img className='icon' src={this.props.user.imageUrl} />
         <div style={{marginTop: '20px'}}><h2><b>{this.props.user.djname}</b></h2></div>
         <div><h3>{this.props.user.iidxid}&nbsp;{this.renderRival()}</h3></div>
         <div style={{paddingBottom: '3px'}}>
