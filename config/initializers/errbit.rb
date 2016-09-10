@@ -18,7 +18,7 @@ if !defined?(Airbrake).nil? && (Rails.env.staging? || Rails.env.production?)
     config.environment = Rails.env + get_revision
     config.ignore_environments = %w(development test)
     config.host        = ENV['ERRBIT_HOST']
-    config.project_id  = -1
+    config.project_id  = 1
     config.project_key = ENV['ERRBIT_API_KEY']
   end
 end
