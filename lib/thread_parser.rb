@@ -56,11 +56,13 @@ class ThreadParser
   def check
     ng = {}
     @result.each do |ability, sheet_ids|
+      ids = []
       sheet_ids.each do |hash|
         sheet_id = hash.keys[0]
         next if @abilities[sheet_id] == ability
-        sheet = Sheet.find(sheet_id)
-        puts "#{sheet.to_json} => #{ability}"
+        ids.push(sheet_id)
+      end
+      Sheet.where(id: ids).each do |sheet|
         ng[sheet.title] = {
           info: sheet.to_json,
           now: ability

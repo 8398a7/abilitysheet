@@ -9,6 +9,15 @@ class Admin::SheetsController < ApplicationController
     @sheets = @search.result
   end
 
+  def diff
+    if params[:query].present? && params[:type].present?
+      tp = ThreadParser.new(params[:query], params[:type])
+      render json: tp.run
+    else
+      render json: { error: 'requires query and type' }, status: 400
+    end
+  end
+
   def new
     render :show_modal_form
   end
