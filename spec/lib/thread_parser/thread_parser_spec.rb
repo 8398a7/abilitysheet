@@ -17,4 +17,14 @@ describe 'lib/thread_parser.rb' do
     expected = {}
     expect(ThreadParser.new(h_query, 'h_ability').run).to eq expected
   end
+
+  it 'ノマゲ表の差分が確認できる' do
+    expected = 103
+    expect(ThreadParser.new(h_query, 'n_ability').run.size).to eq expected
+  end
+
+  it 'ハード表の差分が確認できる' do
+    expected = 102
+    expect(ThreadParser.new(n_query, 'h_ability').run.size).to eq expected
+  end
 end
