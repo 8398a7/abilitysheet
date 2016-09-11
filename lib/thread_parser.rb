@@ -23,6 +23,8 @@ class ThreadParser
     check
   end
 
+  private
+
   def parse
     @query.each_line do |line|
       line.chomp!
@@ -64,8 +66,11 @@ class ThreadParser
       end
       Sheet.where(id: ids).each do |sheet|
         ng[sheet.title] = {
-          info: sheet.to_json,
-          now: ability
+          info: JSON.parse(sheet.to_json),
+          diff: {
+            now: Static::POWER[@abilities[sheet.id]],
+            thread: Static::POWER[ability]
+          }
         }
       end
     end
@@ -81,7 +86,6 @@ class ThreadParser
     @titles.each do |sheet_id, base_title|
       sim = Levenshtein.similarity(base_title, title)
       next unless best[:sim] < sim
-      sim = Levenshtein.similarity(base_title, title)
       best[:sim] = sim
       best[:sheet_id] = sheet_id
     end
