@@ -78,6 +78,7 @@ group :deployment do
 end
 
 group :test do
+  gem 'activerecord-import'
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: nil
   gem 'database_cleaner'
