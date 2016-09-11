@@ -29,7 +29,7 @@ coffee:
 
   $('#diff-submit').click ->
     $.ajax
-      type: 'get'
+      type: 'post'
       xhrFields:
         withCredentials: true
       url: '/admin/sheets/diff'
