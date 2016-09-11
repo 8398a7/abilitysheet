@@ -66,8 +66,11 @@ class ThreadParser
       end
       Sheet.where(id: ids).each do |sheet|
         ng[sheet.title] = {
-          info: sheet.to_json,
-          now: ability
+          info: JSON.parse(sheet.to_json),
+          diff: {
+            now: Static::POWER[@abilities[sheet.id]],
+            thread: Static::POWER[ability]
+          }
         }
       end
     end
