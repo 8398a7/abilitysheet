@@ -225,7 +225,7 @@ GEM
       sprockets-rails
     json (1.8.3)
     json_expressions (0.8.3)
-    jwt (1.5.4)
+    jwt (1.5.5)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -470,7 +470,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.11.2)
+    sshkit (1.11.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.7)
