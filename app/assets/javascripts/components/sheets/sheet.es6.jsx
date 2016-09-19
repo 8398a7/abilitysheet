@@ -84,6 +84,7 @@ class Sheet extends BaseComponent {
           <a className={`uk-button ${this.state.type[this.props.type].button}`} href={sheet_path({iidxid: this.props.user.iidxid, type: this.state.type[this.props.type].link})}>
             {this.state.type[this.props.type].link.toUpperCase()}
           </a>
+          <RecentUpdate recent={this.props.recent}/>
           {_ua.Mobile ? this.renderSwitchViewPort() : null}
           <hr />
           <Checkbox versions={this.props.versions} sheetType={this.props.sheetType} lamp={this.props.lamp} />
