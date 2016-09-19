@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/mshibuya/remotipart.git
-  revision: 88d9a7d55bde66acb6cf3a3c6036a5a1fc991d5e
+  revision: 7e244e78e148430b7720e6cf8f86263d6a1dfddf
   specs:
-    remotipart (1.2.1)
+    remotipart (1.3.0)
 
 GIT
   remote: https://github.com/sferik/rails_admin.git
@@ -71,25 +71,25 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.4.0)
-    airbrake (5.4.5)
-      airbrake-ruby (~> 1.4)
+    airbrake (5.5.0)
+      airbrake-ruby (~> 1.5)
     airbrake-ruby (1.5.0)
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
-    arel (7.1.1)
+    arel (7.1.2)
     assets_rails (1.0.3)
       rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
-    aws-sdk (2.5.11)
-      aws-sdk-resources (= 2.5.11)
-    aws-sdk-core (2.5.11)
+    aws-sdk (2.6.1)
+      aws-sdk-resources (= 2.6.1)
+    aws-sdk-core (2.6.1)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.5.11)
-      aws-sdk-core (= 2.5.11)
+    aws-sdk-resources (2.6.1)
+      aws-sdk-core (= 2.6.1)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -120,7 +120,7 @@ GEM
     capistrano-faster-assets (1.0.2)
       capistrano (>= 3.1)
     capistrano-harrow (0.5.3)
-    capistrano-rails (1.1.7)
+    capistrano-rails (1.1.8)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-sidekiq (0.5.4)
@@ -225,7 +225,7 @@ GEM
       sprockets-rails
     json (1.8.3)
     json_expressions (0.8.3)
-    jwt (1.5.4)
+    jwt (1.5.5)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -283,7 +283,7 @@ GEM
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
     orm_adapter (0.5.0)
-    parser (2.3.1.2)
+    parser (2.3.1.3)
       ast (~> 2.2)
     peek (0.2.0)
       coffee-rails
@@ -470,7 +470,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.11.2)
+    sshkit (1.11.3)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.7)
