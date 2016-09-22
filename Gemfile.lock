@@ -312,7 +312,7 @@ GEM
       atomic (>= 1.0.0)
       peek
       sidekiq
-    pg (0.18.4)
+    pg (0.19.0)
     pkg-config (1.1.7)
     poltergeist (1.10.0)
       capybara (~> 2.1)
