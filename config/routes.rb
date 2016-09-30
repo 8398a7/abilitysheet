@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'welcomes#index'
   resources :users, only: %i(index show)
   resources :messages, only: [:new, :create]
+  get '/messages/password', to: 'messages#password', as: :password_message
 
   # admin
   require 'sidekiq/web'

@@ -18,6 +18,9 @@ class MessagesController < ApplicationController
     redirect_to root_path
   end
 
+  def password
+  end
+
   private
 
   def message_params
