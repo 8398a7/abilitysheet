@@ -18,3 +18,6 @@
           button.uk-button.uk-button-danger type="submit"
             = fa_icon 'mail-forward', text: '再発行'
           = render 'devise/shared/links'
+      br
+      = link_to password_message_path
+       = fa_icon 'twitter', text: 'メールアドレスも紛失している場合'
