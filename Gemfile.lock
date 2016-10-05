@@ -1,28 +1,3 @@
-GIT
-  remote: https://github.com/mshibuya/remotipart.git
-  revision: 7e244e78e148430b7720e6cf8f86263d6a1dfddf
-  specs:
-    remotipart (1.3.0)
-
-GIT
-  remote: https://github.com/sferik/rails_admin.git
-  revision: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
-  ref: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
-  specs:
-    rails_admin (1.0.0.rc)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 4.0, < 6)
-      remotipart (~> 1.0)
-      sass-rails (>= 4.0, < 6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -370,6 +345,19 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_admin (1.0.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.3)
+      sass-rails (>= 4.0, < 6)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -394,6 +382,7 @@ GEM
       railties (>= 3.2)
       tilt
     redis (3.3.1)
+    remotipart (1.3.0)
     request_store (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
@@ -570,10 +559,9 @@ DEPENDENCIES
   rails
   rails-controller-testing
   rails-erd
-  rails_admin!
+  rails_admin
   ransack
   react-rails
-  remotipart!
   rspec-its
   rspec-rails
   rspec-retry
