@@ -26,7 +26,6 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  profile_image          :text
 #  image                  :string
 #
 
