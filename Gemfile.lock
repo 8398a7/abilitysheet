@@ -1,28 +1,3 @@
-GIT
-  remote: https://github.com/mshibuya/remotipart.git
-  revision: 7e244e78e148430b7720e6cf8f86263d6a1dfddf
-  specs:
-    remotipart (1.3.0)
-
-GIT
-  remote: https://github.com/sferik/rails_admin.git
-  revision: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
-  ref: ffa30e0563e86a91bf88a312911b77d1bfffc2dc
-  specs:
-    rails_admin (1.0.0.rc)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (>= 0.7)
-      rails (>= 4.0, < 6)
-      remotipart (~> 1.0)
-      sass-rails (>= 4.0, < 6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -79,17 +54,17 @@ GEM
     annotate (2.7.1)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 12.0)
-    arel (7.1.2)
+    arel (7.1.3)
     assets_rails (1.0.3)
       rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
-    aws-sdk (2.6.3)
-      aws-sdk-resources (= 2.6.3)
-    aws-sdk-core (2.6.3)
+    aws-sdk (2.6.6)
+      aws-sdk-resources (= 2.6.6)
+    aws-sdk-core (2.6.6)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.3)
-      aws-sdk-core (= 2.6.3)
+    aws-sdk-resources (2.6.6)
+      aws-sdk-core (= 2.6.6)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -103,10 +78,10 @@ GEM
       debug_inspector (>= 0.0.1)
     buftok (0.2.0)
     builder (3.2.2)
-    bullet (5.4.0)
+    bullet (5.4.2)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
-    byebug (9.0.5)
+    byebug (9.0.6)
     callsite (0.0.11)
     capistrano (3.6.1)
       airbrussh (>= 1.0.0)
@@ -114,7 +89,7 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
-    capistrano-bundler (1.1.4)
+    capistrano-bundler (1.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
     capistrano-faster-assets (1.0.2)
@@ -132,7 +107,7 @@ GEM
     capistrano3-puma (1.2.1)
       capistrano (~> 3.0)
       puma (>= 2.6)
-    capybara (2.9.1)
+    capybara (2.10.1)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -208,7 +183,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
       http_parser.rb (~> 0.6.0)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
@@ -270,11 +245,10 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    newrelic_rpm (3.16.2.321)
+    newrelic_rpm (3.16.3.323)
     nio4r (1.2.1)
-    nokogiri (1.6.8)
+    nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
     ntlm-http (0.1.1)
     oauth2 (1.2.0)
       faraday (>= 0.8, < 0.10)
@@ -313,7 +287,6 @@ GEM
       peek
       sidekiq
     pg (0.19.0)
-    pkg-config (1.1.7)
     poltergeist (1.10.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -372,6 +345,19 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_admin (1.0.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (>= 0.7)
+      rails (>= 4.0, < 6)
+      remotipart (~> 1.3)
+      sass-rails (>= 4.0, < 6)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -388,7 +374,7 @@ GEM
       polyamorous (~> 1.3)
     rblineprof (0.3.7)
       debugger-ruby_core_source (~> 1.3)
-    react-rails (1.8.2)
+    react-rails (1.9.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -396,10 +382,11 @@ GEM
       railties (>= 3.2)
       tilt
     redis (3.3.1)
+    remotipart (1.3.1)
     request_store (1.3.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
-    rspec-core (3.5.3)
+    rspec-core (3.5.4)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -418,8 +405,8 @@ GEM
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
-    rspec-retry (0.5.0)
-      rspec-core (~> 3.3)
+    rspec-retry (0.5.2)
+      rspec-core (> 3.3, < 3.6)
     rspec-support (3.5.0)
     rubocop (0.43.0)
       parser (>= 2.3.1.1, < 3.0)
@@ -460,7 +447,8 @@ GEM
       railties (>= 3.1)
       slim (~> 3.0)
     slop (3.6.0)
-    spring (1.7.2)
+    spring (2.0.0)
+      activesupport (>= 4.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.7.0)
@@ -510,7 +498,7 @@ GEM
       chronic (>= 0.6.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
-    yaml_db (0.4.0)
+    yaml_db (0.4.2)
       rails (>= 3.0, < 5.1)
       rake (>= 0.8.7)
 
@@ -571,10 +559,9 @@ DEPENDENCIES
   rails
   rails-controller-testing
   rails-erd
-  rails_admin!
+  rails_admin
   ransack
   react-rails
-  remotipart!
   rspec-its
   rspec-rails
   rspec-retry

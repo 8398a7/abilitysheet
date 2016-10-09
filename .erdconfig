@@ -1,0 +1,23 @@
+attributes:
+  - content
+  - foreign_key
+  - inheritance
+  - primary_keys
+  - timestamp
+disconnected: true
+filename: docs/erd
+filetype: png
+indirect: true
+inheritance: true
+markup: true
+notation: simple
+orientation: horizontal
+polymorphism: true
+sort: true
+warn: true
+title: abilitysheet
+exclude: null
+only: null
+only_recursion_depth: null
+prepend_primary: true
+cluster: true
