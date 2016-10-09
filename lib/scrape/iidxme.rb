@@ -17,7 +17,9 @@ module Scrape
 
     def download_profile_image(user)
       User.find(user.id).remove_image!
-      open("#{@iidxme_domain}/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
+      file = open("#{@iidxme_domain}/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
+      return nil if file.class != Tempfile
+      return file
     end
 
     def process(iidxid)
