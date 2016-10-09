@@ -19,7 +19,7 @@ module Scrape
       User.find(user.id).remove_image!
       file = open("#{@iidxme_domain}/userdata/copula/#{user.iidxid.delete('-')}/qpro.png?t=0")
       return nil if file.class != Tempfile
-      return file
+      file
     end
 
     def process(iidxid)
