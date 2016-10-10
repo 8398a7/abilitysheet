@@ -287,7 +287,7 @@ GEM
       peek
       sidekiq
     pg (0.19.0)
-    poltergeist (1.10.0)
+    poltergeist (1.11.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
