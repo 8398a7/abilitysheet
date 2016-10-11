@@ -38,7 +38,7 @@ GEM
       activemodel (= 5.0.0.1)
       activesupport (= 5.0.0.1)
       arel (~> 7.0)
-    activerecord-import (0.16.0)
+    activerecord-import (0.16.1)
       activerecord (>= 3.2)
     activesupport (5.0.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
