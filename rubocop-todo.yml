@@ -37,3 +37,6 @@ Metrics/AbcSize:
 
 PerceivedComplexity:
   Max: 10
+
+BlockLength:
+  Enabled: false
