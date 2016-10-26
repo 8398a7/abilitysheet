@@ -40,7 +40,9 @@ class LogsController < ApplicationController
   end
 
   def iidxme
-    if SidekiqDispatcher.exists?
+    if Date.today < Date.tomorrow
+      flash[:alert] = %(現在動作確認を行っていないため停止中です)
+    elsif SidekiqDispatcher.exists?
       IidxmeWorker.perform_async(current_user.id)
       flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
       flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))

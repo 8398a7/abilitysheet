@@ -6,7 +6,7 @@ describe Scrape::IIDXME do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      it '#async' do
+      xit '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -24,13 +24,13 @@ describe Scrape::IIDXME do
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
-        it '#async' do
+        xit '#async' do
           iidxids.each { |iidxid| expect(iidxme.async(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        it '#async' do
+        xit '#async' do
           expect(iidxme.async(user.iidxid)).to be_falsy
         end
       end
@@ -46,7 +46,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#async' do
+      xit '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -69,7 +69,7 @@ describe Scrape::IIDXME do
           create(:score, user_id: user.id, sheet_id: s['sheet_id']).update_with_logs(s)
         end
       end
-      it 'Score#update_with_logs' do
+      xit 'Score#update_with_logs' do
         count = 0
         Log.all.each { |l| count += 1 if l.pre_state == l.new_state && l.pre_score == l.new_score && l.pre_bp == l.new_bp }
         expect(count).to eq 0
@@ -82,7 +82,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#async' do
+      xit '#async' do
         iidxids.each { |iidxid| expect(@iidxme.async(iidxid)).to be_falsy }
       end
     end
@@ -92,16 +92,16 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/userlist.json"), symbolize_names: true)
         allow(@iidxme).to receive(:search_api).and_return(res)
       end
-      it '#async' do
+      xit '#async' do
         expect(@iidxme.async(user.iidxid)).to be_falsy
       end
-      it '#process' do
+      xit '#process' do
         expect(@iidxme.send(:process, user.iidxid)).to be_falsy
       end
-      it '#user_id_search' do
+      xit '#user_id_search' do
         expect(@iidxme.send(:user_id_search, user.iidxid)).to be_falsy
       end
-      it '#data_get' do
+      xit '#data_get' do
         expect(@iidxme.send(:data_get, user.iidxid)).to be_falsy
       end
     end
