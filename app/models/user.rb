@@ -56,6 +56,19 @@ class User < ApplicationRecord
 
   scope :search_djname, ->(query) { User.where(['djname LIKE ?', "%#{PGconn.escape(query)}%"]) }
 
+  # iidx_versionが新しくなってから実行する
+  def version_up!
+    update(grade: GRADE.size - 1)
+    current_version = Abilitysheet::Application.config.iidx_version
+    new_scores = []
+    scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
+      new_score = scores.find_by(version: current_version, sheet_id: score.sheet_id)
+      next if new_score
+      new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
+    end
+    scores.import(new_scores)
+  end
+
   class << self
     def dan
       array = []
@@ -67,6 +80,10 @@ class User < ApplicationRecord
       array = []
       Static::PREF.each_with_index { |p, i| array.push([p, i]) }
       array
+    end
+
+    def version_up!
+      all.find_each(&:version_up!)
     end
   end
 end

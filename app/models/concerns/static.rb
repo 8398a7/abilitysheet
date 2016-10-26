@@ -46,7 +46,8 @@ module Static
     ['tri',  20],
     ['SPD',  21],
     ['PEN',  22],
-    ['COP',  23]
+    ['COP',  23],
+    ['SHI',  24]
   ].freeze
 
   COLOR = %w(
