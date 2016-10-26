@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 # a,b,c,d,e,f,g {{{
+gem 'activerecord-import'
 gem 'aws-sdk'
 gem 'assets_rails'
 gem 'capistrano-slackify', require: false
@@ -77,7 +78,6 @@ group :deployment do
 end
 
 group :test do
-  gem 'activerecord-import'
   gem 'capybara'
   gem 'codeclimate-test-reporter', require: nil
   gem 'database_cleaner'
