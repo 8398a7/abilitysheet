@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 feature 'プロフィールページ', js: true do
-  given(:user) { create(:user, id: 1, djname: 'PROF', iidxid: '1111-1111', pref: 0, grade: 0, created_at: '2016-03-06') }
+  given(:user) { create(:user, id: 1, djname: 'PROF', iidxid: '1111-1111', pref: 0, grade: 4, created_at: '2016-03-06') }
   context '非ログイン時' do
     background do
       create(:score, user_id: 1, sheet_id: 1)
@@ -20,7 +20,7 @@ feature 'プロフィールページ', js: true do
       expect(page).to have_link('ハード参考表')
     end
     scenario '段位が存在する' do
-      expect(page).to have_content('皆伝')
+      expect(page).to have_content('八段')
     end
     scenario '所属が存在する' do
       expect(page).to have_content('海外')
@@ -51,7 +51,7 @@ feature 'プロフィールページ', js: true do
   end
   context 'ログイン時' do
     background do
-      user2 = create(:user, username: 'user2', id: 2)
+      user2 = create(:user, username: 'user2', id: 2, grade: 4)
       login(user2)
       visit user_path(user.iidxid)
       wait_for_ajax
@@ -69,7 +69,7 @@ feature 'プロフィールページ', js: true do
       expect(page).to have_link('ハード参考表')
     end
     scenario '段位が存在する' do
-      expect(page).to have_content('皆伝')
+      expect(page).to have_content('八段')
     end
     scenario '所属が存在する' do
       expect(page).to have_content('海外')
