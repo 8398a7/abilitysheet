@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 describe Scrape::IIDXME do
-  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 2, iidxid: iidxid) }
+  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 4, iidxid: iidxid) }
 
   context 'real' do
     let(:iidxme) { Scrape::IIDXME.new }
@@ -46,7 +46,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      xit '#async' do
+      it '#async' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -69,7 +69,7 @@ describe Scrape::IIDXME do
           create(:score, user_id: user.id, sheet_id: s['sheet_id']).update_with_logs(s)
         end
       end
-      xit 'Score#update_with_logs' do
+      it 'Score#update_with_logs' do
         count = 0
         Log.all.each { |l| count += 1 if l.pre_state == l.new_state && l.pre_score == l.new_score && l.pre_bp == l.new_bp }
         expect(count).to eq 0
@@ -82,7 +82,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      xit '#async' do
+      it '#async' do
         iidxids.each { |iidxid| expect(@iidxme.async(iidxid)).to be_falsy }
       end
     end
@@ -92,16 +92,16 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/userlist.json"), symbolize_names: true)
         allow(@iidxme).to receive(:search_api).and_return(res)
       end
-      xit '#async' do
+      it '#async' do
         expect(@iidxme.async(user.iidxid)).to be_falsy
       end
-      xit '#process' do
+      it '#process' do
         expect(@iidxme.send(:process, user.iidxid)).to be_falsy
       end
-      xit '#user_id_search' do
+      it '#user_id_search' do
         expect(@iidxme.send(:user_id_search, user.iidxid)).to be_falsy
       end
-      xit '#data_get' do
+      it '#data_get' do
         expect(@iidxme.send(:data_get, user.iidxid)).to be_falsy
       end
     end
