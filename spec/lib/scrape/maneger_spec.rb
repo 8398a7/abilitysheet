@@ -17,7 +17,7 @@ describe 'lib/scrape/manager.rb' do
         expect(url).to include('/sp/')
       end
     end
-    it '正しく楽曲が反映されている' do
+    xit '正しく楽曲が反映されている' do
       sync_sheet
       user = create(:user, iidxid: '2222-2222')
       expect(Scrape::Manager.new(user).sync).to be_truthy
