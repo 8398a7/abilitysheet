@@ -3,7 +3,7 @@ module Score::IIDXME
   extend ActiveSupport::Concern
 
   included do
-    def self.iidxme_async(user_id, elems)
+    def self.iidxme_sync(user_id, elems)
       user = User.find_by(id: user_id)
       elems.each do |elem|
         title = gigadelic_innocentwalls(elem['data'])

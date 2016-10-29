@@ -9,7 +9,8 @@ module Scrape
       @json_iidxme_domain = 'http://json.iidx.me'
     end
 
-    def async(iidxid)
+    def sync(iidxid)
+      return unless ENV['iidxme'] == 'true'
       process(iidxid)
     end
 
@@ -32,7 +33,7 @@ module Scrape
         grade: (elems['userdata']['spclass'] - GRADE_MAX).abs,
         image: download_profile_image(user)
       )
-      Score.iidxme_async(user.id, elems['musicdata'])
+      Score.iidxme_sync(user.id, elems['musicdata'])
     end
 
     def search_api
