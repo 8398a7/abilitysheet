@@ -6,7 +6,7 @@ describe Scrape::IIDXME do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      xit '#async' do
+      xit '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -14,7 +14,7 @@ describe Scrape::IIDXME do
         expect(Score.find(1).bp).to eq nil
         expect(user.grade).to eq 2
         expect(user.djname).to eq 'TEST'
-        expect(iidxme.async(user.iidxid)).to be_truthy
+        expect(iidxme.sync(user.iidxid)).to be_truthy
         expect(Score.find(1).state).not_to eq 7
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
@@ -24,14 +24,14 @@ describe Scrape::IIDXME do
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
-        xit '#async' do
-          iidxids.each { |iidxid| expect(iidxme.async(iidxid)).to be_falsy }
+        xit '#sync' do
+          iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        xit '#async' do
-          expect(iidxme.async(user.iidxid)).to be_falsy
+        xit '#sync' do
+          expect(iidxme.sync(user.iidxid)).to be_falsy
         end
       end
     end
@@ -46,13 +46,13 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#async' do
+      it '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
         expect(Score.find(1).bp).to eq nil
-        expect(@iidxme.async(user.iidxid)).to be_truthy
+        expect(@iidxme.sync(user.iidxid)).to be_truthy
         expect(Score.find(1).state).to eq 0
         expect(Score.find(1).score).to eq 2994
         expect(Score.find(1).bp).to eq 2
@@ -82,8 +82,8 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#async' do
-        iidxids.each { |iidxid| expect(@iidxme.async(iidxid)).to be_falsy }
+      it '#sync' do
+        iidxids.each { |iidxid| expect(@iidxme.sync(iidxid)).to be_falsy }
       end
     end
     context '存在しないIIDXIDで処理を行う場合' do
@@ -92,8 +92,8 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/userlist.json"), symbolize_names: true)
         allow(@iidxme).to receive(:search_api).and_return(res)
       end
-      it '#async' do
-        expect(@iidxme.async(user.iidxid)).to be_falsy
+      it '#sync' do
+        expect(@iidxme.sync(user.iidxid)).to be_falsy
       end
       it '#process' do
         expect(@iidxme.send(:process, user.iidxid)).to be_falsy
