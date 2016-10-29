@@ -10,6 +10,7 @@ module Scrape
     end
 
     def sync(iidxid)
+      return unless ENV['iidxme'] == 'true'
       process(iidxid)
     end
 
