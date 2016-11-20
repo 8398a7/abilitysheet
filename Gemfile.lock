@@ -126,8 +126,6 @@ GEM
     choice (0.2.0)
     chronic (0.10.2)
     cliver (0.3.2)
-    codeclimate-test-reporter (1.0.3)
-      simplecov
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -525,7 +523,6 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   carrierwave
-  codeclimate-test-reporter
   coffee-rails
   database_cleaner
   devise
@@ -572,6 +569,7 @@ DEPENDENCIES
   rubocop
   sass-rails
   sidekiq
+  simplecov
   sinatra (= 2.0.0.beta2)
   slim-rails
   spring
