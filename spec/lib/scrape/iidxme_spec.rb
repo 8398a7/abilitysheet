@@ -46,7 +46,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#sync' do
+      xit '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -82,7 +82,7 @@ describe Scrape::IIDXME do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
         allow(@iidxme).to receive(:data_get).and_return(res)
       end
-      it '#sync' do
+      xit '#sync' do
         iidxids.each { |iidxid| expect(@iidxme.sync(iidxid)).to be_falsy }
       end
     end
