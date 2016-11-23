@@ -279,7 +279,7 @@ GEM
     peek-rblineprof (0.1.2)
       peek
       rblineprof
-    peek-redis (1.2.0)
+    peek-redis (1.1.0)
       atomic (>= 1.0.0)
       peek
       redis
@@ -548,7 +548,7 @@ DEPENDENCIES
   peek-performance_bar
   peek-pg
   peek-rblineprof
-  peek-redis
+  peek-redis (= 1.1.0)
   peek-sidekiq
   pg
   poltergeist
