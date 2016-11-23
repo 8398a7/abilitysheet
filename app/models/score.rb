@@ -46,8 +46,10 @@ class Score < ApplicationRecord
     duplicate = check_duplicate(score_params)
     return false if duplicate
 
-    user.logs.attributes(score_params, user)
-    update(score_params)
+    ActiveRecord::Base.transaction do
+      user.logs.attributes(score_params, user)
+      update!(score_params)
+    end
   end
 
   def self.last_updated
