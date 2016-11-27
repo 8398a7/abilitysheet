@@ -5,9 +5,11 @@ class ScoreViewerWorker
   sidekiq_options retry: false
 
   def perform(elems, id)
-    current_user = User.find_by(id: id)
-    puts %(#{Time.zone.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import start)
-    Score.api_score_viewer(elems, current_user)
-    puts %(#{Time.zone.now} #{current_user.djname}[#{current_user.iidxid}] => score viewer import done)
+    user = User.find(id)
+    puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => score viewer import start)
+    Score.api_score_viewer(elems, user)
+    puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => score viewer import done)
+  rescue => e
+    Airbrake.notify(e, user: user)
   end
 end
