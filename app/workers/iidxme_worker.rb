@@ -9,7 +9,5 @@ class IidxmeWorker
     puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => iidxme sync start)
     Scrape::IIDXME.new.sync(user.iidxid)
     puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => iidxme sync done)
-  rescue => e
-    Airbrake.notify(e, user: user)
   end
 end
