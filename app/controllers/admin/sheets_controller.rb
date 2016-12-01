@@ -27,8 +27,7 @@ class Admin::SheetsController < ApplicationController
     render :reload
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     render :show_modal_form
