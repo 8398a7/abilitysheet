@@ -10,7 +10,5 @@ class ManagerWorker
     scrape = Scrape::Manager.new(user)
     scrape.sync
     puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => manager scrape done)
-  rescue => e
-    Airbrake.notify(e, user: user)
   end
 end

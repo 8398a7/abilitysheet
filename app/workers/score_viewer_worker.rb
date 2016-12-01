@@ -9,7 +9,5 @@ class ScoreViewerWorker
     puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => score viewer import start)
     Score.api_score_viewer(elems, user)
     puts %(#{Time.zone.now} #{user.djname}[#{user.iidxid}] => score viewer import done)
-  rescue => e
-    Airbrake.notify(e, user: user)
   end
 end
