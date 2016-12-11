@@ -20,7 +20,6 @@ gem 'kaminari'
 gem 'levenshtein'
 gem 'mechanize'
 gem 'mini_magick'
-gem 'newrelic_rpm'
 gem 'nokogiri'
 # }}}
 # o,p,q,r,s,t,u {{{
@@ -30,11 +29,11 @@ gem 'peek-gc'
 gem 'peek-performance_bar'
 gem 'peek-pg'
 gem 'peek-rblineprof'
-gem 'peek-redis', '1.1.0'
+gem 'peek-redis'
 gem 'peek-sidekiq'
 gem 'pg'
 gem 'pry-rails'
-gem 'pry-byebug'
+# gem 'pry-remote'
 gem 'puma'
 gem 'rails'
 gem 'rails_admin'
@@ -64,6 +63,10 @@ group :development do
   gem 'rack-dev-mark'
   gem 'rails-erd'
   gem 'spring'
+end
+
+group :development, :test do
+  gem 'pry-byebug'
 end
 
 group :staging, :production do

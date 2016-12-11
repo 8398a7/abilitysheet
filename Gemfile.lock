@@ -60,13 +60,13 @@ GEM
       rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
-    aws-sdk (2.6.30)
-      aws-sdk-resources (= 2.6.30)
-    aws-sdk-core (2.6.30)
+    aws-sdk (2.6.35)
+      aws-sdk-resources (= 2.6.35)
+    aws-sdk-core (2.6.35)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.30)
-      aws-sdk-core (= 2.6.30)
+    aws-sdk-resources (2.6.35)
+      aws-sdk-core (= 2.6.35)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -86,7 +86,7 @@ GEM
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
     callsite (0.0.11)
-    capistrano (3.6.1)
+    capistrano (3.7.0)
       airbrussh (>= 1.0.0)
       capistrano-harrow
       i18n
@@ -110,7 +110,7 @@ GEM
     capistrano3-puma (1.2.1)
       capistrano (~> 3.0)
       puma (>= 2.6)
-    capybara (2.10.2)
+    capybara (2.11.0)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -163,7 +163,7 @@ GEM
       activemodel-serializers-xml (~> 1.0)
       activesupport (~> 5.0)
       request_store (~> 1.0)
-    equalizer (0.0.10)
+    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -171,7 +171,7 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
-    faraday (0.9.2)
+    faraday (0.10.0)
       multipart-post (>= 1.2, < 3)
     font-awesome-rails (4.7.0.0)
       railties (>= 3.2, < 5.1)
@@ -179,7 +179,7 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
-    http (1.0.4)
+    http (2.1.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
@@ -188,6 +188,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
+    httpauth (0.2.1)
     i18n (0.7.0)
     jmespath (1.3.1)
     jquery-rails (4.2.1)
@@ -196,12 +197,11 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    js-routes (1.3.1)
+    js-routes (1.3.2)
       railties (>= 3.2)
       sprockets-rails
-    json (1.8.3)
+    json (2.0.2)
     json_expressions (0.8.3)
-    jwt (1.5.6)
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -232,11 +232,10 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mimemagic (0.3.2)
-    mini_magick (4.5.1)
+    mini_magick (4.6.0)
     mini_portile2 (2.1.0)
-    minitest (5.10.0)
+    minitest (5.10.1)
     multi_json (1.12.1)
-    multi_xml (0.5.5)
     multipart-post (2.0.0)
     mustermann (1.0.0.beta2)
     naught (1.1.0)
@@ -246,19 +245,16 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    newrelic_rpm (3.17.1.326)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     ntlm-http (0.1.1)
-    oauth2 (1.2.0)
-      faraday (>= 0.8, < 0.10)
-      jwt (~> 1.0)
+    oauth2 (0.6.1)
+      faraday (~> 0.7)
+      httpauth (~> 0.1)
       multi_json (~> 1.3)
-      multi_xml (~> 0.5)
-      rack (>= 1.2, < 3)
     orm_adapter (0.5.0)
-    parser (2.3.3.0)
+    parser (2.3.3.1)
       ast (~> 2.2)
     peek (0.2.0)
       coffee-rails
@@ -279,7 +275,7 @@ GEM
     peek-rblineprof (0.1.2)
       peek
       rblineprof
-    peek-redis (1.1.0)
+    peek-redis (1.2.0)
       atomic (>= 1.0.0)
       peek
       redis
@@ -288,7 +284,7 @@ GEM
       peek
       sidekiq
     pg (0.19.0)
-    poltergeist (1.11.0)
+    poltergeist (1.12.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
@@ -299,7 +295,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.4.1)
+    pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
     pry-rails (0.3.4)
@@ -376,7 +372,7 @@ GEM
       polyamorous (~> 1.3)
     rblineprof (0.3.7)
       debugger-ruby_core_source (~> 1.3)
-    react-rails (1.9.0)
+    react-rails (1.10.0)
       babel-transpiler (>= 0.7.0)
       coffee-script-source (~> 1.8)
       connection_pool
@@ -470,17 +466,16 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
-    twitter (5.16.0)
-      addressable (~> 2.3)
+    twitter (6.0.0)
+      addressable (~> 2.5)
       buftok (~> 0.2.0)
-      equalizer (= 0.0.10)
-      faraday (~> 0.9.0)
-      http (~> 1.0)
+      equalizer (= 0.0.11)
+      faraday (~> 0.10.0)
+      http (~> 2.1)
       http_parser.rb (~> 0.6.0)
-      json (~> 1.8)
-      memoizable (~> 0.4.0)
-      naught (~> 1.0)
-      simple_oauth (~> 0.3.0)
+      memoizable (~> 0.4.2)
+      naught (~> 1.1)
+      simple_oauth (~> 0.3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.4)
@@ -488,7 +483,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    unicode-display_width (1.1.1)
+    unicode-display_width (1.1.2)
     uniform_notifier (1.10.0)
     warden (1.2.6)
       rack (>= 1.0)
@@ -539,7 +534,6 @@ DEPENDENCIES
   mechanize
   meta_request
   mini_magick
-  newrelic_rpm
   nokogiri
   oauth2
   peek
@@ -548,7 +542,7 @@ DEPENDENCIES
   peek-performance_bar
   peek-pg
   peek-rblineprof
-  peek-redis (= 1.1.0)
+  peek-redis
   peek-sidekiq
   pg
   poltergeist

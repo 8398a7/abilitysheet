@@ -1,13 +1,11 @@
 # frozen_string_literal: true
-# config valid only for current version of Capistrano
-lock '3.6.1'
+lock '3.7.0'
 
 set :application, 'abilitysheet'
 set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :deploy_to, '/var/www/app/abilitysheet'
-set :scm, :git
 
 set :log_level, ENV['DEPLOY_LOG_LEVEL'].to_sym
 set :format, :pretty
