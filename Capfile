@@ -28,6 +28,8 @@ require 'whenever/capistrano'
 # require 'capistrano/passenger'
 require 'capistrano/slackify'
 require 'capistrano/puma'
+require 'capistrano/scm/git'
+install_plugin Capistrano::SCM::Git
 
 require 'dotenv'
 Dotenv.overload
