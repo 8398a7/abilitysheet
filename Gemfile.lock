@@ -245,7 +245,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
-    newrelic_rpm (3.17.1.326)
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -276,7 +275,7 @@ GEM
     peek-rblineprof (0.1.2)
       peek
       rblineprof
-    peek-redis (1.1.0)
+    peek-redis (1.2.0)
       atomic (>= 1.0.0)
       peek
       redis
@@ -535,7 +534,6 @@ DEPENDENCIES
   mechanize
   meta_request
   mini_magick
-  newrelic_rpm
   nokogiri
   oauth2
   peek
@@ -544,7 +542,7 @@ DEPENDENCIES
   peek-performance_bar
   peek-pg
   peek-rblineprof
-  peek-redis (= 1.1.0)
+  peek-redis
   peek-sidekiq
   pg
   poltergeist
