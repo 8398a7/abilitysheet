@@ -82,6 +82,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'codeclimate-test-reporter'
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
