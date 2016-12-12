@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative 'boot'
 require 'rails/all'
 
@@ -29,7 +30,7 @@ module Abilitysheet
 
     config.assets.paths << Rails.root.join('node_modules')
     config.assets.paths << Rails.root.join('bower_components')
-    config.assets.components = %w(npm bower)
+    config.assets.components = %w(yarn bower)
 
     SLACK_URI = URI.parse(ENV['NOTIFY_SLACK_URL']) if ENV['NOTIFY_SLACK_URL']
 
