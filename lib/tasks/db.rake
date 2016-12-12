@@ -1,7 +1,7 @@
 namespace :db do
   task migrate: :environment do
     Rake::Task['db:migrate'].invoke
-    Rake::Task['erd'].invoke unless Rails.env.production?
-    `bundle exec annotate`
+    Rake::Task['erd'].invoke if Rails.env.development?
+    `bundle exec annotate` if Rails.env.development?
   end
 end
