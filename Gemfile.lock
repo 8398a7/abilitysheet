@@ -136,9 +136,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.0.2)
-    concurrent-ruby-ext (1.0.2)
-      concurrent-ruby (~> 1.0.2)
+    concurrent-ruby (1.0.3)
+    concurrent-ruby-ext (1.0.3)
+      concurrent-ruby (= 1.0.3)
     connection_pool (2.2.1)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
@@ -458,7 +458,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.11.4)
+    sshkit (1.11.5)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.7)
