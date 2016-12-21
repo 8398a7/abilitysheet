@@ -1,0 +1,26 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+  app:
+    build: .
+    env_file: .env
+    command: rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/abilitysheet_app
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+      - redis
+  job:
+    build: .
+    env_file: .env
+    command: sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/abilitysheet_job
+    depends_on:
+      - postgres
+      - redis
+  redis:
+    image: redis

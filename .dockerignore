@@ -1,0 +1,22 @@
+# Rails
+public/assets/*
+
+## Environment nomalisation
+.bundle
+vendor/bundle
+node_modules
+bower_components
+.git
+.env
+
+## log
+log
+tmp
+
+## OSX
+.DS_Store
+
+## docker
+.dockerignore
+docker-compose.yml
+Dockerfile
