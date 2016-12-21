@@ -1,6 +1,6 @@
 version: '2'
 services:
-  postgres:
+  db:
     image: postgres
   app:
     build: .
@@ -11,16 +11,16 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      - postgres
-      - redis
-  job:
+      - db
+      - cache
+  batch:
     build: .
     env_file: .env
     command: sidekiq -C config/sidekiq.yml
     volumes:
-      - .:/abilitysheet_job
+      - .:/abilitysheet_batch
     depends_on:
-      - postgres
-      - redis
-  redis:
+      - db
+      - cache
+  cache:
     image: redis
