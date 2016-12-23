@@ -40,6 +40,7 @@ gem 'rails_admin'
 gem 'ransack'
 gem 'react-rails'
 gem 'sass-rails'
+gem 'sentry-raven'
 gem 'sidekiq'
 gem 'sinatra', '2.0.0.beta2', require: false
 gem 'slim-rails'
