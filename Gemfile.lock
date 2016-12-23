@@ -8,6 +8,15 @@ GIT
       peek
       pg
 
+GIT
+  remote: https://github.com/8398a7/peek-sidekiq
+  revision: a9f8679f2b409182ae9966ddda06de2aeca896a6
+  specs:
+    peek-sidekiq (1.0.3)
+      atomic (>= 1.0.0)
+      peek
+      sidekiq
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -286,10 +295,6 @@ GEM
       atomic (>= 1.0.0)
       peek
       redis
-    peek-sidekiq (1.0.3)
-      atomic (>= 1.0.0)
-      peek
-      sidekiq
     pg (0.19.0)
     poltergeist (1.12.0)
       capybara (~> 2.1)
@@ -553,7 +558,7 @@ DEPENDENCIES
   peek-pg!
   peek-rblineprof
   peek-redis
-  peek-sidekiq
+  peek-sidekiq!
   pg
   poltergeist
   pry-byebug
