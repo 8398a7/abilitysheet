@@ -9,6 +9,14 @@ GIT
       pg
 
 GIT
+  remote: https://github.com/8398a7/peek-rblineprof
+  revision: b86762dc6d86de16ff21e96f8d44ae39ed9389ba
+  specs:
+    peek-rblineprof (0.1.2)
+      peek
+      rblineprof
+
+GIT
   remote: https://github.com/8398a7/peek-sidekiq
   revision: a9f8679f2b409182ae9966ddda06de2aeca896a6
   specs:
@@ -288,9 +296,6 @@ GEM
       peek
     peek-performance_bar (1.2.1)
       peek (>= 0.1.0)
-    peek-rblineprof (0.1.2)
-      peek
-      rblineprof
     peek-redis (1.2.0)
       atomic (>= 1.0.0)
       peek
@@ -556,7 +561,7 @@ DEPENDENCIES
   peek-git
   peek-performance_bar
   peek-pg!
-  peek-rblineprof
+  peek-rblineprof!
   peek-redis
   peek-sidekiq!
   pg
