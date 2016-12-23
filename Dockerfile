@@ -20,4 +20,4 @@ COPY . /abilitysheet
 RUN rm /abilitysheet/config/database.yml
 COPY config/database.docker.yml /abilitysheet/config/database.yml
 RUN rake assets_rails:install assets_rails:resolve assets:precompile
-RUN mkdir -p tmp/pids
+RUN mkdir -p tmp/pids && mkdir tmp/sockets

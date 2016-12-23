@@ -10,3 +10,6 @@ development: &default
 test:
   <<: *default
   database: abilitysheet_test
+production:
+  <<: *default
+  database: abilitysheet_production

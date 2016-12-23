@@ -1,0 +1,44 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  datastore:
+    build: containers/datastore
+  app:
+    build: .
+    environment:
+      RAILS_ENV: production
+    env_file: .env
+    command: rails s -b 0.0.0.0
+    volumes:
+      - .:/abilitysheet_app
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - cache
+    volumes_from:
+      - datastore
+  web:
+    image: nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    volumes_from:
+      - datastore
+  batch:
+    build: .
+    environment:
+      RAILS_ENV: production
+    env_file: .env
+    command: sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/abilitysheet_batch
+    depends_on:
+      - db
+      - cache
+  cache:
+    image: redis
