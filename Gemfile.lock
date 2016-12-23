@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/8398a7/peek-pg
+  revision: a5958a96531d3c8715db766b0330f34de96231c7
+  specs:
+    peek-pg (1.2.0)
+      concurrent-ruby
+      concurrent-ruby-ext
+      peek
+      pg
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -269,11 +279,6 @@ GEM
       peek
     peek-performance_bar (1.2.1)
       peek (>= 0.1.0)
-    peek-pg (1.2.0)
-      concurrent-ruby
-      concurrent-ruby-ext
-      peek
-      pg
     peek-rblineprof (0.1.2)
       peek
       rblineprof
@@ -545,7 +550,7 @@ DEPENDENCIES
   peek-gc
   peek-git
   peek-performance_bar
-  peek-pg
+  peek-pg!
   peek-rblineprof
   peek-redis
   peek-sidekiq
