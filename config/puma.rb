@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # RAILS_ENV=production bundle exec puma -C ./config/puma.rb
 
 rails_env = ENV['RAILS_ENV'] || 'production'
@@ -6,7 +7,7 @@ if rails_env == 'production' || rails_env == 'staging'
   directory application_path
 
   environment rails_env
-  daemonize true
+  daemonize true unless ENV['docker']
 
   pidfile "#{application_path}/tmp/pids/puma.pid"
   state_path "#{application_path}/tmp/pids/puma.state"
