@@ -54,7 +54,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 ## Requires
 
 - ruby 2.3.3
-- rails 5.0.0.1
+- rails 5.0.1
 - node 7.2.1
 - bower 1.8.0
 - yarn 0.17.10
