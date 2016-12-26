@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  before_action :set_raven_context
+  # protect_from_forgery with: :exception
+  # refs: https://github.com/rails/rails/issues/24257
+  # refs: https://github.com/plataformatec/devise/pull/4033/files
+  protect_from_forgery prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
@@ -64,7 +68,17 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_unverified_request
+    super
+  rescue => e
+    Raven.capture_exception(e)
     flash[:alert] = 'ページの有効期限が切れています，再度お試し下さい'
     redirect_to root_path
+  end
+
+  private
+
+  def set_raven_context
+    Raven.user_context(user: current_user.attributes) if current_user
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end
