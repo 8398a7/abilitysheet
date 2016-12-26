@@ -67,6 +67,9 @@ class ApplicationController < ActionController::Base
   end
 
   def handle_unverified_request
+    super
+  rescue => e
+    Raven.capture_exception(e)
     flash[:alert] = 'ページの有効期限が切れています，再度お試し下さい'
     redirect_to root_path
   end
