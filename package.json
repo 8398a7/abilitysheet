@@ -15,6 +15,7 @@
   "dependencies": {
     "airbrake-js": "^0.5.9",
     "cal-heatmap": "^3.6.0",
+    "datatables-all": "^1.10.13",
     "eventemitter2": "^1.0.5",
     "flux": "^2.1.1",
     "fullcalendar": "^2.9.0",
@@ -22,6 +23,7 @@
     "html2canvas": "^0.5.0-beta4",
     "jquery-ui": "^1.12.0",
     "jquery-ujs": "^1.2.2",
+    "lodash": "^4.17.3",
     "nprogress": "^0.2.0",
     "qtip2": "^3.0.3",
     "raven-js": "^3.9.1",
