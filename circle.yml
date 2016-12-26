@@ -11,7 +11,7 @@ machine:
 dependencies:
   post:
     - rm -rf node_modules
-    - npm install -g bower@1.8.0 phantomjs-prebuilt
+    - npm install -g phantomjs-prebuilt
     - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     - sudo apt-get update && sudo apt-get install yarn
