@@ -16,8 +16,8 @@
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
 //= require airbrake-js/dist/client.min
-//= require datatables/media/js/jquery.dataTables.min
-//= require datatables/media/js/dataTables.uikit.min
+//= require datatables-all/media/js/jquery.dataTables.min
+//= require datatables-all/media/js/dataTables.uikit.min
 //= require highcharts/highcharts
 //= require highcharts/themes/grid-light
 //= require html2canvas/dist/html2canvas.min
@@ -26,13 +26,12 @@
 //= require uikit/dist/js/components/accordion.min
 //= require select2/dist/js/select2.min
 //= require nprogress/nprogress
-//= require lodash/dist/lodash.min
+//= require lodash/lodash.min
 //= require js-routes
 //= require turbolinks
 //= require react
 //= require react_ujs
 //= require components/base_component
-//= require babel/browser-polyfill.min
 //= require flux/dist/Flux
 //= require eventemitter2/lib/eventemitter2
 //= require_tree ./utils

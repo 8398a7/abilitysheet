@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.3'
+ruby '2.4.0'
 
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
