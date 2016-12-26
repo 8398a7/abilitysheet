@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.4.0
 
 RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs apt-transport-https
