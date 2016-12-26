@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
+  # refs: https://github.com/rails/rails/issues/24257
+  # refs: https://github.com/plataformatec/devise/pull/4033/files
+  protect_from_forgery prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
