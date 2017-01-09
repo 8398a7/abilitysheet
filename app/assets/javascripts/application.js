@@ -15,7 +15,6 @@
 //= require peek
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
-//= require airbrake-js/dist/client.min
 //= require datatables-all/media/js/jquery.dataTables.min
 //= require datatables-all/media/js/dataTables.uikit.min
 //= require highcharts/highcharts

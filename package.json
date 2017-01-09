@@ -13,7 +13,6 @@
   },
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
-    "airbrake-js": "^0.5.9",
     "cal-heatmap": "^3.6.0",
     "datatables-all": "^1.10.13",
     "eventemitter2": "^1.0.5",

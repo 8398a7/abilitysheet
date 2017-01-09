@@ -2,10 +2,6 @@
 # yarn lockfile v1
 
 
-airbrake-js@^0.5.9:
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/airbrake-js/-/airbrake-js-0.5.9.tgz#f63aa98c412601694694ff003a4c571154cfb4e6"
-
 almond@~0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/almond/-/almond-0.3.3.tgz#a0e7c95ac7624d6417b4494b1e68bff693168a20"
