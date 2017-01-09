@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 module Static
   LAMP = %w(FC EXH H C E A F N).freeze
-
   LAMP_HASH = LAMP.map.with_index(0) { |e, i| [e, i] }.to_h
+  LAMP_OFFICIAL = [
+    'FULLCOMBO CLEAR',
+    'EX HARD CLEAR',
+    'HARD CLEAR',
+    'CLEAR',
+    'EASY CLEAR',
+    'ASSIST CLEAR',
+    'FAILED',
+    'NO PLAY'
+  ].freeze
 
   POWER = [
     ['地力S+', 0],
