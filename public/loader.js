@@ -1,5 +1,5 @@
 scores = null;
-serverUrlBase = 'http://localhost:3000';
+serverUrlBase = 'https://iidx12.tk';
 login = false;
 user = {}
 timeout = 100
