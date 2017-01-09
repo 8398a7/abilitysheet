@@ -31,5 +31,17 @@ module User::API
         followers: followers.pluck(:iidxid)
       }
     end
+
+    def update_official(params)
+      data = params[:scores].tr("\r", "\n").split("\n").map do |line|
+        line.split(',')
+      end
+      header = data.shift
+      puts header
+      grade = User::Static::GRADE.index(params[:user][:grade])
+      raise '[Official Update] No Grade' unless grade
+      image = StringFileIO.create_from_canvas_base64(params[:user][:image])
+      update!(grade: grade, djname: params[:user][:djname], image: image)
+    end
   end
 end

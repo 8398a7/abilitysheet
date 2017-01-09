@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Api::V1::ScoresController < Api::V1::BaseController
-  before_action :load_user
+  before_action :load_user, except: :sync_official
   before_action :authenticate!, only: :update
 
   def show
@@ -27,6 +27,11 @@ class Api::V1::ScoresController < Api::V1::BaseController
   def sync_iidxme
     IidxmeWorker.perform_async(@user.id)
     render json: { result: :ok, date: Date.today }
+  end
+
+  def sync_official
+    current_user.update_official(params)
+    head :ok
   end
 
   private
