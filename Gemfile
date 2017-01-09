@@ -70,10 +70,6 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
-group :staging, :production do
-  gem 'airbrake'
-end
-
 group :deployment do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
