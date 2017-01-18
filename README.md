@@ -55,7 +55,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 
 - ruby 2.4.0
 - rails 5.0.1
-- node 7.3.0
+- node 7.4.0
 - yarn 0.18.1
 
 ## Setting
