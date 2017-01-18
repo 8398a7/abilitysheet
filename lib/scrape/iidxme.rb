@@ -42,7 +42,7 @@ module Scrape
     end
 
     def user_id_search(iidxid)
-      return false unless iidxid =~ /\A\d{4}-\d{4}\z/
+      return false unless iidxid.match?(/\A\d{4}-\d{4}\z/)
       user = search_api[:users].find { |u| u[:iidxid] == iidxid }
       return user[:userid] if user
       user
