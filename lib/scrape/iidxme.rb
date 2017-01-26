@@ -81,7 +81,7 @@ module Scrape
       true
     end
 
-    def data_get(iidxid)
+    def get_data(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
       page = 1
