@@ -1,36 +1,36 @@
 # frozen_string_literal: true
 describe Scrape::IIDXME do
-  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 4, iidxid: iidxid) }
+  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 0, iidxid: iidxid) }
 
   context 'real' do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      xit '#sync' do
+      it '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
         expect(Score.find(1).bp).to eq nil
-        expect(user.grade).to eq 2
+        expect(user.grade).to eq 0
         expect(user.djname).to eq 'TEST'
         expect(iidxme.sync(user.iidxid)).to be_truthy
         expect(Score.find(1).state).not_to eq 7
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
         user.reload
-        expect(user.grade).to eq 0
-        expect(user.djname).to eq 'HUSL1L'
+        expect(user.grade).to eq 4
+        expect(user.djname).to eq '839'
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
-        xit '#sync' do
+        it '#sync' do
           iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        xit '#sync' do
+        it '#sync' do
           expect(iidxme.sync(user.iidxid)).to be_falsy
         end
       end
@@ -44,9 +44,9 @@ describe Scrape::IIDXME do
       let(:iidxid) { '8594-9652' }
       before do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
-        allow(@iidxme).to receive(:data_get).and_return(res)
+        allow(@iidxme).to receive(:get_data).and_return(res)
       end
-      xit '#sync' do
+      it '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -62,7 +62,7 @@ describe Scrape::IIDXME do
       let(:iidxid) { '8594-9652' }
       before do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
-        allow(@iidxme).to receive(:data_get).and_return(res)
+        allow(@iidxme).to receive(:get_data).and_return(res)
         user
         sync_sheet
         JSON.parse(File.read("#{iidxme_mock_root}/score.json")).each do |s|
@@ -80,9 +80,9 @@ describe Scrape::IIDXME do
       let(:iidxids) { %w(1 1110) }
       before do
         res = JSON.parse(File.read("#{iidxme_mock_root}/correct.json"))
-        allow(@iidxme).to receive(:data_get).and_return(res)
+        allow(@iidxme).to receive(:get_data).and_return(res)
       end
-      xit '#sync' do
+      it '#sync' do
         iidxids.each { |iidxid| expect(@iidxme.sync(iidxid)).to be_falsy }
       end
     end
@@ -101,8 +101,8 @@ describe Scrape::IIDXME do
       it '#user_id_search' do
         expect(@iidxme.send(:user_id_search, user.iidxid)).to be_falsy
       end
-      it '#data_get' do
-        expect(@iidxme.send(:data_get, user.iidxid)).to be_falsy
+      it '#get_data' do
+        expect(@iidxme.send(:get_data, user.iidxid)).to be_falsy
       end
     end
   end
