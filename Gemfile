@@ -71,25 +71,27 @@ group :development, :test do
 end
 
 group :deployment do
-  gem 'capistrano-rails'
-  gem 'capistrano3-puma'
-  gem 'capistrano-sidekiq'
   gem 'capistrano-faster-assets'
+  gem 'capistrano-rails'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano3-puma'
 end
 
 group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter'
-  gem 'simplecov'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'json_expressions'
   gem 'launchy'
   gem 'poltergeist'
-  gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'rspec-its'
+  gem 'rspec-rails'
   gem 'rspec-retry'
   gem 'rubocop'
+  gem 'simplecov'
   gem 'spring-commands-rspec'
-  gem 'rails-controller-testing'
+  gem 'vcr'
+  gem 'webmock'
 end
