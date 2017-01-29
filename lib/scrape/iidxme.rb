@@ -46,6 +46,7 @@ module Scrape
       result = { users: [] }
       page = 1
       loop do
+        break if 50 < page
         html = parser("#{@iidxme_domain}/!/userlist?page=#{page}")
         break if html.xpath('//div[@class="table userlist"]/div').size == 1
         html.xpath('//div[@class="table userlist"]/div').each do |div|
@@ -87,6 +88,7 @@ module Scrape
       get_userdata(user_id)
       page = 1
       loop do
+        break if 5 < page
         html = parser("#{@iidxme_domain}/#{user_id}/sp/level/12?page=#{page}")
         break if html.xpath('//div[@class="table musiclist"]/div/div/div').text == 'NO RESULT'
         html.xpath('//div[@class="table musiclist"]/div').each do |div|
