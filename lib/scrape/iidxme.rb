@@ -73,17 +73,18 @@ module Scrape
       Nokogiri::HTML.parse(dom, nil, 'UTF-8')
     end
 
-    def get_userdata
+    def get_userdata(user_id)
       html = parser("#{@iidxme_domain}/#{user_id}/sp/level/12")
-      @result['userdata']['djname'] ||= html.xpath('//div[@class="djname"]').text.strip
-      @result['userdata']['spclass'] ||= html.xpath('//div[@class="spclass"]/a')[0]['href'].split('?sp=')[1].to_i
-      @result['userdata']['image'] ||= html.xpath('//div[@class="qpro"]/a/img')[0]['src']
+      @result['userdata']['djname'] = html.xpath('//div[@class="djname"]').text.strip
+      @result['userdata']['spclass'] = html.xpath('//div[@class="spclass"]/a')[0]['href'].split('?sp=')[1].to_i
+      @result['userdata']['image'] = html.xpath('//div[@class="qpro"]/a/img')[0]['src']
       true
     end
 
     def get_data(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
+      get_userdata(user_id)
       page = 1
       loop do
         html = parser("#{@iidxme_domain}/#{user_id}/sp/level/12?page=#{page}")

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 describe Scrape::IIDXME do
-  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 4, iidxid: iidxid) }
+  let(:user) { create(:user, id: 1, djname: 'TEST', grade: 0, iidxid: iidxid) }
 
   context 'real' do
     let(:iidxme) { Scrape::IIDXME.new }
@@ -12,15 +12,15 @@ describe Scrape::IIDXME do
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
         expect(Score.find(1).bp).to eq nil
-        expect(user.grade).to eq 4
+        expect(user.grade).to eq 0
         expect(user.djname).to eq 'TEST'
         expect(iidxme.sync(user.iidxid)).to be_truthy
         expect(Score.find(1).state).not_to eq 7
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
         user.reload
-        expect(user.grade).to eq 0
-        expect(user.djname).to eq 'HUSL1L'
+        expect(user.grade).to eq 4
+        expect(user.djname).to eq '839'
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w(1 1110) }
