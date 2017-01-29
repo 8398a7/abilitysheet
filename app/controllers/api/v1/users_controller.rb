@@ -29,6 +29,11 @@ class Api::V1::UsersController < Api::V1::BaseController
       Sheet.find(e['id'])
     end
     raise ServiceUnavailable unless SidekiqDispatcher.exists?
+  rescue ServiceUnavailable => ex
+    Raven.user_context(current_user.attributes)
+    Raven.capture_exception(ex)
+    SidekiqDispatcher.start!
+  ensure
     ScoreViewerWorker.perform_async(elems, current_user.id)
     render json: { status: 'ok' }, status: 202
   end

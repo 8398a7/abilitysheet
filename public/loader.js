@@ -1,8 +1,8 @@
-scores = null;
-serverUrlBase = 'https://iidx12.tk';
-login = false;
-user = {}
-timeout = 100
+var scores = null;
+var serverUrlBase = 'https://iidx12.tk';
+var login = false;
+var user = {}
+var timeout = 100
 $.ajaxSetup({ xhrFields: { withCredentials: true } });
 
 // TODO: konamiのメンテナンス時間とログインしていない場合の対応
@@ -57,7 +57,8 @@ function putData() {
     url: serverUrlBase + '/api/v1/scores/sync/official',
     contentType: 'application/json',
     data: JSON.stringify({ scores: scores, user: user }),
-    success: function(data) { alert('success'); }
+    success: function(data) { alert('success'); },
+    error: function(response) { alert(response.statusText); }
   });
 }
 
