@@ -24,6 +24,16 @@ class LampTd extends BaseComponent {
     SheetModalActionCreators.get({iidxid: this.props.iidxid, sheetId: id})
   }
 
+  renderBp() {
+    if (!this.props.bp) return null;
+    if (!this.props.scores[this.props.index]) return null;
+    return (
+      <span>
+        {this.props.bp <= this.props.scores[this.props.index].bp ?  ' ★' : ''}
+      </span>
+    )
+  }
+
   render() {
     if (!this.props.objects[this.props.index]) { return (<td style={{display: 'none'}} />) }
     return (
@@ -42,6 +52,7 @@ class LampTd extends BaseComponent {
           data-uk-modal
         >
           {this.props.objects[this.props.index].title}
+          {this.renderBp()}
         </a>
         {
           this.state.currentUser.iidxid === this.props.iidxid ?
@@ -64,5 +75,6 @@ LampTd.propTypes = {
   display: React.PropTypes.string.isRequired,
   iidxid: React.PropTypes.string.isRequired,
   width: React.PropTypes.number,
-  height: React.PropTypes.number
+  height: React.PropTypes.number,
+  bp: React.PropTypes.number
 }

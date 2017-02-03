@@ -2,6 +2,7 @@ class Sheet extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
+      bp: 100,
       type: {
         clear: {
           name: 'ノマゲ参考表',
@@ -90,7 +91,7 @@ class Sheet extends BaseComponent {
           <Checkbox versions={this.props.versions} sheetType={this.props.sheetType} lamp={this.props.lamp} />
           <LampStatistics type={this.props.type} />
           <h3 />
-          <SheetList type={this.props.type} user={this.props.user} />
+          <SheetList bp={this.state.bp} type={this.props.type} user={this.props.user} />
         </div>
       </div>
     )
