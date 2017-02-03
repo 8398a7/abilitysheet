@@ -16,6 +16,9 @@ class TwitterContents extends BaseComponent {
   render() {
     return (
       <div className='uk-grid'>
+        <div className='uk-width-medium-10-10'>
+          <TwitterSharedButton text='SP☆12参考表(地力表)支援サイト' />
+        </div>
         <div className='uk-width-medium-5-10'>
           <a id='search-timeline' className='twitter-timeline' data-widget-id='551580128916946944' href='https://twitter.com/search?q=iidx12.tk' />
         </div>
