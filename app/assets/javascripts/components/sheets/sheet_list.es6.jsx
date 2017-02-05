@@ -114,7 +114,7 @@ class SheetList extends BaseComponent {
       delete objects.string
       Object.sortedKeys(objects, 'title', 'asc').forEach(key => {
         dom.push(<tr key={key}>
-            <LampTd iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={key} />
+            <LampTd iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={key} />
           </tr>)
       })
     })
