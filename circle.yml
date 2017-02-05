@@ -5,16 +5,13 @@ machine:
     Asia/Tokyo
   ruby:
     version: 2.4.0
-  node:
-    version: 7.4.0
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
 dependencies:
+  cache_directories:
+    - ~/.cache/yarn
   post:
-    - rm -rf node_modules
-    - npm install -g phantomjs-prebuilt
-    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt-get update && sudo apt-get install yarn
     - bundle exec rake assets_rails:install assets_rails:resolve
 
 database:

@@ -2,6 +2,7 @@ class Sheet extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
+      bp: parseInt(localStorage.bp, 10) || 0,
       type: {
         clear: {
           name: 'ノマゲ参考表',
@@ -22,6 +23,11 @@ class Sheet extends BaseComponent {
     this.onClickViewPort = this.onClickViewPort.bind(this)
     this.onChangeScore = this.onChangeScore.bind(this)
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
+  }
+
+  onChangeBp(e) {
+    localStorage.bp = e.target.value
+    this.setState({ bp: parseInt(localStorage.bp, 10) })
   }
 
   onClickViewPort() {
@@ -90,7 +96,14 @@ class Sheet extends BaseComponent {
           <Checkbox versions={this.props.versions} sheetType={this.props.sheetType} lamp={this.props.lamp} />
           <LampStatistics type={this.props.type} />
           <h3 />
-          <SheetList type={this.props.type} user={this.props.user} />
+          <form className='uk-form uk-form-stacked'>
+            <label className='uk-form-label'>指定したBP以上の楽曲に★マーク</label>
+            <div className='uk-form-controls'>
+              <input value={this.state.bp} onChange={e => this.onChangeBp(e)} />
+            </div>
+          </form>
+          <br />
+          <SheetList bp={this.state.bp} type={this.props.type} user={this.props.user} />
         </div>
       </div>
     )
