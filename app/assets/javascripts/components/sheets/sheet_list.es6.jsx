@@ -86,11 +86,11 @@ class SheetList extends BaseComponent {
       _.chunk(keys, 5).forEach(array => {
         count = 0
         dom.push(<tr key={array[count]}>
-            <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />
-            <LampTd width={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd bpwidth={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd bpwidth={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd bpwidth={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd bpwidth={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={array[count++]} />
+            <LampTd bpwidth={150} height={50} iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={array[count++]} />
           </tr>)
       })
     })
@@ -114,7 +114,7 @@ class SheetList extends BaseComponent {
       delete objects.string
       Object.sortedKeys(objects, 'title', 'asc').forEach(key => {
         dom.push(<tr key={key}>
-            <LampTd iidxid={this.props.user.iidxid} scores={this.state.scores} display={this.state.displaySelect} objects={objects} index={key} />
+            <LampTd iidxid={this.props.user.iidxid} scores={this.state.scores} bp={this.props.bp} display={this.state.displaySelect} objects={objects} index={key} />
           </tr>)
       })
     })
@@ -147,5 +147,6 @@ class SheetList extends BaseComponent {
 
 SheetList.propTypes = {
   type: React.PropTypes.string.isRequired,
-  user: React.PropTypes.object.isRequired
+  user: React.PropTypes.object.isRequired,
+  bp: React.PropTypes.number
 }
