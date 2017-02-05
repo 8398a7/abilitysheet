@@ -96,7 +96,13 @@ class Sheet extends BaseComponent {
           <Checkbox versions={this.props.versions} sheetType={this.props.sheetType} lamp={this.props.lamp} />
           <LampStatistics type={this.props.type} />
           <h3 />
-          <input value={this.state.bp} onChange={e => this.onChangeBp(e)} />
+          <form className='uk-form uk-form-stacked'>
+            <label className='uk-form-label'>指定したBP以上の楽曲に★マーク</label>
+            <div className='uk-form-controls'>
+              <input value={this.state.bp} onChange={e => this.onChangeBp(e)} />
+            </div>
+          </form>
+          <br />
           <SheetList bp={this.state.bp} type={this.props.type} user={this.props.user} />
         </div>
       </div>
