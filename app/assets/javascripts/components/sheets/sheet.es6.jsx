@@ -2,7 +2,7 @@ class Sheet extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
-      bp: 100,
+      bp: localStorage.bp || 100,
       type: {
         clear: {
           name: 'ノマゲ参考表',
@@ -23,6 +23,11 @@ class Sheet extends BaseComponent {
     this.onClickViewPort = this.onClickViewPort.bind(this)
     this.onChangeScore = this.onChangeScore.bind(this)
     this.onChangeViewPort = this.onChangeViewPort.bind(this)
+  }
+
+  onChangeBp(e) {
+    localStorage.bp = e.target.value
+    this.setState({ bp: localStorage.bp })
   }
 
   onClickViewPort() {
@@ -91,6 +96,7 @@ class Sheet extends BaseComponent {
           <Checkbox versions={this.props.versions} sheetType={this.props.sheetType} lamp={this.props.lamp} />
           <LampStatistics type={this.props.type} />
           <h3 />
+          <input value={this.state.bp} onChange={e => this.onChangeBp(e)} />
           <SheetList bp={this.state.bp} type={this.props.type} user={this.props.user} />
         </div>
       </div>
