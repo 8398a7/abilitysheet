@@ -25,7 +25,7 @@ class LampTd extends BaseComponent {
   }
 
   renderBp() {
-    if (!this.props.bp) return null;
+    if (!this.props.bp || this.props.bp === 0) return null;
     if (!this.props.scores[this.props.index]) return null;
     return (
       <span>
