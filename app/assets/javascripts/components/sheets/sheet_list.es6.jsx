@@ -148,5 +148,5 @@ class SheetList extends BaseComponent {
 SheetList.propTypes = {
   type: React.PropTypes.string.isRequired,
   user: React.PropTypes.object.isRequired,
-  bp: React.PropTypes.number
+  bp: React.PropTypes.string
 }
