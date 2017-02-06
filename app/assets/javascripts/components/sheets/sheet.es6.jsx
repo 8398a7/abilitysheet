@@ -2,7 +2,7 @@ class Sheet extends BaseComponent {
   constructor(props) {
     super()
     this.state = {
-      bp: parseInt(localStorage.bp, 10) || 0,
+      bp: localStorage.bp,
       type: {
         clear: {
           name: 'ノマゲ参考表',
@@ -27,7 +27,7 @@ class Sheet extends BaseComponent {
 
   onChangeBp(e) {
     localStorage.bp = e.target.value
-    this.setState({ bp: parseInt(localStorage.bp, 10) })
+    this.setState({ bp: localStorage.bp })
   }
 
   onClickViewPort() {
