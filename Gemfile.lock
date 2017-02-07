@@ -47,7 +47,7 @@ GEM
       activemodel (= 5.0.1)
       activesupport (= 5.0.1)
       arel (~> 7.0)
-    activerecord-import (0.17.0)
+    activerecord-import (0.17.1)
       activerecord (>= 3.2)
     activesupport (5.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -188,7 +188,7 @@ GEM
     haml (4.0.7)
       tilt
     hashdiff (0.3.2)
-    http (2.2.0)
+    http (2.2.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
