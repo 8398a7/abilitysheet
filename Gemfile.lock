@@ -248,7 +248,7 @@ GEM
     mustermann (1.0.0.beta2)
     naught (1.1.0)
     nested_form (0.3.2)
-    net-http-digest_auth (1.4)
+    net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
