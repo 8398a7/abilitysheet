@@ -47,7 +47,7 @@ GEM
       activemodel (= 5.0.1)
       activesupport (= 5.0.1)
       arel (~> 7.0)
-    activerecord-import (0.17.0)
+    activerecord-import (0.17.1)
       activerecord (>= 3.2)
     activesupport (5.0.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -66,13 +66,13 @@ GEM
       rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
-    aws-sdk (2.7.3)
-      aws-sdk-resources (= 2.7.3)
-    aws-sdk-core (2.7.3)
+    aws-sdk (2.7.7)
+      aws-sdk-resources (= 2.7.7)
+    aws-sdk-core (2.7.7)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.3)
-      aws-sdk-core (= 2.7.3)
+    aws-sdk-resources (2.7.7)
+      aws-sdk-core (= 2.7.7)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -188,7 +188,7 @@ GEM
     haml (4.0.7)
       tilt
     hashdiff (0.3.2)
-    http (2.2.0)
+    http (2.2.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
@@ -248,7 +248,7 @@ GEM
     mustermann (1.0.0.beta2)
     naught (1.1.0)
     nested_form (0.3.2)
-    net-http-digest_auth (1.4)
+    net-http-digest_auth (1.4.1)
     net-http-persistent (2.9.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -262,7 +262,7 @@ GEM
       httpauth (~> 0.1)
       multi_json (~> 1.3)
     orm_adapter (0.5.0)
-    parser (2.3.3.1)
+    parser (2.4.0.0)
       ast (~> 2.2)
     peek (0.2.0)
       coffee-rails
@@ -312,6 +312,7 @@ GEM
     rack (2.0.1)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
+    rack-cors (0.4.0)
     rack-dev-mark (0.7.5)
       rack (>= 1.1)
     rack-pjax (1.0.0)
@@ -463,7 +464,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sshkit (1.11.5)
+    sshkit (1.12.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     temple (0.7.7)
@@ -562,6 +563,7 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   puma
+  rack-cors
   rack-dev-mark
   rails
   rails-controller-testing

@@ -38,6 +38,7 @@ class Navbar extends BaseComponent {
           <Rival currentUser={this.state.currentUser} />
           <Irt />
           <Conntact />
+          <Help />
           <Admin currentUser={this.state.currentUser} />
           <Message currentUser={this.state.currentUser} />
         </ul>

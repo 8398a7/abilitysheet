@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class Api::V1::ScoresController < Api::V1::BaseController
-  before_action :load_user
+  before_action :load_user, except: :sync_official
   before_action :authenticate!, only: :update
 
   def show
@@ -25,8 +25,25 @@ class Api::V1::ScoresController < Api::V1::BaseController
   end
 
   def sync_iidxme
+    raise ServiceUnavailable unless SidekiqDispatcher.exists?
+  rescue ServiceUnavailable => ex
+    Raven.user_context(@user.attributes)
+    Raven.capture_exception(ex)
+    SidekiqDispatcher.start!
+  ensure
     IidxmeWorker.perform_async(@user.id)
     render json: { result: :ok, date: Date.today }
+  end
+
+  def sync_official
+    raise ServiceUnavailable unless SidekiqDispatcher.exists?
+  rescue ServiceUnavailable => ex
+    Raven.user_context(current_user.attributes)
+    Raven.capture_exception(ex)
+    SidekiqDispatcher.start!
+  ensure
+    OfficialWorker.perform_async(current_user.id, params.to_json)
+    head :ok
   end
 
   private

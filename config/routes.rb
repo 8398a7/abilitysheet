@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
   use_doorkeeper
   devise_for :users, controllers: {
@@ -10,10 +11,11 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
   resources :messages, only: [:new, :create]
   get '/messages/password', to: 'messages#password', as: :password_message
+  get '/helps/official', to: 'helps#official', as: :official_help
 
   # admin
   require 'sidekiq/web'
-  authenticate :user, -> (u) { u.admin? } do
+  authenticate :user, ->(u) { u.admin? } do
     mount RailsAdmin::Engine => '/admin/model', as: :rails_admin
     mount Sidekiq::Web => '/admin/sidekiq/dashboard', as: :sidekiq_admin
   end
@@ -89,6 +91,7 @@ Rails.application.routes.draw do
       get '/scores/:iidxid/:sheet_id' => 'scores#detail'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
+      post '/scores/sync/official' => 'scores#sync_official'
     end
   end
 
