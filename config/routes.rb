@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
   resources :messages, only: [:new, :create]
   get '/messages/password', to: 'messages#password', as: :password_message
+  get '/helps/official', to: 'helps#official', as: :official_help
 
   # admin
   require 'sidekiq/web'

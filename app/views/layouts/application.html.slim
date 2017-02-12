@@ -69,6 +69,9 @@ html
           li.uk-nav-header
             = fa_icon 'phone', text: '連絡フォーム'
           li = link_to '連絡フォーム', new_message_path
+          li.uk-nav-header
+            = fa_icon 'question', text: 'ヘルプ'
+          li = link_to '公式とのデータ同期', official_help_path
           - if user_signed_in? && current_user.member?
             li.uk-nav-header
               = fa_icon 'gears', text: '管理'
