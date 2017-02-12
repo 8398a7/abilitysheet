@@ -26,7 +26,8 @@ module User::Official
       }
       white_list = {
         '旋律のドグマ～Miserables～' => '旋律のドグマ ～Misérables～',
-        'Close the World feat. a☆ru' => 'Close the World feat.a☆ru'
+        'Close the World feat. a☆ru' => 'Close the World feat.a☆ru',
+        '火影' => '焱影'
       }
       data.each do |elem|
         hash = generate_hash_for_official_update(elem, header)
