@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :db do
   desc 'Dump schema and data to db/schema.rb and db/data.yml'
   task(dump: ['db:schema:dump', 'db:data:dump'])
@@ -15,7 +17,7 @@ namespace :db do
         s3.put_object(
           bucket: 'abilitysheet',
           body: file_open,
-          key: file_name
+          key: "db/#{DateTime.now.year}/#{DateTime.now.month}/#{file_name}"
         )
         Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
       rescue => ex
