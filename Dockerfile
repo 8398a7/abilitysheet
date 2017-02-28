@@ -15,7 +15,7 @@ COPY Gemfile.lock /abilitysheet/Gemfile.lock
 RUN bundle install -j4
 COPY yarn.lock /abilitysheet/yarn.lock
 COPY . /abilitysheet
-RUN rm /abilitysheet/config/database.yml
 COPY config/database.docker.yml /abilitysheet/config/database.yml
 RUN rake assets_rails:install assets_rails:resolve assets:precompile
+RUN rm .env
 RUN mkdir -p tmp/pids && mkdir tmp/sockets
