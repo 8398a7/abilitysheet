@@ -5,9 +5,8 @@ public/assets/*
 .bundle
 vendor/bundle
 node_modules
-bower_components
 .git
-.env
+config/database.yml
 
 ## log
 log
