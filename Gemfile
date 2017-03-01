@@ -47,7 +47,7 @@ gem 'sinatra', '2.0.0.beta2', require: false
 gem 'slim-rails'
 gem 'turbolinks'
 gem 'twitter'
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier', '3.0.4'
 # }}}
 # v,w,x,y,z {{{
 gem 'whenever', require: false
