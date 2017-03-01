@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 set :stage, :production
-set :branch, 'master'
+set :branch, ENV['BRANCH'] || 'master'
 set :rails_env, 'production'
 set :migration_role, 'db'
 
