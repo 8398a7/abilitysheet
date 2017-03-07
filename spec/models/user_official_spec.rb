@@ -18,7 +18,7 @@ describe User::Official, type: :model do
     it '同期できる' do
       sync_sheet
       expect(user.update_official(params)).to eq true
-      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234]
+      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234, 235]
     end
   end
 end
