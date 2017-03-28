@@ -27,6 +27,8 @@ require 'whenever/capistrano'
 # require 'capistrano/passenger'
 require 'capistrano/slackify'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Workers
 require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 
