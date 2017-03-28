@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 class NoticeMail < ActionMailer::Base
-  default from: 'abilitysheet@iidx12.tk'
+  default from: 'no-reply@iidx12.tk'
 
   def new_register(user_id)
     @user = User.find_by(id: user_id)
