@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 namespace :sidekiq do
   desc 'Start sidekiq'
   task start: :environment do
     system "bundle exec sidekiq -C #{Rails.root.join('config', 'sidekiq.yml')}"
   end
 
-  task :sidekiqctl, [:name, :deadline_timeout] => :environment do |t, args|
+  task :sidekiqctl, %i(name deadline_timeout) => :environment do |_t, args|
     system "bundle exec sidekiqctl #{args[:name]} #{Rails.root.join('tmp', 'pids', 'sidekiq.pid')} #{args[:deadline_timeout]}"
   end
 

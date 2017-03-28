@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Slack
   class UserDispatcher
     def self.new_register_notify(id)

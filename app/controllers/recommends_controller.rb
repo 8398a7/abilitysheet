@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class RecommendsController < ApplicationController
   before_action :load_color
   before_action :load_sheets

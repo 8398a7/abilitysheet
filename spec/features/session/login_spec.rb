@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature 'ログイン処理' do
   background do
     create(:user, id: 1)

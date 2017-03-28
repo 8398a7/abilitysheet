@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 ruby '2.4.0'
 
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
-gem 'aws-sdk'
 gem 'assets_rails'
+gem 'aws-sdk'
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'

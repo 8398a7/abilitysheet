@@ -12,6 +12,9 @@ ClassAndModuleChildren:
 Documentation:
   Enabled: false
 
+Style/MixinGrouping:
+  Enabled: false
+
 # has_ から始まるメソッドは許可する
 Style/PredicateName:
   NamePrefixBlacklist:
@@ -26,6 +29,7 @@ AllCops:
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
+    - 'Gemfile'
     - 'db/**/*'
     - 'bin/*'
     - 'config/**/*'

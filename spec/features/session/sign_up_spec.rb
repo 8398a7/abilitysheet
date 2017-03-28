@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature 'sign up' do
   background do
     visit new_user_registration_path

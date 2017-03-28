@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe 'lib/thread_parser.rb' do
   let(:mock_root) { "#{Rails.root}/spec/mock/thread_parser" }
   let(:sheets) { JSON.parse(File.read("#{mock_root}/sheets.json")) }

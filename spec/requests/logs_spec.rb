@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe Api::V1::LogsController, type: :request do
   include_context 'api'
 

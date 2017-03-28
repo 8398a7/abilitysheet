@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ManagerWorker
   include Sidekiq::Worker
   sidekiq_options queue: :manager

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
     pre_user = User.select(:id).count

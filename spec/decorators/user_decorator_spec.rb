@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe UserDecorator do
   let(:instance) { described_class.new(user) }
 

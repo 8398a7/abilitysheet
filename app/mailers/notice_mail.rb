@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class NoticeMail < ActionMailer::Base
   default from: 'no-reply@iidx12.tk'
 

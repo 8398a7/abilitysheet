@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate!, only: %i(change_rival score_viewer)
 

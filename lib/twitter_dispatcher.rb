@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class TwitterDispatcher
   def initialize
     tokens = ENV['TWITTER_TOKENS'].split(',')

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RedisHelper
   def self.load_sheets_data
     redis = Redis.new

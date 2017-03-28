@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature 'ハード地力表', js: true do
   given(:user) { create(:user, id: 1) }
   background do

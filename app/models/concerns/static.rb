@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Static
   LAMP = %w(FC EXH H C E A F N).freeze
   LAMP_HASH = LAMP.map.with_index(0) { |e, i| [e, i] }.to_h

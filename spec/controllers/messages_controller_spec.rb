@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe MessagesController, type: :controller do
   describe 'GET #new' do
     before { get :new }

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature '最近更新したユーザ200人一覧', js: true do
   background do
     create(:user, id: 1)

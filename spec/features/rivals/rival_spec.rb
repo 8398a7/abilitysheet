@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature 'ライバル情報' do
   given(:user) { create(:user, id: 1) }
   background do
