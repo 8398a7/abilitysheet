@@ -14,11 +14,12 @@ describe User::Official, type: :model do
   describe '#update_official' do
     let(:user) { create(:user) }
     let(:params) { JSON.parse(File.read("#{Rails.root}/spec/mock/official.json")).deep_symbolize_keys }
-    # FIXME: そのうちVCR化する方が良い
     it '同期できる' do
-      sync_sheet
+      VCR.use_cassette 'models/user_official_spec/sync_sheet' do
+        sync_sheet
+      end
       expect(user.update_official(params)).to eq true
-      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234, 235]
+      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234, 235, 236, 237, 238]
     end
   end
 end
