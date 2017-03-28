@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ScoreViewerWorker
   include Sidekiq::Worker
   sidekiq_options queue: :score_viewer

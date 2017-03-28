@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UnauthorizedError < RuntimeError; end
 class Forbidden < RuntimeError; end
 class BadRequest < RuntimeError; end

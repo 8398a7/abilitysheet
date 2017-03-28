@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe MessageDecorator do
   before { create(:user, id: 1) }
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Sheet::API
   extend ActiveSupport::Concern
 

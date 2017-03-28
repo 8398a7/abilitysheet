@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Api::V1::LogsController < Api::V1::BaseController
   before_action :load_user!
 

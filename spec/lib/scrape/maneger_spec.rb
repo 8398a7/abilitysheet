@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe 'lib/scrape/manager.rb' do
   let(:agent) { Mechanize.new }
 

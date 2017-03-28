@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature 'ダッシュボードの閲覧' do
   background do
     create(:user, id: 1, role: 100)

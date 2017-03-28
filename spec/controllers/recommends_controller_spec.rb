@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe RecommendsController, type: :controller do
   describe 'GET #index' do
     before { get :index }

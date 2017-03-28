@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Slack
   class S3Dispatcher
     def self.success(env)

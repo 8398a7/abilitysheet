@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 feature RailsAdmin do
   given(:user) { create(:user, id: 1) }
   background { login(user) }

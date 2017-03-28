@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class Admin::SheetsController < ApplicationController
   before_action :authenticate_user!
   before_action :member_user!
-  before_action :load_sheet, except: [:index, :new, :create]
+  before_action :load_sheet, except: %i(index new create)
 
   def index
     @search = Sheet.search(params[:q])

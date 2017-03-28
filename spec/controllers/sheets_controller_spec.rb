@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe SheetsController, type: :controller do
   before do
     @user = create(:user)

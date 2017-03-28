@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class HelpsController < ApplicationController
   def official
     domain = Rails.env.development? ? request.host_with_port : request.host

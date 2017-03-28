@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
     @title = '最近更新した200人'

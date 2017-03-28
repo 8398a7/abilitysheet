@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 describe Api::V1::UsersController, type: :request do
   include_context 'api'
   before { allow(SidekiqDispatcher).to receive(:exists?).and_return(true) }

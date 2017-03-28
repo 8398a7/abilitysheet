@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Api::V1::ScoresController < Api::V1::BaseController
   before_action :load_user, except: :sync_official
   before_action :authenticate!, only: :update

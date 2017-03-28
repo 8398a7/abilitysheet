@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: scores
@@ -23,7 +24,7 @@ class Score < ApplicationRecord
   include Score::IIDXME
   include Score::ScoreViewer
 
-  validates :sheet_id, uniqueness: { scope: [:version, :user_id] }
+  validates :sheet_id, uniqueness: { scope: %i(version user_id) }
   validates :state, numericality: { only_integer: true }, inclusion: { in: 0..7, message: 'のパラメタが異常です。' }, presence: true
 
   scope :is_not_noplay, -> { where.not(state: 7) }

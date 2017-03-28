@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :assets_rails do
   desc 'Install assets and resolve assets'
   task :install do
