@@ -2,7 +2,7 @@
 
 class RivalsController < ApplicationController
   before_action :authenticate_user!
-  before_action :load_sheet, only: %i(clear hard)
+  before_action :load_sheet, only: %i[clear hard]
 
   def list
     @users = current_user.following

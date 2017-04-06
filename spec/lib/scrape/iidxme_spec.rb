@@ -24,7 +24,7 @@ describe Scrape::IIDXME do
         expect(user.djname).to eq '839'
       end
       context 'IIDXIDの書式が正しくない場合' do
-        let(:iidxids) { %w(1 1110) }
+        let(:iidxids) { %w[1 1110] }
         it '#sync' do
           iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
@@ -67,7 +67,7 @@ describe Scrape::IIDXME do
     end
 
     context 'IIDXIDの書式が正しくない場合' do
-      let(:iidxids) { %w(1 1110) }
+      let(:iidxids) { %w[1 1110] }
       it '#sync' do
         VCR.use_cassette 'lib/scrape/iidxme/sync' do
           iidxids.each { |iidxid| expect(@iidxme.sync(iidxid)).to be_falsy }

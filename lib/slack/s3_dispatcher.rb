@@ -12,7 +12,7 @@ module Slack
             title: 'backup success',
             pretext: '_AWS S3_',
             text: "#{Time.zone.now} #{env} backup success!",
-            mrkdwn_in: %w(pretext)
+            mrkdwn_in: %w[pretext]
           }
         ]
       }
@@ -29,7 +29,7 @@ module Slack
             title: 'backup failed',
             pretext: '_AWS S3_',
             text: "#{Time.zone.now} #{env} backup failed...\n#{ex}",
-            mrkdwn_in: %w(pretext)
+            mrkdwn_in: %w[pretext]
           }
         ]
       }

@@ -6,7 +6,7 @@ namespace :sidekiq do
     system "bundle exec sidekiq -C #{Rails.root.join('config', 'sidekiq.yml')}"
   end
 
-  task :sidekiqctl, %i(name deadline_timeout) => :environment do |_t, args|
+  task :sidekiqctl, %i[name deadline_timeout] => :environment do |_t, args|
     system "bundle exec sidekiqctl #{args[:name]} #{Rails.root.join('tmp', 'pids', 'sidekiq.pid')} #{args[:deadline_timeout]}"
   end
 

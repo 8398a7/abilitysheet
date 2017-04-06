@@ -4,7 +4,7 @@ class ScoresController < ApplicationController
   before_action :authenticate_user!
   before_action :check_xhr
   before_action :load_score
-  before_action :score_exists?, only: %w(edit)
+  before_action :score_exists?, only: %w[edit]
 
   def edit
     @sheet = Sheet.find(params[:id])
