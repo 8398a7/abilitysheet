@@ -2,7 +2,7 @@
 
 class SheetsController < ApplicationController
   before_action :load_user
-  before_action :check_action, except: %i(change_reverse detail)
+  before_action :check_action, except: %i[change_reverse detail]
 
   def show
     load_static unless params[:type] == 'power'

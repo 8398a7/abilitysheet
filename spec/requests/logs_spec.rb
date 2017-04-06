@@ -11,7 +11,7 @@ describe Api::V1::LogsController, type: :request do
     let(:method) { 'get' }
     let(:result) do
       {
-        categories: %w(2015-12 2016-01 2016-02),
+        categories: %w[2015-12 2016-01 2016-02],
         pie: [0, 0, 0, 0, 0, 0, 0, 0],
         column: [
           [0, 0, 0],

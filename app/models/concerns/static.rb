@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Static
-  LAMP = %w(FC EXH H C E A F N).freeze
+  LAMP = %w[FC EXH H C E A F N].freeze
   LAMP_HASH = LAMP.map.with_index(0) { |e, i| [e, i] }.to_h
   LAMP_OFFICIAL = [
     'FULLCOMBO CLEAR',
@@ -60,7 +60,7 @@ module Static
     ['SINO', 24]
   ].freeze
 
-  COLOR = %w(
+  COLOR = %w[
     #ff8c00
     #ffd900
     #ff6347
@@ -69,5 +69,5 @@ module Static
     #9595ff
     #c0c0c0
     #ffffff
-  ).freeze
+  ].freeze
 end

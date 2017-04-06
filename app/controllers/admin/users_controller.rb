@@ -3,8 +3,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user!
-  before_action :check_xhr, except: %i(index login)
-  before_action :load_user, except: %i(index new create)
+  before_action :check_xhr, except: %i[index login]
+  before_action :load_user, except: %i[index new create]
 
   def index
     @search = User.search(params[:q])

@@ -40,7 +40,7 @@ module Score::IIDXME
     end
 
     def self.reverse(state)
-      status = %w(7 6 5 4 3 2 1 0)
+      status = %w[7 6 5 4 3 2 1 0]
       status[state].to_i
     end
   end
