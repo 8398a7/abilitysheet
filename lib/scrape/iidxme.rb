@@ -83,6 +83,17 @@ module Scrape
       true
     end
 
+    def diff(div)
+      clear_and_type = div.xpath('div')[1].attr('class').split
+      # %w[td level h lv12] or %w[td level a lv12]
+      # 3番目のhやaの情報を返す
+      clear_and_type[clear_and_type.size - 2] == 'h' ? 'sph' : 'spa'
+    end
+
+    def title(div)
+      div.xpath('div[@class="td title"]').text
+    end
+
     def get_data(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
@@ -100,7 +111,8 @@ module Scrape
           miss = miss == '-' ? nil : miss.to_i
           @result['musicdata'].push(
             'data' => {
-              'title' => div.xpath('div[@class="td title"]').text
+              'title' => title(div),
+              'diff' => diff(div)
             },
             'clear' => div.xpath('div[@class="td clear"]/div/a/span')[0]['class'].split[1].delete('clear').to_i || 0,
             'score' => score,
