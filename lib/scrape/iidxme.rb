@@ -94,6 +94,20 @@ module Scrape
       div.xpath('div[@class="td title"]').text
     end
 
+    def score(div)
+      score = div.xpath('div[@class="td score"]/div/span')[0]
+      score ? score.text.to_i : nil
+    end
+
+    def clear(div)
+      div.xpath('div[@class="td clear"]/div/a/span')[0]['class'].split[1].delete('clear').to_i || 0
+    end
+
+    def miss(div)
+      miss = div.xpath('div[@class="td miss"]/div').text
+      miss == '-' ? nil : miss.to_i
+    end
+
     def get_data(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
@@ -105,18 +119,14 @@ module Scrape
         break if html.xpath('//div[@class="table musiclist"]/div/div/div').text == 'NO RESULT'
         html.xpath('//div[@class="table musiclist"]/div').each do |div|
           next if div.xpath('div[@class="td title"]').empty?
-          score = div.xpath('div[@class="td score"]/div/span')[0]
-          score = score ? score.text.to_i : nil
-          miss = div.xpath('div[@class="td miss"]/div').text
-          miss = miss == '-' ? nil : miss.to_i
           @result['musicdata'].push(
             'data' => {
               'title' => title(div),
               'diff' => diff(div)
             },
-            'clear' => div.xpath('div[@class="td clear"]/div/a/span')[0]['class'].split[1].delete('clear').to_i || 0,
-            'score' => score,
-            'miss' => miss
+            'clear' => clear(div),
+            'score' => score(div),
+            'miss' => miss(div)
           )
         end
         page += 1
