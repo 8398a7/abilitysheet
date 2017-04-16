@@ -51,12 +51,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
 * プレイヤーの地力値推定，及び楽曲推薦
 * スコアやBPの遷移グラフ
 
-## Requires
-
-- ruby 2.4.0
-- rails 5.0.1
-- node 7.4.0
-- yarn 0.18.1
+## [Requirements](https://github.com/8398a7/abilitysheet/wiki/Requirements)
 
 ## Setting
 

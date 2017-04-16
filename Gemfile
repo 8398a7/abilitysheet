@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.4.0'
 
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
