@@ -29,7 +29,7 @@ class Sheet < ApplicationRecord
 
   include Sheet::API
 
-  scope :active, -> { where(active: true) }
+  scope :active, (-> { where(active: true) })
 
   after_create :create_ability
 

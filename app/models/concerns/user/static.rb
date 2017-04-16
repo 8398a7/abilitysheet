@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module User::Static
-  PREF = %w(
+  PREF = %w[
     海外
     北海道 青森県 岩手県 宮城県
     秋田県 山形県 福島県 茨城県
@@ -15,21 +15,21 @@ module User::Static
     香川県 愛媛県 高知県 福岡県
     佐賀県 長崎県 熊本県 大分県
     宮崎県 鹿児島県 沖縄県
-  ).freeze
+  ].freeze
 
-  GRADE = %w(
+  GRADE = %w[
     皆伝 中伝
     十段 九段
     八段 七段 六段 五段 四段 三段 二段 初段
     一級 二級 三級 四級 五級 六級 七級
     無段位
-  ).freeze
+  ].freeze
 
-  GRADE_COLOR = %w(
+  GRADE_COLOR = %w[
     #ffd900 #dcdddd
     #ff6347 #ff6347
     #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee #afeeee
     #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98 #98fb98
     #fbefef
-  ).freeze
+  ].freeze
 end

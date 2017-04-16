@@ -12,7 +12,7 @@ module Slack
             title: 'Sidekiq down!',
             pretext: '_Sidekiq_',
             text: 'Please promptly restored.',
-            mrkdwn_in: %w(pretext)
+            mrkdwn_in: %w[pretext]
           }
         ]
       }
@@ -31,7 +31,7 @@ module Slack
             title: 'Sidekiq up!',
             pretext: '_Sidekiq_',
             text: 'success auto restart!',
-            mrkdwn_in: %w(pretext)
+            mrkdwn_in: %w[pretext]
           }
         ]
       }

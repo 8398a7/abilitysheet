@@ -24,7 +24,7 @@ describe Scrape::IIDXME do
         expect(user.djname).to eq '839'
       end
       context 'IIDXIDの書式が正しくない場合' do
-        let(:iidxids) { %w(1 1110) }
+        let(:iidxids) { %w[1 1110] }
         it '#sync' do
           iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
@@ -55,6 +55,15 @@ describe Scrape::IIDXME do
         expect(Score.find(1).score).to eq 3030
         expect(Score.find(1).bp).to eq 0
       end
+
+      it 'sphがある譜面が正しく登録される' do
+        VCR.use_cassette('models/user_official_spec/sync_sheet') { sync_sheet }
+        VCR.use_cassette('lib/scrape/iidxme/sync') { @iidxme.sync(user.iidxid) }
+        titles = ['gigadelic[H]', 'gigadelic[A]', 'Innocent Walls[H]', 'Innocent Walls[A]']
+        sheet_ids = Sheet.where(title: titles).pluck(:id)
+        scores = user.scores.where(sheet_id: sheet_ids)
+        expect(scores.count).to eq 4
+      end
     end
     context '不要なログが作成されない' do
       let(:iidxid) { '8594-9652' }
@@ -67,7 +76,7 @@ describe Scrape::IIDXME do
     end
 
     context 'IIDXIDの書式が正しくない場合' do
-      let(:iidxids) { %w(1 1110) }
+      let(:iidxids) { %w[1 1110] }
       it '#sync' do
         VCR.use_cassette 'lib/scrape/iidxme/sync' do
           iidxids.each { |iidxid| expect(@iidxme.sync(iidxid)).to be_falsy }

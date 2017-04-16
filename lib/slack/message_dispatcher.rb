@@ -17,7 +17,7 @@ module Slack
             title_link: admin_messages_url,
             pretext: '_Message_',
             text: message.body,
-            mrkdwn_in: %w(pretext)
+            mrkdwn_in: %w[pretext]
           }
         ]
       }
