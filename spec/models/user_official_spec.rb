@@ -20,7 +20,7 @@ describe User::Official, type: :model do
         sync_sheet
       end
       expect(user.update_official(params)).to eq true
-      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234, 235, 236, 237, 238]
+      expect(Sheet.active.pluck(:id) - user.scores.pluck(:sheet_id)).to eq [231, 232, 233, 234, 235, 236, 237, 238, 239, 240]
     end
   end
 end
