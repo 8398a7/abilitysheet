@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160814172615) do
+ActiveRecord::Schema.define(version: 20170509110716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160814172615) do
     t.integer "new_bp"
     t.integer "version"
     t.date    "created_date"
+    t.index ["created_date", "user_id", "sheet_id"], name: "index_logs_on_created_date_and_user_id_and_sheet_id", unique: true, using: :btree
     t.index ["sheet_id"], name: "index_logs_on_sheet_id", using: :btree
     t.index ["user_id"], name: "index_logs_on_user_id", using: :btree
   end
