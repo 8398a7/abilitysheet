@@ -22,6 +22,8 @@ class Log < ApplicationRecord
   belongs_to :sheet
   delegate :title, to: :sheet
 
+  validates :sheet_id, uniqueness: { scope: %i[created_date user_id] }
+
   include Graph
 
   def self.prev_next(user_id, date)
