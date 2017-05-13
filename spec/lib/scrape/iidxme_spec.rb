@@ -20,7 +20,7 @@ describe Scrape::IIDXME do
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
         user.reload
-        expect(user.grade).to eq 4
+        expect(user.grade).to eq 0
         expect(user.djname).to eq '839'
       end
       context 'IIDXIDの書式が正しくない場合' do
