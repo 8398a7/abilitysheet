@@ -23,6 +23,7 @@
     "jquery-ui": "^1.12.0",
     "jquery-ujs": "^1.2.2",
     "lodash": "^4.17.3",
+    "moment-timezone": "^0.5.13",
     "nprogress": "^0.2.0",
     "qtip2": "^3.0.3",
     "raven-js": "^3.9.1",

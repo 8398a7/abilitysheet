@@ -21,6 +21,15 @@ class CalHeatmap extends BaseComponent {
       tooltip: true,
       cellSize: 9,
       domainLabelFormat: '%Y-%m',
+      afterLoadData: function (timestamps) {
+        const offset = moment().tz('Asia/Tokyo').utcOffset() * 60;
+        let results = {};
+        Object.keys(timestamps).forEach(timestamp => {
+          const commitCount = timestamps[timestamp];
+          results[parseInt(timestamp, 10) + offset] = commitCount;
+        })
+        return results
+      },
       onClick: (date, nb) => {
         this.setState({
           items: nb,
