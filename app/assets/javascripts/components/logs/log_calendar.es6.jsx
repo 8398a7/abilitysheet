@@ -34,6 +34,7 @@ class LogCalendar extends BaseComponent {
     UIkit.accordion($('.uk-accordion'), {showfirst: false})
     $('#log-calendar').fullCalendar({
       lang: 'ja',
+      timezone: 'Asia/Tokyo',
       events: [],
       eventRender: (event, element) => {
         element.qtip({
