@@ -8,6 +8,8 @@
 //= require moment/moment
 //= require moment/locale/ja
 //= require momentLocale
+//= require moment-timezone/builds/moment-timezone.min
+//= require moment-timezone/builds/moment-timezone-with-data.min
 //= require d3/d3.min
 //= require cal-heatmap/cal-heatmap.min
 //= require fullcalendar/dist/fullcalendar.min
