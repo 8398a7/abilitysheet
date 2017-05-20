@@ -22,7 +22,7 @@ class CalHeatmap extends BaseComponent {
       cellSize: 9,
       domainLabelFormat: '%Y-%m',
       afterLoadData: function (timestamps) {
-        const offset = moment().tz('Asia/Tokyo').utcOffset() * 60;
+        const offset = (moment().tz('Asia/Tokyo').utcOffset() - moment().utcOffset())  * 60;
         let results = {};
         Object.keys(timestamps).forEach(timestamp => {
           const commitCount = timestamps[timestamp];
