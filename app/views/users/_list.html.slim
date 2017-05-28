@@ -21,7 +21,8 @@
           td.center = user[:title]
           td.center bgcolor=Static::COLOR[user[:state].to_i]
 coffee:
-  $('.datatable').dataTable
-    order: [4, 'desc']
-    aLengthMenu: [25]
-    columnDefs: [{type: 'grade', targets: [2]}]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatable').dataTable
+      order: [4, 'desc']
+      aLengthMenu: [25]
+      columnDefs: [{type: 'grade', targets: [2]}]

@@ -33,5 +33,6 @@ hr
 javascript:
   sheets_count = '#{@sheets.select(:id).count}'
 coffee:
-  $('.datatable').dataTable
-    aLengthMenu: [sheets_count]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatable').dataTable
+      aLengthMenu: [sheets_count]

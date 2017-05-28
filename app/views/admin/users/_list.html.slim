@@ -42,9 +42,10 @@
             td = user.sign_in_count
             td = user.current
 coffee:
-  $('.datatables').dataTable
-    order: [1, 'asc']
-    columnDefs: [
-      targets: [0]
-      orderable: false
-    ]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatables').dataTable
+      order: [1, 'asc']
+      columnDefs: [
+        targets: [0]
+        orderable: false
+      ]
