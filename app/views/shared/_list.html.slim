@@ -27,7 +27,8 @@
             td
             td
 coffee:
-  $('.datatable').dataTable
-    order: [4, 'desc']
-    aLengthMenu: [25]
-    columnDefs: [{type: 'custom', targets: [2]}]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatable').dataTable
+      order: [4, 'desc']
+      aLengthMenu: [25]
+      columnDefs: [{type: 'custom', targets: [2]}]

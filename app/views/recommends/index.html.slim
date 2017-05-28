@@ -40,7 +40,8 @@ coffee:
 javascript:
   sheets_count = '#{@sheets.count}'
 coffee:
-  $('.datatable').dataTable
-    order: [4, 'desc'],
-    aLengthMenu: [sheets_count],
-    columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatable').dataTable
+      order: [4, 'desc'],
+      aLengthMenu: [sheets_count],
+      columnDefs: [{type: 'custom', targets: [1, 2, 3, 4, 5, 6]}]
