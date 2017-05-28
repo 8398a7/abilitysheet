@@ -33,9 +33,10 @@
           td = sheet.normal
           td = sheet.hard
 coffee:
-  $('.datatable').dataTable
-    order: [1, 'desc']
-    columnDefs: [
-      targets: [0]
-      orderable: false
-    ]
+  if($('[id^=DataTables_Table]').length == 0)
+    $('.datatable').dataTable
+      order: [1, 'desc']
+      columnDefs: [
+        targets: [0]
+        orderable: false
+      ]
