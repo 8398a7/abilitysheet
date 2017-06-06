@@ -1,12 +1,9 @@
-REDIS_URL = { url: ENV['REDIS_URL'] }
+redis_params = { url: ENV['REDIS_URL'] }.freeze
 
 Sidekiq.configure_server do |config|
-  config.redis = REDIS_URL
-  config.server_middleware do |chain|
-    chain.add Sidekiq::Middleware::Server::RetryJobs, max_retries: 0
-  end
+  config.redis = redis_params
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = REDIS_URL
+  config.redis = redis_params
 end
