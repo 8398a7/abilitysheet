@@ -43,7 +43,7 @@ module Scrape
       html.xpath('//div[@class="list"]').each do |node|
         cnt = 0
         node.xpath('dl/dd[@class="level l12"]').each { |_| cnt += 1 }
-        data = node if 150 < cnt
+        data = node if cnt > 150
       end
       data
     end
