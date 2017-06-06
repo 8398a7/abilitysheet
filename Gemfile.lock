@@ -164,7 +164,7 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
-    draper (3.0.0.pre1)
+    draper (3.0.0)
       actionpack (~> 5.0)
       activemodel (~> 5.0)
       activemodel-serializers-xml (~> 1.0)
@@ -551,7 +551,7 @@ DEPENDENCIES
   devise
   doorkeeper (>= 4.2.0)
   dotenv-rails
-  draper (= 3.0.0.pre1)
+  draper
   factory_girl_rails
   font-awesome-rails
   js-routes
