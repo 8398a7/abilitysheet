@@ -12,7 +12,7 @@ gem 'coffee-rails'
 gem 'devise'
 gem 'doorkeeper', '>= 4.2.0'
 gem 'dotenv-rails'
-gem 'draper', '3.0.0.pre1'
+gem 'draper'
 gem 'font-awesome-rails'
 # }}}
 # h,i,j,k,l,m,n {{{
@@ -44,11 +44,11 @@ gem 'react-rails'
 gem 'sass-rails'
 gem 'sentry-raven'
 gem 'sidekiq'
-gem 'sinatra', '2.0.0.beta2', require: false
+gem 'sinatra'
 gem 'slim-rails'
 gem 'turbolinks'
 gem 'twitter'
-gem 'uglifier', '3.0.4'
+gem 'uglifier'
 # }}}
 # v,w,x,y,z {{{
 gem 'whenever', require: false
