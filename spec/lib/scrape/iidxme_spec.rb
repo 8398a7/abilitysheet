@@ -57,7 +57,10 @@ describe Scrape::IIDXME do
       end
 
       it 'sphがある譜面が正しく登録される' do
-        VCR.use_cassette('models/user_official_spec/sync_sheet') { sync_sheet }
+        VCR.use_cassette('sync_sheet') do
+          RedisHelper.load_sheets_data
+          sync_sheet
+        end
         VCR.use_cassette('lib/scrape/iidxme/sync') { @iidxme.sync(user.iidxid) }
         titles = ['gigadelic[H]', 'gigadelic[A]', 'Innocent Walls[H]', 'Innocent Walls[A]']
         sheet_ids = Sheet.where(title: titles).pluck(:id)
