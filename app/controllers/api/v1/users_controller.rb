@@ -25,7 +25,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       # パラメータが不足している
       raise BadRequest if !e['id'] || !e['cl'] || !e['pg'] || !e['g'] || !e['miss']
       # パラメータに余分な物がある
-      raise BadRequest if 5 < e.size
+      raise BadRequest if e.size > 5
       # 楽曲が存在していない
       Sheet.find(e['id'])
     end

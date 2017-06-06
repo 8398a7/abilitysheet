@@ -26,7 +26,7 @@ module User::List
         recent_users = []
         ret = {}
         users.each do |user|
-          break if 200 <= recent_users.size
+          break if recent_users.size >= 200
           next if recent_users.include?(user['id'])
           recent_users.push(user['id'])
           user['updated_at'] = user['updated_at'].split[0]

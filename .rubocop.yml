@@ -35,3 +35,4 @@ AllCops:
     - 'config/**/*'
     - 'script/**/*'
     - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
