@@ -24,7 +24,7 @@ class LogsController < ApplicationController
 
   def list
     per_num = 10
-    logs = @user.logs.order(created_date: :desc).select(:created_date).uniq
+    logs = @user.logs.order(created_date: :desc).select(:created_date).distinct
     @logs = logs.page(params[:page]).per(per_num)
     @total_pages = (logs.count / per_num.to_f).ceil
   end
