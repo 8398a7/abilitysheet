@@ -95,11 +95,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # TODO: support 1 year(start: 15/12/20)
-  get '/abilitysheet', to: 'welcomes#migrate_domain'
-  get '/abilitysheet/:p1', to: 'welcomes#migrate_domain'
-  get '/abilitysheet/:p1/:p2', to: 'welcomes#migrate_domain'
-  get '/abilitysheet/:p1/:p2/:p3', to: 'welcomes#migrate_domain'
-
   mount Peek::Railtie => '/peek'
 end
