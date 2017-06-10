@@ -66,13 +66,13 @@ GEM
       rails (>= 4.0, < 6.0)
     ast (2.3.0)
     atomic (1.1.99)
-    aws-sdk (2.9.32)
-      aws-sdk-resources (= 2.9.32)
-    aws-sdk-core (2.9.32)
+    aws-sdk (2.9.37)
+      aws-sdk-resources (= 2.9.37)
+    aws-sdk-core (2.9.37)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.9.32)
-      aws-sdk-core (= 2.9.32)
+    aws-sdk-resources (2.9.37)
+      aws-sdk-core (= 2.9.37)
     aws-sigv4 (1.0.0)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -102,7 +102,7 @@ GEM
       sshkit (~> 1.2)
     capistrano-faster-assets (1.0.2)
       capistrano (>= 3.1)
-    capistrano-rails (1.2.3)
+    capistrano-rails (1.3.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-sidekiq (0.10.0)
@@ -115,7 +115,7 @@ GEM
       capistrano (~> 3.7)
       capistrano-bundler
       puma (~> 3.4)
-    capybara (2.14.0)
+    capybara (2.14.2)
       addressable
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -229,7 +229,7 @@ GEM
     levenshtein (0.2.2)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.5)
+    mail (2.6.6)
       mime-types (>= 1.16, < 4)
     mechanize (2.7.5)
       domain_name (~> 0.5, >= 0.5.1)
@@ -268,8 +268,8 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     ntlm-http (0.1.1)
-    oauth2 (1.3.1)
-      faraday (>= 0.8, < 0.12)
+    oauth2 (1.4.0)
+      faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
@@ -605,6 +605,7 @@ DEPENDENCIES
   webmock
   whenever
   yaml_db
+
 
 BUNDLED WITH
    1.14.6
