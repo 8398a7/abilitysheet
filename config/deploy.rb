@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-lock '3.8.1'
-
 set :application, 'abilitysheet'
 set :repo_url, 'https://github.com/8398a7/abilitysheet.git'
 
