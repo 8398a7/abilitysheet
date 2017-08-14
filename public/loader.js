@@ -11,7 +11,7 @@ $.ajaxSetup({ xhrFields: { withCredentials: true } });
 function getUserInfo() {
   $.ajax({
     type: 'get',
-    url: 'http://p.eagate.573.jp/game/2dx/24/p/djdata/status.html',
+    url: 'https://p.eagate.573.jp/game/2dx/24/p/djdata/status.html',
     async: false,
     success: function(data) {
       canvas = document.createElement('canvas');
@@ -44,7 +44,7 @@ function checkStatus() {
 function getCsv() {
   $.ajax({
     type: 'post',
-    url: 'http://p.eagate.573.jp/game/2dx/24/p/djdata/score_download.html',
+    url: 'https://p.eagate.573.jp/game/2dx/24/p/djdata/score_download.html',
     async: false,
     data: { style: 0 },
     success: function(data) { scores = $(data).find('#score_data').text() }
