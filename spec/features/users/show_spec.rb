@@ -6,7 +6,6 @@ feature 'プロフィールページ', js: true do
     background do
       create(:score, user_id: 1, sheet_id: 1)
       visit user_path(user.iidxid)
-      wait_for_ajax
     end
     scenario 'DJNAMEが存在する' do
       expect(page).to have_content('PROF')
@@ -55,7 +54,6 @@ feature 'プロフィールページ', js: true do
       user2 = create(:user, username: 'user2', id: 2, grade: 4)
       login(user2)
       visit user_path(user.iidxid)
-      wait_for_ajax
     end
     scenario 'DJNAMEが存在する' do
       expect(page).to have_content('PROF')
@@ -93,13 +91,11 @@ feature 'プロフィールページ', js: true do
     scenario 'ライバル追加/削除が行える' do
       expect(page).to have_button('ライバルに追加')
       click_button 'ライバルに追加'
-      wait_for_ajax
       user.reload
       expect(page).to have_selector('#reverse-rival-number', text: '1')
       expect(user.followers.count).to eq 1
       expect(page).to have_button('ライバルから削除')
       click_button 'ライバルから削除'
-      wait_for_ajax
       user.reload
       expect(page).to have_selector('#reverse-rival-number', text: '0')
       expect(user.followers.count).to eq 0

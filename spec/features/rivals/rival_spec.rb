@@ -10,7 +10,6 @@ feature 'ライバル情報' do
 
   scenario 'プロフィールページへのリンクが存在する', js: true do
     visit list_rival_path
-    wait_for_ajax
     expect(page).to have_link('RIVAL')
   end
 

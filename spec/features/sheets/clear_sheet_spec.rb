@@ -4,12 +4,10 @@ feature 'ノマゲ地力表', js: true do
   given(:user) { create(:user, id: 1) }
   background do
     visit sheet_path(iidxid: user.iidxid, type: 'clear')
-    wait_for_ajax
   end
 
   scenario '存在しないユーザへのアクセス' do
     visit sheet_path(iidxid: '1111-1111', type: 'clear')
-    wait_for_ajax
     expect(page).to have_content('このページは存在しません')
   end
 
@@ -30,7 +28,6 @@ feature 'ノマゲ地力表', js: true do
         resize_window_to_iphone6
         sync_sheet
         visit sheet_path(iidxid: user.iidxid, type: 'clear')
-        wait_for_ajax
       end
       scenario 'PC版に切り替えたときのレイアウトが正しい' do
         expect(page).to have_content('PCサイト版')

@@ -6,7 +6,6 @@ feature '最近更新したユーザ200人一覧', js: true do
     create(:sheet, id: 1)
     create(:score, user_id: 1, sheet_id: 1, state: 5)
     visit users_path
-    wait_for_ajax
   end
 
   scenario 'プロフィールページへのリンクが存在する' do

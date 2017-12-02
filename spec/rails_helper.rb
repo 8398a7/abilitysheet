@@ -18,7 +18,6 @@ RSpec.configure do |config|
   config.include ApiHelper, type: :request
   config.include Warden::Test::Helpers
   config.include FactoryBot::Syntax::Methods
-  config.include WaitForAjax, type: :feature
   config.include SheetsHelper
   config.include ResponsiveHelper, type: :feature
 
