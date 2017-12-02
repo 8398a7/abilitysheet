@@ -29,8 +29,16 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system) do |example|
     if example.metadata[:js]
-      caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: %w[--headless --disable-gpu] })
-      driven_by :selenium, screen_size: [1400, 1400], options: { desired_capabilities: caps }
+      if example.metadata[:iphone6]
+        display_size = [375, 667]
+        args = %w[--headless --disable-gpu --user-agent=iPhone]
+      else
+        display_size = [1920, 1080]
+        args = %w[--headless --disable-gpu]
+      end
+      args.shift if ENV['NO_HEADLESS']
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: args })
+      driven_by :selenium, screen_size: display_size, options: { desired_capabilities: caps }
     else
       driven_by :rack_test
     end

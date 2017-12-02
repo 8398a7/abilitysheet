@@ -23,9 +23,8 @@ feature 'ノマゲ地力表', type: :system, js: true do
       expect(page).to have_content('未クリア')
     end
 
-    context 'モバイル' do
+    context 'モバイル', iphone6: true do
       background do
-        resize_window_to_iphone6
         sync_sheet
         visit sheet_path(iidxid: user.iidxid, type: 'clear')
       end

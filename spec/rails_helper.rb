@@ -19,7 +19,6 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include FactoryBot::Syntax::Methods
   config.include SheetsHelper
-  config.include ResponsiveHelper, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
