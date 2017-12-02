@@ -14,7 +14,7 @@ module Score::ScoreViewer
         score_params['score'] = e['pg'] * 2 if e['pg'] != -1 && e['g'] == -1
 
         score = current_user.scores.find_by(sheet_id: e['id'], version: Abilitysheet::Application.config.iidx_version)
-        score = current_user.scores.create!(sheet_id: e['id'], version: Abilitysheet::Application.config.iidx_version) unless score
+        score ||= current_user.scores.create!(sheet_id: e['id'], version: Abilitysheet::Application.config.iidx_version)
 
         score_params['state'] = score.state
         score_params['state'] = e['cl'] if e['cl'].to_i < score.state

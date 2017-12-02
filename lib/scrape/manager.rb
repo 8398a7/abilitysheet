@@ -23,7 +23,7 @@ module Scrape
       return false if state == 7
       sheet_id = Sheet.select(:id).find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
-      score = @current_user.scores.create!(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version) unless score
+      score ||= @current_user.scores.create!(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
       return false if score.state <= state
       score.update_with_logs('sheet_id' => sheet_id, 'state' => state)
       true
