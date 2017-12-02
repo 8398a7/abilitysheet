@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ログイン処理' do
+feature 'ログイン処理', type: :system do
   background do
     create(:user, id: 1)
     visit new_user_session_path

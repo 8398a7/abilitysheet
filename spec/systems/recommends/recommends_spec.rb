@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature '地力値表', js: true do
+feature '地力値表', type: :system, js: true do
   given(:user) { create(:user, id: 1) }
   background do
     create(:score, user_id: 1, sheet_id: 1)

@@ -2,8 +2,8 @@
 
 require 'simplecov'
 SimpleCov.start
+require 'capybara'
 require 'sidekiq/testing'
-require 'capybara/poltergeist'
 require 'tilt/coffee'
 require 'rspec/retry'
 
@@ -15,12 +15,7 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  # capybara setting
-  Capybara.default_selector = :css
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: true)
-  end
+  Capybara.raise_server_errors = false
 
   # rspec retry setting
   config.verbose_retry = true

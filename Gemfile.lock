@@ -60,6 +60,8 @@ GEM
     annotate (2.7.2)
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
+    archive-zip (0.7.0)
+      io-like (~> 0.3.0)
     arel (8.0.0)
     assets_rails (1.0.3)
       rails (>= 4.0, < 6.0)
@@ -636,9 +638,13 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    childprocess (0.8.0)
+      ffi (~> 1.0, >= 1.0.11)
     choice (0.2.0)
+    chromedriver-helper (1.1.0)
+      archive-zip (~> 0.7.0)
+      nokogiri (~> 1.6)
     chronic (0.10.2)
-    cliver (0.3.2)
     codeclimate-test-reporter (1.0.7)
       simplecov
     coderay (1.1.2)
@@ -711,6 +717,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
+    io-like (0.3.0)
     jmespath (1.3.1)
     jquery-rails (4.3.1)
       rails-dom-testing (>= 1, < 3)
@@ -736,8 +743,6 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    launchy (2.4.3)
-      addressable (~> 2.3)
     levenshtein (0.2.2)
     loofah (2.1.1)
       crass (~> 1.0.2)
@@ -815,10 +820,6 @@ GEM
       peek
       redis
     pg (0.21.0)
-    poltergeist (1.16.0)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      websocket-driver (>= 0.2.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
     powerpack (0.1.1)
@@ -950,6 +951,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-graphviz (1.2.3)
     ruby-progressbar (1.9.0)
+    rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
@@ -962,6 +964,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.8.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     sentry-raven (2.7.1)
       faraday (>= 0.7.6, < 1.0)
     sidekiq (5.0.5)
@@ -1065,6 +1070,7 @@ DEPENDENCIES
   capistrano3-puma
   capybara
   carrierwave
+  chromedriver-helper
   codeclimate-test-reporter
   coffee-rails
   database_cleaner
@@ -1077,7 +1083,6 @@ DEPENDENCIES
   js-routes
   json_expressions
   kaminari
-  launchy
   levenshtein
   mechanize
   meta_request
@@ -1093,7 +1098,6 @@ DEPENDENCIES
   peek-redis
   peek-sidekiq!
   pg
-  poltergeist
   pry-byebug
   pry-rails
   pry-stack_explorer
@@ -1111,6 +1115,7 @@ DEPENDENCIES
   rspec-retry
   rubocop
   sass-rails
+  selenium-webdriver
   sentry-raven
   sidekiq
   simplecov

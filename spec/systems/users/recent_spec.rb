@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature '最近更新したユーザ200人一覧', js: true do
+feature '最近更新したユーザ200人一覧', type: :system, js: true do
   background do
     create(:user, id: 1)
     create(:sheet, id: 1)

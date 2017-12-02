@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ノマゲ地力表', js: true do
+feature 'ノマゲ地力表', type: :system, js: true do
   given(:user) { create(:user, id: 1) }
   background do
     visit sheet_path(iidxid: user.iidxid, type: 'clear')

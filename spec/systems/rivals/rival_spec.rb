@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ライバル情報' do
+feature 'ライバル情報', type: :system do
   given(:user) { create(:user, id: 1) }
   background do
     user2 = create(:user, id: 2, djname: 'RIVAL', iidxid: '1111-1111', username: 'rival')

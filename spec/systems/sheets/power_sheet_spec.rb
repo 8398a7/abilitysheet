@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature '地力値表' do
+feature '地力値表', type: :system do
   given(:user) { create(:user, id: 1) }
   background do
     visit sheet_path(iidxid: user.iidxid, type: 'power')

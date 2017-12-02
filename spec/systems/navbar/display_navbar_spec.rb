@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'Navbarの閲覧可能コンテンツ', js: true do
+feature 'Navbarの閲覧可能コンテンツ', type: :system, js: true do
   context 'ログインしていない場合' do
     background do
       visit root_path

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature '推移ログ', js: true do
+feature '推移ログ', type: :system, js: true do
   given(:user) { create(:user, id: 1) }
   context 'ログが存在しない場合' do
     context 'ログイン時' do
