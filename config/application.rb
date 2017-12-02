@@ -29,12 +29,10 @@ module Abilitysheet
     config.generators.test_framework = :rspec
 
     config.assets.paths << Rails.root.join('node_modules')
-    config.assets.paths << Rails.root.join('bower_components')
     config.assets.components = %w(yarn)
 
     SLACK_URI = URI.parse(ENV['NOTIFY_SLACK_URL']) if ENV['NOTIFY_SLACK_URL']
 
     config.react.camelize_props = true
-    config.action_controller.per_form_csrf_tokens = true
   end
 end
