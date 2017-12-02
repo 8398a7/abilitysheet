@@ -28,7 +28,7 @@ feature 'ノマゲ地力表', type: :system, js: true do
         sync_sheet
         visit sheet_path(iidxid: user.iidxid, type: 'clear')
       end
-      scenario 'PC版に切り替えたときのレイアウトが正しい' do
+      xscenario 'PC版に切り替えたときのレイアウトが正しい' do
         expect(page).to have_content('PCサイト版')
         click_on 'PCサイト版'
         expect(page).to have_content('モバイル版')
