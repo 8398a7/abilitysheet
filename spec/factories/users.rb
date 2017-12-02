@@ -30,7 +30,7 @@
 #  image                  :string
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     sequence(:email) { |n| "user#{n}@iidx.tk" }
     djname 'TEST'

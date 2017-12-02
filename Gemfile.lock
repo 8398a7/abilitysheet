@@ -684,10 +684,10 @@ GEM
     equalizer (0.0.11)
     erubi (1.7.0)
     execjs (2.7.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -1072,7 +1072,7 @@ DEPENDENCIES
   doorkeeper (>= 4.2.0)
   dotenv-rails
   draper
-  factory_girl_rails
+  factory_bot_rails
   font-awesome-rails
   js-routes
   json_expressions

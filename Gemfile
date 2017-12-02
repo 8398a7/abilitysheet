@@ -83,7 +83,7 @@ group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'json_expressions'
   gem 'launchy'
   gem 'poltergeist'

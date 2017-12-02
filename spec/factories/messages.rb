@@ -14,7 +14,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :message do
     body 'message'
     ip IPAddr.new('192.168.0.1')

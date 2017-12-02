@@ -15,7 +15,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :score do
     version Abilitysheet::Application.config.iidx_version
   end
