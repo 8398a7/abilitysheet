@@ -47,5 +47,5 @@ class TwitterSharedButton extends BaseComponent {
 }
 
 TwitterSharedButton.propTypes = {
-  text: React.PropTypes.string
+  text: PropTypes.string
 }

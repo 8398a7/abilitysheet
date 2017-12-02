@@ -69,12 +69,12 @@ class LampTd extends BaseComponent {
 }
 
 LampTd.propTypes = {
-  objects: React.PropTypes.object.isRequired,
-  index: React.PropTypes.string,
-  scores: React.PropTypes.object.isRequired,
-  display: React.PropTypes.string.isRequired,
-  iidxid: React.PropTypes.string.isRequired,
-  width: React.PropTypes.number,
-  height: React.PropTypes.number,
-  bp: React.PropTypes.string
+  objects: PropTypes.object.isRequired,
+  index: PropTypes.string,
+  scores: PropTypes.object.isRequired,
+  display: PropTypes.string.isRequired,
+  iidxid: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  bp: PropTypes.string
 }

@@ -76,5 +76,5 @@ class VersionCheckbox extends BaseComponent {
 }
 
 VersionCheckbox.propTypes = {
-  versions: React.PropTypes.array.isRequired
+  versions: PropTypes.array.isRequired
 }

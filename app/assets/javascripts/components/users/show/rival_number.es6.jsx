@@ -18,5 +18,5 @@ class RivalNumber extends BaseComponent {
 }
 
 RivalNumber.proptypes = {
-  user: React.PropTypes.object.isRequired
+  user: PropTypes.object.isRequired
 }

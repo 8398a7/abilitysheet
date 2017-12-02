@@ -54,5 +54,5 @@ class Navbar extends BaseComponent {
 }
 
 Navbar.propTypes = {
-  recent: React.PropTypes.string
+  recent: PropTypes.string
 }

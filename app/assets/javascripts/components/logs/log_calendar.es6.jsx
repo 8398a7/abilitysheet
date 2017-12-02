@@ -65,5 +65,5 @@ class LogCalendar extends BaseComponent {
 }
 
 LogCalendar.propTypes = {
-  iidxid: React.PropTypes.string.isRequired
+  iidxid: PropTypes.string.isRequired
 }

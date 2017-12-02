@@ -146,7 +146,7 @@ class SheetList extends BaseComponent {
 }
 
 SheetList.propTypes = {
-  type: React.PropTypes.string.isRequired,
-  user: React.PropTypes.object.isRequired,
-  bp: React.PropTypes.string
+  type: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  bp: PropTypes.string
 }

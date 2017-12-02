@@ -31,5 +31,5 @@ class Message extends BaseComponent {
 }
 
 Message.propTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: PropTypes.object
 }

@@ -67,5 +67,5 @@ class TopPanel extends BaseComponent {
 }
 
 TopPanel.propTypes = {
-  viewport: React.PropTypes.bool.isRequired
+  viewport: PropTypes.bool.isRequired
 }

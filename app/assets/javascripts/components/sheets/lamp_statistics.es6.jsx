@@ -115,5 +115,5 @@ class LampStatistics extends BaseComponent {
 }
 
 LampStatistics.propTypes = {
-  type: React.PropTypes.string.isRequired
+  type: PropTypes.string.isRequired
 }

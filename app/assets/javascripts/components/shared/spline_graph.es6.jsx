@@ -141,6 +141,6 @@ class SplineGraph extends BaseComponent {
 }
 
 SplineGraph.propTypes = {
-  initialRender: React.PropTypes.bool.isRequired,
-  iidxid: React.PropTypes.string
+  initialRender: PropTypes.bool.isRequired,
+  iidxid: PropTypes.string
 }
