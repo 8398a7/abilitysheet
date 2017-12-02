@@ -1,3 +1,7 @@
+general:
+  artifacts:
+    - tmp/screenshots
+
 machine:
   services:
     - redis
