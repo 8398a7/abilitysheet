@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ダッシュボードの閲覧' do
+feature 'ダッシュボードの閲覧', type: :system do
   background do
     create(:user, id: 1, role: 100)
     login(User.find(1))

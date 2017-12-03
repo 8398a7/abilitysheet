@@ -106,7 +106,7 @@ class UserProfileLeft extends BaseComponent {
 }
 
 UserProfileLeft.proptypes = {
-  user: React.PropTypes.object.isRequired,
-  currentUser: React.PropTypes.object,
-  viewport: React.PropTypes.bool.isRequired
+  user: PropTypes.object.isRequired,
+  currentUser: PropTypes.object,
+  viewport: PropTypes.bool.isRequired
 }

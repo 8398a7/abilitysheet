@@ -63,6 +63,6 @@ class CalHeatmap extends BaseComponent {
 }
 
 CalHeatmap.proptypes = {
-  user: React.PropTypes.object.isRequired,
-  viewport: React.PropTypes.bool.isRequired
+  user: PropTypes.object.isRequired,
+  viewport: PropTypes.bool.isRequired
 }

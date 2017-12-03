@@ -10,7 +10,7 @@ class Checkbox extends BaseComponent {
 }
 
 Checkbox.propTypes = {
-  versions: React.PropTypes.array.isRequired,
-  sheetType: React.PropTypes.number.isRequired,
-  lamp: React.PropTypes.array.isRequired
+  versions: PropTypes.array.isRequired,
+  sheetType: PropTypes.number.isRequired,
+  lamp: PropTypes.array.isRequired
 }

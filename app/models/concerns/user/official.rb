@@ -67,7 +67,7 @@ module User::Official
       official_params[:state] = ::Static::LAMP_OFFICIAL.index(hash["#{key} クリアタイプ"])
       official_params[:score] = hash["#{key} EXスコア"].to_i
       official_params[:bp] = hash["#{key} ミスカウント"].to_i
-      official_params[:updated_at] = DateTime.parse(hash['最終プレー日時'])
+      official_params[:updated_at] = Time.parse(hash['最終プレー日時'])
       official_params
     end
 

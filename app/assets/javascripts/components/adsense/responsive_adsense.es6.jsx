@@ -16,6 +16,6 @@ class ResponsiveAdsense extends BaseComponent {
 }
 
 ResponsiveAdsense.propTypes = {
-  client: React.PropTypes.string.isRequired,
-  slot: React.PropTypes.string.isRequired
+  client: PropTypes.string.isRequired,
+  slot: PropTypes.string.isRequired
 }

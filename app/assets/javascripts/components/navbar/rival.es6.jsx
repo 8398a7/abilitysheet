@@ -16,5 +16,5 @@ class Rival extends BaseComponent {
 }
 
 Rival.propTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: PropTypes.object
 }

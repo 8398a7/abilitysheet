@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-feature '推移ログ', js: true do
+feature '推移ログ', type: :system, js: true do
   given(:user) { create(:user, id: 1) }
   context 'ログが存在しない場合' do
     context 'ログイン時' do
       background do
         login(user)
         visit sheet_log_path(user.iidxid)
-        wait_for_ajax
       end
       scenario 'クリア推移表の文字列が存在する' do
         expect(page).to have_content('クリア推移表')
@@ -17,7 +16,6 @@ feature '推移ログ', js: true do
     context '非ログイン時' do
       background do
         visit sheet_log_path(user.iidxid)
-        wait_for_ajax
       end
       scenario 'クリア推移表の文字列が存在する' do
         expect(page).to have_content('クリア推移表')
@@ -35,7 +33,6 @@ feature '推移ログ', js: true do
       background do
         login(user)
         visit sheet_log_path(user.iidxid)
-        wait_for_ajax
       end
       scenario '推移ページが表示できる' do
         expect(page).to have_content('クリア推移表')
@@ -45,7 +42,6 @@ feature '推移ログ', js: true do
     context '非ログイン時' do
       background do
         visit sheet_log_path(user.iidxid)
-        wait_for_ajax
       end
       scenario '推移ページが表示できる' do
         expect(page).to have_content('クリア推移表')

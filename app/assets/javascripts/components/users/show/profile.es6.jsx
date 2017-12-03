@@ -48,6 +48,6 @@ class UserProfile extends BaseComponent {
 }
 
 UserProfile.proptypes = {
-  user: React.PropTypes.object.isRequired,
-  graphDom: React.PropTypes.string.isRequired
+  user: PropTypes.object.isRequired,
+  graphDom: PropTypes.string.isRequired
 }

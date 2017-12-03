@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'sign up' do
+feature 'sign up', type: :system do
   background do
     visit new_user_registration_path
     sync_sheet

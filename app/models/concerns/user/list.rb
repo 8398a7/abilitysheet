@@ -10,7 +10,7 @@ module User::List
       end
 
       def recent200
-        query = <<~EOF
+        query = <<~QUERY
           SELECT
           users.id, users.djname, users.iidxid, users.pref, users.grade,
           scores.updated_at, scores.state, sheets.title
@@ -20,7 +20,7 @@ module User::List
           AND sheets.id = scores.sheet_id
           ORDER BY scores.updated_at DESC
           LIMIT 6400
-        EOF
+        QUERY
         query.chomp.tr("\n", ' ')
         users = ActiveRecord::Base.connection.execute(query.chomp.tr("\n", ' ')).to_a
         recent_users = []

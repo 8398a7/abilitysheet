@@ -26,8 +26,8 @@ class LampSelect extends BaseComponent {
 }
 
 LampSelect.propTypes = {
-  sheetId: React.PropTypes.number.isRequired,
-  score: React.PropTypes.object,
-  display: React.PropTypes.string.isRequired,
-  iidxid: React.PropTypes.string.isRequired
+  sheetId: PropTypes.number.isRequired,
+  score: PropTypes.object,
+  display: PropTypes.string.isRequired,
+  iidxid: PropTypes.string.isRequired
 }

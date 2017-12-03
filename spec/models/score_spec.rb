@@ -110,7 +110,7 @@ describe Score, type: :model do
           score = Score.new(id: 100, user_id: 99, sheet_id: 1, version: 1)
           begin
             score.save(validate: false)
-          rescue => e
+          rescue ActiveRecord::RecordNotUnique => e
             expect(e.message.include?('PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint')).to eq true
           end
         end.to change(Score, :count).by(1)
