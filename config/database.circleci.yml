@@ -1,7 +1,7 @@
-production:
-  database: circle_ruby_production
+test:
+  database: abilitysheet_test
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: ubuntu
+  username: postgres
   host: localhost
