@@ -15,7 +15,7 @@
 #  updated_at :datetime         not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :sheet do
     title 'MyString'
     n_ability 1

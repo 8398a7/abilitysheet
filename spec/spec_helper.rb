@@ -2,8 +2,8 @@
 
 require 'simplecov'
 SimpleCov.start
+require 'capybara'
 require 'sidekiq/testing'
-require 'capybara/poltergeist'
 require 'tilt/coffee'
 require 'rspec/retry'
 
@@ -15,11 +15,9 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  # capybara setting
-  Capybara.default_selector = :css
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    Capybara::Poltergeist::Driver.new(app, inspector: true)
+  Capybara.raise_server_errors = false
+  Capybara.register_driver :selenium_chrome_headless do |app|
+    Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
   # rspec retry setting
@@ -27,6 +25,23 @@ RSpec.configure do |config|
   config.display_try_failure_messages = true
   config.around :each do |ex|
     ex.run_with_retry retry: ENV['RETRY_RSPEC']
+  end
+
+  config.before(:each, type: :system) do |example|
+    if example.metadata[:js]
+      if example.metadata[:iphone6]
+        display_size = [375, 667]
+        args = %w[--headless --disable-gpu --user-agent=iPhone]
+      else
+        display_size = [1920, 1080]
+        args = %w[--headless --disable-gpu]
+      end
+      args.shift if ENV['NO_HEADLESS']
+      caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: args })
+      driven_by :selenium, screen_size: display_size, options: { desired_capabilities: caps }
+    else
+      driven_by :rack_test
+    end
   end
 
   Sidekiq::Testing.inline!

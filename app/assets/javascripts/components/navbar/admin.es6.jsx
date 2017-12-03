@@ -23,5 +23,5 @@ class Admin extends BaseComponent {
 }
 
 Admin.propTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: PropTypes.object
 }

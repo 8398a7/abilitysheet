@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ハード地力表', js: true do
+feature 'ハード地力表', type: :system, js: true do
   given(:user) { create(:user, id: 1) }
   background do
     visit sheet_path(iidxid: user.iidxid, type: 'hard')
@@ -41,12 +41,10 @@ feature 'ハード地力表', js: true do
       create(:sheet, id: 1, active: true, textage: 'hoge')
       login(user)
       visit sheet_path(iidxid: user.iidxid, type: 'hard')
-      wait_for_ajax
     end
 
     scenario 'モーダルが降りてくる' do
       click_on 'MyString'
-      wait_for_ajax
       expect(page).to have_content('MyString')
       expect(page).to have_content('state')
       expect(page).to have_content('bp')
@@ -61,9 +59,7 @@ feature 'ハード地力表', js: true do
       expect(user.scores.empty?).to eq true
       expect(user.logs.empty?).to eq true
       click_on 'MyString'
-      wait_for_ajax
       select 'C', from: 'select_1'
-      wait_for_ajax
       expect(user.scores.first.state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq true
     end

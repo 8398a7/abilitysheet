@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature RailsAdmin do
+feature RailsAdmin, type: :system do
   given(:user) { create(:user, id: 1) }
   background { login(user) }
 

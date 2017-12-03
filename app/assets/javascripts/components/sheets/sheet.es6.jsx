@@ -111,6 +111,6 @@ class Sheet extends BaseComponent {
 }
 
 Sheet.propTypes = {
-  type: React.PropTypes.string.isRequired,
-  user: React.PropTypes.object.isRequired
+  type: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired
 }

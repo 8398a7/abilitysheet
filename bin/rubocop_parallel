@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'rubocop'
+require 'parser'
 require 'yaml'
 
 Dir.chdir File.expand_path('../..', __FILE__)

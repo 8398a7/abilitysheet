@@ -48,7 +48,7 @@ class RectangleAdsense extends BaseComponent {
 }
 
 RectangleAdsense.propTypes = {
-  client: React.PropTypes.string.isRequired,
-  slot: React.PropTypes.string.isRequired,
-  slot2: React.PropTypes.string.isRequired
+  client: PropTypes.string.isRequired,
+  slot: PropTypes.string.isRequired,
+  slot2: PropTypes.string.isRequired
 }

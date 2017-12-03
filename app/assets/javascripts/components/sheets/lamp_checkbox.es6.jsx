@@ -53,5 +53,5 @@ class LampCheckbox extends BaseComponent {
 }
 
 LampCheckbox.propTypes = {
-  lamp: React.PropTypes.array.isRequired
+  lamp: PropTypes.array.isRequired
 }

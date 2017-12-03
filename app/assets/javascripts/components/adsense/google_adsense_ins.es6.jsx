@@ -15,9 +15,9 @@ class GoogleAdsenseIns extends BaseComponent {
 }
 
 GoogleAdsenseIns.propTypes = {
-  client: React.PropTypes.string.isRequired,
-  slot: React.PropTypes.string.isRequired,
-  className: React.PropTypes.string.isRequired,
-  style: React.PropTypes.object.isRequired,
-  format: React.PropTypes.string
+  client: PropTypes.string.isRequired,
+  slot: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+  style: PropTypes.object.isRequired,
+  format: PropTypes.string
 }

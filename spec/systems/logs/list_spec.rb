@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ログ一覧' do
+feature 'ログ一覧', type: :system do
   given(:user) { create(:user, id: 1) }
   background do
     login(user)

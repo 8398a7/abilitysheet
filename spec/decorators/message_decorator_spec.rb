@@ -37,7 +37,7 @@ describe MessageDecorator do
     context '作成日がnilの場合' do
       it '現在日時を整形して表示' do
         message = build_stubbed(:message, created_at: nil).decorate
-        expect(message.created_at).to eq DateTime.now.strftime('%Y/%m/%d %H:%M')
+        expect(message.created_at).to eq Time.now.strftime('%Y/%m/%d %H:%M')
       end
     end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-feature 'ログの詳細画面', js: true do
+feature 'ログの詳細画面', type: :system, js: true do
   background do
     @user = create(:user, id: 1, iidxid: '1234-5678', role: User::Role::GENERAL)
     create(:sheet, id: 1, title: 'log spec1')
@@ -10,7 +10,6 @@ feature 'ログの詳細画面', js: true do
     create(:log, sheet_id: 1, user_id: 1, created_date: Date.today, pre_state: 7, new_state: 6)
     create(:log, sheet_id: 2, user_id: 1, created_date: Date.today, pre_state: 7, new_state: 6)
     visit logs_path(@user.iidxid, Date.today.to_s)
-    wait_for_ajax
   end
 
   scenario 'ログが存在する' do
@@ -23,12 +22,10 @@ feature 'ログの詳細画面', js: true do
     context '自分のログページの場合' do
       scenario 'ログ編集ボタンのリンクが存在する' do
         visit logs_path(@user.iidxid, Date.today.to_s)
-        wait_for_ajax
         expect(page).to have_link('log spec1')
       end
       scenario '削除ボタンが存在する' do
         visit logs_path(@user.iidxid, Date.today.to_s)
-        wait_for_ajax
         click_button '表示'
         expect(page).to have_content('削除')
       end
@@ -36,10 +33,11 @@ feature 'ログの詳細画面', js: true do
         expect(Log.where(user_id: @user.id).count).to eq 2
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq false
         visit logs_path(@user.iidxid, Date.today.to_s)
-        wait_for_ajax
         click_button '表示'
         click_link '削除', match: :first
-        wait_for_ajax
+        page.driver.browser.switch_to.alert.accept
+        sleep 1
+        expect(page).to have_content('ログを削除し')
         expect(Log.where(user_id: @user.id).count).to eq 1
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq true
       end
@@ -52,7 +50,6 @@ feature 'ログの詳細画面', js: true do
         create(:log, sheet_id: 1, user_id: 2, created_date: Date.today, pre_state: 7, new_state: 6)
         create(:log, sheet_id: 2, user_id: 2, created_date: Date.today, pre_state: 7, new_state: 6)
         visit logs_path(@user2.iidxid, Date.today.to_s)
-        wait_for_ajax
       end
       scenario 'ログ編集ボタンのリンクが存在しない' do
         expect(page).to have_no_link('log spec1')
@@ -66,7 +63,6 @@ feature 'ログの詳細画面', js: true do
         background do
           @user.update!(role: User::Role::OWNER)
           visit logs_path(@user2.iidxid, Date.today.to_s)
-          wait_for_ajax
         end
         scenario '削除ボタンが存在する' do
           click_button '表示'
@@ -77,7 +73,9 @@ feature 'ログの詳細画面', js: true do
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq false
           click_button '表示'
           click_link '削除', match: :first
-          wait_for_ajax
+          page.driver.browser.switch_to.alert.accept
+          sleep 1
+          expect(page).to have_content('ログを削除し')
           expect(Log.where(user_id: @user2.id).count).to eq 1
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq true
         end

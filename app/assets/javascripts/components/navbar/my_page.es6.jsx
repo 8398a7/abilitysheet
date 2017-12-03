@@ -26,6 +26,6 @@ class MyPage extends BaseComponent {
 }
 
 MyPage.propTypes = {
-  currentUser: React.PropTypes.object,
-  recent: React.PropTypes.string
+  currentUser: PropTypes.object,
+  recent: PropTypes.string
 }

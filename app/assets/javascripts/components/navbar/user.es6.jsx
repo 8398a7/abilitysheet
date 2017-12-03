@@ -27,5 +27,5 @@ class User extends BaseComponent {
 }
 
 User.propTypes = {
-  currentUser: React.PropTypes.object
+  currentUser: PropTypes.object
 }
