@@ -1,6 +1,7 @@
 general:
   artifacts:
     - tmp/screenshots
+    - log/test.log
 
 machine:
   services:
