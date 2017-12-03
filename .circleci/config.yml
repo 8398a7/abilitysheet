@@ -1,0 +1,56 @@
+version: 2
+jobs:
+  build:
+    working_directory: /tmp/abilitysheet
+    docker:
+      - image: circleci/ruby:2.4.2-node-browsers
+        environment:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:@localhost
+          TZ: /usr/share/zoneinfo/Asia/Tokyo
+      - image: postgres:10.1-alpine
+      - image: redis:4.0.5-alpine
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: yarn install
+          command: yarn install
+      - save_cache:
+          key: yarn-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle install -j4 --path vendor/bundle && yarn install
+      - save_cache:
+          name: Save bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run:
+          name: Setup Application Environment
+          command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
+      - run:
+          name: Create DB
+          command: bundle exec rake db:create db:schema:load --trace
+      - run:
+          name: Assets Resolve
+          command: bundle exec rake assets_rails:resolve
+      - run:
+          name: Exec RSpec
+          command: bundle exec rspec
+      - run:
+          name: Exec Rubocop
+          command: bundle exec bin/rubocop_parallel
+      - run:
+          name: Run Puma
+          command: mkdir -p tmp/sockets && RAILS_ENV=production bundle exec pumactl start
+      - store_artifacts:
+          path: ./log/test.log
+      - store_artifacts:
+          path: ./tmp/screenshots
