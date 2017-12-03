@@ -26,7 +26,7 @@ jobs:
           key: bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Ruby Dependencies
-          command: bundle install -j4 --path vendor/bundle && yarn install
+          command: bundle install -j4 --path vendor/bundle
       - save_cache:
           name: Save bundler cache
           key: bundle-{{ checksum "Gemfile.lock" }}
@@ -65,7 +65,7 @@ jobs:
           key: bundle-{{ checksum "Gemfile.lock" }}
       - run:
           name: Install Ruby Dependencies
-          command: bundle install -j4 --path vendor/bundle && yarn install
+          command: bundle install -j4 --path vendor/bundle
       - run:
           name: Deploy if tests pass and branch is Master
           command: bundle exec cap production deploy
