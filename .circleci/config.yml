@@ -60,6 +60,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.4.2-node-browsers
     steps:
+      - checkout
       - restore_cache:
           name: Restore bundler cache
           key: bundle-{{ checksum "Gemfile.lock" }}
