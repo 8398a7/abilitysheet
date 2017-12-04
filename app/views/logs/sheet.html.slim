@@ -14,24 +14,18 @@ hr
       th FULL COMBO
       th UPDATE
     tbody
-      - @sheets.each do |s|
-        - logs = s.logs.where(user_id: @id)
-        - u = logs.order(created_date: :desc).where('pre_state != new_state').first.created_date if logs.where('pre_state != new_state').present?
-        - logs = logs.order(:created_date)
-        - hash = {}
-        - 4.downto(0).each do |state|
-          - hash[state] = logs.find_by(new_state: state) if logs.exists?(new_state: state)
+      - @sheets.each do |title, hash|
         tr
-          td = s.title
+          td = title
           - 4.downto(0).each do |index|
             td bgcolor=@color[index]
-              - created_date = hash[index].try(:created_date)
+              - created_date = hash[index]
               - if created_date
                 = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
 
-          td = u
+          td = hash.values.sort.last
 javascript:
-  sheets_count = '#{@sheets.select(:id).count}'
+  sheets_count = '#{@sheets.count}'
 coffee:
   if($('[id^=DataTables_Table]').length == 0)
     $('.datatable').dataTable
