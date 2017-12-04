@@ -16,10 +16,9 @@ class LogsController < ApplicationController
   end
 
   def sheet
-    @sheets = Sheet.active.order(:title)
     @color = Static::COLOR
-    @id = @user.id
     @title = 'クリア推移表'
+    @sheets = ClearingTransitionTableService.new(@user).execute
   end
 
   def list
