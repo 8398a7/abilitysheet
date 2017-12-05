@@ -21,7 +21,7 @@
 //= require datatables-all/media/js/dataTables.uikit.min
 //= require highcharts/highcharts
 //= require highcharts/themes/grid-light
-//= require html2canvas/dist/html2canvas.min
+//= require dom-to-image/dist/dom-to-image.min
 //= require uikit/dist/js/uikit.min
 //= require uikit/dist/js/components/notify.min
 //= require uikit/dist/js/components/accordion.min

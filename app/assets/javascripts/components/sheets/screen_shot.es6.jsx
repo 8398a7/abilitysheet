@@ -10,20 +10,19 @@ class ScreenShot extends BaseComponent {
     this.onClick = this.onClick.bind(this)
   }
 
-  onClick() {
+  onClick(e) {
     if (this.state.capture) { return null }
+    e.preventDefault()
     this.setState({text: '保存中...'})
     $('.google-adsense').hide()
-    html2canvas(document.body, {
-      onrendered: (canvas) => {
-        this.setState({
-          text: 'ダウンロード',
-          capture: true,
-          download: 'ss.png',
-          dataUrl: canvas.toDataURL('image/png')
-        })
-        $('.google-adsense').show()
-      }
+    domtoimage.toPng(document.body).then(dataUrl => {
+      this.setState({
+        text: 'ダウンロード',
+        capture: true,
+        download: 'ss.png',
+        dataUrl: dataUrl,
+      })
+      $('.google-adsense').show()
     })
   }
 

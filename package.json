@@ -15,11 +15,11 @@
   "dependencies": {
     "cal-heatmap": "^3.6.0",
     "datatables-all": "^1.10.13",
+    "dom-to-image": "^2.6.0",
     "eventemitter2": "^1.0.5",
     "flux": "^2.1.1",
     "fullcalendar": "^2.9.0",
     "highcharts": "^4.2.5",
-    "html2canvas": "^0.5.0-beta4",
     "jquery-ui": "^1.12.0",
     "jquery-ujs": "^1.2.2",
     "lodash": "^4.17.3",
