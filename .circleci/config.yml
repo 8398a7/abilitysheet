@@ -48,7 +48,7 @@ jobs:
           name: Exec RSpec
           command: bundle exec rspec
       - run:
-          name: report codeclimate
+          name: Report Codeclimate
           command: bundle exec codeclimate-test-reporter
       - run:
           name: Run Puma
