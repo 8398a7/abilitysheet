@@ -18,11 +18,10 @@ module Score::API
 
     def self.pie
       ret = Array.new(8, 0)
-      Sheet.active.each do |sheet|
-        state = find_by(sheet_id: sheet.id).try(:state)
-        state ||= 7
-        ret[state] += 1
+      all.each do |score|
+        ret[score.state] += 1
       end
+      ret[7] += Sheet.active.count - ret.sum
       ret
     end
   end
