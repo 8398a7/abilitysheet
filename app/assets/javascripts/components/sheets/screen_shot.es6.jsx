@@ -14,7 +14,7 @@ class ScreenShot extends BaseComponent {
     if (this.state.capture) { return null }
     e.preventDefault()
     this.setState({text: '保存中...'})
-    $('.google-adsense').hide()
+    $('.rectangle-adsense').hide()
     domtoimage.toPng(document.body).then(dataUrl => {
       this.setState({
         text: 'ダウンロード',
@@ -22,7 +22,7 @@ class ScreenShot extends BaseComponent {
         download: 'ss.png',
         dataUrl: dataUrl,
       })
-      $('.google-adsense').show()
+      $('.rectangle-adsense').show()
     })
   }
 
