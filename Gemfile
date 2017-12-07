@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
 gem 'assets_rails'
-gem 'aws-sdk'
+gem 'aws-sdk-s3'
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
