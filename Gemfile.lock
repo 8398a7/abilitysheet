@@ -98,7 +98,7 @@ GEM
       uniform_notifier (~> 1.10.0)
     byebug (9.1.0)
     callsite (0.0.11)
-    capistrano (3.10.0)
+    capistrano (3.10.1)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -331,7 +331,7 @@ GEM
     public_suffix (3.0.1)
     puma (3.11.0)
     rack (2.0.3)
-    rack-contrib (2.0.0)
+    rack-contrib (2.0.1)
       rack (~> 2.0)
     rack-cors (1.0.2)
     rack-dev-mark (0.7.6)
