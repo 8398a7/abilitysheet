@@ -1,0 +1,17 @@
+footer.uk-container.uk-container-center.uk-margin.bottom
+  .footer
+    - if render_ads? && !Rails.env.test?
+      = rectangle_adsense
+    .relative
+      .uk-panel.panel-default
+        span.left-position
+          a href='https://twitter.com/IIDX_12'
+            = fa_icon 'twitter', text: 'Twitter'
+        span
+          | &copy; IIDX☆12参考表 8398a7 2014-2017
+          | &nbsp;
+          a href='https://github.com/8398a7/abilitysheet' target='_blank'
+            = fa_icon 'github'
+          | &nbsp;
+          a href='https://slackin-abilitysheet.herokuapp.com'
+            = fa_icon 'slack'

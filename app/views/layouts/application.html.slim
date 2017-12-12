@@ -25,7 +25,7 @@ html
         ga('send', 'pageview');
 
     = favicon_link_tag 'favicon.ico'
-    - unless current_user && current_user.special?
+    - render_ads? && !Rails.env.test?
       javascript:
         (adsbygoogle = window.adsbygoogle || []).push({
           google_ad_client: "ca-pub-5751776715932993",
@@ -45,8 +45,7 @@ html
 
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
-
-    = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
+    = render partial: 'layouts/footer'
 
 - if notice
   javascript:
