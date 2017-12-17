@@ -3,7 +3,7 @@
 describe UserDecorator do
   let(:instance) { described_class.new(user) }
 
-  let(:user) { create(:user) }
+  let(:user) { create(:user, created_at: Time.new(2017, 3, 3)) }
 
   describe '#pref' do
     it 'returns pref of its pref' do
@@ -32,6 +32,12 @@ describe UserDecorator do
   describe '#dan_color' do
     it 'returns dan color of its grade' do
       expect(instance.dan_color).to eq(User::Static::GRADE_COLOR[Abilitysheet::Application.config.iidx_grade])
+    end
+  end
+
+  describe '#joined_on' do
+    it 'returns joined on format' do
+      expect(instance.joined_on).to eq('Joined on 2017/03/03')
     end
   end
 end

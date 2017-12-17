@@ -1,0 +1,71 @@
+nav.uk-navbar.uk-navbar-attached
+  .uk-container.uk-container-center
+    = link_to root_path, class: 'uk-navbar-brand'
+      = image_tag 'icon', style: 'height: 30px'
+    ul.uk-navbar-nav.uk-hidden-small
+      li
+        = link_to users_path
+          = fa_icon 'refresh', text: '最近更新したユーザ'
+      - if user_signed_in?
+        li.uk-parent data-uk-dropdown=""
+          a = fa_icon 'database', text: 'マイページ'
+          .uk-dropdown.uk-dropdown-navbar
+            ul.uk-nav.uk-nav-navbar
+              li = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear')
+              li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
+              li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
+              li = link_to '更新データ', list_log_path(current_user.iidxid)
+              - if recent
+                li = link_to '最近の更新', logs_path(current_user.iidxid, recent)
+        li.uk-parent data-uk-dropdown=""
+          a = fa_icon 'user-times', text: 'ライバル'
+          .uk-dropdown.uk-dropdown-navbar
+            ul.uk-nav.uk-nav-navbar
+              li = link_to 'ライバル一覧', list_rival_path
+              li = link_to '逆ライバル一覧', reverse_list_rival_path
+      li
+        = link_to recommends_path
+          = fa_icon 'level-up', text: '地力値表'
+      li
+        = link_to new_message_path
+          = fa_icon 'phone', text: '連絡フォーム'
+      li
+        = link_to official_help_path
+          = fa_icon 'question', text: 'ヘルプ'
+      - if user_signed_in? && current_user.member?
+        li.uk-parent.admin-parent data-uk-dropdown=""
+          a = fa_icon 'gears', text: '管理'
+          .uk-dropdown.uk-dropdown-navbar
+            ul.uk-nav.uk-nav-navbar
+              - if current_user.member?
+                li = link_to '楽曲管理', admin_sheets_path
+              - if current_user.admin?
+                li = link_to 'ユーザ管理', admin_users_path
+                li = link_to 'メッセージ管理', admin_messages_path
+                li = link_to '問い合わせ返信', new_admin_mail_path
+                li = link_to 'sidekiq管理', admin_sidekiq_index_path
+                li = link_to  'RailsAdmin', rails_admin_path
+                li = link_to  'Dashboard', admin_dashboards_path
+    .uk-navbar-flip.uk-hidden-small
+      ul.uk-navbar-nav
+        - if user_signed_in?
+          li.uk-parent data-uk-dropdown=""
+            a
+              = fa_icon 'user', text: current_user.djname
+            .uk-dropdown.uk-dropdown-navbar
+              ul.uk-nav.uk-nav-navbar
+                li
+                  = link_to user_path(current_user.iidxid)
+                    = fa_icon 'code', text: 'マイページ'
+                li
+                  = link_to edit_user_registration_path
+                    = fa_icon 'pencil', text: '編集'
+                li
+                  = link_to destroy_user_session_path, method: :delete
+                    = fa_icon 'sign-out', text: 'ログアウト'
+        - else
+          li
+            = link_to new_user_session_path
+              = fa_icon 'sign-in', text: 'ログイン'
+    .uk-navbar-flip.uk-visible-small
+      a.uk-navbar-toggle href="#navbar-offcanvas" data-uk-offcanvas=""

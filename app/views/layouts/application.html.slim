@@ -24,9 +24,8 @@ html
         ga('set', 'dimension1', '#{request.remote_ip}');
         ga('send', 'pageview');
 
-
     = favicon_link_tag 'favicon.ico'
-    - unless current_user && current_user.special?
+    - render_ads? && !Rails.env.test?
       javascript:
         (adsbygoogle = window.adsbygoogle || []).push({
           google_ad_client: "ca-pub-5751776715932993",
@@ -39,71 +38,14 @@ html
     - unless Rails.env.test?
       = render 'peek/bar'
 
-    - tmp_recent = nil
     - if current_user && current_user.logs.exists?
-      - recent = link_to '最近の更新', logs_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
-      - tmp_recent = logs_path(current_user.iidxid, User.find_by(id: current_user.id).logs.order(:created_date).last.created_date)
-    = react_component 'Navbar', { recent: tmp_recent }, { class: 'uk-navbar uk-navbar-attached', tag: :nav }
-
-    .uk-offcanvas#navbar-offcanvas
-      .uk-offcanvas-bar.uk-offcanvas-bar-flip
-        ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
-          li.uk-nav-header
-            = fa_icon 'refresh', text: '最近更新したユーザ'
-          li = link_to '最近更新したユーザ', users_path
-          - if user_signed_in?
-            li.uk-nav-header
-              = fa_icon 'database', text: 'マイページ'
-            li = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear')
-            li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
-            li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
-            li = link_to '更新データ', list_log_path(current_user.iidxid)
-            - if recent
-              li = recent
-            li.uk-nav-header
-              = fa_icon 'user-times', text: 'ライバル'
-            li = link_to 'ライバル一覧', list_rival_path
-            li = link_to '逆ライバル一覧', reverse_list_rival_path
-          li.uk-nav-header
-            = fa_icon 'level-up', text: '地力値関係'
-          li = link_to '☆12 地力値+AAA', recommends_path
-          li.uk-nav-header
-            = fa_icon 'phone', text: '連絡フォーム'
-          li = link_to '連絡フォーム', new_message_path
-          li.uk-nav-header
-            = fa_icon 'question', text: 'ヘルプ'
-          li = link_to '公式とのデータ同期', official_help_path
-          - if user_signed_in? && current_user.member?
-            li.uk-nav-header
-              = fa_icon 'gears', text: '管理'
-            li = link_to '楽曲管理', admin_sheets_path
-            li = link_to 'ユーザ管理', admin_users_path
-            li = link_to 'メッセージ管理', admin_messages_path
-            li = link_to '問い合わせ返信', new_admin_mail_path
-            li = link_to 'sidekiq管理', admin_sidekiq_index_path
-            li = link_to 'RailsAdmin', rails_admin_path
-            li = link_to 'Dashboard', admin_dashboards_path
-          - if user_signed_in?
-            li.uk-nav-header
-              = fa_icon 'user fw', text: current_user.djname
-            li
-              = link_to user_path(current_user.iidxid)
-                = fa_icon 'code fw', text: 'マイページ'
-            li
-              = link_to edit_user_registration_path(current_user.id)
-                = fa_icon 'pencil fw', text: '設定'
-            li
-              = link_to destroy_user_session_path, method: :delete
-                = fa_icon 'sign-out fw', text: 'ログアウト'
-          - else
-            li
-              = link_to new_user_session_path
-                = fa_icon 'sign-in fw', text: 'ログイン'
+      - recent = current_user.logs.order(:created_date).last.created_date
+    = render partial: 'layouts/navbar', locals: { recent: recent }
+    = render partial: 'layouts/mobile_navbar', locals: { recent: recent }
 
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
-
-    = react_component 'Footer', {}, { class: 'uk-container uk-container-center uk-margin-bottom', tag: :footer }
+    = render partial: 'layouts/footer'
 
 - if notice
   javascript:

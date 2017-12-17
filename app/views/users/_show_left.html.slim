@@ -1,0 +1,41 @@
+- user = user.decorate
+- if user.image.url
+  = image_tag user.image.url, class: 'icon'
+. style='margin-top: 20px'
+  h2
+    b = user.djname
+.
+  h3
+    = user.iidxid
+    | &nbsp;
+    - if current_user && current_user != user
+      = link_to rival_reverse_path(user.iidxid), method: :put, class: 'uk-button'
+        - if current_user.follows.pluck(:target_user_id).include?(user.id)
+          = fa_icon 'user-times', text: 'ライバルから削除'
+        - else
+          = fa_icon 'user-plus', text: 'ライバルに追加'
+. style='padding-bottom: 3px'
+    = react_component 'TwitterSharedButton', text: "DJ.#{user.djname} ☆12参考表プロフィール"
+. style='padding-bottom: 3px'
+  = link_to 'ノマゲ参考表', sheet_path(user.iidxid, type: 'clear'), class: 'uk-button uk-button-primary'
+  = link_to 'ハード参考表', sheet_path(user.iidxid, type: 'hard'), class: 'uk-button uk-button-danger'
+- if current_user && current_user != user
+  . style='padding-bottom: 3px'
+      .
+        = link_to 'ノマゲ比較', clear_rival_path(user.iidxid), class: 'uk-button uk-button-primary'
+        = link_to 'ハード比較', hard_rival_path(user.iidxid), class: 'uk-button uk-button-danger'
+hr
+. = fa_icon 'street-view', text: user.grade
+. = fa_icon 'map-marker', text: user.pref
+. = fa_icon 'clock-o', text: user.joined_on
+hr
+table style='margin: 0 auto; text-align: center'
+  tbody
+    tr
+      td
+        h2#rival-number = user.follows.size
+      td
+        h2#reverse-rival-number = user.followers.size
+    tr
+      td ライバル
+      td 逆ライバル

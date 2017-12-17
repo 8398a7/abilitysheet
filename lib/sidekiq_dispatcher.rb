@@ -6,7 +6,7 @@ class SidekiqDispatcher
     return true if ENV['docker']
     Process.getpgid(File.read("#{Rails.root}/tmp/pids/#{PID}").chomp!.to_i)
     true
-  rescue Errno::ENOENT
+  rescue Errno::ENOENT, Errno::ESRCH
     false
   end
 

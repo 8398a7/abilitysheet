@@ -19,6 +19,10 @@ class UserDecorator < Draper::Decorator
     User::Static::GRADE[object.grade]
   end
 
+  def joined_on
+    'Joined on ' + object.created_at.to_s.split.first.tr('-', '/')
+  end
+
   def dan_color
     return '#afeeee' if object.grade >= 3 && object.grade <= 10
     return '#ff6347' if object.grade == 1 || object.grade == 2

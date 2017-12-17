@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Api::V1::UsersController < Api::V1::BaseController
-  before_action :authenticate!, only: %i[change_rival score_viewer]
+  before_action :authenticate!, only: %i[score_viewer]
 
   def status
     render json: { status: current_user.try(:iidxid) }
@@ -9,13 +9,6 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def me
     render json: { current_user: current_user.try(:schema) }
-  end
-
-  def change_rival
-    target_user = User.find_by!(iidxid: params[:iidxid])
-
-    current_user.change_follow(target_user)
-    render json: { current_user: current_user.try(:schema), target_user: target_user.try(:schema) }
   end
 
   def score_viewer
