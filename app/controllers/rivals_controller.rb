@@ -26,6 +26,13 @@ class RivalsController < ApplicationController
     condition if params[:condition]
   end
 
+  def reverse
+    target_user = User.find_by!(iidxid: params[:rival_id])
+
+    current_user.change_follow(target_user)
+    redirect_back(fallback_location: root_path)
+  end
+
   def register
     current_user.follow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を追加しました" : flash[:alert] = '既に登録済みのライバルです'
     render :reload

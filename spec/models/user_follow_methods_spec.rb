@@ -108,4 +108,20 @@ describe User::FollowMethods, type: :model do
       expect(User.find(1).following?(2)).to eq false
     end
   end
+
+  describe '#change_follow' do
+    before do
+      (1..2).each { |i| create(:user, id: i, iidxid: format('0000-%04d', i), username: format('test%d', i)) }
+    end
+    it 'フォローしていればアンフォローする' do
+      User.find(1).follow(User.find(2).iidxid)
+      User.find(1).change_follow(User.find(2))
+      expect(User.find(1).following?(2)).to eq false
+    end
+    it 'フォローしていなければフォローする' do
+      User.find(1).unfollow(User.find(2).iidxid)
+      User.find(1).change_follow(User.find(2))
+      expect(User.find(1).following?(2)).to eq true
+    end
+  end
 end

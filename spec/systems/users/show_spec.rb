@@ -26,7 +26,7 @@ feature 'プロフィールページ', type: :system, js: true do
       expect(page).to have_content('海外')
     end
     scenario '登録日が存在する' do
-      expect(page).to have_content('Joined on 2016/3/6')
+      expect(page).to have_content('Joined on 2016/03/06')
     end
     scenario '統計情報が存在する' do
       expect(page).to have_content('統計情報')
@@ -41,8 +41,8 @@ feature 'プロフィールページ', type: :system, js: true do
       expect(page).to have_no_content('ハード比較')
     end
     scenario 'ライバル追加/削除が存在しない' do
-      expect(page).to have_no_button('ライバルから削除')
-      expect(page).to have_no_button('ライバルに追加')
+      expect(page).to have_no_link('ライバルから削除')
+      expect(page).to have_no_link('ライバルに追加')
     end
     scenario 'ライバル/逆ライバルの数が表示されている' do
       expect(page).to have_selector('#rival-number', text: '0')
@@ -74,7 +74,7 @@ feature 'プロフィールページ', type: :system, js: true do
       expect(page).to have_content('海外')
     end
     scenario '登録日が存在する' do
-      expect(page).to have_content('Joined on 2016/3/6')
+      expect(page).to have_content('Joined on 2016/03/06')
     end
     scenario '統計情報が存在する' do
       expect(page).to have_content('統計情報')
@@ -89,17 +89,17 @@ feature 'プロフィールページ', type: :system, js: true do
       expect(page).to have_content('ハード比較')
     end
     scenario 'ライバル追加/削除が行える' do
-      expect(page).to have_button('ライバルに追加')
-      click_button 'ライバルに追加'
+      expect(page).to have_link('ライバルに追加')
+      click_link 'ライバルに追加'
       user.reload
       expect(page).to have_selector('#reverse-rival-number', text: '1')
       expect(user.followers.count).to eq 1
-      expect(page).to have_button('ライバルから削除')
-      click_button 'ライバルから削除'
+      expect(page).to have_link('ライバルから削除')
+      click_link 'ライバルから削除'
       user.reload
       expect(page).to have_selector('#reverse-rival-number', text: '0')
       expect(user.followers.count).to eq 0
-      expect(page).to have_button('ライバルに追加')
+      expect(page).to have_link('ライバルに追加')
     end
     scenario 'ライバル/逆ライバルの数が表示されている' do
       expect(page).to have_selector('#rival-number', text: '0')
