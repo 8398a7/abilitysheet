@@ -49,6 +49,7 @@ class Sheet extends BaseComponent {
 
   componentWillMount() {
     SheetActionCreators.get()
+    UserActionCreators.getMe()
     EnvironmentActionCreators.judgeReverse()
     ScoreActionCreators.get({iidxid: this.props.user.iidxid})
     ScoreStore.addChangeListener(this.onChangeScore)
