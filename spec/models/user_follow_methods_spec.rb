@@ -124,4 +124,27 @@ describe User::FollowMethods, type: :model do
       expect(User.find(1).following?(2)).to eq true
     end
   end
+
+  describe 'association' do
+    before do
+      (1..2).each { |i| create(:user, id: i, iidxid: format('0000-%04d', i), username: format('test%d', i)) }
+      User.find(1).follow(User.find(2).iidxid)
+      User.find(2).follow(User.find(1).iidxid)
+    end
+    it 'フォロワーが消えたらフォロー関係が解消されること' do
+      expect(User.find(1).following?(2)).to eq true
+      User.find(2).destroy
+      expect(User.find(1).following?(2)).to eq false
+    end
+    it 'フォロワーが消えたらフォロー数が減ること' do
+      expect(User.find(1).follows.size).to eq 1
+      User.find(2).destroy
+      expect(User.find(1).follows.size).to eq 0
+    end
+    it 'フォロワーが消えたらフォロワー数が減ること' do
+      expect(User.find(1).followers.size).to eq 1
+      User.find(2).destroy
+      expect(User.find(1).followers.size).to eq 0
+    end
+  end
 end
