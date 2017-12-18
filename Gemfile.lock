@@ -139,8 +139,8 @@ GEM
       archive-zip (~> 0.7.0)
       nokogiri (~> 1.6)
     chronic (0.10.2)
-    codeclimate-test-reporter (1.0.8)
-      simplecov (<= 0.13)
+    codeclimate-test-reporter (1.0.7)
+      simplecov
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -468,7 +468,7 @@ GEM
       rack-protection (>= 1.5.0)
       redis (>= 3.3.4, < 5)
     simple_oauth (0.3.1)
-    simplecov (0.13.0)
+    simplecov (0.15.1)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -623,7 +623,6 @@ DEPENDENCIES
   webmock
   whenever
   yaml_db
-
 
 BUNDLED WITH
    1.16.0
