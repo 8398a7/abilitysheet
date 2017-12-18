@@ -5,12 +5,12 @@ class RivalsController < ApplicationController
   before_action :load_sheet, only: %i[clear hard]
 
   def list
-    @users = current_user.following
+    @users = current_user.follow_users
     load_rival
   end
 
   def reverse_list
-    @users = current_user.followers
+    @users = current_user.follower_users
     load_rival
   end
 
