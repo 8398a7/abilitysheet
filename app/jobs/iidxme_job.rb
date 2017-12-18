@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class IidxmeWorker
-  include Sidekiq::Worker
-  sidekiq_options queue: :iidxme
-  sidekiq_options retry: false
+class IidxmeJob < ApplicationJob
+  queue_as :iidxme
 
   def perform(id)
     user = User.find(id)

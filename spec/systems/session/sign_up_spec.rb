@@ -6,7 +6,7 @@ feature 'sign up', type: :system do
     sync_sheet
     allow(SidekiqDispatcher).to receive(:exists?).and_return(true)
     allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
-    allow(ManagerWorker).to receive(:perform_in).and_return(true)
+    allow(ManagerJob).to receive(:perform_later).and_return(true)
   end
   scenario '新規登録を行う' do
     expect(User.count).to eq 0
