@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class OfficialWorker
-  include Sidekiq::Worker
-  sidekiq_options queue: :official
-  sidekiq_options retry: false
+class OfficialJob < ApplicationJob
+  queue_as :official
 
   def perform(user_id, json)
     user = User.find(user_id)
