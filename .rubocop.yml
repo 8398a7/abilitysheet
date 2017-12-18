@@ -56,6 +56,9 @@ Documentation:
 Style/MixinGrouping:
   Enabled: false
 
+Style/FormatStringToken:
+  Enabled: false
+
 AllCops:
   TargetRubyVersion: 2.4
   Include:
