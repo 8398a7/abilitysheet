@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class ManagerWorker
-  include Sidekiq::Worker
-  sidekiq_options queue: :manager
-  sidekiq_options retry: false
+class ManagerJob < ApplicationJob
+  queue_as :manager
 
   def perform(id)
     user = User.find(id)

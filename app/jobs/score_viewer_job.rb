@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class ScoreViewerWorker
-  include Sidekiq::Worker
-  sidekiq_options queue: :score_viewer
-  sidekiq_options retry: false
+class ScoreViewerJob < ApplicationJob
+  queue_as :score_viewer
 
   def perform(elems, id)
     user = User.find(id)
