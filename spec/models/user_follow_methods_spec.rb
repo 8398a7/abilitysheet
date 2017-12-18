@@ -25,11 +25,11 @@ describe User::FollowMethods, type: :model do
       context 'ライバルに登録' do
         before { user.follow(target.iidxid) }
         it '自身のライバルに追加されている' do
-          expect(user.following).to include(target)
+          expect(user.follow_users).to include(target)
         end
         it '相手の逆ライバルに追加されている' do
           target.reload
-          expect(target.followers).to include(user)
+          expect(target.follower_users).to include(user)
         end
       end
       describe '既にライバル登録済みのユーザをライバルにしようとする' do
@@ -39,8 +39,8 @@ describe User::FollowMethods, type: :model do
         end
         it 'ライバル数，逆ライバル数は1のままである' do
           target.reload
-          expect(user.following.count).to eq 1
-          expect(target.followers.count).to eq 1
+          expect(user.follow_users.count).to eq 1
+          expect(target.follower_users.count).to eq 1
         end
       end
     end
@@ -54,11 +54,11 @@ describe User::FollowMethods, type: :model do
         user.follow(target.iidxid)
       end
       it '自身のライバルに追加されている' do
-        expect(user.following).to include(target)
+        expect(user.follow_users).to include(target)
       end
       it '相手の逆ライバルに追加されている' do
         target.reload
-        expect(target.followers).to include(user)
+        expect(target.follower_users).to include(user)
       end
     end
   end
@@ -75,11 +75,11 @@ describe User::FollowMethods, type: :model do
         user.unfollow(target.iidxid)
       end
       it 'ユーザのライバルは0である' do
-        expect(user.following.count).to eq 0
+        expect(user.follow_users.count).to eq 0
       end
       it 'ターゲットの逆ライバルは0である' do
         target.reload
-        expect(target.followers.count).to eq 0
+        expect(target.follower_users.count).to eq 0
       end
     end
     describe '登録していないユーザを削除しようとする' do
@@ -87,11 +87,11 @@ describe User::FollowMethods, type: :model do
         expect(user.unfollow(target.iidxid)).to eq false
       end
       it 'ユーザのライバルは0である' do
-        expect(user.following.count).to eq 0
+        expect(user.follow_users.count).to eq 0
       end
       it 'ターゲットの逆ライバルは0である' do
         target.reload
-        expect(target.followers.count).to eq 0
+        expect(target.follower_users.count).to eq 0
       end
     end
   end
@@ -106,6 +106,45 @@ describe User::FollowMethods, type: :model do
     end
     it 'フォローしていればいなければfalseを返す' do
       expect(User.find(1).following?(2)).to eq false
+    end
+  end
+
+  describe '#change_follow' do
+    before do
+      (1..2).each { |i| create(:user, id: i, iidxid: format('0000-%04d', i), username: format('test%d', i)) }
+    end
+    it 'フォローしていればアンフォローする' do
+      User.find(1).follow(User.find(2).iidxid)
+      User.find(1).change_follow(User.find(2))
+      expect(User.find(1).following?(2)).to eq false
+    end
+    it 'フォローしていなければフォローする' do
+      User.find(1).unfollow(User.find(2).iidxid)
+      User.find(1).change_follow(User.find(2))
+      expect(User.find(1).following?(2)).to eq true
+    end
+  end
+
+  describe 'association' do
+    before do
+      (1..2).each { |i| create(:user, id: i, iidxid: format('0000-%04d', i), username: format('test%d', i)) }
+      User.find(1).follow(User.find(2).iidxid)
+      User.find(2).follow(User.find(1).iidxid)
+    end
+    it 'フォロワーが消えたらフォロー関係が解消されること' do
+      expect(User.find(1).following?(2)).to eq true
+      User.find(2).destroy
+      expect(User.find(1).following?(2)).to eq false
+    end
+    it 'フォロワーが消えたらフォロー数が減ること' do
+      expect(User.find(1).follows.size).to eq 1
+      User.find(2).destroy
+      expect(User.find(1).follows.size).to eq 0
+    end
+    it 'フォロワーが消えたらフォロワー数が減ること' do
+      expect(User.find(1).followers.size).to eq 1
+      User.find(2).destroy
+      expect(User.find(1).followers.size).to eq 0
     end
   end
 end

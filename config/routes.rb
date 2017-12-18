@@ -48,6 +48,9 @@ Rails.application.routes.draw do
   get '/rival/hard/:id' => 'rivals#hard', as: :hard_rival
   post '/rival/remove/:id' => 'rivals#remove', as: :remove_rival
   post '/rival/register/:id' => 'rivals#register', as: :register_rival
+  resources :rivals, only: [] do
+    put 'reverse'
+  end
 
   # sheet
   get '/sheets/:iidxid/:type' => 'sheets#show', as: :sheet

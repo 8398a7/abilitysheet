@@ -5,12 +5,12 @@ class RivalsController < ApplicationController
   before_action :load_sheet, only: %i[clear hard]
 
   def list
-    @users = current_user.following
+    @users = current_user.follow_users
     load_rival
   end
 
   def reverse_list
-    @users = current_user.followers
+    @users = current_user.follower_users
     load_rival
   end
 
@@ -24,6 +24,13 @@ class RivalsController < ApplicationController
     @sheets = @sheets.order(:h_ability, :title)
     return if params[:condition] == 'all'
     condition if params[:condition]
+  end
+
+  def reverse
+    target_user = User.find_by!(iidxid: params[:rival_id])
+
+    current_user.change_follow(target_user)
+    redirect_back(fallback_location: root_path)
   end
 
   def register
