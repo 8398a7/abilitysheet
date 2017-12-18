@@ -32,7 +32,7 @@ class Api::V1::ScoresController < Api::V1::BaseController
     Raven.capture_exception(ex)
     SidekiqDispatcher.start!
   ensure
-    IidxmeWorker.perform_async(@user.id)
+    IidxmeJob.perform_later(@user.id)
     render json: { result: :ok, date: Date.today }
   end
 
@@ -43,7 +43,7 @@ class Api::V1::ScoresController < Api::V1::BaseController
     Raven.capture_exception(ex)
     SidekiqDispatcher.start!
   ensure
-    OfficialWorker.perform_async(current_user.id, params.to_json)
+    OfficialJob.perform_later(current_user.id, params.to_json)
     head :ok
   end
 

@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       Slack::SidekiqDispatcher.notify
       return
     end
-    ManagerWorker.perform_async(user_id)
-    IidxmeWorker.perform_async(user_id)
+    ManagerJob.perform_later(user_id)
+    IidxmeJob.perform_later(user_id)
   end
 end

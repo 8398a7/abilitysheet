@@ -30,7 +30,7 @@ class LogsController < ApplicationController
 
   def manager
     if SidekiqDispatcher.exists?
-      ManagerWorker.perform_async(current_user.id)
+      ManagerJob.perform_later(current_user.id)
       flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
       flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
     else
@@ -43,7 +43,7 @@ class LogsController < ApplicationController
     if ENV['iidxme'] != 'true'
       flash[:alert] = %(現在動作確認を行っていないため停止中です)
     elsif SidekiqDispatcher.exists?
-      IidxmeWorker.perform_async(current_user.id)
+      IidxmeJob.perform_later(current_user.id)
       flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
       flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
     else
