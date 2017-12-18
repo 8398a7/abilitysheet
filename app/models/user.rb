@@ -46,6 +46,9 @@ class User < ApplicationRecord
   has_many :scores, dependent: :delete_all
   has_many :logs, dependent: :delete_all
   has_many :follows, dependent: :delete_all
+  has_many :followers, foreign_key: :target_user_id, class_name: 'Follow', dependent: :delete_all
+  has_many :follow_users, through: :follows, source: :to_user
+  has_many :follower_users, through: :followers, source: :from_user
   has_many :messages, dependent: :delete_all
 
   validates :email, uniqueness: true, presence: true, format: { with: Devise.email_regexp, message: 'が正しくありません。' }

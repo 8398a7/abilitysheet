@@ -28,8 +28,8 @@ module User::API
         pref: pref,
         image_url: image.url,
         created_at: created_at,
-        follows: following.pluck(:iidxid),
-        followers: followers.pluck(:iidxid)
+        follows: follow_users.pluck(:iidxid),
+        followers: follower_users.pluck(:iidxid)
       }
     end
   end
