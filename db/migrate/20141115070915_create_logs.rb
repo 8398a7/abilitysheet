@@ -1,4 +1,4 @@
-class CreateLogs < ActiveRecord::Migration
+class CreateLogs < ActiveRecord::Migration[5.1]
   def change
     create_table :logs do |t|
       t.integer :user_id
@@ -16,5 +16,6 @@ class CreateLogs < ActiveRecord::Migration
 
     add_index :logs, :user_id
     add_index :logs, :sheet_id
+    add_index :logs, %i(created_date user_id sheet_id), unique: true
   end
 end
