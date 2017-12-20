@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -22,12 +21,12 @@
 #  grade                  :integer
 #  pref                   :integer          not null
 #  role                   :integer          default(0), not null
+#  image                  :string
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  image                  :string
 #
 
 describe User, type: :model do
