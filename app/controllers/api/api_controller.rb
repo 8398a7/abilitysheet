@@ -20,6 +20,11 @@ class Api::ApiController < ActionController::API
     raise UnauthorizedError if current_user.role < User::Role::MEMBER
   end
 
+  def authenticate_slack!
+    return if params[:token] == ENV['MANAGEMENT_SLACK_TOKEN']
+    raise Forbidden
+  end
+
   private
 
   def render_503

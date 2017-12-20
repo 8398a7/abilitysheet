@@ -95,6 +95,8 @@ Rails.application.routes.draw do
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
       post '/scores/sync/official' => 'scores#sync_official'
+
+      post '/maintenance', to: 'maintenance#change'
     end
   end
 
