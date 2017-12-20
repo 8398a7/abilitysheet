@@ -7,7 +7,7 @@ describe Scrape::IIDXME do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      it '#sync' do
+      xit '#sync' do
         create(:sheet, id: 1, title: 'F')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
@@ -25,13 +25,13 @@ describe Scrape::IIDXME do
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w[1 1110] }
-        it '#sync' do
+        xit '#sync' do
           iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        it '#sync' do
+        xit '#sync' do
           expect(iidxme.sync(user.iidxid)).to be_falsy
         end
       end
