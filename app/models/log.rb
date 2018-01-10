@@ -24,6 +24,8 @@ class Log < ApplicationRecord
 
   validates :sheet_id, uniqueness: { scope: %i[created_date user_id] }
 
+  after_destroy :rollback_score
+
   include Graph
 
   def self.prev_next(user_id, date)
@@ -84,5 +86,12 @@ class Log < ApplicationRecord
       title: title,
       created_date: created_date
     }
+  end
+
+  private
+
+  def rollback_score
+    score = Score.find_by(user_id: user_id, sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
+    score.update_column(:state, pre_state)
   end
 end
