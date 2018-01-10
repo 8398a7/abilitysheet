@@ -1,6 +1,5 @@
 var scores = null;
-// var serverUrlBase = 'https://iidx12.tk';
-var serverUrlBase = 'http://localhost:3000';
+var serverUrlBase = 'https://iidx12.tk';
 var login = false;
 var user = {}
 var timeout = 100
