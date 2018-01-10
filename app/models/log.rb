@@ -92,6 +92,6 @@ class Log < ApplicationRecord
 
   def rollback_score
     score = Score.find_by(user_id: user_id, sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
-    score.update_column(:state, pre_state)
+    score.update!(state: pre_state, score: pre_score, bp: pre_bp)
   end
 end
