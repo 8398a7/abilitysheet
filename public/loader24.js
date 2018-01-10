@@ -6,9 +6,6 @@ var user = {}
 var timeout = 100
 $.ajaxSetup({ xhrFields: { withCredentials: true } });
 
-// TODO: konamiのメンテナンス時間とログインしていない場合の対応
-// TODO: konamiにログインしていない場合の対応
-
 function getUserInfo() {
   $.ajax({
     type: 'get',
@@ -65,9 +62,13 @@ function putData() {
 
 checkStatus();
 if (login) {
-  getUserInfo();
-  getCsv();
-  setTimeout(putData, timeout);
+  try {
+    getUserInfo();
+    getCsv();
+    setTimeout(putData, timeout);
+  } catch (e) {
+    alert('please login: eAMUSEMENT');
+  }
 } else {
   alert('please login: https://iidx12.tk');
 }

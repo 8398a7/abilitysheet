@@ -66,9 +66,13 @@ function putData() {
 
 checkStatus();
 if (login) {
-  getUserInfo();
-  getCsv();
-  setTimeout(putData, timeout);
+  try {
+    getUserInfo();
+    getCsv();
+    setTimeout(putData, timeout);
+  } catch (e) {
+    alert('please login: eAMUSEMENT');
+  }
 } else {
   alert('please login: https://iidx12.tk');
 }
