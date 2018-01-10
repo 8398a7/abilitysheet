@@ -108,6 +108,8 @@ class Score < ApplicationRecord
       next if k == 'updated_at'
       v = v.to_i unless v.class == NilClass
       return false if k == 'state' && try(k).nil? && v.to_i == 7
+      return false if k == 'score' && try(k).nil? && v.to_i == 0
+      return false if k == 'bp' && try(k).nil? && v.to_i == 0
       return false if try(k) != v
     end
     true
