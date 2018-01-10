@@ -3,18 +3,20 @@
 
   ul
     li 本機能は公式サイトプレミアムメンバーである必要があります(CSVを落とせる人のみ)
-    form.uk-form
-      .uk-form-controls
-        .uk-form-row
-          textarea.uk-form readonly=true = @bookmarklet
+    code#bookmarklet = @bookmarklet
     li
       | をブックマークする
-      button copy
+      button#copyButton copy
     li 公式サイトに移動し、最初にブックマークしたサイトを開く
     li ※iidx12.tkと公式サイトの両方でログインされていることが前提です
 
 javascript:
-  $('button').on('click',function() {
-    $('textarea').select();
+  var button = document.getElementById('copyButton');
+  button.addEventListener('click', function(){
+    var yourCode = document.getElementById('bookmarklet');
+    var range = document.createRange();
+    range.selectNode(yourCode);
+    window.getSelection().addRange(range);
     document.execCommand('copy');
+    alert('コピー完了');
   });
