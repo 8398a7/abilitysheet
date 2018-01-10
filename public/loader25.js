@@ -11,7 +11,7 @@ $.ajaxSetup({ xhrFields: { withCredentials: true } });
 function getUserInfo() {
   $.ajax({
     type: 'get',
-    url: 'https://p.eagate.573.jp/game/2dx/24/p/djdata/status.html',
+    url: 'https://p.eagate.573.jp/game/2dx/25/p/djdata/status.html',
     async: false,
     success: function(data) {
       canvas = document.createElement('canvas');
@@ -25,8 +25,8 @@ function getUserInfo() {
       ctx = canvas.getContext('2d');
       ctx.drawImage(qpro, 0, 0);
       setTimeout(function() { user.image = canvas.toDataURL('image/png'); }, timeout);
-      user.djname = $($(data).find('table#dj_data_table > tbody > tr')[0]).find('td').text();
-      user.grade = $($(data).find('td.point')[5]).text();
+      user.djname = $(data).find('.dj-profile > table > tbody > tr > td')[1].textContent;
+      user.grade = $($(data).find('.rank-cat')[2]).find('div')[1].textContent
     },
   });
 }
@@ -44,10 +44,12 @@ function checkStatus() {
 function getCsv() {
   $.ajax({
     type: 'post',
-    url: 'https://p.eagate.573.jp/game/2dx/24/p/djdata/score_download.html',
+    url: 'https://p.eagate.573.jp/game/2dx/25/p/djdata/score_download.html',
     async: false,
-    data: { style: 0 },
-    success: function(data) { scores = $(data).find('#score_data').text() }
+    data: { style: 'SP' },
+    success: function(data) {
+      scores = $(data).find('#score_data').text()
+    }
   });
 }
 
@@ -64,9 +66,13 @@ function putData() {
 
 checkStatus();
 if (login) {
-  getUserInfo();
-  getCsv();
-  setTimeout(putData, timeout);
+  try {
+    getUserInfo();
+    getCsv();
+    setTimeout(putData, timeout);
+  } catch (e) {
+    alert('please login: eAMUSEMENT');
+  }
 } else {
   alert('please login: https://iidx12.tk');
 }

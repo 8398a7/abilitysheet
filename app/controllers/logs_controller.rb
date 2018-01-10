@@ -66,8 +66,6 @@ class LogsController < ApplicationController
   def destroy
     log = current_user.owner? ? Log.find(params[:id]) : current_user.logs.find(params[:id])
     if log
-      score = Score.find_by(user_id: log.user_id, sheet_id: log.sheet_id, version: Abilitysheet::Application.config.iidx_version)
-      score.update_column(:state, log.pre_state)
       flash[:notice] = "#{log.title}のログを削除し，状態を戻しました"
       log.destroy
     else
