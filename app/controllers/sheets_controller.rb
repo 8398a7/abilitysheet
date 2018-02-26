@@ -22,7 +22,8 @@ class SheetsController < ApplicationController
     @action_routes = {
       'power' => :power,
       'clear' => :clear,
-      'hard' => :hard
+      'hard' => :hard,
+      'exh' => :exh
     }
     raise ActionController::RoutingError unless @action_routes[params[:type]]
   end
@@ -38,6 +39,10 @@ class SheetsController < ApplicationController
 
   def hard
     @sheet_type = 1
+  end
+
+  def exh
+    @sheet_type = 2
   end
 
   def load_static

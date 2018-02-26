@@ -43,7 +43,9 @@ class Api::V1::ScoresController < Api::V1::BaseController
     Raven.capture_exception(ex)
     SidekiqDispatcher.start!
   ensure
-    OfficialJob.perform_later(current_user.id, params.to_json)
+    if params[:scores].present?
+      OfficialJob.perform_later(current_user.id, params.to_json)
+    end
     head :ok
   end
 
