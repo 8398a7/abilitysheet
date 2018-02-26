@@ -21,7 +21,7 @@ module Scrape
       tables.each_with_index do |table, index|
         header = headers[index + 1]
         table.children.each do |row|
-          title = row&.children[5]&.text
+          title = row.children[5]&.text
           next if title == '曲名'
           next unless title
           result[title] = header.text
