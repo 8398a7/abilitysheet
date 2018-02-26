@@ -1,0 +1,5 @@
+- @title = "#{@user.djname} - エクハ参考表"
+- @mobile_mode = false
+= react_component 'Sheet',
+  type: 'exh', user: @user.schema, recent: recent_link(@user.iidxid),
+  versions: @versions, sheet_type: @sheet_type, lamp: Static::LAMP
