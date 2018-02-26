@@ -18,9 +18,9 @@ class Sheet extends BaseComponent {
         },
         exh: {
           name: 'エクハ参考表',
-          link: 'clear',
+          link: 'hard',
           remain: '未エクハ',
-          button: 'uk-button-primary'
+          button: 'uk-button-danger'
         }
       },
       remain: false,

@@ -40,4 +40,20 @@ class Sheet < ApplicationRecord
       fc: d, exh: d, h: d, c: d, e: d, aaa: d
     )
   end
+
+  def self.apply_exh
+    Scrape::ExhCollector.new.get_sheet.each do |title, ability|
+      sheet = Sheet.find_by(title: title)
+      next unless sheet
+      sheet.update(exh_ability: find_exh_ability_from_string(ability)[1])
+    end
+  end
+
+  def self.find_exh_ability_from_string(ability_string)
+    Static::EXH_POWER.find { |power| power[0] == ability_string } || [nil, -1]
+  end
+
+  def self.find_exh_ability_from_integer(ability_integer)
+    Static::EXH_POWER.find { |power| power[1] == ability_integer } || [nil, -1]
+  end
 end

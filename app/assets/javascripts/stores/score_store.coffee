@@ -16,6 +16,7 @@ $.extend ScoreStore,
 
   remain: (type) ->
     threshold = if type is 'clear' then Env.EASY else Env.HARD
+    threshold = if type is 'exh' then Env.EXH
     remain = 0
     for id, _ of SheetStore.get()
       score = scores[id]
