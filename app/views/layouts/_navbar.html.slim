@@ -13,6 +13,7 @@ nav.uk-navbar.uk-navbar-attached
             ul.uk-nav.uk-nav-navbar
               li = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear')
               li = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard')
+              li = link_to 'エクハ参考表', sheet_path(iidxid: current_user.iidxid, type: 'exh')
               li = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power')
               li = link_to '更新データ', list_log_path(current_user.iidxid)
               - if recent
