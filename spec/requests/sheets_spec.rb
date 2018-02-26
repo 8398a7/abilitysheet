@@ -13,8 +13,10 @@ describe Api::V1::SheetsController, type: :request do
           title: 'MyString',
           clear: 1,
           hard: 1,
+          exh: 1,
           clear_string: '個人差S+',
           hard_string: '個人差S+',
+          exh_string: '難度10',
           version: 1
         }
       }
@@ -34,6 +36,7 @@ describe Api::V1::SheetsController, type: :request do
             title: 'MyString',
             n_ability: 1,
             h_ability: 1,
+            exh_ability: 1,
             version: 1,
             active: false,
             textage: 'MyString',
