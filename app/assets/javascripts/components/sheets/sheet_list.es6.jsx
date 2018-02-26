@@ -68,7 +68,6 @@ class SheetList extends BaseComponent {
   setAbilities(sheets) {
     abilities = Object.keys(sheets).map((ability) => { return parseInt(ability)})
     if(this.state.reverse) { abilities = abilities.reverse() }
-    console.log(abilities)
     return abilities
   }
 
