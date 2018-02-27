@@ -16,7 +16,7 @@ describe Api::V1::SheetsController, type: :request do
           exh: 1,
           clear_string: '個人差S+',
           hard_string: '個人差S+',
-          exh_string: '難度10',
+          exh_string: '難度11',
           version: 1
         }
       }
