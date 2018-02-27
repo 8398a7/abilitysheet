@@ -84,7 +84,6 @@ group :test do
   gem 'capybara'
   gem 'chromedriver-helper'
   gem 'codeclimate-test-reporter'
-  gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'json_expressions'
   gem 'rails-controller-testing'
