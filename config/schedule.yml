@@ -1,0 +1,4 @@
+sync_sheets:
+  cron: '00 22 * * *'
+  class: SyncSheetsJob
+  queue: sync
