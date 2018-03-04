@@ -24,5 +24,6 @@ class SyncSheetsJob < ApplicationJob
         textage: ''
       )
     end
+    Sheet.apply_exh
   end
 end
