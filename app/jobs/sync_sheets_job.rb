@@ -9,7 +9,7 @@ class SyncSheetsJob < ApplicationJob
       q: {
         music_scores_play_type_status_eq: 0,
         music_scores_level_eq: 12,
-        created_at_gteq: Date.today - 1.week
+        created_at_gteq: date
       }
     )
     sheets.each do |sheet|
