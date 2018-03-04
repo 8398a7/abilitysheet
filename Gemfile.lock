@@ -182,6 +182,8 @@ GEM
       request_store (~> 1.0)
     equalizer (0.0.11)
     erubi (1.7.0)
+    et-orbi (1.0.9)
+      tzinfo
     execjs (2.7.0)
     factory_bot (4.8.2)
       activesupport (>= 3.0.0)
@@ -445,6 +447,8 @@ GEM
     ruby-graphviz (1.2.3)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     safe_yaml (1.0.4)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
@@ -467,6 +471,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (>= 3.3.5, < 5)
+    sidekiq-cron (0.6.3)
+      rufus-scheduler (>= 3.3.0)
+      sidekiq (>= 4.2.1)
     sidekiq-history (0.0.9)
       sidekiq (>= 3.0.0)
     simple_oauth (0.3.1)
@@ -612,6 +619,7 @@ DEPENDENCIES
   selenium-webdriver
   sentry-raven
   sidekiq
+  sidekiq-cron
   sidekiq-history
   simplecov
   sinatra
@@ -625,7 +633,6 @@ DEPENDENCIES
   webmock
   whenever
   yaml_db
-
 
 BUNDLED WITH
    1.16.0
