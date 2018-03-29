@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
 class HelpsController < ApplicationController
-  def ist
-  end
+  def ist; end
 end
