@@ -31,8 +31,8 @@ nav.uk-navbar.uk-navbar-attached
         = link_to new_message_path
           = fa_icon 'phone', text: '連絡フォーム'
       li
-        = link_to official_help_path
-          = fa_icon 'question', text: 'ヘルプ'
+        = link_to ist_helps_path
+          = fa_icon 'question', text: 'ISTとの同期'
       - if user_signed_in? && current_user.member?
         li.uk-parent.admin-parent data-uk-dropdown=""
           a = fa_icon 'gears', text: '管理'

@@ -41,7 +41,6 @@ class User < ApplicationRecord
   include User::List
   include User::Role
   include User::Static
-  include User::Official
   include User::Ist
 
   has_many :scores, dependent: :delete_all
