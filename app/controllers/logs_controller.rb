@@ -52,6 +52,17 @@ class LogsController < ApplicationController
     render :reload
   end
 
+  def ist
+    if SidekiqDispatcher.exists?
+      IstSyncJob.perform_later(current_user)
+      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+      flash[:alert] = %(反映されていない場合はISTに該当IIDXIDが存在しないと思われます。(登録しているけど一度もIST側でスコアを送っていないなど))
+    else
+      sidekiq_notify
+    end
+    render :reload
+  end
+
   def show
     date = params[:date].to_date
     @logs = Log.where(user_id: @user.id, created_date: date).preload(:sheet)
