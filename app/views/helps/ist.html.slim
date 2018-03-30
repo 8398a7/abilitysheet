@@ -1,0 +1,31 @@
+- @title = 'ISTとの同期'
+
+.
+  h2 ISTとデータを同期する前に
+
+  ul
+    li ISTとはIidx Score Tableの略で地力表作者によるスコア管理ツールです
+    li
+      | 地力表に同期するためには
+      = link_to 'IST', 'https://score.iidx12.tk'
+      | に登録し、一度公式からスコアをIST側に同期する必要があります
+    li 同期される項目は現在のところ楽曲のクリアランプ/スコア/BPです
+    li
+      | ISTの同期方法は
+      = link_to 'こちら', 'https://score.iidx12.tk/helps/usage'
+      | をご覧ください
+    li ISTを利用するためにはKONAMIのプレミアム会員あるいは有料会員である必要があります
+
+.
+  h2 ISTから地力表への同期
+
+  ul
+    li マイページ->更新データページへ遷移してください
+    li Menuの欄からISTの同期を選択してください
+  = image_tag 'ist_sync.png', style: 'width: 100%; max-width: 600px'
+
+.
+  h2 ISTサンプル画像
+  = image_tag 'ist_search.png', style: 'width: 100%; max-width: 600px'
+  h3 スコアテーブル
+  = image_tag 'ist_list.png', style: 'width: 100%; max-width: 600px'

@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   resources :users, only: %i(index show)
   resources :messages, only: [:new, :create]
   get '/messages/password', to: 'messages#password', as: :password_message
-  get '/helps/official', to: 'helps#official', as: :official_help
+  resources :helps, only: [] do
+    collection do
+      get :ist
+    end
+  end
 
   # admin
   require 'sidekiq/web'
@@ -64,6 +68,7 @@ Rails.application.routes.draw do
     get :sheet, on: :member
     post :manager, on: :member
     post :iidxme, on: :member
+    post :ist, on: :member
   end
   get '/logs/:id/:date' => 'logs#show', as: :logs
 
@@ -94,7 +99,6 @@ Rails.application.routes.draw do
       get '/scores/:iidxid/:sheet_id' => 'scores#detail'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
-      post '/scores/sync/official' => 'scores#sync_official'
 
       post '/maintenance', to: 'maintenance#change'
     end

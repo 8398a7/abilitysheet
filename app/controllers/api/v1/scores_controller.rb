@@ -36,19 +36,6 @@ class Api::V1::ScoresController < Api::V1::BaseController
     render json: { result: :ok, date: Date.today }
   end
 
-  def sync_official
-    raise ServiceUnavailable unless SidekiqDispatcher.exists?
-  rescue ServiceUnavailable => ex
-    Raven.user_context(current_user.attributes)
-    Raven.capture_exception(ex)
-    SidekiqDispatcher.start!
-  ensure
-    if params[:scores].present?
-      OfficialJob.perform_later(current_user.id, params.to_json)
-    end
-    head :ok
-  end
-
   private
 
   def load_user

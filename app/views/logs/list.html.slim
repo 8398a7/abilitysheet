@@ -12,6 +12,7 @@
                 li.uk-nav-header = fa_icon 'refresh', text: '同期'
                 li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
                 li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
+                li = link_to 'ISTとの同期', ist_log_path, data: { disable_with: '同期中', confirm: 'ISTに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
       h2 = fa_icon 'refresh', text: '更新履歴'
       button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
       hr

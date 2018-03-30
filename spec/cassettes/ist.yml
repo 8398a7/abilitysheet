@@ -1,0 +1,316 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://score.iidx12.tk/api/v1/scores/8594-9652?q%5Bmusic_score_level_eq%5D=12&q%5Bmusic_score_play_type_status_eq%5D=0&q%5Bversion_eq%5D=25
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - score.iidx12.tk
+      User-Agent:
+      - http.rb/3.0.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 29 Mar 2018 12:24:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Etag:
+      - W/"9b59a4f53931d267b79ace8092d3d568"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 1975aa7b-3e63-4277-9c55-6490252a3e28
+      X-Runtime:
+      - '0.296024'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"count":271,"scores":[{"title":"V","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2402,"miss_count":28},{"title":"Colors
+        (radio edit)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2095,"miss_count":21},{"title":"A","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1924,"miss_count":20},{"title":"PLEASE
+        DON''T GO","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2085,"miss_count":17},{"title":"桜","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"moon_child","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2228,"miss_count":14},{"title":"one
+        or eight","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1978,"miss_count":26},{"title":"Innocent
+        Walls","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Innocent
+        Walls","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2392,"miss_count":14},{"title":"One
+        More Lovely","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2472,"miss_count":12},{"title":"雪月花","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2169,"miss_count":15},{"title":"AA","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3115,"miss_count":5},{"title":"FAKE
+        TIME","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1978,"miss_count":0},{"title":"gigadelic","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":1773,"miss_count":0},{"title":"gigadelic","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2150,"miss_count":6},{"title":"ピアノ協奏曲第１番”蠍火”","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2264,"miss_count":0},{"title":"rage
+        against usual","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2588,"miss_count":25},{"title":"SCREAM
+        SQUAD","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Scripted
+        Connection⇒ A mix","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2685,"miss_count":16},{"title":"冥","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3097,"miss_count":58},{"title":"Concertino
+        in Blue","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2138,"miss_count":25},{"title":"tripping
+        contact","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2336,"miss_count":4},{"title":"カゴノトリ～弐式～","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2231,"miss_count":0},{"title":"嘆きの樹","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3243,"miss_count":23},{"title":"Candy
+        Galy","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3209,"miss_count":4},{"title":"Fascination
+        MAXX","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"FIRE
+        FIRE","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2390,"miss_count":10},{"title":"KAMAITACHI†","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2993,"miss_count":50},{"title":"LASER
+        CRUSTER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":6},{"title":"Sense
+        2007","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2435,"miss_count":19},{"title":"VANESSA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2043,"miss_count":9},{"title":"VANESSA†","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2626,"miss_count":39},{"title":"電人、暁に斃れる。","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2909,"miss_count":10},{"title":"ICARUS","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"ICARUS†","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2663,"miss_count":126},{"title":"MENDES","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2919,"miss_count":12},{"title":"oratio","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2593,"miss_count":9},{"title":"PARANOiA
+        ～HADES～","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1947,"miss_count":36},{"title":"Ristaccia","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2458,"miss_count":4},{"title":"THE
+        DEEP STRIKER†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2983,"miss_count":29},{"title":"TROOPERS","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2591,"miss_count":8},{"title":"少年A","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2414,"miss_count":18},{"title":"3y3s","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2757,"miss_count":50},{"title":"BITTER
+        CHOCOLATE STRIKER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3551,"miss_count":7},{"title":"Colorful
+        Cookie","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3106,"miss_count":13},{"title":"Go
+        Beyond!!","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"THANK
+        YOU FOR PLAYING†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2475,"miss_count":17},{"title":"不沈艦CANDY","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2871,"miss_count":21},{"title":"卑弥呼","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3063,"miss_count":76},{"title":"Almagest","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2602,"miss_count":0},{"title":"Bad
+        Maniacs","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2797,"miss_count":13},{"title":"DOMINION","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2943,"miss_count":14},{"title":"eRAseRmOToRpHAntOM","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2671,"miss_count":46},{"title":"Evans","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2382,"miss_count":7},{"title":"EXUSIA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3070,"miss_count":0},{"title":"G59","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3263,"miss_count":15},{"title":"GOLDEN
+        CROSS","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3001,"miss_count":6},{"title":"mosaic","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2857,"miss_count":5},{"title":"quell～the
+        seventh slave～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2670,"miss_count":14},{"title":"Red.
+        by Full Metal Jacket","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2644,"miss_count":55},{"title":"SOLID
+        STATE SQUAD","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3043,"miss_count":11},{"title":"SOLID
+        STATE SQUAD†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"ワルツ第17番
+        ト短調”大犬のワルツ”","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2637,"miss_count":33},{"title":"ALBIDA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2656,"miss_count":8},{"title":"Broken","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2813,"miss_count":2},{"title":"Dances
+        with Snow Fairies","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2672,"miss_count":23},{"title":"ELECTRIC
+        MASSIVE DIVER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3233,"miss_count":15},{"title":"PARADISE
+        LOST","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2732,"miss_count":31},{"title":"perditus†paradisus","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3196,"miss_count":46},{"title":"reunion","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2830,"miss_count":40},{"title":"sakura
+        storm","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2150,"miss_count":6},{"title":"Session
+        9 -Chronicles-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2921,"miss_count":50},{"title":"SPECIAL
+        SUMMER CAMPAIGN!","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2709,"miss_count":0},{"title":"Watch
+        Out Pt.2","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2356,"miss_count":34},{"title":"灼熱Beach
+        Side Bunny","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2333,"miss_count":87},{"title":"黒髪乱れし修羅となりて","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2949,"miss_count":13},{"title":"BLACK.by
+        X-Cross Fade","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2670,"miss_count":40},{"title":"DIAVOLO","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2605,"miss_count":37},{"title":"F","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3046,"miss_count":1},{"title":"fffff","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2712,"miss_count":14},{"title":"HAERETICUS","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2666,"miss_count":15},{"title":"NNRT","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3248,"miss_count":4},{"title":"quaver♪","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3136,"miss_count":6},{"title":"Snake
+        Stick","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1677,"miss_count":0},{"title":"The
+        Limbo","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2935,"miss_count":10},{"title":"The
+        Sampling Paradise","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2577,"miss_count":6},{"title":"Thunderbolt","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3330,"miss_count":8},{"title":"Todestrieb","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3086,"miss_count":4},{"title":"WONDER
+        WALKER","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3412,"miss_count":2},{"title":"YAKSHA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3233,"miss_count":25},{"title":"天空の夜明け","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3268,"miss_count":20},{"title":"子供の落書き帳","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2336,"miss_count":13},{"title":"恋する☆宇宙戦争っ！！","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2984,"miss_count":13},{"title":"聖人の塔","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2460,"miss_count":30},{"title":"Confiserie","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2933,"miss_count":28},{"title":"DAY
+        DREAM","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Devilz
+        Staircase","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2838,"miss_count":14},{"title":"Elemental
+        Creation","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3457,"miss_count":34},{"title":"GAIA","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":3},{"title":"Hollywood
+        Galaxy","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2274,"miss_count":0},{"title":"JOMANDA","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3073,"miss_count":51},{"title":"Liberation","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3178,"miss_count":21},{"title":"Little
+        Star","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2700,"miss_count":0},{"title":"neu","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3576,"miss_count":7},{"title":"Plan
+        8","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2653,"miss_count":60},{"title":"Proof
+        of the existence","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2733,"miss_count":11},{"title":"Sol
+        Cosine Job 2","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2720,"miss_count":14},{"title":"STULTI","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2245,"miss_count":18},{"title":"SYNC-ANTHEM","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3005,"miss_count":10},{"title":"Thor''s
+        Hammer","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2356,"miss_count":35},{"title":"Timepiece
+        phase II","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2668,"miss_count":15},{"title":"Timepiece
+        phase II (CN Ver.)","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2292,"miss_count":0},{"title":"True
+        Blue","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3215,"miss_count":8},{"title":"Valanga","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2855,"miss_count":16},{"title":"Zirkfied","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3068,"miss_count":45},{"title":"ΕΛΠΙΣ","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2728,"miss_count":1},{"title":"†渚の小悪魔ラヴリィ～レイディオ†(IIDX
+        EDIT)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3034,"miss_count":21},{"title":"たまゆら","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2494,"miss_count":6},{"title":"アストライアの双皿","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2623,"miss_count":24},{"title":"キャトられ恋はモ～モク","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3191,"miss_count":27},{"title":"シュレーディンガーの猫","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3061,"miss_count":6},{"title":"トリカゴノ鳳凰","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3215,"miss_count":8},{"title":"仮想空間の旅人たち†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3423,"miss_count":8},{"title":"即席！脳直★ミュージックシステム","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3076,"miss_count":7},{"title":"狂イ咲ケ焔ノ華","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3156,"miss_count":15},{"title":"音楽","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Adularia","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2424,"miss_count":15},{"title":"Ancient
+        Scapes","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3067,"miss_count":6},{"title":"Ancient
+        Scapes†LEGGENDARIA","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3451,"miss_count":38},{"title":"BLUE
+        DRAGON(雷龍RemixIIDX)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2968,"miss_count":18},{"title":"Close
+        the World feat. a☆ru","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2968,"miss_count":6},{"title":"Close
+        the World feat.a☆ru†LEGGENDARIA","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3195,"miss_count":40},{"title":"DARK
+        LEGACY","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3211,"miss_count":15},{"title":"Feel
+        The Beat","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3034,"miss_count":18},{"title":"Feel
+        The Beat†LEGGENDARIA","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3531,"miss_count":38},{"title":"Idola","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3255,"miss_count":2},{"title":"Immortal","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2758,"miss_count":16},{"title":"INSOMNIA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2793,"miss_count":29},{"title":"invoker","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2227,"miss_count":38},{"title":"invoker†LEGGENDARIA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3074,"miss_count":19},{"title":"IX","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3174,"miss_count":45},{"title":"KAISER
+        PHOENIX","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2791,"miss_count":22},{"title":"Last
+        Dance","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2714,"miss_count":15},{"title":"PUNISHER","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3124,"miss_count":6},{"title":"ra''am","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2366,"miss_count":20},{"title":"Sigmund","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3185,"miss_count":43},{"title":"Sigmund†LEGGENDARIA","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3370,"miss_count":73},{"title":"Verflucht","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2916,"miss_count":26},{"title":"Verflucht†LEGGENDARIA","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3658,"miss_count":63},{"title":"VOX
+        UP","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3121,"miss_count":50},{"title":"廿†","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"旋律のドグマ～Miserables～","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3395,"miss_count":8},{"title":"海神","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2768,"miss_count":4},{"title":"煉獄のエルフェリア","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3345,"miss_count":25},{"title":"疾風迅雷","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2543,"miss_count":15},{"title":"疾風迅雷†LEGGENDARIA","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2810,"miss_count":61},{"title":"轟け！恋のビーンボール！！","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3066,"miss_count":18},{"title":"Beat
+        Radiance†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3265,"miss_count":23},{"title":"BLUE
+        MIRAGE","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2487,"miss_count":30},{"title":"Broken
+        Sword","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3298,"miss_count":4},{"title":"CHRONO
+        DIVER -NORNIR-†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3701,"miss_count":36},{"title":"Chrono
+        Diver -PENDULUMs-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3573,"miss_count":40},{"title":"cinder","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2785,"miss_count":12},{"title":"Cosmic
+        Cat†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2776,"miss_count":13},{"title":"Despair
+        of ELFERIA","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3625,"miss_count":18},{"title":"EBONY
+        \u0026 IVORY","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2573,"miss_count":4},{"title":"EBONY
+        \u0026 IVORY†","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3088,"miss_count":35},{"title":"entelecheia","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2938,"miss_count":8},{"title":"fallen
+        leaves -IIDX edition-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2897,"miss_count":7},{"title":"FANTASTIC
+        THREE","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2666,"miss_count":40},{"title":"Flashes","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2741,"miss_count":19},{"title":"Gravigazer","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2494,"miss_count":7},{"title":"IMPLANTATION","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1813,"miss_count":21},{"title":"Invitation
+        from Mr.C","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Ludus
+        In Tenebris","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3001,"miss_count":23},{"title":"Monopole.","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2876,"miss_count":26},{"title":"NEO
+        GENERATOR SEVEN","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2870,"miss_count":24},{"title":"Rave*it!!
+        Rave*it!!","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2813,"miss_count":17},{"title":"Reflux","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2524,"miss_count":44},{"title":"Say
+        YEEEAHH","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":10},{"title":"Shooting
+        Fireball","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3347,"miss_count":5},{"title":"Sounds
+        Of Summer","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2676,"miss_count":14},{"title":"SpaceLand☆TOYBOX","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2604,"miss_count":8},{"title":"Symmetry","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2898,"miss_count":8},{"title":"The
+        Least 100sec","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2368,"miss_count":18},{"title":"TIEFSEE","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2855,"miss_count":2},{"title":"TOXIC
+        VIBRATION","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3175,"miss_count":16},{"title":"We''re
+        so Happy (P*Light Remix) IIDX ver.","level":12,"clear_type_status":"EX HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3278,"miss_count":13},{"title":"ZZ","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2696,"miss_count":3},{"title":"それは花火のような恋","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3370,"miss_count":8},{"title":"リリーゼと炎龍レーヴァテイン","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3025,"miss_count":18},{"title":"共鳴遊戯の華","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3084,"miss_count":37},{"title":"千年ノ理","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2904,"miss_count":1},{"title":"夏色DIARY
+        - L.E.D.-G STYLE MIX -","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2658,"miss_count":15},{"title":"少年は空を辿る","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2840,"miss_count":13},{"title":"紅牡丹","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2461,"miss_count":8},{"title":"表裏一体！？怪盗いいんちょの悩み","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3143,"miss_count":9},{"title":"超青少年ノ為ノ超多幸ナ超古典的超舞曲†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3533,"miss_count":26},{"title":"199024club
+        -Re:BounceKiller-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1977,"miss_count":55},{"title":"AO-1","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2452,"miss_count":18},{"title":"Blue
+        Spring Express","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2768,"miss_count":33},{"title":"CODE:1
+        [revision1.0.1]","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2566,"miss_count":13},{"title":"Devil''s
+        Gear","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2738,"miss_count":33},{"title":"DIAMOND
+        CROSSING","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2550,"miss_count":0},{"title":"Dynamite","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3361,"miss_count":0},{"title":"Godspeed","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2632,"miss_count":31},{"title":"Grand
+        Chariot","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2885,"miss_count":23},{"title":"Highcharge
+        Divolt","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2438,"miss_count":19},{"title":"Konzert
+        V","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2721,"miss_count":30},{"title":"M4K3
+        1T B0UNC3","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2665,"miss_count":16},{"title":"Nightmare
+        before oversleep","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2520,"miss_count":10},{"title":"NINJA
+        IS DEAD IIDX ver.","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2741,"miss_count":4},{"title":"NZM","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2818,"miss_count":0},{"title":"POSSESSION","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2657,"miss_count":10},{"title":"refrain","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3077,"miss_count":9},{"title":"STARLIGHT
+        DANCEHALL†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2667,"miss_count":25},{"title":"StrayedCatz","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2378,"miss_count":6},{"title":"Triple
+        Counter","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3463,"miss_count":25},{"title":"X","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3384,"miss_count":6},{"title":"めいさいアイドル☆あいむちゃん♪","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3011,"miss_count":11},{"title":"灼熱
+        Pt.2 Long Train Running","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2410,"miss_count":103},{"title":"真
+        地獄超特急 -HELL or HELL-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2660,"miss_count":57},{"title":"紫陽花
+        -AZISAI-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2517,"miss_count":5},{"title":"駅猫のワルツ","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2282,"miss_count":39},{"title":"#MAGiCVLGiRL_TRVP_B3VTZ","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3093,"miss_count":5},{"title":"Apocalypse","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3176,"miss_count":3},{"title":"Caterpillar","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2546,"miss_count":26},{"title":"DORNWALD
+        ～Junge～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3175,"miss_count":14},{"title":"ECHIDNA","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2743,"miss_count":42},{"title":"FUZIN
+        RIZIN","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3260,"miss_count":14},{"title":"Go
+        Ahead!!","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"GuNGNiR","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3285,"miss_count":39},{"title":"HADES","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2667,"miss_count":18},{"title":"Mare
+        Nectaris","level":12,"clear_type_status":"EASY CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2890,"miss_count":0},{"title":"OTENAMI
+        Hurricane","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2664,"miss_count":24},{"title":"Quakes","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2447,"miss_count":0},{"title":"RAIN","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2809,"miss_count":11},{"title":"Rave
+        Cannon","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2927,"miss_count":11},{"title":"SAY
+        BAY","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2390,"miss_count":25},{"title":"Sky
+        High","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3134,"miss_count":21},{"title":"Snakey
+        Kung-fu","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2941,"miss_count":0},{"title":"Steel
+        Edge","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2909,"miss_count":12},{"title":"Summerlights(IIDX
+        Edition)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2766,"miss_count":10},{"title":"Super
+        Rush","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3224,"miss_count":17},{"title":"TOGAKUSHI","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2253,"miss_count":24},{"title":"Venom","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2887,"miss_count":14},{"title":"〆","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3169,"miss_count":10},{"title":"イザナミノナゲキ","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2857,"miss_count":21},{"title":"九尾狐夜行","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2610,"miss_count":22},{"title":"刃図羅","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3031,"miss_count":5},{"title":"津軽雪","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3294,"miss_count":4},{"title":"火影","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2302,"miss_count":26},{"title":"焔極OVERKILL","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2963,"miss_count":51},{"title":"童話回廊","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2639,"miss_count":14},{"title":"AA
+        -rebuild-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3147,"miss_count":4},{"title":"Arca","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2778,"miss_count":2},{"title":"龍と少女とデコヒーレンス†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2952,"miss_count":6},{"title":"Amazing
+        Mirage†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2851,"miss_count":12},{"title":"DEADHEAT","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2850,"miss_count":14},{"title":"The
+        Chase","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1735,"miss_count":36},{"title":"VOX
+        RUSH","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2755,"miss_count":18},{"title":"Xperanza","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2808,"miss_count":16},{"title":"神謳
+        -RESONANCE-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3572,"miss_count":10},{"title":"RED
+        ZONE†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2686,"miss_count":3},{"title":"DEATH†ZIGOQ
+        ～怒りの高速爆走野郎～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3272,"miss_count":14},{"title":"Persephone","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2550,"miss_count":10},{"title":"encounter","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2860,"miss_count":2},{"title":"Boomy
+        and The Boost","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3014,"miss_count":14},{"title":"CONTRACT†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2405,"miss_count":13},{"title":"NITROUS
+        CANNON","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3041,"miss_count":19},{"title":"東京神話","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2394,"miss_count":34}]}'
+    http_version: 
+  recorded_at: Thu, 29 Mar 2018 12:24:00 GMT
+recorded_with: VCR 4.0.0
