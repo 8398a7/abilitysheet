@@ -7,7 +7,7 @@ module Scrape
     end
 
     def get_sheet
-      text = open(@url).read
+      text = open(@url).read # rubocop:disable all
       html = Nokogiri::HTML.parse(text)
       parse(html)
     end

@@ -103,8 +103,8 @@ class Score < ApplicationRecord
 
   private
 
-  def check_duplicate(s)
-    s.each do |k, v|
+  def check_duplicate(score_params)
+    score_params.each do |k, v|
       next if k == 'updated_at'
       v = v.to_i unless v.class == NilClass
       return false if k == 'state' && try(k).nil? && v.to_i == 7

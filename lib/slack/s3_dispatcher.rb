@@ -19,7 +19,7 @@ module Slack
       Net::HTTP.post_form(Abilitysheet::Application::SLACK_URI, payload: body.to_json)
     end
 
-    def self.failed(env, ex)
+    def self.failed(env, exception)
       body = {
         icon_emoji: ':aws_s3:',
         username: 'S3 Dispatcher',
@@ -28,7 +28,7 @@ module Slack
             color: :danger,
             title: 'backup failed',
             pretext: '_AWS S3_',
-            text: "#{Time.zone.now} #{env} backup failed...\n#{ex}",
+            text: "#{Time.zone.now} #{env} backup failed...\n#{exception}",
             mrkdwn_in: %w[pretext]
           }
         ]
