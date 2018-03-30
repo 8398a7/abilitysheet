@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class LogsController < ApplicationController
-  before_action :special_user!, only: %w[update_official]
   before_action :load_user, only: %w[sheet list show]
 
   def edit
