@@ -25,7 +25,7 @@ module Scrape
 
     def download_profile_image(elems, user)
       user.remove_image!
-      file = open("#{@iidxme_domain}#{elems['userdata']['image']}")
+      file = open("#{@iidxme_domain}#{elems['userdata']['image']}") # rubocop:disable all
       return nil if file.class != Tempfile
       file
     end

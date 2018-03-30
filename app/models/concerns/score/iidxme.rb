@@ -22,14 +22,14 @@ module Score::IIDXME
       true
     end
 
-    def self.title_check(e)
-      return e if Sheet.exists?(title: e)
-      case e
-      when %(キャトられ♥恋はモ～モク) then e = %(キャトられ恋はモ～モク)
-      when %(旋律のドグマ～Misérables～) then e = %(旋律のドグマ ～Misérables～)
-      when %(表裏一体！？怪盗いいんちょの悩み♥) then e = %(表裏一体！？怪盗いいんちょの悩み)
+    def self.title_check(title)
+      return title if Sheet.exists?(title: title)
+      case title
+      when %(キャトられ♥恋はモ～モク) then title = %(キャトられ恋はモ～モク)
+      when %(旋律のドグマ～Misérables～) then title = %(旋律のドグマ ～Misérables～)
+      when %(表裏一体！？怪盗いいんちょの悩み♥) then title = %(表裏一体！？怪盗いいんちょの悩み)
       end
-      e
+      title
     end
 
     def self.gigadelic_innocentwalls(elem)

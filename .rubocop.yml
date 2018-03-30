@@ -68,6 +68,7 @@ AllCops:
     - 'Gemfile'
     - 'db/**/*'
     - 'bin/*'
+    - 'Capfile'
     - 'config/**/*'
     - 'script/**/*'
     - 'vendor/bundle/**/*'

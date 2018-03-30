@@ -85,44 +85,44 @@ module Scrape
       manager_register(title, state.to_i)
     end
 
-    def gigadelic_innocentwalls(title, e)
+    def gigadelic_innocentwalls(title, elem)
       return title if title != 'gigadelic' && title != 'Innocent Walls'
-      e.split('<dl class="')[1].split('">')[0].index('hyper') ? title + '[H]' : title + '[A]'
+      elem.split('<dl class="')[1].split('">')[0].index('hyper') ? title + '[H]' : title + '[A]'
     end
 
     # クリアランプマネージャとの表記ゆれに対応
-    def title_check(e)
-      e.gsub!('&amp;', '&')
-      return e if Sheet.exists?(title: e)
-      case e
-      when %(ピアノ協奏曲第１番"蠍火") then e = %(ピアノ協奏曲第１番”蠍火”)
-      when %(キャトられ 恋はモ～モク) then e = %(キャトられ恋はモ～モク)
-      when %(†渚の小悪魔ラヴリィ〜レイディオ†(IIDX EDIT)) then e = %(†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT))
-      when %(疾風迅雷 †LEGGENDARIA) then e = %(疾風迅雷†LEGGENDARIA)
-      when %(We're so Happy (P*Light Remix) IIDX Ver.) then e = %(We're so Happy (P*Light Remix) IIDX ver.)
-      when %(Verflucht †LEGGENDARIA) then e = %(Verflucht†LEGGENDARIA)
-      when %(Sigmund †LEGGENDARIA) then e = %(Sigmund†LEGGENDARIA)
-      when %(invoker †LEGGENDARIA) then e = %(invoker†LEGGENDARIA)
-      when %(Feel The Beat †LEGGENDARIA) then e = %(Feel The Beat†LEGGENDARIA)
-      when %(Close the World feat.a☆ru †LEGGENDARIA) then e = %(Close the World feat.a☆ru†LEGGENDARIA)
-      when %(Session 9-Chronicles-) then e = %(Session 9 -Chronicles-)
-      when %(恋する☆宇宙戦争っ!!) then e = %(恋する☆宇宙戦争っ！！)
-      when %(ワルツ第17番 ト短調"大犬のワルツ") then e = %(ワルツ第17番 ト短調”大犬のワルツ”)
-      when %(Ancient Scapes †LEGGENDARIA) then e = %(Ancient Scapes†LEGGENDARIA)
-      when %(Scripted Connection⇒A mix) then e = %(Scripted Connection⇒ A mix)
-      when %(Colors(radio edit)) then e = %(Colors (radio edit))
-      when %(EΛΠIΣ) then e = %(ΕΛΠΙΣ)
-      when %(Timepiece phase II(CN Ver.)) then e = %(Timepiece phase II (CN Ver.))
-      when %(Hollywood Galaxy (DJ NAGAI Remix)) then e = %(Hollywood Galaxy(DJ NAGAI Remix))
-      when %(表裏一体！？怪盗いいんちょの悩み♥) then e = %(表裏一体！？怪盗いいんちょの悩み)
+    def title_check(elem)
+      elem.gsub!('&amp;', '&')
+      return e if Sheet.exists?(title: elem)
+      case elem
+      when %(ピアノ協奏曲第１番"蠍火") then elem = %(ピアノ協奏曲第１番”蠍火”)
+      when %(キャトられ 恋はモ～モク) then elem = %(キャトられ恋はモ～モク)
+      when %(†渚の小悪魔ラヴリィ〜レイディオ†(IIDX EDIT)) then elem = %(†渚の小悪魔ラヴリィ～レイディオ†(IIDX EDIT))
+      when %(疾風迅雷 †LEGGENDARIA) then elem = %(疾風迅雷†LEGGENDARIA)
+      when %(We're so Happy (P*Light Remix) IIDX Ver.) then elem = %(We're so Happy (P*Light Remix) IIDX ver.)
+      when %(Verflucht †LEGGENDARIA) then elem = %(Verflucht†LEGGENDARIA)
+      when %(Sigmund †LEGGENDARIA) then elem = %(Sigmund†LEGGENDARIA)
+      when %(invoker †LEGGENDARIA) then elem = %(invoker†LEGGENDARIA)
+      when %(Feel The Beat †LEGGENDARIA) then elem = %(Feel The Beat†LEGGENDARIA)
+      when %(Close the World feat.a☆ru †LEGGENDARIA) then elem = %(Close the World feat.a☆ru†LEGGENDARIA)
+      when %(Session 9-Chronicles-) then elem = %(Session 9 -Chronicles-)
+      when %(恋する☆宇宙戦争っ!!) then elem = %(恋する☆宇宙戦争っ！！)
+      when %(ワルツ第17番 ト短調"大犬のワルツ") then elem = %(ワルツ第17番 ト短調”大犬のワルツ”)
+      when %(Ancient Scapes †LEGGENDARIA) then elem = %(Ancient Scapes†LEGGENDARIA)
+      when %(Scripted Connection⇒A mix) then elem = %(Scripted Connection⇒ A mix)
+      when %(Colors(radio edit)) then elem = %(Colors (radio edit))
+      when %(EΛΠIΣ) then elem = %(ΕΛΠΙΣ)
+      when %(Timepiece phase II(CN Ver.)) then elem = %(Timepiece phase II (CN Ver.))
+      when %(Hollywood Galaxy (DJ NAGAI Remix)) then elem = %(Hollywood Galaxy(DJ NAGAI Remix))
+      when %(表裏一体！？怪盗いいんちょの悩み♥) then elem = %(表裏一体！？怪盗いいんちょの悩み)
       end
-      e
+      elem
     end
 
-    def value(e)
-      e = 'N' if e == 'NO'
-      e = 'EXH' if e == 'EX'
-      Static::LAMP_HASH[e]
+    def value(elem)
+      elem = 'N' if elem == 'NO'
+      elem = 'EXH' if elem == 'EX'
+      Static::LAMP_HASH[elem]
     end
 
     def search(current_user = @current_user)
@@ -136,10 +136,10 @@ module Scrape
       end
     end
 
-    def collect_user_page(tr)
+    def collect_user_page(elem)
       cnt = 0
       tmp = ''
-      tr.xpath('td').each do |td|
+      elem.xpath('td').each do |td|
         tmp = td.to_s.split('a href="/')[1].split('"')[0] if cnt == 1
         tmp = '' if cnt == 6 && td.text != @iidxid
         cnt += 1

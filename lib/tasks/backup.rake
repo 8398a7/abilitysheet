@@ -17,10 +17,10 @@ namespace :db do
         s3.put_object(
           bucket: 'abilitysheet',
           body: file_open,
-          key: "db/#{DateTime.now.year}/#{DateTime.now.month}/#{DateTime.now.day}/#{file_name}"
+          key: "db/#{Date.today.year}/#{Date.today.month}/#{Date.today.day}/#{file_name}"
         )
         Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
-      rescue => ex
+      rescue StandardError => ex
         Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], ex)
       end
     end
