@@ -93,7 +93,7 @@ module Scrape
     # クリアランプマネージャとの表記ゆれに対応
     def title_check(elem)
       elem.gsub!('&amp;', '&')
-      return e if Sheet.exists?(title: elem)
+      return elem if Sheet.exists?(title: elem)
       case elem
       when %(ピアノ協奏曲第１番"蠍火") then elem = %(ピアノ協奏曲第１番”蠍火”)
       when %(キャトられ 恋はモ～モク) then elem = %(キャトられ恋はモ～モク)
