@@ -17,6 +17,8 @@ module User::Ist
   included do
     def update_ist
       result = ist_client.get_scores(iidxid, SEARCH_PARAMS)
+      return false if result.dig('error') == 'Not Found'
+
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
         next if score['score'].zero?

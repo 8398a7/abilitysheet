@@ -40,5 +40,11 @@ describe User::Ist, type: :model do
       )
       expect(scores.find_by(sheet_id: Sheet.find_by(title: 'Go Beyond!!'))).to be_blank
     end
+    it '存在しないユーザはfalseが返ること' do
+      user.update!(iidxid: '1234-5678')
+      VCR.use_cassette('not_found_ist') do
+        expect(user.update_ist).to eq false
+      end
+    end
   end
 end
