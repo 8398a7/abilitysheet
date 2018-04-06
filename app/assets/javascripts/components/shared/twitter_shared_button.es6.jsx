@@ -34,7 +34,7 @@ class TwitterSharedButton extends BaseComponent {
         id='twitter-shared-button'
         style={{display: this.state.display}}
         href='https://twitter.com/share'
-        data-text={this.state.text}
+        data-text={`${this.state.text} #iidx12.tk`}
         data-lang='ja'
         data-size='large'
         data-related='IIDX_12'
