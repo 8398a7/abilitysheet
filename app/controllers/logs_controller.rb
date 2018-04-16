@@ -52,7 +52,9 @@ class LogsController < ApplicationController
   end
 
   def ist
-    if SidekiqDispatcher.exists?
+    if current_user.nil?
+      flash[:alert] = %(もう一度お試しください。)
+    elsif SidekiqDispatcher.exists?
       IstSyncJob.perform_later(current_user)
       flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
       flash[:alert] = %(反映されていない場合はISTに該当IIDXIDが存在しないと思われます。(登録しているけど一度もIST側でスコアを送っていないなど))
