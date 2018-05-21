@@ -23,7 +23,7 @@ describe User::Ist, type: :model do
         user.update_ist
       end
       scores = user.scores.is_current_version
-      expect(scores.find_by(sheet_id: Sheet.find_by(title: '東京神話'))).to have_attributes(
+      expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,
         state: 2,
         score: 2394,
@@ -38,7 +38,12 @@ describe User::Ist, type: :model do
         pre_bp: nil,
         new_bp: 34
       )
-      expect(scores.find_by(sheet_id: Sheet.find_by(title: 'Go Beyond!!'))).to be_blank
+      expect(scores.find_by(sheet: Sheet.find_by(title: 'Go Beyond!!'))).to have_attributes(
+        version: Abilitysheet::Application.config.iidx_version,
+        state: 2,
+        score: 0,
+        bp: 0
+      )
     end
     it '存在しないユーザはfalseが返ること' do
       user.update!(iidxid: '1234-5678')

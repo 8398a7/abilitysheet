@@ -21,7 +21,6 @@ module User::Ist
 
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
-        next if score['score'].zero?
         sheet_id = nil
         if score['title'] == 'gigadelic' || score['title'] == 'Innocent Walls'
           difficulty_type = score['difficulty_type_status'] == 'HYPER' ? '[H]' : '[A]'
@@ -31,7 +30,7 @@ module User::Ist
         else
           sheet_id = sheets[score['title']]
         end
-        # 削除局だけunlessになる可能性がある
+        # 削除曲だけunlessになる可能性がある
         next unless sheet_id
         scores.find_or_create_by!(
           sheet_id: sheet_id,
