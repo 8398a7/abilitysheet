@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gem 'activerecord-import'
 gem 'assets_rails'
 gem 'aws-sdk-s3'
+gem 'bootsnap', require: false
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
