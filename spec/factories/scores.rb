@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: scores
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  state      :integer          default(7), not null
 #  score      :integer
 #  bp         :integer
