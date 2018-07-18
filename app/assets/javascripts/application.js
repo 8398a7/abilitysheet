@@ -1,5 +1,6 @@
 //= require raven-js/dist/raven.min
 //= require raven
+//= require activestorage
 //= require jquery/dist/jquery.min
 //= require jquery-ujs/src/rails
 //= require qtip2/dist/jquery.qtip.min

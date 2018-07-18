@@ -42,4 +42,5 @@ Rails.application.configure do
 
   config.active_support.test_order = :random
   routes.default_url_options = { host: 'localhost' }
+  config.active_storage.service = :local
 end
