@@ -1,8 +1,8 @@
 //= require raven-js/dist/raven.min
 //= require raven
+//= require rails-ujs
+//= require jquery
 //= require activestorage
-//= require jquery/dist/jquery.min
-//= require jquery-ujs/src/rails
 //= require qtip2/dist/jquery.qtip.min
 //= require jquery-ui/ui/widgets/datepicker
 //= require jquery-ui/ui/i18n/datepicker-ja
