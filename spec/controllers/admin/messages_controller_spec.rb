@@ -26,7 +26,7 @@ describe Admin::MessagesController, type: :controller do
         get :index
       end
       it 'response ok' do
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
   end

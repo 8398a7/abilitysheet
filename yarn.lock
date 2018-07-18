@@ -125,13 +125,7 @@ jquery-ui@^1.12.0:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
 
-jquery-ujs@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/jquery-ujs/-/jquery-ujs-1.2.2.tgz#6a8ef1020e6b6dda385b90a4bddc128c21c56397"
-  dependencies:
-    jquery ">=1.8.0"
-
-jquery@>=1.6.0, jquery@>=1.7, jquery@>=1.7.1, jquery@>=1.8.0:
+jquery@>=1.6.0, jquery@>=1.7, jquery@>=1.7.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.1.1.tgz#347c1c21c7e004115e0a4da32cece041fad3c8a3"
 

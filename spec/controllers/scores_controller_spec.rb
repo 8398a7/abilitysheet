@@ -18,7 +18,7 @@ describe ScoresController, type: :controller do
         sign_in @user
         get :edit, xhr: true, params: { id: 1 }
         expect(assigns(:score)).to eq @user.scores.first
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
       end
     end
     context 'xhrリクエストではない' do
@@ -47,7 +47,7 @@ describe ScoresController, type: :controller do
           id: @user.scores.first.id,
           score: { sheet_id: 1, state: 5 }
         }
-        expect(response).to have_http_status(:success)
+        expect(response).to be_successful
         expect(@user.scores.first.state).to eq 5
       end
     end

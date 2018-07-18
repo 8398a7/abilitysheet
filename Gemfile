@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
 gem 'assets_rails'
 gem 'aws-sdk-s3'
+gem 'bootsnap', require: false
 gem 'capistrano-slackify', require: false
 gem 'carrierwave'
 gem 'coffee-rails'
@@ -31,7 +33,7 @@ gem 'peek-performance_bar', '1.2.1'
 gem 'peek-pg'
 gem 'peek-rblineprof'
 gem 'peek-redis'
-gem 'peek-sidekiq', git: 'https://github.com/8398a7/peek-sidekiq'
+gem 'peek-sidekiq', github: '8398a7/peek-sidekiq'
 gem 'pg'
 gem 'pry-rails'
 # gem 'pry-remote'

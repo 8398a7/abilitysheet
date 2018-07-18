@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: logs
 #
-#  id           :integer          not null, primary key
+#  id           :bigint(8)        not null, primary key
 #  user_id      :integer
 #  sheet_id     :integer
 #  pre_state    :integer

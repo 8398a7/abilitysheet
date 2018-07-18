@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
 #
-#  id                     :integer          not null, primary key
+#  id                     :bigint(8)        not null, primary key
 #  email                  :string           default(""), not null
 #  username               :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
