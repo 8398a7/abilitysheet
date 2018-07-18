@@ -57,7 +57,7 @@ class LogCalendar extends BaseComponent {
       <div className='uk-accordion' data-uk-accordion>
         <h3 className='uk-accordion-title center'>カレンダーで見る</h3>
         <div className='uk-accordion-content'>
-          <div id='log-calendar' />
+          <div id='log-calendar' data-turbolinks='false' />
         </div>
       </div>
     )
