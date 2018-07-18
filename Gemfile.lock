@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/8398a7/peek-sidekiq
+  remote: https://github.com/8398a7/peek-sidekiq.git
   revision: a9f8679f2b409182ae9966ddda06de2aeca896a6
   specs:
     peek-sidekiq (1.0.3)
