@@ -4,7 +4,7 @@ describe MessagesController, type: :controller do
   describe 'GET #new' do
     before { get :new }
     it 'response ok' do
-      expect(response).to have_http_status(:success)
+      expect(response).to be_successful
     end
     it 'assigns a new page as @message' do
       expect(assigns(:message)).to be_a_new(Message)

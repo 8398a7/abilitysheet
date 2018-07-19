@@ -98,4 +98,5 @@ Rails.application.configure do
 
   # log lotate
   config.logger = Logger.new('log/production.log', 'weekly')
+  config.active_storage.service = :local
 end

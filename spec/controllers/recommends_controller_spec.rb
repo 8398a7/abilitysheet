@@ -4,7 +4,7 @@ describe RecommendsController, type: :controller do
   describe 'GET #index' do
     before { get :index }
     it 'response ok' do
-      expect(response).to have_http_status(:success)
+      expect(response).to be_successful
     end
     it 'assigns the page as @color' do
       expect(assigns(:color)).to eq Static::COLOR
