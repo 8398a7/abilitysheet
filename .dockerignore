@@ -1,5 +1,11 @@
 # Rails
 public/assets/*
+spec
+coverage
+docs
+db/data.yml
+public/uploads/*
+kubernetes/*
 
 ## Environment nomalisation
 .bundle
@@ -7,10 +13,12 @@ vendor/bundle
 node_modules
 .git
 config/database.yml
+.env
+.envrc
 
 ## log
-log
-tmp
+log/*
+tmp/*
 
 ## OSX
 .DS_Store
