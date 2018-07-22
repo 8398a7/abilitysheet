@@ -21,4 +21,4 @@ npm-debug.log
 
 # k8s
 secret.yaml
-kubernetes/rails/rails-cm.yaml
+kubernetes/rails/cm.yaml

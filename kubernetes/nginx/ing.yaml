@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx
+spec:
+  tls:
+  - secretName: nip-io
+  rules:
+  - host: abilitysheet.192.168.64.2.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: rails-service
+          servicePort: 3000
