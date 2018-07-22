@@ -25,7 +25,4 @@ tmp/*
 
 ## docker
 .dockerignore
-containers
-docker-compose.yml
-docker-compose.prod.yml
 Dockerfile
