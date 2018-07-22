@@ -86,7 +86,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.react.variant = :production
-  routes.default_url_options = { host: 'iidx12.tk' }
+  routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'iidx12.tk' } }
   config.peek.adapter = :redis
 
   config.action_mailer.raise_delivery_errors = true
