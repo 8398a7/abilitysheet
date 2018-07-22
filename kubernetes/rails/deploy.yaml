@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-deployment
+  labels:
+    app: rails
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rails
+  template:
+    metadata:
+      labels:
+        app: rails
+    spec:
+      containers:
+      - name: app
+        image: registry.gitlab.com/8398a7/abilitysheet
+        command: ["puma", "-C", "config/puma.rb"]
+        lifecycle:
+          postStart:
+            exec:
+              command: ["cp", "-r", "/app/public", "/nginx/"]
+        envFrom:
+        - configMapRef:
+            name: rails-config
+        - secretRef:
+            name: rails-secret
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
+        volumeMounts:
+        - name: static-files
+          mountPath: /nginx/public
+        livenessProbe:
+          httpGet:
+            port: 3000
+      - name: batch
+        image: registry.gitlab.com/8398a7/abilitysheet
+        command: ["sidekiq", "-C", "config/sidekiq.yml"]
+        envFrom:
+        - configMapRef:
+            name: rails-config
+        - secretRef:
+            name: rails-secret
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
+      - name: web
+        image: nginx:1.11.5-alpine
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: static-files
+          mountPath: /app/public
+          readOnly: true
+        - name: nginx-config
+          mountPath: /etc/nginx/conf.d/
+          readOnly: true
+      volumes:
+      - name: static-files
+        emptyDir: {}
+      - name: nginx-config
+        configMap:
+          name: rails-nginx-config

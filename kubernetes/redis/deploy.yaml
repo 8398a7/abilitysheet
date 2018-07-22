@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:4.0.10-alpine
+        ports:
+        - containerPort: 6379
+      volumes:
+      - name: pvc-volume
+        persistentVolumeClaim:
+          claimName: redis-data-claim
+      restartPolicy: Always

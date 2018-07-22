@@ -1,21 +1,61 @@
-FROM ruby:2.4.2
+FROM ruby:2.5.1-alpine3.7 AS bundle-dependencies
+LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
-RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs apt-transport-https
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update -qq && apt-get install -y yarn
+ENV HOME /app
 
-RUN mkdir /abilitysheet
-WORKDIR /abilitysheet
+WORKDIR $HOME
 
-COPY Gemfile /abilitysheet/Gemfile
-COPY Gemfile.lock /abilitysheet/Gemfile.lock
+COPY Gemfile* $HOME/
 
-RUN bundle install -j4
-COPY yarn.lock /abilitysheet/yarn.lock
-COPY . /abilitysheet
-COPY config/database.docker.yml /abilitysheet/config/database.yml
-RUN rake assets_rails:install assets_rails:resolve assets:precompile
-RUN rm .env
-RUN mkdir -p tmp/pids && mkdir tmp/sockets
+RUN \
+  apk upgrade --no-cache && \
+  apk add --update --no-cache \
+    build-base \
+    git \
+    postgresql-dev \
+    ruby-dev \
+    libxml2-dev \
+    libxslt-dev
+
+RUN bundle install -j4 --without development test deployment
+
+FROM ruby:2.5.1-alpine3.7 AS node-dependencies
+
+ENV \
+  HOME=/app \
+  RAILS_ENV=production \
+  SECRET_KEY_BASE=wip
+
+RUN apk add --update --no-cache \
+  postgresql-client \
+  tzdata \
+  yarn
+
+COPY --from=bundle-dependencies /usr/local/bundle/ /usr/local/bundle/
+WORKDIR $HOME
+
+COPY . $HOME
+COPY config/database.k8s.yml $HOME/config/database.yml
+RUN rails assets_rails:install assets_rails:resolve assets:precompile
+
+FROM ruby:2.5.1-alpine3.7
+
+ENV \
+  HOME=/app \
+  RAILS_ENV=production \
+  SECRET_KEY_BASE=wip
+
+RUN apk add --update --no-cache \
+  postgresql-client \
+  tzdata \
+  yarn
+
+WORKDIR $HOME
+COPY --from=bundle-dependencies /usr/local/bundle/ /usr/local/bundle/
+COPY --from=node-dependencies $HOME/public/ $HOME/public/
+
+COPY . $HOME
+RUN \
+  mv config/database.k8s.yml config/database.yml && \
+  mv config/puma.k8s.rb config/puma.rb && \
+  mkdir tmp/pids
