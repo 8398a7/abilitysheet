@@ -18,10 +18,6 @@ spec:
       - name: app
         image: registry.gitlab.com/8398a7/abilitysheet
         command: ["puma", "-C", "config/puma.rb"]
-        lifecycle:
-          postStart:
-            exec:
-              command: ["cp", "-r", "/app/public", "/nginx/"]
         envFrom:
         - configMapRef:
             name: rails-config
@@ -33,9 +29,6 @@ spec:
             secretKeyRef:
               name: pg-secret
               key: POSTGRES_PASSWORD
-        volumeMounts:
-        - name: static-files
-          mountPath: /nginx/public
         livenessProbe:
           httpGet:
             port: 3000
@@ -53,20 +46,3 @@ spec:
             secretKeyRef:
               name: pg-secret
               key: POSTGRES_PASSWORD
-      - name: web
-        image: nginx:1.11.5-alpine
-        ports:
-        - containerPort: 80
-        volumeMounts:
-        - name: static-files
-          mountPath: /app/public
-          readOnly: true
-        - name: nginx-config
-          mountPath: /etc/nginx/conf.d/
-          readOnly: true
-      volumes:
-      - name: static-files
-        emptyDir: {}
-      - name: nginx-config
-        configMap:
-          name: rails-nginx-config
