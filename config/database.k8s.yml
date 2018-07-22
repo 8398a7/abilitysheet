@@ -1,0 +1,8 @@
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['DATABASE_HOST'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  username: abilitysheet
+  database: abilitysheet_production
+  pool: 5

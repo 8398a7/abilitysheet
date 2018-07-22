@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        name: db-migrate
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: app
+        image: registry.gitlab.com/8398a7/abilitysheet
+        command: ["bin/rails", "db:migrate"]
+        env:
+        - name: SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              name: rails-secret
+              key: SECRET_KEY_BASE
+        - name: RAILS_LOG_TO_STDOUT
+          value: "true"
+        - name: DATABASE_HOST
+          value: pg-service.default.svc.cluster.local
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pg-secret
+              key: POSTGRES_PASSWORD
