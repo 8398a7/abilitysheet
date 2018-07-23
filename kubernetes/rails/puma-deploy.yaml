@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rails-deployment
+  name: puma-deployment
   labels:
-    app: rails
+    app: puma
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: rails
+      app: puma
   template:
     metadata:
       labels:
-        app: rails
+        app: puma
     spec:
       containers:
-      - name: app
+      - name: puma
         image: registry.gitlab.com/8398a7/abilitysheet
         command: ["puma", "-C", "config/puma.rb"]
         envFrom:
@@ -32,17 +32,4 @@ spec:
         livenessProbe:
           httpGet:
             port: 3000
-      - name: batch
-        image: registry.gitlab.com/8398a7/abilitysheet
-        command: ["sidekiq", "-C", "config/sidekiq.yml"]
-        envFrom:
-        - configMapRef:
-            name: rails-config
-        - secretRef:
-            name: rails-secret
-        env:
-        - name: DATABASE_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: pg-secret
-              key: POSTGRES_PASSWORD
+      restartPolicy: Always
