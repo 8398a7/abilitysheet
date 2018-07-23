@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: db-migrate
+  namespace: abilitysheet
 spec:
   backoffLimit: 2
   template:
@@ -14,16 +15,12 @@ spec:
       - name: app
         image: registry.gitlab.com/8398a7/abilitysheet
         command: ["bin/rails", "db:migrate"]
+        envFrom:
+        - configMapRef:
+            name: rails-config
+        - secretRef:
+            name: rails-secret
         env:
-        - name: SECRET_KEY_BASE
-          valueFrom:
-            secretKeyRef:
-              name: rails-secret
-              key: SECRET_KEY_BASE
-        - name: RAILS_LOG_TO_STDOUT
-          value: "true"
-        - name: DATABASE_HOST
-          value: pg-service.default.svc.cluster.local
         - name: DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
