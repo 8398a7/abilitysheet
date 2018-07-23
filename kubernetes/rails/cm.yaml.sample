@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: rails-config
+  namespace: abilitysheet
 data:
   AWS_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxx
   AWS_SECRET_KEY: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
@@ -15,7 +16,7 @@ data:
   RAILS_LOG_TO_STDOUT: "true"
   RAILS_FORCE_SSL: "false"
   RAILS_SERVE_STATIC_FILES: "true"
-  RAILS_HOST: abilitysheet.192.168.64.2.nip.io
+  RAILS_HOST: abilitysheet.192.168.64.3.nip.io
   REDIS_URL: redis://redis-service.default.svc.cluster.local:6379
   SENTRY_DSN: https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy@aaaaaa.bbbb.cc/2
   SENTRY_JS_DSN: https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@aaaaaa.bbbb.cc/12

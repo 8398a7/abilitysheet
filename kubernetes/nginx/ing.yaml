@@ -2,11 +2,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx
+  namespace: abilitysheet
 spec:
   tls:
   - secretName: nip-io
   rules:
-  - host: abilitysheet.192.168.64.2.nip.io
+  - host: abilitysheet.192.168.64.3.nip.io
     http:
       paths:
       - backend:
