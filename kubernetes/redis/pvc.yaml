@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: redis-data-claim
+  namespace: abilitysheet
 spec:
   accessModes:
   - ReadWriteOnce
