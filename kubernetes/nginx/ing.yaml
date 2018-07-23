@@ -10,5 +10,5 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: rails-service
+          serviceName: puma-service
           servicePort: 3000
