@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rails-service
+  name: puma-service
 spec:
   selector:
-    app: rails
+    app: puma
   ports:
   - protocol: TCP
     port: 3000
