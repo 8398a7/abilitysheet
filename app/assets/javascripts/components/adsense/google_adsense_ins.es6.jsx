@@ -6,6 +6,7 @@ class GoogleAdsenseIns extends BaseComponent {
       <ins
         className={'adsbygoogle ' + this.props.className}
         style={style}
+        data-full-width-responsive='true'
         data-ad-client={this.props.client}
         data-ad-slot={this.props.slot}
         data-ad-format={this.props.format}
