@@ -22,7 +22,6 @@ set :rbenv_type, :system
 
 set :keep_releases, 5
 
-set :sidekiq_role, :app
 set :conditionally_migrate, true
 set :deploy_via, :remote_cache
 set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
@@ -41,3 +40,10 @@ set :puma_init_active_record, true
 set :puma_threads, [8, 32]
 set :puma_workers, 3
 set :puma_worker_timeout, 15
+
+set :sidekiq_role, :app
+set :sidekiq_default_hooks, false
+namespace :deploy do
+  after 'deploy:starting', 'sidekiq:quiet'
+  after 'puma:restart', 'sidekiq:stop'
+end
