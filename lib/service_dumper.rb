@@ -55,6 +55,6 @@ class ServiceDumper
   end
 
   def files_path
-    "#{Rails.root}/public/uploads"
+    '/var/www/app/abilitysheet/shared/public/uploads'
   end
 end
