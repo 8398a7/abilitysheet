@@ -6,9 +6,9 @@ class ServiceDumper
     begin
       Rails.logger.info('uploading s3...')
       s3.put_object(
-        bucket: 'abilitysheet',
+        bucket: 'iidx12-tk',
         body: file_open,
-        key: "service_dumper/#{Date.today.year}-#{Date.today.month}-#{Date.today.day}/#{ENV['RAILS_ENV']}_#{file_name}"
+        key: "service_dumper/abilitysheet/#{Date.today.year}-#{Date.today.month}-#{Date.today.day}/#{ENV['RAILS_ENV']}_#{file_name}"
       )
       Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
     rescue StandardError => ex
