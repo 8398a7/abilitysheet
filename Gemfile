@@ -54,8 +54,6 @@ gem 'twitter'
 gem 'uglifier'
 # }}}
 # v,w,x,y,z {{{
-gem 'whenever', require: false
-gem 'yaml_db'
 # }}}
 
 group :development do
