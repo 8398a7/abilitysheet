@@ -14,6 +14,7 @@ class ServiceDumper
     rescue StandardError => ex
       Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], ex)
     end
+    `rm #{dump_path}.tar.gz`
     Rails.logger.info('done service dump')
   end
 
