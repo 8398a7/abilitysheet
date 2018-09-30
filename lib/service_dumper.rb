@@ -43,7 +43,7 @@ class ServiceDumper
   end
 
   def pg_dump
-    `pg_dump #{database} > #{dump_path}/#{database}.sql`
+    `pg_dump -U#{database['username']} #{database['database']} > #{dump_path}/#{database['database']}.sql`
   end
 
   def dump_path
@@ -51,7 +51,7 @@ class ServiceDumper
   end
 
   def database
-    Rails.configuration.database_configuration[ENV['RAILS_ENV'] || 'production']['database']
+    Rails.configuration.database_configuration[ENV['RAILS_ENV'] || 'production']
   end
 
   def files_path
