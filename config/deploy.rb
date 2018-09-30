@@ -24,7 +24,6 @@ set :keep_releases, 5
 
 set :conditionally_migrate, true
 set :deploy_via, :remote_cache
-set :whenever_identifier, -> { "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # slack notify
 set :slack_username, 'Deploy Dispatcher'
