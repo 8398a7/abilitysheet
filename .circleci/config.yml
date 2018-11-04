@@ -61,7 +61,7 @@ jobs:
   deploy-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:2.4.2-node-browsers
+      - image: circleci/ruby:2.5.1-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -70,6 +70,11 @@ jobs:
       - run:
           name: Install Ruby Dependencies
           command: bundle install -j4 --path vendor/bundle
+      - save_cache:
+          name: Save bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
       - run:
           name: Deploy if tests pass and branch is Master
           command: bundle exec cap production deploy
