@@ -21,10 +21,12 @@ module Scrape
     def manager_register(title, state)
       return false unless Sheet.exists?(title: title)
       return false if state == 7
+
       sheet_id = Sheet.select(:id).find_by(title: title).id
       score = @current_user.scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
       score ||= @current_user.scores.create!(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
       return false if score.state <= state
+
       score.update_with_logs('sheet_id' => sheet_id, 'state' => state)
       true
     end
@@ -53,6 +55,7 @@ module Scrape
       elems = nil
       data.each do |d|
         next unless d.index('level l12')
+
         elems = d.split('</dl>')
       end
       elems
@@ -72,6 +75,7 @@ module Scrape
       # HTMLから曲名と状態を抽出し，登録する
       elems.each do |elem|
         break if elem.index('</div>')
+
         preparation_register(elem)
       end
       true
@@ -80,6 +84,7 @@ module Scrape
     def preparation_register(elem)
       state = value(elem.split('<dt class="')[1].split('">')[0])
       return false if state.nil?
+
       title = title_check(elem.split('<dd class="musicName">')[1].split('</dd>')[0].strip)
       title = gigadelic_innocentwalls(title, elem)
       manager_register(title, state.to_i)
@@ -87,6 +92,7 @@ module Scrape
 
     def gigadelic_innocentwalls(title, elem)
       return title if title != 'gigadelic' && title != 'Innocent Walls'
+
       elem.split('<dl class="')[1].split('">')[0].index('hyper') ? title + '[H]' : title + '[A]'
     end
 
@@ -94,6 +100,7 @@ module Scrape
     def title_check(elem)
       elem.gsub!('&amp;', '&')
       return elem if Sheet.exists?(title: elem)
+
       case elem
       when %(ピアノ協奏曲第１番"蠍火") then elem = %(ピアノ協奏曲第１番”蠍火”)
       when %(キャトられ 恋はモ～モク) then elem = %(キャトられ恋はモ～モク)

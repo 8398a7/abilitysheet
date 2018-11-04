@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: sheets
@@ -45,6 +46,7 @@ class Sheet < ApplicationRecord
     Scrape::ExhCollector.new.get_sheet.each do |title, ability|
       sheet = Sheet.find_by(title: title)
       next unless sheet
+
       sheet.update(exh_ability: find_exh_ability_from_string(ability)[1])
     end
   end

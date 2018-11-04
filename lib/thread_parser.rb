@@ -30,6 +30,7 @@ class ThreadParser
       line.chomp!
       next if line.empty?
       next if line.include?('参考表')
+
       if line.include?('地力') || line.include?('個人差')
         @status += 1
         @sheets.push([])
@@ -62,6 +63,7 @@ class ThreadParser
       sheet_ids.each do |hash|
         sheet_id = hash.keys[0]
         next if @abilities[sheet_id] == ability
+
         ids.push(sheet_id)
       end
       Sheet.where(id: ids).each do |sheet|
@@ -86,6 +88,7 @@ class ThreadParser
     @titles.each do |sheet_id, base_title|
       sim = Levenshtein.similarity(base_title, title)
       next unless best[:sim] < sim
+
       best[:sim] = sim
       best[:sheet_id] = sheet_id
     end

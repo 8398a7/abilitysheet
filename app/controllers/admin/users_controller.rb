@@ -62,6 +62,7 @@ class Admin::UsersController < ApplicationController
 
   def load_user
     return unless params[:id]
+
     @user = User.find_by(id: params[:id])
   end
 end

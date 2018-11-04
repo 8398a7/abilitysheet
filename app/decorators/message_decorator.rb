@@ -5,6 +5,7 @@ class MessageDecorator < Draper::Decorator
 
   def user_name
     return '匿名' unless object.user_id
+
     user = User.find_by(id: object.user_id)
     "#{user.djname}[#{user.iidxid}]"
   end

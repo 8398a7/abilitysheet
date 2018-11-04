@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: scores
@@ -16,6 +17,6 @@
 
 FactoryBot.define do
   factory :score do
-    version Abilitysheet::Application.config.iidx_version
+    version { Abilitysheet::Application.config.iidx_version }
   end
 end

@@ -11,8 +11,10 @@ module Score::IIDXME
         title = title_check(title)
         sheet = Sheet.find_by(title: title)
         next unless sheet
+
         state = reverse(elem['clear'])
         next if state == 7
+
         score = user.scores.find_by(sheet_id: sheet.id, version: Abilitysheet::Application.config.iidx_version)
         score ||= user.scores.create!(sheet_id: sheet.id, version: Abilitysheet::Application.config.iidx_version)
         iidxme_params = { 'sheet_id' => sheet.id, 'state' => score.state, 'score' => elem['score'], 'bp' => elem['miss'] }
@@ -24,6 +26,7 @@ module Score::IIDXME
 
     def self.title_check(title)
       return title if Sheet.exists?(title: title)
+
       case title
       when %(キャトられ♥恋はモ～モク) then title = %(キャトられ恋はモ～モク)
       when %(旋律のドグマ～Misérables～) then title = %(旋律のドグマ ～Misérables～)
@@ -35,6 +38,7 @@ module Score::IIDXME
     def self.gigadelic_innocentwalls(elem)
       title = elem['title']
       return title if title != 'gigadelic' && title != 'Innocent Walls'
+
       title += elem['diff'] == 'sph' ? '[H]' : '[A]'
       title
     end

@@ -64,6 +64,7 @@ class Admin::SheetsController < ApplicationController
 
   def load_sheet
     return unless params[:id]
+
     @sheet = Sheet.find_by(id: params[:id])
   end
 end

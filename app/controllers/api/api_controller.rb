@@ -22,6 +22,7 @@ class Api::ApiController < ActionController::API
 
   def authenticate_slack!
     return if params[:token] == ENV['MANAGEMENT_SLACK_TOKEN']
+
     raise Forbidden
   end
 

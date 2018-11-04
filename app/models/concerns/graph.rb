@@ -27,6 +27,7 @@ module Graph
       between = create_between(start_month, end_month)
       st = order(:created_date).first.try(:created_date)
       return [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]] unless st
+
       all_sheet = Sheet.active
       fc_cnt = []
       exh_cnt = []
@@ -48,6 +49,7 @@ module Graph
       where(new_state: state, created_date: between).each do |instance|
         next if sheet_ids.include?(instance.sheet_id)
         next if instance.new_state == instance.pre_state
+
         sheet_ids.push(instance.sheet_id)
         count += 1
       end

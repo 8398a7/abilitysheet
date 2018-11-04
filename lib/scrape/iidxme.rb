@@ -18,6 +18,7 @@ module Scrape
 
     def sync(iidxid)
       return unless ENV['iidxme'] == 'true'
+
       process(iidxid)
     end
 
@@ -27,13 +28,16 @@ module Scrape
       user.remove_image!
       file = open("#{@iidxme_domain}#{elems['userdata']['image']}") # rubocop:disable all
       return nil if file.class != Tempfile
+
       file
     end
 
     def process(iidxid)
       return false unless User.exists?(iidxid: iidxid)
+
       elems = get_data(iidxid)
       return false unless elems
+
       user = User.find_by(iidxid: iidxid)
       user.update!(
         djname: elems['userdata']['djname'],
@@ -48,10 +52,13 @@ module Scrape
       page = 1
       loop do
         break if page > 50
+
         html = parser("#{@iidxme_domain}/!/userlist?page=#{page}")
         break if html.xpath('//div[@class="table userlist"]/div').size == 1
+
         html.xpath('//div[@class="table userlist"]/div').each do |div|
           next if div.xpath('div[@class="td iidxid"]').empty?
+
           user_link = div.xpath('div[@class="td djname"]/div/a')[0]['href']
           result[:users].push(
             iidxid: div.xpath('div[@class="td iidxid"]').text.strip,
@@ -65,8 +72,10 @@ module Scrape
 
     def user_id_search(iidxid)
       return false unless iidxid.match?(/\A\d{4}-\d{4}\z/)
+
       user = search_api[:users].find { |u| u[:iidxid] == iidxid }
       return user[:userid] if user
+
       user
     end
 
@@ -111,14 +120,18 @@ module Scrape
     def get_data(iidxid)
       user_id = user_id_search(iidxid)
       return false unless user_id
+
       get_userdata(user_id)
       page = 1
       loop do
         break if page > 5
+
         html = parser("#{@iidxme_domain}/#{user_id}/sp/level/12?page=#{page}")
         break if html.xpath('//div[@class="table musiclist"]/div/div/div').text == 'NO RESULT'
+
         html.xpath('//div[@class="table musiclist"]/div').each do |div|
           next if div.xpath('div[@class="td title"]').empty?
+
           @result['musicdata'].push(
             'data' => {
               'title' => title(div),

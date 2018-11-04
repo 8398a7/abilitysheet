@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: messages
@@ -15,7 +16,7 @@
 
 FactoryBot.define do
   factory :message do
-    body 'message'
-    ip IPAddr.new('192.168.0.1')
+    body { 'message' }
+    ip { IPAddr.new('192.168.0.1') }
   end
 end

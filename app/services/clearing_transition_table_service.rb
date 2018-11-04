@@ -11,6 +11,7 @@ class ClearingTransitionTableService < ApplicationService
     sheets.each do |sheet|
       hash[sheet.title] ||= {}
       next if hash[sheet.title][sheet.new_state] && hash[sheet.title][sheet.new_state] > sheet.created_date
+
       hash[sheet.title][sheet.new_state] = sheet.created_date
     end
     hash
