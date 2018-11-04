@@ -15,6 +15,7 @@ class SyncSheetsJob < ApplicationJob
     sheets.each do |sheet|
       s = Sheet.find_by(title: sheet['title'])
       next if s
+
       Sheet.create!(
         title: sheet['title'],
         version: sheet['version_status_before_type_cast'],

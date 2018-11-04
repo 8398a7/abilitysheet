@@ -28,6 +28,7 @@ module User::List
         users.each do |user|
           break if recent_users.size >= 200
           next if recent_users.include?(user['id'])
+
           recent_users.push(user['id'])
           user['updated_at'] = user['updated_at'].split[0]
           ret[user['id']] = user

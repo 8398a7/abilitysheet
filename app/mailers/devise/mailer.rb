@@ -10,6 +10,7 @@ class Devise::Mailer < Devise.parent_mailer.constantize
 
   def unlock_instructions(record, token, opts = {})
     return if record.email.empty?
+
     @token = token
     devise_mail(record, :unlock_instructions, opts)
   end

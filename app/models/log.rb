@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: logs
@@ -43,6 +44,7 @@ class Log < ApplicationRecord
     pre_state = owner.scores.find_by(sheet_id: score_params['sheet_id']).try(:state) || 7
     # スコアBPの更新がなく，状態が変わっていない場合はログを作らない
     return false if pre_state == score_params['state'].to_i
+
     owner.logs.create!(
       sheet_id: score_params['sheet_id'],
       pre_state: pre_state, new_state: score_params['state'],

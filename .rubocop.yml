@@ -60,10 +60,7 @@ Style/FormatStringToken:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.4
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
+  TargetRubyVersion: 2.5
   Exclude:
     - 'Gemfile'
     - 'db/**/*'
@@ -73,3 +70,7 @@ AllCops:
     - 'script/**/*'
     - 'vendor/bundle/**/*'
     - 'node_modules/**/*'
+  Include:
+    - 'app/**/*.rb'
+    - 'lib/**/*.rb'
+    - 'spec/**/*.rb'

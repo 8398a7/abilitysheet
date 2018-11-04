@@ -24,6 +24,7 @@ module Scrape
           title = row.children[5]&.text
           next if title == '曲名'
           next unless title
+
           result[title] = header.text
         end
       end

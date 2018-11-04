@@ -21,6 +21,7 @@ class ScoresController < ApplicationController
 
   def score_exists?
     return if @score
+
     @score = current_user.scores.create!(version: Abilitysheet::Application.config.iidx_version, sheet_id: params[:id])
   end
 

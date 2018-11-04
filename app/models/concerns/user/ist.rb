@@ -25,13 +25,14 @@ module User::Ist
         if score['title'] == 'gigadelic' || score['title'] == 'Innocent Walls'
           difficulty_type = score['difficulty_type_status'] == 'HYPER' ? '[H]' : '[A]'
           sheet_id = sheets[score['title'] + difficulty_type]
-        elsif FROM_IST_TO_AB.keys.include?(score['title'])
+        elsif FROM_IST_TO_AB.key?(score['title'])
           sheet_id = sheets[FROM_IST_TO_AB[score['title']]]
         else
           sheet_id = sheets[score['title']]
         end
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
+
         scores.find_or_create_by!(
           sheet_id: sheet_id,
           version: Abilitysheet::Application.config.iidx_version

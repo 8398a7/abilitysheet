@@ -24,6 +24,7 @@ class Admin::MessagesController < ApplicationController
 
   def load_message
     return unless params[:id]
+
     @message = Message.find_by(id: params[:id])
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -68,6 +69,7 @@ class User < ApplicationRecord
     scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
       new_score = scores.find_by(version: current_version, sheet_id: score.sheet_id)
       next if new_score
+
       new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
     end
     scores.import(new_scores)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: scores
@@ -70,6 +71,7 @@ class Score < ApplicationRecord
       count = 0
       scores.each do |s|
         next unless s.active?
+
         hash[s.lamp_string] += 1
         count += 1
       end
@@ -105,6 +107,7 @@ class Score < ApplicationRecord
   def check_duplicate(score_params)
     score_params.each do |k, v|
       next if k == 'updated_at'
+
       v = v.to_i unless v.class == NilClass
       return false if k == 'state' && try(k).nil? && v.to_i == 7
       return false if try(k) != v

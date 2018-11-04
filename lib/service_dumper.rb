@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ServiceDumper
   def dump_and_upload
     s3 = Aws::S3::Client.new
