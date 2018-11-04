@@ -55,6 +55,7 @@ gem 'twitter'
 gem 'uglifier'
 # }}}
 # v,w,x,y,z {{{
+gem 'webpacker'
 # }}}
 
 group :development do
