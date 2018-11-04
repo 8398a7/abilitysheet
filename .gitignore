@@ -22,3 +22,8 @@ npm-debug.log
 # k8s
 secret.yaml
 kubernetes/rails/cm.yaml
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
