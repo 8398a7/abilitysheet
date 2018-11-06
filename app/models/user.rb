@@ -63,11 +63,11 @@ class User < ApplicationRecord
 
   # iidx_versionが新しくなってから実行する
   def version_up!
-    update(grade: GRADE.size - 1)
+    update_column(:grade, GRADE.size - 1)
     current_version = Abilitysheet::Application.config.iidx_version
     new_scores = []
     scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
-      new_score = scores.find_by(version: current_version, sheet_id: score.sheet_id)
+      new_score = scores.find { |s| s.version == current_version && s.sheet_id == score.sheet_id }
       next if new_score
 
       new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
