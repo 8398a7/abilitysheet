@@ -75,7 +75,8 @@ module Static
     ['PEN',  22],
     ['COP',  23],
     ['SINO', 24],
-    ['CAN', 25]
+    ['CAN', 25],
+    ['RO', 26]
   ].freeze
 
   COLOR = %w[
