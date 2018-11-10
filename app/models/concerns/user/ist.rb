@@ -4,7 +4,8 @@ module User::Ist
   extend ActiveSupport::Concern
   FROM_IST_TO_AB = {
     '旋律のドグマ～Miserables～' => '旋律のドグマ ～Misérables～',
-    '火影' => '焱影'
+    '火影' => '焱影',
+    '炎影' => '焱影'
   }.freeze
   SEARCH_PARAMS = {
     q: {
