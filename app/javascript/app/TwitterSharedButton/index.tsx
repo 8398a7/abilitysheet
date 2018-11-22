@@ -36,18 +36,20 @@ export default class TwitterSharedButton extends React.Component<ITwitterSharedB
 
   public render() {
     return (
-      <a
-        id="twitter-shared-button"
-        style={{display: this.state.display}}
-        href="https://twitter.com/share"
-        data-text={`${this.state.text} #iidx12`}
-        data-lang="ja"
-        data-size="large"
-        data-related="IIDX_12"
-        className="twitter-share-button"
-      >
-        ツイート
-      </a>
+      <span>
+        <a
+          id="twitter-shared-button"
+          style={{display: this.state.display}}
+          href="https://twitter.com/share"
+          data-text={`${this.state.text} #iidx12`}
+          data-lang="ja"
+          data-size="large"
+          data-related="IIDX_12"
+          className="twitter-share-button"
+        >
+          ツイート
+        </a>
+      </span>
     );
   }
 }
