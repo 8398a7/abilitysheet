@@ -3,6 +3,10 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :authenticate!, only: %i[score_viewer]
 
+  def show
+    render json: { user: User.find_by(iidxid: params[:id]).schema }
+  end
+
   def status
     render json: { status: current_user.try(:iidxid) }
   end

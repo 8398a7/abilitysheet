@@ -5,7 +5,7 @@ class Api::V1::ScoresController < Api::V1::BaseController
   before_action :authenticate!, only: :update
 
   def show
-    render json: @user.scores.is_active.is_current_version.preload(:sheet).map(&:schema)
+    render json: { scores: @user.scores.is_active.is_current_version.preload(:sheet).map(&:schema) }
   end
 
   def detail

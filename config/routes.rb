@@ -77,11 +77,16 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
+      resources :abilities, only: :index
       # users
-      get '/users/status' => 'users#status'
-      get '/users/me' => 'users#me'
-      put '/users/change_rival/:iidxid' => 'users#change_rival'
-      post '/users/score_viewer' => 'users#score_viewer'
+      resources :users, only: :show do
+        collection do
+          get :status
+          get :me
+          put '/users/change_rival/:iidxid', to: 'users#change_rival'
+          post :score_viewer
+        end
+      end
       # messages
       resources :messages, only: :index
       # logs

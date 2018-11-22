@@ -6,11 +6,7 @@ module ApplicationHelper
   end
 
   def rectangle_adsense
-    react_component 'RectangleAdsense', client: 'ca-pub-5751776715932993', slot: '4549839260', slot2: '3454772069'
-  end
-
-  def responsive_adsense
-    react_component 'ResponsiveAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+    react_component 'RectangleAdsense'
   end
 
   def render_ads?

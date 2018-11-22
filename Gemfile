@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
-gem 'assets_rails'
 gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
 gem 'capistrano-slackify', require: false

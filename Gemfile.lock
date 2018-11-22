@@ -67,8 +67,6 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
-    assets_rails (1.0.3)
-      rails (>= 4.0, < 6.0)
     ast (2.4.0)
     atomic (1.1.101)
     aws-eventstream (1.0.1)
@@ -574,7 +572,6 @@ PLATFORMS
 DEPENDENCIES
   activerecord-import
   annotate
-  assets_rails
   aws-sdk-s3
   better_errors
   binding_of_caller

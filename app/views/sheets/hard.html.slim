@@ -1,5 +1,5 @@
 - @title = "#{@user.djname} - ハード参考表"
 - @mobile_mode = false
-= react_component 'Sheet',
-  type: 'hard', user: @user.schema, recent: recent_link(@user.iidxid),
+= react_component 'Sheet', \
+  type: 'hard', user: @user.schema, recent: recent_link(@user.iidxid), \
   versions: @versions, sheet_type: @sheet_type, lamp: Static::LAMP
