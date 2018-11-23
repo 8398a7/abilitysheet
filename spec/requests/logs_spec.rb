@@ -45,18 +45,20 @@ describe Api::V1::LogsController, type: :request do
     let(:url) { '/api/v1/logs/1111-1111/2016/3' }
     let(:method) { 'get' }
     let(:result) do
-      [
-        {
-          state: 3,
-          title: 'logs sample',
-          created_date: '2016-03-01'
-        },
-        {
-          state: 1,
-          title: 'logs sample2',
-          created_date: '2016-03-03'
-        }
-      ]
+      {
+        logs: [
+          {
+            state: 3,
+            title: 'logs sample',
+            created_date: '2016-03-01'
+          },
+          {
+            state: 1,
+            title: 'logs sample2',
+            created_date: '2016-03-03'
+          }
+        ]
+      }
     end
     it_behaves_like '200 Success'
   end
