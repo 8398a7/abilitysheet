@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def rectangle_adsense
-    react_component 'RectangleAdsense'
+    react_component 'Adsense'
   end
 
   def render_ads?
