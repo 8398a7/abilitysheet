@@ -112,8 +112,6 @@ GEM
     capistrano-bundler (1.4.0)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
-    capistrano-faster-assets (1.1.0)
-      capistrano (>= 3.1)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -577,7 +575,6 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   bullet
-  capistrano-faster-assets
   capistrano-rails
   capistrano-sidekiq
   capistrano-slackify

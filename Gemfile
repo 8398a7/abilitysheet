@@ -75,7 +75,6 @@ group :development, :test do
 end
 
 group :deployment do
-  gem 'capistrano-faster-assets'
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
   gem 'capistrano3-puma'
