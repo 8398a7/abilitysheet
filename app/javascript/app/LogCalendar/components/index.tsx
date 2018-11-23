@@ -35,7 +35,7 @@ export default class LogCalendar extends React.PureComponent<{ iidxid: string },
         start: date,
         allDay: true,
         url: (window as any).logs_path(this.props.iidxid, date),
-        description: obj[date].map(e => e.title).join('<br>')
+        description: obj[date].map(e => e.title).join('<br>'),
       };
       $('#log-calendar').fullCalendar('renderEvent', event, false);
     });
@@ -47,9 +47,9 @@ export default class LogCalendar extends React.PureComponent<{ iidxid: string },
       locale: 'ja',
       eventRender: (event, element) => {
         element.qtip({
-          content: { text: event.description }
+          content: { text: event.description },
         });
-      }
+      },
     });
     const prev = document.querySelector<HTMLSpanElement>('.fc-prev-button');
     if (prev) { prev.onclick = this.handleClickPrevNext; }

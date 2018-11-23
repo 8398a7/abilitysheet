@@ -52,7 +52,7 @@ const mapping = {
   exh: {
     name: 'エクハ参考表',
     remain: '未エクハ',
-  }
+  },
 };
 class Sheet extends React.PureComponent<Props> {
   public componentWillMount() {

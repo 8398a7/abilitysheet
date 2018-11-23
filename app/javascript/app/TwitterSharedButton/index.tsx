@@ -12,7 +12,7 @@ export default class TwitterSharedButton extends React.Component<ITwitterSharedB
     super(props);
     this.state = {
       text: props.text,
-      display: 'none'
+      display: 'none',
     };
   }
 
@@ -31,7 +31,7 @@ export default class TwitterSharedButton extends React.Component<ITwitterSharedB
 
   public componentDidUpdate() {
     if (this.state.display !== 'none') { return null; }
-    this.setState({display: 'block'});
+    this.setState({ display: 'block' });
   }
 
   public render() {

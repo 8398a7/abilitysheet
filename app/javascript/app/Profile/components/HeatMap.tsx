@@ -52,9 +52,9 @@ class HeatMap extends React.PureComponent<Props, IState> {
       onClick: (date: any, nb: any) => {
         this.setState({
           items: nb,
-          date: `${date}`
+          date: `${date}`,
         });
-      }
+      },
     });
   }
 

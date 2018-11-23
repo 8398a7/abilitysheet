@@ -26,8 +26,8 @@ export default class SplineGraph extends React.Component<IProps, any> {
             opposite: true,
           }, {
             allowDecimals: false,
-            title: { text: '未達成数' }
-          }
+            title: { text: '未達成数' },
+          },
         ],
         tooltip: { shared: true, crosshairs: true },
         series: [
@@ -51,15 +51,15 @@ export default class SplineGraph extends React.Component<IProps, any> {
               { name: 'EASY', y: 10, color: '#98fb98' },
               { name: 'ASSIST', y: 10, color: '#9595ff' },
               { name: 'FAILED', y: 10, color: '#c0c0c0' },
-              { name: 'NOPLAY', y: 10, color: '#ffffff' }
+              { name: 'NOPLAY', y: 10, color: '#ffffff' },
             ],
             center: [300, 60],
             size: 100,
             showInLegend: false,
-            dataLabels: { enabled: false }
-          }
-        ]
-      }
+            dataLabels: { enabled: false },
+          },
+        ],
+      },
     };
   }
 

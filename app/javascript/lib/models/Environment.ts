@@ -38,7 +38,7 @@ const defaultValue = {
     client: 'ca-pub-5751776715932993',
     slot: '4549839260',
     slot2: '3454772069',
-  }
+  },
 };
 
 export default class Environment extends Record(defaultValue) {

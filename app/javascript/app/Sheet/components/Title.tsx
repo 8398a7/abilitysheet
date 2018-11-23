@@ -13,7 +13,7 @@ const mapping = {
   exh: {
     name: 'エクハ参考表',
     remain: '未エクハ',
-  }
+  },
 };
 interface IProps {
   type: 'n_clear' | 'hard' | 'exh';

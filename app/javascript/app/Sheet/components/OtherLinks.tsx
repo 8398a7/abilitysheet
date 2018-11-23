@@ -12,7 +12,7 @@ const mapping = {
   exh: {
     otherLinks: ['clear', 'hard'],
     buttons: ['uk-button-primary', 'uk-button-danger'],
-  }
+  },
 };
 interface IProps {
   type: 'n_clear' | 'hard' | 'exh';

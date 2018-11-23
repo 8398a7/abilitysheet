@@ -37,7 +37,7 @@ class SheetList extends React.PureComponent<Props> {
       dom.push(
         <tr key={`ability-${type}-${key}`}>
           <th colSpan={5} style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>{value}</th>
-        </tr>
+        </tr>,
       );
       $$sheetList.chunk($$sheetList.whereAbility(key, type)).forEach(sheets => {
         const tdDom = sheets.toList().map(sheet => {
@@ -64,7 +64,7 @@ class SheetList extends React.PureComponent<Props> {
       dom.push(
         <tr key={`ability-${type}-${key}`}>
           <th style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>{value}</th>
-        </tr>
+        </tr>,
       );
       $$sheetList.whereAbility(key, type).forEach(sheet => {
         if (sheet === undefined) { return; }
