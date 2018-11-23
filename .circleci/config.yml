@@ -39,9 +39,6 @@ jobs:
           name: Create DB
           command: bundle exec rake db:create db:schema:load --trace
       - run:
-          name: Assets Resolve
-          command: bundle exec rake assets_rails:resolve
-      - run:
           name: Exec Rubocop
           command: bundle exec bin/rubocop_parallel
       - run:
