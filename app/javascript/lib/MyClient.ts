@@ -58,7 +58,7 @@ export interface ILog {
 }
 
 export default class MyClient {
-  private ENDPOINT = process.env.NODE_ENV === 'development' ? '//localhost:3000/api' : '//iidx12.tk/api';
+  private ENDPOINT = `//${location.host}/api`;
   public getScores = (iidxid: string): Promise<{ scores: IScore[] }> => this.sendGet(`/v1/scores/${iidxid}`);
   public getSheets = (): Promise<{ sheets: ISheet[] }> => this.sendGet('/v1/sheets');
   public getMe = (): Promise<{ current_user: IUser }> => this.sendGet('/v1/users/me');

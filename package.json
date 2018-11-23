@@ -17,6 +17,7 @@
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
     "@rails/webpacker": "next",
+    "@sentry/browser": "^4.3.4",
     "action-reducer": "^0.2.0",
     "axios": "^0.18.0",
     "babel-preset-react": "^6.24.1",
@@ -31,7 +32,7 @@
     "nprogress": "^0.2.0",
     "qtip2": "^3.0.3",
     "query-string": "^6.2.0",
-    "raven-js": "^3.9.1",
+    "rails-erb-loader": "^5.5.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-helmet": "^5.2.0",
@@ -56,10 +57,10 @@
     "@types/react-helmet": "^5.0.7",
     "@types/react-redux": "^6.0.9",
     "@types/redux-logger": "^3.0.6",
+    "ts-loader": "^5.3.0",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
-    "ts-loader": "^5.3.0",
     "webpack-dev-server": "2.11.2"
   }
 }

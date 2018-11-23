@@ -100,7 +100,7 @@ class SheetList extends React.PureComponent<Props> {
         <RectangleAdsense />
         {this.props.$$currentUser.renderAds() ? <hr style={{margin: '10px 0'}} /> : null}
         {this.owner() ? <button onClick={this.handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
-        <table className="uk-table uk-table-bordered">
+        <table id="sheet-list-table" className="uk-table uk-table-bordered">
           <tbody>
             {this.props.mobile ? this.renderMobile() : this.renderSheet()}
           </tbody>

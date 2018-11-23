@@ -7,8 +7,9 @@ html
     meta name='keywords' content='iidx,IIDX,beatmania,☆12,ハード地力表,ノマゲ地力表,☆12参考表,☆12ノマゲ参考表,☆12ハード参考表,地力表'
     meta name="viewport" content='width=device-width, initial-scale=1'
     = stylesheet_link_tag    'application', 'data-turbolinks-track': 'reload', media: 'all'
+    = javascript_pack_tag 'sentry'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application'
+    = javascript_pack_tag 'react'
     script async=true src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
     script type='text/javascript' src='//jsoon.digitiminimi.com/js/widgetoon.js'
     - if Rails.env.production?
