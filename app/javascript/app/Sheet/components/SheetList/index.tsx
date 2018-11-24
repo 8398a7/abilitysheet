@@ -98,7 +98,6 @@ class SheetList extends React.PureComponent<Props> {
     return (
       <div>
         <Adsenses slot={1} />
-        {this.props.$$currentUser.renderAds() ? <hr style={{margin: '10px 0'}} /> : null}
         {this.owner() ? <button onClick={this.handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
         <table id="sheet-list-table" className="uk-table uk-table-bordered">
           <tbody>
