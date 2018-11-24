@@ -18,19 +18,18 @@ interface IProps {
 }
 type Props = IProps & ReturnType<typeof mapStateToProps>;
 
-class Adsenses extends React.Component<Props> {
-  public render() {
-    const { client, slots, $$currentUser } = this.props;
-    const slot = slots[this.props.slot - 1];
-    if ($$currentUser && !$$currentUser.renderAds()) { return null; }
-    return (
-      <div>
-        <Adsense.Google
-          {...{ client, slot }}
-        />
-      </div>
-    );
-  }
-}
+const Adsenses: React.SFC<Props> = (props) => {
+  const { client, slots, $$currentUser } = props;
+  const slot = slots[props.slot - 1];
+  if ($$currentUser && !$$currentUser.renderAds()) { return null; }
+  return (
+    <div>
+      <Adsense.Google
+        {...{ client, slot }}
+        style={{ display: 'block', backgroundColor: 'white' }}
+      />
+    </div>
+  );
+};
 
 export default connect(mapStateToProps)(Adsenses);
