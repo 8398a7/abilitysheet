@@ -12,8 +12,6 @@ html
     = javascript_pack_tag 'react'
     script async=true src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'
     script type='text/javascript' src='//jsoon.digitiminimi.com/js/widgetoon.js'
-    - if Rails.env.production?
-      script async=true src='//kitchen.juicer.cc/?color=OYwPJTCLD3U='
     = csrf_meta_tags
     - if Rails.env.production?
       javascript:
@@ -27,12 +25,6 @@ html
         ga('send', 'pageview');
 
     = favicon_link_tag 'favicon.ico'
-    - render_ads? && !Rails.env.test?
-      javascript:
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-5751776715932993",
-          enable_page_level_ads: true
-        });
 
   body
     .loading-container = image_tag('loading.gif')
@@ -56,10 +48,3 @@ html
 - if alert
   javascript:
     UIkit.notify({ message: '#{alert}', timeout: 3000, status: 'danger' });
-
-- if render_ads? && !Rails.env.test?
-  coffee:
-    $(window).on 'turbolinks:load turbolinks:render', ->
-      try
-        (adsbygoogle = window.adsbygoogle || []).push {}
-      catch
