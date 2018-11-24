@@ -84,8 +84,8 @@ class SheetList extends React.PureComponent<Props> {
   }
 
   public handleSheetClick = (sheetId?: number) => () => {
-    const { $$currentUser, getModalRequested } = this.props;
-    const { iidxid } = $$currentUser;
+    const { $$user, getModalRequested } = this.props;
+    const { iidxid } = $$user;
     if (iidxid === undefined || sheetId === undefined) { return; }
     getModalRequested({ iidxid, sheetId });
   }
