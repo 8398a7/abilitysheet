@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
-    "@rails/webpacker": "next",
+    "@rails/webpacker": "https://github.com/rails/webpacker",
     "@sentry/browser": "^4.3.4",
     "@types/cal-heatmap": "^3.5.34",
     "@types/highcharts": "^5.0.33",
@@ -62,6 +62,6 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
-    "webpack-dev-server": "2.11.2"
+    "webpack-dev-server": "^3.1.10"
   }
 }
