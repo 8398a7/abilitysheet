@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import RectangleAdsense from '../../../Adsense/RectangleAdsense';
+import Adsenses from '../../../Adsense/Adsenses';
 import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 import LampTd from './LampTd';
@@ -97,7 +97,7 @@ class SheetList extends React.PureComponent<Props> {
   public render() {
     return (
       <div>
-        <RectangleAdsense />
+        <Adsenses slot={1} />
         {this.props.$$currentUser.renderAds() ? <hr style={{margin: '10px 0'}} /> : null}
         {this.owner() ? <button onClick={this.handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
         <table id="sheet-list-table" className="uk-table uk-table-bordered">

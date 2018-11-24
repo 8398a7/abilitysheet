@@ -36,8 +36,7 @@ const defaultValue = {
   explicitDesktop: false,
   adsense: {
     client: 'ca-pub-5751776715932993',
-    slot: '4549839260',
-    slot2: '3454772069',
+    slots: ['4549839260', '3454772069'],
   },
 };
 

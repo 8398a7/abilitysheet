@@ -5,8 +5,8 @@ module ApplicationHelper
     params[:action] == 'clear' ? @sheets[cnt].n_ability : @sheets[cnt].h_ability
   end
 
-  def rectangle_adsense
-    react_component 'Adsense'
+  def adsense(slot = 2)
+    react_component 'Adsense', slot: slot
   end
 
   def render_ads?

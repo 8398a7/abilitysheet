@@ -2,7 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import SplineGraph from '../../../lib/components/SplineGraph';
 import { RootState } from '../../../lib/ducks';
-import RectangleAdsense from '../../Adsense/RectangleAdsense';
+import Adsenses from '../../Adsense/Adsenses';
 import TopPanel from './TopPanel';
 import TwitterContents from './TwitterContents';
 
@@ -17,7 +17,7 @@ const Welcome: React.SFC<Props> = ({ $$currentUser: user, mobile }) => (
   <div>
     <TopPanel {...{ user, mobile }} />
     <hr style={{ margin: '10px 0' }} />
-    <RectangleAdsense />
+    <Adsenses slot={1} />
     {user.renderAds() ? <hr style={{ margin: '10px 0' }} /> : null}
     <TwitterContents />
     <br />

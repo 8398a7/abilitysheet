@@ -3,14 +3,14 @@ import { Provider } from 'react-redux';
 import rootReducer, { rootSaga } from '../../lib/ducks';
 import { actions } from '../../lib/ducks/Meta';
 import storeCreator from '../../lib/store';
-import RectangleAdsense from './RectangleAdsense';
+import Adsenses from './Adsenses';
 
-export default (props: {}) => {
+export default (props: { slot: 1 | 2 }) => {
   const store = storeCreator(props, rootReducer, rootSaga);
   store.dispatch(actions.considerQueryString());
   return (
     <Provider {...{ store }}>
-      <RectangleAdsense />
+      <Adsenses {...props} />
     </Provider>
   );
 };
