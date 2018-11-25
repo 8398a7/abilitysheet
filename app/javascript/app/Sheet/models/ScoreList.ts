@@ -1,14 +1,17 @@
 import { Map, Record } from 'immutable';
 import Score, { IScore } from './Score';
+import Environment from '../../../lib/models/Environment';
 
 export interface IScoreList {
   list: Map<number, Score>;
   fetched: boolean;
+  env: Environment;
 }
 
 const defaultValue: IScoreList = {
   list: Map(),
   fetched: false,
+  env: new Environment(),
 };
 
 export default class ScoreList extends Record(defaultValue) {
@@ -69,17 +72,18 @@ export default class ScoreList extends Record(defaultValue) {
 
   public remainCount(type: 'n_clear' | 'hard' | 'exh', sheetCount: number) {
     let pattern: number[];
+    const { FC, EXH, HARD, CLEAR, EASY } = this.env;
     switch (type) {
       case 'n_clear': {
-        pattern = [0, 1, 2, 3];
+        pattern = [FC, EXH, HARD, CLEAR, EASY];
         break;
       }
       case 'hard': {
-        pattern = [0, 1, 2];
+        pattern = [FC, EXH, HARD];
         break;
       }
       case 'exh': {
-        pattern = [0, 1];
+        pattern = [FC, EXH];
         break;
       }
     }
@@ -94,22 +98,23 @@ export default class ScoreList extends Record(defaultValue) {
 
   public completed(type: 'n_clear' | 'hard' | 'exh') {
     let count = 0;
+    const { FC, EXH, HARD, CLEAR, EASY } = this.env;
     const stat = this.statistics();
     switch (type) {
       case 'n_clear': {
-        [0, 1, 2, 3].forEach(num => {
+        [FC, EXH, HARD, CLEAR, EASY].forEach(num => {
           count += stat[num] || 0;
         });
         break;
       }
       case 'hard': {
-        [0, 1, 2].forEach(num => {
+        [FC, EXH, HARD].forEach(num => {
           count += stat[num] || 0;
         });
         break;
       }
       case 'exh': {
-        [0, 1].forEach(num => {
+        [FC, EXH].forEach(num => {
           count += stat[num] || 0;
         });
         break;
