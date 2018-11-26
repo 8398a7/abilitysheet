@@ -3,8 +3,9 @@ import * as Raven from 'raven-js';
 import { applyMiddleware, compose, createStore, Middleware, Reducer } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
+import { ForkEffect } from 'redux-saga/effects';
 
-export default function storeCreator<T>(props: T & AbilitysheetContext, rootReducer: Reducer<any>, rootSaga?: any) {
+export default function storeCreator<S>(props: AbilitysheetContext, rootReducer: Reducer<any>, rootSaga: () => IterableIterator<ForkEffect>, initialState: S) {
   const middlewares: Middleware[] = [];
   if (process.env.NODE_ENV !== 'production') {
     middlewares.push(createLogger({
@@ -23,6 +24,7 @@ export default function storeCreator<T>(props: T & AbilitysheetContext, rootRedu
   Raven.config(props.context.sentry_dsn).install();
   const store = createStore(
     rootReducer,
+    initialState,
     compose(
       applyMiddleware(sagaMiddleware, createRavenMiddleware(Raven, {}), ...middlewares),
       devtools,

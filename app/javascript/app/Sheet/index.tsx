@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
+import { initialState as metaInitialState } from '../../lib/ducks/Meta';
 import { actions } from '../../lib/ducks/Meta';
 import { IUser } from '../../lib/models/User';
 import storeCreator from '../../lib/store';
 import Sheet from './components';
-import rootReducer, { rootSaga } from './ducks';
+import rootReducer, { rootSaga, RootState } from './ducks';
+import { initialState as sheetInitialState } from './ducks/Sheet';
 
 interface ISheetProps {
   recent: string;
@@ -15,7 +17,11 @@ interface ISheetProps {
   lamp: string[];
 }
 export default (props: ISheetProps & AbilitysheetContext) => {
-  const store = storeCreator(props, rootReducer, rootSaga);
+  const initialState = {
+    $$sheet: sheetInitialState,
+    $$meta: metaInitialState,
+  };
+  const store = storeCreator<RootState>(props, rootReducer, rootSaga, initialState);
   store.dispatch(actions.considerQueryString());
   const { recent, type, versions, lamp } = props;
   const { iidxid } = props.user;
