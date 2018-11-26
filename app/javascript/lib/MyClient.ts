@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { authenticityHeaders } from './Authenticity';
+import { apiV1AbilitiesPath, apiV1ScorePath, apiV1SheetsPath, apiV1UserPath, meApiV1UsersPath } from './routes';
 
 axios.interceptors.request.use(
   config => {
@@ -58,16 +59,16 @@ export interface ILog {
 }
 
 export default class MyClient {
-  private ENDPOINT = `//${location.host}/api`;
-  public getScores = (iidxid: string): Promise<{ scores: IScore[] }> => this.sendGet(`/v1/scores/${iidxid}`);
-  public getSheets = (): Promise<{ sheets: ISheet[] }> => this.sendGet('/v1/sheets');
-  public getMe = (): Promise<{ current_user: IUser }> => this.sendGet('/v1/users/me');
-  public getUser = (iidxid: string): Promise<{ user: IUser }> => this.sendGet(`/v1/users/${iidxid}`);
-  public getGraph = (iidxid: string, year: string, month: string): Promise<{ [s: string]: any }> => this.sendGet(`/v1/logs/graph/${iidxid}/${year}/${month}`);
-  public getAbilities = (type: 'n_clear' | 'hard' | 'exh'): Promise<{ abilities: IAbility[] }> => this.sendGet(`/v1/abilities?type=${type}`);
-  public updateScore = (iidxid: string, sheetId: number, state: number): Promise<IScore> => this.sendPut(`/v1/scores/${iidxid}/${sheetId}/${state}`);
-  public getModal = (iidxid: string, sheetId: number): Promise<IModal> => this.sendGet(`/v1/scores/${iidxid}/${sheetId}`);
-  public getLogs = (iidxid: string, year: number, month: number): Promise<{ logs: ILog[] }> => this.sendGet(`/v1/logs/${iidxid}/${year}/${month}`);
+  private ENDPOINT = `//${location.host}`;
+  public getScores = (iidxid: string): Promise<{ scores: IScore[] }> => this.sendGet(apiV1ScorePath(iidxid));
+  public getSheets = (): Promise<{ sheets: ISheet[] }> => this.sendGet(apiV1SheetsPath());
+  public getMe = (): Promise<{ current_user: IUser }> => this.sendGet(meApiV1UsersPath());
+  public getUser = (iidxid: string): Promise<{ user: IUser }> => this.sendGet(apiV1UserPath(iidxid));
+  public getGraph = (iidxid: string, year: string, month: string): Promise<{ [s: string]: any }> => this.sendGet(`/api/v1/logs/graph/${iidxid}/${year}/${month}`);
+  public getAbilities = (type: 'n_clear' | 'hard' | 'exh'): Promise<{ abilities: IAbility[] }> => this.sendGet(apiV1AbilitiesPath({ type }));
+  public updateScore = (iidxid: string, sheetId: number, state: number): Promise<IScore> => this.sendPut(`/api/v1/scores/${iidxid}/${sheetId}/${state}`);
+  public getModal = (iidxid: string, sheetId: number): Promise<IModal> => this.sendGet(`/api/v1/scores/${iidxid}/${sheetId}`);
+  public getLogs = (iidxid: string, year: number, month: number): Promise<{ logs: ILog[] }> => this.sendGet(`/api/v1/logs/${iidxid}/${year}/${month}`);
   private sendGet = (url: string) => axios.get(this.ENDPOINT + url).then(response => response.data);
   private sendPut = (url: string) => axios.put(this.ENDPOINT + url).then(response => response.data);
 }

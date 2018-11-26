@@ -37,10 +37,13 @@ jobs:
           command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
       - run:
           name: Create DB
-          command: bundle exec rake db:create db:schema:load --trace
+          command: bundle exec rails db:create db:schema:load --trace
       - run:
           name: Exec Rubocop
           command: bundle exec bin/rubocop_parallel
+      - run:
+          name: Generate routes.ts
+          command: bundle exec rails ts:routes
       - run:
           name: Exec RSpec
           command: bundle exec rspec

@@ -39,6 +39,6 @@ class Api::V1::ScoresController < Api::V1::BaseController
   private
 
   def load_user
-    @user = User.find_by_iidxid!(params[:iidxid])
+    @user = User.find_by_iidxid!(params[:iidxid] || params[:score_iidxid])
   end
 end

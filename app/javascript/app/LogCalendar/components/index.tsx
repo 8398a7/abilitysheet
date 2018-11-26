@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import 'qtip2';
 import * as React from 'react';
 import MyClient, { ILog } from '../../../lib/MyClient';
+import { logsPath } from '../../../lib/routes';
 
 interface IState {
   client: MyClient;
@@ -34,7 +35,7 @@ export default class LogCalendar extends React.PureComponent<{ iidxid: string },
         title: obj[date].length + '個の更新',
         start: date,
         allDay: true,
-        url: (window as any).logs_path(this.props.iidxid, date),
+        url: logsPath(this.props.iidxid, date),
         description: obj[date].map(e => e.title).join('<br>'),
       };
       $('#log-calendar').fullCalendar('renderEvent', event, false);

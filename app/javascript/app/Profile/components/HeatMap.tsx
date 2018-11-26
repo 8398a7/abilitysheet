@@ -4,6 +4,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../lib/ducks';
 import User from '../../../lib/models/User';
+import { apiV1LogCalHeatmapPath, logsPath } from '../../../lib/routes';
 
 function mapStateToProps(state: RootState) {
   return {
@@ -26,6 +27,8 @@ class HeatMap extends React.PureComponent<Props, IState> {
   };
 
   public componentDidMount() {
+    const { user } = this.props;
+    if (user.iidxid === undefined) { return null; }
     // @ts-ignore
     const cal = new CalHeatMap();
     const startDate = new Date();
@@ -34,7 +37,7 @@ class HeatMap extends React.PureComponent<Props, IState> {
     cal.init({
       domain: 'month',
       subDomain: 'day',
-      data: `/api/v1/logs/cal-heatmap/${this.props.user.iidxid}?start={{d:start}}&stop={{d:end}}`,
+      data: `${apiV1LogCalHeatmapPath(user.iidxid)}?start={{d:start}}&stop={{d:end}}`,
       start: startDate,
       range,
       tooltip: true,
@@ -59,6 +62,8 @@ class HeatMap extends React.PureComponent<Props, IState> {
   }
 
   public renderDetail() {
+    const { user } = this.props;
+    if (user.iidxid === undefined) { return null; }
     const { items, date } = this.state;
     if (items === undefined || date === undefined) { return null; }
     const targetDate = new Date(date);
@@ -66,7 +71,7 @@ class HeatMap extends React.PureComponent<Props, IState> {
     return (
       <div className="center">
         <i className="fa fa-refresh" />
-        <a href={(window as any).logs_path(this.props.user.iidxid, text)}>{text}</a>の更新数は{this.state.items}個です
+        <a href={logsPath(user.iidxid, text)}>{text}</a>の更新数は{items}個です
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { sheetPath } from '../../../lib/routes';
 
 const mapping = {
   n_clear: {
@@ -23,10 +24,10 @@ const OtherLinks: React.SFC<IProps> = (props) => {
   if (iidxid === undefined) { return null; }
   return (
     <div>
-      <a className={`uk-button ${mapping[type].buttons[0]}`} href={(window as any).sheet_path({ iidxid, type: mapping[type].otherLinks[0] })}>
+      <a className={`uk-button ${mapping[type].buttons[0]}`} href={sheetPath(iidxid, mapping[type].otherLinks[0])}>
         {mapping[type].otherLinks[0].toUpperCase()}
       </a>
-      <a className={`uk-button ${mapping[type].buttons[1]}`} href={(window as any).sheet_path({ iidxid, type: mapping[type].otherLinks[1] })}>
+      <a className={`uk-button ${mapping[type].buttons[1]}`} href={sheetPath(iidxid, mapping[type].otherLinks[1])}>
         {mapping[type].otherLinks[1].toUpperCase()}
       </a>
     </div>
