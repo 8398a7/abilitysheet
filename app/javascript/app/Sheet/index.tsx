@@ -14,7 +14,7 @@ interface ISheetProps {
   sheet_type: number;
   lamp: string[];
 }
-export default (props: ISheetProps) => {
+export default (props: ISheetProps & AbilitysheetContext) => {
   const store = storeCreator(props, rootReducer, rootSaga);
   store.dispatch(actions.considerQueryString());
   const { recent, type, versions, lamp } = props;

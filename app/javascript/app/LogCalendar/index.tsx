@@ -5,7 +5,7 @@ import { actions } from '../../lib/ducks/Meta';
 import storeCreator from '../../lib/store';
 import LogCalendar from './components';
 
-export default (props: { iidxid: string }) => {
+export default (props: { iidxid: string } & AbilitysheetContext) => {
   const store = storeCreator(props, rootReducer, rootSaga);
   store.dispatch(actions.userMeRequested());
   const { iidxid } = props;

@@ -6,7 +6,7 @@ import User, { IUser } from '../../lib/models/User';
 import storeCreator from '../../lib/store';
 import Profile from './components/Profile';
 
-export default (props: { user: IUser }) => {
+export default (props: { user: IUser } & AbilitysheetContext) => {
   const store = storeCreator(props, rootReducer, rootSaga);
   store.dispatch(actions.considerQueryString());
   const user = new User(props.user);
