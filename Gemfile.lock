@@ -226,9 +226,6 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
-    js-routes (1.4.4)
-      railties (>= 3.2)
-      sprockets-rails
     json (2.1.0)
     json_expressions (0.9.0)
     jwt (2.1.0)
@@ -523,6 +520,8 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
+    ts_routes (1.0.2)
+      railties (>= 4.0)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -589,7 +588,6 @@ DEPENDENCIES
   draper
   factory_bot_rails
   font-awesome-rails
-  js-routes
   json_expressions
   kaminari
   levenshtein
@@ -634,6 +632,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-commands-rspec
+  ts_routes
   turbolinks
   twitter
   uglifier

@@ -16,7 +16,6 @@ gem 'draper'
 gem 'font-awesome-rails'
 # }}}
 # h,i,j,k,l,m,n {{{
-gem 'js-routes'
 gem 'kaminari'
 gem 'levenshtein'
 gem 'mechanize'
@@ -27,6 +26,7 @@ gem 'nokogiri'
 gem 'oauth2'
 gem 'peek'
 gem 'peek-gc'
+gem 'ts_routes'
 # NOTE: 1.3.1 => Uglifier::Error: Unexpected token: name (PerformanceBar). To use ES6 syntax, harmony mode must be enabled with Uglifier.new(:harmony => true).
 gem 'peek-performance_bar', '1.2.1'
 gem 'peek-pg'
