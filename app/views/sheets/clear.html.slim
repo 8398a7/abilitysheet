@@ -1,4 +1,4 @@
 - @title = "#{@user.djname} - ノマゲ参考表"
-= react_component 'Sheet', \
+= react_component_wrapper 'Sheet', \
   type: 'n_clear', user: @user.schema, recent: recent_link(@user.iidxid), \
   versions: @versions, sheet_type: @sheet_type, lamp: Static::LAMP

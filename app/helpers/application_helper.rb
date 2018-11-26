@@ -6,7 +6,14 @@ module ApplicationHelper
   end
 
   def adsense(slot = 2)
-    react_component 'Adsense', slot: slot
+    react_component_wrapper 'Adsense', slot: slot
+  end
+
+  def react_component_wrapper(component, props = {})
+    props[:context] = {
+      sentry_dsn: ENV['SENTRY_JS_DSN']
+    }
+    react_component component, props
   end
 
   def render_ads?
