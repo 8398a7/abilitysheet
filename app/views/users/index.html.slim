@@ -45,13 +45,13 @@ javascript:
 
   $.extend($.fn.dataTable.ext.type.order, {
     'grade-asc'(x, y) {
-      const n1 = format(x);
-      const n2 = format(y);
-      return ((n1 < n2) ? -1 : ((n1 > n2) ? 1 : 0));
+      x = format(x);
+      y = format(y);
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     },
     'grade-desc'(x, y) {
-      const n1 = format(x);
-      const n2 = format(y);
-      return ((n1 < n2) ? 1 : ((n1 > n2) ? -1 : 0));
+      x = format(x);
+      y = format(y);
+      return ((x < y) ? 1 : ((x > y) ? -1 : 0));
     },
   });
