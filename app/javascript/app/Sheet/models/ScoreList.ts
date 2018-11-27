@@ -64,9 +64,10 @@ export default class ScoreList extends Record(defaultValue) {
 
   public noPlayCount(sheetCount: number) {
     let count = 0;
+    const { FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED } = this.env;
     this.list.forEach(score => {
       if (score.state === undefined) { return; }
-      if ([0, 1, 2, 3, 4, 5, 6].indexOf(score.state) !== -1) { count += 1; }
+      if ([FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED].indexOf(score.state) !== -1) { count += 1; }
     });
     return sheetCount - count;
   }
