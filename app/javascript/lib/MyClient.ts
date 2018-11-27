@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { authenticityHeaders } from './Authenticity';
-import { apiV1AbilitiesPath, apiV1ScorePath, apiV1SheetsPath, apiV1UserPath, meApiV1UsersPath } from './routes';
+import { apiV1AbilitiesPath, apiV1ScorePath, apiV1SheetsPath, meApiV1UsersPath } from './routes';
 
 axios.interceptors.request.use(
   config => {
@@ -63,7 +63,6 @@ export default class MyClient {
   public getScores = (iidxid: string): Promise<{ scores: IScore[] }> => this.sendGet(apiV1ScorePath(iidxid));
   public getSheets = (): Promise<{ sheets: ISheet[] }> => this.sendGet(apiV1SheetsPath());
   public getMe = (): Promise<{ current_user: IUser }> => this.sendGet(meApiV1UsersPath());
-  public getUser = (iidxid: string): Promise<{ user: IUser }> => this.sendGet(apiV1UserPath(iidxid));
   public getGraph = (iidxid: string, year: string, month: string): Promise<{ [s: string]: any }> => this.sendGet(`/api/v1/logs/graph/${iidxid}/${year}/${month}`);
   public getAbilities = (type: 'n_clear' | 'hard' | 'exh'): Promise<{ abilities: IAbility[] }> => this.sendGet(apiV1AbilitiesPath({ type }));
   public updateScore = (iidxid: string, sheetId: number, state: number): Promise<IScore> => this.sendPut(`/api/v1/scores/${iidxid}/${sheetId}/${state}`);
