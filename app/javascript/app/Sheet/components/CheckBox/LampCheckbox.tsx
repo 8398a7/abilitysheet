@@ -7,6 +7,7 @@ import { actions } from '../../ducks/Sheet';
 function mapStateToProps(state: RootState) {
   return {
     lamp: state.$$sheet.lamp,
+    $$env: state.$$meta.env,
   };
 }
 function mapDispatchToProps(dispatch: Dispatch) {
@@ -21,11 +22,12 @@ class LampCheckbox extends React.Component<Props> {
   };
 
   public handleMultipleChangeLamp = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { FC, EXH, HARD, CLEAR, EASY } = this.props.$$env;
     const { clear, hard } = this.state;
     switch (e.target.value) {
       case 'clear': {
         this.setState({ clear: !clear });
-        [0, 1, 2, 3].forEach(state => {
+        [FC, EXH, HARD, CLEAR, EASY].forEach(state => {
           const dom = document.querySelector<HTMLInputElement>(`input#state-${state}`);
           if (dom) { dom.checked = clear; }
           this.props.toggleLamp({ state, status: !clear });
@@ -34,7 +36,7 @@ class LampCheckbox extends React.Component<Props> {
       }
       case 'hard': {
         this.setState({ hard: !hard });
-        [0, 1, 2].forEach(state => {
+        [FC, EXH, HARD].forEach(state => {
           const dom = document.querySelector<HTMLInputElement>(`input#state-${state}`);
           if (dom) { dom.checked = hard; }
           this.props.toggleLamp({ state, status: !hard });
