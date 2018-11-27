@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { RootState } from '../ducks';
 import ScoreList from '../models/ScoreList';
 
 const mapping = {
@@ -16,7 +17,7 @@ const mapping = {
   },
 };
 interface IProps {
-  type: 'n_clear' | 'hard' | 'exh';
+  type: RootState['$$sheet']['type'];
   $$scoreList: ScoreList;
   count: number;
 }

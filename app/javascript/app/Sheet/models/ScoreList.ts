@@ -1,5 +1,6 @@
 import { Map, Record } from 'immutable';
 import Environment from '../../../lib/models/Environment';
+import { RootState } from '../ducks';
 import Score, { IScore } from './Score';
 
 export interface IScoreList {
@@ -70,7 +71,7 @@ export default class ScoreList extends Record(defaultValue) {
     return sheetCount - count;
   }
 
-  public remainCount(type: 'n_clear' | 'hard' | 'exh', sheetCount: number) {
+  public remainCount(type: RootState['$$sheet']['type'], sheetCount: number) {
     let pattern: number[];
     const { FC, EXH, HARD, CLEAR, EASY } = this.env;
     switch (type) {
@@ -96,7 +97,7 @@ export default class ScoreList extends Record(defaultValue) {
     return sheetCount - count;
   }
 
-  public completed(type: 'n_clear' | 'hard' | 'exh') {
+  public completed(type: RootState['$$sheet']['type']) {
     let count = 0;
     const { FC, EXH, HARD, CLEAR, EASY } = this.env;
     const stat = this.statistics();

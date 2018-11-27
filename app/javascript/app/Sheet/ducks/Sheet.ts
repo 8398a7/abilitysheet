@@ -1,6 +1,7 @@
 import ActionReducer from 'action-reducer';
 import { OrderedMap, Record } from 'immutable';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
+import { RootState } from '.';
 import { actions as metaActions } from '../../../lib/ducks/Meta';
 import User from '../../../lib/models/User';
 import { IModal } from '../../../lib/MyClient';
@@ -50,7 +51,7 @@ const GET_USER_REQUESTED = 'sheet/getUserRequested';
 const UPDATE_SCORE_REQUESTED = 'sheet/updateScoreRequested';
 const GET_MODAL_REQUESTED = 'sheet/getModalRequested';
 export const actions = {
-  getUser: createAction(GET_USER_REQUESTED, ($$state, payload: { iidxid: string, type: 'n_clear' | 'hard' | 'exh' }) => $$state.asImmutable()),
+  getUser: createAction(GET_USER_REQUESTED, ($$state, payload: { iidxid: string, type: RootState['$$sheet']['type'] }) => $$state.asImmutable()),
   toggleVersion: createAction('sheet/toggleVersion', ($$state, payload: number) => $$state.update('sheetList', sheetList => sheetList.toggleVersion(payload))),
   toggleLamp: createAction('sheet/toggleLamp', ($$state, payload: { state: number, status?: boolean }) => $$state.update('scoreList', scoreList => scoreList.toggleLamp(payload.state, payload.status))),
   reverseAbilities: createAction('sheet/reverseAbilities', $$state => $$state.update('abilities', abilities => abilities.reverse())),

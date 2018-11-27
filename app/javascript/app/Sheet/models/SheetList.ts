@@ -1,4 +1,5 @@
 import { Map, Range, Record } from 'immutable';
+import { RootState } from '../ducks';
 import Sheet, { ISheet } from './Sheet';
 
 export interface ISheetList {
@@ -30,7 +31,7 @@ export default class SheetList extends Record(defaultValue) {
     return this.set('list', newList);
   }
 
-  public whereAbility(ability: number, type: 'n_clear' | 'hard' | 'exh') {
+  public whereAbility(ability: number, type: RootState['$$sheet']['type']) {
     return this.list.map(sheet => {
       if (sheet[type] !== ability) { return; }
       if (sheet.hide) { return; }

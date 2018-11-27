@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { sheetPath } from '../../../lib/routes';
+import { RootState } from '../ducks';
 
 const mapping = {
   n_clear: {
@@ -16,7 +17,7 @@ const mapping = {
   },
 };
 interface IProps {
-  type: 'n_clear' | 'hard' | 'exh';
+  type: RootState['$$sheet']['type'];
   iidxid: string;
 }
 const OtherLinks: React.SFC<IProps> = (props) => {
