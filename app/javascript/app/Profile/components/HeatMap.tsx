@@ -16,14 +16,14 @@ interface IProps {
   viewport: boolean;
 }
 interface IState {
-  items: any;
-  date: any;
+  items: number;
+  date: string;
 }
 type Props = IProps & ReturnType<typeof mapStateToProps>;
 class HeatMap extends React.PureComponent<Props, IState> {
   public state = {
-    items: undefined,
-    date: undefined,
+    items: -1,
+    date: '',
   };
 
   public componentDidMount() {
@@ -45,14 +45,14 @@ class HeatMap extends React.PureComponent<Props, IState> {
       domainLabelFormat: '%Y-%m',
       afterLoadData (timestamps: { [s: string]: number }) {
         const offset = (moment().tz('Asia/Tokyo').utcOffset() - moment().utcOffset())  * 60;
-        const results: any = {};
+        const results: { [key: number]: number } = {};
         Object.keys(timestamps).forEach(timestamp => {
           const commitCount = timestamps[timestamp];
           results[parseInt(timestamp, 10) + offset] = commitCount;
         });
         return results;
       },
-      onClick: (date: any, nb: any) => {
+      onClick: (date: Date, nb: number) => {
         this.setState({
           items: nb,
           date: `${date}`,
@@ -63,9 +63,8 @@ class HeatMap extends React.PureComponent<Props, IState> {
 
   public renderDetail() {
     const { user } = this.props;
-    if (user.iidxid === undefined) { return null; }
     const { items, date } = this.state;
-    if (items === undefined || date === undefined) { return null; }
+    if (items === -1) { return null; }
     const targetDate = new Date(date);
     const text = `${targetDate.getFullYear()}-${('00' + (targetDate.getMonth() + 1)).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`;
     return (
