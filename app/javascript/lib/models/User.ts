@@ -31,10 +31,6 @@ export default class User extends Record(defaultValue) {
     params ? super(params) : super();
   }
 
-  public with(params: Partial<IUser>) {
-    return this.merge(params);
-  }
-
   public renderAds() {
     if (this.role === undefined) { return true; }
     if (this.role >= 25) { return false; }
