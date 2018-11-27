@@ -1,6 +1,6 @@
 import { Map, Record } from 'immutable';
-import Score, { IScore } from './Score';
 import Environment from '../../../lib/models/Environment';
+import Score, { IScore } from './Score';
 
 export interface IScoreList {
   list: Map<number, Score>;

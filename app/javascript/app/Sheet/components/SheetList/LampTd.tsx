@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Environment from '../../../../lib/models/Environment';
-import User from '../../../../lib/models/User';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';
 import LampSelect from './LampSelect';

@@ -2,7 +2,7 @@ import ActionReducer from 'action-reducer';
 import { OrderedMap, Record } from 'immutable';
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 import { actions as metaActions } from '../../../lib/ducks/Meta';
-import User, { IUser } from '../../../lib/models/User';
+import User from '../../../lib/models/User';
 import { IModal } from '../../../lib/MyClient';
 import MyClient from '../../../lib/MyClient';
 import { PayloadAction } from '../../../types/action-reducer/index';
