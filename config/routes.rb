@@ -79,7 +79,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :abilities, only: :index
       # users
-      resources :users, only: :show do
+      resources :users, only: [] do
         collection do
           get :status
           get :me
