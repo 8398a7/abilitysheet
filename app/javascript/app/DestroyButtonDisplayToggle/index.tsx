@@ -23,10 +23,11 @@ export default class DestroyButtonDisplayToggle extends React.PureComponent {
   }
 
   public render() {
+    const { display, nonDisplay } = this.state;
     return (
-      <div className="uk-button-group" style={{marginBottom: '10px'}}>
-        <button onClick={this.handleClick('nonDisplay')} className={'uk-button uk-button-primary' + (this.state.nonDisplay ? ' uk-active' : '')}>非表示</button>
-        <button onClick={this.handleClick('display')} className={'uk-button uk-button-danger' + (this.state.display ? ' uk-active' : '')}>表示</button>
+      <div className="uk-button-group" style={{ marginBottom: '10px' }}>
+        <button onClick={this.handleClick('nonDisplay')} className={`uk-button uk-button-primary ${nonDisplay ? ' uk-active' : '' }`}>非表示</button>
+        <button onClick={this.handleClick('display')} className={`uk-button uk-button-danger ${display ? ' uk-active' : '' }`}>表示</button>
       </div>
     );
   }
