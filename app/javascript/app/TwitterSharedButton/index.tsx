@@ -1,55 +1,26 @@
 import * as React from 'react';
+import { Mention, Share } from 'react-twitter-widgets';
 
 export interface ITwitterSharedButton {
   text: string;
 }
-interface IState {
-  text: string;
-  display: string;
-}
-export default class TwitterSharedButton extends React.Component<ITwitterSharedButton, IState> {
-  constructor(props: ITwitterSharedButton)  {
-    super(props);
-    this.state = {
-      text: props.text,
-      display: 'none',
-    };
-  }
+const TwitterSharedButton: React.SFC<ITwitterSharedButton> = (props) => {
+  const options = {
+    lang: 'ja',
+    text: props.text,
+    size: 'large',
+    via: 'IIDX_12',
+    related: 'IIDX_12,IidxScoreTable',
+    hashtags: 'iidx12',
+  };
+  return (
+    <span>
+      <div style={{ marginTop: '5px' }} />
+      <Mention {...{ username: 'IIDX_12', options: { lang: 'ja', text: '不具合報告や機能要望等をお書きください' }}} />
+      <div style={{ marginTop: '5px' }} />
+      <Share {...{ url: location.href, options }} />
+    </span>
+  );
+};
 
-  public shouldComponentUpdate() { return false; }
-
-  public componentDidMount() {
-    if (typeof((window as any).twttr) === 'undefined') {
-      (window as any).twitterjs = document.createElement('script');
-      (window as any).twitterjs.async = true;
-      (window as any).twitterjs.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('body')[0].appendChild((window as any).twitterjs);
-    } else {
-      (window as any).twttr.widgets.load(document.getElementById('twitter-shared-button'));
-    }
-  }
-
-  public componentDidUpdate() {
-    if (this.state.display !== 'none') { return null; }
-    this.setState({ display: 'block' });
-  }
-
-  public render() {
-    return (
-      <span>
-        <a
-          id="twitter-shared-button"
-          style={{display: this.state.display}}
-          href="https://twitter.com/share"
-          data-text={`${this.state.text} #iidx12`}
-          data-lang="ja"
-          data-size="large"
-          data-related="IIDX_12"
-          className="twitter-share-button"
-        >
-          ツイート
-        </a>
-      </span>
-    );
-  }
-}
+export default TwitterSharedButton;
