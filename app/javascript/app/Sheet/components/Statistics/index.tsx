@@ -10,12 +10,10 @@ function mapStateToProps(state: RootState) {
     count: state.$$sheet.sheetList.list.count(),
     color: state.$$meta.env.color,
     mobile: state.$$meta.env.mobileView(),
+    type: state.$$sheet.type,
   };
 }
-interface IProps {
-  type: 'n_clear' | 'hard' | 'exh';
-}
-export type StatisticsProps = IProps & ReturnType<typeof mapStateToProps>;
+export type StatisticsProps = ReturnType<typeof mapStateToProps>;
 const Statistics: React.SFC<StatisticsProps> = (props) => (
   <div className="uk-overflow-container">
     <table className="uk-table uk-table-bordered" style={{ textAlign: 'center' }}>

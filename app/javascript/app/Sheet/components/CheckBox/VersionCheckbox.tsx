@@ -2,16 +2,19 @@ import * as queryString from 'query-string';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 
+function mapStateToProps(state: RootState) {
+  return {
+    versions: state.$$sheet.versions,
+  };
+}
 function mapDispatchToProps(dispatch: Dispatch) {
   const { toggleVersion, reverseAbilities } = actions;
   return bindActionCreators({ toggleVersion, reverseAbilities }, dispatch);
 }
-interface IProps {
-  versions: Array<[string, number]>;
-}
-type Props = IProps & ReturnType<typeof mapDispatchToProps>;
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
 class VersionCheckbox extends React.PureComponent<Props, { reverse: boolean }> {
   public state = {
@@ -89,4 +92,4 @@ class VersionCheckbox extends React.PureComponent<Props, { reverse: boolean }> {
   }
 }
 
-export default connect(null, mapDispatchToProps)(VersionCheckbox);
+export default connect(mapStateToProps, mapDispatchToProps)(VersionCheckbox);

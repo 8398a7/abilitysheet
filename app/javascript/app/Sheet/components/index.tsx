@@ -25,6 +25,8 @@ function mapStateToProps(state: RootState) {
     bp: state.$$sheet.bp,
     mobile: state.$$meta.env.mobileView(),
     implicitMobile: state.$$meta.env.implicitMobile,
+    type: state.$$sheet.type,
+    recent: state.$$sheet.recent,
   };
 }
 function mapDispatchToProps(dispatch: Dispatch) {
@@ -32,14 +34,7 @@ function mapDispatchToProps(dispatch: Dispatch) {
   const { toggleViewport } = metaActions;
   return bindActionCreators({ getUser, updateBp, toggleViewport }, dispatch);
 }
-interface IProps {
-  type: 'n_clear' | 'hard' | 'exh';
-  recent: string;
-  iidxid: string;
-  versions: Array<[string, number]>;
-  lamp: string[];
-}
-type Props = IProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 const mapping = {
   n_clear: {
     name: 'ノマゲ参考表',
@@ -56,7 +51,8 @@ const mapping = {
 };
 class Sheet extends React.PureComponent<Props> {
   public componentWillMount() {
-    const { iidxid, type } = this.props;
+    const { type } = this.props;
+    const { iidxid } = this.props.user;
     this.props.getUser({ iidxid, type });
   }
 
@@ -79,8 +75,7 @@ class Sheet extends React.PureComponent<Props> {
   }
 
   public render() {
-    const { user, type, recent, versions, lamp, $$scoreList, count, bp, mobile, implicitMobile } = this.props;
-    if (user.id === undefined) { return null; }
+    const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = this.props;
     return (
       <div className="react">
         <HelmetWrapper {...{ mobile }} />
@@ -93,12 +88,12 @@ class Sheet extends React.PureComponent<Props> {
           {implicitMobile ? this.renderToggleView() : null}
           {$$scoreList.fetched ? <TwitterSharedButton text={`DJ.${user.djname} ☆12${mapping[type].name}(${mapping[type].remain}${$$scoreList.remainCount(type, count)})`} /> : null}
           <hr />
-          <CheckBox {...{ versions, type, lamp }} />
-          <Statistics {...{ type }} />
+          <CheckBox  />
+          <Statistics />
           <h3 />
           <BpForm {...{ bp, handleChangeBp: this.handleChangeBp }} />
           <br />
-          <SheetList {...{ type }} />
+          <SheetList />
         </div>
       </div>
     );

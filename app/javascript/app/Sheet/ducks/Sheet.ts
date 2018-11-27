@@ -11,26 +11,35 @@ import ScoreList from '../models/ScoreList';
 import { ISheet } from '../models/Sheet';
 import SheetList from '../models/SheetList';
 
-const defaultValue: {
+export interface ISheetDefaultValue {
   user: User;
   sheetList: SheetList;
   scoreList: ScoreList;
   abilities: OrderedMap<number, string>;
   bp: string;
   selectDisplay: boolean;
+  type: 'n_clear' | 'hard' | 'exh';
+  versions: Array<[string, number]>;
+  lamp: string[];
+  recent: string;
   modal?: {
     title: string;
     textage: string;
     scores: Array<{ score: number | null, state: number | null, version: number, bp: number | null, updated_at: string }>;
-  }
-} = {
+  };
+}
+const defaultValue: ISheetDefaultValue = {
   user: new User(),
   sheetList: new SheetList(),
   scoreList: new ScoreList(),
   abilities: OrderedMap(),
   bp: localStorage.bp || '0',
-  modal: undefined,
   selectDisplay: true,
+  type: 'n_clear',
+  versions: [],
+  lamp: [],
+  recent: '',
+  modal: undefined,
 };
 const initialRecord = Record(defaultValue);
 export const initialState = new initialRecord();
@@ -54,7 +63,6 @@ export const actions = {
   getModalRequested: createAction(GET_MODAL_REQUESTED, ($$state, payload: { iidxid: string, sheetId: number }) => $$state.asImmutable()),
   toggleDisplaySelect: createAction('sheet/toggleDisplaySelect', $$state => $$state.set('selectDisplay', !$$state.selectDisplay)),
 };
-const getUserSucceeded = createAction('sheet/getUserSucceeded', ($$state, payload: IUser) => $$state.set('user', new User(payload)));
 const getUserFailed = createAction('sheet/getUserFailed', ($$state, error: Error) => $$state.asImmutable());
 const updateSheetList = createAction('sheet/updateSheetList', ($$state, payload: ISheet[]) => $$state.update('sheetList', sheetList => sheetList.updateList(payload)));
 const updateScoreList = createAction('sheet/updateScoreList', ($$state, payload: IScore[]) => $$state.update('scoreList', scoreList => scoreList.updateList(payload)));
@@ -72,17 +80,14 @@ const client = new MyClient();
 function* getUserRequested(action: PayloadAction<typeof actions.getUser>) {
   try {
     const { iidxid, type } = action.payload;
-    const { abilitiesRes, userRes, sheetsRes }: {
+    const { abilitiesRes, sheetsRes }: {
       abilitiesRes: SagaCall<typeof client.getAbilities>;
-      userRes: SagaCall<typeof client.getUser>;
       sheetsRes: SagaCall<typeof client.getSheets>;
     } = yield all({
       abilitiesRes: call(client.getAbilities, type),
-      userRes: call(client.getUser, iidxid),
       sheetsRes: call(client.getSheets),
     });
     yield put(updateAbilities(abilitiesRes.abilities));
-    yield put(getUserSucceeded(userRes.user));
     yield put(updateSheetList(sheetsRes.sheets));
     const { scores }: SagaCall<typeof client.getScores> = yield call(client.getScores, iidxid);
     yield put(updateScoreList(scores));

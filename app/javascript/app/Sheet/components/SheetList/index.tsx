@@ -17,16 +17,14 @@ function mapStateToProps(state: RootState) {
     bp: state.$$sheet.bp,
     selectDisplay: state.$$sheet.selectDisplay,
     mobile: state.$$meta.env.mobileView(),
+    type: state.$$sheet.type,
   };
 }
 function mapDispatchToProps(dispatch: Dispatch) {
   const { updateScoreRequested, getModalRequested, toggleDisplaySelect } = actions;
   return bindActionCreators({ updateScoreRequested, getModalRequested, toggleDisplaySelect }, dispatch);
 }
-interface IProps {
-  type: 'n_clear' | 'hard' | 'exh';
-}
-type Props = IProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
 class SheetList extends React.PureComponent<Props> {
   public renderSheet() {
@@ -77,8 +75,8 @@ class SheetList extends React.PureComponent<Props> {
 
   public updateLamp = (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { $$currentUser, updateScoreRequested } = this.props;
+    if ($$currentUser === undefined || sheetId === undefined) { return; }
     const { iidxid } = $$currentUser;
-    if (iidxid === undefined || sheetId === undefined) { return; }
     const state = parseInt(e.target.value, 10);
     updateScoreRequested({ iidxid, sheetId, state });
   }
@@ -109,6 +107,7 @@ class SheetList extends React.PureComponent<Props> {
   }
 
   private owner = () => {
+    if (this.props.$$currentUser === undefined) { return false; }
     return this.props.$$currentUser.is(this.props.$$user);
   }
 }

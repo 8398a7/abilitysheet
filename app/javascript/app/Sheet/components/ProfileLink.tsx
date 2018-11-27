@@ -7,7 +7,6 @@ interface IProps {
 }
 const ProfileLink: React.SFC<IProps> = (props) => {
   const { user } = props;
-  if (user.iidxid === undefined) { return null; }
   return (
     <h3>
       <a href={userPath(user.iidxid)}>{`DJ.${user.djname}(${user.iidxid})`}</a>

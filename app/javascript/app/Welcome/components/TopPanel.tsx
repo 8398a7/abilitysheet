@@ -3,10 +3,10 @@ import User from '../../../lib/models/User';
 import { newUserRegistrationPath } from '../../../lib/routes';
 
 interface IProps {
-  user: User;
+  user?: User;
 }
 const Register: React.SFC<IProps> = ({ user }) => {
-  if (user.id !== undefined) { return null; }
+  if (user !== undefined) { return null; }
   return (
     <div className="uk-width-medium-1-3 register-link-button">
       <a href={newUserRegistrationPath()} className="uk-button-primary uk-button-large">登録</a>

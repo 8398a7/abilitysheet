@@ -5,9 +5,12 @@ import Environment from '../models/Environment';
 import User, { IUser } from '../models/User';
 import MyClient from '../MyClient';
 
-const defaultValue = {
+const defaultValue: {
+  env: Environment,
+  currentUser?: User,
+} = {
   env: new Environment(),
-  currentUser: new User(),
+  currentUser: undefined,
 };
 const initialRecord = Record(defaultValue);
 export const initialState = new initialRecord();

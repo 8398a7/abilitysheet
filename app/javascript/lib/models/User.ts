@@ -13,15 +13,15 @@ export interface IUser {
   followers: string[];
 }
 
-const defaultValue: Partial<IUser> = {
-  id: undefined,
-  iidxid: undefined,
-  role: undefined,
-  djname: undefined,
-  grade: undefined,
-  pref: undefined,
-  image_url: undefined,
-  created_at: undefined,
+const defaultValue: IUser = {
+  id: -1,
+  iidxid: '',
+  role: 0,
+  djname: '',
+  grade: 0,
+  pref: 0,
+  image_url: '',
+  created_at: '',
   follows: [],
   followers: [],
 };

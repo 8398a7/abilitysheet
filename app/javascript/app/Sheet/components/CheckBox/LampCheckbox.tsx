@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
+import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 
+function mapStateToProps(state: RootState) {
+  return {
+    lamp: state.$$sheet.lamp,
+  };
+}
 function mapDispatchToProps(dispatch: Dispatch) {
   const { toggleLamp } = actions;
   return bindActionCreators({ toggleLamp }, dispatch);
 }
-interface IProps {
-  lamp: string[];
-}
-type Props = IProps & ReturnType<typeof mapDispatchToProps>;
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 class LampCheckbox extends React.Component<Props> {
   public state = {
     clear: false,
@@ -78,4 +81,4 @@ class LampCheckbox extends React.Component<Props> {
   }
 }
 
-export default connect(null, mapDispatchToProps)(LampCheckbox);
+export default connect(mapStateToProps, mapDispatchToProps)(LampCheckbox);

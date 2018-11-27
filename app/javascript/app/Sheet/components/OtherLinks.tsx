@@ -17,11 +17,10 @@ const mapping = {
 };
 interface IProps {
   type: 'n_clear' | 'hard' | 'exh';
-  iidxid?: string;
+  iidxid: string;
 }
 const OtherLinks: React.SFC<IProps> = (props) => {
   const { type, iidxid } = props;
-  if (iidxid === undefined) { return null; }
   return (
     <div>
       <a className={`uk-button ${mapping[type].buttons[0]}`} href={sheetPath(iidxid, mapping[type].otherLinks[0])}>
