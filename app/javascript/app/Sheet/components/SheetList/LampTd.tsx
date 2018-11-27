@@ -43,7 +43,7 @@ const LampTd: React.SFC<IProps> = (props) => {
   return (
     <td style={{ width, height, backgroundColor, display }}>
       <a
-        style={{color: '#555555'}}
+        style={{ color: '#555555' }}
         href="#sheet-modal"
         data-uk-modal={true}
         onClick={handleSheetClick(sheet.id)}
