@@ -42,6 +42,9 @@ jobs:
           name: Exec Rubocop
           command: bundle exec bin/rubocop_parallel
       - run:
+          name: Exec Tslint
+          command: yarn run lint
+      - run:
           name: Generate routes.ts
           command: bundle exec rails ts:routes
       - run:
