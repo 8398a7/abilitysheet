@@ -9,16 +9,17 @@ describe Api::V1::SheetsController, type: :request do
     let(:method) { 'get' }
     let(:result) do
       {
-        1 => {
+        sheets: [{
+          id: 1,
           title: 'MyString',
-          clear: 1,
+          n_clear: 1,
           hard: 1,
           exh: 1,
-          clear_string: '個人差S+',
+          n_clear_string: '個人差S+',
           hard_string: '個人差S+',
           exh_string: '難度11',
           version: 1
-        }
+        }]
       }
     end
     it_behaves_like '200 Success'

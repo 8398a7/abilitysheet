@@ -10,14 +10,14 @@ p
 
 - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
   p style='margin-bottom: 0px' 削除ボタン
-  = react_component 'DestroyButtonDisplayToggle'
-= react_component 'TwitterSharedButton', text: "更新履歴(#{@logs.first.created_date})"
+  = react_component_wrapper 'DestroyButtonDisplayToggle'
+= react_component_wrapper 'TwitterSharedButton', text: "更新履歴(#{@logs.first.created_date})"
 hr
 - unless user_signed_in? && current_user.special?
-  = rectangle_adsense
+  = adsense
   hr
 
-= react_component 'LogCalendar', iidxid: params[:id]
+= react_component_wrapper 'LogCalendar', iidxid: params[:id]
 
 .uk-overflow-container
   table.uk-table.uk-table-hover.uk-table-striped.datatable

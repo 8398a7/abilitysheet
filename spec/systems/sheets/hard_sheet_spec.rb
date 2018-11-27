@@ -59,7 +59,7 @@ feature 'ハード地力表', type: :system, js: true do
       expect(user.scores.empty?).to eq true
       expect(user.logs.empty?).to eq true
       select 'C', from: 'select_1'
-      expect(page.find(:css, 'td[height="50"]')).to have_style('background-color' => 'rgba(175, 238, 238, 1)')
+      expect(page.find('table#sheet-list-table > tbody > tr > td')).to have_style('background-color' => 'rgba(175, 238, 238, 1)')
       expect(user.scores.first.state).to eq 3
       expect(Log.exists?(user_id: 1, sheet_id: 1, pre_state: 7, new_state: 3)).to eq true
     end

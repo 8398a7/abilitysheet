@@ -77,24 +77,31 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
+      resources :abilities, only: :index
       # users
-      get '/users/status' => 'users#status'
-      get '/users/me' => 'users#me'
-      put '/users/change_rival/:iidxid' => 'users#change_rival'
-      post '/users/score_viewer' => 'users#score_viewer'
+      resources :users, only: [] do
+        collection do
+          get :status
+          get :me
+          put '/users/change_rival/:iidxid', to: 'users#change_rival'
+          post :score_viewer
+        end
+      end
       # messages
       resources :messages, only: :index
       # logs
-      get '/logs/:iidxid/:year/:month' => 'logs#full_calendar'
-      get '/logs/cal-heatmap/:iidxid' => 'logs#cal_heatmap'
-      get '/logs/graph/:iidxid/:year/:month' => 'logs#graph'
+      resources :logs, only: [], param: :iidxid do
+        get :cal_heatmap
+      end
+      get '/logs/:log_iidxid/:year/:month' => 'logs#full_calendar'
+      get '/logs/graph/:log_iidxid/:year/:month' => 'logs#graph'
       # statics
       resources :statics, only: :index
       # sheets
       resources :sheets, only: :index
       get '/sheets/list' => 'sheets#list'
       # scores
-      get '/scores/:iidxid' => 'scores#show'
+      resources :scores, only: :show, param: :iidxid
       get '/scores/:iidxid/:sheet_id' => 'scores#detail'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'

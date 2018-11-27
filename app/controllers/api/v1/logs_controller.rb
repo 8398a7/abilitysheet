@@ -7,7 +7,7 @@ class Api::V1::LogsController < Api::V1::BaseController
     start_date = (params[:year].to_s + '-' + params[:month].to_s + '-01').to_date
     end_date = start_date + 1.month
     logs = @user.logs.where(created_date: start_date..end_date)
-    render json: logs.preload(:sheet).map(&:schema)
+    render json: { logs: logs.preload(:sheet).map(&:schema) }
   end
 
   def cal_heatmap
@@ -24,6 +24,6 @@ class Api::V1::LogsController < Api::V1::BaseController
   private
 
   def load_user!
-    @user = User.find_by_iidxid!(params[:iidxid])
+    @user = User.find_by_iidxid!(params[:log_iidxid])
   end
 end

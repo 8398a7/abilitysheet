@@ -1,4 +1,6 @@
 Rails.application.configure do
+  # Verifies that versions and hashed value of the package contents in the project's package.json
+  config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -79,8 +81,6 @@ Rails.application.configure do
     :title,
     Rack::DevMark::Theme::GithubForkRibbon.new(position: 'right', color: 'green', fixed: true)
   ]
-
-  config.react.variant = :development
 
   routes.default_url_options = { host: 'localhost', port: 3000, protocol: 'http' }
   config.action_mailer.default_url_options = { host: 'localhost:3000' }

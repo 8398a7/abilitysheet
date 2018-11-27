@@ -16,9 +16,16 @@
 
 .DS_Store
 data.yml
-/node_modules
 npm-debug.log
 
 # k8s
 secret.yaml
 kubernetes/rails/cm.yaml
+
+# webpacker
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
+app/javascript/lib/routes.ts

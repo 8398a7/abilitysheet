@@ -2,4 +2,4 @@
   .uk-width-3-10
     = render partial: 'show_left', locals: { user: @user }
   .uk-width-7-10
-    = react_component 'UserProfile', { user: @user.schema }
+    = react_component_wrapper 'Profile', user: @user.schema

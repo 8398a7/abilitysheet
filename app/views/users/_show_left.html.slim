@@ -15,7 +15,7 @@
         - else
           = fa_icon 'user-plus', text: 'ライバルに追加'
 . style='padding-bottom: 3px'
-    = react_component 'TwitterSharedButton', text: "DJ.#{user.djname} ☆12参考表プロフィール"
+    = react_component_wrapper 'TwitterSharedButton', text: "DJ.#{user.djname} ☆12参考表プロフィール"
 . style='padding-bottom: 3px'
   = link_to 'ノマゲ参考表', sheet_path(user.iidxid, type: 'clear'), class: 'uk-button uk-button-primary'
   = link_to 'ハード参考表', sheet_path(user.iidxid, type: 'hard'), class: 'uk-button uk-button-danger'

@@ -17,7 +17,7 @@
       button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
       hr
       - unless user_signed_in? && current_user.special?
-        = rectangle_adsense
+        = adsense
         hr
-      = react_component 'LogCalendar', iidxid: params[:id]
+      = react_component_wrapper 'LogCalendar', iidxid: params[:id]
       #logs = render partial: 'logs/logs'
