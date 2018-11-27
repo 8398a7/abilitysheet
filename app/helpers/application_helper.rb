@@ -5,12 +5,15 @@ module ApplicationHelper
     params[:action] == 'clear' ? @sheets[cnt].n_ability : @sheets[cnt].h_ability
   end
 
-  def rectangle_adsense
-    react_component 'RectangleAdsense', client: 'ca-pub-5751776715932993', slot: '4549839260', slot2: '3454772069'
+  def adsense(slot = 2)
+    react_component_wrapper 'Adsense', slot: slot
   end
 
-  def responsive_adsense
-    react_component 'ResponsiveAdsense', client: 'ca-pub-5751776715932993', slot: '6704745267'
+  def react_component_wrapper(component, props = {})
+    props[:context] = {
+      sentry_dsn: ENV['SENTRY_JS_DSN']
+    }
+    react_component component, props
   end
 
   def render_ads?

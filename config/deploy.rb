@@ -43,6 +43,13 @@ set :puma_worker_timeout, 15
 set :sidekiq_role, :app
 set :sidekiq_default_hooks, false
 namespace :deploy do
+  task :ts_routes do
+    on roles(:app) do
+      execute "cd #{release_path}; RAILS_ENV=#{fetch(:rails_env)} rails ts:routes"
+    end
+  end
+  before 'deploy:compile_assets', 'deploy:ts_routes'
   after 'deploy:starting', 'sidekiq:quiet'
   after 'puma:restart', 'sidekiq:stop'
+  before 'puma:check', 'puma:config'
 end

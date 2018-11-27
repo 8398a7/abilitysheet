@@ -14,10 +14,6 @@ class SheetsController < ApplicationController
 
   private
 
-  def load_user
-    @user = User.find_by_iidxid!(params[:iidxid])
-  end
-
   def check_action
     @action_routes = {
       'power' => :power,
@@ -33,16 +29,14 @@ class SheetsController < ApplicationController
     @color = Score.convert_color(@user.scores.is_current_version)
   end
 
-  def clear
-    @sheet_type = 0
-  end
+  def clear; end
 
-  def hard
-    @sheet_type = 1
-  end
+  def hard; end
 
-  def exh
-    @sheet_type = 2
+  def exh; end
+
+  def load_user
+    @user = User.find_by_iidxid!(params[:iidxid])
   end
 
   def load_static

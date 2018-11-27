@@ -24,17 +24,12 @@ module Abilitysheet
     config.iidx_grade = ENV['IIDX_GRADE'].to_i
 
     # lib auto load
-    config.autoload_paths += %W(#{config.root}/lib)
-    config.eager_load_paths += %W(#{config.root}/lib)
+    config.autoload_paths += %W[#{config.root}/lib]
+    config.eager_load_paths += %W[#{config.root}/lib]
 
     # test_framework
     config.generators.test_framework = :rspec
 
-    config.assets.paths << Rails.root.join('node_modules')
-    config.assets.components = %w(yarn)
-
     SLACK_URI = URI.parse(ENV['NOTIFY_SLACK_URL']) if ENV['NOTIFY_SLACK_URL']
-
-    config.react.camelize_props = true
   end
 end
