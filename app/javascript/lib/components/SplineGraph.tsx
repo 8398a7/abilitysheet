@@ -23,9 +23,11 @@ export default class SplineGraph extends React.Component<IProps, any> {
             allowDecimals: false,
             title: { text: '更新数' },
             max: 40,
+            min: 0,
             opposite: true,
           }, {
             allowDecimals: false,
+            min: 0,
             title: { text: '未達成数' },
           },
         ],
@@ -63,27 +65,30 @@ export default class SplineGraph extends React.Component<IProps, any> {
     };
   }
 
-  public onChangePie(options: any, graph: any) {
+  public updatePie(options: any, graph: any) {
     options.series[9].data.forEach((_: any, index: number) => options.series[9].data[index].y = graph.pie[index]);
     options.series[9].center = [200, 40];
+    return options;
   }
 
-  public onChangeColumn(options: any, graph: any) {
-    [0, 1, 2, 3, 4].forEach((_, index) => options.series[index].data = graph.column[index]);
+  public updateColumn(options: any, graph: any) {
+    [0, 1, 2, 3, 4].forEach(index => options.series[index].data = graph.column[index]);
     options.yAxis[0].max = graph.column_max;
+    return options;
   }
 
-  public onChangeSpline(options: any, graph: any) {
-    [5, 6, 7, 8].forEach((_, index) => options.series[index].data = graph.spline[index - 5]);
+  public updateSpline(options: any, graph: any) {
+    [5, 6, 7, 8].forEach(index => options.series[index].data = graph.spline[index - 5]);
     options.yAxis[1].max = graph.spline_max;
+    return options;
   }
 
   public handleChange = (graph: any) => {
-    const options = { ...this.state.options };
+    let options = { ...this.state.options };
     options.xAxis.categories = graph.categories;
-    this.onChangePie(options, graph);
-    this.onChangeColumn(options, graph);
-    this.onChangeSpline(options, graph);
+    options = this.updatePie(options, graph);
+    options = this.updateColumn(options, graph);
+    options = this.updateSpline(options, graph);
     this.setState({ options }, this.renderChart);
   }
 
