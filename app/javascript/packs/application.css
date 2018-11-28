@@ -1,0 +1,100 @@
+@import "cal-heatmap/cal-heatmap";
+@import "fullcalendar/dist/fullcalendar";
+@import "nprogress/nprogress";
+@import "qtip2/dist/jquery.qtip";
+@import "select2/dist/css/select2";
+
+@import "../stylesheets/react";
+@import "../stylesheets/admin";
+
+.loading-container {
+  z-index: 10000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  background-color: white;
+  opacity: 0.5;
+  padding-top: 25%;
+  display: none;
+}
+
+.music_link {
+  color: black;
+}
+.statistic {
+  background-color: #e6e6fa;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.brand {
+  font-family: 'LogoTypeGothic';
+}
+.bold {
+  font-weight: bold;
+}
+
+footer {
+  .uk-panel {
+    text-align: center;
+  }
+  .left-position {
+    float: left;
+  }
+}
+
+form.djname-search {
+  margin-top: 20px;
+}
+
+.icon {
+  border-radius: 50%;
+  margin: 3px 3px 3px 3px;
+  -webkit-box-shadow: 0 0 30px #808080;
+}
+
+.uk-width-medium-1-3.register-link-button {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.top-panel {
+  background: #737373;
+}
+
+form.conntact {
+  .uk-form-icon {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+  }
+}
+
+form.devise {
+  .uk-form-icon {
+    width: 100%;
+  }
+  .half-input {
+    width: 49.5%;
+  }
+  input {
+    width: 100%;
+  }
+  select {
+    width: 49.99%;
+  }
+  input[type=checkbox] {
+    margin-left: 5px;
+    width: 25px;
+  }
+}
