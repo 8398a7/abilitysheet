@@ -42,6 +42,7 @@
     "jquery-ui": "^1.12.1",
     "moment-timezone": "^0.5.23",
     "nprogress": "^0.2.0",
+    "postcss-nested": "^4.1.0",
     "qtip2": "^3.0.3",
     "query-string": "^6.2.0",
     "rails-erb-loader": "^5.5.0",
