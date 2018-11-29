@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/messages/password', to: 'messages#password', as: :password_message
   resources :helps, only: [] do
     collection do
+      get :support
       get :ist
     end
   end
