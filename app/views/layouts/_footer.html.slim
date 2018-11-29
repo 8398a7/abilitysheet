@@ -1,5 +1,8 @@
 footer.uk-container.uk-container-center.uk-margin.bottom
   .footer
+    .center
+      = link_to support_helps_path
+        = fa_icon 'question', text: 'ページが表示されない方へ'
     - if render_ads? && !Rails.env.test?
       = adsense
     .relative
