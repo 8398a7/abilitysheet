@@ -8,6 +8,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @q = User.search(params[:q])
+    @q.sorts = ['id desc'] if @q.sorts.empty?
     @users = @q.result.page(params[:page])
   end
 

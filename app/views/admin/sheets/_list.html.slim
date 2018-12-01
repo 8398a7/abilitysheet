@@ -5,11 +5,12 @@
         th style="width: 150px;"
           = link_to new_admin_sheet_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
             = fa_icon 'plus', text: '作成'
-        th id
-        th textage
-        th 曲名
-        th ノマゲ地力
-        th ハード地力
+        th = sort_link(@q, :id, 'id')
+        th = sort_link(@q, :textage, 'textage')
+        th = sort_link(@q, :title, '曲名')
+        th = sort_link(@q, :n_ability, 'ノマゲ地力')
+        th = sort_link(@q, :h_ability, 'ハード地力')
+        th = sort_link(@q, :exh_ability, 'エクハ地力')
     tbody
       - sheets.each do |sheet|
         - sheet = sheet.decorate
@@ -32,11 +33,4 @@
           td class=(sheet.active ? "uk-button-success" : "uk-button-danger") = sheet.title
           td = sheet.normal
           td = sheet.hard
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatable').dataTable
-      order: [1, 'desc']
-      columnDefs: [
-        targets: [0]
-        orderable: false
-      ]
+          td = sheet.exh

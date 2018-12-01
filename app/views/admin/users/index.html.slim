@@ -19,8 +19,8 @@ h2.bold
       = f.search_field :email_eq
   .uk-form-row
     label.uk-form-label 所属
-    .uk-form-controls.uk-form-controls-text
-      = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}, class: ''
+    .uk-form-controls
+      = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}
   .uk-form-row
     button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
       = fa_icon 'search', text: '検索'
