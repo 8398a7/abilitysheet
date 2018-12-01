@@ -36,7 +36,10 @@ export default class SheetList extends Record(defaultValue) {
       if (sheet[type] !== ability) { return; }
       if (sheet.hide) { return; }
       return sheet;
-    }).filter(sheet => sheet !== undefined);
+    }).filter(sheet => sheet !== undefined).sortBy((sheet) => {
+      if (sheet === undefined) { return; }
+      return sheet.title;
+    });
   }
 
   public chunk(list: Map<number, Sheet | undefined>, chunkSize = 5) {
