@@ -34,8 +34,6 @@ gem 'peek-rblineprof'
 gem 'peek-redis'
 gem 'peek-sidekiq', github: '8398a7/peek-sidekiq'
 gem 'pg'
-gem 'pry-rails'
-# gem 'pry-remote'
 gem 'puma'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails'
@@ -70,6 +68,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'pry-byebug'
 end
 
