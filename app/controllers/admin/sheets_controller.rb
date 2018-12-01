@@ -6,17 +6,9 @@ class Admin::SheetsController < ApplicationController
   before_action :load_sheet, except: %i[index new create]
 
   def index
-    @search = Sheet.search(params[:q])
-    @sheets = @search.result
-  end
-
-  def diff
-    if params[:query].present? && params[:type].present?
-      tp = ThreadParser.new(params[:query], params[:type])
-      render json: tp.run
-    else
-      render json: { error: 'requires query and type' }, status: 400
-    end
+    @q = Sheet.search(params[:q])
+    @q.sorts = ['id desc'] if @q.sorts.empty?
+    @sheets = @q.result.page(params[:page])
   end
 
   def new

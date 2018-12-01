@@ -241,7 +241,6 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
-    levenshtein (0.2.2)
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -590,7 +589,6 @@ DEPENDENCIES
   font-awesome-rails
   json_expressions
   kaminari
-  levenshtein
   mechanize
   meta_request
   mini_magick

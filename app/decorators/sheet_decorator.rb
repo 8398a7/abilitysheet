@@ -10,4 +10,8 @@ class SheetDecorator < Draper::Decorator
   def hard
     Static::POWER[object.h_ability].first
   end
+
+  def exh
+    Static::EXH_POWER[object.exh_ability].first
+  end
 end
