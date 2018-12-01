@@ -36,10 +36,20 @@ feature 'ログの詳細画面', type: :system, js: true do
         click_button '表示'
         click_link '削除', match: :first
         page.driver.browser.switch_to.alert.accept
-        sleep 1
         expect(page).to have_content('ログを削除し')
         expect(Log.where(user_id: @user.id).count).to eq 1
         expect(Score.exists?(user_id: @user.id, state: 7)).to eq true
+      end
+      scenario 'ログが0個になったら一覧に遷移する' do
+        visit logs_path(@user.iidxid, Date.today.to_s)
+        click_button '表示'
+        click_link '削除', match: :first
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content('ログを削除し')
+        click_button '表示'
+        click_link '削除', match: :first
+        page.driver.browser.switch_to.alert.accept
+        expect(page).to have_content('更新履歴')
       end
     end
     context '他人のログページの場合' do
@@ -74,7 +84,6 @@ feature 'ログの詳細画面', type: :system, js: true do
           click_button '表示'
           click_link '削除', match: :first
           page.driver.browser.switch_to.alert.accept
-          sleep 1
           expect(page).to have_content('ログを削除し')
           expect(Log.where(user_id: @user2.id).count).to eq 1
           expect(Score.exists?(user_id: @user2.id, state: 7)).to eq true
