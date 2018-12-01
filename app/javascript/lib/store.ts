@@ -16,8 +16,8 @@ export default function storeCreator<S>(props: AbilitysheetContext, rootReducer:
       },
     }));
   }
-  const devtools: any = process.env.NODE_ENV !== 'production' && (window as any).devToolsExtension ?
-    (window as any).devToolsExtension() : (f: any) => f;
+  const devtools: any = process.env.NODE_ENV !== 'production' && (window as any).__REDUX_DEVTOOLS_EXTENSION__ ?
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__() : (f: any) => f;
 
   const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 
