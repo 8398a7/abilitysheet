@@ -83,7 +83,11 @@ class LogsController < ApplicationController
     else
       flash[:notice] = '存在しないログデータです'
     end
-    render :reload
+    if log && current_user.logs.where(created_date: log.created_date).count.zero?
+      redirect_to list_log_path(current_user.iidxid)
+    else
+      render :reload
+    end
   end
 
   private
