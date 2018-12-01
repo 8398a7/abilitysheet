@@ -6,15 +6,15 @@
           th style="width: 150px;"
             = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
               = fa_icon 'plus', text: '作成'
-          th id
-          th username
-          th email
-          th DJNAME
-          th IIDXID
-          th 所属
-          th 段位
-          th 利用数
-          th 現在
+          th = sort_link(@q, :id, 'id')
+          th = sort_link(@q, :username, 'username')
+          th = sort_link(@q, :email, 'email')
+          th = sort_link(@q, :djname, 'DJNAME')
+          th = sort_link(@q, :iidxid, 'IIDXID')
+          th = sort_link(@q, :pref, '所属')
+          th = sort_link(@q, :grade, '段位')
+          th = sort_link(@q, :sign_in_count, '利用数')
+          th = sort_link(@q, :current, '現在')
       tbody
         - users.each do |user|
           - user = user.decorate
@@ -41,11 +41,3 @@
             td = user.grade
             td = user.sign_in_count
             td = user.current
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatables').dataTable
-      order: [1, 'asc']
-      columnDefs: [
-        targets: [0]
-        orderable: false
-      ]

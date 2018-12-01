@@ -3,15 +3,27 @@
 h2.bold
   = fa_stacked_icon 'users inverse', base: 'square', text: @title
 
-= search_form_for [:admin, @search], class: 'uk-form right' do |f|
-  = fa_icon 'search', text: 'DJNAMEから絞込'
+= search_form_for [:admin, @q], class: 'uk-form left' do |f|
+  = fa_icon 'search', text: '絞込検索'
   .uk-form-row
-    = f.select :id_eq, User.all.map { |u| [u.djname, u.id] }, {}, class: 'select2', style: 'width: 300px'
+    label.uk-form-label DJNAME
+    .uk-form-controls
+      = f.search_field :djname_cont
+  .uk-form-row
+    label.uk-form-label IIDXID
+    .uk-form-controls
+      = f.search_field :iidxid_cont
+  .uk-form-row
+    label.uk-form-label email
+    .uk-form-controls
+      = f.search_field :email_eq
+  .uk-form-row
+    label.uk-form-label 所属
+    .uk-form-controls
+      = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}
+  .uk-form-row
     button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
       = fa_icon 'search', text: '検索'
-hr
+= paginate @users
 = render partial: 'admin/users/list', locals: { users: @users }
-
-coffee:
-  $('#nav-admin').addClass('uk-active')
-  $('.select2').select2()
+= paginate @users

@@ -42,6 +42,18 @@ class Sheet < ApplicationRecord
     )
   end
 
+  def n_ability_name
+    Static::POWER.find { |_, index| n_ability == index }.dig(0)
+  end
+
+  def h_ability_name
+    Static::POWER.find { |_, index| h_ability == index }.dig(0)
+  end
+
+  def exh_ability_name
+    Static::EXH_POWER.find { |_, index| exh_ability == index }.dig(0)
+  end
+
   def self.apply_exh
     Scrape::ExhCollector.new.get_sheet.each do |title, ability|
       sheet = Sheet.find_by(title: title)

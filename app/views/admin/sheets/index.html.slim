@@ -2,50 +2,27 @@
 
 h2.bold
   = fa_stacked_icon 'list-ul inverse', base: 'square', text: @title
-h2.bold
-  form.uk-form.uk-form-stacked
-    .uk-form-row
-      .uk-form-controls
-        textarea id='diff-query'
-    .uk-form-row
-      .uk-form-controls
-        select#diff-type
-         option value='n_ability' NORMAL
-         option value='h_ability' HARD
-    #diff-submit.uk-button.uk-button-mini.uk-button-success.uk-margin-small-right
-      = fa_icon 'pencil', text: '差分確認'
-= search_form_for [:admin, @search], class: 'uk-form right' do |f|
-  = fa_icon 'search', text: '曲名から絞込'
+= search_form_for [:admin, @q], class: 'uk-form left' do |f|
+  = fa_icon 'search', text: '絞込検索'
   .uk-form-row
-    = f.select :id_eq, Sheet.all.map { |s| [s.title, s.id] }, {}, class: 'select2', style: 'width: 300px'
+    label.uk-form-label 楽曲名
+    .uk-form-controls
+      = f.search_field :title_cont
+  .uk-form-row
+    label.uk-form-label ノマゲ地力
+    .uk-form-controls
+      = f.collection_check_boxes :n_ability_in, check_boxes_n_abilities, :n_ability, :n_ability_name, {}
+  .uk-form-row
+    label.uk-form-label ハード地力
+    .uk-form-controls
+      = f.collection_check_boxes :h_ability_in, check_boxes_h_abilities, :h_ability, :h_ability_name, {}
+  .uk-form-row
+    label.uk-form-label エクハ地力
+    .uk-form-controls
+      = f.collection_check_boxes :exh_ability_in, check_boxes_exh_abilities, :exh_ability, :exh_ability_name, {}
+  .uk-form-row
     button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
       = fa_icon 'search', text: '検索'
-hr
+= paginate @sheets
 = render partial: 'admin/sheets/list', locals: { sheets: @sheets }
-
-coffee:
-  $('#nav-admin').addClass('uk-active')
-  $('.select2').select2()
-
-  $('#diff-submit').click ->
-    $.ajax
-      type: 'post'
-      xhrFields:
-        withCredentials: true
-      url: '/admin/sheets/diff'
-      data:
-        query: $('#diff-query').val()
-        type: $('#diff-type').val()
-    .done (result, type) ->
-      console.log(result)
-      if $('.uk-notify-message').length is 0
-        UIkit.notify
-          message: JSON.stringify result
-          status: 'info'
-          timeout: 5000
-    .fail (XMLHttpRequest, textStatus, errorThrown) ->
-      if $('.uk-notify-message').length is 0
-        UIkit.notify
-          message: XMLHttpRequest.responseText
-          status: 'danger'
-          timeout: 5000
+= paginate @sheets

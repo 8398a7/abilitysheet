@@ -75,6 +75,10 @@ class User < ApplicationRecord
     scores.import(new_scores)
   end
 
+  def pref_name
+    User::Static::PREF[pref]
+  end
+
   class << self
     def dan
       array = []
