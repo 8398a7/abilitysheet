@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SelectHelper
   def check_boxes_prefs
     User::Static::PREF.map do |pref|
