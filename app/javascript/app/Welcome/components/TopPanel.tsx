@@ -6,7 +6,7 @@ interface IProps {
   user?: User;
 }
 const Register: React.SFC<IProps> = ({ user }) => {
-  if (user !== undefined) { return null; }
+  if (user !== undefined && user.id !== -1) { return null; }
   return (
     <div className="uk-width-medium-1-3 register-link-button">
       <a href={newUserRegistrationPath()} className="uk-button-primary uk-button-large">登録</a>
