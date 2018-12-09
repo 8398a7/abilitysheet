@@ -30,8 +30,17 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'email-smtp.us-east-1.amazonaws.com',
+    port: 587,
+    domain: 'mail.iidx12.tk',
+    authenticate: :login,
+    user_name: ENV['SES_USER'],
+    password: ENV['SES_PASS']
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -54,11 +63,6 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   #
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'localhost',
-    openssl_verify_mode: 'none'
-  }
 
   # Indent html for pretty debugging and do not sort attributes
   Slim::Engine.set_options pretty: true, sort_attrs: false
@@ -83,6 +87,5 @@ Rails.application.configure do
   ]
 
   routes.default_url_options = { host: 'localhost', port: 3000, protocol: 'http' }
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.active_storage.service = :local
 end
