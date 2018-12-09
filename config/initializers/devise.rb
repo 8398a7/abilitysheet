@@ -11,7 +11,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'no-reply@iidx12.tk'
+  config.mailer_sender = 'no-reply@mail.iidx12.tk'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
