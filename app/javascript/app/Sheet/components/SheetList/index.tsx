@@ -67,7 +67,7 @@ class SheetList extends React.PureComponent<Props> {
       $$sheetList.whereAbility(key, type).forEach(sheet => {
         if (sheet === undefined) { return; }
         const score = $$scoreList.findBySheetId(sheet.id);
-        dom.push(<tr key={`sheet-${sheet.id}`} ><LampTd {...{ owner: owner(), selectDisplay, updateLamp, handleSheetClick, sheet, score, $$env, bp, width: 150, height: 50 }} /></tr>);
+        dom.push(<tr key={`sheet-${sheet.id}`} ><LampTd {...{ owner: owner(), selectDisplay, updateLamp, handleSheetClick, sheet, score, $$env, bp }} /></tr>);
       });
     });
     return dom;
