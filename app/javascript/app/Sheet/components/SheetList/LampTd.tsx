@@ -18,13 +18,13 @@ const BpMark: React.SFC<{ bp: number, score?: Score }> = (props) => {
 
 interface IProps {
   sheet: Sheet;
-  width: number;
-  height: number;
   $$env: Environment;
   bp: string;
   owner: boolean;
   selectDisplay: boolean;
   score?: Score;
+  width?: number;
+  height?: number;
   updateLamp: (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleSheetClick: (sheetId?: number) => () => void;
 }

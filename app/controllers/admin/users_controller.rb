@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
   before_action :load_user, except: %i[index new create]
 
   def index
-    @q = User.search(params[:q])
+    @q = User.ransack(params[:q])
     @q.sorts = ['id desc'] if @q.sorts.empty?
     @users = @q.result.page(params[:page])
   end

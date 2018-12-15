@@ -6,7 +6,7 @@ class Admin::MessagesController < ApplicationController
   before_action :load_message, except: [:index]
 
   def index
-    @search = Message.search(params[:q])
+    @search = Message.ransack(params[:q])
     @messages = @search.result
   end
 

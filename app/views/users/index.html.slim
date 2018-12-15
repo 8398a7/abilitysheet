@@ -3,10 +3,10 @@
     h2 = fa_icon 'users', text: @title
   .uk-width-medium-1-2
     = form_tag users_path, method: :get, class: 'uk-form right djname-search'
-      = fa_icon 'search', text: 'DJNAMEから検索'
+      = fa_icon 'search', text: 'IIDXIDから検索'
       .uk-form-row
-        = text_field_tag :query, params[:query], place: 'DJNAME'
-        button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
+        = text_field_tag :query, params[:query], placeholder: '0000-0000'
+        button.uk-button.uk-button-primary
           = fa_icon 'search', text: '検索'
 hr
 form.uk-form
