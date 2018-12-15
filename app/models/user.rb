@@ -59,8 +59,6 @@ class User < ApplicationRecord
   validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9\-\_.*!#&$]+\z/, message: 'は半角大文字英字で記入して下さい' }, presence: true
   validates :username, length: { maximum: 15 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角小文字英数字で記入して下さい' }, uniqueness: true, presence: true
 
-  scope :search_djname, (->(query) { User.where(['djname LIKE ?', "%#{PG::Connection.escape(query)}%"]) })
-
   # iidx_versionが新しくなってから実行する
   def version_up!
     update_column(:grade, GRADE.size - 1)
