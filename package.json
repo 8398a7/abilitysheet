@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
-    "@rails/webpacker": "https://github.com/rails/webpacker",
+    "@rails/webpacker": "next",
     "@sentry/browser": "^4.4.1",
     "@types/cal-heatmap": "^3.5.34",
     "@types/highcharts": "^5.0.34",

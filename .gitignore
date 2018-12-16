@@ -29,3 +29,9 @@ kubernetes/rails/cm.yaml
 yarn-debug.log*
 .yarn-integrity
 app/javascript/lib/routes.ts
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
