@@ -16,9 +16,9 @@
 
 ### [共同開発者随時募集中](http://twitter.com/IIDX_12)
 
-お気軽にツイッターやslackで声をかけて下さい，とても喜びます．
+お気軽にツイッターやDiscordで声をかけて下さい，とても喜びます．
 
-[![Slack](https://slackin-abilitysheet.herokuapp.com/badge.svg)](https://slackin-abilitysheet.herokuapp.com/)
+[Discord](https://discord.gg/6pkkBgx)
 
 ![](https://cloud.githubusercontent.com/assets/8043276/14033422/789679c2-f25d-11e5-923a-a6b24d459a48.png)
 
