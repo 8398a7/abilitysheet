@@ -5,7 +5,8 @@ document.addEventListener('turbolinks:request-start', function() {
 
 document.addEventListener('turbolinks:render', function() {
   document.querySelector('.loading-container').style = 'display: none';
-  NProgress.done();
+  NProgress.done(true);
+  UIkit.offcanvas.hide([force = false]);
 });
 
 document.addEventListener('turbolinks:load', function() { $('.searchable').select2() });
