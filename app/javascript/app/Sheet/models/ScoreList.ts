@@ -38,7 +38,14 @@ export default class ScoreList extends Record(defaultValue) {
   }
 
   public updateScore(score: IScore) {
-    return this.set('list', this.list.set(score.sheet_id, new Score(score)));
+    let newScore = new Score(score);
+    this.list.forEach(s => {
+      if (s.state === newScore.state) {
+        newScore = newScore.set('hide', s.hide);
+        return;
+      }
+    });
+    return this.set('list', this.list.set(score.sheet_id, newScore));
   }
 
   public findBySheetId(id: number | undefined) {
