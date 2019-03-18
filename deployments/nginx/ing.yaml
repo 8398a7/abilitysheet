@@ -5,9 +5,10 @@ metadata:
   namespace: abilitysheet
 spec:
   tls:
-  - secretName: nip-io
+  - hosts:
+    - localhost
   rules:
-  - host: abilitysheet.192.168.64.3.nip.io
+  - host: localhost
     http:
       paths:
       - backend:
