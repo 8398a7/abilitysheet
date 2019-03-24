@@ -50,7 +50,7 @@ describe 'lib/scrape/manager.rb' do
     end
     it 'Lv12フォルダがない場合はnilを返す' do
       html = Nokogiri::HTML.parse(
-        agent.get('http://beatmania-clearlamp.com/djdata/ruquia7/sp/').body,
+        agent.get('http://beatmania-clearlamp.com/djdata/M2/sp/').body,
         nil,
         'UTF-8'
       )

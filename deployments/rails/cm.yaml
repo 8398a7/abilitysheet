@@ -7,7 +7,7 @@ data:
   AWS_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxx
   AWS_SECRET_KEY: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
   AWS_REGION: ap-northeast-1
-  DATABASE_HOST: pg-service.default.svc.cluster.local
+  DATABASE_HOST: pg-service
   IIDX_GRADE: "0"
   IIDX_VERSION: "25"
   MEMORY: "2048"
@@ -17,7 +17,7 @@ data:
   RAILS_FORCE_SSL: "false"
   RAILS_SERVE_STATIC_FILES: "true"
   RAILS_HOST: abilitysheet.192.168.64.3.nip.io
-  REDIS_URL: redis://redis-service.default.svc.cluster.local:6379
+  REDIS_URL: redis://redis-service:6379
   SENTRY_DSN: https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx:yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy@aaaaaa.bbbb.cc/2
   SENTRY_JS_DSN: https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@aaaaaa.bbbb.cc/12
   TWITTER_TOKENS: aaaaaaaaaaaaaaaaaaaaaaaaa,bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb,cccccccccccccccccccccccccccccccccccccccccccccccccc,ddddddddddddddddddddddddddddddddddddddddddddd
