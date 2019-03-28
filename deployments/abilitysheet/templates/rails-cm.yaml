@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "abilitysheet.rails-env.name" . }}
+data:
+  AWS_ACCESS_KEY: {{ .Values.env.configmap.AWS_ACCESS_KEY | quote }}
+  AWS_SECRET_KEY: {{ .Values.env.configmap.AWS_SECRET_KEY | quote }}
+  AWS_REGION: {{ .Values.env.configmap.AWS_REGION | quote }}
+  DATABASE_HOST: {{ template "abilitysheet.pg.name" . }}
+  IIDX_GRADE: {{ .Values.env.configmap.IIDX_GRADE | quote }}
+  IIDX_VERSION: {{ .Values.env.configmap.IIDX_VERSION | quote }}
+  MEMORY: {{ .Values.env.configmap.MEMORY | quote }}
+  NOTIFY_SLACK_URL: {{ .Values.env.configmap.NOTIFY_SLACK_URL | quote }}
+  RAILS_ENV: {{ .Values.env.configmap.RAILS_ENV | quote }}
+  RAILS_LOG_TO_STDOUT: {{ .Values.env.configmap.RAILS_LOG_TO_STDOUT | quote }}
+  RAILS_FORCE_SSL: {{ .Values.env.configmap.RAILS_FORCE_SSL | quote }}
+  RAILS_SERVE_STATIC_FILES: {{ .Values.env.configmap.RAILS_SERVE_STATIC_FILES | quote }}
+  RAILS_HOST: {{ .Values.env.configmap.RAILS_HOST | quote }}
+  REDIS_URL: redis://{{ template "abilitysheet.redis.name" . }}:6379
+  SENTRY_DSN: {{ .Values.env.configmap.SENTRY_DSN | quote }}
+  SENTRY_JS_DSN: {{ .Values.env.configmap.SENTRY_JS_DSN | quote }}
+  TWITTER_TOKENS: {{ .Values.env.configmap.TWITTER_TOKENS | quote }}
+  iidxme: {{ .Values.env.configmap.iidxme | quote }}

@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "abilitysheet.name" . }}
+spec:
+  tls:
+  - hosts:
+    - localhost
+  rules:
+  - host: localhost
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "abilitysheet.puma.name" . }}
+          servicePort: 3000

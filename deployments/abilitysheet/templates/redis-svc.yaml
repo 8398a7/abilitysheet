@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "abilitysheet.redis.name" . }}
+  labels:
+    app: {{ template "abilitysheet.name" . }}
+    chart: {{ template "abilitysheet.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: redis
+spec:
+  selector:
+    app: {{ template "abilitysheet.name" . }}
+    release: {{ .Release.Name }}
+    component: redis
+  ports:
+  - protocol: TCP
+    port: 6379
+    targetPort: 6379
+  type: ClusterIP
