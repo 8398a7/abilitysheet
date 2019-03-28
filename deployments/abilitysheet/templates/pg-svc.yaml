@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "abilitysheet.pg.name" . }}
+  labels:
+    app: {{ template "abilitysheet.name" . }}
+    chart: {{ template "abilitysheet.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: pg
+spec:
+  selector:
+    app: {{ template "abilitysheet.pg.name" . }}
+    release: {{ .Release.Name }}
+    component: pg
+  ports:
+  - protocol: TCP
+    port: 5432
+    targetPort: 5432
+  type: ClusterIP

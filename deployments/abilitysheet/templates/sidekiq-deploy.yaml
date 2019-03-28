@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "abilitysheet.sidekiq.name" . }}
+  labels:
+    app: {{ template "abilitysheet.name" . }}
+    chart: {{ template "abilitysheet.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: sidekiq
+spec:
+  replicas: {{ .Values.sidekiq.replica }}
+  selector:
+    matchLabels:
+      app: {{ template "abilitysheet.name" . }}
+      release: {{ .Release.Name }}
+      component: sidekiq
+  template:
+    metadata:
+      labels:
+        app: {{ template "abilitysheet.name" . }}
+        release: {{ .Release.Name }}
+        component: sidekiq
+    spec:
+      containers:
+      - name: sidekiq
+        image: {{ .Values.rails.image.repositry }}:{{ .Values.rails.image.tag }}
+        command: ["sidekiq", "-C", "config/sidekiq.yml"]
+        envFrom:
+        - configMapRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        - secretRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "abilitysheet.pg.name" . }}
+              key: postgresql-password
+      restartPolicy: Always

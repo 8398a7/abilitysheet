@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "abilitysheet.puma.name" . }}
+  labels:
+    app: {{ template "abilitysheet.name" . }}
+    chart: {{ template "abilitysheet.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: puma
+spec:
+  replicas: {{ .Values.puma.replica }}
+  selector:
+    matchLabels:
+      app: {{ template "abilitysheet.name" . }}
+      release: {{ .Release.Name }}
+      component: puma
+  template:
+    metadata:
+      labels:
+        app: {{ template "abilitysheet.name" . }}
+        release: {{ .Release.Name }}
+        component: puma
+      annotations:
+        checksum/cm: {{ include (print $.Template.BasePath "/rails-cm.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/rails-secret.yaml") . | sha256sum }}
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: puma
+        image: {{ .Values.rails.image.repositry }}:{{ .Values.rails.image.tag }}
+        imagePullPolicy: IfNotPresent
+        command: ["puma", "-C", "config/puma.rb"]
+        envFrom:
+        - configMapRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        - secretRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "abilitysheet.pg.name" . }}
+              key: postgresql-password
+        livenessProbe:
+          httpGet:
+            port: 3000

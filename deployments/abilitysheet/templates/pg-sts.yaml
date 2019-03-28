@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ template "abilitysheet.pg.name" . }}
+  labels:
+    app: {{ template "abilitysheet.name" . }}
+    chart: {{ template "abilitysheet.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+    component: pg
+spec:
+  replicas: {{ .Values.pg.replica }}
+  updateStrategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: {{ template "abilitysheet.pg.name" . }}
+      release: {{ .Release.Name }}
+      component: pg
+  serviceName: {{ template "abilitysheet.pg.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "abilitysheet.pg.name" . }}
+        release: {{ .Release.Name }}
+        component: pg
+    spec:
+      containers:
+      - name: pg
+        image: {{ .Values.pg.image.repositry }}:{{ .Values.pg.image.tag }}
+        ports:
+          - containerPort: 5432
+        volumeMounts:
+        - name: {{ template "abilitysheet.pg.name" . }}
+          mountPath: /var/lib/postgresql/data
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        - name: POSTGRES_USER
+          value: abilitysheet
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "abilitysheet.pg.name" . }}
+              key: postgresql-password
+  volumeClaimTemplates:
+  - metadata:
+      name: {{ template "abilitysheet.pg.name" . }}
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 3Gi
