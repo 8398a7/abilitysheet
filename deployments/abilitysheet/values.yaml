@@ -16,6 +16,11 @@ redis:
   image:
     repositry: redis
     tag: 4.0.10-alpine
+ingress:
+  host: localhost
+kubernetes-dashboard:
+  enableSkipLogin: true
+  enableInsecureLogin: true
 
 env:
   configmap:

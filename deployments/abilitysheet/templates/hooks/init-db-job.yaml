@@ -2,6 +2,10 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ template "abilitysheet.init-db.name" . }}
+  annotations:
+    helm.sh/hook: post-install
+    helm.sh/hook-weight: "0"
+    helm.sh/hook-delete-policy: hook-succeeded
 spec:
   backoffLimit: 2
   template:

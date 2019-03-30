@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "abilitysheet.name" . }}
+spec:
+  tls:
+{{ if eq .Values.ingress.host "nip-io" }}
+  - secretName: {{ .Values.ingress.host }}-secret
+{{ else }}
+  - hosts:
+    - localhost
+{{ end }}
+  rules:
+  - host: app-127-0-0-1.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: {{ template "abilitysheet.puma.name" . }}
+          servicePort: 3000
+  - host: dashboard-127-0-0-1.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: prod-kubernetes-dashboard
+          servicePort: 443
