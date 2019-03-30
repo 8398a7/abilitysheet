@@ -1,11 +1,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ template "abilitysheet.init-db.name" . }}
+  name: {{ template "abilitysheet.migrate-db.name" . }}
   annotations:
-    helm.sh/hook: post-install
+    helm.sh/hook: pre-upgrade
     helm.sh/hook-weight: "0"
-    helm.sh/hook-delete-policy: hook-succeeded
+    helm.sh/hook-delete-policy: before-hook-creation
 spec:
   backoffLimit: 2
   template:
@@ -18,9 +18,9 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-      - name: init-db
+      - name: migrate-db
         image: {{ .Values.rails.image.repositry }}:{{ .Values.rails.image.tag }}
-        command: ["bin/rails", "db:create", "db:setup"]
+        command: ["bin/rails", "db:migrate"]
         envFrom:
         - configMapRef:
             name: {{ template "abilitysheet.rails-env.name" . }}

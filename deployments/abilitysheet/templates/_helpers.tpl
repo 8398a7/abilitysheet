@@ -42,3 +42,7 @@
 {{- define "abilitysheet.init-db.name" -}}
 {{- include "abilitysheet.fullname" . -}}-init-db
 {{- end -}}}}
+
+{{- define "abilitysheet.migrate-db.name" -}}
+{{- include "abilitysheet.fullname" . -}}-migrate-db
+{{- end -}}}}
