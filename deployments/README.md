@@ -1,6 +1,13 @@
 # k8s README
 
 ☆12参考表はhelm chartを提供しています。  
+本番環境では `helm secrets` を利用するため以下のコマンドでインストールが必要です。
+
+```bash
+$ brew install gnu-getopt
+$ helm plugin install https://github.com/futuresimple/helm-secrets
+```
+
 chartのデプロイは以下のコマンドで行なえます。
 
 ```bash
