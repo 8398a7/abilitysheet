@@ -60,7 +60,7 @@
     "redux-saga": "^1.0.2",
     "select2": "^4.0.5",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.3.4000",
+    "typescript": "^3.4.1",
     "uikit": "^2.27.4"
   },
   "devDependencies": {
