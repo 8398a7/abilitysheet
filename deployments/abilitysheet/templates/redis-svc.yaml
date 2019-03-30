@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ template "abilitysheet.redis.name" . }}
   labels:
-    app: {{ template "abilitysheet.name" . }}
-    chart: {{ template "abilitysheet.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    component: redis
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    helm.sh/chart: {{ template "abilitysheet.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: redis
 spec:
   selector:
-    app: {{ template "abilitysheet.name" . }}
-    release: {{ .Release.Name }}
-    component: redis
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: redis
   ports:
   - protocol: TCP
     port: 6379

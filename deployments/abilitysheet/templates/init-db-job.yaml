@@ -7,10 +7,10 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "abilitysheet.name" . }}
-        chart: {{ template "abilitysheet.chart" . }}
-        release: {{ .Release.Name }}
-        heritage: {{ .Release.Service }}
+        app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+        helm.sh/chart: {{ template "abilitysheet.chart" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
     spec:
       restartPolicy: Never
       containers:

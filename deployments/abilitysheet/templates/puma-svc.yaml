@@ -3,16 +3,16 @@ kind: Service
 metadata:
   name: {{ template "abilitysheet.puma.name" . }}
   labels:
-    app: {{ template "abilitysheet.name" . }}
-    chart: {{ template "abilitysheet.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    component: puma
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    helm.sh/chart: {{ template "abilitysheet.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: puma
 spec:
   selector:
-    app: {{ template "abilitysheet.name" . }}
-    release: {{ .Release.Name }}
-    component: puma
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: puma
   ports:
   - protocol: TCP
     port: 3000

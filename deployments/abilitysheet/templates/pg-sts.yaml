@@ -3,27 +3,29 @@ kind: StatefulSet
 metadata:
   name: {{ template "abilitysheet.pg.name" . }}
   labels:
-    app: {{ template "abilitysheet.name" . }}
-    chart: {{ template "abilitysheet.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    component: pg
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    helm.sh/chart: {{ template "abilitysheet.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: pg
 spec:
   replicas: {{ .Values.pg.replica }}
   updateStrategy:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: {{ template "abilitysheet.pg.name" . }}
-      release: {{ .Release.Name }}
-      component: pg
+      app.kubernetes.io/name: {{ template "abilitysheet.pg.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: pg
   serviceName: {{ template "abilitysheet.pg.name" . }}
   template:
     metadata:
       labels:
-        app: {{ template "abilitysheet.pg.name" . }}
-        release: {{ .Release.Name }}
-        component: pg
+        app.kubernetes.io/name: {{ template "abilitysheet.pg.name" . }}
+        helm.sh/chart: {{ template "abilitysheet.chart" . }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/component: pg
     spec:
       containers:
       - name: pg
