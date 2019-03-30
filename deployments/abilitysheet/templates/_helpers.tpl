@@ -38,3 +38,7 @@
 {{- define "abilitysheet.redis.name" -}}
 {{- include "abilitysheet.fullname" . -}}-redis
 {{- end -}}}}
+
+{{- define "abilitysheet.init-db.name" -}}
+{{- include "abilitysheet.fullname" . -}}-init-db
+{{- end -}}}}

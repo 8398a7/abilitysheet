@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ template "abilitysheet.init-db.name" . }}
+spec:
+  backoffLimit: 2
+  template:
+    metadata:
+      labels:
+        app: {{ template "abilitysheet.name" . }}
+        chart: {{ template "abilitysheet.chart" . }}
+        release: {{ .Release.Name }}
+        heritage: {{ .Release.Service }}
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: init-db
+        image: {{ .Values.rails.image.repositry }}:{{ .Values.rails.image.tag }}
+        command: ["bin/rails", "db:create", "db:setup"]
+        envFrom:
+        - configMapRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        - secretRef:
+            name: {{ template "abilitysheet.rails-env.name" . }}
+        env:
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "abilitysheet.pg.name" . }}
+              key: postgresql-password
