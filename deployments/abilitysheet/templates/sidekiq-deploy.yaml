@@ -3,24 +3,25 @@ kind: Deployment
 metadata:
   name: {{ template "abilitysheet.sidekiq.name" . }}
   labels:
-    app: {{ template "abilitysheet.name" . }}
-    chart: {{ template "abilitysheet.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    component: sidekiq
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    helm.sh/chart: {{ template "abilitysheet.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: sidekiq
 spec:
   replicas: {{ .Values.sidekiq.replica }}
   selector:
     matchLabels:
-      app: {{ template "abilitysheet.name" . }}
-      release: {{ .Release.Name }}
-      component: sidekiq
+      app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: sidekiq
   template:
     metadata:
       labels:
-        app: {{ template "abilitysheet.name" . }}
-        release: {{ .Release.Name }}
-        component: sidekiq
+        app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+        helm.sh/chart: {{ template "abilitysheet.chart" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/component: sidekiq
     spec:
       containers:
       - name: sidekiq

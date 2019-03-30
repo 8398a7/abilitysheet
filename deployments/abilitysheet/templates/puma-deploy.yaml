@@ -3,24 +3,26 @@ kind: Deployment
 metadata:
   name: {{ template "abilitysheet.puma.name" . }}
   labels:
-    app: {{ template "abilitysheet.name" . }}
-    chart: {{ template "abilitysheet.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-    component: puma
+    app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+    helm.sh/chart: {{ template "abilitysheet.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app.kubernetes.io/component: puma
 spec:
   replicas: {{ .Values.puma.replica }}
   selector:
     matchLabels:
-      app: {{ template "abilitysheet.name" . }}
-      release: {{ .Release.Name }}
-      component: puma
+      app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: puma
   template:
     metadata:
       labels:
-        app: {{ template "abilitysheet.name" . }}
-        release: {{ .Release.Name }}
-        component: puma
+        app.kubernetes.io/name: {{ template "abilitysheet.name" . }}
+        helm.sh/chart: {{ template "abilitysheet.chart" . }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
+        app.kubernetes.io/component: puma
       annotations:
         checksum/cm: {{ include (print $.Template.BasePath "/rails-cm.yaml") . | sha256sum }}
         checksum/secret: {{ include (print $.Template.BasePath "/rails-secret.yaml") . | sha256sum }}
