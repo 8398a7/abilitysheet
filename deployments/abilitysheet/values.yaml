@@ -17,6 +17,10 @@ redis:
     repositry: redis
     tag: 4.0.10-alpine
 
+kubernetes-dashboard:
+  enableSkipLogin: true
+  enableInsecureLogin: true
+
 env:
   configmap:
     AWS_ACCESS_KEY: xxxxxxxxxxxxxxxxxxxx

@@ -7,9 +7,15 @@ spec:
   - hosts:
     - localhost
   rules:
-  - host: localhost
+  - host: app-127-0-0-1.nip.io
     http:
       paths:
       - backend:
           serviceName: {{ template "abilitysheet.puma.name" . }}
           servicePort: 3000
+  - host: dashboard-127-0-0-1.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: prod-kubernetes-dashboard
+          servicePort: 443
