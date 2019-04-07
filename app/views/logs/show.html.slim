@@ -52,11 +52,19 @@ hr
 
 javascript:
   logs_count = '#{@logs.count}'
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatable').dataTable
-      aLengthMenu: [logs_count]
+
+  if ($('[id^=DataTables_Table]').length === 0) {
+    $('.datatable').dataTable({
+      aLengthMenu: [logs_count],
       columnDefs: [
-        targets: [3, 4]
-        orderable: false
+        {
+          targets: [3, 4],
+          orderable: false
+        },
+        {
+          targets: [1, 2],
+          type: 'custom'
+        }
       ]
+    });
+  }
