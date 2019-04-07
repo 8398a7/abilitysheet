@@ -58,4 +58,4 @@ COPY . $HOME
 RUN \
   mv config/database.k8s.yml config/database.yml && \
   mv config/puma.k8s.rb config/puma.rb && \
-  mkdir tmp/pids
+  mkdir -p tmp/pids
