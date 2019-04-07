@@ -17,10 +17,11 @@
               = m.email
             span.mail-body = m.body
           td = m.created_at
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatable').dataTable
+javascript:
+  if ($('[id^=DataTables_Table]').length === 0) {
+    $('.datatable').dataTable({
       order: [3, 'desc']
+    });
+  }
 
-coffee:
   $('#nav-admin').addClass('uk-active')
