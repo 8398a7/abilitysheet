@@ -1,4 +1,4 @@
-FROM ruby:2.5.1-alpine3.7 AS bundle-dependencies
+FROM ruby:2.6.1-alpine3.9 AS bundle-dependencies
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV HOME /app
@@ -19,7 +19,7 @@ RUN \
 
 RUN bundle install -j4 --without development test deployment
 
-FROM ruby:2.5.1-alpine3.7 AS node-dependencies
+FROM ruby:2.6.1-alpine3.9 AS node-dependencies
 
 ENV \
   HOME=/app \
@@ -36,9 +36,9 @@ WORKDIR $HOME
 
 COPY . $HOME
 COPY config/database.k8s.yml $HOME/config/database.yml
-RUN rails assets_rails:install assets_rails:resolve assets:precompile
+RUN rails assets:precompile
 
-FROM ruby:2.5.1-alpine3.7
+FROM ruby:2.6.1-alpine3.9
 
 ENV \
   HOME=/app \
