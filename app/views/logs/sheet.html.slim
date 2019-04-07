@@ -26,7 +26,9 @@ hr
           td = hash.values.sort.last
 javascript:
   sheets_count = '#{@sheets.count}'
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatable').dataTable
+
+  if ($('[id^=DataTables_Table]').length === 0) {
+    $('.datatable').dataTable({
       aLengthMenu: [sheets_count]
+    });
+  }
