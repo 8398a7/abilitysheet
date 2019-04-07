@@ -36,7 +36,7 @@ WORKDIR $HOME
 
 COPY . $HOME
 COPY config/database.k8s.yml $HOME/config/database.yml
-RUN rails assets:precompile
+RUN rails ts:routes assets:precompile
 
 FROM ruby:2.6.1-alpine3.9
 
