@@ -9,7 +9,7 @@
       .uk-nav-divider
 
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'uk-form uk-form-stacked devise' }) do |f|
-      = devise_error_messages!
+      = render 'devise/shared/error_messages', resource: resource
       = f.hidden_field :reset_password_token
       .uk-form-row
         .uk-form-icon

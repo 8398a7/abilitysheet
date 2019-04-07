@@ -26,9 +26,16 @@
             td
             td
             td
-coffee:
-  if($('[id^=DataTables_Table]').length == 0)
-    $('.datatable').dataTable
-      order: [4, 'desc']
-      aLengthMenu: [25]
-      columnDefs: [{type: 'custom', targets: [2]}]
+javascript:
+  if ($('[id^=DataTables_Table]').length === 0) {
+    $('.datatable').dataTable({
+      order: [4, 'desc'],
+      aLengthMenu: [25],
+      columnDefs: [
+        {
+          type: 'custom',
+          targets: [2]
+        }
+      ]
+    });
+  }
