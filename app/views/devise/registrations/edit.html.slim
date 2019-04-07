@@ -9,7 +9,7 @@
       .uk-nav-divider
 
     = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: registration_path(resource_name) do |f|
-      = devise_error_messages!
+      = render 'devise/shared/error_messages', resource: resource
       .uk-form-row
         .uk-form-icon
           i.uk-icon-envelope
