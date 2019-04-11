@@ -34,6 +34,8 @@ RUN apk add --update --no-cache \
 COPY --from=bundle-dependencies /usr/local/bundle/ /usr/local/bundle/
 WORKDIR $HOME
 
+COPY package.json yarn.lock $HOME/
+RUN yarn install
 COPY . $HOME
 COPY config/database.k8s.yml $HOME/config/database.yml
 RUN rails ts:routes assets:precompile
