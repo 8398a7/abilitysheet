@@ -88,6 +88,8 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  # log lotate
+  config.logger = Logger.new('log/production.log', 'weekly')
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -100,7 +102,5 @@ Rails.application.configure do
   routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'iidx12.tk' } }
   config.peek.adapter = :redis
 
-  # log lotate
-  config.logger = Logger.new('log/production.log', 'weekly')
   config.active_storage.service = :local
 end
