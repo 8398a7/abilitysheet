@@ -636,7 +636,7 @@ DEPENDENCIES
   uglifier
   vcr
   webmock
-  webpacker (>= 4.0.x)
+  webpacker
 
 BUNDLED WITH
    1.17.3
