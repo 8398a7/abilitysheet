@@ -13,8 +13,8 @@ class ServiceDumper
         key: "service_dumper/abilitysheet/#{Date.today.year}-#{Date.today.month}-#{Date.today.day}/#{ENV['RAILS_ENV']}_#{file_name}"
       )
       Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
-    rescue StandardError => ex
-      Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], ex)
+    rescue StandardError => e
+      Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], e)
     end
     `rm #{dump_path}.tar.gz`
     Rails.logger.info('done service dump')

@@ -28,9 +28,9 @@ class Api::V1::UsersController < Api::V1::BaseController
 
     ScoreViewerJob.perform_later(elems, current_user.id)
     render json: { status: 'ok' }, status: 202
-  rescue ServiceUnavailable => ex
+  rescue ServiceUnavailable => e
     Raven.user_context(current_user.attributes)
-    Raven.capture_exception(ex)
+    Raven.capture_exception(e)
     SidekiqDispatcher.start!
     render json: { status: 'ok' }, status: 202
   end
