@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useState } from 'react';
 
-const DestroyButtonDisplayToggle: FC<{}> = () => {
+const DestroyButtonDisplayToggle: FC = () => {
   const [display, setDisplay] = useState(false);
 
   const handleClick = useCallback(

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SFC, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import HelmetWrapper from '../../../lib/components/HelmetWrapper';
@@ -49,55 +49,53 @@ const mapping = {
     remain: '未エクハ',
   },
 };
-class Sheet extends React.PureComponent<Props> {
-  public componentWillMount() {
-    const { type } = this.props;
-    const { iidxid } = this.props.user;
-    this.props.getUser({ iidxid, type });
-  }
 
-  public handleChangeBp = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.props.updateBp(e.target.value);
-  }
+const ToggleView: SFC<{ implicitMobile: boolean, mobile: boolean, handleToggleView: () => void }> = ({ implicitMobile, mobile, handleToggleView }) => {
+  if (!implicitMobile) { return null; }
+  return (
+    <button className="uk-button uk-button-success" onClick={handleToggleView}>
+      <i className="fa fa-refresh" />
+      {mobile === true ? 'PCサイト版' : 'モバイル版'}
+    </button>
+  );
+};
 
-  public handleToggleView = () => {
-    this.props.toggleViewport();
-  }
+const Sheet: SFC<Props> = (props) => {
+  useEffect(() => {
+    const { iidxid } = props.user;
+    props.getUser({ iidxid, type });
+  }, []);
 
-  public renderToggleView() {
-    const { mobile } = this.props;
-    return (
-      <button className="uk-button uk-button-success" onClick={this.handleToggleView}>
-        <i className="fa fa-refresh" />
-        {mobile === true ? 'PCサイト版' : 'モバイル版'}
-      </button>
-    );
-  }
+  const handleChangeBp = (e: React.ChangeEvent<HTMLInputElement>) => {
+    props.updateBp(e.target.value);
+  };
+  const handleToggleView = () => {
+    props.toggleViewport();
+  };
 
-  public render() {
-    const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = this.props;
-    return (
-      <div className="react">
-        <HelmetWrapper {...{ mobile }} />
-        <Modal />
-        <div className="center">
-          <Title {...{ type, $$scoreList, count }} />
-          <ProfileLink {...{ user }} />
-          <OtherLinks {...{ type, iidxid: user.iidxid }} />
-          <RecentUpdate {...{ recent }} />
-          {implicitMobile ? this.renderToggleView() : null}
-          {$$scoreList.fetched ? <TwitterSharedButton text={`DJ.${user.djname} ☆12${mapping[type].name}(${mapping[type].remain}${$$scoreList.remainCount(type, count)})`} /> : null}
-          <hr />
-          <CheckBox  />
-          <Statistics />
-          <h3 />
-          <BpForm {...{ bp, handleChangeBp: this.handleChangeBp }} />
-          <br />
-          <SheetList />
-        </div>
+  const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = props;
+
+  return (
+    <div className="react">
+      <HelmetWrapper {...{ mobile }} />
+      <Modal />
+      <div className="center">
+        <Title {...{ type, $$scoreList, count }} />
+        <ProfileLink {...{ user }} />
+        <OtherLinks {...{ type, iidxid: user.iidxid }} />
+        <RecentUpdate {...{ recent }} />
+        <ToggleView {...{ implicitMobile, mobile, handleToggleView }} />
+        {$$scoreList.fetched ? <TwitterSharedButton text={`DJ.${user.djname} ☆12${mapping[type].name}(${mapping[type].remain}${$$scoreList.remainCount(type, count)})`} /> : null}
+        <hr />
+        <CheckBox  />
+        <Statistics />
+        <h3 />
+        <BpForm {...{ bp, handleChangeBp }} />
+        <br />
+        <SheetList />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sheet);
