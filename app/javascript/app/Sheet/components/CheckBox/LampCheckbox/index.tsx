@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { RootState } from '../../ducks';
-import { actions } from '../../ducks/Sheet';
+import { RootState } from '../../../ducks';
+import { actions } from '../../../ducks/Sheet';
+import Presentation from './presentation';
 
 function mapStateToProps(state: RootState) {
   return {
@@ -14,15 +15,16 @@ function mapDispatchToProps(dispatch: Dispatch) {
   const { toggleLamp } = actions;
   return bindActionCreators({ toggleLamp }, dispatch);
 }
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+export type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
 const LampCheckbox: FunctionComponent<Props> = ({ $$env, lamp, toggleLamp }) => {
   const [clear, setClear] = useState(false);
   const [hard, setHard] = useState(false);
 
-  const handleChangeLamp = (e: React.ChangeEvent<HTMLInputElement>) => {
-    toggleLamp({ state: parseInt(e.target.value, 10) });
-  };
+  const handleChangeLamp = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      toggleLamp({ state: parseInt(e.target.value, 10) });
+    }, []);
 
   const handleMultipleChangeLamp = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,31 +53,7 @@ const LampCheckbox: FunctionComponent<Props> = ({ $$env, lamp, toggleLamp }) => 
     [clear, hard],
   );
 
-  let key = 0;
-  const dom = lamp.map(l => {
-    const elem = (
-      <label key={`lamp-checkbox-${key}`}>
-        <input id={'state-' + key} type="checkbox" value={key} name="check-lamp" defaultChecked={true} onChange={handleChangeLamp} />
-        {l}
-      </label>
-    );
-    key += 1;
-    return elem;
-  });
-  dom.push(<label key={'lamp-checkbox-clear'}>
-      <input type="checkbox" value="hard" checked={hard} onChange={handleMultipleChangeLamp} />
-      未難
-    </label>);
-  dom.push(<label key={'lamp-checkbox-hard'}>
-      <input type="checkbox" value="clear" defaultChecked={clear} onChange={handleMultipleChangeLamp} />
-      未クリア
-    </label>);
-
-  return (
-    <div className="lamp-checkbox">
-      {dom}
-    </div>
-  );
+  return (<Presentation {...{ lamp, clear, hard, handleChangeLamp, handleMultipleChangeLamp }} />);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LampCheckbox);

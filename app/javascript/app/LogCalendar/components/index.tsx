@@ -24,14 +24,15 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
     (window as any).UIkit.accordion(document.querySelector('.uk-accordion'), {showfirst: false});
   }, []);
 
-  const handleClickPrevNext = (args: { view: View, el: HTMLElement }) => {
-    let dates: string[];
-    dates = args.view.title.replace(/年/g, ' ').replace('月', ' ').split(' ');
-    if (dates[0] === viewDate[0] && dates[1] === viewDate[1]) { return; }
-    viewDate = dates;
-    client.getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
-      .then(res => changeEvents(res.logs));
-  };
+  const handleClickPrevNext = useCallback(
+      (args: { view: View, el: HTMLElement }) => {
+      let dates: string[];
+      dates = args.view.title.replace(/年/g, ' ').replace('月', ' ').split(' ');
+      if (dates[0] === viewDate[0] && dates[1] === viewDate[1]) { return; }
+      viewDate = dates;
+      client.getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
+        .then(res => changeEvents(res.logs));
+    }, []);
 
   const changeEvents = useCallback(
       (logs: ILog[]) => {
@@ -55,14 +56,15 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
     }, [events],
   );
 
-  const handleEventRender = (info: { event: EventApi, el: HTMLElement, view: View }) => {
-    // @ts-ignore
-    const tooltip = new Tooltip(info.el, {
-      title: info.event.extendedProps.description,
-      html: true,
-      placement: 'bottom',
-    });
-  };
+  const handleEventRender = useCallback(
+      (info: { event: EventApi, el: HTMLElement, view: View }) => {
+      // @ts-ignore
+      const tooltip = new Tooltip(info.el, {
+        title: info.event.extendedProps.description,
+        html: true,
+        placement: 'bottom',
+      });
+    }, []);
 
   return (
     <div className="uk-accordion" data-uk-accordion={true}>

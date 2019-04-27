@@ -1,4 +1,4 @@
-import React, { SFC, useEffect } from 'react';
+import React, { SFC, useCallback, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import HelmetWrapper from '../../../lib/components/HelmetWrapper';
@@ -66,12 +66,14 @@ const Sheet: SFC<Props> = (props) => {
     props.getUser({ iidxid, type });
   }, []);
 
-  const handleChangeBp = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.updateBp(e.target.value);
-  };
-  const handleToggleView = () => {
-    props.toggleViewport();
-  };
+  const handleChangeBp = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.updateBp(e.target.value);
+    }, []);
+  const handleToggleView = useCallback(
+    () => {
+      props.toggleViewport();
+    }, []);
 
   const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = props;
 
