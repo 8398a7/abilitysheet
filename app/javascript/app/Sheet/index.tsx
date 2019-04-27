@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { initialState as metaInitialState } from '../../lib/ducks/Meta';
 import { actions } from '../../lib/ducks/Meta';

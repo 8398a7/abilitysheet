@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 const RecentUpdate: React.SFC<{ recent: string }> = (props) => {
   return (

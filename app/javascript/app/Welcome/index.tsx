@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import rootReducer, { rootSaga, RootState } from '../../lib/ducks';
 import { actions, initialState } from '../../lib/ducks/Meta';

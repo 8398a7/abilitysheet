@@ -1,5 +1,5 @@
-import * as queryString from 'query-string';
-import * as React from 'react';
+import queryString from 'query-string';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import { RootState } from '../../ducks';

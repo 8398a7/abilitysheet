@@ -1,6 +1,6 @@
-import * as CalHeatMap from 'cal-heatmap';
-import * as moment from 'moment-timezone';
-import * as React from 'react';
+import CalHeatMap from 'cal-heatmap';
+import moment from 'moment-timezone';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../lib/ducks';
 import User from '../../../lib/models/User';
@@ -20,7 +20,7 @@ interface IState {
   date: string;
 }
 type Props = IProps & ReturnType<typeof mapStateToProps>;
-class HeatMap extends React.PureComponent<Props, IState> {
+class HeatMap extends PureComponent<Props, IState> {
   public state = {
     items: -1,
     date: '',

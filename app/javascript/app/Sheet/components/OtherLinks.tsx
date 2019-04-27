@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { sheetPath } from '../../../lib/routes';
 import { RootState } from '../ducks';
 

@@ -1,7 +1,7 @@
 import 'fullcalendar';
-import * as $ from 'jquery';
+import $ from 'jquery';
 import 'qtip2';
-import * as React from 'react';
+import React, { PureComponent } from 'react';
 import MyClient, { ILog } from '../../../lib/MyClient';
 import { logsPath } from '../../../lib/routes';
 
@@ -9,7 +9,7 @@ interface IState {
   client: MyClient;
   logs: any;
 }
-export default class LogCalendar extends React.PureComponent<{ iidxid: string }, IState> {
+export default class LogCalendar extends PureComponent<{ iidxid: string }, IState> {
   public state = {
     client: new MyClient(),
     logs: {},
