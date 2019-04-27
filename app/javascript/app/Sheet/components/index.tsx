@@ -66,14 +66,10 @@ const Sheet: SFC<Props> = (props) => {
     props.getUser({ iidxid, type });
   }, []);
 
-  const handleChangeBp = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      props.updateBp(e.target.value);
-    }, []);
-  const handleToggleView = useCallback(
-    () => {
-      props.toggleViewport();
-    }, []);
+  const handleChangeBp = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    props.updateBp(e.target.value);
+  }, []);
+  const handleToggleView = useCallback(() => props.toggleViewport(), []);
 
   const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = props;
 

@@ -27,37 +27,32 @@ const VersionCheckbox: FC<Props> = ({ versions, toggleVersion, reverseAbilities 
     }
   }, []);
 
-  const handleToggleVersion = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.value === '0') {
-        versions.forEach(version => {
-          const targetInput = document.querySelector<HTMLInputElement>(`input[name="version-check"][value="${version[1]}"]`);
-          if (targetInput) {
-            targetInput.checked = !targetInput.checked;
-          }
-          toggleVersion(version[1]);
-        });
-      } else {
-        toggleVersion(parseInt(e.target.value, 10));
-      }
-    }, [],
-  );
+  const handleToggleVersion = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === '0') {
+      versions.forEach(version => {
+        const targetInput = document.querySelector<HTMLInputElement>(`input[name="version-check"][value="${version[1]}"]`);
+        if (targetInput) {
+          targetInput.checked = !targetInput.checked;
+        }
+        toggleVersion(version[1]);
+      });
+    } else {
+      toggleVersion(parseInt(e.target.value, 10));
+    }
+  }, []);
 
-  const handleChangeReverse = useCallback(
-    () => {
-      const query = queryString.parse(location.search);
-      const url = location.origin + location.pathname;
-      if (reverse === false && query.reverse_sheet === undefined) {
-        history.replaceState('', '', `${url}?${queryString.stringify({ ...query, reverse_sheet: true })}`);
-      } else if (reverse === true && query.reverse_sheet) {
-        delete(query.reverse_sheet);
-        history.replaceState('', '', `${url}?${queryString.stringify({ ...query })}`);
-      }
-      setReverse(!reverse);
-      reverseAbilities();
-    },
-    [reverse],
-  );
+  const handleChangeReverse = useCallback(() => {
+    const query = queryString.parse(location.search);
+    const url = location.origin + location.pathname;
+    if (reverse === false && query.reverse_sheet === undefined) {
+      history.replaceState('', '', `${url}?${queryString.stringify({ ...query, reverse_sheet: true })}`);
+    } else if (reverse === true && query.reverse_sheet) {
+      delete(query.reverse_sheet);
+      history.replaceState('', '', `${url}?${queryString.stringify({ ...query })}`);
+    }
+    setReverse(!reverse);
+    reverseAbilities();
+  }, [reverse]);
 
   return (<Presentation {...{ versions, reverse, handleToggleVersion, handleChangeReverse }} />);
 };
