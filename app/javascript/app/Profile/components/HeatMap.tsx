@@ -1,38 +1,41 @@
 import CalHeatMap from 'cal-heatmap';
 import moment from 'moment-timezone';
-import React, { PureComponent } from 'react';
+import React, { FC, SFC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../lib/ducks';
 import User from '../../../lib/models/User';
 import { apiV1LogCalHeatmapPath, logsPath } from '../../../lib/routes';
+
+const Detail: SFC<{ user: User, date: string, items: number }> = ({ user, date, items }) => {
+  if (items === -1) { return null; }
+  const targetDate = new Date(date);
+  const text = `${targetDate.getFullYear()}-${('00' + (targetDate.getMonth() + 1)).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`;
+
+  return (
+    <div className="center">
+      <i className="fa fa-refresh" />
+      <a href={logsPath(user.iidxid, text)}>{text}</a>の更新数は{items}個です
+    </div>
+  );
+};
 
 function mapStateToProps(state: RootState) {
   return {
     mobile: state.$$meta.env.mobileView(),
   };
 }
-interface IProps {
-  user: User;
-  viewport: boolean;
-}
-interface IState {
-  items: number;
-  date: string;
-}
-type Props = IProps & ReturnType<typeof mapStateToProps>;
-class HeatMap extends PureComponent<Props, IState> {
-  public state = {
-    items: -1,
-    date: '',
-  };
+type Props = { user: User } & ReturnType<typeof mapStateToProps>;
 
-  public componentDidMount() {
-    const { user } = this.props;
-    if (user.iidxid === undefined) { return null; }
+const HeatMap: FC<Props> = ({ user, mobile }) => {
+  const [date, setDate] = useState('');
+  const [items, setItems] = useState(-1);
+
+  useEffect(() => {
+    if (user.iidxid === undefined) { return; }
     // @ts-ignore
     const cal = new CalHeatMap();
     const startDate = new Date();
-    const range = this.props.mobile ? 3 : 12;
+    const range = mobile ? 3 : 12;
     startDate.setMonth(startDate.getMonth() - (range - 1));
     cal.init({
       domain: 'month',
@@ -52,38 +55,20 @@ class HeatMap extends PureComponent<Props, IState> {
         });
         return results;
       },
-      onClick: (date: Date, nb: number) => {
-        this.setState({
-          items: nb,
-          date: `${date}`,
-        });
+      onClick: (d: Date, nb: number) => {
+        setDate(d.toDateString);
+        setItems(nb);
       },
     });
-  }
+  }, []);
 
-  public renderDetail() {
-    const { user } = this.props;
-    const { items, date } = this.state;
-    if (items === -1) { return null; }
-    const targetDate = new Date(date);
-    const text = `${targetDate.getFullYear()}-${('00' + (targetDate.getMonth() + 1)).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`;
-    return (
-      <div className="center">
-        <i className="fa fa-refresh" />
-        <a href={logsPath(user.iidxid, text)}>{text}</a>の更新数は{items}個です
-      </div>
-    );
-  }
-
-  public render() {
-    return (
-      <div className="uk-panel uk-panel-box">
-        <h3 className="uk-panel-title">更新履歴</h3>
-        <div id="cal-heatmap" />
-        {this.renderDetail()}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="uk-panel uk-panel-box">
+      <h3 className="uk-panel-title">更新履歴</h3>
+      <div id="cal-heatmap" />
+      <Detail {...{ user, date, items }} />
+    </div>
+  );
+};
 
 export default connect(mapStateToProps)(HeatMap);
