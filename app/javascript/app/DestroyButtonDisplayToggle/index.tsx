@@ -1,34 +1,21 @@
-import React from 'react';
+import React, { FC, useCallback, useState } from 'react';
 
-export default class DestroyButtonDisplayToggle extends React.PureComponent {
-  public state = {
-    nonDisplay: true,
-    display: false,
-  };
+const DestroyButtonDisplayToggle: FC<{}> = () => {
+  const [display, setDisplay] = useState(false);
 
-  public toggleDisplay(type: 'display' | 'nonDisplay') {
-    document.querySelectorAll<HTMLButtonElement>('.destroy-button').forEach(elem => elem.style.display = type === 'display' ? '' : 'none');
-  }
+  const handleClick = useCallback(
+    (type: boolean) => () => {
+      document.querySelectorAll<HTMLButtonElement>('.destroy-button').forEach(elem => elem.style.display = type ? 'none' : '');
+      setDisplay(type);
+    }, [display],
+  );
 
-  public handleClick = (type: 'display' | 'nonDisplay') => () => {
-    this.toggleDisplay(type);
-    switch (type) {
-      case 'nonDisplay':
-        this.setState({ nonDisplay: true, display: false });
-        break;
-      case 'display':
-        this.setState({ nonDisplay: false, display: true });
-        break;
-    }
-  }
+  return (
+    <div className="uk-button-group" style={{ marginBottom: '10px' }}>
+      <button onClick={handleClick(true)} className={`uk-button uk-button-primary ${!display ? ' uk-active' : '' }`}>非表示</button>
+      <button onClick={handleClick(false)} className={`uk-button uk-button-danger ${display ? ' uk-active' : '' }`}>表示</button>
+    </div>
+  );
+};
 
-  public render() {
-    const { display, nonDisplay } = this.state;
-    return (
-      <div className="uk-button-group" style={{ marginBottom: '10px' }}>
-        <button onClick={this.handleClick('nonDisplay')} className={`uk-button uk-button-primary ${nonDisplay ? ' uk-active' : '' }`}>非表示</button>
-        <button onClick={this.handleClick('display')} className={`uk-button uk-button-danger ${display ? ' uk-active' : '' }`}>表示</button>
-      </div>
-    );
-  }
-}
+export default DestroyButtonDisplayToggle;
