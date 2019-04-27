@@ -1,11 +1,12 @@
 @import "cal-heatmap/cal-heatmap";
-@import "fullcalendar/dist/fullcalendar";
 @import "nprogress/nprogress";
-@import "qtip2/dist/jquery.qtip";
 @import "select2/dist/css/select2";
 
 @import "../stylesheets/react";
 @import "../stylesheets/admin";
+
+@import "@fullcalendar/core/main";
+@import "@fullcalendar/daygrid/main";
 
 .loading-container {
   z-index: 10000;

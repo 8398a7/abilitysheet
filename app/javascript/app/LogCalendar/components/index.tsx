@@ -1,18 +1,25 @@
-import 'fullcalendar';
-import $ from 'jquery';
-import 'qtip2';
+import { EventApi, View } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import FullCalendar from '@fullcalendar/react';
 import React, { PureComponent } from 'react';
+import Tooltip from 'tooltip.js';
 import MyClient, { ILog } from '../../../lib/MyClient';
 import { logsPath } from '../../../lib/routes';
 
 interface IState {
   client: MyClient;
-  logs: any;
+  events: Array<{
+    title: string;
+    start: string;
+    allDay: boolean;
+    url: string;
+    description: string;
+  }>;
 }
 export default class LogCalendar extends PureComponent<{ iidxid: string }, IState> {
   public state = {
     client: new MyClient(),
-    logs: {},
+    events: [],
   };
 
   public componentWillMount() {
@@ -22,36 +29,37 @@ export default class LogCalendar extends PureComponent<{ iidxid: string }, IStat
       .then(res => this.changeEvents(res.logs));
   }
 
-  public changeEvents(events: ILog[]) {
+  public changeEvents(logs: ILog[]) {
     const obj: { [s: string]: ILog[] } = {};
-    events.forEach(event => {
-      if (obj[event.created_date] === undefined) {
-        obj[event.created_date] = [];
+    logs.forEach(log => {
+      if (obj[log.created_date] === undefined) {
+        obj[log.created_date] = [];
       }
-      obj[event.created_date].push(event);
+      obj[log.created_date].push(log);
     });
-    Object.keys(obj).forEach(date => {
-      const event = {
+    const events = Object.keys(obj).map(date => {
+      return {
         title: obj[date].length + '個の更新',
         start: date,
         allDay: true,
         url: logsPath(this.props.iidxid, date),
         description: obj[date].map(e => e.title).join('<br>'),
       };
-      $('#log-calendar').fullCalendar('renderEvent', event, false);
+    });
+    this.setState({ events });
+  }
+
+  public handleEventRender = (info: { event: EventApi, el: HTMLElement, view: View }) => {
+    // @ts-ignore
+    const tooltip = new Tooltip(info.el, {
+      title: info.event.extendedProps.description,
+      html: true,
+      placement: 'bottom',
     });
   }
 
   public componentDidMount() {
     (window as any).UIkit.accordion(document.querySelector('.uk-accordion'), {showfirst: false});
-    $('#log-calendar').fullCalendar({
-      locale: 'ja',
-      eventRender: (event, element) => {
-        element.qtip({
-          content: { text: event.description },
-        });
-      },
-    });
     const prev = document.querySelector<HTMLSpanElement>('.fc-prev-button');
     if (prev) { prev.onclick = this.handleClickPrevNext; }
     const next = document.querySelector<HTMLSpanElement>('.fc-next-button');
@@ -64,10 +72,10 @@ export default class LogCalendar extends PureComponent<{ iidxid: string }, IStat
     const dom = document.querySelector('.fc-left');
     let dates: string[];
     if (dom && dom.textContent) {
-      dates = dom.textContent.replace(/年/g, '').replace('月', '').split(' ');
+      dates = dom.textContent.replace(/年/g, ' ').replace('月', ' ').split(' ');
     } else { return; }
     const { iidxid } = this.props;
-    this.state.client.getLogs(iidxid, parseInt(dates[1], 10), parseInt(dates[0], 10))
+    this.state.client.getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
       .then(res => this.changeEvents(res.logs));
   }
 
@@ -76,7 +84,13 @@ export default class LogCalendar extends PureComponent<{ iidxid: string }, IStat
       <div className="uk-accordion" data-uk-accordion={true}>
         <h3 className="uk-accordion-title center">カレンダーで見る</h3>
         <div className="uk-accordion-content">
-          <div id="log-calendar" data-turbolinks="false" />
+          <FullCalendar
+            locale="ja"
+            defaultView="dayGridMonth"
+            plugins={[dayGridPlugin]}
+            events={this.state.events}
+            eventRender={this.handleEventRender}
+          />
         </div>
       </div>
     );
