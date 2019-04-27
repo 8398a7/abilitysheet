@@ -17,7 +17,7 @@
   "homepage": "https://github.com/8398a7/abilitysheet#readme",
   "dependencies": {
     "@rails/webpacker": "4.0.2",
-    "@sentry/browser": "^5.1.1",
+    "@sentry/browser": "^4.6.5",
     "@types/cal-heatmap": "^3.5.34",
     "@types/highcharts": "^5.0.39",
     "@types/jquery": "^3.3.29",
