@@ -56,7 +56,7 @@ const HeatMap: FC<Props> = ({ user, mobile }) => {
         return results;
       },
       onClick: (d: Date, nb: number) => {
-        setDate(d.toDateString);
+        setDate(d.toLocaleDateString());
         setItems(nb);
       },
     });
