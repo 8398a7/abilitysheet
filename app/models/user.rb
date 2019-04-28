@@ -33,7 +33,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
-  mount_uploader :image, ProfileImageUploader
   has_one_attached :avatar
 
   include User::API
