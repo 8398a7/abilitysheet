@@ -5,8 +5,8 @@
 # Table name: logs
 #
 #  id           :bigint           not null, primary key
-#  user_id      :integer
-#  sheet_id     :integer
+#  user_id      :bigint
+#  sheet_id     :bigint
 #  pre_state    :integer
 #  new_state    :integer
 #  pre_score    :integer
