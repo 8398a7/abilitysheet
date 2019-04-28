@@ -34,6 +34,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
   mount_uploader :image, ProfileImageUploader
+  has_one_attached :avatar
 
   include User::API
   include User::DeviseMethods
@@ -92,6 +93,21 @@ class User < ApplicationRecord
 
     def version_up!
       all.find_each(&:version_up!)
+    end
+
+    def migrate_as!
+      failed_user_ids = []
+      where.not(image: nil).find_each do |user|
+        next unless user.image.url
+
+        # rubocop:disable all
+        user.avatar.attach(io: open(user.image.file.file), filename: 'avatar')
+        # rubocop:enable_all
+      rescue Errno::ENOENT
+        failed_user_ids.push(user.id)
+        user.update!(image: nil)
+      end
+      puts failed_user_ids
     end
   end
 end

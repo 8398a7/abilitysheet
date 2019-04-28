@@ -41,7 +41,7 @@ class ServiceDumper
   end
 
   def file_dump
-    `cp -r #{files_path} #{dump_path}/uploads`
+    `cp -r #{files_path} #{dump_path}/storage`
   end
 
   def pg_dump
@@ -57,6 +57,6 @@ class ServiceDumper
   end
 
   def files_path
-    '/var/www/app/abilitysheet/shared/public/uploads'
+    '/var/www/app/abilitysheet/shared/storage'
   end
 end
