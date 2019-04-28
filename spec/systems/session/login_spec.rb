@@ -27,4 +27,15 @@ feature 'ログイン処理', type: :system do
       end
     end
   end
+
+  context 'emailでログイン' do
+    scenario 'response ok' do
+      fill_in 'user_login', with: user.email
+      fill_in 'user_password', with: 'hogehoge'
+      click_button 'ログイン'
+      within first(:xpath, 'html') do
+        expect(page).to have_content('マイページ')
+      end
+    end
+  end
 end
