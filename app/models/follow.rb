@@ -5,8 +5,8 @@
 # Table name: follows
 #
 #  id             :bigint           not null, primary key
-#  user_id        :integer
-#  target_user_id :integer
+#  user_id        :bigint
+#  target_user_id :bigint
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

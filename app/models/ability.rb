@@ -5,7 +5,7 @@
 # Table name: abilities
 #
 #  id         :bigint           not null, primary key
-#  sheet_id   :integer
+#  sheet_id   :bigint
 #  fc         :float
 #  exh        :float
 #  h          :float

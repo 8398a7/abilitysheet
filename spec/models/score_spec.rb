@@ -8,8 +8,8 @@
 #  state      :integer          default(7), not null
 #  score      :integer
 #  bp         :integer
-#  sheet_id   :integer          not null
-#  user_id    :integer          not null
+#  sheet_id   :bigint           not null
+#  user_id    :bigint           not null
 #  version    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -78,7 +78,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'chromedriver-helper'
   gem 'codeclimate-test-reporter'
   gem 'factory_bot_rails'
   gem 'json_expressions'
@@ -91,5 +90,6 @@ group :test do
   gem 'simplecov'
   gem 'spring-commands-rspec'
   gem 'vcr'
+  gem 'webdrivers'
   gem 'webmock'
 end

@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_170118) do
+ActiveRecord::Schema.define(version: 2019_04_28_173620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abilities", force: :cascade do |t|
-    t.integer "sheet_id"
+    t.bigint "sheet_id"
     t.float "fc"
     t.float "exh"
     t.float "h"
@@ -50,16 +50,16 @@ ActiveRecord::Schema.define(version: 2019_04_28_170118) do
   end
 
   create_table "follows", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "target_user_id"
+    t.bigint "user_id"
+    t.bigint "target_user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "target_user_id"], name: "index_follows_on_user_id_and_target_user_id", unique: true
   end
 
   create_table "logs", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "sheet_id"
+    t.bigint "user_id"
+    t.bigint "sheet_id"
     t.integer "pre_state"
     t.integer "new_state"
     t.integer "pre_score"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_170118) do
     t.string "body"
     t.string "email"
     t.inet "ip", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.boolean "state", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 2019_04_28_170118) do
     t.integer "state", default: 7, null: false
     t.integer "score"
     t.integer "bp"
-    t.integer "sheet_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "sheet_id", null: false
+    t.bigint "user_id", null: false
     t.integer "version", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
