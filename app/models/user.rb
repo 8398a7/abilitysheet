@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  username               :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -22,7 +22,6 @@
 #  grade                  :integer
 #  pref                   :integer          not null
 #  role                   :integer          default(0), not null
-#  image                  :string
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
@@ -33,7 +32,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
-  mount_uploader :image, ProfileImageUploader
   has_one_attached :avatar
 
   include User::API
@@ -93,21 +91,6 @@ class User < ApplicationRecord
 
     def version_up!
       all.find_each(&:version_up!)
-    end
-
-    def migrate_as!
-      failed_user_ids = []
-      where.not(image: nil).find_each do |user|
-        next unless user.image.url
-
-        # rubocop:disable all
-        user.avatar.attach(io: open(user.image.file.file), filename: 'avatar')
-        # rubocop:enable_all
-      rescue Errno::ENOENT
-        failed_user_ids.push(user.id)
-        user.remove_image!
-      end
-      puts failed_user_ids
     end
   end
 end
