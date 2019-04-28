@@ -15,10 +15,29 @@ module User::Ist
     }
   }.freeze
 
+  # FIXME: 米国などの見つからなかったやつは海外に全部まとめている
+  def find_pref(pref)
+    User::Static::PREF.index(pref) || 0
+  end
+
+  # NOTE: 見つからなかったやつは無段位
+  def find_grade(grade)
+    User::Static::GRADE.index(grade.split[1]) || User::Static::GRADE.size - 1
+  end
+
   included do
     def update_ist
+      user = ist_client.get_user(iidxid)
+      return false if user.dig('error') == 'Not Found'
+      return false if user['iidxid'] != iidxid
+
       result = ist_client.get_scores(iidxid, SEARCH_PARAMS)
       return false if result.dig('error') == 'Not Found'
+
+      pref = find_pref(user['user_activity']['pref_status'])
+      grade = find_grade(user['user_activity']['sp_grade_status'])
+      update!(djname: user['user_activity']['djname'], grade: grade, pref: pref)
+      avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png')
 
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|

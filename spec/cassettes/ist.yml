@@ -2,6 +2,50 @@
 http_interactions:
 - request:
     method: get
+    uri: https://score.iidx12.tk/api/v1/users/8594-9652
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - score.iidx12.tk
+      User-Agent:
+      - http.rb/3.3.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Apr 2019 18:50:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+      Etag:
+      - W/"e03fb3b8136fd0ebc40027a633e99d3f"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c482eff8-fa43-40d2-a1be-17c2371808b5
+      X-Runtime:
+      - '0.068790'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: '{"iidxid":"8594-9652","user_activity":{"pref_status":"香川県","sp_grade_status":"SP
+        八段","dp_grade_status":"DP --","djname":"839"},"image_path":"/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWMvIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8717e49c78963059f42815a4caa57c9592b699e2/avatar.png?disposition=inline"}'
+    http_version: 
+  recorded_at: Sun, 28 Apr 2019 18:50:11 GMT
+- request:
+    method: get
     uri: https://score.iidx12.tk/api/v1/scores/8594-9652?q%5Bmusic_score_level_eq%5D=12&q%5Bmusic_score_play_type_status_eq%5D=0&q%5Bversion_eq%5D=25
     body:
       encoding: UTF-8
@@ -12,14 +56,14 @@ http_interactions:
       Host:
       - score.iidx12.tk
       User-Agent:
-      - http.rb/3.0.0
+      - http.rb/3.3.0
   response:
     status:
       code: 200
       message: OK
     headers:
       Date:
-      - Thu, 29 Mar 2018 12:24:00 GMT
+      - Sun, 28 Apr 2019 18:50:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -27,76 +71,77 @@ http_interactions:
       Connection:
       - close
       Etag:
-      - W/"9b59a4f53931d267b79ace8092d3d568"
+      - W/"31d5fd078e31d838b8cab631960588f4"
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - 1975aa7b-3e63-4277-9c55-6490252a3e28
+      - d893f933-2a6f-40e9-8607-416efb743ef0
       X-Runtime:
-      - '0.296024'
+      - '0.116759'
       Vary:
       - Origin
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
-      string: '{"count":271,"scores":[{"title":"V","level":12,"clear_type_status":"EX
+      string: '{"count":291,"scores":[{"title":"V","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2402,"miss_count":28},{"title":"Colors
         (radio edit)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2095,"miss_count":21},{"title":"A","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1924,"miss_count":20},{"title":"PLEASE
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2105,"miss_count":20},{"title":"PLEASE
         DON''T GO","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2085,"miss_count":17},{"title":"桜","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"moon_child","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2228,"miss_count":14},{"title":"one
         or eight","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1978,"miss_count":26},{"title":"Innocent
-        Walls","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Innocent
+        Walls","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":2078,"miss_count":30},{"title":"Innocent
         Walls","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2392,"miss_count":14},{"title":"One
         More Lovely","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2472,"miss_count":12},{"title":"雪月花","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2169,"miss_count":15},{"title":"AA","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3115,"miss_count":5},{"title":"FAKE
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3129,"miss_count":3},{"title":"FAKE
         TIME","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1978,"miss_count":0},{"title":"gigadelic","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":1773,"miss_count":0},{"title":"gigadelic","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"HYPER","play_type_status":"SP","score":1902,"miss_count":0},{"title":"gigadelic","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2150,"miss_count":6},{"title":"ピアノ協奏曲第１番”蠍火”","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2264,"miss_count":0},{"title":"rage
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2264,"miss_count":54},{"title":"rage
         against usual","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2588,"miss_count":25},{"title":"SCREAM
-        SQUAD","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Scripted
-        Connection⇒ A mix","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2685,"miss_count":16},{"title":"冥","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3097,"miss_count":58},{"title":"Concertino
+        SQUAD","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1769,"miss_count":30},{"title":"Scripted
+        Connection⇒ A mix","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2685,"miss_count":16},{"title":"冥","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3097,"miss_count":41},{"title":"Concertino
         in Blue","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2138,"miss_count":25},{"title":"tripping
         contact","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2336,"miss_count":4},{"title":"カゴノトリ～弐式～","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2231,"miss_count":0},{"title":"嘆きの樹","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3243,"miss_count":23},{"title":"Candy
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3290,"miss_count":13},{"title":"Candy
         Galy","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3209,"miss_count":4},{"title":"Fascination
         MAXX","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"FIRE
-        FIRE","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2390,"miss_count":10},{"title":"KAMAITACHI†","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2993,"miss_count":50},{"title":"LASER
+        FIRE","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2390,"miss_count":6},{"title":"KAMAITACHI†","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3023,"miss_count":50},{"title":"LASER
         CRUSTER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":6},{"title":"Sense
-        2007","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2435,"miss_count":19},{"title":"VANESSA","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2043,"miss_count":9},{"title":"VANESSA†","level":12,"clear_type_status":"HARD
+        2007","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2464,"miss_count":19},{"title":"VANESSA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2043,"miss_count":7},{"title":"VANESSA†","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2626,"miss_count":39},{"title":"電人、暁に斃れる。","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2909,"miss_count":10},{"title":"ICARUS","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"ICARUS†","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2663,"miss_count":126},{"title":"MENDES","level":12,"clear_type_status":"EX
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"ICARUS†","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2947,"miss_count":113},{"title":"MENDES","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2919,"miss_count":12},{"title":"oratio","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2593,"miss_count":9},{"title":"PARANOiA
-        ～HADES～","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1947,"miss_count":36},{"title":"Ristaccia","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2458,"miss_count":4},{"title":"THE
+        ～HADES～","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2195,"miss_count":36},{"title":"Ristaccia","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2477,"miss_count":4},{"title":"THE
         DEEP STRIKER†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2983,"miss_count":29},{"title":"TROOPERS","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2591,"miss_count":8},{"title":"少年A","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2414,"miss_count":18},{"title":"3y3s","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2757,"miss_count":50},{"title":"BITTER
-        CHOCOLATE STRIKER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3551,"miss_count":7},{"title":"Colorful
-        Cookie","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3106,"miss_count":13},{"title":"Go
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2875,"miss_count":50},{"title":"BITTER
+        CHOCOLATE STRIKER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3551,"miss_count":5},{"title":"Colorful
+        Cookie","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3129,"miss_count":9},{"title":"Go
         Beyond!!","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"THANK
         YOU FOR PLAYING†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2475,"miss_count":17},{"title":"不沈艦CANDY","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2871,"miss_count":21},{"title":"卑弥呼","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3063,"miss_count":76},{"title":"Almagest","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2602,"miss_count":0},{"title":"Bad
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2871,"miss_count":13},{"title":"卑弥呼","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3130,"miss_count":76},{"title":"Almagest","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2602,"miss_count":45},{"title":"Bad
         Maniacs","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2797,"miss_count":13},{"title":"DOMINION","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2943,"miss_count":14},{"title":"eRAseRmOToRpHAntOM","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2671,"miss_count":46},{"title":"Evans","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2382,"miss_count":7},{"title":"EXUSIA","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3070,"miss_count":0},{"title":"G59","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2819,"miss_count":29},{"title":"Evans","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2480,"miss_count":7},{"title":"EXUSIA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3138,"miss_count":36},{"title":"G59","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3263,"miss_count":15},{"title":"GOLDEN
-        CROSS","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3001,"miss_count":6},{"title":"mosaic","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2857,"miss_count":5},{"title":"quell～the
+        CROSS","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3014,"miss_count":2},{"title":"mosaic","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2884,"miss_count":1},{"title":"quell～the
         seventh slave～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2670,"miss_count":14},{"title":"Red.
         by Full Metal Jacket","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2644,"miss_count":55},{"title":"SOLID
         STATE SQUAD","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3043,"miss_count":11},{"title":"SOLID
@@ -107,28 +152,28 @@ http_interactions:
         with Snow Fairies","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2672,"miss_count":23},{"title":"ELECTRIC
         MASSIVE DIVER","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3233,"miss_count":15},{"title":"PARADISE
         LOST","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2732,"miss_count":31},{"title":"perditus†paradisus","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3196,"miss_count":46},{"title":"reunion","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2830,"miss_count":40},{"title":"sakura
-        storm","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2150,"miss_count":6},{"title":"Session
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3231,"miss_count":36},{"title":"reunion","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2847,"miss_count":36},{"title":"sakura
+        storm","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2207,"miss_count":6},{"title":"Session
         9 -Chronicles-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2921,"miss_count":50},{"title":"SPECIAL
         SUMMER CAMPAIGN!","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2709,"miss_count":0},{"title":"Watch
-        Out Pt.2","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2356,"miss_count":34},{"title":"灼熱Beach
-        Side Bunny","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2333,"miss_count":87},{"title":"黒髪乱れし修羅となりて","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2949,"miss_count":13},{"title":"BLACK.by
+        Out Pt.2","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2356,"miss_count":18},{"title":"灼熱Beach
+        Side Bunny","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2424,"miss_count":87},{"title":"黒髪乱れし修羅となりて","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3017,"miss_count":4},{"title":"BLACK.by
         X-Cross Fade","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2670,"miss_count":40},{"title":"DIAVOLO","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2605,"miss_count":37},{"title":"F","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2611,"miss_count":29},{"title":"F","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3046,"miss_count":1},{"title":"fffff","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2712,"miss_count":14},{"title":"HAERETICUS","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2666,"miss_count":15},{"title":"NNRT","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3248,"miss_count":4},{"title":"quaver♪","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3136,"miss_count":6},{"title":"Snake
-        Stick","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1677,"miss_count":0},{"title":"The
+        Stick","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2204,"miss_count":35},{"title":"The
         Limbo","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2935,"miss_count":10},{"title":"The
-        Sampling Paradise","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2577,"miss_count":6},{"title":"Thunderbolt","level":12,"clear_type_status":"EX
+        Sampling Paradise","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2583,"miss_count":6},{"title":"Thunderbolt","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3330,"miss_count":8},{"title":"Todestrieb","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3086,"miss_count":4},{"title":"WONDER
         WALKER","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3412,"miss_count":2},{"title":"YAKSHA","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3233,"miss_count":25},{"title":"天空の夜明け","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3301,"miss_count":9},{"title":"天空の夜明け","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3268,"miss_count":20},{"title":"子供の落書き帳","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2336,"miss_count":13},{"title":"恋する☆宇宙戦争っ！！","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2984,"miss_count":13},{"title":"聖人の塔","level":12,"clear_type_status":"EX
@@ -140,31 +185,31 @@ http_interactions:
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":3},{"title":"Hollywood
         Galaxy","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2274,"miss_count":0},{"title":"JOMANDA","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3073,"miss_count":51},{"title":"Liberation","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3178,"miss_count":21},{"title":"Little
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3243,"miss_count":17},{"title":"Little
         Star","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2700,"miss_count":0},{"title":"neu","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3576,"miss_count":7},{"title":"Plan
         8","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2653,"miss_count":60},{"title":"Proof
-        of the existence","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2733,"miss_count":11},{"title":"Sol
+        of the existence","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2807,"miss_count":8},{"title":"Sol
         Cosine Job 2","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2720,"miss_count":14},{"title":"STULTI","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2245,"miss_count":18},{"title":"SYNC-ANTHEM","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3005,"miss_count":10},{"title":"Thor''s
-        Hammer","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2356,"miss_count":35},{"title":"Timepiece
+        Hammer","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2373,"miss_count":35},{"title":"Timepiece
         phase II","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2668,"miss_count":15},{"title":"Timepiece
-        phase II (CN Ver.)","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2292,"miss_count":0},{"title":"True
-        Blue","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3215,"miss_count":8},{"title":"Valanga","level":12,"clear_type_status":"EX
+        phase II (CN Ver.)","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2399,"miss_count":0},{"title":"True
+        Blue","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3262,"miss_count":7},{"title":"Valanga","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2855,"miss_count":16},{"title":"Zirkfied","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3068,"miss_count":45},{"title":"ΕΛΠΙΣ","level":12,"clear_type_status":"FULLCOMBO
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3208,"miss_count":19},{"title":"ΕΛΠΙΣ","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2728,"miss_count":1},{"title":"†渚の小悪魔ラヴリィ～レイディオ†(IIDX
         EDIT)","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3034,"miss_count":21},{"title":"たまゆら","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2494,"miss_count":6},{"title":"アストライアの双皿","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2531,"miss_count":5},{"title":"アストライアの双皿","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2623,"miss_count":24},{"title":"キャトられ恋はモ～モク","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3191,"miss_count":27},{"title":"シュレーディンガーの猫","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3292,"miss_count":27},{"title":"シュレーディンガーの猫","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3061,"miss_count":6},{"title":"トリカゴノ鳳凰","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3215,"miss_count":8},{"title":"仮想空間の旅人たち†","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3423,"miss_count":8},{"title":"即席！脳直★ミュージックシステム","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3076,"miss_count":7},{"title":"狂イ咲ケ焔ノ華","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3156,"miss_count":15},{"title":"音楽","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Adularia","level":12,"clear_type_status":"EX
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1905,"miss_count":98},{"title":"Adularia","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2424,"miss_count":15},{"title":"Ancient
         Scapes","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3067,"miss_count":6},{"title":"Ancient
         Scapes†LEGGENDARIA","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3451,"miss_count":38},{"title":"BLUE
@@ -177,9 +222,9 @@ http_interactions:
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3255,"miss_count":2},{"title":"Immortal","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2758,"miss_count":16},{"title":"INSOMNIA","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2793,"miss_count":29},{"title":"invoker","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2227,"miss_count":38},{"title":"invoker†LEGGENDARIA","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2776,"miss_count":10},{"title":"invoker†LEGGENDARIA","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3074,"miss_count":19},{"title":"IX","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3174,"miss_count":45},{"title":"KAISER
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3192,"miss_count":41},{"title":"KAISER
         PHOENIX","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2791,"miss_count":22},{"title":"Last
         Dance","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2714,"miss_count":15},{"title":"PUNISHER","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3124,"miss_count":6},{"title":"ra''am","level":12,"clear_type_status":"EX
@@ -188,15 +233,15 @@ http_interactions:
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3370,"miss_count":73},{"title":"Verflucht","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2916,"miss_count":26},{"title":"Verflucht†LEGGENDARIA","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3658,"miss_count":63},{"title":"VOX
-        UP","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3121,"miss_count":50},{"title":"廿†","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"旋律のドグマ～Miserables～","level":12,"clear_type_status":"EX
+        UP","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3121,"miss_count":38},{"title":"廿†","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2034,"miss_count":0},{"title":"旋律のドグマ～Miserables～","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3395,"miss_count":8},{"title":"海神","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2768,"miss_count":4},{"title":"煉獄のエルフェリア","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3345,"miss_count":25},{"title":"疾風迅雷","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2543,"miss_count":15},{"title":"疾風迅雷†LEGGENDARIA","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2810,"miss_count":61},{"title":"轟け！恋のビーンボール！！","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3066,"miss_count":18},{"title":"Beat
-        Radiance†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3265,"miss_count":23},{"title":"BLUE
+        Radiance†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3313,"miss_count":8},{"title":"BLUE
         MIRAGE","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2487,"miss_count":30},{"title":"Broken
         Sword","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3298,"miss_count":4},{"title":"CHRONO
         DIVER -NORNIR-†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3701,"miss_count":36},{"title":"Chrono
@@ -204,25 +249,25 @@ http_interactions:
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2785,"miss_count":12},{"title":"Cosmic
         Cat†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2776,"miss_count":13},{"title":"Despair
         of ELFERIA","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3625,"miss_count":18},{"title":"EBONY
-        \u0026 IVORY","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2573,"miss_count":4},{"title":"EBONY
+        \u0026 IVORY","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2642,"miss_count":4},{"title":"EBONY
         \u0026 IVORY†","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3088,"miss_count":35},{"title":"entelecheia","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2938,"miss_count":8},{"title":"fallen
         leaves -IIDX edition-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2897,"miss_count":7},{"title":"FANTASTIC
         THREE","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2666,"miss_count":40},{"title":"Flashes","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2741,"miss_count":19},{"title":"Gravigazer","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2494,"miss_count":7},{"title":"IMPLANTATION","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1813,"miss_count":21},{"title":"Invitation
-        from Mr.C","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"Ludus
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2494,"miss_count":7},{"title":"IMPLANTATION","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1813,"miss_count":13},{"title":"Invitation
+        from Mr.C","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2243,"miss_count":17},{"title":"Ludus
         In Tenebris","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3001,"miss_count":23},{"title":"Monopole.","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2876,"miss_count":26},{"title":"NEO
         GENERATOR SEVEN","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2870,"miss_count":24},{"title":"Rave*it!!
         Rave*it!!","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2813,"miss_count":17},{"title":"Reflux","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2524,"miss_count":44},{"title":"Say
         YEEEAHH","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2852,"miss_count":10},{"title":"Shooting
-        Fireball","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3347,"miss_count":5},{"title":"Sounds
+        Fireball","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3358,"miss_count":5},{"title":"Sounds
         Of Summer","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2676,"miss_count":14},{"title":"SpaceLand☆TOYBOX","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2604,"miss_count":8},{"title":"Symmetry","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2898,"miss_count":8},{"title":"The
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2631,"miss_count":4},{"title":"Symmetry","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2898,"miss_count":5},{"title":"The
         Least 100sec","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2368,"miss_count":18},{"title":"TIEFSEE","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2855,"miss_count":2},{"title":"TOXIC
         VIBRATION","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3175,"miss_count":16},{"title":"We''re
@@ -231,49 +276,49 @@ http_interactions:
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2696,"miss_count":3},{"title":"それは花火のような恋","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3370,"miss_count":8},{"title":"リリーゼと炎龍レーヴァテイン","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3025,"miss_count":18},{"title":"共鳴遊戯の華","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3084,"miss_count":37},{"title":"千年ノ理","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3084,"miss_count":25},{"title":"千年ノ理","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2904,"miss_count":1},{"title":"夏色DIARY
         - L.E.D.-G STYLE MIX -","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2658,"miss_count":15},{"title":"少年は空を辿る","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2840,"miss_count":13},{"title":"紅牡丹","level":12,"clear_type_status":"FULLCOMBO
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2898,"miss_count":11},{"title":"紅牡丹","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2461,"miss_count":8},{"title":"表裏一体！？怪盗いいんちょの悩み","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3143,"miss_count":9},{"title":"超青少年ノ為ノ超多幸ナ超古典的超舞曲†","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3533,"miss_count":26},{"title":"199024club
         -Re:BounceKiller-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1977,"miss_count":55},{"title":"AO-1","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2452,"miss_count":18},{"title":"Blue
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2510,"miss_count":18},{"title":"Blue
         Spring Express","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2768,"miss_count":33},{"title":"CODE:1
-        [revision1.0.1]","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2566,"miss_count":13},{"title":"Devil''s
-        Gear","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2738,"miss_count":33},{"title":"DIAMOND
+        [revision1.0.1]","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2593,"miss_count":12},{"title":"Devil''s
+        Gear","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2953,"miss_count":23},{"title":"DIAMOND
         CROSSING","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2550,"miss_count":0},{"title":"Dynamite","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3361,"miss_count":0},{"title":"Godspeed","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2632,"miss_count":31},{"title":"Grand
         Chariot","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2885,"miss_count":23},{"title":"Highcharge
-        Divolt","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2438,"miss_count":19},{"title":"Konzert
+        Divolt","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2515,"miss_count":19},{"title":"Konzert
         V","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2721,"miss_count":30},{"title":"M4K3
         1T B0UNC3","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2665,"miss_count":16},{"title":"Nightmare
-        before oversleep","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2520,"miss_count":10},{"title":"NINJA
+        before oversleep","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2549,"miss_count":7},{"title":"NINJA
         IS DEAD IIDX ver.","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2741,"miss_count":4},{"title":"NZM","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2818,"miss_count":0},{"title":"POSSESSION","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2657,"miss_count":10},{"title":"refrain","level":12,"clear_type_status":"FULLCOMBO
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3077,"miss_count":9},{"title":"STARLIGHT
-        DANCEHALL†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2667,"miss_count":25},{"title":"StrayedCatz","level":12,"clear_type_status":"EX
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3083,"miss_count":9},{"title":"STARLIGHT
+        DANCEHALL†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2781,"miss_count":21},{"title":"StrayedCatz","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2378,"miss_count":6},{"title":"Triple
         Counter","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3463,"miss_count":25},{"title":"X","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3384,"miss_count":6},{"title":"めいさいアイドル☆あいむちゃん♪","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3011,"miss_count":11},{"title":"灼熱
-        Pt.2 Long Train Running","level":12,"clear_type_status":"CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2410,"miss_count":103},{"title":"真
-        地獄超特急 -HELL or HELL-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2660,"miss_count":57},{"title":"紫陽花
+        Pt.2 Long Train Running","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2584,"miss_count":48},{"title":"真
+        地獄超特急 -HELL or HELL-","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2660,"miss_count":52},{"title":"紫陽花
         -AZISAI-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2517,"miss_count":5},{"title":"駅猫のワルツ","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2282,"miss_count":39},{"title":"#MAGiCVLGiRL_TRVP_B3VTZ","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3093,"miss_count":5},{"title":"Apocalypse","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3176,"miss_count":3},{"title":"Caterpillar","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2546,"miss_count":26},{"title":"DORNWALD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2338,"miss_count":39},{"title":"#MAGiCVLGiRL_TRVP_B3VTZ","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3093,"miss_count":5},{"title":"Apocalypse","level":12,"clear_type_status":"FULLCOMBO
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3176,"miss_count":0},{"title":"Caterpillar","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2607,"miss_count":19},{"title":"DORNWALD
         ～Junge～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3175,"miss_count":14},{"title":"ECHIDNA","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2743,"miss_count":42},{"title":"FUZIN
         RIZIN","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3260,"miss_count":14},{"title":"Go
         Ahead!!","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":0,"miss_count":0},{"title":"GuNGNiR","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3285,"miss_count":39},{"title":"HADES","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2667,"miss_count":18},{"title":"Mare
-        Nectaris","level":12,"clear_type_status":"EASY CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2890,"miss_count":0},{"title":"OTENAMI
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2715,"miss_count":14},{"title":"Mare
+        Nectaris","level":12,"clear_type_status":"EASY CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2960,"miss_count":61},{"title":"OTENAMI
         Hurricane","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2664,"miss_count":24},{"title":"Quakes","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2447,"miss_count":0},{"title":"RAIN","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2809,"miss_count":11},{"title":"Rave
@@ -290,8 +335,7 @@ http_interactions:
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2857,"miss_count":21},{"title":"九尾狐夜行","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2610,"miss_count":22},{"title":"刃図羅","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3031,"miss_count":5},{"title":"津軽雪","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3294,"miss_count":4},{"title":"火影","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2302,"miss_count":26},{"title":"焔極OVERKILL","level":12,"clear_type_status":"HARD
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3294,"miss_count":4},{"title":"焔極OVERKILL","level":12,"clear_type_status":"HARD
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2963,"miss_count":51},{"title":"童話回廊","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2639,"miss_count":14},{"title":"AA
         -rebuild-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3147,"miss_count":4},{"title":"Arca","level":12,"clear_type_status":"FULLCOMBO
@@ -300,17 +344,151 @@ http_interactions:
         Mirage†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2851,"miss_count":12},{"title":"DEADHEAT","level":12,"clear_type_status":"EX
         HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2850,"miss_count":14},{"title":"The
         Chase","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1735,"miss_count":36},{"title":"VOX
-        RUSH","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2755,"miss_count":18},{"title":"Xperanza","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2808,"miss_count":16},{"title":"神謳
-        -RESONANCE-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3572,"miss_count":10},{"title":"RED
+        RUSH","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2906,"miss_count":15},{"title":"Xperanza","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2869,"miss_count":15},{"title":"神謳
+        -RESONANCE-","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3572,"miss_count":8},{"title":"RED
         ZONE†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2686,"miss_count":3},{"title":"DEATH†ZIGOQ
-        ～怒りの高速爆走野郎～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3272,"miss_count":14},{"title":"Persephone","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2550,"miss_count":10},{"title":"encounter","level":12,"clear_type_status":"FULLCOMBO
+        ～怒りの高速爆走野郎～","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3272,"miss_count":14},{"title":"Papilio
+        ulysses","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2524,"miss_count":16},{"title":"Persephone","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2622,"miss_count":8},{"title":"CONTRACT†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2405,"miss_count":13},{"title":"encounter","level":12,"clear_type_status":"FULLCOMBO
         CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2860,"miss_count":2},{"title":"Boomy
-        and The Boost","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3014,"miss_count":14},{"title":"CONTRACT†","level":12,"clear_type_status":"EX
-        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2405,"miss_count":13},{"title":"NITROUS
+        and The Boost","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3014,"miss_count":14},{"title":"NITROUS
         CANNON","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3041,"miss_count":19},{"title":"東京神話","level":12,"clear_type_status":"HARD
-        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2394,"miss_count":34}]}'
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2394,"miss_count":34},{"title":"DUE
+        TOMORROW","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":1601,"miss_count":29},{"title":"Raspberry
+        Railgun","level":12,"clear_type_status":"FULLCOMBO CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2828,"miss_count":1},{"title":"Rampage","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3309,"miss_count":11},{"title":"Kung-fu
+        Empire†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3453,"miss_count":5},{"title":"spiral
+        galaxy†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3278,"miss_count":5},{"title":"EMERALDAS","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2890,"miss_count":56},{"title":"シムルグの目醒め","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2861,"miss_count":44},{"title":"Blue
+        Rain†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2800,"miss_count":8},{"title":"Illusionary
+        Waterlily","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2993,"miss_count":18},{"title":"QUANTUM
+        TELEPORTATION†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3108,"miss_count":11},{"title":"Y\u0026Co.
+        is dead or alive","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2307,"miss_count":26},{"title":"Slipstream","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3050,"miss_count":10},{"title":"Little
+        Little Princess†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3481,"miss_count":18},{"title":"Life
+        Is A Game ft.DD\"ナカタ\"Metal","level":12,"clear_type_status":"HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2948,"miss_count":30},{"title":"Antigravity","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2606,"miss_count":28},{"title":"Initiation","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3171,"miss_count":52},{"title":"255","level":12,"clear_type_status":"HARD
+        CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2622,"miss_count":38},{"title":"waxing
+        and wanding†","level":12,"clear_type_status":"EX HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":3452,"miss_count":23},{"title":"Ubertreffen†","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2697,"miss_count":7},{"title":"炎影","level":12,"clear_type_status":"EX
+        HARD CLEAR","difficulty_type_status":"ANOTHER","play_type_status":"SP","score":2302,"miss_count":11}]}'
     http_version: 
-  recorded_at: Thu, 29 Mar 2018 12:24:00 GMT
+  recorded_at: Sun, 28 Apr 2019 18:50:11 GMT
+- request:
+    method: get
+    uri: https://score.iidx12.tk/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBcWMvIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8717e49c78963059f42815a4caa57c9592b699e2/avatar.png?disposition=inline
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Date:
+      - Sun, 28 Apr 2019 18:50:11 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Location:
+      - https://score.iidx12.tk/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRZMjFVYTNSR1pHTjRWWFIwWjBGQk56TkxaMjVCVTNweEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFpoZEdGeUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhaaGRHRnlMbkJ1WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraURtbHRZV2RsTDNCdVp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wNC0yOFQxODo1NToxMS4zNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--283c2625f51833aff987677cd95796752009cf2c/avatar.png?content_type=image%2Fpng&disposition=inline%3B+filename%3D%22avatar.png%22%3B+filename%2A%3DUTF-8%27%27avatar.png
+      Cache-Control:
+      - max-age=300, private
+      X-Request-Id:
+      - 4da850c2-694f-4481-a663-a3634a5d51b6
+      X-Runtime:
+      - '0.018778'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      string: <html><body>You are being <a href="https://score.iidx12.tk/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRZMjFVYTNSR1pHTjRWWFIwWjBGQk56TkxaMjVCVTNweEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFpoZEdGeUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhaaGRHRnlMbkJ1WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraURtbHRZV2RsTDNCdVp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wNC0yOFQxODo1NToxMS4zNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--283c2625f51833aff987677cd95796752009cf2c/avatar.png?content_type=image%2Fpng&amp;disposition=inline%3B+filename%3D%22avatar.png%22%3B+filename%2A%3DUTF-8%27%27avatar.png">redirected</a>.</body></html>
+    http_version: 
+  recorded_at: Sun, 28 Apr 2019 18:50:11 GMT
+- request:
+    method: get
+    uri: https://score.iidx12.tk/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDRG9JYTJWNVNTSWRZMjFVYTNSR1pHTjRWWFIwWjBGQk56TkxaMjVCVTNweEJqb0dSVlE2RUdScGMzQnZjMmwwYVc5dVNTSS9hVzVzYVc1bE95Qm1hV3hsYm1GdFpUMGlZWFpoZEdGeUxuQnVaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuWVhaaGRHRnlMbkJ1WndZN0JsUTZFV052Ym5SbGJuUmZkSGx3WlVraURtbHRZV2RsTDNCdVp3WTdCbFE9IiwiZXhwIjoiMjAxOS0wNC0yOFQxODo1NToxMS4zNjRaIiwicHVyIjoiYmxvYl9rZXkifX0=--283c2625f51833aff987677cd95796752009cf2c/avatar.png?content_type=image/png&disposition=inline%3B%20filename=%22avatar.png%22%3B%20filename*=UTF-8%27%27avatar.png
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 28 Apr 2019 18:50:11 GMT
+      Content-Type:
+      - image/png
+      Content-Length:
+      - '29493'
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Last-Modified:
+      - Sun, 07 Apr 2019 12:41:28 GMT
+      Content-Disposition:
+      - inline; filename="avatar.png"; filename*=UTF-8''avatar.png
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - c1b5ea82-266a-4922-bba6-30215c22f1ae
+      X-Runtime:
+      - '0.005843'
+      Vary:
+      - Origin
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Sun, 28 Apr 2019 18:50:11 GMT
 recorded_with: VCR 4.0.0
