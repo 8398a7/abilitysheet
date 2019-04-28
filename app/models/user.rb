@@ -105,7 +105,7 @@ class User < ApplicationRecord
         # rubocop:enable_all
       rescue Errno::ENOENT
         failed_user_ids.push(user.id)
-        user.update!(image: nil)
+        user.remove_image!
       end
       puts failed_user_ids
     end
