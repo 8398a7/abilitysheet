@@ -99,3 +99,7 @@ form.devise {
     width: 25px;
   }
 }
+
+.tooltip {
+  background-color: aliceblue;
+}
