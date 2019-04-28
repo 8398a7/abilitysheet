@@ -19,6 +19,7 @@ module User::API
     end
 
     def schema
+      image_url = avatar.attached? ? Rails.application.routes.url_helpers.rails_blob_path(avatar, disposition: :inline, only_path: true) : nil
       {
         id: id,
         iidxid: iidxid,
@@ -26,7 +27,7 @@ module User::API
         djname: djname,
         grade: grade,
         pref: pref,
-        image_url: image.url,
+        image_url: image_url,
         created_at: created_at,
         follows: follow_users.pluck(:iidxid),
         followers: follower_users.pluck(:iidxid)
