@@ -37,12 +37,12 @@ const SheetList: SFC<Props> = (props) => {
     return $$currentUser.is(props.$$user);
   }, [$$currentUser]);
 
-  const updateLamp = (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const updateLamp = useCallback((sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
     if ($$currentUser === undefined || sheetId === undefined) { return; }
     const { iidxid } = $$currentUser;
     const state = parseInt(e.target.value, 10);
     updateScoreRequested({ iidxid, sheetId, state });
-  };
+  }, [$$currentUser]);
 
   const handleSheetClick = useCallback((sheetId?: number) => () => {
     const { iidxid } = $$user;
