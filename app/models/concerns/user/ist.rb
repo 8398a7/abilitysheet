@@ -25,6 +25,24 @@ module User::Ist
     User::Static::GRADE.index(grade.split[1]) || User::Static::GRADE.size - 1
   end
 
+  def update_user(user)
+    pref = find_pref(user['user_activity']['pref_status'])
+    grade = find_grade(user['user_activity']['sp_grade_status'])
+    update!(djname: user['user_activity']['djname'], grade: grade, pref: pref)
+    avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png')
+  end
+
+  def find_sheet_id(score, sheets)
+    if score['title'] == 'gigadelic' || score['title'] == 'Innocent Walls'
+      difficulty_type = score['difficulty_type_status'] == 'HYPER' ? '[H]' : '[A]'
+      sheets[score['title'] + difficulty_type]
+    elsif FROM_IST_TO_AB.key?(score['title'])
+      sheets[FROM_IST_TO_AB[score['title']]]
+    else
+      sheets[score['title']]
+    end
+  end
+
   included do
     def update_ist
       user = ist_client.get_user(iidxid)
@@ -34,22 +52,11 @@ module User::Ist
       result = ist_client.get_scores(iidxid, SEARCH_PARAMS)
       return false if result.dig('error') == 'Not Found'
 
-      pref = find_pref(user['user_activity']['pref_status'])
-      grade = find_grade(user['user_activity']['sp_grade_status'])
-      update!(djname: user['user_activity']['djname'], grade: grade, pref: pref)
-      avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png')
+      update_user(user)
 
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
-        sheet_id = nil
-        if score['title'] == 'gigadelic' || score['title'] == 'Innocent Walls'
-          difficulty_type = score['difficulty_type_status'] == 'HYPER' ? '[H]' : '[A]'
-          sheet_id = sheets[score['title'] + difficulty_type]
-        elsif FROM_IST_TO_AB.key?(score['title'])
-          sheet_id = sheets[FROM_IST_TO_AB[score['title']]]
-        else
-          sheet_id = sheets[score['title']]
-        end
+        sheet_id = find_sheet_id(score, sheets)
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
 

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://score.iidx12.tk/api/v1/scores/1234-5678?q%5Bmusic_score_level_eq%5D=12&q%5Bmusic_score_play_type_status_eq%5D=0&q%5Bversion_eq%5D=25
+    uri: https://score.iidx12.tk/api/v1/users/1234-5678
     body:
       encoding: UTF-8
       string: ''
@@ -12,14 +12,14 @@ http_interactions:
       Host:
       - score.iidx12.tk
       User-Agent:
-      - http.rb/3.0.0
+      - http.rb/3.3.0
   response:
     status:
       code: 404
       message: Not Found
     headers:
       Date:
-      - Sat, 31 Mar 2018 06:15:49 GMT
+      - Sun, 28 Apr 2019 19:13:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,14 +29,14 @@ http_interactions:
       Cache-Control:
       - no-cache
       X-Request-Id:
-      - 7d9d5e16-b276-435a-8ce0-7a3c956b9231
+      - a1a6c421-3166-4d28-8ba7-c52141011b5e
       X-Runtime:
-      - '0.849192'
+      - '0.012082'
       Vary:
       - Origin
     body:
       encoding: UTF-8
       string: '{"error":"Not Found"}'
     http_version: 
-  recorded_at: Sat, 31 Mar 2018 06:15:49 GMT
+  recorded_at: Sun, 28 Apr 2019 19:13:56 GMT
 recorded_with: VCR 4.0.0
