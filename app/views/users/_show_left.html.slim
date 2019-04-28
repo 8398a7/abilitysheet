@@ -1,6 +1,5 @@
 - user = user.decorate
-- if user.image.url
-  = image_tag user.image.url, class: 'icon'
+= image_tag(url_for(user.avatar), class: 'icon') if user.avatar.attached?
 . style='margin-top: 20px'
   h2
     b = user.djname

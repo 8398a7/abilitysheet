@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'uri'
+
 module Scrape
   class IIDXME
     GRADE_MAX = 20
@@ -24,9 +26,8 @@ module Scrape
 
     private
 
-    def download_profile_image(elems, user)
-      user.remove_image!
-      file = open("#{@iidxme_domain}#{elems['userdata']['image']}") # rubocop:disable all
+    def download_profile_image(elems)
+      file = URI.open("#{@iidxme_domain}#{elems['userdata']['image']}")
       return nil if file.class != Tempfile
 
       file
@@ -41,9 +42,9 @@ module Scrape
       user = User.find_by(iidxid: iidxid)
       user.update!(
         djname: elems['userdata']['djname'],
-        grade: (elems['userdata']['spclass'] - GRADE_MAX).abs,
-        image: download_profile_image(elems, user)
+        grade: (elems['userdata']['spclass'] - GRADE_MAX).abs
       )
+      user.avatar.attach(io: download_profile_image(elems), filename: 'avatar.png')
       Score.iidxme_sync(user.id, elems['musicdata'])
     end
 
