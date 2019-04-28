@@ -1,5 +1,4 @@
 import CalHeatMap from 'cal-heatmap';
-import moment from 'moment-timezone';
 import React, { FC, SFC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { RootState } from '../../../lib/ducks';
@@ -47,7 +46,7 @@ const HeatMap: FC<Props> = ({ user, mobile }) => {
       cellSize: 9,
       domainLabelFormat: '%Y-%m',
       afterLoadData (timestamps: { [s: string]: number }) {
-        const offset = (moment().tz('Asia/Tokyo').utcOffset() - moment().utcOffset())  * 60;
+        const offset = (540 + new Date().getTimezoneOffset())  * 60;
         const results: { [key: number]: number } = {};
         Object.keys(timestamps).forEach(timestamp => {
           const commitCount = timestamps[timestamp];
