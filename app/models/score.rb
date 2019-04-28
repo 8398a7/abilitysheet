@@ -4,7 +4,7 @@
 #
 # Table name: scores
 #
-#  id         :bigint(8)        not null, primary key
+#  id         :bigint           not null, primary key
 #  state      :integer          default(7), not null
 #  score      :integer
 #  bp         :integer

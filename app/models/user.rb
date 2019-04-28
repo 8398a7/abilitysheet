@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint(8)        not null, primary key
+#  id                     :bigint           not null, primary key
 #  email                  :string           default(""), not null
 #  username               :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -22,7 +22,6 @@
 #  grade                  :integer
 #  pref                   :integer          not null
 #  role                   :integer          default(0), not null
-#  image                  :string
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
