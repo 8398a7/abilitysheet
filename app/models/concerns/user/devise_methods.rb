@@ -8,7 +8,7 @@ module User::DeviseMethods
       conditions = warden_conditions.dup
       login = conditions.delete(:login)
       if login
-        find_by('username = :value OR iidxid = :value', value: login)
+        find_by('username = :value OR iidxid = :value OR email = :value', value: login)
       else
         find_by(conditions)
       end
