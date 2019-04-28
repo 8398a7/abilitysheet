@@ -8,7 +8,6 @@ gem 'activerecord-import'
 gem 'aws-sdk-s3'
 gem 'bootsnap', require: false
 gem 'capistrano-slackify', require: false
-gem 'carrierwave'
 gem 'coffee-rails'
 gem 'devise'
 gem 'dotenv-rails'

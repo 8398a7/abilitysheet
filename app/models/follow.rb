@@ -4,7 +4,7 @@
 #
 # Table name: follows
 #
-#  id             :bigint(8)        not null, primary key
+#  id             :bigint           not null, primary key
 #  user_id        :integer
 #  target_user_id :integer
 #  created_at     :datetime         not null

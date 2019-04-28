@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_19_105747) do
+ActiveRecord::Schema.define(version: 2019_04_28_170118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -129,7 +129,6 @@ ActiveRecord::Schema.define(version: 2018_07_19_105747) do
     t.integer "grade"
     t.integer "pref", null: false
     t.integer "role", default: 0, null: false
-    t.string "image"
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
