@@ -1,5 +1,5 @@
 import { Record } from 'immutable';
-import * as queryString from 'query-string';
+import queryString from 'query-string';
 
 function implicitMobile() {
   const u = window.navigator.userAgent.toLowerCase();

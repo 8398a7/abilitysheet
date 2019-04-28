@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { SFC, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 import Adsenses from '../../../Adsense/Adsenses';
@@ -26,10 +26,33 @@ function mapDispatchToProps(dispatch: Dispatch) {
 }
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 
-class SheetList extends React.PureComponent<Props> {
-  public renderSheet() {
-    const { $$abilities, $$sheetList, $$scoreList, type, $$env, bp, selectDisplay } = this.props;
-    const { updateLamp, handleSheetClick, owner } = this;
+const SheetList: SFC<Props> = (props) => {
+  const {
+    $$abilities, $$sheetList, $$scoreList, type, $$env, bp, selectDisplay,
+    $$currentUser, $$user, mobile,
+    updateScoreRequested, getModalRequested, toggleDisplaySelect,
+  } = props;
+  const owner = useCallback(() => {
+    if ($$currentUser === undefined) { return false; }
+    return $$currentUser.is(props.$$user);
+  }, [$$currentUser]);
+
+  const updateLamp = useCallback((sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if ($$currentUser === undefined || sheetId === undefined) { return; }
+    const { iidxid } = $$currentUser;
+    const state = parseInt(e.target.value, 10);
+    updateScoreRequested({ iidxid, sheetId, state });
+  }, [$$currentUser]);
+
+  const handleSheetClick = useCallback((sheetId?: number) => () => {
+    const { iidxid } = $$user;
+    if (iidxid === undefined || sheetId === undefined) { return; }
+    getModalRequested({ iidxid, sheetId });
+  }, []);
+
+  const handleToggleDisplaySelect = useCallback(() => toggleDisplaySelect(), []);
+
+  const renderSheet = () => {
     const dom: JSX.Element[] = [];
     $$abilities.forEach((value, key) => {
       dom.push(
@@ -52,11 +75,9 @@ class SheetList extends React.PureComponent<Props> {
       });
     });
     return dom;
-  }
+  };
 
-  public renderMobile() {
-    const { $$abilities, $$sheetList, $$scoreList, type, $$env, bp, selectDisplay } = this.props;
-    const { updateLamp, handleSheetClick, owner } = this;
+  const renderMobile = () => {
     const dom: JSX.Element[] = [];
     $$abilities.forEach((value, key) => {
       dom.push(
@@ -71,45 +92,19 @@ class SheetList extends React.PureComponent<Props> {
       });
     });
     return dom;
-  }
+  };
 
-  public updateLamp = (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { $$currentUser, updateScoreRequested } = this.props;
-    if ($$currentUser === undefined || sheetId === undefined) { return; }
-    const { iidxid } = $$currentUser;
-    const state = parseInt(e.target.value, 10);
-    updateScoreRequested({ iidxid, sheetId, state });
-  }
-
-  public handleSheetClick = (sheetId?: number) => () => {
-    const { $$user, getModalRequested } = this.props;
-    const { iidxid } = $$user;
-    if (iidxid === undefined || sheetId === undefined) { return; }
-    getModalRequested({ iidxid, sheetId });
-  }
-
-  public handleToggleDisplaySelect = () => {
-    this.props.toggleDisplaySelect();
-  }
-
-  public render() {
-    return (
-      <div>
-        <Adsenses slot={1} />
-        {this.owner() ? <button onClick={this.handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
-        <table id="sheet-list-table" className="uk-table uk-table-bordered">
-          <tbody>
-            {this.props.mobile ? this.renderMobile() : this.renderSheet()}
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-
-  private owner = () => {
-    if (this.props.$$currentUser === undefined) { return false; }
-    return this.props.$$currentUser.is(this.props.$$user);
-  }
-}
+  return (
+    <>
+      <Adsenses slot={1} />
+      {owner() ? <button onClick={handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
+      <table id="sheet-list-table" className="uk-table uk-table-bordered">
+        <tbody>
+          {mobile ? renderMobile() : renderSheet()}
+        </tbody>
+      </table>
+    </>
+  );
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SheetList);

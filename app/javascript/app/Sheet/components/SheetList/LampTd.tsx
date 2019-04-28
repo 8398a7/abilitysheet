@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Environment from '../../../../lib/models/Environment';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';

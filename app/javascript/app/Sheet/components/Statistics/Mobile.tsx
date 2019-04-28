@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { StatisticsProps } from './index';
 
 const Mobile: React.SFC<StatisticsProps> = (props) => {

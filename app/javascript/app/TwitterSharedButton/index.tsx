@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Mention, Share } from 'react-twitter-widgets';
 
 export interface ITwitterSharedButton {

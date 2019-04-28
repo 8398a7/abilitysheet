@@ -1,5 +1,5 @@
-import * as Highcharts from 'highcharts';
-import * as React from 'react';
+import Highcharts from 'highcharts';
+import React from 'react';
 import MyClient from '../MyClient';
 
 interface IProps {

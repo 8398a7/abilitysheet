@@ -1,5 +1,5 @@
-import * as createRavenMiddleware from 'raven-for-redux';
-import * as Raven from 'raven-js';
+import createRavenMiddleware from 'raven-for-redux';
+import Raven from 'raven-js';
 import { applyMiddleware, compose, createStore, Middleware, Reducer } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
