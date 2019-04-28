@@ -16,4 +16,12 @@ class IstClient
     body = HTTP.get(endpoint).body
     JSON.parse(body.to_s)
   end
+
+  def get_user(iidxid)
+    endpoint = @url + "/api/v1/users/#{iidxid}"
+    body = HTTP.get(endpoint).body
+    hash = JSON.parse(body.to_s)
+    hash['image_path'] = @url + hash['image_path']
+    hash
+  end
 end
