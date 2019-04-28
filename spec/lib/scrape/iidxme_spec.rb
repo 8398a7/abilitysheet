@@ -7,8 +7,8 @@ describe Scrape::IIDXME do
     let(:iidxme) { Scrape::IIDXME.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
-      xit '#sync' do
-        create(:sheet, id: 1, title: 'F')
+      it '#sync' do
+        create(:sheet, id: 1, title: 'AA')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
@@ -20,18 +20,19 @@ describe Scrape::IIDXME do
         expect(Score.find(1).score).not_to eq nil
         expect(Score.find(1).bp).not_to eq nil
         user.reload
-        expect(user.grade).to eq 0
+        expect(user.grade).to eq 4
         expect(user.djname).to eq '839'
+        expect(user.avatar.attached?).to eq true
       end
       context 'IIDXIDの書式が正しくない場合' do
         let(:iidxids) { %w[1 1110] }
-        xit '#sync' do
+        it '#sync' do
           iidxids.each { |iidxid| expect(iidxme.sync(iidxid)).to be_falsy }
         end
       end
       context '存在しないIIDXIDで処理を行う場合' do
         let(:iidxid) { '0000-0000' }
-        xit '#sync' do
+        it '#sync' do
           expect(iidxme.sync(user.iidxid)).to be_falsy
         end
       end
@@ -43,7 +44,7 @@ describe Scrape::IIDXME do
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
       it '#sync' do
-        create(:sheet, id: 1, title: 'F')
+        create(:sheet, id: 1, title: 'AA')
         create(:score, id: 1, user_id: 1, sheet_id: 1)
         expect(Score.find(1).state).to eq 7
         expect(Score.find(1).score).to eq nil
@@ -52,8 +53,9 @@ describe Scrape::IIDXME do
           expect(@iidxme.sync(user.iidxid)).to be_truthy
         end
         expect(Score.find(1).state).to eq 0
-        expect(Score.find(1).score).to eq 3030
-        expect(Score.find(1).bp).to eq 0
+        expect(Score.find(1).score).to eq 3105
+        expect(Score.find(1).bp).to eq 2
+        expect(user.avatar.attached?).to eq true
       end
 
       it 'sphがある譜面が正しく登録される' do

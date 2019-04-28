@@ -35,3 +35,4 @@ app/javascript/lib/routes.ts
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+storage
