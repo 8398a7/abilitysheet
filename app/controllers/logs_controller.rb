@@ -28,39 +28,27 @@ class LogsController < ApplicationController
   end
 
   def manager
-    if SidekiqDispatcher.exists?
-      ManagerJob.perform_later(current_user.id)
-      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-      flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
-    else
-      sidekiq_notify
-    end
+    ManagerJob.perform_later(current_user.id)
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
     render :reload
   end
 
   def iidxme
     if ENV['iidxme'] != 'true'
       flash[:alert] = %(現在動作確認を行っていないため停止中です)
-    elsif SidekiqDispatcher.exists?
+    else
       IidxmeJob.perform_later(current_user.id)
       flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
       flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
-    else
-      sidekiq_notify
     end
     render :reload
   end
 
   def ist
-    if current_user.nil?
-      flash[:alert] = %(もう一度お試しください。)
-    elsif SidekiqDispatcher.exists?
-      IstSyncJob.perform_later(current_user)
-      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-      flash[:alert] = %(反映されていない場合はISTに該当IIDXIDが存在しないと思われます。(登録しているけど一度もIST側でスコアを送っていないなど))
-    else
-      sidekiq_notify
-    end
+    IstSyncJob.perform_later(current_user)
+    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
+    flash[:alert] = %(反映されていない場合はISTに該当IIDXIDが存在しないと思われます。(登録しているけど一度もIST側でスコアを送っていないなど))
     render :reload
   end
 
@@ -91,11 +79,6 @@ class LogsController < ApplicationController
   end
 
   private
-
-  def sidekiq_notify
-    flash[:alert] = '不具合により更新できませんでした。しばらくこの症状が続く場合はお手数ですがご一報下さい'
-    Slack::SidekiqDispatcher.notify
-  end
 
   def load_user
     @user = User.find_by_iidxid!(params[:id])

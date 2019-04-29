@@ -35,9 +35,6 @@ Rails.application.routes.draw do
       post :unlock, on: :member
       get :login, on: :member
     end
-    resources :sidekiq, only: :index do
-      post :start, on: :member
-    end
     resources :messages, only: :index do
       post :active, on: :member
       post :inactive, on: :member
