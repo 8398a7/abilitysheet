@@ -24,14 +24,7 @@ class Api::V1::UsersController < Api::V1::BaseController
       # 楽曲が存在していない
       Sheet.find(e['id'])
     end
-    raise ServiceUnavailable unless SidekiqDispatcher.exists?
-
     ScoreViewerJob.perform_later(elems, current_user.id)
-    render json: { status: 'ok' }, status: 202
-  rescue ServiceUnavailable => e
-    Raven.user_context(current_user.attributes)
-    Raven.capture_exception(e)
-    SidekiqDispatcher.start!
     render json: { status: 'ok' }, status: 202
   end
 end

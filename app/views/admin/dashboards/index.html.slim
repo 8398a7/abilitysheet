@@ -5,27 +5,18 @@ h2.bold
 
 .uk-overflow-container
   table.uk-table.uk-table-hover.uk-table.striped.uk-table-condensed
+    thead
+      tr
+        th 項目
+        th 結果
     tbody
       tr
-        th sidekiq
-        td
-          - if @sidekiq
-            button.uk-button.uk-button-success active
-          - else
-            = link_to 'inactive', start_admin_sidekiq_path(true), class: 'uk-button uk-button-danger', remote: true, method: :post
-      tr
-        th email登録人数
+        td email登録人数
         - all_num = User.select(:id).count
         td #{@email}/#{all_num}(#{(@email / all_num.to_f * 100).round(2)}%)
       tr
-        th 未読メッセージ
+        td 未読メッセージ
         td #{@message}件
       tr
-        th 今日ログインしたユーザ
+        td 今日ログインしたユーザ
         td #{@user}人
-      tr
-        th used memory
-        td #{@used_memory}MB
-      tr
-        th margin memory
-        td #{@margin_memory}MB

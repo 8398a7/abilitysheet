@@ -26,12 +26,6 @@ class Api::V1::ScoresController < Api::V1::BaseController
   end
 
   def sync_iidxme
-    raise ServiceUnavailable unless SidekiqDispatcher.exists?
-  rescue ServiceUnavailable => e
-    Raven.user_context(@user.attributes)
-    Raven.capture_exception(e)
-    SidekiqDispatcher.start!
-  ensure
     IidxmeJob.perform_later(@user.id)
     render json: { result: :ok, date: Date.today }
   end

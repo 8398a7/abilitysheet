@@ -21,10 +21,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     return unless user_id
 
     Slack::UserDispatcher.new_register_notify(user_id)
-    unless SidekiqDispatcher.exists?
-      Slack::SidekiqDispatcher.notify
-      return
-    end
     ManagerJob.perform_later(user_id)
     IidxmeJob.perform_later(user_id)
   end
