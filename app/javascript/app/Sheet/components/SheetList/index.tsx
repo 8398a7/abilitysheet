@@ -11,11 +11,8 @@ function mapStateToProps(state: RootState) {
     $$sheetList: state.$$sheet.sheetList,
     $$abilities: state.$$sheet.abilities,
     $$scoreList: state.$$sheet.scoreList,
-    $$env: state.$$meta.env,
     $$currentUser: state.$$meta.currentUser,
     $$user: state.$$sheet.user,
-    bp: state.$$sheet.bp,
-    selectDisplay: state.$$sheet.selectDisplay,
     mobile: state.$$meta.env.mobileView(),
     type: state.$$sheet.type,
   };
