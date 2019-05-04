@@ -1,5 +1,6 @@
 import React from 'react';
-import Environment from '../../../../lib/models/Environment';
+import { connect } from 'react-redux';
+import { RootState } from '../../ducks';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';
 import LampSelect from './LampSelect';
@@ -16,20 +17,27 @@ const BpMark: React.SFC<{ bp: number, score?: Score }> = (props) => {
   );
 };
 
+function mapStateToProps(state: RootState) {
+  return {
+    $$env: state.$$meta.env,
+    bp: state.$$sheet.bp,
+    selectDisplay: state.$$sheet.selectDisplay,
+    filterName: state.$$sheet.filterName,
+  };
+}
 interface IProps {
   sheet: Sheet;
-  $$env: Environment;
-  bp: string;
   owner: boolean;
-  selectDisplay: boolean;
   score?: Score;
   width?: number;
   height?: number;
   updateLamp: (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleSheetClick: (sheetId?: number) => () => void;
 }
-const LampTd: React.SFC<IProps> = (props) => {
-  const { width, height, sheet, score, $$env, owner, updateLamp, handleSheetClick, selectDisplay } = props;
+type Props = IProps & ReturnType<typeof mapStateToProps>;
+
+const LampTd: React.SFC<Props> = (props) => {
+  const { width, height, sheet, score, $$env, owner, updateLamp, handleSheetClick, selectDisplay, filterName } = props;
   const { color } = $$env;
   const bp = parseInt(props.bp, 10);
   let backgroundColor = color[color.length - 1];
@@ -38,6 +46,9 @@ const LampTd: React.SFC<IProps> = (props) => {
   }
   let display = '';
   if (sheet.hide || (score && score.hide)) {
+    display = 'none';
+  }
+  if (filterName !== '' && sheet.title !== undefined && !sheet.title.toLowerCase().includes(filterName.toLowerCase())) {
     display = 'none';
   }
   return (
@@ -56,4 +67,4 @@ const LampTd: React.SFC<IProps> = (props) => {
   );
 };
 
-export default LampTd;
+export default connect(mapStateToProps)(LampTd);

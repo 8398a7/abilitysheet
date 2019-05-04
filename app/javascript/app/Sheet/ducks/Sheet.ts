@@ -18,6 +18,7 @@ export interface ISheetDefaultValue {
   scoreList: ScoreList;
   abilities: OrderedMap<number, string>;
   bp: string;
+  filterName: string;
   selectDisplay: boolean;
   type: 'n_clear' | 'hard' | 'exh';
   versions: Array<[string, number]>;
@@ -35,6 +36,7 @@ const defaultValue: ISheetDefaultValue = {
   scoreList: new ScoreList(),
   abilities: OrderedMap(),
   bp: localStorage.bp || '0',
+  filterName: '',
   selectDisplay: true,
   type: 'n_clear',
   versions: [],
@@ -59,6 +61,7 @@ export const actions = {
     localStorage.bp = payload;
     return $$state.set('bp', payload);
   }),
+  updateFilterName: createAction('sheet/updateFilterNAme', ($$state, payload: string) => $$state.set('filterName', payload)),
   updateScoreRequested: createAction(UPDATE_SCORE_REQUESTED, ($$state, payload: { iidxid: string, sheetId: number, state: number }) => $$state.asImmutable()),
   clickLink: createAction('sheet/clickLink', ($$state, payload: number) => $$state.asImmutable()),
   getModalRequested: createAction(GET_MODAL_REQUESTED, ($$state, payload: { iidxid: string, sheetId: number }) => $$state.asImmutable()),

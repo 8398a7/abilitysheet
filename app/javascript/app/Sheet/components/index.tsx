@@ -8,6 +8,7 @@ import { RootState } from '../ducks';
 import { actions } from '../ducks/Sheet';
 import BpForm from './BpForm';
 import CheckBox from './CheckBox/index';
+import FilterNameForm from './FilterNameForm';
 import Modal from './Modal';
 import OtherLinks from './OtherLinks';
 import ProfileLink from './ProfileLink';
@@ -23,6 +24,7 @@ function mapStateToProps(state: RootState) {
     count: state.$$sheet.sheetList.list.count(),
     $$scoreList: state.$$sheet.scoreList,
     bp: state.$$sheet.bp,
+    filterName: state.$$sheet.filterName,
     mobile: state.$$meta.env.mobileView(),
     implicitMobile: state.$$meta.env.implicitMobile,
     type: state.$$sheet.type,
@@ -30,9 +32,9 @@ function mapStateToProps(state: RootState) {
   };
 }
 function mapDispatchToProps(dispatch: Dispatch) {
-  const { getUser, updateBp } = actions;
+  const { getUser, updateBp, updateFilterName } = actions;
   const { toggleViewport } = metaActions;
-  return bindActionCreators({ getUser, updateBp, toggleViewport }, dispatch);
+  return bindActionCreators({ getUser, updateBp, updateFilterName, toggleViewport }, dispatch);
 }
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
 const mapping = {
@@ -69,9 +71,12 @@ const Sheet: SFC<Props> = (props) => {
   const handleChangeBp = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     props.updateBp(e.target.value);
   }, []);
+  const handleChangeName = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    props.updateFilterName(e.target.value);
+  }, []);
   const handleToggleView = useCallback(() => props.toggleViewport(), []);
 
-  const { user, type, recent, $$scoreList, count, bp, mobile, implicitMobile } = props;
+  const { user, type, recent, $$scoreList, count, bp, filterName, mobile, implicitMobile } = props;
 
   return (
     <div className="react">
@@ -89,6 +94,7 @@ const Sheet: SFC<Props> = (props) => {
         <Statistics />
         <h3 />
         <BpForm {...{ bp, handleChangeBp }} />
+        <FilterNameForm {...{ name: filterName, handleChangeName }} />
         <br />
         <SheetList />
       </div>
