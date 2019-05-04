@@ -11,11 +11,8 @@ function mapStateToProps(state: RootState) {
     $$sheetList: state.$$sheet.sheetList,
     $$abilities: state.$$sheet.abilities,
     $$scoreList: state.$$sheet.scoreList,
-    $$env: state.$$meta.env,
     $$currentUser: state.$$meta.currentUser,
     $$user: state.$$sheet.user,
-    bp: state.$$sheet.bp,
-    selectDisplay: state.$$sheet.selectDisplay,
     mobile: state.$$meta.env.mobileView(),
     type: state.$$sheet.type,
   };
@@ -28,7 +25,7 @@ type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchT
 
 const SheetList: SFC<Props> = (props) => {
   const {
-    $$abilities, $$sheetList, $$scoreList, type, $$env, bp, selectDisplay,
+    $$abilities, $$sheetList, $$scoreList, type,
     $$currentUser, $$user, mobile,
     updateScoreRequested, getModalRequested, toggleDisplaySelect,
   } = props;
@@ -64,7 +61,7 @@ const SheetList: SFC<Props> = (props) => {
         const tdDom = sheets.toList().map(sheet => {
           if (sheet === undefined) { return; }
           const score = $$scoreList.findBySheetId(sheet.id);
-          return (<LampTd key={`sheet-${sheet.id}`} {...{ owner: owner(), selectDisplay, updateLamp, handleSheetClick, sheet, score, $$env, bp, width: 150, height: 50 }} />);
+          return (<LampTd key={`sheet-${sheet.id}`} {...{ owner: owner(), updateLamp, handleSheetClick, sheet, score, width: 150, height: 50 }} />);
         }).toArray();
 
         const ids = sheets.map(sheet => {
@@ -88,7 +85,7 @@ const SheetList: SFC<Props> = (props) => {
       $$sheetList.whereAbility(key, type).forEach(sheet => {
         if (sheet === undefined) { return; }
         const score = $$scoreList.findBySheetId(sheet.id);
-        dom.push(<tr key={`sheet-${sheet.id}`} ><LampTd {...{ owner: owner(), selectDisplay, updateLamp, handleSheetClick, sheet, score, $$env, bp }} /></tr>);
+        dom.push(<tr key={`sheet-${sheet.id}`} ><LampTd {...{ owner: owner(), updateLamp, handleSheetClick, sheet, score }} /></tr>);
       });
     });
     return dom;
