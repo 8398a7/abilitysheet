@@ -61,7 +61,7 @@ export const actions = {
     localStorage.bp = payload;
     return $$state.set('bp', payload);
   }),
-  updateFilterName: createAction('sheet/updateFilterNAme', ($$state, payload: string) => $$state.set('filterName', payload)),
+  updateFilterName: createAction('sheet/updateFilterName', ($$state, payload: string) => $$state.set('filterName', payload)),
   updateScoreRequested: createAction(UPDATE_SCORE_REQUESTED, ($$state, payload: { iidxid: string, sheetId: number, state: number }) => $$state.asImmutable()),
   clickLink: createAction('sheet/clickLink', ($$state, payload: number) => $$state.asImmutable()),
   getModalRequested: createAction(GET_MODAL_REQUESTED, ($$state, payload: { iidxid: string, sheetId: number }) => $$state.asImmutable()),
