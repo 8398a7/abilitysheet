@@ -18,7 +18,7 @@ const Welcome: React.SFC<Props> = ({ $$currentUser: user, mobile }) => (
     <TopPanel {...{ user, mobile }} />
     <Adsenses slot={1} />
     <div>
-      SP ☆12以外を管理したい人向け: <a href="https://score.iidx12.tk" target="_blank">IIDX Score Table</a>
+      SP ☆12以外を管理したい人向け: <a href="https://score.iidx.app" target="_blank">IIDX Score Table</a>
       <br />
       SP/DP両対応のスコア/ランプ管理アプリです。
     </div>

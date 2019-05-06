@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://score.iidx12.tk/api/v1/users/1234-5678
+    uri: https://score.iidx.app/api/v1/users/1234-5678
     body:
       encoding: UTF-8
       string: ''
@@ -10,7 +10,7 @@ http_interactions:
       Connection:
       - close
       Host:
-      - score.iidx12.tk
+      - score.iidx.app
       User-Agent:
       - http.rb/3.3.0
   response:
@@ -37,6 +37,6 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"error":"Not Found"}'
-    http_version: 
+    http_version:
   recorded_at: Sun, 28 Apr 2019 19:13:56 GMT
 recorded_with: VCR 4.0.0

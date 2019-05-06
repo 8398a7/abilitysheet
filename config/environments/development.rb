@@ -36,7 +36,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'email-smtp.us-east-1.amazonaws.com',
     port: 587,
-    domain: 'mail.iidx12.tk',
+    domain: 'mail.iidx.app',
     authenticate: :login,
     user_name: ENV['SES_USER'],
     password: ENV['SES_PASS']
