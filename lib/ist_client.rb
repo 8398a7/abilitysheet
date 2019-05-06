@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class IstClient
-  def initialize(url = 'https://score.iidx12.tk')
+  def initialize(url = 'https://score.iidx.app')
     @url = url
   end
 

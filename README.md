@@ -1,4 +1,4 @@
-# [IIDX☆12参考表システム](https://iidx12.tk)
+# [IIDX☆12参考表システム](https://sp12.iidx.app)
 
 ## Status
 
@@ -44,7 +44,7 @@ IIDXのSP☆12の参考表をシステム化したものです．
   * Versionごとにログを取るため，過去のバージョンとの比較も行える
 
 現在はネット上からノマゲ地力表，ハード地力表の反映．  
-また，[iidx.me](https://iidx.me)から集計したデータを元に[項目応答理論](https://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](https://iidx12.tk/recommends)を提供しています．
+また，[iidx.me](https://iidx.me)から集計したデータを元に[項目応答理論](https://ja.wikipedia.org/wiki/%E9%A0%85%E7%9B%AE%E5%BF%9C%E7%AD%94%E7%90%86%E8%AB%96)を使い，[地力値表](https://sp12.iidx.app/recommends)を提供しています．
 
 ## Next
 

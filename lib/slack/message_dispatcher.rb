@@ -7,7 +7,7 @@ module Slack
       user = message.user
       user_information = nil
       user_information = "#{user.djname}[#{user.iidxid}]" if user
-      admin_messages_url = 'https://iidx12.tk/abilitysheet/admin/messages'
+      admin_messages_url = 'https://sp12.iidx.app/abilitysheet/admin/messages'
       body = {
         username: 'Message Dispatcher',
         attachments: [

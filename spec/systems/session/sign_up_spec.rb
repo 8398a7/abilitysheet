@@ -7,7 +7,7 @@ feature 'sign up', type: :system do
     allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
   end
   def input_sign_up_form(iidxid)
-    fill_in 'user_email', with: 'sign_up_spec@mail.iidx12.tk'
+    fill_in 'user_email', with: 'sign_up_spec@mail.iidx.app'
     fill_in 'user_username', with: 'signup'
     fill_in 'user_djname', with: 'SIGNUP'
     fill_in 'user_iidxid', with: iidxid
@@ -19,16 +19,16 @@ feature 'sign up', type: :system do
   end
 
   scenario 'ISTに存在しないユーザの場合でも登録できる' do
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx12.tk')).to be_falsey
+    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_falsey
     expect do
       VCR.use_cassette('not_found_ist') do
         input_sign_up_form('1234-5678')
       end
     end.to change { User.count }.by(1)
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx12.tk')).to be_truthy
+    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_truthy
   end
   scenario 'ISTに存在するユーザなら同期して登録できる' do
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx12.tk')).to be_falsey
+    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_falsey
     iidxid = '8594-9652'
     expect do
       VCR.use_cassette('ist') do

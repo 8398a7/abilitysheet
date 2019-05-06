@@ -68,7 +68,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'email-smtp.us-east-1.amazonaws.com',
     port: 587,
-    domain: 'mail.iidx12.tk',
+    domain: 'iidx.app',
     authenticate: :login,
     user_name: ENV['SES_USER'],
     password: ENV['SES_PASS']
@@ -99,7 +99,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'iidx12.tk' } }
+  routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'sp12.iidx.app' } }
   config.peek.adapter = :redis
 
   config.active_storage.service = :local
