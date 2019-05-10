@@ -9,7 +9,6 @@ const TwitterSharedButton: React.SFC<ITwitterSharedButton> = (props) => {
     lang: 'ja',
     text: props.text,
     size: 'large',
-    via: 'IIDX_12',
     related: 'IIDX_12,IidxScoreTable',
     hashtags: 'iidx12',
   };
