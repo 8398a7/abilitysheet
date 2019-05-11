@@ -37,8 +37,8 @@ export default class SheetList extends Record(defaultValue) {
       if (sheet.hide) { return; }
       return sheet;
     }).filter(sheet => sheet !== undefined).sortBy((sheet) => {
-      if (sheet === undefined) { return; }
-      return sheet.title;
+      if (sheet === undefined || sheet.title === undefined) { return; }
+      return sheet.title.toLocaleLowerCase();
     });
   }
 
