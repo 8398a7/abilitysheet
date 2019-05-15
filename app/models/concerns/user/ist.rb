@@ -26,9 +26,11 @@ module User::Ist
   end
 
   def update_user(user)
+    old_djname = djname
+    self.djname = old_djname unless update(djname: user['user_activity']['djname'])
     pref = find_pref(user['user_activity']['pref_status'])
     grade = find_grade(user['user_activity']['sp_grade_status'])
-    update!(djname: user['user_activity']['djname'], grade: grade, pref: pref)
+    update!(grade: grade, pref: pref)
     avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png')
   end
 

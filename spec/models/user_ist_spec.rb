@@ -73,5 +73,22 @@ describe User::Ist, type: :model do
       it('SP 中伝なら1を返すこと') { expect(instance.find_grade('SP 中伝')).to eq 1 }
       it('SP 皆伝なら0を返すこと') { expect(instance.find_grade('SP 皆伝')).to eq 0 }
     end
+    describe '#update_user' do
+      let(:instance) { create(:user, djname: 'HOGE', pref: 1, grade: 5) }
+      it 'emojiユーザはdjnameだけ更新されないこと' do
+        user = {
+          'user_activity' => {
+            'djname' => '♨',
+            'pref_status' => '東京都',
+            'sp_grade_status' => 'SP 八段'
+          },
+          'image_path' => 'https://score.iidx.app/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBclpJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7b255d5e81086f819b59e59c38debecaa6a6caba/avatar.png'
+        }
+        VCR.use_cassette('invalid_djname_ist') { instance.update_user(user) }
+        expect(instance.pref).to eq 13
+        expect(instance.grade).to eq 4
+        expect(instance.djname).to eq 'HOGE'
+      end
+    end
   end
 end
