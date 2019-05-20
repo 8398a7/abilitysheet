@@ -1,26 +1,32 @@
 # frozen_string_literal: true
 
+require 'google/cloud/storage'
+
 class ServiceDumper
   def dump_and_upload
-    s3 = Aws::S3::Client.new
-    file_open = File.open(dump)
-    file_name = File.basename('service_dumper.tar.gz')
-    begin
-      Rails.logger.info('uploading s3...')
-      s3.put_object(
-        bucket: 'iidx12-tk',
-        body: file_open,
-        key: "service_dumper/abilitysheet/#{Date.today.year}-#{Date.today.month}-#{Date.today.day}/#{ENV['RAILS_ENV']}_#{file_name}"
-      )
-      Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
-    rescue StandardError => e
-      Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], e)
-    end
+    storage = Google::Cloud::Storage.new(
+      project_id: 'iidx-app',
+      credentials: "#{Rails.root}/service-dumper.json"
+    )
+    bucket = storage.bucket('iidx-app-service-dumper')
+    Rails.logger.info('uploading gcs...')
+    bucket.create_file(dump, upload_path)
+    Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
     `rm #{dump_path}.tar.gz`
     Rails.logger.info('done service dump')
+  rescue StandardError => e
+    Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], e)
   end
 
   private
+
+  def project_name
+    'abilitysheet'
+  end
+
+  def upload_path
+    "#{project_name}/#{Date.today.year}-#{Date.today.month}-#{Date.today.day}/#{ENV['RAILS_ENV']}_service_dumper.tar.gz"
+  end
 
   def dump
     Rails.logger.info('clean dump path')
@@ -57,6 +63,6 @@ class ServiceDumper
   end
 
   def files_path
-    '/var/www/app/abilitysheet/shared/storage'
+    "/var/www/app/#{project_name}/shared/storage"
   end
 end
