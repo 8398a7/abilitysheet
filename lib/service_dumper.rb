@@ -11,11 +11,11 @@ class ServiceDumper
     bucket = storage.bucket('iidx-app-service-dumper')
     Rails.logger.info('uploading gcs...')
     bucket.create_file(dump, upload_path)
-    Slack::S3Dispatcher.success(ENV['RAILS_ENV'])
+    Slack::GcsDispatcher.success(ENV['RAILS_ENV'])
     `rm #{dump_path}.tar.gz`
     Rails.logger.info('done service dump')
   rescue StandardError => e
-    Slack::S3Dispatcher.failed(ENV['RAILS_ENV'], e)
+    Slack::GcsDispatcher.failed(ENV['RAILS_ENV'], e)
   end
 
   private
