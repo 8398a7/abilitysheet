@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 module Slack
-  class S3Dispatcher
+  class GcsDispatcher
     def self.success(env)
       body = {
-        icon_emoji: ':aws_s3:',
-        username: 'S3 Dispatcher',
+        icon_emoji: ':gcp_gcs:',
+        username: 'GCS Dispatcher',
         attachments: [
           {
             color: :good,
             title: 'backup success',
-            pretext: '_AWS S3_',
+            pretext: '_GCP GCS_',
             text: "#{Time.zone.now} #{env} backup success!",
             mrkdwn_in: %w[pretext]
           }
@@ -21,13 +21,13 @@ module Slack
 
     def self.failed(env, exception)
       body = {
-        icon_emoji: ':aws_s3:',
-        username: 'S3 Dispatcher',
+        icon_emoji: ':gcp_gcs:',
+        username: 'GCS Dispatcher',
         attachments: [
           {
             color: :danger,
             title: 'backup failed',
-            pretext: '_AWS S3_',
+            pretext: '_GCP GCS_',
             text: "#{Time.zone.now} #{env} backup failed...\n#{exception}",
             mrkdwn_in: %w[pretext]
           }
