@@ -12,6 +12,12 @@ before_script:
 build:
   stage: build
   script:
+    - docker pull $CONTAINER_IMAGE:bundle-dependencies-latest || true
+    - docker build --cache-from $CONTAINER_IMAGE:bundle-dependencies-latest --target bundle-dependencies -t $CONTAINER_IMAGE:bundle-dependencies-latest .
+    - docker push $CONTAINER_IMAGE:bundle-dependencies-latest
+    - docker pull $CONTAINER_IMAGE:node-dependencies-latest || true
+    - docker build --cache-from $CONTAINER_IMAGE:node-dependencies-latest --target node-dependencies -t $CONTAINER_IMAGE:node-dependencies-latest .
+    - docker push $CONTAINER_IMAGE:node-dependencies-latest
     - docker pull $CONTAINER_IMAGE:latest || true
     - docker build --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_IMAGE:latest .
     - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
