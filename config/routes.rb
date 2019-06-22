@@ -105,6 +105,7 @@ Rails.application.routes.draw do
       post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
 
       post '/maintenance', to: 'maintenance#change'
+      resources :health_check, only: :index
     end
   end
 
