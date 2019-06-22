@@ -53,7 +53,7 @@ RUN apk add --update --no-cache \
   yarn
 
 WORKDIR $HOME
-COPY --from=bundle-dependencies /usr/local/bundle/ /usr/local/bundle/
+COPY --from=node-dependencies /usr/local/bundle/ /usr/local/bundle/
 COPY --from=node-dependencies $HOME/public/ $HOME/public/
 
 COPY . $HOME

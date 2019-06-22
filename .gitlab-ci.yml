@@ -18,7 +18,6 @@ build:
     - docker pull $CONTAINER_IMAGE:node-dependencies-latest || true
     - docker build --cache-from $CONTAINER_IMAGE:node-dependencies-latest --target node-dependencies -t $CONTAINER_IMAGE:node-dependencies-latest .
     - docker push $CONTAINER_IMAGE:node-dependencies-latest
-    - docker pull $CONTAINER_IMAGE:latest || true
-    - docker build --cache-from $CONTAINER_IMAGE:latest -t $CONTAINER_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_IMAGE:latest .
+    - docker build --cache-from $CONTAINER_IMAGE:node-dependencies-latest -t $CONTAINER_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_IMAGE:latest .
     - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
     - docker push $CONTAINER_IMAGE:latest
