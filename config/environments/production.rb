@@ -66,12 +66,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'email-smtp.us-east-1.amazonaws.com',
-    port: ENV['SES_PORT'] || 587,
-    domain: 'iidx.app',
-    authenticate: :login,
-    user_name: ENV['SES_USER'],
-    password: ENV['SES_PASS']
+    address: ENV['EMAIL_ADDRESS'],
+    port: ENV['EMAIL_PORT'],
+    domain: 'mail.iidx.app',
+    authenticate: :plain,
+    user_name: ENV['EMAIL_USER'],
+    password: ENV['EMAIL_PASS'],
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

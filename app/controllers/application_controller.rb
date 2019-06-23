@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ArgumentError, with: :render_400
 
   protected
 
