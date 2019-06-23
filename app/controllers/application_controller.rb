@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ArgumentError, with: :render_400
 
   protected
 
@@ -24,10 +23,6 @@ class ApplicationController < ActionController::Base
     when /iPhone|Android|Nokia|Mobile/
       request.variant = :mobile
     end
-  end
-
-  def render_400
-    render file: Rails.root.join('public', '400.html'), status: 400, layout: true, content_type: 'text/html'
   end
 
   def render_404

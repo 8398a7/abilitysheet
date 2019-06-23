@@ -17,7 +17,7 @@ config/database.yml
 .envrc
 
 ## log
-log/*
+log
 tmp/*
 
 ## OSX
@@ -26,3 +26,4 @@ tmp/*
 ## docker
 .dockerignore
 Dockerfile
+build

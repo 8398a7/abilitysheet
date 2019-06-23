@@ -15,6 +15,6 @@ build:
     - docker pull $CONTAINER_IMAGE:bundle-dependencies-latest || true
     - docker build --cache-from $CONTAINER_IMAGE:bundle-dependencies-latest --target bundle-dependencies -t $CONTAINER_IMAGE:bundle-dependencies-latest .
     - docker push $CONTAINER_IMAGE:bundle-dependencies-latest
-    - docker build --cache-from $CONTAINER_IMAGE:bundle-dependencies-latest --cache-from $CONTAINER_IMAGE:node-dependencies-latest -t $CONTAINER_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_IMAGE:latest .
+    - docker build --cache-from $CONTAINER_IMAGE:bundle-dependencies-latest -t $CONTAINER_IMAGE:$CI_COMMIT_SHA -t $CONTAINER_IMAGE:latest .
     - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
     - docker push $CONTAINER_IMAGE:latest
