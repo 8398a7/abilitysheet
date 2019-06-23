@@ -6,7 +6,7 @@ class Users::PasswordsController < Devise::PasswordsController
     yield resource if block_given?
 
     if successfully_sent?(resource)
-      flash[:notice] = '再発行メールを送信しました'
+      flash[:notice] = '再発行メールを送信しました、数分ほどかかります'
       flash[:alert] = '届いていない場合は迷惑メールフォルダをご確認下さい'
     elsif !User.exists?(email: resource.email)
       flash[:alert] = '登録されていないメールアドレスです'
