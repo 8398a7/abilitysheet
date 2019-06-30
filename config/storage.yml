@@ -9,5 +9,5 @@ local:
 google:
   service: GCS
   project: iidx-app
-  credentials: <%= Rails.root.join('service-dumper.json') %>
+  credentials: <%= Rails.root.join('abilitysheet-service-account.json') %>
   bucket: abilitysheet

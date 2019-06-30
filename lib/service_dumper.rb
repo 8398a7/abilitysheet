@@ -6,7 +6,7 @@ class ServiceDumper
   def dump_and_upload
     storage = Google::Cloud::Storage.new(
       project_id: 'iidx-app',
-      credentials: "#{Rails.root}/service-dumper.json"
+      credentials: "#{Rails.root}/abilitysheet-service-account.json"
     )
     bucket = storage.bucket('iidx-app-service-dumper')
     Rails.logger.info('uploading gcs...')
