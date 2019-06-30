@@ -103,5 +103,5 @@ Rails.application.configure do
   routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'sp12.iidx.app' } }
   config.peek.adapter = :redis
 
-  config.active_storage.service = :local
+  config.active_storage.service = :google
 end

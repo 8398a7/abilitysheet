@@ -5,3 +5,9 @@ test:
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
+
+google:
+  service: GCS
+  project: iidx-app
+  credentials: <%= Rails.root.join('abilitysheet-service-account.json') %>
+  bucket: abilitysheet

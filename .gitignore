@@ -36,3 +36,4 @@ app/javascript/lib/routes.ts
 yarn-debug.log*
 .yarn-integrity
 storage
+abilitysheet-service-account.json
