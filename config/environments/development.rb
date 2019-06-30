@@ -88,5 +88,5 @@ Rails.application.configure do
   ]
 
   routes.default_url_options = { host: 'localhost', port: 3000, protocol: 'http' }
-  config.active_storage.service = :local
+  config.active_storage.service = :google
 end
