@@ -15,7 +15,7 @@ end
 set :pty, true
 
 set :linked_files, fetch(:linked_files, []).push('.env', 'abilitysheet-service-account.json')
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle', 'storage')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'tmp/backup', 'vendor/bundle')
 
 set :default_env, path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH'
 set :rbenv_type, :system
