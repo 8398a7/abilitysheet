@@ -33,8 +33,6 @@ class ServiceDumper
     `rm -rf #{dump_path}`
     Rails.logger.info('create dump path')
     `mkdir #{dump_path}`
-    Rails.logger.info('file dumping...')
-    file_dump
     Rails.logger.info('pg dumping...')
     pg_dump
     `echo #{Time.now} > #{dump_path}/info.txt`
@@ -44,10 +42,6 @@ class ServiceDumper
     `rm -r #{dump_path}`
 
     "#{dump_path}.tar.gz"
-  end
-
-  def file_dump
-    `cp -r #{files_path} #{dump_path}/storage`
   end
 
   def pg_dump
@@ -60,9 +54,5 @@ class ServiceDumper
 
   def database
     Rails.configuration.database_configuration[ENV['RAILS_ENV'] || 'production']
-  end
-
-  def files_path
-    "/var/www/app/#{project_name}/shared/storage"
   end
 end
