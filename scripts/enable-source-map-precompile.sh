@@ -8,4 +8,4 @@ SENTRY_PROJECT=abilitysheet-frontend
 tag=$(git describe --tags --abbrev=10)
 sentry-cli releases new -p ${SENTRY_PROJECT} abilitysheet@${tag}
 sentry-cli releases files abilitysheet@${tag} upload-sourcemaps ./public/packs/js --rewrite
-sentry-cli releases finalize abilitysheet@${tag}
+SENTRY_PROJECT=abilitysheet-frontend sentry-cli releases finalize abilitysheet@${tag}
