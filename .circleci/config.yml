@@ -92,7 +92,7 @@ jobs:
           command: curl -sL https://sentry.io/get-cli/ | bash
       - run:
           name: generate TAG
-          command: git describe --tags --abbrev=10
+          command: git describe --tags --abbrev=10 > TAG
       - run:
           name: upload source map
           command: scripts/enable-source-map-precompile.sh
