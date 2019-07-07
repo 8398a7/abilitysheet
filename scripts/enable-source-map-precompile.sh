@@ -8,4 +8,4 @@ tag=$(git describe --tags --abbrev=10)
 sentry-cli releases new -p ${SENTRY_PROJECT} -p abilitysheet-backend ${tag}
 sentry-cli releases files ${tag} upload-sourcemaps ./public/packs/js --rewrite
 sentry-cli releases finalize ${tag}
-sentry-cli deploys ${tag} new -e production
+sentry-cli releases deploys ${tag} new -e production
