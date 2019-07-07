@@ -70,10 +70,34 @@ jobs:
           gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
           scripts/cloud-build.sh
 
+  sentry-job:
+    working_directory: /tmp/abilitysheet
+    docker:
+      - image: circleci/ruby:2.6.1-node-browsers
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install Ruby Dependencies
+          command: bundle install -j4 --path vendor/bundle
+      - save_cache:
+          name: Save bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run:
+          name: install sentry cli
+          command: curl -sL https://sentry.io/get-cli/ | bash
+      - run:
+          name: upload source map
+          command: scripts/enable-source-map-precompile.sh
+
   deploy-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:2.6.1-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -101,6 +125,7 @@ workflows:
               only: master
   test-deploy:
     jobs:
+      - sentry-job
       - test-job
       - deploy-job:
           requires:
