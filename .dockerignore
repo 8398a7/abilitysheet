@@ -6,6 +6,7 @@ docs
 db/data.yml
 public/uploads/*
 kubernetes/*
+deployments
 
 ## Environment nomalisation
 .bundle
@@ -15,6 +16,7 @@ node_modules
 config/database.yml
 .env
 .envrc
+.circleci
 
 ## log
 log

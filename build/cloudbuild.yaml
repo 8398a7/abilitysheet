@@ -6,7 +6,10 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['pull', 'gcr.io/$PROJECT_ID/abilitysheet:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/$PROJECT_ID/abilitysheet:latest', '-t', 'gcr.io/$PROJECT_ID/abilitysheet', '.', '-f', 'build/Dockerfile']
+  args: ['build', '--cache-from', 'gcr.io/$PROJECT_ID/abilitysheet:latest', '-t', 'gcr.io/$PROJECT_ID/abilitysheet:$TAG_NAME', '.', '-f', 'build/Dockerfile']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['tag', 'gcr.io/$PROJECT_ID/abilitysheet:$TAG_NAME', 'gcr.io/$PROJECT_ID/abilitysheet:latest']
 images:
-- 'gcr.io/$PROJECT_ID/abilitysheet-base'
-- 'gcr.io/$PROJECT_ID/abilitysheet'
+- 'gcr.io/$PROJECT_ID/abilitysheet-base:latest'
+- 'gcr.io/$PROJECT_ID/abilitysheet:latest'
+- 'gcr.io/$PROJECT_ID/abilitysheet:$TAG_NAME'
