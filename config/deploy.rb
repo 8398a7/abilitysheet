@@ -48,6 +48,13 @@ namespace :deploy do
       execute "cd #{release_path}; RAILS_ENV=#{fetch(:rails_env)} rails ts:routes"
     end
   end
+  task :fetch_tag do
+    on roles(:app) do
+      execute "cd #{repo_path}; git describe --tag --abbrev=10 > #{release_path}/TAG"
+      execute "cd #{repo_path}; sed -i \"1s/^/process.env.RELEASE = '$(git describe --tag --abbrev=10)'\n/\" #{release_path}/config/webpack/production.js"
+    end
+  end
+  before 'deploy:ts_routes', 'deploy:fetch_tag'
   before 'deploy:compile_assets', 'deploy:ts_routes'
   after 'deploy:starting', 'sidekiq:quiet'
   after 'puma:restart', 'sidekiq:stop'
