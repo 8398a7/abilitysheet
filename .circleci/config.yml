@@ -8,8 +8,8 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:@localhost
           TZ: /usr/share/zoneinfo/Asia/Tokyo
-      - image: postgres:10.1-alpine
-      - image: redis:4.0.5-alpine
+      - image: postgres:11.4-alpine
+      - image: redis:5.0.5-alpine
     steps:
       - checkout
       - restore_cache:
