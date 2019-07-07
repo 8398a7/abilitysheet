@@ -133,6 +133,8 @@ workflows:
       - deploy-job:
           requires:
             - test-job
+            - sentry-job
+            - build-job
           filters:
             branches:
               only: master
