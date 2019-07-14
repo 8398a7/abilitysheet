@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   # refs: https://github.com/plataformatec/devise/pull/4033/files
   protect_from_forgery prepend: true
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :add_response_header_user_id
 
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
 
@@ -82,5 +83,9 @@ class ApplicationController < ActionController::Base
   def set_raven_context
     Raven.user_context(user: current_user.attributes) if current_user
     Raven.extra_context(params: params.to_unsafe_h, url: request.url)
+  end
+
+  def add_response_header_user_id
+    response.set_header('X-User-Id', current_user&.id.to_s)
   end
 end
