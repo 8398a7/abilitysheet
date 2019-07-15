@@ -493,6 +493,9 @@ GEM
       sidekiq (>= 4.2.1)
     sidekiq-history (0.0.11)
       sidekiq (>= 3.0.0)
+    sidekiq_alive (1.1.0)
+      sidekiq
+      sinatra
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -642,6 +645,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-cron
   sidekiq-history
+  sidekiq_alive
   simplecov
   sinatra
   slim-rails
