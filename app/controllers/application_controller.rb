@@ -86,6 +86,6 @@ class ApplicationController < ActionController::Base
   end
 
   def add_response_header_user_id
-    response.set_header('X-User-Id', current_user&.id.to_s)
+    response.set_header('X-User-Id', current_user&.iidxid.to_s)
   end
 end
