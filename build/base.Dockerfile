@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine3.9
+FROM ruby:2.6.3-alpine3.9
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
