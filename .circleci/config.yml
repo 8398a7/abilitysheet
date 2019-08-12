@@ -1,9 +1,15 @@
-version: 2
+version: 2.1
+
+orbs:
+  gcr: circleci/gcp-gcr@0.6.1
+  gke: circleci/gcp-gke@0.2.0
+  docker: circleci/docker@0.5.13
+
 jobs:
   test-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.6.3-node-browsers
         environment:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:@localhost
@@ -65,42 +71,39 @@ jobs:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - run: |
-          echo $GCLOUD_SERVICE_KEY | gcloud auth activate-service-account --key-file=-
-          gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-          scripts/cloud-build.sh
-
-  sentry-job:
-    working_directory: /tmp/abilitysheet
-    docker:
-      - image: circleci/ruby:2.6.1-node-browsers
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
+      - setup_remote_docker
+      - docker/check
       - run:
-          name: Install Ruby Dependencies
-          command: bundle install -j4 --path vendor/bundle
-      - save_cache:
-          name: Save bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
+          name: pull abilitysheet-base
+          command: docker pull 8398a7/abilitysheet-base:latest
+      - docker/build:
+          image: 8398a7/abilitysheet-base
+          dockerfile: build/base.Dockerfile
+          extra_build_args: --cache-from 8398a7/abilitysheet-base:latest
+          tag: latest
+      - docker/push:
+          image: 8398a7/abilitysheet-base
+          tag: latest
+      - gcr/build-image:
+          image: abilitysheet
+          dockerfile: build/Dockerfile
+          tag: $(git describe --tags --abbrev=10)
+      # workaround: https://circleci.com/gh/8398a7/abilitysheet/3691
       - run:
-          name: install sentry cli
-          command: curl -sL https://sentry.io/get-cli/ | bash
-      - run:
-          name: generate TAG
-          command: git describe --tags --abbrev=10 > TAG
-      - run:
-          name: upload source map
-          command: scripts/enable-source-map-precompile.sh
+          name: initialize google/cloud-sdk
+          command: |
+            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+            gcloud --quiet config set project $GOOGLE_PROJECT_ID
+            gcloud auth configure-docker --quiet --project $GOOGLE_PROJECT_ID
+      - gcr/push-image:
+          image: abilitysheet
+          tag: $(git describe --tags --abbrev=10)
 
   deploy-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:2.6.1-node-browsers
+      - image: circleci/ruby:2.6.3-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -120,13 +123,9 @@ jobs:
 
 workflows:
   version: 2
-  build-deploy:
+  test-build-deploy:
     jobs:
       - build-job:
-          filters:
-            branches:
-              only: master
-      - sentry-job:
           filters:
             branches:
               only: master
@@ -134,7 +133,6 @@ workflows:
       - deploy-job:
           requires:
             - test-job
-            - sentry-job
             - build-job
           filters:
             branches:

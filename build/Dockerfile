@@ -1,7 +1,7 @@
-FROM gcr.io/iidx-app/abilitysheet-base:latest AS base-dependencies
+FROM 8398a7/abilitysheet-base:latest AS base-dependencies
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
-FROM ruby:2.6.1-alpine3.9
+FROM ruby:2.6.3-alpine3.9
 
 ENV \
   HOME=/app \
