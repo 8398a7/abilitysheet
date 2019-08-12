@@ -125,16 +125,15 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build-job
-      # - build-job:
-      #     filters:
-      #       branches:
-      #         only: master
-      # - test-job
-      # - deploy-job:
-      #     requires:
-      #       - test-job
-      #       - build-job
-      #     filters:
-      #       branches:
-      #         only: master
+      - build-job:
+          filters:
+            branches:
+              only: master
+      - test-job
+      - deploy-job:
+          requires:
+            - test-job
+            - build-job
+          filters:
+            branches:
+              only: master
