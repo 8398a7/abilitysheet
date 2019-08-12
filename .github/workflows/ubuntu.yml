@@ -1,0 +1,12 @@
+name: ubuntu
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        ruby: ['2.6.3']
+    steps:
+    - uses: actions/checkout@master
