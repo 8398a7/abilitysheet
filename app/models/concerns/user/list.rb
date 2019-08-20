@@ -30,7 +30,7 @@ module User::List
           next if recent_users.include?(user['id'])
 
           recent_users.push(user['id'])
-          user['updated_at'] = user['updated_at'].split[0]
+          user['updated_at'] = user['updated_at'].to_date
           ret[user['id']] = user
         end
         ret
