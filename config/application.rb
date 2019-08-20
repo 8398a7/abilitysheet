@@ -24,9 +24,10 @@ module Abilitysheet
     # Current IIDX grade
     config.iidx_grade = ENV['IIDX_GRADE'].to_i
 
+
+    config.add_autoload_paths_to_load_path
     # lib auto load
-    config.autoload_paths += %W[#{config.root}/lib]
-    config.eager_load_paths += %W[#{config.root}/lib]
+    config.autoload_paths << "#{config.root}/lib"
 
     # test_framework
     config.generators.test_framework = :rspec
