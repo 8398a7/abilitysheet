@@ -20,8 +20,8 @@ class Score < ApplicationRecord
   belongs_to :user
   delegate :title, to: :sheet
 
-  include Score::API
-  include Score::IIDXME
+  include Score::Api
+  include Score::Iidxme
   include Score::ScoreViewer
 
   validates :sheet_id, uniqueness: { scope: %i[version user_id] }

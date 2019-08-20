@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Score::IIDXME
+module Score::Iidxme
   extend ActiveSupport::Concern
 
   included do

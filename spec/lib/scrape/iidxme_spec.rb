@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-describe Scrape::IIDXME do
+describe Scrape::Iidxme do
   let(:user) { create(:user, id: 1, djname: 'TEST', grade: 0, iidxid: iidxid) }
 
   context 'real' do
-    let(:iidxme) { Scrape::IIDXME.new }
+    let(:iidxme) { Scrape::Iidxme.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
       it '#sync' do
@@ -40,7 +40,7 @@ describe Scrape::IIDXME do
   end
 
   context 'mock' do
-    before { @iidxme = Scrape::IIDXME.new }
+    before { @iidxme = Scrape::Iidxme.new }
     context '存在するIIDXIDで処理を行う場合' do
       let(:iidxid) { '8594-9652' }
       it '#sync' do

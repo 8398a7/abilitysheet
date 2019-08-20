@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module IRT
+module Irt
   class Sync
     def self.run
       hash = fetch

@@ -28,7 +28,7 @@ class Sheet < ApplicationRecord
   delegate :fc,  to: :ability
   delegate :aaa, to: :ability
 
-  include Sheet::API
+  include Sheet::Api
 
   scope :active, (-> { where(active: true) })
 
