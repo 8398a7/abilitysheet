@@ -82,7 +82,6 @@ Rails.application.routes.draw do
           get :status
           get :me
           put '/users/change_rival/:iidxid', to: 'users#change_rival'
-          post :score_viewer
         end
       end
       # messages
