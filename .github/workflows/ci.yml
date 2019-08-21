@@ -1,0 +1,77 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      if: contains(github.ref, 'issue')
+    - name: docker login
+      run: echo $DOCKER_PASSWORD | docker login -u 8398a7 --password-stdin docker.io
+      if: contains(github.ref, 'issue')
+      env:
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    - name: pull abilitysheet-base
+      run: docker pull 8398a7/abilitysheet-base:latest
+      if: contains(github.ref, 'issue')
+    - name: build abilitysheet-base
+      run: docker build -t 8398a7/abilitysheet-base:latest --cache-from 8398a7/abilitysheet-base:latest -f build/base.Dockerfile .
+      if: contains(github.ref, 'issue')
+    - name: push abilitysheet-base
+      run: docker push 8398a7/abilitysheet-base:latest
+      if: contains(github.ref, 'issue')
+    - name: build gcr.io/iidx-app/abilitysheet
+      run: docker build -t gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10) -f build/Dockerfile .
+      if: contains(github.ref, 'issue')
+    - name: install gcloud sdk
+      run: |
+        export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+        echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+        curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+        sudo apt-get update && sudo apt-get install -y google-cloud-sdk
+      if: contains(github.ref, 'issue')
+    - name: initialize gcloud sdk
+      run: |
+        echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+        gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+        gcloud --quiet config set project iidx-app
+        gcloud --quiet config set compute/zone us-west1-b
+        gcloud auth configure-docker --quiet --project iidx-app
+      env:
+       GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
+      if: contains(github.ref, 'issue')
+    - name: push gcr.io/iidx-app/abilitysheet
+      run: docker push gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10)
+      if: contains(github.ref, 'issue')
+    - uses: 8398a7/action-slack@v1
+      with:
+        type: failure
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: failure() && contains(github.ref, 'issue')
+    - uses: 8398a7/action-slack@v1
+      with:
+        type: success
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: success() && contains(github.ref, 'issue')
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - uses: actions/checkout@master
+    - name: deploy abilitysheet chart
+      run: |
+        curl -X POST \
+          https://api.github.com/repos/8398a7/iidx-app-cluster/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -H "Authorization: Basic ${TOKEN}" \
+          -H 'Content-Type: application/json' \
+          -d "{\"event_type\": \"abilitysheet '--set abilitysheet.image.tag=$(git describe --tags --abbrev=10)'\"}"
+      env:
+        TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+      if: contains(github.ref, 'issue')
