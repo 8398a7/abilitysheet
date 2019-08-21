@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'scrape/iidxme'
+
 describe Scrape::Iidxme do
   let(:user) { create(:user, id: 1, djname: 'TEST', grade: 0, iidxid: iidxid) }
 

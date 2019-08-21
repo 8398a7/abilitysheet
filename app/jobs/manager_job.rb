@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'scrape/manager'
+
 class ManagerJob < ApplicationJob
   queue_as :manager
 

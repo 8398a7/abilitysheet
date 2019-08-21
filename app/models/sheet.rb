@@ -16,6 +16,8 @@
 #  exh_ability :integer
 #
 
+require 'scrape/exh_collector'
+
 class Sheet < ApplicationRecord
   has_many :scores
   has_many :logs

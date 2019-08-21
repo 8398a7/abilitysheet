@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'scrape/iidxme'
+
 class IidxmeJob < ApplicationJob
   queue_as :iidxme
 

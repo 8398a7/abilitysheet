@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'twitter_dispatcher'
+
 module Irt
   class Sync
     def self.run
