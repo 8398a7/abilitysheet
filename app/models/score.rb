@@ -22,7 +22,6 @@ class Score < ApplicationRecord
 
   include Score::Api
   include Score::Iidxme
-  include Score::ScoreViewer
 
   validates :sheet_id, uniqueness: { scope: %i[version user_id] }
   validates :state, numericality: { only_integer: true }, inclusion: { in: 0..7, message: 'のパラメタが異常です。' }, presence: true
