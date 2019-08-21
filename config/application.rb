@@ -27,8 +27,6 @@ module Abilitysheet
 
 
     config.add_autoload_paths_to_load_path
-    # lib auto load
-    config.autoload_paths << "#{config.root}/lib"
 
     # test_framework
     config.generators.test_framework = :rspec
