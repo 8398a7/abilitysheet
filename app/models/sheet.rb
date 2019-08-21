@@ -16,6 +16,8 @@
 #  exh_ability :integer
 #
 
+require 'scrape/exh_collector'
+
 class Sheet < ApplicationRecord
   has_many :scores
   has_many :logs
@@ -28,7 +30,7 @@ class Sheet < ApplicationRecord
   delegate :fc,  to: :ability
   delegate :aaa, to: :ability
 
-  include Sheet::API
+  include Sheet::Api
 
   scope :active, (-> { where(active: true) })
 

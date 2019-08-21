@@ -20,9 +20,8 @@ class Score < ApplicationRecord
   belongs_to :user
   delegate :title, to: :sheet
 
-  include Score::API
-  include Score::IIDXME
-  include Score::ScoreViewer
+  include Score::Api
+  include Score::Iidxme
 
   validates :sheet_id, uniqueness: { scope: %i[version user_id] }
   validates :state, numericality: { only_integer: true }, inclusion: { in: 0..7, message: 'のパラメタが異常です。' }, presence: true

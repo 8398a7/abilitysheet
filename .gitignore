@@ -2,6 +2,7 @@
 
 /log
 /tmp
+/storage
 
 /vendor/bundle
 

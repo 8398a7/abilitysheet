@@ -1,9 +1,5 @@
 version: 2.1
 
-orbs:
-  gcr: circleci/gcp-gcr@0.6.1
-  docker: circleci/docker@0.5.13
-
 jobs:
   test-job:
     working_directory: /tmp/abilitysheet
@@ -65,40 +61,6 @@ jobs:
           path: ./log/test.log
       - store_artifacts:
           path: ./tmp/screenshots
-  build-job:
-    docker:
-      - image: google/cloud-sdk
-    steps:
-      - checkout
-      - setup_remote_docker
-      - docker/check
-      - run:
-          name: pull abilitysheet-base
-          command: docker pull 8398a7/abilitysheet-base:latest
-      - docker/build:
-          image: 8398a7/abilitysheet-base
-          dockerfile: build/base.Dockerfile
-          extra_build_args: --cache-from 8398a7/abilitysheet-base:latest
-          tag: latest
-      - docker/push:
-          image: 8398a7/abilitysheet-base
-          tag: latest
-      - gcr/build-image:
-          image: abilitysheet
-          dockerfile: build/Dockerfile
-          tag: $(git describe --tags --abbrev=10)
-      # workaround: https://circleci.com/gh/8398a7/abilitysheet/3691
-      - run:
-          name: initialize google/cloud-sdk
-          command: |
-            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-            gcloud --quiet config set project $GOOGLE_PROJECT_ID
-            gcloud auth configure-docker --quiet --project $GOOGLE_PROJECT_ID
-      - gcr/push-image:
-          image: abilitysheet
-          tag: $(git describe --tags --abbrev=10)
-
   deploy-job:
     working_directory: /tmp/abilitysheet
     docker:
@@ -124,15 +86,10 @@ workflows:
   version: 2
   test-build-deploy:
     jobs:
-      - build-job:
-          filters:
-            branches:
-              only: master
       - test-job
       - deploy-job:
           requires:
             - test-job
-            - build-job
           filters:
             branches:
               only: master

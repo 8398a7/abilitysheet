@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'slack/message_dispatcher'
+
 class MessagesController < ApplicationController
   def new
     @message = Message.new

@@ -34,7 +34,7 @@ class User < ApplicationRecord
   attr_accessor :login
   has_one_attached :avatar
 
-  include User::API
+  include User::Api
   include User::DeviseMethods
   include User::FollowMethods
   include User::List

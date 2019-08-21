@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'slack/user_dispatcher'
+
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
     pre_user = User.select(:id).count

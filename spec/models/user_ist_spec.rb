@@ -31,17 +31,17 @@ describe User::Ist, type: :model do
       expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,
         state: 2,
-        score: 2394,
-        bp: 34
+        score: 2344,
+        bp: 53
       )
       expect(user.logs.find_by(sheet_id: Sheet.find_by(title: '東京神話'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,
         pre_state: 7,
         new_state: 2,
         pre_score: nil,
-        new_score: 2394,
+        new_score: 2344,
         pre_bp: nil,
-        new_bp: 34
+        new_bp: 53
       )
       expect(scores.find_by(sheet: Sheet.find_by(title: 'Go Beyond!!'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,

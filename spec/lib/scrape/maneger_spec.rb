@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-describe 'lib/scrape/manager.rb' do
+require 'scrape/manager'
+
+describe Scrape::Manager do
   let(:agent) { Mechanize.new }
 
   context '正常系' do

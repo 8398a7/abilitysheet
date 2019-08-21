@@ -1,8 +1,10 @@
-FROM ruby:2.6.3-alpine3.9
+FROM ruby:2.6.3-alpine3.10
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
   HOME=/app \
+  # https://github.com/sass/sassc-ruby/issues/141
+  BUNDLE_FORCE_RUBY_PLATFORM=true \
   RAILS_ENV=production \
   SECRET_KEY_BASE=wip
 
@@ -38,6 +40,7 @@ COPY ./app/assets $HOME/app/assets
 COPY ./app/models/user.rb ./app/models/application_record.rb $HOME/app/models/
 COPY ./app/models/concerns/user $HOME/app/models/concerns/user
 COPY ./lib/tasks/ts_routes.rake $HOME/lib/tasks/ts_routes.rake
+COPY ./lib/ist_client.rb $HOME/lib/
 COPY ./app/javascript $HOME/app/javascript
 COPY ./app/controllers/application_controller.rb $HOME/app/controllers/application_controller.rb
 COPY ./config $HOME/config

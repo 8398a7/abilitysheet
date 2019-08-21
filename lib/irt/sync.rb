@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
-module IRT
+require 'twitter_dispatcher'
+
+module Irt
   class Sync
     def self.run
       hash = fetch
