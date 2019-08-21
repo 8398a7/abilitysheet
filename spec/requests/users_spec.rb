@@ -85,21 +85,21 @@ describe Api::V1::UsersController, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'クリアランプが反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).state).to eq elems[sheet_id - 1]['cl']
           end
         end
         it 'スコアが反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).score).to eq elems[sheet_id - 1]['pg'] * 2 + elems[sheet_id - 1]['g']
           end
         end
         it 'BPが反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             expect(Score.find_by(sheet_id: sheet_id, user_id: 1).bp).to eq elems[sheet_id - 1]['miss']
@@ -109,7 +109,7 @@ describe Api::V1::UsersController, type: :request do
           (1..SHEET_NUM).each do |sheet_id|
             expect(Log.exists?(sheet_id: sheet_id, user_id: 1, created_date: Date.today)).to eq false
           end
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           (1..SHEET_NUM).each do |sheet_id|
             log = Log.find_by(sheet_id: sheet_id, user_id: 1, created_date: Date.today)
@@ -138,17 +138,17 @@ describe Api::V1::UsersController, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq elems[0]['miss']
         end
         it 'スコアは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2
         end
         it 'クリアランプは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end
@@ -169,15 +169,15 @@ describe Api::V1::UsersController, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアはnilのままである' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq nil
         end
         it 'クリアランプは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end
@@ -198,16 +198,16 @@ describe Api::V1::UsersController, type: :request do
         end
         it_behaves_like '202 Accepted'
         it 'BPはnilのままである' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           expect(Score.find_by(sheet_id: 1, user_id: 1).bp).to eq nil
         end
         it 'スコアは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).score).to eq elems[0]['pg'] * 2 + elems[0]['g']
         end
         it 'クリアランプは反映されている' do
-          post(url, parameters, rack_env)
+          perform_enqueued_jobs { post(url, parameters, rack_env) }
           elems = JSON.parse(parameters['state'])
           expect(Score.find_by(sheet_id: 1, user_id: 1).state).to eq elems[0]['cl']
         end

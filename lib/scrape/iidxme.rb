@@ -3,7 +3,7 @@
 require 'uri'
 
 module Scrape
-  class IIDXME
+  class Iidxme
     GRADE_MAX = 20
 
     def initialize

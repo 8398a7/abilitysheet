@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ist_client'
+
 module User::Ist
   extend ActiveSupport::Concern
   FROM_IST_TO_AB = {

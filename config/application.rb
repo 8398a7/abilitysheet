@@ -7,10 +7,11 @@ Bundler.require(*Rails.groups)
 
 module Abilitysheet
   class Application < Rails::Application
-    config.load_defaults 5.2
+    config.load_defaults 6.0
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
-    config.active_storage.queue = :active_storage
+    config.active_storage.queues.purge = :active_storage
+    config.active_storage.queues.analysis = :active_storage
 
     config.i18n.default_locale = :ja
 
@@ -24,9 +25,8 @@ module Abilitysheet
     # Current IIDX grade
     config.iidx_grade = ENV['IIDX_GRADE'].to_i
 
-    # lib auto load
-    config.autoload_paths += %W[#{config.root}/lib]
-    config.eager_load_paths += %W[#{config.root}/lib]
+
+    config.add_autoload_paths_to_load_path
 
     # test_framework
     config.generators.test_framework = :rspec

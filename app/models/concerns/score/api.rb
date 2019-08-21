@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Score::API
+module Score::Api
   extend ActiveSupport::Concern
 
   included do

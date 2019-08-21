@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module User::API
+module User::Api
   extend ActiveSupport::Concern
 
   included do

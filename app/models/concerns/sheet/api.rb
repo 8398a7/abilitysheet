@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Sheet::API
+module Sheet::Api
   extend ActiveSupport::Concern
 
   included do

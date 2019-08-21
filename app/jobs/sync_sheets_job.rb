@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'ist_client'
+
 class SyncSheetsJob < ApplicationJob
   queue_as :sync
 

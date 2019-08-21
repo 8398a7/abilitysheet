@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'google/cloud/storage'
+require 'slack/gcs_dispatcher'
 
 class ServiceDumper
   def dump_and_upload
