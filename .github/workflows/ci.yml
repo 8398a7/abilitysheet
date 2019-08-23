@@ -71,7 +71,7 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -H "Authorization: Basic ${TOKEN}" \
           -H 'Content-Type: application/json' \
-          -d "{\"event_type\": \"abilitysheet '--set abilitysheet.image.tag=$(git describe --tags --abbrev=10)'\"}"
+          -d "{\"event_type\": \"abilitysheet abilitysheet.image.tag=$(git describe --tags --abbrev=10)\"}"
       env:
         TOKEN: ${{ secrets.DEPLOY_TOKEN }}
       if: contains(github.ref, 'master')
