@@ -9,5 +9,5 @@ local:
 google:
   service: GCS
   project: iidx-app
-  credentials: <%= Rails.root.join('abilitysheet-service-account.json') %>
+  credentials: <%= ENV.fetch('GCLOUD_SERVICE_KEY') { Rails.root.join('abilitysheet-service-account.json') } %>
   bucket: abilitysheet
