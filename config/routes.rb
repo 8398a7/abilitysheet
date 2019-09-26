@@ -109,4 +109,5 @@ Rails.application.routes.draw do
   end
 
   mount Peek::Railtie => '/peek'
+  mount Sidekiq::Prometheus::Exporter => '/sidekiq/metrics'
 end
