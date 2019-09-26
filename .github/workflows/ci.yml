@@ -38,20 +38,13 @@ jobs:
       - name: push gcr.io/iidx-app/abilitysheet
         run: docker push gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10)
         if: contains(github.ref, 'master')
-      - uses: 8398a7/action-slack@v1
+      - uses: 8398a7/action-slack@v2
         with:
-          type: failure
+          status: ${{ job.status }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: failure() && contains(github.ref, 'master')
-      - uses: 8398a7/action-slack@v1
-        with:
-          type: success
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: success() && contains(github.ref, 'master')
+        if: always() && contains(github.ref, 'master')
   deploy:
     runs-on: ubuntu-latest
     needs: [build]

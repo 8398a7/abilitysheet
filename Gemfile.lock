@@ -497,6 +497,8 @@ GEM
       sidekiq (>= 4.2.1)
     sidekiq-history (0.0.11)
       sidekiq (>= 3.0.0)
+    sidekiq-prometheus-exporter (0.1.12)
+      sidekiq (>= 3.3.1)
     sidekiq_alive (1.1.0)
       sidekiq
       sinatra
@@ -649,6 +651,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-cron
   sidekiq-history
+  sidekiq-prometheus-exporter
   sidekiq_alive
   simplecov
   sinatra
