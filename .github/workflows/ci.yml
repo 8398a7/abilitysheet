@@ -14,13 +14,13 @@ jobs:
         env:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - name: pull abilitysheet-base
-        run: docker pull 8398a7/abilitysheet-base:latest
+        run: docker pull docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
         if: contains(github.ref, 'master')
       - name: build abilitysheet-base
-        run: docker build -t 8398a7/abilitysheet-base:latest --cache-from 8398a7/abilitysheet-base:latest -f build/base.Dockerfile .
+        run: docker build -t docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest --cache-from docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest -f build/base.Dockerfile .
         if: contains(github.ref, 'master')
       - name: push abilitysheet-base
-        run: docker push 8398a7/abilitysheet-base:latest
+        run: docker push docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
         if: contains(github.ref, 'master')
       - name: build gcr.io/iidx-app/abilitysheet
         run: docker build -t gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10) -f build/Dockerfile .
