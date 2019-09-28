@@ -497,9 +497,6 @@ GEM
       sidekiq (>= 3.0.0)
     sidekiq-prometheus-exporter (0.1.12)
       sidekiq (>= 3.3.1)
-    sidekiq_alive (2.0.0)
-      sidekiq
-      sinatra
     signet (0.11.0)
       addressable (~> 2.3)
       faraday (~> 0.9)
@@ -650,7 +647,6 @@ DEPENDENCIES
   sidekiq-cron
   sidekiq-history
   sidekiq-prometheus-exporter
-  sidekiq_alive
   simplecov
   sinatra
   slim-rails
