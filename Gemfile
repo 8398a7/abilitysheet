@@ -71,12 +71,6 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
-group :deployment do
-  gem 'capistrano-rails'
-  gem 'capistrano-sidekiq'
-  gem 'capistrano3-puma'
-end
-
 group :test do
   gem 'capybara'
   gem 'codeclimate-test-reporter'
