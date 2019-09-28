@@ -61,35 +61,9 @@ jobs:
           path: ./log/test.log
       - store_artifacts:
           path: ./tmp/screenshots
-  deploy-job:
-    working_directory: /tmp/abilitysheet
-    docker:
-      - image: circleci/ruby:2.6.4-node-browsers
-    steps:
-      - checkout
-      - restore_cache:
-          name: Restore bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install Ruby Dependencies
-          command: bundle install -j4 --path vendor/bundle
-      - save_cache:
-          name: Save bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-      - run:
-          name: Deploy if tests pass and branch is Master
-          command: bundle exec cap production deploy
 
 workflows:
   version: 2
   test-build-deploy:
     jobs:
       - test-job
-      - deploy-job:
-          requires:
-            - test-job
-          filters:
-            branches:
-              only: master

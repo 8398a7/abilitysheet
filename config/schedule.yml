@@ -1,8 +1,4 @@
 sync_sheets:
-  cron: '00 22 * * *'
+  cron: "00 22 * * *"
   class: SyncSheetsJob
   queue: sync
-service_dumper:
-  cron: '00 05 * * *'
-  class: ServiceDumperJob
-  queue: service_dumper

@@ -3,7 +3,7 @@
 module RedisHelper
   def self.load_sheets_data
     redis = Redis.new
-    uri = URI.parse('https://sp12.iidx.app:12222/api/v1/sheets/list')
+    uri = URI.parse('https://sp12.iidx.app/api/v1/sheets/list')
     sheets = JSON.parse(Net::HTTP.get(uri))
     redis.set('sheets', sheets.to_json)
   rescue Errno::ECONNREFUSED
