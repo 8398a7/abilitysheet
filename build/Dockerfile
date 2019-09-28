@@ -1,4 +1,4 @@
-FROM 8398a7/abilitysheet-base:latest AS base-dependencies
+FROM docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest AS base-dependencies
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 FROM ruby:2.6.4-alpine3.10
