@@ -9,10 +9,10 @@ jobs:
       - uses: actions/checkout@master
         if: contains(github.ref, 'master')
       - name: docker login
-        run: echo $DOCKER_PASSWORD | docker login -u 8398a7 --password-stdin docker.io
+        run: echo $REGISTRY_TOKEN | docker login docker.pkg.github.com -u 8398a7 --password-stdin
         if: contains(github.ref, 'master')
         env:
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }} ${{ secrets.DOCKER_PASSWORD }}
       - name: pull abilitysheet-base
         run: docker pull docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
         if: contains(github.ref, 'master')
