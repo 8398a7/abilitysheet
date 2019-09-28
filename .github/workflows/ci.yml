@@ -12,7 +12,7 @@ jobs:
         run: echo $REGISTRY_TOKEN | docker login docker.pkg.github.com -u 8398a7 --password-stdin
         if: contains(github.ref, 'master')
         env:
-          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }} ${{ secrets.DOCKER_PASSWORD }}
+          REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
       - name: pull abilitysheet-base
         run: docker pull docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
         if: contains(github.ref, 'master')
