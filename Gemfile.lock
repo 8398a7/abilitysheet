@@ -100,9 +100,9 @@ GEM
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano-sidekiq (1.0.3)
+    capistrano-sidekiq (1.0.2)
       capistrano (>= 3.9.0)
-      sidekiq (>= 3.4, < 6.0)
+      sidekiq (>= 3.4)
     capistrano-slackify (2.10.3)
       capistrano (>= 3.2.0)
       multi_json
@@ -485,11 +485,11 @@ GEM
       rubyzip (~> 1.2, >= 1.2.2)
     sentry-raven (2.11.3)
       faraday (>= 0.7.6, < 1.0)
-    sidekiq (5.2.7)
-      connection_pool (~> 2.2, >= 2.2.2)
-      rack (>= 1.5.0)
-      rack-protection (>= 1.5.0)
-      redis (>= 3.3.5, < 5)
+    sidekiq (6.0.0)
+      connection_pool (>= 2.2.2)
+      rack (>= 2.0.0)
+      rack-protection (>= 2.0.0)
+      redis (>= 4.1.0)
     sidekiq-cron (1.1.0)
       fugit (~> 1.1)
       sidekiq (>= 4.2.1)
@@ -643,7 +643,7 @@ DEPENDENCIES
   rubocop
   selenium-webdriver
   sentry-raven
-  sidekiq (= 5.2.7)
+  sidekiq
   sidekiq-cron
   sidekiq-history
   sidekiq-prometheus-exporter
