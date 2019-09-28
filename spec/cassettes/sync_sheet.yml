@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://sp12.iidx.app:12222/api/v1/sheets/list
+    uri: https://sp12.iidx.app/api/v1/sheets/list
     body:
       encoding: US-ASCII
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - Ruby
       Host:
-      - sp12.iidx.app:12222
+      - sp12.iidx.app
   response:
     status:
       code: 200

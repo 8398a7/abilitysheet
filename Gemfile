@@ -6,7 +6,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # a,b,c,d,e,f,g {{{
 gem 'activerecord-import'
 gem 'bootsnap', require: false
-gem 'capistrano-slackify', require: false
 gem 'coffee-rails'
 gem 'devise'
 gem 'dotenv-rails'
@@ -69,12 +68,6 @@ end
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
-end
-
-group :deployment do
-  gem 'capistrano-rails'
-  gem 'capistrano-sidekiq'
-  gem 'capistrano3-puma'
 end
 
 group :test do
