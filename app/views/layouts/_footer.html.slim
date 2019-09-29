@@ -7,7 +7,7 @@ footer.uk-container.uk-container-center.uk-margin.bottom
       = adsense
     .relative
       .uk-panel.panel-default
-        span.left-position
+        span.uk-float-left
           a href='https://twitter.com/IIDX_12'
             = fa_icon 'twitter', text: 'Twitter'
         span
@@ -18,3 +18,4 @@ footer.uk-container.uk-container-center.uk-margin.bottom
           | &nbsp;
           a href='https://slackin-abilitysheet.herokuapp.com'
             = fa_icon 'slack'
+        span.uk-float-right = ENV.fetch('RELEASE', 'vx.y.z')
