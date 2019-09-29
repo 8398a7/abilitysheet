@@ -45,5 +45,5 @@ COPY ./app/javascript $HOME/app/javascript
 COPY ./app/controllers/application_controller.rb $HOME/app/controllers/application_controller.rb
 COPY ./config $HOME/config
 COPY config/database.k8s.yml $HOME/config/database.yml
-ENV SENTRY_JS_DSN https://f318e1509040449986ca17cd247924b9@sentry.husq.tk/26
-RUN mkdir log && touch TAG && rails ts:routes assets:precompile
+ENV SENTRY_JS_DSN https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@sentry.io/y
+RUN mkdir log && rails ts:routes assets:precompile

@@ -10,6 +10,7 @@ class Api::ApiController < ActionController::API
   rescue_from Forbidden, with: :render_403
   rescue_from UnauthorizedError, with: :render_401
   rescue_from BadRequest, JSON::ParserError, TypeError, ArgumentError, with: :render_400
+  after_action :add_response_header_user_id
 
   def authenticate!
     raise UnauthorizedError unless current_user
@@ -50,5 +51,9 @@ class Api::ApiController < ActionController::API
 
   def handle_error(status, message)
     render json: { error: message }, status: status
+  end
+
+  def add_response_header_user_id
+    response.set_header('X-User-Id', current_user&.iidxid.to_s)
   end
 end
