@@ -35,7 +35,7 @@ jobs:
             - ./vendor/bundle
       - run:
           name: Setup Application Environment
-          command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml && touch TAG
+          command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
       - run:
           name: Create DB
           command: bundle exec rails db:create db:schema:load --trace

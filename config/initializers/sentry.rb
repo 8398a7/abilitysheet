@@ -8,5 +8,5 @@ Raven.configure do |config|
   config.dsn = ENV['SENTRY_DSN']
   config.environments = %w(staging production)
   config.current_environment = Rails.env
-  config.release = ENV['RELEASE'] || File.read("#{Rails.root}/TAG")
+  config.release = ENV.fetch('RELEASE', 'vx.y.z')
 end
