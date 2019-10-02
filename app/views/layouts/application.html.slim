@@ -40,6 +40,8 @@ html
 
     .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
       = yield
+    button.scroll-top#scroll-top
+      = fa_icon 'chevron-up'
     = render partial: 'layouts/footer'
 
 - if notice

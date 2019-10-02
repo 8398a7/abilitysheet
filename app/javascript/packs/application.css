@@ -100,3 +100,20 @@ form.devise {
 .tooltip {
   background-color: aliceblue;
 }
+
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  background-color: #999;
+  opacity: 0.8;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  color: #fff;
+}
+.scroll-top:hover {
+  cursor: pointer;
+}
