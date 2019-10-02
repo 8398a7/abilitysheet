@@ -8,7 +8,6 @@ gem 'activerecord-import'
 gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'devise'
-gem 'dotenv-rails'
 gem 'draper'
 gem 'font-awesome-rails'
 gem 'google-cloud-storage'

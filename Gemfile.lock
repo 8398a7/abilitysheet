@@ -131,10 +131,6 @@ GEM
     docile (1.1.5)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.7.5)
-    dotenv-rails (2.7.5)
-      dotenv (= 2.7.5)
-      railties (>= 3.2, < 6.1)
     draper (3.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -572,7 +568,6 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails
   devise
-  dotenv-rails
   draper
   factory_bot_rails
   font-awesome-rails
