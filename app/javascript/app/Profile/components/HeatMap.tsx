@@ -1,14 +1,23 @@
 import CalHeatMap from 'cal-heatmap';
 import React, { FC, SFC, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../../lib/ducks';
 import User from '../../../lib/models/User';
 import { apiV1LogCalHeatmapPath, logsPath } from '../../../lib/routes';
 
-const Detail: SFC<{ user: User, date: string, items: number }> = ({ user, date, items }) => {
-  if (items === -1) { return null; }
+const Detail: SFC<{ user: User; date: string; items: number }> = ({
+  user,
+  date,
+  items,
+}) => {
+  if (items === -1) {
+    return null;
+  }
   const targetDate = new Date(date);
-  const text = `${targetDate.getFullYear()}-${('00' + (targetDate.getMonth() + 1)).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`;
+  const text = `${targetDate.getFullYear()}-${(
+    '00' +
+    (targetDate.getMonth() + 1)
+  ).substr(-2)}-${('00' + targetDate.getDate()).substr(-2)}`;
 
   return (
     <div className="center">
@@ -18,19 +27,17 @@ const Detail: SFC<{ user: User, date: string, items: number }> = ({ user, date, 
   );
 };
 
-function mapStateToProps(state: RootState) {
-  return {
-    mobile: state.$$meta.env.mobileView(),
-  };
-}
-type Props = { user: User } & ReturnType<typeof mapStateToProps>;
-
-const HeatMap: FC<Props> = ({ user, mobile }) => {
+const HeatMap: FC<{ user: User }> = ({ user }) => {
+  const mobile = useSelector((state: RootState) =>
+    state.$$meta.env.mobileView(),
+  );
   const [date, setDate] = useState('');
   const [items, setItems] = useState(-1);
 
   useEffect(() => {
-    if (user.iidxid === undefined) { return; }
+    if (user.iidxid === undefined) {
+      return;
+    }
     // @ts-ignore
     const cal = new CalHeatMap();
     const startDate = new Date();
@@ -39,14 +46,16 @@ const HeatMap: FC<Props> = ({ user, mobile }) => {
     cal.init({
       domain: 'month',
       subDomain: 'day',
-      data: `${apiV1LogCalHeatmapPath(user.iidxid)}?start={{d:start}}&stop={{d:end}}`,
+      data: `${apiV1LogCalHeatmapPath(
+        user.iidxid,
+      )}?start={{d:start}}&stop={{d:end}}`,
       start: startDate,
       range,
       tooltip: true,
       cellSize: 9,
       domainLabelFormat: '%Y-%m',
-      afterLoadData (timestamps: { [s: string]: number }) {
-        const offset = (540 + new Date().getTimezoneOffset())  * 60;
+      afterLoadData(timestamps: { [s: string]: number }) {
+        const offset = (540 + new Date().getTimezoneOffset()) * 60;
         const results: { [key: number]: number } = {};
         Object.keys(timestamps).forEach(timestamp => {
           const commitCount = timestamps[timestamp];
@@ -70,4 +79,4 @@ const HeatMap: FC<Props> = ({ user, mobile }) => {
   );
 };
 
-export default connect(mapStateToProps)(HeatMap);
+export default HeatMap;
