@@ -1,27 +1,22 @@
 import React from 'react';
 // @ts-ignore
 import Adsense from 'react-adsense';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+
 import { RootState } from '../../lib/ducks';
 
-function mapStateToProps(state: RootState) {
-  const { client, slots } = state.$$meta.env.adsense;
-  return {
-    client,
-    slots,
-    mobile: state.$$meta.env.mobileView(),
-    $$currentUser: state.$$meta.currentUser,
-  };
-}
-interface IProps {
-  slot: 1 | 2;
-}
-type Props = IProps & ReturnType<typeof mapStateToProps>;
+const Adsenses: React.SFC<{ slot: 1 | 2 }> = props => {
+  const { client, slots } = useSelector(
+    (state: RootState) => state.$$meta.env.adsense,
+  );
+  const $$currentUser = useSelector(
+    (state: RootState) => state.$$meta.currentUser,
+  );
 
-const Adsenses: React.SFC<Props> = (props) => {
-  const { client, slots, $$currentUser } = props;
   const slot = slots[props.slot - 1];
-  if ($$currentUser && !$$currentUser.renderAds()) { return null; }
+  if ($$currentUser && !$$currentUser.renderAds()) {
+    return null;
+  }
   return (
     <div>
       <Adsense.Google
@@ -32,4 +27,4 @@ const Adsenses: React.SFC<Props> = (props) => {
   );
 };
 
-export default connect(mapStateToProps)(Adsenses);
+export default Adsenses;

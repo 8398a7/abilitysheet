@@ -1,45 +1,59 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../ducks';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';
 import LampSelect from './LampSelect';
 
-const BpMark: React.SFC<{ bp: number, score?: Score }> = (props) => {
+const BpMark: React.SFC<{ bp: number; score?: Score }> = props => {
   const { bp, score } = props;
-  if (Number.isNaN(bp) || bp === 0) { return null; }
-  if (score === undefined) { return null; }
-  if (score.bp === null || score.bp === undefined) { return null; }
+  if (Number.isNaN(bp) || bp === 0) {
+    return null;
+  }
+  if (score === undefined) {
+    return null;
+  }
+  if (score.bp === null || score.bp === undefined) {
+    return null;
+  }
 
-  if (score.bp < bp) { return null; }
-  return (
-    <span> ★</span>
-  );
+  if (score.bp < bp) {
+    return null;
+  }
+  return <span> ★</span>;
 };
 
-function mapStateToProps(state: RootState) {
-  return {
-    $$env: state.$$meta.env,
-    bp: state.$$sheet.bp,
-    selectDisplay: state.$$sheet.selectDisplay,
-    filterName: state.$$sheet.filterName,
-  };
-}
 interface IProps {
   sheet: Sheet;
   owner: boolean;
   score?: Score;
   width?: number;
   height?: number;
-  updateLamp: (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  updateLamp: (
+    sheetId?: number,
+  ) => (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleSheetClick: (sheetId?: number) => () => void;
 }
-type Props = IProps & ReturnType<typeof mapStateToProps>;
 
-const LampTd: React.SFC<Props> = (props) => {
-  const { width, height, sheet, score, $$env, owner, updateLamp, handleSheetClick, selectDisplay, filterName } = props;
+const LampTd: React.SFC<IProps> = props => {
+  const $$env = useSelector((state: RootState) => state.$$meta.env);
+  const bp = useSelector((state: RootState) => parseInt(state.$$sheet.bp, 10));
+  const selectDisplay = useSelector(
+    (state: RootState) => state.$$sheet.selectDisplay,
+  );
+  const filterName = useSelector(
+    (state: RootState) => state.$$sheet.filterName,
+  );
+  const {
+    width,
+    height,
+    sheet,
+    score,
+    owner,
+    updateLamp,
+    handleSheetClick,
+  } = props;
   const { color } = $$env;
-  const bp = parseInt(props.bp, 10);
   let backgroundColor = color[color.length - 1];
   if (score && score.state !== undefined) {
     backgroundColor = color[score.state];
@@ -48,7 +62,11 @@ const LampTd: React.SFC<Props> = (props) => {
   if (sheet.hide || (score && score.hide)) {
     display = 'none';
   }
-  if (filterName !== '' && sheet.title !== undefined && !sheet.title.toLowerCase().includes(filterName.toLowerCase())) {
+  if (
+    filterName !== '' &&
+    sheet.title !== undefined &&
+    !sheet.title.toLowerCase().includes(filterName.toLowerCase())
+  ) {
     display = 'none';
   }
   return (
@@ -62,9 +80,18 @@ const LampTd: React.SFC<Props> = (props) => {
         {sheet.title}
         <BpMark {...{ bp, score }} />
       </a>
-      <LampSelect {...{ updateLamp, sheet_id: sheet.id, score, $$env, owner, selectDisplay }} />
+      <LampSelect
+        {...{
+          updateLamp,
+          sheet_id: sheet.id,
+          score,
+          $$env,
+          owner,
+          selectDisplay,
+        }}
+      />
     </td>
   );
 };
 
-export default connect(mapStateToProps)(LampTd);
+export default LampTd;
