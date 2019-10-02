@@ -1,73 +1,111 @@
 import React, { SFC, useCallback } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Adsenses from '../../../Adsense/Adsenses';
 import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 import LampTd from './LampTd';
 
-function mapStateToProps(state: RootState) {
-  return {
-    $$sheetList: state.$$sheet.sheetList,
-    $$abilities: state.$$sheet.abilities,
-    $$scoreList: state.$$sheet.scoreList,
-    $$currentUser: state.$$meta.currentUser,
-    $$user: state.$$sheet.user,
-    mobile: state.$$meta.env.mobileView(),
-    type: state.$$sheet.type,
-  };
-}
-function mapDispatchToProps(dispatch: Dispatch) {
-  const { updateScoreRequested, getModalRequested, toggleDisplaySelect } = actions;
-  return bindActionCreators({ updateScoreRequested, getModalRequested, toggleDisplaySelect }, dispatch);
-}
-type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>;
+const SheetList: SFC = props => {
+  const dispatch = useDispatch();
+  const $$sheetList = useSelector(
+    (state: RootState) => state.$$sheet.sheetList,
+  );
+  const $$abilities = useSelector(
+    (state: RootState) => state.$$sheet.abilities,
+  );
+  const $$scoreList = useSelector(
+    (state: RootState) => state.$$sheet.scoreList,
+  );
+  const $$currentUser = useSelector(
+    (state: RootState) => state.$$meta.currentUser,
+  );
+  const $$user = useSelector((state: RootState) => state.$$sheet.user);
+  const mobile = useSelector((state: RootState) =>
+    state.$$meta.env.mobileView(),
+  );
+  const type = useSelector((state: RootState) => state.$$sheet.type);
 
-const SheetList: SFC<Props> = (props) => {
-  const {
-    $$abilities, $$sheetList, $$scoreList, type,
-    $$currentUser, $$user, mobile,
-    updateScoreRequested, getModalRequested, toggleDisplaySelect,
-  } = props;
   const owner = useCallback(() => {
-    if ($$currentUser === undefined) { return false; }
-    return $$currentUser.is(props.$$user);
+    if ($$currentUser === undefined) {
+      return false;
+    }
+    return $$currentUser.is($$user);
   }, [$$currentUser]);
 
-  const updateLamp = useCallback((sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if ($$currentUser === undefined || sheetId === undefined) { return; }
-    const { iidxid } = $$currentUser;
-    const state = parseInt(e.target.value, 10);
-    updateScoreRequested({ iidxid, sheetId, state });
-  }, [$$currentUser]);
+  const updateLamp = useCallback(
+    (sheetId?: number) => (e: React.ChangeEvent<HTMLSelectElement>) => {
+      if ($$currentUser === undefined || sheetId === undefined) {
+        return;
+      }
+      const { iidxid } = $$currentUser;
+      const state = parseInt(e.target.value, 10);
+      dispatch(actions.updateScoreRequested({ iidxid, sheetId, state }));
+    },
+    [$$currentUser],
+  );
 
-  const handleSheetClick = useCallback((sheetId?: number) => () => {
-    const { iidxid } = $$user;
-    if (iidxid === undefined || sheetId === undefined) { return; }
-    getModalRequested({ iidxid, sheetId });
-  }, []);
+  const handleSheetClick = useCallback(
+    (sheetId?: number) => () => {
+      const { iidxid } = $$user;
+      if (iidxid === undefined || sheetId === undefined) {
+        return;
+      }
+      dispatch(actions.getModalRequested({ iidxid, sheetId }));
+    },
+    [],
+  );
 
-  const handleToggleDisplaySelect = useCallback(() => toggleDisplaySelect(), []);
+  const handleToggleDisplaySelect = useCallback(
+    () => dispatch(actions.toggleDisplaySelect()),
+    [],
+  );
 
   const renderSheet = () => {
     const dom: JSX.Element[] = [];
     $$abilities.forEach((value, key) => {
       dom.push(
         <tr key={`ability-${type}-${key}`}>
-          <th colSpan={5} style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>{value}</th>
+          <th
+            colSpan={5}
+            style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}
+          >
+            {value}
+          </th>
         </tr>,
       );
       $$sheetList.chunk($$sheetList.whereAbility(key, type)).forEach(sheets => {
-        const tdDom = sheets.toList().map(sheet => {
-          if (sheet === undefined) { return; }
-          const score = $$scoreList.findBySheetId(sheet.id);
-          return (<LampTd key={`sheet-${sheet.id}`} {...{ owner: owner(), updateLamp, handleSheetClick, sheet, score, width: 150, height: 50 }} />);
-        }).toArray();
+        const tdDom = sheets
+          .toList()
+          .map(sheet => {
+            if (sheet === undefined) {
+              return;
+            }
+            const score = $$scoreList.findBySheetId(sheet.id);
+            return (
+              <LampTd
+                key={`sheet-${sheet.id}`}
+                {...{
+                  owner: owner(),
+                  updateLamp,
+                  handleSheetClick,
+                  sheet,
+                  score,
+                  width: 150,
+                  height: 50,
+                }}
+              />
+            );
+          })
+          .toArray();
 
-        const ids = sheets.map(sheet => {
-          if (sheet === undefined) { return; }
-          return sheet.id;
-        }).join('-');
+        const ids = sheets
+          .map(sheet => {
+            if (sheet === undefined) {
+              return;
+            }
+            return sheet.id;
+          })
+          .join('-');
         dom.push(<tr key={`sheet-${ids}`}>{tdDom}</tr>);
       });
     });
@@ -79,13 +117,29 @@ const SheetList: SFC<Props> = (props) => {
     $$abilities.forEach((value, key) => {
       dom.push(
         <tr key={`ability-${type}-${key}`}>
-          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>{value}</th>
+          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>
+            {value}
+          </th>
         </tr>,
       );
       $$sheetList.whereAbility(key, type).forEach(sheet => {
-        if (sheet === undefined) { return; }
+        if (sheet === undefined) {
+          return;
+        }
         const score = $$scoreList.findBySheetId(sheet.id);
-        dom.push(<tr key={`sheet-${sheet.id}`} ><LampTd {...{ owner: owner(), updateLamp, handleSheetClick, sheet, score }} /></tr>);
+        dom.push(
+          <tr key={`sheet-${sheet.id}`}>
+            <LampTd
+              {...{
+                owner: owner(),
+                updateLamp,
+                handleSheetClick,
+                sheet,
+                score,
+              }}
+            />
+          </tr>,
+        );
       });
     });
     return dom;
@@ -94,14 +148,19 @@ const SheetList: SFC<Props> = (props) => {
   return (
     <>
       <Adsenses slot={1} />
-      {owner() ? <button onClick={handleToggleDisplaySelect} className="uk-button uk-button-primary">編集ボタン表示切替</button> : null}
+      {owner() ? (
+        <button
+          onClick={handleToggleDisplaySelect}
+          className="uk-button uk-button-primary"
+        >
+          編集ボタン表示切替
+        </button>
+      ) : null}
       <table id="sheet-list-table" className="uk-table uk-table-bordered">
-        <tbody>
-          {mobile ? renderMobile() : renderSheet()}
-        </tbody>
+        <tbody>{mobile ? renderMobile() : renderSheet()}</tbody>
       </table>
     </>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SheetList);
+export default SheetList;

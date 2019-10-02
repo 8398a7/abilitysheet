@@ -1,17 +1,16 @@
 import React, { SFC } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../ducks/index';
 
-function mapStateToProps(state: RootState) {
-  return {
-    color: state.$$meta.env.color,
-    modal: state.$$sheet.modal,
-  };
+interface IProps {
+  color: RootState['$$meta']['env']['color'];
+  modal: RootState['$$sheet']['modal'];
 }
-type Props = ReturnType<typeof mapStateToProps>;
 
-const Content: SFC<Props> = ({ modal, color }) => {
-  if (modal === undefined) { return null; }
+const Content: SFC<IProps> = ({ modal, color }) => {
+  if (modal === undefined) {
+    return null;
+  }
   const contents = modal.scores.map(score => {
     return (
       <tr key={score.version}>
@@ -23,32 +22,54 @@ const Content: SFC<Props> = ({ modal, color }) => {
       </tr>
     );
   });
+  return <>{contents}</>;
+};
+
+const Textage = ({ modal }: { modal: IProps['modal'] }) => {
+  if (modal === undefined) {
+    return null;
+  }
+  if (!modal.textage) {
+    return null;
+  }
   return (
     <>
-      {contents}
+      <a
+        key="textage-1p"
+        href={modal.textage + '?1AC00'}
+        target="_blank"
+        className="uk-button uk-button-danger"
+      >
+        textage(1P)
+      </a>
+      <a
+        key="textage-2p"
+        href={modal.textage + '?2AC00'}
+        target="_blank"
+        className="uk-button uk-button-primary"
+      >
+        textage(2P)
+      </a>
     </>
   );
 };
 
-const Textage = ({ modal }: { modal: Props['modal'] }) => {
-  if (modal === undefined) { return null; }
-  if (!modal.textage) { return null; }
-  return (
-    <>
-      <a key="textage-1p" href={modal.textage + '?1AC00'} target="_blank" className="uk-button uk-button-danger">textage(1P)</a>
-      <a key="textage-2p" href={modal.textage + '?2AC00'} target="_blank" className="uk-button uk-button-primary">textage(2P)</a>
-    </>
-  );
-};
+const Modal: SFC = () => {
+  const color = useSelector((state: RootState) => state.$$meta.env.color);
+  const modal = useSelector((state: RootState) => state.$$sheet.modal);
 
-const Modal: SFC<Props> = ({ color, modal }) => {
-  if (modal === undefined) { return null; }
+  if (modal === undefined) {
+    return null;
+  }
   return (
     <div id="sheet-modal" className="uk-modal">
       <div className="uk-modal-dialog">
         <a className="uk-modal-close uk-close" />
         <div className="uk-modal-header">
-          <h2><i className="fa fa-history" />{modal.title}</h2>
+          <h2>
+            <i className="fa fa-history" />
+            {modal.title}
+          </h2>
         </div>
         <table className="uk-table uk-table-hover uk-table-striped">
           <thead>
@@ -66,11 +87,14 @@ const Modal: SFC<Props> = ({ color, modal }) => {
         </table>
         <div className="uk-modal-footer center">
           <Textage modal={modal} />
-          <button className="uk-button uk-modal-close"><i className="fa fa-times" />Close</button>
+          <button className="uk-button uk-modal-close">
+            <i className="fa fa-times" />
+            Close
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default connect(mapStateToProps)(Modal);
+export default Modal;

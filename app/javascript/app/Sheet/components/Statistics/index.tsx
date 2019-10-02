@@ -14,10 +14,13 @@ function mapStateToProps(state: RootState) {
   };
 }
 export type StatisticsProps = ReturnType<typeof mapStateToProps>;
-const Statistics: React.SFC<StatisticsProps> = (props) => (
+const Statistics: React.SFC<StatisticsProps> = props => (
   <div className="uk-overflow-container">
-    <table className="uk-table uk-table-bordered" style={{ textAlign: 'center' }}>
-    {props.mobile ? <Mobile {...props} /> : <Desktop {...props} />}
+    <table
+      className="uk-table uk-table-bordered"
+      style={{ textAlign: 'center' }}
+    >
+      {props.mobile ? <Mobile {...props} /> : <Desktop {...props} />}
     </table>
   </div>
 );
