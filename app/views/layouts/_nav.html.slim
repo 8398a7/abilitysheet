@@ -1,0 +1,61 @@
+nav.navbar.is-light aria-label='navigation' role='navigation'
+  .navbar-brand
+    = link_to root_path, class: 'navbar-item'
+      figure.image.is-24x24 = image_tag 'icon.png', style: 'background-color: white', class: 'is-rounded'
+    a.navbar-burger.burger aria-expanded='false' aria-label='menu' data-target='navbarDesktop' role='button'
+      span aria-hidden='true'
+      span aria-hidden='true'
+      span aria-hidden='true'
+  #navbarDesktop.navbar-menu
+    .navbar-start
+      = link_to users_path, class: 'navbar-item'
+        = icon 'fas', 'refresh', '最近更新したユーザ'
+      - if user_signed_in?
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link = icon 'fas', 'address-card', 'マイページ'
+          .navbar-dropdown
+            = link_to 'ノマゲ参考表', sheet_path(iidxid: current_user.iidxid, type: 'clear'), class: 'navbar-item'
+            = link_to 'ハード参考表', sheet_path(iidxid: current_user.iidxid, type: 'hard'), class: 'navbar-item'
+            = link_to 'エクハ参考表', sheet_path(iidxid: current_user.iidxid, type: 'exh'), class: 'navbar-item'
+            = link_to '地力値参考表', sheet_path(iidxid: current_user.iidxid, type: 'power'), class: 'navbar-item'
+            = link_to '更新データ', list_log_path(current_user.iidxid), class: 'navbar-item'
+            - if recent
+              = link_to '最近の更新', logs_path(current_user.iidxid, recent), class: 'navbar-item'
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link = icon 'fas', 'user-times', 'ライバル'
+          .navbar-dropdown
+            = link_to 'ライバル一覧', list_rival_path, class: 'navbar-item'
+            = link_to '逆ライバル一覧', reverse_list_rival_path, class: 'navbar-item'
+      = link_to recommends_path, class: 'navbar-item'
+        = icon 'fas', 'layer-group', '地力値表'
+      = link_to new_message_path, class: 'navbar-item'
+        = icon 'fas', 'phone', '連絡フォーム'
+      = link_to ist_helps_path, class: 'navbar-item'
+        = icon 'fas', 'question', 'ISTとの同期'
+      - if user_signed_in? && current_user.member?
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link = icon 'fas', 'address-card', 'マイページ'
+          .navbar-dropdown
+            - if current_user.member?
+              = link_to '楽曲管理', admin_sheets_path, class: 'navbar-item'
+            - if current_user.admin?
+              = link_to 'ユーザ管理', admin_users_path, class: 'navbar-item'
+              = link_to 'メッセージ管理', admin_messages_path, class: 'navbar-item'
+              = link_to '問い合わせ返信', new_admin_mail_path, class: 'navbar-item'
+              = link_to 'sidekiq', sidekiq_admin_path, class: 'navbar-item'
+              = link_to 'RailsAdmin', rails_admin_path, class: 'navbar-item'
+              = link_to 'Dashboard', admin_dashboards_path, class: 'navbar-item'
+    .navbar-end
+      .navbar-item
+        - if user_signed_in?
+          .navbar-item.has-dropdown.is-hoverable
+            a.navbar-link
+              = icon 'fas', 'user', current_user.djname
+            .navbar-dropdown
+              = link_to edit_user_registration_path, class: 'navbar-item'
+                = icon 'fas', 'edit', '編集'
+              = link_to destroy_user_session_path, method: :delete, class: 'navbar-item'
+                = icon 'fas', 'sign-out-alt', 'ログアウト'
+        - else
+          = link_to new_user_session_path, class: 'navbar-item'
+            = icon 'fas', 'sign-in-alt', 'ログイン'

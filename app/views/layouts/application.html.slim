@@ -8,6 +8,7 @@ html
     meta name="viewport" content='width=device-width, initial-scale=1'
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
     = stylesheet_pack_tag 'application'
+    script src='https://kit.fontawesome.com/0867f4a0c8.js' crossorigin='anonymous'
     - if Rails.env.production?
       script src='https://cdn.polyfill.io/v2/polyfill.min.js'
     = javascript_pack_tag 'sentry'
@@ -28,26 +29,14 @@ html
     = favicon_link_tag 'favicon.ico'
 
   body
-    .loading-container = image_tag('loading.gif')
-    .uk-modal
     - unless Rails.env.test?
       = render 'peek/bar'
-
     - if current_user && current_user.logs.exists?
       - recent = current_user.logs.order(:created_date).last.created_date
-    = render partial: 'layouts/navbar', locals: { recent: recent }
-    = render partial: 'layouts/mobile_navbar', locals: { recent: recent }
-
-    .uk-container.uk-container-center.uk-margin-top.uk-margin-bottom
+    = render partial: 'layouts/nav', locals: { recent: recent }
+    section.section
+      = render partial: 'layouts/notification'
       = yield
     button.scroll-top#scroll-top
       = fa_icon 'chevron-up'
     = render partial: 'layouts/footer'
-
-- if notice
-  javascript:
-    UIkit.notify({ message: '#{notice}', timeout: 3000 });
-
-- if alert
-  javascript:
-    UIkit.notify({ message: '#{alert}', timeout: 3000, status: 'danger' });
