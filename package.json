@@ -39,6 +39,7 @@
     "cal-heatmap": "^3.6.2",
     "core-js": "^3.2.1",
     "datatables-all": "^1.10.13",
+    "datatables-bulma": "^1.0.1",
     "highcharts": "^7.1.3",
     "immutable": "^4.0.0-rc.12",
     "jquery": "^3.4.1",

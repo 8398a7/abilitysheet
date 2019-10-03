@@ -2507,6 +2507,11 @@ datatables-all@^1.10.13:
   dependencies:
     jquery ">=1.7"
 
+datatables-bulma@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/datatables-bulma/-/datatables-bulma-1.0.1.tgz#6eb076337cde03eee1abb2c2eb2c88504ead5a71"
+  integrity sha1-brB2M3zeA+7hq7LC6yyIUE6tWnE=
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"

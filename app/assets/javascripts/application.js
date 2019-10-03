@@ -7,7 +7,7 @@
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
 //= require datatables-all/media/js/jquery.dataTables.min
-//= require datatables-all/media/js/dataTables.uikit.min
+//= require datatables-bulma/js/dataTables.bulma.min
 //= require select2/dist/js/select2.min
 //= require nprogress/nprogress
 //= require turbolinks

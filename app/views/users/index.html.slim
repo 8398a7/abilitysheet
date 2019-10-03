@@ -1,19 +1,16 @@
-.uk-grid.uk-grid-match data-uk-grid-margin=""
-  .uk-width-medium-1-2
-    h2 = fa_icon 'users', text: @title
-  .uk-width-medium-1-2
-    = form_tag users_path, method: :get, class: 'uk-form right djname-search'
-      = fa_icon 'search', text: 'IIDXIDから検索'
-      .uk-form-row
-        = text_field_tag :query, params[:query], placeholder: '0000-0000'
-        button.uk-button.uk-button-primary
-          = fa_icon 'search', text: '検索'
+h3.subtitle.is-3 = icon 'fas', 'users', @title
+
+= form_tag users_path, method: :get, class: 'right'
+  = icon 'fas', 'search', 'IIDXIDから検索'
+  .field
+    = text_field_tag :query, params[:query], placeholder: '0000-0000', class: 'input', style: 'width: 150px'
+    button.button.is-primary
+      = icon 'fas', 'search', '検索'
 hr
-form.uk-form
-  - if @scores_map
-    = render 'shared/list'
-  - else
-    = render 'users/list'
+- if @scores_map
+  = render 'shared/list'
+- else
+  = render 'users/list'
 
 javascript:
   function format(val) {

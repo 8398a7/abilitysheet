@@ -25,7 +25,8 @@ export default class SplineGraph extends React.Component<IProps, any> {
             max: 40,
             min: 0,
             opposite: true,
-          }, {
+          },
+          {
             allowDecimals: false,
             min: 0,
             title: { text: '未達成数' },
@@ -33,15 +34,69 @@ export default class SplineGraph extends React.Component<IProps, any> {
         ],
         tooltip: { shared: true, crosshairs: true },
         series: [
-          { yAxis: 0, type: 'column', name: 'FC', data: [15, 10, 20], color: '#ff8c00' },
-          { yAxis: 0, type: 'column', name: 'EXH', data: [30, 20, 22], color: '#ffd900' },
-          { yAxis: 0, type: 'column', name: 'HARD', data: [40, 10, 33], color: '#ff6347' },
-          { yAxis: 0, type: 'column', name: 'CLEAR', data: [5, 2, 1], color: '#afeeee' },
-          { yAxis: 0, type: 'column', name: 'EASY', data: [3, 0, 0], color: '#98fb98' },
-          { yAxis: 1, type: 'spline', name: '未FC', data: [70, 60, 40], color: '#ff8c00' },
-          { yAxis: 1, type: 'spline', name: '未EXH', data: [60, 40, 18], color: '#ffd900' },
-          { yAxis: 1, type: 'spline', name: '未難', data: [80, 70, 47], color: '#ff6347' },
-          { yAxis: 1, type: 'spline', name: '未クリア', data: [20, 12, 11], color: '#afeeee' },
+          {
+            yAxis: 0,
+            type: 'column',
+            name: 'FC',
+            data: [15, 10, 20],
+            color: '#ff8c00',
+          },
+          {
+            yAxis: 0,
+            type: 'column',
+            name: 'EXH',
+            data: [30, 20, 22],
+            color: '#ffd900',
+          },
+          {
+            yAxis: 0,
+            type: 'column',
+            name: 'HARD',
+            data: [40, 10, 33],
+            color: '#ff6347',
+          },
+          {
+            yAxis: 0,
+            type: 'column',
+            name: 'CLEAR',
+            data: [5, 2, 1],
+            color: '#afeeee',
+          },
+          {
+            yAxis: 0,
+            type: 'column',
+            name: 'EASY',
+            data: [3, 0, 0],
+            color: '#98fb98',
+          },
+          {
+            yAxis: 1,
+            type: 'spline',
+            name: '未FC',
+            data: [70, 60, 40],
+            color: '#ff8c00',
+          },
+          {
+            yAxis: 1,
+            type: 'spline',
+            name: '未EXH',
+            data: [60, 40, 18],
+            color: '#ffd900',
+          },
+          {
+            yAxis: 1,
+            type: 'spline',
+            name: '未難',
+            data: [80, 70, 47],
+            color: '#ff6347',
+          },
+          {
+            yAxis: 1,
+            type: 'spline',
+            name: '未クリア',
+            data: [20, 12, 11],
+            color: '#afeeee',
+          },
           {
             type: 'pie',
             name: 'クリア割合',
@@ -66,19 +121,26 @@ export default class SplineGraph extends React.Component<IProps, any> {
   }
 
   public updatePie(options: any, graph: any) {
-    options.series[9].data.forEach((_: any, index: number) => options.series[9].data[index].y = graph.pie[index]);
+    options.series[9].data.forEach(
+      (_: any, index: number) =>
+        (options.series[9].data[index].y = graph.pie[index]),
+    );
     options.series[9].center = [200, 40];
     return options;
   }
 
   public updateColumn(options: any, graph: any) {
-    [0, 1, 2, 3, 4].forEach(index => options.series[index].data = graph.column[index]);
+    [0, 1, 2, 3, 4].forEach(
+      index => (options.series[index].data = graph.column[index]),
+    );
     options.yAxis[0].max = graph.column_max;
     return options;
   }
 
   public updateSpline(options: any, graph: any) {
-    [5, 6, 7, 8].forEach(index => options.series[index].data = graph.spline[index - 5]);
+    [5, 6, 7, 8].forEach(
+      index => (options.series[index].data = graph.spline[index - 5]),
+    );
     options.yAxis[1].max = graph.spline_max;
     return options;
   }
@@ -93,21 +155,28 @@ export default class SplineGraph extends React.Component<IProps, any> {
   }
 
   public componentWillMount() {
-    if (this.props.initialRender) { return null; }
+    if (this.props.initialRender) {
+      return null;
+    }
     this.getGraph();
   }
 
   public getGraph() {
     const { iidxid } = this.props;
-    if (iidxid === undefined) { return; }
+    if (iidxid === undefined) {
+      return;
+    }
     const client = new MyClient();
     const { year, month } = this.state;
-    client.getGraph(iidxid, year, month)
+    client
+      .getGraph(iidxid, year, month)
       .then(graph => this.handleChange(graph));
   }
 
   public componentDidMount() {
-    if (!this.props.initialRender) { return null; }
+    if (!this.props.initialRender) {
+      return null;
+    }
     this.renderChart();
   }
 
@@ -141,8 +210,16 @@ export default class SplineGraph extends React.Component<IProps, any> {
     return (
       <div>
         <div id="spline-graph" />
-        {this.props.initialRender ? null : <button className="uk-button uk-button-danger" onClick={this.handleClickPrev}>prev</button>}
-        {this.props.initialRender ? null : <button className="uk-button uk-button-primary" onClick={this.handleClickNext}>next</button>}
+        {this.props.initialRender ? null : (
+          <button className="button is-danger" onClick={this.handleClickPrev}>
+            prev
+          </button>
+        )}
+        {this.props.initialRender ? null : (
+          <button className="button is-info" onClick={this.handleClickNext}>
+            next
+          </button>
+        )}
       </div>
     );
   }

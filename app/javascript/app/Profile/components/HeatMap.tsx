@@ -71,11 +71,13 @@ const HeatMap: FC<{ user: User }> = ({ user }) => {
   }, []);
 
   return (
-    <div className="uk-panel uk-panel-box">
-      <h3 className="uk-panel-title">更新履歴</h3>
-      <div id="cal-heatmap" />
-      <Detail {...{ user, date, items }} />
-    </div>
+    <article className="message is-info">
+      <div className="message-header">更新履歴</div>
+      <div className="message-body">
+        <div id="cal-heatmap" />
+        <Detail {...{ user, date, items }} />
+      </div>
+    </article>
   );
 };
 

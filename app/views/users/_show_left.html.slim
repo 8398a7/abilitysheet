@@ -1,32 +1,32 @@
 - user = user.decorate
 = image_tag(url_for(user.avatar), class: 'icon') if user.avatar.attached?
 . style='margin-top: 20px'
-  h2
+  h3.subtitle.is-3
     b = user.djname
 .
-  h3
+  h4.subtitle.is-4
     = user.iidxid
     | &nbsp;
     - if current_user && current_user != user
-      = link_to rival_reverse_path(user.iidxid), method: :put, class: 'uk-button'
+      = link_to rival_reverse_path(user.iidxid), method: :put, class: 'button'
         - if current_user.follows.pluck(:target_user_id).include?(user.id)
-          = fa_icon 'user-times', text: 'ライバルから削除'
+          = icon 'fas', 'user-times', 'ライバルから削除'
         - else
-          = fa_icon 'user-plus', text: 'ライバルに追加'
+          = icon 'fas', 'user-plus', 'ライバルに追加'
 . style='padding-bottom: 3px'
     = react_component_wrapper 'TwitterSharedButton', text: "DJ.#{user.djname} ☆12参考表プロフィール"
 . style='padding-bottom: 3px'
-  = link_to 'ノマゲ参考表', sheet_path(user.iidxid, type: 'clear'), class: 'uk-button uk-button-primary'
-  = link_to 'ハード参考表', sheet_path(user.iidxid, type: 'hard'), class: 'uk-button uk-button-danger'
+  = link_to 'ノマゲ参考表', sheet_path(user.iidxid, type: 'clear'), class: 'button is-link'
+  = link_to 'ハード参考表', sheet_path(user.iidxid, type: 'hard'), class: 'button is-danger'
 - if current_user && current_user != user
   . style='padding-bottom: 3px'
       .
-        = link_to 'ノマゲ比較', clear_rival_path(user.iidxid), class: 'uk-button uk-button-primary'
-        = link_to 'ハード比較', hard_rival_path(user.iidxid), class: 'uk-button uk-button-danger'
+        = link_to 'ノマゲ比較', clear_rival_path(user.iidxid), class: 'button is-link'
+        = link_to 'ハード比較', hard_rival_path(user.iidxid), class: 'button is-danger'
 hr
-. = fa_icon 'street-view', text: user.grade
-. = fa_icon 'map-marker', text: user.pref
-. = fa_icon 'clock-o', text: user.joined_on
+. = icon 'fas', 'street-view', user.grade
+. = icon 'fas', 'map-marker', user.pref
+. = icon 'fas', 'clock-o', user.joined_on
 hr
 table style='margin: 0 auto; text-align: center'
   tbody
