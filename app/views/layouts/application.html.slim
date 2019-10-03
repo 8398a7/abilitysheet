@@ -35,8 +35,9 @@ html
       - recent = current_user.logs.order(:created_date).last.created_date
     = render partial: 'layouts/nav', locals: { recent: recent }
     section.section
-      = render partial: 'layouts/notification'
-      = yield
+      .container
+        = render partial: 'layouts/notification'
+        = yield
     button.scroll-top#scroll-top
       = fa_icon 'chevron-up'
     = render partial: 'layouts/footer'

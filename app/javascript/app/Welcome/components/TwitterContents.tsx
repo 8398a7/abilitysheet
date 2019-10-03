@@ -6,17 +6,30 @@ const options = {
   height: 400,
 };
 const TwitterContents: React.SFC = () => (
-  <div className="uk-grid">
-    <div className="uk-width-medium-10-10">
+  <>
+    <div>
       <TwitterSharedButton text="SP☆12参考表(地力表)支援サイト" />
     </div>
-    <div className="uk-width-medium-5-10">
-      <Timeline {...{ dataSource: { screenName: 'IIDX_12', sourceType: 'profile' }, options }} />
+    <div className="columns">
+      <div className="column">
+        <Timeline
+          {...{
+            dataSource: { screenName: 'IIDX_12', sourceType: 'profile' },
+            options,
+          }}
+        />
+      </div>
+
+      <div className="column">
+        <Timeline
+          {...{
+            dataSource: { screenName: 'IidxScoreTable', sourceType: 'profile' },
+            options,
+          }}
+        />
+      </div>
     </div>
-    <div className="uk-width-medium-5-10">
-      <Timeline {...{ dataSource: { screenName: 'IidxScoreTable', sourceType: 'profile' }, options }} />
-    </div>
-  </div>
+  </>
 );
 
 export default TwitterContents;
