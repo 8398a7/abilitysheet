@@ -8,12 +8,14 @@
 //= require peek/views/rblineprof
 //= require datatables-all/media/js/jquery.dataTables.min
 //= require datatables-bulma/js/dataTables.bulma.min
+//= require bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min
 //= require select2/dist/js/select2.min
 //= require nprogress/nprogress
 //= require turbolinks
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
+  bulmaAccordion.attach();
   navBarEvent();
   scrollTop('scroll-top', 500);
 });

@@ -36,6 +36,7 @@
     "axios": "^0.19.0",
     "babel-preset-react": "^6.24.1",
     "bulma": "^0.7.5",
+    "bulma-extensions": "^6.2.7",
     "cal-heatmap": "^3.6.2",
     "core-js": "^3.2.1",
     "datatables-all": "^1.10.13",
