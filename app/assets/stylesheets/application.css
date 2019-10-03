@@ -6,7 +6,6 @@
  *= require peek/views/performance_bar
  *= require peek/views/rblineprof
  *= require bulma/css/bulma
- *= require datatables-all/media/css/dataTables.uikit.min
  *= require datatables-bulma/css/dataTables.bulma.min
  *= require font-awesome
  *= require_self
