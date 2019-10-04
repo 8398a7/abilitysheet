@@ -34,7 +34,7 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
         = icon 'fas', 'question', 'ISTとの同期'
       - if user_signed_in? && current_user.member?
         .navbar-item.has-dropdown.is-hoverable
-          a.navbar-link = icon 'fas', 'address-card', 'マイページ'
+          a.navbar-link = icon 'fas', 'gears', '管理'
           .navbar-dropdown
             - if current_user.member?
               = link_to '楽曲管理', admin_sheets_path, class: 'navbar-item'

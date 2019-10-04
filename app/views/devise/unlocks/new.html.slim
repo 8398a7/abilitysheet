@@ -1,21 +1,11 @@
 - @title = 'アカウント凍結解除申請'
+h3.subtitle.is-3 = icon 'fas', 'lock', @title
 
-.uk-width-medium-1-2.uk-container-center
-  .uk-panel.uk-panel-box
-    .uk-panel-title.bold
-      = fa_icon 'lock', text: @title
-
-    .uk-nav-side
-      .uk-nav-divider
-
-    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'uk-form uk-form-stacked devise' }) do |f|
-      = render 'devise/shared/error_messages', resource: resource
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-envelope
-          = f.email_field :email, autofocus: true, placeholder: '登録したメールアドレス'
-      .uk-form-row
-        .uk-button-group
-          button.uk-button.uk-button-warning type="submit"
-            = fa_icon 'unlock', text: 'アカウント凍結解除申請'
-          = render 'devise/shared/links'
+= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  .field
+    label.label 登録したメールアドレス
+    .control = f.email_field :email, autofocus: true, placeholder: 'abilitysheet@mail.iidx.app', class: 'input'
+  .field
+    button.button.is-warning type='submit' = icon 'fas', 'unlock', 'アカウント凍結解除申請'
+    = render 'devise/shared/links'
