@@ -35,6 +35,17 @@ function navBarEvent() {
   }
 }
 
+document.addEventListener('click', function(e) {
+  closeModal(e);
+});
+
+function closeModal(e) {
+  if (e.target.className !== 'modal-background') return;
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    return (modal.className = 'modal');
+  });
+}
+
 function scrollTop(elem, duration) {
   var target = document.getElementById(elem);
   target.addEventListener('click', function() {

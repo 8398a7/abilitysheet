@@ -1,29 +1,28 @@
-h2 = fa_icon 'calendar-check-o', text: @title
+h3.subtitle.is-3 = icon 'fas', 'calendar-check-o', @title
 hr
 - unless user_signed_in? && current_user.special?
   = adsense
   hr
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
-      th TITLE
-      th EASY CLEAR
-      th CLEAR
-      th HARD CLEAR
-      th EXH CLEAR
-      th FULL COMBO
-      th UPDATE
-    tbody
-      - @sheets.each do |title, hash|
-        tr
-          td = title
-          - 4.downto(0).each do |index|
-            td bgcolor=@color[index]
-              - created_date = hash[index]
-              - if created_date
-                = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
+table.table.is-fullwidth.datatable
+  thead
+    th TITLE
+    th EASY CLEAR
+    th CLEAR
+    th HARD CLEAR
+    th EXH CLEAR
+    th FULL COMBO
+    th UPDATE
+  tbody
+    - @sheets.each do |title, hash|
+      tr
+        td = title
+        - 4.downto(0).each do |index|
+          td bgcolor=@color[index]
+            - created_date = hash[index]
+            - if created_date
+              = link_to created_date, logs_path(params[:id], created_date), style: 'color: #444'
 
-          td = hash.values.sort.last
+        td = hash.values.sort.last
 javascript:
   sheets_count = '#{@sheets.count}'
 
