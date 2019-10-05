@@ -4,12 +4,12 @@ jobs:
   test-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:2.6.4-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
         environment:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:@localhost
           TZ: /usr/share/zoneinfo/Asia/Tokyo
-      - image: postgres:11.4-alpine
+      - image: postgres:11.5-alpine
       - image: redis:5.0.5-alpine
     steps:
       - checkout
