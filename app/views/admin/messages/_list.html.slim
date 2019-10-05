@@ -8,7 +8,7 @@ table.table.is-hoverable.is-striped.datatable
     - messages.each do |m|
       - m = m.decorate
       tr
-        td = link_to m.status, (m.state ? inactive_admin_message_path(m.id) : active_admin_message_path(m.id)), method: :post, class: (m.state ? 'uk-button-success' : 'uk-button-danger')
+        td = link_to m.status, (m.state ? inactive_admin_message_path(m.id) : active_admin_message_path(m.id)), method: :post, class: (m.state ? 'is-success' : 'is-danger')
         td = m.user_name
         td.left.mail-info
           span.from
@@ -23,5 +23,3 @@ javascript:
       order: [3, 'desc']
     });
   }
-
-  $('#nav-admin').addClass('uk-active')
