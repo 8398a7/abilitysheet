@@ -14,4 +14,10 @@ class SheetDecorator < Draper::Decorator
   def exh
     Static::EXH_POWER[object.exh_ability].first
   end
+
+  def updated_at
+    return '' unless object.updated_at
+
+    object.updated_at.to_date.strftime('%Y/%m/%d %H:%M')
+  end
 end
