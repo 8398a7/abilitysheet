@@ -9,10 +9,10 @@ const CheckBox: React.SFC = () => {
     (state: RootState) => state.$$sheet.abilities.size,
   );
   return (
-    <div className="checkbox">
+    <>
       {abilitiesSize !== 0 ? <VersionCheckbox /> : null}
       <LampCheckbox />
-    </div>
+    </>
   );
 };
 
