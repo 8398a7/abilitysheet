@@ -151,12 +151,13 @@ const SheetList: SFC = props => {
       {owner() ? (
         <button
           onClick={handleToggleDisplaySelect}
-          className="uk-button uk-button-primary"
+          className="button is-primary"
+          style={{ marginBottom: '10px' }}
         >
           編集ボタン表示切替
         </button>
       ) : null}
-      <table id="sheet-list-table" className="uk-table uk-table-bordered">
+      <table id="sheet-list-table" className="table is-fullwidth">
         <tbody>{mobile ? renderMobile() : renderSheet()}</tbody>
       </table>
     </>

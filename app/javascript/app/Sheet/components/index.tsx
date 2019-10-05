@@ -109,6 +109,7 @@ const Sheet: SFC = () => {
         ) : null}
         <hr />
         <CheckBox />
+        <div style={{ marginTop: '10px' }} />
         <Statistics />
         <h3 />
         <BpForm {...{ bp, handleChangeBp }} />

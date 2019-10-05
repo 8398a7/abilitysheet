@@ -24,6 +24,7 @@ export interface ISheetDefaultValue {
   versions: Array<[string, number]>;
   lamp: string[];
   recent: string;
+  modalClass: 'modal' | 'modal is-active';
   modal?: {
     title: string;
     textage: string;
@@ -49,6 +50,7 @@ const defaultValue: ISheetDefaultValue = {
   versions: [],
   lamp: [],
   recent: '',
+  modalClass: 'modal',
   modal: undefined,
 };
 const initialRecord = Record(defaultValue);
@@ -103,7 +105,10 @@ export const actions = {
   getModalRequested: createAction(
     GET_MODAL_REQUESTED,
     ($$state, payload: { iidxid: string; sheetId: number }) =>
-      $$state.asImmutable(),
+      $$state.set('modalClass', 'modal is-active'),
+  ),
+  closeModal: createAction('sheet/closeModal', $$state =>
+    $$state.set('modalClass', 'modal'),
   ),
   toggleDisplaySelect: createAction('sheet/toggleDisplaySelect', $$state => {
     localStorage.selectDisplay = !$$state.selectDisplay;

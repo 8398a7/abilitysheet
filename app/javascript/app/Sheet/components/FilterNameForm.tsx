@@ -6,12 +6,18 @@ interface IProps {
 }
 const FilterNameForm: React.SFC<IProps> = ({ name, handleChangeName }) => {
   return (
-    <form className="uk-form uk-form-stacked">
-      <label className="uk-form-label">楽曲名フィルター</label>
-      <div className="uk-form-controls">
-        <input type="text" value={name} onChange={handleChangeName} />
+    <>
+      <label className="label">楽曲名フィルター</label>
+      <div className="control has-text-centered">
+        <input
+          className="input"
+          type="text"
+          value={name}
+          onChange={handleChangeName}
+          style={{ width: '50%' }}
+        />
       </div>
-    </form>
+    </>
   );
 };
 

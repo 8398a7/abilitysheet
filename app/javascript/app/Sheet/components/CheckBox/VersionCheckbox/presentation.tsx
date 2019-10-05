@@ -14,46 +14,52 @@ const Presentation: SFC<IProps> = props => {
         if (cur[1] === 0) {
           return [
             ...acc,
-            <label key={`version-checkbox-${cur}`}>
+            <span key={`version-checkbox-${cur}`}>
               <input
                 type="checkbox"
                 value={cur[1]}
                 name="all-version-check"
+                id="all-version-check"
+                className="is-checkradio is-info is-circle"
                 defaultChecked={true}
                 onChange={handleToggleVersion}
               />
-              {cur[0]}
-            </label>,
+              <label htmlFor="all-version-check">{cur[0]}</label>
+            </span>,
           ];
         }
         return [
           ...acc,
-          <label key={`version-checkbox-${cur}`}>
+          <span key={`version-checkbox-${cur}`}>
             <input
               type="checkbox"
               value={cur[1]}
               name="version-check"
+              id={`version-check-${cur[1]}`}
+              className="is-checkradio is-info is-circle"
               defaultChecked={true}
               onChange={handleToggleVersion}
             />
-            {cur[0]}
-          </label>,
+            <label htmlFor={`version-check-${cur[1]}`}>{cur[0]}</label>
+          </span>,
         ];
       }, []),
     [versions],
   );
   const constantDom = useMemo(
     () => [
-      <label key="version-checkbox-reverse">
+      <span key="version-checkbox-reverse">
         <input
           type="checkbox"
           value="0"
           name="reverse"
+          id="reverse-checkbox"
+          className="is-checkradio is-info is-circle"
           checked={reverse}
           onChange={handleChangeReverse}
         />
-        逆順表示
-      </label>,
+        <label htmlFor="reverse-checkbox">逆順表示</label>
+      </span>,
     ],
     [reverse],
   );

@@ -70,13 +70,11 @@ const LampTd: React.SFC<IProps> = props => {
     display = 'none';
   }
   return (
-    <td style={{ width, height, backgroundColor, display }}>
-      <a
-        style={{ color: '#555555' }}
-        href="#sheet-modal"
-        data-uk-modal={true}
-        onClick={handleSheetClick(sheet.id)}
-      >
+    <td
+      className="has-text-centered"
+      style={{ width, height, backgroundColor, display }}
+    >
+      <a style={{ color: '#555555' }} onClick={handleSheetClick(sheet.id)}>
         {sheet.title}
         <BpMark {...{ bp, score }} />
       </a>
