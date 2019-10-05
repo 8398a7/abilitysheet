@@ -9,6 +9,5 @@
  *= require bulma/css/bulma
  *= require bulma-extensions/bulma-accordion/dist/css/bulma-accordion.min
  *= require bulma-extensions/bulma-checkradio/dist/css/bulma-checkradio.min
- *= require font-awesome
  *= require_self
  */

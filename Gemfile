@@ -9,7 +9,6 @@ gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'devise'
 gem 'draper'
-gem 'font-awesome-rails'
 gem 'google-cloud-storage'
 # }}}
 # h,i,j,k,l,m,n {{{
