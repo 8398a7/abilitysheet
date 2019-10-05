@@ -1,5 +1,5 @@
 <% if @sheet.errors.empty? %>
-  location.reload(true)
+  location.reload()
 <% else %>
   alert('<%= escape_javascript @sheet.errors.full_messages.join("\n") %>')
 <% end %>

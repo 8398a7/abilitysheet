@@ -1,0 +1,6 @@
+document.querySelector('#user-modal').innerHTML = '<%= escape_javascript(render partial: 'admin/users/form', locals: { user: @user }) %>';
+document.querySelector('#user-modal').className = 'modal is-active';
+$('.searchable').select2();
+function handleCloseUserModal() {
+  document.querySelector('#user-modal').className = 'modal';
+}

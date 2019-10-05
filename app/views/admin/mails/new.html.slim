@@ -1,27 +1,15 @@
 - @title = '問い合わせ返信'
-.uk-panel.uk-panel-box
-  .uk-panel-title.bold
-    = fa_icon 'reply', text: '問い合わせ返信フォーム'
-
-  hr
-  .uk-nav-side
-    .uk-nav-diver
-      = form_tag admin_mails_path, method: :post, class: 'uk-form uk-form-stacked center'
-        .uk-form-row
-          label.uk-form-label メールアドレス
-          .uk-form-controls
-            = email_field_tag :email_address, '', size: '80'
-        .uk-form-row
-          label.uk-form-label 件名
-          .uk-form-controls
-            = text_field_tag :subject, '[IIDX ☆12参考表] 問合せ対応', size: '80'
-        .uk-form-row
-          label.uk-form-label 内容
-          .uk-form-controls
-            = text_area_tag :body, '', size: '80x20'
-        .uk-form-row
-          .uk-button-group
-            button.uk-button.uk-button-primary type="submit"
-              = fa_icon 'sign-in', text: '送信'
-javascript:
-  $('#nav-admin').addClass('uk-active')
+h3.subtitle.is-3 = icon 'fas', 'reply', '問い合わせ返信フォーム'
+hr
+= form_tag admin_mails_path, method: :post
+  .field
+    label.label メールアドレス
+    .control = email_field_tag :email_address, '', class: 'input'
+  .field
+    label.label 件名
+    .control = text_field_tag :subject, '[IIDX ☆12参考表] 問合せ対応', class: 'input'
+  .field
+    label.label 内容
+    .control = text_area_tag :body, '', class: 'textarea'
+  .field
+    button.button.is-primary type='submit' = icon 'fas', 'sign-in-alt', '送信'

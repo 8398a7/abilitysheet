@@ -23,7 +23,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
-    @check = @user.scores.is_active.select(:id).count == Sheet.active.select(:id).count
     render :show_modal_form
   end
 

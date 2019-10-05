@@ -1,17 +1,11 @@
 - @title = 'メッセージ管理'
+h3.subtitle.is-3 = icon 'fas', 'envelope', @title
 
-h2.bold
-  = fa_stacked_icon 'envelope inverse', base: 'square', text: @title
-
-= search_form_for [:admin, @search], class: 'uk-form right' do |f|
-  = fa_icon 'search', text: '状態から絞込'
-  .uk-form-row
-    = f.select :state_eq, [['未読', false], ['既読', true]], {}, class: 'select2'
-    button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
-      = fa_icon 'search', text: '検索'
+= search_form_for [:admin, @search] do |f|
+  .field
+    label.label = icon 'fas', 'search', '状態から絞込'
+    span.select = f.select :state_eq, [['未読', false], ['既読', true]], {}
+  .field
+    button.button.is-primary type='submit' = icon 'fas', 'search', '検索'
 hr
 = render partial: 'admin/messages/list', locals: { messages: @messages }
-
-javascript:
-  $('#nav-admin').addClass('uk-active')
-  $('.select2').select2()
