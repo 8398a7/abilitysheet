@@ -40,7 +40,7 @@ const ToggleView: SFC<{
     return null;
   }
   return (
-    <button className="uk-button uk-button-success" onClick={handleToggleView}>
+    <button className="button is-success" onClick={handleToggleView}>
       <i className="fa fa-refresh" />
       {mobile === true ? 'PCサイト版' : 'モバイル版'}
     </button>
@@ -109,6 +109,7 @@ const Sheet: SFC = () => {
         ) : null}
         <hr />
         <CheckBox />
+        <div style={{ marginTop: '10px' }} />
         <Statistics />
         <h3 />
         <BpForm {...{ bp, handleChangeBp }} />

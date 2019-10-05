@@ -1,0 +1,22 @@
+.notification.is-primary style='display: none'
+  button.delete onclick="closeNotification(this)"
+  span
+.notification.is-danger style='display: none'
+  button.delete onclick="closeNotification(this)"
+  span
+javascript:
+  function closeNotification(e) {
+    e.parentElement.style = 'display: none';
+  }
+- if flash[:notice]
+  javascript:
+    var dom = document.querySelector('.notification.is-primary');
+    dom.querySelector('span').textContent = "#{flash[:notice]}";
+    dom.style = 'display: block';
+    setTimeout(function () { closeNotification(dom.querySelector('button')) }, 5000);
+- if flash[:danger]
+  javascript:
+    var dom = document.querySelector('.notification.is-danger');
+    dom.querySelector('span').textContent = "#{flash[:danger]}";
+    dom.style = 'display: block';
+    setTimeout(function () { closeNotification(dom.querySelector('button')) }, 5000);

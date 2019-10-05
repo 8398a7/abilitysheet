@@ -5,12 +5,12 @@ import { userPath } from '../../../lib/routes';
 interface IProps {
   user: User;
 }
-const ProfileLink: React.SFC<IProps> = (props) => {
+const ProfileLink: React.SFC<IProps> = props => {
   const { user } = props;
   return (
-    <h3>
+    <h4 className="subtitle is-4">
       <a href={userPath(user.iidxid)}>{`DJ.${user.djname}(${user.iidxid})`}</a>
-    </h3>
+    </h4>
   );
 };
 

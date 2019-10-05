@@ -1,5 +1,5 @@
-.uk-grid
-  .uk-width-3-10
+.columns
+  .column.is-one-quarter
     = render partial: 'show_left', locals: { user: @user }
-  .uk-width-7-10
+  .column
     = react_component_wrapper 'Profile', user: @user.schema

@@ -1,43 +1,41 @@
-.uk-overflow-container
-  form.uk-form
-    table.uk-table.uk-table-striped.datatables
-      thead
-        tr
-          th style="width: 150px;"
-            = link_to new_admin_user_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
-              = fa_icon 'plus', text: '作成'
-          th = sort_link(@q, :id, 'id')
-          th = sort_link(@q, :username, 'username')
-          th = sort_link(@q, :email, 'email')
-          th = sort_link(@q, :djname, 'DJNAME')
-          th = sort_link(@q, :iidxid, 'IIDXID')
-          th = sort_link(@q, :pref, '所属')
-          th = sort_link(@q, :grade, '段位')
-          th = sort_link(@q, :sign_in_count, '利用数')
-          th = sort_link(@q, :current, '現在')
-      tbody
-        - users.each do |user|
-          - user = user.decorate
-          tr
-            td
-              - unless user.access_locked?
-                = link_to edit_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true
-                  = fa_icon 'pencil', text: '編集'
-                = link_to lock_admin_user_path(user.id), class: 'uk-button uk-button-mini', method: :post, remote: true
-                  = fa_icon 'lock', text: '無効化'
-                = link_to login_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-primary'
-                  = fa_icon 'sign-in', text: 'ログイン'
-              - else
-                = link_to unlock_admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-primary uk-margin-small-right', method: :post, remote: true
-                  = fa_icon 'level-up', text: '有効化'
-                = link_to admin_user_path(user.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
-                  = fa_icon 'trash', text: '削除'
-            td = user.id
-            td = user.username
-            td = user.email
-            td = user.djname
-            td = user.iidxid
-            td = user.pref
-            td = user.grade
-            td = user.sign_in_count
-            td = user.current
+table.table.is-striped
+  thead
+    tr
+      th style="width: 150px;"
+        = link_to new_admin_user_path, class: 'button is-small is-primary', remote: true do
+          = icon 'plus', '作成'
+      th = sort_link(@q, :id, 'id')
+      th = sort_link(@q, :username, 'username')
+      th = sort_link(@q, :email, 'email')
+      th = sort_link(@q, :djname, 'DJNAME')
+      th = sort_link(@q, :iidxid, 'IIDXID')
+      th = sort_link(@q, :pref, '所属')
+      th = sort_link(@q, :grade, '段位')
+      th = sort_link(@q, :sign_in_count, '利用数')
+      th = sort_link(@q, :current, '現在')
+  tbody
+    - users.each do |user|
+      - user = user.decorate
+      tr
+        td
+          - unless user.access_locked?
+            = link_to edit_admin_user_path(user.id), class: 'button is-small is-success', remote: true
+              = icon 'edit', '編集'
+            = link_to lock_admin_user_path(user.id), class: 'button is-small', method: :post, remote: true
+              = icon 'lock', '無効化'
+            = link_to login_admin_user_path(user.id), class: 'button is-small is-primary'
+              = icon 'sign-in-alt', 'ログイン'
+          - else
+            = link_to unlock_admin_user_path(user.id), class: 'button is-small is-primary', method: :post, remote: true
+              = icon 'level-up-alt', '有効化'
+            = link_to admin_user_path(user.id), class: 'button is-small is-danger', method: :delete, remote: true
+              = icon 'trash', '削除'
+        td = user.id
+        td = user.username
+        td = user.email
+        td = user.djname
+        td = user.iidxid
+        td = user.pref
+        td = user.grade
+        td = user.sign_in_count
+        td = user.current

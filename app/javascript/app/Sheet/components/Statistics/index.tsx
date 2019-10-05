@@ -15,14 +15,11 @@ function mapStateToProps(state: RootState) {
 }
 export type StatisticsProps = ReturnType<typeof mapStateToProps>;
 const Statistics: React.SFC<StatisticsProps> = props => (
-  <div className="uk-overflow-container">
-    <table
-      className="uk-table uk-table-bordered"
-      style={{ textAlign: 'center' }}
-    >
+  <>
+    <table className="table is-fullwidth">
       {props.mobile ? <Mobile {...props} /> : <Desktop {...props} />}
     </table>
-  </div>
+  </>
 );
 
 export default connect(mapStateToProps)(Statistics);

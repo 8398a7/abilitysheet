@@ -1,22 +1,20 @@
 - @title = 'Dashboards'
 
-h2.bold
-  = fa_stacked_icon 'dashboard inverse', base: 'square', text: @title
+h3.subtitle.is-3 = icon 'tachometer-alt', @title
 
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table.striped.uk-table-condensed
-    thead
-      tr
-        th 項目
-        th 結果
-    tbody
-      tr
-        td email登録人数
-        - all_num = User.select(:id).count
-        td #{@email}/#{all_num}(#{(@email / all_num.to_f * 100).round(2)}%)
-      tr
-        td 未読メッセージ
-        td #{@message}件
-      tr
-        td 今日ログインしたユーザ
-        td #{@user}人
+table.table.is-striped.is-hoverable.is-fullwidth
+  thead
+    tr
+      th 項目
+      th 結果
+  tbody
+    tr
+      td email登録人数
+      - all_num = User.select(:id).count
+      td #{@email}/#{all_num}(#{(@email / all_num.to_f * 100).round(2)}%)
+    tr
+      td 未読メッセージ
+      td #{@message}件
+    tr
+      td 今日ログインしたユーザ
+      td #{@user}人

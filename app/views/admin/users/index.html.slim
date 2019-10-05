@@ -1,29 +1,26 @@
 - @title = 'ユーザ管理'
 
-h2.bold
-  = fa_stacked_icon 'users inverse', base: 'square', text: @title
+h3.subtitle.is-3 = icon 'users', @title
 
-= search_form_for [:admin, @q], class: 'uk-form left' do |f|
-  = fa_icon 'search', text: '絞込検索'
-  .uk-form-row
-    label.uk-form-label DJNAME
-    .uk-form-controls
-      = f.search_field :djname_cont
-  .uk-form-row
-    label.uk-form-label IIDXID
-    .uk-form-controls
-      = f.search_field :iidxid_cont
-  .uk-form-row
-    label.uk-form-label email
-    .uk-form-controls
-      = f.search_field :email_eq
-  .uk-form-row
-    label.uk-form-label 所属
-    .uk-form-controls
-      = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}
-  .uk-form-row
-    button.uk-button.uk-button-primary onClick="$('.uk-panel > .uk-form').submit()"
-      = fa_icon 'search', text: '検索'
+= search_form_for [:admin, @q] do |f|
+  = icon 'search', '絞込検索'
+  .columns
+    .column
+      label.label DJNAME
+      .control = f.search_field :djname_cont, class: 'input'
+    .column
+      label.label IIDXID
+      .control = f.search_field :iidxid_cont, class: 'input'
+    .column
+      label.label email
+      .control = f.search_field :email_eq, class: 'input'
+  .field
+    label.label 所属
+    .control = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}, class: 'is-checkradio is-info is-circle'
+  .field
+    button.button.is-primary type='submit' = icon 'search', '検索'
+hr
 = paginate @users
+#user-modal
 = render partial: 'admin/users/list', locals: { users: @users }
 = paginate @users

@@ -1,50 +1,42 @@
 - @title = 'ユーザ編集'
+h2.subtitle.is-2 = icon 'edit', @title
 
-.uk-width-medium-1-2.uk-container-center
-  .uk-panel.uk-panel-box
-    .uk-panel-title.bold
-      = fa_icon 'sign-in', text: @title
-
-    .uk-nav-side
-      .uk-nav-divider
-
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: registration_path(resource_name) do |f|
-      = render 'devise/shared/error_messages', resource: resource
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-envelope
-          = f.email_field :email, autofocus: true
-      .uk-form-row
-        label.uk-form-label アカウント名(半角英数字)
-        .uk-form-controls
-          = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample'
-      .uk-form-row
-        label.uk-form-label DJNAME(半角英数大文字)/IIDXID
-        .uk-form-controls
-          = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE', class: 'half-input'
-          = f.text_field :iidxid, autofocus: true, placeholder: '1234-5678', class: 'half-input'
-      .uk-form-row
-        label.uk-form-label 所属/段位
-        .uk-form-controls
-          = f.select :pref, User.belongs, {}, { class: 'searchable pref' }
-          = f.select :grade, User.dan, {}, { class: 'searchable grade' }
-      .uk-form-row
-        label.uk-form-label 現在のパスワード
-        .uk-form-icon
-          i.uk-icon-key
-          = f.password_field :current_password, autocomplete: 'off', placeholder: 'パスワード'
-      .uk-form-row
-        label.uk-form-label パスワードの変更(変更しない場合は空のまま)
-        .uk-form-icon.half-input
-          i.uk-icon-key
-          = f.password_field :password, autocomplete: 'off', placeholder: '変更するパスワード'
-        .uk-form-icon.half-input
-          i.uk-icon-key
-          = f.password_field :password_confirmation, autocomplete: 'off', placeholder: '確認用'
-      hr
-      .uk-form-row.center
-        .uk-button-group
-          button.uk-button.uk-button-primary type='submit'
-            = fa_icon 'refresh', text: '更新'
-          = link_to registration_path(resource_name), class: 'uk-button uk-button-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete
-            = fa_icon 'trash', text: '削除'
+= form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  .columns
+    .column
+      label.label メールアドレス
+      .control = f.email_field :email, autofocus: true, class: 'input'
+    .column
+      label.label アカウント名(半角英数字)
+      .control = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample', class: 'input'
+  .columns
+    .column
+      label.label DJNAME(半角英数大文字)
+      .control = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE', class: 'input'
+    .column
+      label.label IIDXID
+      .control = f.text_field :iidxid, autofocus: true, placeholder: '1234-5678', class: 'input'
+  .columns
+    .column
+      label.label 段位
+      .control = f.select :pref, User.belongs, {}, { class: 'input searchable pref' }
+    .column
+      label.label 段位
+      .control = f.select :grade, User.dan, {}, { class: 'input searchable grade' }
+  .field
+    label.label 現在のパスワード
+    .control = f.password_field :current_password, autocomplete: 'off', placeholder: 'パスワード', class: 'input'
+  .columns
+    .column
+      label.label パスワードの変更(変更しない場合は空のまま)
+      .control = f.password_field :password, autocomplete: 'off', placeholder: '変更するパスワード', class: 'input'
+    .column
+      label.label 変更する場合は変更したいパスワードを再度入力
+      .control = f.password_field :password_confirmation, autocomplete: 'off', placeholder: '確認用', class: 'input'
+  hr
+  .field
+    button.button.is-info type='submit'
+      = icon 'sync', '更新'
+    = link_to registration_path(resource_name), class: 'button is-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete
+      = icon 'trash', '削除'

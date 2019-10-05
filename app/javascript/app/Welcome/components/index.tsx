@@ -26,12 +26,12 @@ const Welcome: React.SFC = () => {
 
       <TwitterContents />
       <br />
-      <div className="uk-panel uk-panel-box">
-        <h3 className="uk-panel-title">可視化例</h3>
-        <div className="center">
+      <article className="message is-info">
+        <div className="message-header">可視化例</div>
+        <div className="message-body">
           <SplineGraph initialRender={true} />
         </div>
-      </div>
+      </article>
     </>
   );
 };

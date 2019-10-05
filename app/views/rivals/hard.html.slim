@@ -1,16 +1,16 @@
 - @title = "vs #{User.find_by(iidxid: params[:id]).djname} - ハード地力表"
-.center
-  p.uk-button.uk-button-danger HARD
-  = link_to 'CLEAR', clear_rival_path(params[:id]), { class: 'uk-button uk-button-primary' }
+.has-text-centered
+  .button.is-danger HARD
+  = link_to 'CLEAR', clear_rival_path(params[:id]), { class: 'button is-info' }
   br
   br
-  = link_to 'Win', { condition: 'win' }, { class: 'uk-button uk-button-primary' }
+  = link_to 'Win', { condition: 'win' }, { class: 'button is-info' }
   | &nbsp;&nbsp;
-  = link_to 'Even', { condition: 'even' }, { class: 'uk-button uk-button-warning' }
+  = link_to 'Even', { condition: 'even' }, { class: 'button is-warning' }
   | &nbsp;&nbsp;
-  = link_to 'Lose', { condition: 'lose' }, { class: 'uk-button uk-button-danger' }
+  = link_to 'Lose', { condition: 'lose' }, { class: 'button is-danger' }
   | &nbsp;&nbsp;
-  = link_to 'ALL', { condition: 'all' }, { class: 'uk-button uk-button-success' }
+  = link_to 'ALL', { condition: 'all' }, { class: 'button is-primary' }
   br
   br
 = render 'rivals/list'

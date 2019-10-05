@@ -21,14 +21,14 @@ interface IProps {
   $$scoreList: ScoreList;
   count: number;
 }
-const Title: React.SFC<IProps> = (props) => {
+const Title: React.SFC<IProps> = props => {
   const { type, $$scoreList, count } = props;
   return (
-    <h2>
+    <h3 className="subtitle is-3">
       <i className="fa fa-table" />
-      {mapping[type].name}
-      ({mapping[type].remain}{$$scoreList.remainCount(type, count)})
-    </h2>
+      {mapping[type].name}({mapping[type].remain}
+      {$$scoreList.remainCount(type, count)})
+    </h3>
   );
 };
 

@@ -1,1 +1,1 @@
-$("#logs").html("<%= escape_javascript(render partial: 'logs/logs', object: @logs) %>");
+document.querySelector('#logs').innerHTML = '<%= escape_javascript(render partial: 'logs/logs', object: @logs) %>';
