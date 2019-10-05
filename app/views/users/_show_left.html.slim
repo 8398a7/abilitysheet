@@ -1,5 +1,5 @@
 - user = user.decorate
-= image_tag(url_for(user.avatar), class: 'icon') if user.avatar.attached?
+= image_tag(url_for(user.avatar), class: 'icon-img') if user.avatar.attached?
 . style='margin-top: 20px'
   h3.subtitle.is-3
     b = user.djname
