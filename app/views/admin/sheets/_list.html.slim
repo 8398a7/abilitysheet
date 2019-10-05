@@ -10,6 +10,7 @@ table.table.is-hoverable.is-striped.is-fullwidth
       th = sort_link(@q, :n_ability, 'ノマゲ地力')
       th = sort_link(@q, :h_ability, 'ハード地力')
       th = sort_link(@q, :exh_ability, 'エクハ地力')
+      th = sort_link(@q, :updated_at, '更新日')
   tbody
     - sheets.each do |sheet|
       - sheet = sheet.decorate
@@ -33,3 +34,4 @@ table.table.is-hoverable.is-striped.is-fullwidth
         td = sheet.normal
         td = sheet.hard
         td = sheet.exh
+        td = sheet.updated_at

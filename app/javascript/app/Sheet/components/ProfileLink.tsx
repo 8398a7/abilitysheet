@@ -8,9 +8,9 @@ interface IProps {
 const ProfileLink: React.SFC<IProps> = props => {
   const { user } = props;
   return (
-    <h4 className="subtitle is-4">
+    <h5 className="subtitle is-5">
       <a href={userPath(user.iidxid)}>{`DJ.${user.djname}(${user.iidxid})`}</a>
-    </h4>
+    </h5>
   );
 };
 
