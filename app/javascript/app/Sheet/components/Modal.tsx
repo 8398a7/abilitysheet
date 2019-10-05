@@ -1,6 +1,7 @@
-import React, { SFC } from 'react';
-import { useSelector } from 'react-redux';
+import React, { SFC, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../ducks/index';
+import { actions } from '../ducks/Sheet';
 
 interface IProps {
   color: RootState['$$meta']['env']['color'];
@@ -38,7 +39,7 @@ const Textage = ({ modal }: { modal: IProps['modal'] }) => {
         key="textage-1p"
         href={modal.textage + '?1AC00'}
         target="_blank"
-        className="uk-button uk-button-danger"
+        className="button is-danger"
       >
         textage(1P)
       </a>
@@ -46,7 +47,7 @@ const Textage = ({ modal }: { modal: IProps['modal'] }) => {
         key="textage-2p"
         href={modal.textage + '?2AC00'}
         target="_blank"
-        className="uk-button uk-button-primary"
+        className="button is-info"
       >
         textage(2P)
       </a>
@@ -57,40 +58,44 @@ const Textage = ({ modal }: { modal: IProps['modal'] }) => {
 const Modal: SFC = () => {
   const color = useSelector((state: RootState) => state.$$meta.env.color);
   const modal = useSelector((state: RootState) => state.$$sheet.modal);
+  const modalClass = useSelector(
+    (state: RootState) => state.$$sheet.modalClass,
+  );
+  const dispatch = useDispatch();
+  const handleCloseModal = useCallback(() => {
+    dispatch(actions.closeModal());
+  }, []);
 
   if (modal === undefined) {
     return null;
   }
   return (
-    <div id="sheet-modal" className="uk-modal">
-      <div className="uk-modal-dialog">
-        <a className="uk-modal-close uk-close" />
-        <div className="uk-modal-header">
-          <h2>
+    <div id="sheet-modal" className={modalClass} onClick={handleCloseModal}>
+      <div className="modal-background" />
+      <div className="modal-content">
+        <div className="box">
+          <h4 className="subtitle is-4">
             <i className="fa fa-history" />
             {modal.title}
-          </h2>
-        </div>
-        <table className="uk-table uk-table-hover uk-table-striped">
-          <thead>
-            <tr>
-              <td>state</td>
-              <td>score</td>
-              <td>bp</td>
-              <td>version</td>
-              <td>updated at</td>
-            </tr>
-          </thead>
-          <tbody>
-            <Content {...{ color, modal }} />
-          </tbody>
-        </table>
-        <div className="uk-modal-footer center">
-          <Textage modal={modal} />
-          <button className="uk-button uk-modal-close">
-            <i className="fa fa-times" />
-            Close
-          </button>
+          </h4>
+          <table className="table is-striped is-fullwidth">
+            <thead>
+              <tr>
+                <td>state</td>
+                <td>score</td>
+                <td>bp</td>
+                <td>version</td>
+                <td>updated at</td>
+              </tr>
+            </thead>
+            <tbody>
+              <Content {...{ color, modal }} />
+            </tbody>
+          </table>
+          <div className="has-text-centered">
+            <Textage modal={modal} />
+          </div>
+          <button className="modal-close is-large" />
         </div>
       </div>
     </div>

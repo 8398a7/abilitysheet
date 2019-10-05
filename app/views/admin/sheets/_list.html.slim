@@ -1,36 +1,35 @@
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
+table.table.is-hoverable.is-striped.is-fullwidth
+  thead
+    tr
+      th style='width: 150px'
+        = link_to new_admin_sheet_path, class: 'button is-small is-primary', remote: true
+          = icon 'plus', '作成'
+      th = sort_link(@q, :id, 'id')
+      th = sort_link(@q, :textage, 'textage')
+      th = sort_link(@q, :title, '曲名')
+      th = sort_link(@q, :n_ability, 'ノマゲ地力')
+      th = sort_link(@q, :h_ability, 'ハード地力')
+      th = sort_link(@q, :exh_ability, 'エクハ地力')
+  tbody
+    - sheets.each do |sheet|
+      - sheet = sheet.decorate
       tr
-        th style="width: 150px;"
-          = link_to new_admin_sheet_path, class: 'uk-button uk-button-mini uk-button-primary', remote: true do
-            = fa_icon 'plus', text: '作成'
-        th = sort_link(@q, :id, 'id')
-        th = sort_link(@q, :textage, 'textage')
-        th = sort_link(@q, :title, '曲名')
-        th = sort_link(@q, :n_ability, 'ノマゲ地力')
-        th = sort_link(@q, :h_ability, 'ハード地力')
-        th = sort_link(@q, :exh_ability, 'エクハ地力')
-    tbody
-      - sheets.each do |sheet|
-        - sheet = sheet.decorate
-        tr
-          td
-            - if sheet.active
-              = link_to edit_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-success uk-margin-small-right', remote: true
-                = fa_icon 'pencil', text: '編集'
-              = link_to inactive_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini', method: :post, remote: true
-                = fa_icon 'lock', text: '無効化'
-            - else
-              = link_to active_admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-primary uk-margin-small-right', method: :post, remote: true
-                = fa_icon 'level-up', text: '有効化'
-              = link_to admin_sheet_path(sheet.id), class: 'uk-button uk-button-mini uk-button-danger', method: :delete, remote: true
-                = fa_icon 'trash', text: '削除'
-          td = sheet.id
-          td
-            - if sheet.textage.present?
-              = fa_icon 'check'
-          td class=(sheet.active ? "uk-button-success" : "uk-button-danger") = sheet.title
-          td = sheet.normal
-          td = sheet.hard
-          td = sheet.exh
+        td
+          - if sheet.active
+            = link_to edit_admin_sheet_path(sheet.id), class: 'button is-small is-success', remote: true
+              = icon 'edit', '編集'
+            = link_to inactive_admin_sheet_path(sheet.id), class: 'button is-small', method: :post, remote: true
+              = icon 'lock', '無効化'
+          - else
+            = link_to active_admin_sheet_path(sheet.id), class: 'button is-small is-primary', method: :post, remote: true
+              = icon 'level-up-alt', '有効化'
+            = link_to admin_sheet_path(sheet.id), class: 'button is-small is-danger', method: :delete, remote: true
+              = icon 'trash', '削除'
+        td = sheet.id
+        td
+          - if sheet.textage.present?
+            = icon 'check'
+        td class=(sheet.active ? 'is-success' : 'is-danger') = sheet.title
+        td = sheet.normal
+        td = sheet.hard
+        td = sheet.exh

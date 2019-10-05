@@ -1,26 +1,15 @@
 - @title = 'パスワード再発行'
+h3.subtitle.is-3 = icon 'key', @title
 
-.uk-width-medium-1-2.uk-container-center
-  .uk-panel.uk-panel-box
-    .uk-panel-title.bold
-      = fa_icon 'key', text: @title
-
-    .uk-nav-side
-      .uk-nav-divider
-
-    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'uk-form uk-form-stacked devise' }) do |f|
-      = render 'devise/shared/error_messages', resource: resource
-      = f.hidden_field :reset_password_token
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-key
-          = f.password_field :password, autofocus: true, placeholder: "新しいパスワード(#{@minimum_password_length}文字以上)", autocomplete: 'off'
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-key
-          = f.password_field :password_confirmation, autofocus: true, placeholder: "新しいパスワード(確認)", autocomplete: 'off'
-      .uk-form-row
-        .uk-button-group
-          button.uk-button.uk-button-danger type="submit"
-            = fa_icon 'refresh', text: 'パスワード変更'
-          = render 'devise/shared/links'
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+  = render 'devise/shared/error_messages', resource: resource
+  = f.hidden_field :reset_password_token
+  .field
+    label.label 新しいパスワード
+    .control = f.password_field :password, autofocus: true, placeholder: "新しいパスワード(#{@minimum_password_length}文字以上)", autocomplete: 'off', class: 'input'
+  .field
+    label.label 新しいパスワード(確認)
+    .control = f.password_field :password_confirmation, autofocus: true, placeholder: "新しいパスワード(確認)", autocomplete: 'off', class: 'input'
+  .field
+    button.button.is-danger type='submit' = icon 'sync', 'パスワード変更'
+    = render 'devise/shared/links'

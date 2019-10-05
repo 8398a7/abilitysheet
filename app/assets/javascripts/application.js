@@ -6,19 +6,45 @@
 //= require peek
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
-//= require datatables-all/media/js/jquery.dataTables.min
-//= require datatables-all/media/js/dataTables.uikit.min
-//= require uikit/dist/js/uikit.min
-//= require uikit/dist/js/components/notify.min
-//= require uikit/dist/js/components/accordion.min
+//= require datatables/media/js/jquery.dataTables.min
+//= require datatables-bulma/js/dataTables.bulma.min
+//= require bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min
 //= require select2/dist/js/select2.min
 //= require nprogress/nprogress
 //= require turbolinks
 //= require_tree .
 
 document.addEventListener('turbolinks:load', function() {
+  bulmaAccordion.attach();
+  navBarEvent();
   scrollTop('scroll-top', 500);
 });
+
+function navBarEvent() {
+  var $navbarBurgers = Array.prototype.slice.call(
+    document.querySelectorAll('.navbar-burger'), 0);
+  if ($navbarBurgers.length > 0) {
+    $navbarBurgers.forEach(function(el) {
+      el.addEventListener('click', function() {
+        var target = el.dataset.target;
+        var $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  }
+}
+
+document.addEventListener('click', function(e) {
+  closeModal(e);
+});
+
+function closeModal(e) {
+  if (e.target.className !== 'modal-background') return;
+  document.querySelectorAll('.modal').forEach(function(modal) {
+    return (modal.className = 'modal');
+  });
+}
 
 function scrollTop(elem, duration) {
   var target = document.getElementById(elem);

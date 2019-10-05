@@ -1,31 +1,30 @@
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
-      th.center DJNAME
-      th.center IIDX-ID
-      th.center 段位
-      th.center 所属
-      th.center 最終更新日
-      th.center 最終更新楽曲
-      th.center ランプ情報
-    tbody
-      - @users.each do |user|
-        - user = user.decorate
-        - score = @scores_map[user.id].try(:decorate)
-        - iidxid = user.iidxid
-        tr
-          td.center = link_to user.djname, user_path(iidxid)
-          td.center = iidxid
-          td.center bgcolor=user.dan_color = user.dan
-          td.center = user.belongs
-          - if score
-            td.center = link_to score.updated_at, logs_path(user.iidxid, score.updated_at)
-            td.center = score.title
-            td.center bgcolor=Static::COLOR[score.state]
-          - else
-            td
-            td
-            td
+table.table.is-hoverable.is-fullwidth.datatable
+  thead
+    th.has-text-centered DJNAME
+    th.has-text-centered IIDX-ID
+    th.has-text-centered 段位
+    th.has-text-centered 所属
+    th.has-text-centered 最終更新日
+    th.has-text-centered 最終更新楽曲
+    th.has-text-centered ランプ情報
+  tbody
+    - @users.each do |user|
+      - user = user.decorate
+      - score = @scores_map[user.id].try(:decorate)
+      - iidxid = user.iidxid
+      tr
+        td.has-text-centered = link_to user.djname, user_path(iidxid)
+        td.has-text-centered = iidxid
+        td.has-text-centered bgcolor=user.dan_color = user.dan
+        td.has-text-centered = user.belongs
+        - if score
+          td.has-text-centered = link_to score.updated_at, logs_path(user.iidxid, score.updated_at)
+          td.has-text-centered = score.title
+          td.has-text-centered bgcolor=Static::COLOR[score.state]
+        - else
+          td
+          td
+          td
 javascript:
   if ($('[id^=DataTables_Table]').length === 0) {
     $('.datatable').dataTable({

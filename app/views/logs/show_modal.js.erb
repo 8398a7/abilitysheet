@@ -1,0 +1,8 @@
+document.querySelector('#log-modal').innerHTML = '<%= escape_javascript(render partial: 'logs/form', locals: { log: @log }) %>';
+document.querySelector('#log-modal').className = 'modal is-active';
+$('#datepicker').datepicker({
+  dateFormat: 'yy-mm-dd'
+});
+function handleCloseLogModal() {
+  document.querySelector('#log-modal').className = 'modal';
+}

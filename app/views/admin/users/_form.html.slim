@@ -6,55 +6,40 @@
   - title = 'ユーザの更新'
   - submit = '更新'
 
-.uk-modal-dialog style="padding-bottom: 0"
-  a.uk-modal-close.uk-close
-
-  = form_for [:admin, user], html: { class: 'uk-form uk-form-horizontal' }, remote: true do |f|
-    .uk-modal-header
-      h4.bold
-        = fa_icon 'user', text: title
-        - if @check
-          = fa_icon 'check'
-        - else
-          = fa_icon 'ban'
-
-    .uk-form-row
-      label.uk-form-label メールアドレス
-      .uk-form-controls
-        = f.text_field :email, class: 'uk-width-1-1'
-    .uk-form-row
-      label.uk-form-label アカウント名
-      .uk-form-controls
-        = f.text_field :username, class: 'uk-width-1-1'
-    .uk-form-row
-      label.uk-form-label DJNAME
-      .uk-form-controls
-        = f.text_field :djname, class: 'uk-width-1-1'
-    .uk-form-row
-      label.uk-form-label 段位
-      .uk-form-controls
-        = f.select :grade, User.dan, {}, { class: 'uk-width-1-1 searchable' }
-    .uk-form-row
-      label.uk-form-label IIDXID
-      .uk-form-controls
-        = f.text_field :iidxid, class: 'uk-width-1-1'
-    .uk-form-row
-      label.uk-form-label 所属
-      .uk-form-controls
-        = f.select :pref, User.belongs, {}, { class: 'uk-width-1-1 searchable' }
-    .uk-form-row
-      label.uk-form-label パスワード
-      .uk-form-controls
-        = f.password_field :password, class: 'uk-width-1-1'
-    .uk-form-row
-      label.uk-form-label パスワード(確認)
-      .uk-form-controls
-        = f.password_field :password_confirmation, class: 'uk-width-1-1'
-    .uk-modal-footer.uk-text-right
-      .uk-button-group
-        button.uk-button.uk-button-primary
-          = fa_icon 'floppy-o', text: submit
-        button.uk-button.uk-modal-close
-          = fa_icon 'times', text: 'キャンセル'
-        = link_to admin_user_path(user.id), class: 'uk-button uk-button-danger', method: :delete, remote: true
-          = fa_icon 'trash', text: '削除'
+.modal-background
+.modal-content
+  .box
+    h2.subtitle.is-5 = icon 'user', title
+    = form_for [:admin, user], remote: true do |f|
+      .field
+        label.label メールアドレス
+        .control = f.email_field :email, autofocus: true, placeholder: 'パスワード再発行/ログイン用', class: 'input'
+      .field
+        label.label アカウント名(半角英数字)
+        .control = f.text_field :username, autofocus: true, placeholder: '15文字以内, ex. sample', class: 'input'
+      .columns
+        .column
+          label.label DJNAME
+          .control = f.text_field :djname, autofocus: true, placeholder: '6文字以内, ex. SAMPLE', class: 'input'
+        .column
+          label.label IIDXID
+          .control = f.text_field :iidxid, autofocus: true, placeholder: 'ex. 1234-5678', class: 'input'
+      .columns
+        .column
+          label.label 所属
+          .control = f.select :pref, User.belongs, {}, { class: 'input searchable pref' }
+        .column
+          label.label 段位
+          .control = f.select :grade, User.dan, {}, { class: 'input searchable grade' }
+      .columns
+        .column
+          label.label パスワード
+          .control = f.password_field :password, autocomplete: 'off', placeholder: "パスワード(#{@minimum_password_length}文字以上)", class: 'input'
+        .column
+          label.label パスワード確認用
+          .control = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード(確認用)', class: 'input'
+      .field
+        button.button.is-primary = icon 'floppy-o', submit
+        = link_to admin_user_path(user.id), class: 'button is-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete, remote: true
+          = icon 'trash', '削除'
+    button.modal-close.is-large aria-label='close' onclick='handleCloseUserModal()'

@@ -1,27 +1,16 @@
 - @title = 'ログイン'
+h3.subtitle.is-3 = icon 'sign-in-alt', @title
 
-.uk-width-medium-1-2.uk-container-center
-  .uk-panel.uk-panel-box
-    .uk-panel-title.bold
-      = fa_icon 'sign-in', text: @title
-
-    .uk-nav-side
-      .uk-nav-divider
-
-    = form_for resource, as: resource_name, html: { class: 'uk-form uk-form-stacked devise' }, url: session_path(resource_name) do |f|
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-user
-          = f.text_field :login, autofocus: true, placeholder: 'アカウント名 or IIDXID or メールアドレス'
-      .uk-form-row
-        .uk-form-icon
-          i.uk-icon-key
-          = f.password_field :password, autocomplete: 'off', placeholder: 'パスワード'
-      .uk-form-row
-        = f.label :remember_me
-        = f.check_box :remember_me
-      .uk-form-row
-        .uk-button-group
-          button.uk-button.uk-button-primary type="submit"
-            = fa_icon 'sign-in', text: 'ログイン'
-          = render 'devise/shared/links'
+= form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+  .field
+    label.label アカウント名 or IIDXID or メールアドレス
+    .control = f.text_field :login, autofocus: true, class: 'input'
+  .field
+    label.label パスワード
+    .control = f.password_field :password, autocomplete: 'off', class: 'input'
+  .field
+    = f.check_box :remember_me, class: 'is-checkradio is-info is-circle'
+    label for='user_remember_me' remember me
+  .field
+    button.button.is-link type='submit' = icon 'sign-in-alt', 'ログイン'
+    = render 'devise/shared/links'

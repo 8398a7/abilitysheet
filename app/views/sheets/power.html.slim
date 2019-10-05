@@ -4,29 +4,28 @@ hr
 - unless user_signed_in? && current_user.special?
   = adsense
   hr
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
+table.table.is-fullwidth.datatable
+  thead
+    tr
+      th.has-text-centered TITLE
+      th.has-text-centered EASY
+      th.has-text-centered CLEAR
+      th.has-text-centered HARD
+      th.has-text-centered EXH CLEAR
+      th.has-text-centered FULL COMBO
+      th.has-text-centered AAA
+  tbody
+    - @sheets.each do |sheet|
       tr
-        th.center TITLE
-        th.center EASY
-        th.center CLEAR
-        th.center HARD
-        th.center EXH CLEAR
-        th.center FULL COMBO
-        th.center AAA
-    tbody
-      - @sheets.each do |sheet|
-        tr
-          - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
-          - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
-          td.center = sheet.title
-          td.center bgcolor=@color[sheet.id] = val[0]
-          td.center bgcolor=@color[sheet.id] = val[1]
-          td.center bgcolor=@color[sheet.id] = val[2]
-          td.center bgcolor=@color[sheet.id] = val[3]
-          td.center bgcolor=@color[sheet.id] = val[4]
-          td.center = val[5]
+        - val = [sheet.e, sheet.c, sheet.h, sheet.exh, sheet.fc, sheet.aaa]
+        - (0..5).each { |i| val[i] = %(Infinity) if val[i] == 99.99 }
+        td.has-text-centered = sheet.title
+        td.has-text-centered bgcolor=@color[sheet.id] = val[0]
+        td.has-text-centered bgcolor=@color[sheet.id] = val[1]
+        td.has-text-centered bgcolor=@color[sheet.id] = val[2]
+        td.has-text-centered bgcolor=@color[sheet.id] = val[3]
+        td.has-text-centered bgcolor=@color[sheet.id] = val[4]
+        td.has-text-centered = val[5]
 javascript:
   sheets_count = '#{@sheets.count}'
 

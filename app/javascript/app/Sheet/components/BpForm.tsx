@@ -4,15 +4,21 @@ interface IProps {
   bp: string;
   handleChangeBp: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const BpForm: React.SFC<IProps> = (props) => {
+const BpForm: React.SFC<IProps> = props => {
   const { bp, handleChangeBp } = props;
   return (
-    <form className="uk-form uk-form-stacked">
-      <label className="uk-form-label">指定したBP以上の楽曲に★マーク</label>
-      <div className="uk-form-controls">
-        <input type="text" value={bp} onChange={handleChangeBp} />
+    <>
+      <label className="label">指定したBP以上の楽曲に★マーク</label>
+      <div className="control has-text-centered">
+        <input
+          className="input"
+          type="text"
+          value={bp}
+          onChange={handleChangeBp}
+          style={{ width: '50%' }}
+        />
       </div>
-    </form>
+    </>
   );
 };
 

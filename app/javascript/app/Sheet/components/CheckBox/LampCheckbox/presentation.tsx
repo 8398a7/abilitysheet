@@ -20,40 +20,45 @@ const Presentation: SFC<IProps> = props => {
   const domList = useMemo(
     () =>
       lamp.map((l, idx) => (
-        <label key={`lamp-checkbox-${idx}`}>
+        <span key={`lamp-checkbox-${idx}`}>
           <input
-            id={'state-' + idx}
+            id={`state-${idx}`}
             type="checkbox"
             value={idx}
             name="check-lamp"
+            className="is-checkradio is-success is-circle"
             defaultChecked={true}
             onChange={handleChangeLamp}
           />
-          {l}
-        </label>
+          <label htmlFor={`state-${idx}`}>{l}</label>
+        </span>
       )),
     [lamp],
   );
   const constantDoms = useMemo(
     () => [
-      <label key={'lamp-checkbox-clear'}>
+      <span key={'lamp-checkbox-clear'}>
         <input
           type="checkbox"
           value="hard"
+          className="is-checkradio is-success is-circle"
+          id="hard-checkbox"
           checked={hard}
           onChange={handleHardChangeLamp}
         />
-        未難
-      </label>,
-      <label key={'lamp-checkbox-hard'}>
+        <label htmlFor="hard-checkbox">未難</label>
+      </span>,
+      <span key={'lamp-checkbox-hard'}>
         <input
           type="checkbox"
           value="clear"
+          className="is-checkradio is-success is-circle"
+          id="clear-checkbox"
           defaultChecked={clear}
           onChange={handleClearChangeLamp}
         />
-        未クリア
-      </label>,
+        <label htmlFor="clear-checkbox">未クリア</label>
+      </span>,
     ],
     [clear, hard],
   );

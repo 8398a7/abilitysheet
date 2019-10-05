@@ -1,23 +1,28 @@
 - @title = "#{User.find_by(iidxid: params[:id]).djname} - 更新履歴"
-.relative
-  .uk-grid
-    .uk-width-medium-10-10
-      .uk-offcanvas#mobile-menu
-        .uk-offcanvas-bar
-          .uk-panel
-            ul.uk-nav.uk-nav-offcanvas.uk-nav-parent-icon data-uk-nav=""
-              li.uk-nav-header = fa_icon 'bar-chart', text: 'コンテンツ'
-              li = link_to 'クリア推移', sheet_log_path
-              - if user_signed_in? && current_user.iidxid == params[:id] && notice != '同期処理を承りました。逐次反映を行います。 '
-                li.uk-nav-header = fa_icon 'refresh', text: '同期'
-                li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
-                li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
-                li = link_to 'ISTとの同期', ist_log_path, data: { disable_with: '同期中', confirm: 'ISTに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
-      h2 = fa_icon 'refresh', text: '更新履歴'
-      button.uk-button.uk-button-primary data-uk-offcanvas="{target: '#mobile-menu'}" Menu
-      hr
-      - unless user_signed_in? && current_user.special?
-        = adsense
-        hr
-      = react_component_wrapper 'LogCalendar', iidxid: params[:id]
-      #logs = render partial: 'logs/logs'
+h2.subtitle.is-3 = icon 'sync', '更新履歴'
+.content
+  ul
+    li = icon 'chart-bar', 'コンテンツ'
+    ul
+      li = link_to 'クリア推移', sheet_log_path
+    - if user_signed_in? && current_user.iidxid == params[:id] && notice != '同期処理を承りました。逐次反映を行います。 '
+      li = icon 'sync', '同期'
+      ul
+        li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
+        li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
+        li = link_to 'ISTとの同期', ist_log_path, data: { disable_with: '同期中', confirm: 'ISTに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
+
+hr
+- unless user_signed_in? && current_user.special?
+  = adsense
+  hr
+section.accordions
+  article.accordion.is-primary
+    .accordion-header
+      p = icon 'calendar', 'カレンダーで見る'
+      button.toggle aria-label='toggle'
+    .accordion-body
+      .accordion-content
+        = react_component_wrapper 'LogCalendar', iidxid: params[:id]
+hr
+#logs = render partial: 'logs/logs'

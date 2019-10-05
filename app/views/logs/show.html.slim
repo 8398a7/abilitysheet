@@ -17,38 +17,46 @@ hr
   = adsense
   hr
 
-= react_component_wrapper 'LogCalendar', iidxid: params[:id]
+section.accordions
+  article.accordion.is-primary
+    .accordion-header
+      p = icon 'calendar', 'カレンダーで見る'
+      button.toggle aria-label='toggle'
+    .accordion-body
+      .accordion-content
+        = react_component_wrapper 'LogCalendar', iidxid: params[:id]
+hr
 
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
+.modal#log-modal
+table.table.is-fullwidth.datatable
+  thead
+    tr
+      th 楽曲
+      th スコア
+      th BP
+      th 旧
+      th 新
+  tbody
+    - @logs.each do |log|
       tr
-        th 楽曲
-        th スコア
-        th BP
-        th 旧
-        th 新
-    tbody
-      - @logs.each do |log|
-        tr
-          td
-            - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
-              = link_to log_path(log.id), method: :delete, remote: true, class: 'uk-button uk-button-mini uk-button-danger destroy-button', style: 'display: none',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
-                = fa_icon 'trash', text: '削除'
-              |&nbsp;&nbsp;
-            = link_to_if current_user.try(:iidxid) == params[:id], log.title, edit_log_path(log.id), remote: true
-          td
-            = log.new_score
-            - diff = log.new_score.to_i - log.pre_score.to_i
-            - if diff != 0
-              = sprintf('(%+d)', diff)
-          td
-            = log.new_bp
-            - diff = log.pre_bp.to_i - log.new_bp.to_i
-            - if 0 < diff
-              = sprintf('(%+d)', diff * -1)
-          td bgcolor=@color[log.pre_state]
-          td bgcolor=@color[log.new_state]
+        td
+          - if user_signed_in? && (current_user.iidxid == params[:id] || current_user.owner?)
+            = link_to log_path(log.id), method: :delete, remote: true, class: 'button is-danger is-small destroy-button', style: 'display: none',  data: { confirm: '削除してよろしいですか？ランプは旧ランプの状態へ戻ります' }
+              = icon 'trash', '削除'
+            |&nbsp;&nbsp;
+          = link_to_if current_user.try(:iidxid) == params[:id], log.title, edit_log_path(log.id), remote: true
+        td
+          = log.new_score
+          - diff = log.new_score.to_i - log.pre_score.to_i
+          - if diff != 0
+            = sprintf('(%+d)', diff)
+        td
+          = log.new_bp
+          - diff = log.pre_bp.to_i - log.new_bp.to_i
+          - if 0 < diff
+            = sprintf('(%+d)', diff * -1)
+        td bgcolor=@color[log.pre_state]
+        td bgcolor=@color[log.new_state]
 
 javascript:
   logs_count = '#{@logs.count}'

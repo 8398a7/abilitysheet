@@ -1,0 +1,6 @@
+document.querySelector('#sheet-modal').innerHTML = '<%= escape_javascript(render partial: 'admin/sheets/form', locals: { sheet: @sheet }) %>';
+document.querySelector('#sheet-modal').className = 'modal is-active';
+$('.searchable').select2();
+function handleCloseSheetModal() {
+  document.querySelector('#sheet-modal').className = 'modal';
+}

@@ -1,25 +1,24 @@
-.uk-overflow-container
-  table.uk-table.uk-table-hover.uk-table-striped.datatable
-    thead
-      th.center DJNAME
-      th.center IIDX-ID
-      th.center 段位
-      th.center 所属
-      th.center 最終更新日
-      th.center 最終更新楽曲
-      th.center ランプ情報
-    tbody
-      - @users.each_key do |key|
-        - user = @users[key]
-        - iidxid = user[:iidxid]
-        tr
-          td.center = link_to user[:djname], user_path(iidxid)
-          td.center = iidxid
-          td.center bgcolor=User::Static::GRADE_COLOR[user[:grade].to_i] = User::Static::GRADE[user[:grade].to_i]
-          td.center = User::Static::PREF[user[:pref].to_i]
-          td.center = link_to user[:updated_at], logs_path(iidxid, user[:updated_at])
-          td.center = user[:title]
-          td.center bgcolor=Static::COLOR[user[:state].to_i]
+table.table.is-hoverable.is-fullwidth.datatable
+  thead
+    th.has-text-centered DJNAME
+    th.has-text-centered IIDX-ID
+    th.has-text-centered 段位
+    th.has-text-centered 所属
+    th.has-text-centered 最終更新日
+    th.has-text-centered 最終更新楽曲
+    th.has-text-centered ランプ情報
+  tbody
+    - @users.each_key do |key|
+      - user = @users[key]
+      - iidxid = user[:iidxid]
+      tr
+        td.has-text-centered = link_to user[:djname], user_path(iidxid)
+        td.has-text-centered = iidxid
+        td.has-text-centered bgcolor=User::Static::GRADE_COLOR[user[:grade].to_i] = User::Static::GRADE[user[:grade].to_i]
+        td.has-text-centered = User::Static::PREF[user[:pref].to_i]
+        td.has-text-centered = link_to user[:updated_at], logs_path(iidxid, user[:updated_at])
+        td.has-text-centered = user[:title]
+        td.has-text-centered bgcolor=Static::COLOR[user[:state].to_i]
 javascript:
   if ($('[id^=DataTables_Table]').length === 0) {
     $('.datatable').dataTable({

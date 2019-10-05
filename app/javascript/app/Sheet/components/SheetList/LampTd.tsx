@@ -32,7 +32,7 @@ interface IProps {
   updateLamp: (
     sheetId?: number,
   ) => (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleSheetClick: (sheetId?: number) => () => void;
+  handleSheetClick: (sheetId?: number) => (e: React.MouseEvent) => void;
 }
 
 const LampTd: React.SFC<IProps> = props => {
@@ -70,11 +70,13 @@ const LampTd: React.SFC<IProps> = props => {
     display = 'none';
   }
   return (
-    <td style={{ width, height, backgroundColor, display }}>
+    <td
+      className="has-text-centered"
+      style={{ width, height, backgroundColor, display }}
+    >
       <a
         style={{ color: '#555555' }}
-        href="#sheet-modal"
-        data-uk-modal={true}
+        href="#"
         onClick={handleSheetClick(sheet.id)}
       >
         {sheet.title}
