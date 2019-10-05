@@ -2505,17 +2505,17 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-datatables-all@^1.10.13:
-  version "1.10.13"
-  resolved "https://registry.yarnpkg.com/datatables-all/-/datatables-all-1.10.13.tgz#f120870b90a195a3b685cad8b773cae570dbd909"
-  integrity sha1-8SCHC5ChlaO2hcrYt3PK5XDb2Qk=
-  dependencies:
-    jquery ">=1.7"
-
 datatables-bulma@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/datatables-bulma/-/datatables-bulma-1.0.1.tgz#6eb076337cde03eee1abb2c2eb2c88504ead5a71"
   integrity sha1-brB2M3zeA+7hq7LC6yyIUE6tWnE=
+
+datatables@^1.10.18:
+  version "1.10.18"
+  resolved "https://registry.yarnpkg.com/datatables/-/datatables-1.10.18.tgz#fee16e82aa70b17c5faf1a6954ac68f404f33a70"
+  integrity sha512-ntatMgS9NN6UMpwbmO+QkYJuKlVeMA2Mi0Gu/QxyIh+dW7ZjLSDhPT2tWlzjpIWEkDYgieDzS9Nu7bdQCW0sbQ==
+  dependencies:
+    jquery ">=1.7"
 
 date-now@^0.1.4:
   version "0.1.4"
