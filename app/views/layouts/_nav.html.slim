@@ -33,7 +33,7 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
       = link_to ist_helps_path, class: 'navbar-item'
         = icon 'fas', 'question', 'ISTとの同期'
       - if user_signed_in? && current_user.member?
-        .navbar-item.has-dropdown.is-hoverable
+        .navbar-item.has-dropdown.is-hoverable.admin-parent
           a.navbar-link = icon 'fas', 'gears', '管理'
           .navbar-dropdown
             - if current_user.member?
