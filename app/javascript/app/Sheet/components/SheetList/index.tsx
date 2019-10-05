@@ -45,7 +45,8 @@ const SheetList: SFC = props => {
   );
 
   const handleSheetClick = useCallback(
-    (sheetId?: number) => () => {
+    (sheetId?: number) => (e: React.MouseEvent) => {
+      e.preventDefault();
       const { iidxid } = $$user;
       if (iidxid === undefined || sheetId === undefined) {
         return;
