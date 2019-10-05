@@ -1,7 +1,7 @@
 .modal-background
 .modal-content
   .box
-    h2.subtitle.is-5 = icon 'fas', 'sync', 'ログ情報更新'
+    h2.subtitle.is-5 = icon 'sync', 'ログ情報更新'
 
     = form_for log, remote: true do |f|
       .field
@@ -18,5 +18,5 @@
           = f.text_field :created_date, id: 'datepicker', readonly: true, class: 'input'
       hr
       button.button.is-primary type='submit'
-        = icon 'fas', 'sync', '更新'
+        = icon 'sync', '更新'
     button.modal-close.is-large aria-label='close' onclick='handleCloseLogModal()'

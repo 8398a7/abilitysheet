@@ -1,5 +1,5 @@
 - @title = '問い合わせ返信'
-h3.subtitle.is-3 = icon 'fas', 'reply', '問い合わせ返信フォーム'
+h3.subtitle.is-3 = icon 'reply', '問い合わせ返信フォーム'
 hr
 = form_tag admin_mails_path, method: :post
   .field
@@ -12,4 +12,4 @@ hr
     label.label 内容
     .control = text_area_tag :body, '', class: 'textarea'
   .field
-    button.button.is-primary type='submit' = icon 'fas', 'sign-in-alt', '送信'
+    button.button.is-primary type='submit' = icon 'sign-in-alt', '送信'

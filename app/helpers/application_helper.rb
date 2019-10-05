@@ -30,7 +30,7 @@ module ApplicationHelper
     logs_path(user.iidxid, user.logs.order(:created_date).last.created_date)
   end
 
-  def icon(style, name, text = nil, html_options = {})
+  def icon(name, text = nil, html_options = {}, style: 'fas')
     if text.is_a?(Hash)
       html_options = text
       text = nil

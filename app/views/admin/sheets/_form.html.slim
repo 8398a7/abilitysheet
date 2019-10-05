@@ -9,7 +9,7 @@
 .modal-background
 .modal-content
   .box
-    h2.subtitle.is-5 = icon 'fas', 'list-ul', title
+    h2.subtitle.is-5 = icon 'list-ul', title
     = form_for [:admin, sheet], remote: true do |f|
       .field
         label.label 楽曲名
@@ -28,5 +28,5 @@
         label.label textage
         .control = f.text_field :textage, placeholder: 'textage link', class: 'input'
       .field
-        button.button.is-primary = icon 'fas', 'floppy-o', submit
+        button.button.is-primary = icon 'floppy-o', submit
     button.modal-close.is-large aria-label='close' onclick='handleCloseSheetModal()'

@@ -10,9 +10,9 @@
     - if current_user && current_user != user
       = link_to rival_reverse_path(user.iidxid), method: :put, class: 'button'
         - if current_user.follows.pluck(:target_user_id).include?(user.id)
-          = icon 'fas', 'user-times', 'ライバルから削除'
+          = icon 'user-times', 'ライバルから削除'
         - else
-          = icon 'fas', 'user-plus', 'ライバルに追加'
+          = icon 'user-plus', 'ライバルに追加'
 . style='padding-bottom: 3px'
     = react_component_wrapper 'TwitterSharedButton', text: "DJ.#{user.djname} ☆12参考表プロフィール"
 . style='padding-bottom: 3px'
@@ -24,9 +24,9 @@
         = link_to 'ノマゲ比較', clear_rival_path(user.iidxid), class: 'button is-link'
         = link_to 'ハード比較', hard_rival_path(user.iidxid), class: 'button is-danger'
 hr
-. = icon 'fas', 'street-view', user.grade
-. = icon 'fas', 'map-marker-alt', user.pref
-. = icon 'fas', 'clock', user.joined_on
+. = icon 'street-view', user.grade
+. = icon 'map-marker-alt', user.pref
+. = icon 'clock', user.joined_on
 hr
 table style='margin: 0 auto; text-align: center'
   tbody

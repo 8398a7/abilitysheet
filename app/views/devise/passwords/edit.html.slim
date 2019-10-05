@@ -1,5 +1,5 @@
 - @title = 'パスワード再発行'
-h3.subtitle.is-3 = icon 'fas', 'key', @title
+h3.subtitle.is-3 = icon 'key', @title
 
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
   = render 'devise/shared/error_messages', resource: resource
@@ -11,5 +11,5 @@ h3.subtitle.is-3 = icon 'fas', 'key', @title
     label.label 新しいパスワード(確認)
     .control = f.password_field :password_confirmation, autofocus: true, placeholder: "新しいパスワード(確認)", autocomplete: 'off', class: 'input'
   .field
-    button.button.is-danger type='submit' = icon 'fas', 'sync', 'パスワード変更'
+    button.button.is-danger type='submit' = icon 'sync', 'パスワード変更'
     = render 'devise/shared/links'

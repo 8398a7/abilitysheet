@@ -3,7 +3,7 @@ table.table.is-striped
     tr
       th style="width: 150px;"
         = link_to new_admin_user_path, class: 'button is-small is-primary', remote: true do
-          = icon 'fas', 'plus', '作成'
+          = icon 'plus', '作成'
       th = sort_link(@q, :id, 'id')
       th = sort_link(@q, :username, 'username')
       th = sort_link(@q, :email, 'email')
@@ -20,16 +20,16 @@ table.table.is-striped
         td
           - unless user.access_locked?
             = link_to edit_admin_user_path(user.id), class: 'button is-small is-success', remote: true
-              = icon 'fas', 'edit', '編集'
+              = icon 'edit', '編集'
             = link_to lock_admin_user_path(user.id), class: 'button is-small', method: :post, remote: true
-              = icon 'fas', 'lock', '無効化'
+              = icon 'lock', '無効化'
             = link_to login_admin_user_path(user.id), class: 'button is-small is-primary'
-              = icon 'fas', 'sign-in-alt', 'ログイン'
+              = icon 'sign-in-alt', 'ログイン'
           - else
             = link_to unlock_admin_user_path(user.id), class: 'button is-small is-primary', method: :post, remote: true
-              = icon 'fas', 'level-up-alt', '有効化'
+              = icon 'level-up-alt', '有効化'
             = link_to admin_user_path(user.id), class: 'button is-small is-danger', method: :delete, remote: true
-              = icon 'fas', 'trash', '削除'
+              = icon 'trash', '削除'
         td = user.id
         td = user.username
         td = user.email

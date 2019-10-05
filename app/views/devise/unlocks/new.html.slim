@@ -1,5 +1,5 @@
 - @title = 'アカウント凍結解除申請'
-h3.subtitle.is-3 = icon 'fas', 'lock', @title
+h3.subtitle.is-3 = icon 'lock', @title
 
 = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
   = render 'devise/shared/error_messages', resource: resource
@@ -7,5 +7,5 @@ h3.subtitle.is-3 = icon 'fas', 'lock', @title
     label.label 登録したメールアドレス
     .control = f.email_field :email, autofocus: true, placeholder: 'abilitysheet@mail.iidx.app', class: 'input'
   .field
-    button.button.is-warning type='submit' = icon 'fas', 'unlock', 'アカウント凍結解除申請'
+    button.button.is-warning type='submit' = icon 'unlock', 'アカウント凍結解除申請'
     = render 'devise/shared/links'

@@ -1,5 +1,5 @@
 - @title = 'ログイン'
-h3.subtitle.is-3 = icon 'fas', 'sign-in-alt', @title
+h3.subtitle.is-3 = icon 'sign-in-alt', @title
 
 = form_for resource, as: resource_name, url: session_path(resource_name) do |f|
   .field
@@ -12,5 +12,5 @@ h3.subtitle.is-3 = icon 'fas', 'sign-in-alt', @title
     = f.check_box :remember_me, class: 'is-checkradio is-info is-circle'
     label for='user_remember_me' remember me
   .field
-    button.button.is-link type='submit' = icon 'fas', 'sign-in-alt', 'ログイン'
+    button.button.is-link type='submit' = icon 'sign-in-alt', 'ログイン'
     = render 'devise/shared/links'

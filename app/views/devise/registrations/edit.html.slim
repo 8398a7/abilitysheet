@@ -1,5 +1,5 @@
 - @title = 'ユーザ編集'
-h2.subtitle.is-2 = icon 'fas', 'edit', @title
+h2.subtitle.is-2 = icon 'edit', @title
 
 = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
   = render 'devise/shared/error_messages', resource: resource
@@ -37,6 +37,6 @@ h2.subtitle.is-2 = icon 'fas', 'edit', @title
   hr
   .field
     button.button.is-info type='submit'
-      = icon 'fas', 'sync', '更新'
+      = icon 'sync', '更新'
     = link_to registration_path(resource_name), class: 'button is-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete
-      = icon 'fas', 'trash', '削除'
+      = icon 'trash', '削除'

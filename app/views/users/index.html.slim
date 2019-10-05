@@ -1,11 +1,11 @@
-h3.subtitle.is-3 = icon 'fas', 'users', @title
+h3.subtitle.is-3 = icon 'users', @title
 
 = form_tag users_path, method: :get, class: 'right'
-  = icon 'fas', 'search', 'IIDXIDから検索'
+  = icon 'search', 'IIDXIDから検索'
   .field
     = text_field_tag :query, params[:query], placeholder: '0000-0000', class: 'input', style: 'width: 150px'
     button.button.is-primary
-      = icon 'fas', 'search', '検索'
+      = icon 'search', '検索'
 hr
 - if @scores_map
   = render 'shared/list'

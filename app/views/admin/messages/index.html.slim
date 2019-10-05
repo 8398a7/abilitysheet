@@ -1,11 +1,11 @@
 - @title = 'メッセージ管理'
-h3.subtitle.is-3 = icon 'fas', 'envelope', @title
+h3.subtitle.is-3 = icon 'envelope', @title
 
 = search_form_for [:admin, @search] do |f|
   .field
-    label.label = icon 'fas', 'search', '状態から絞込'
+    label.label = icon 'search', '状態から絞込'
     span.select = f.select :state_eq, [['未読', false], ['既読', true]], {}
   .field
-    button.button.is-primary type='submit' = icon 'fas', 'search', '検索'
+    button.button.is-primary type='submit' = icon 'search', '検索'
 hr
 = render partial: 'admin/messages/list', locals: { messages: @messages }

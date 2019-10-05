@@ -3,7 +3,7 @@ table.table.is-hoverable.is-striped.is-fullwidth
     tr
       th style='width: 150px'
         = link_to new_admin_sheet_path, class: 'button is-small is-primary', remote: true
-          = icon 'fas', 'plus', '作成'
+          = icon 'plus', '作成'
       th = sort_link(@q, :id, 'id')
       th = sort_link(@q, :textage, 'textage')
       th = sort_link(@q, :title, '曲名')
@@ -17,18 +17,18 @@ table.table.is-hoverable.is-striped.is-fullwidth
         td
           - if sheet.active
             = link_to edit_admin_sheet_path(sheet.id), class: 'button is-small is-success', remote: true
-              = icon 'fas', 'edit', '編集'
+              = icon 'edit', '編集'
             = link_to inactive_admin_sheet_path(sheet.id), class: 'button is-small', method: :post, remote: true
-              = icon 'fas', 'lock', '無効化'
+              = icon 'lock', '無効化'
           - else
             = link_to active_admin_sheet_path(sheet.id), class: 'button is-small is-primary', method: :post, remote: true
-              = icon 'fas', 'level-up-alt', '有効化'
+              = icon 'level-up-alt', '有効化'
             = link_to admin_sheet_path(sheet.id), class: 'button is-small is-danger', method: :delete, remote: true
-              = icon 'fas', 'trash', '削除'
+              = icon 'trash', '削除'
         td = sheet.id
         td
           - if sheet.textage.present?
-            = icon 'fas', 'check'
+            = icon 'check'
         td class=(sheet.active ? 'is-success' : 'is-danger') = sheet.title
         td = sheet.normal
         td = sheet.hard

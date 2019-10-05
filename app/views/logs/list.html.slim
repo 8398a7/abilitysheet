@@ -1,12 +1,12 @@
 - @title = "#{User.find_by(iidxid: params[:id]).djname} - 更新履歴"
-h2.subtitle.is-3 = icon 'fas', 'sync', '更新履歴'
+h2.subtitle.is-3 = icon 'sync', '更新履歴'
 .content
   ul
-    li = icon 'fas', 'chart-bar', 'コンテンツ'
+    li = icon 'chart-bar', 'コンテンツ'
     ul
       li = link_to 'クリア推移', sheet_log_path
     - if user_signed_in? && current_user.iidxid == params[:id] && notice != '同期処理を承りました。逐次反映を行います。 '
-      li = icon 'fas', 'sync', '同期'
+      li = icon 'sync', '同期'
       ul
         li = link_to 'マネージャとの同期', manager_log_path, data: { disable_with: '同期中', confirm: 'マネージャにIIDXIDが設定されていないと同期できません。同期しますか?' }, method: :post, remote: true
         li = link_to 'iidx.meとの同期', iidxme_log_path, data: { disable_with: '同期中', confirm: 'IIDXMEに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
@@ -19,7 +19,7 @@ hr
 section.accordions
   article.accordion.is-primary
     .accordion-header
-      p = icon 'fas', 'calendar', 'カレンダーで見る'
+      p = icon 'calendar', 'カレンダーで見る'
       button.toggle aria-label='toggle'
     .accordion-body
       .accordion-content

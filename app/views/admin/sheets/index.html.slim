@@ -1,8 +1,8 @@
 - @title = '楽曲管理'
 
-h3.subtitle.is-3 = icon 'fas', 'list-ul', @title
+h3.subtitle.is-3 = icon 'list-ul', @title
 = search_form_for [:admin, @q] do |f|
-  = icon 'fas', 'search', '絞込検索'
+  = icon 'search', '絞込検索'
   .field
     label.label 楽曲名
     .control = f.search_field :title_cont, class: 'input'
@@ -16,7 +16,7 @@ h3.subtitle.is-3 = icon 'fas', 'list-ul', @title
     label.label エクハ地力
     .control = f.collection_check_boxes :exh_ability_in, check_boxes_exh_abilities, :exh_ability, :exh_ability_name, {}, class: 'is-checkradio is-warning is-circle'
   .field
-    button.button.is-primary type='submit' = icon 'fas', 'search', '検索'
+    button.button.is-primary type='submit' = icon 'search', '検索'
 hr
 = paginate @sheets
 #sheet-modal

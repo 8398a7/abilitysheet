@@ -1,9 +1,9 @@
 - @title = 'ユーザ管理'
 
-h3.subtitle.is-3 = icon 'fas', 'users', @title
+h3.subtitle.is-3 = icon 'users', @title
 
 = search_form_for [:admin, @q] do |f|
-  = icon 'fas', 'search', '絞込検索'
+  = icon 'search', '絞込検索'
   .columns
     .column
       label.label DJNAME
@@ -18,7 +18,7 @@ h3.subtitle.is-3 = icon 'fas', 'users', @title
     label.label 所属
     .control = f.collection_check_boxes :pref_in, check_boxes_prefs, :pref, :pref_name, {}, class: 'is-checkradio is-info is-circle'
   .field
-    button.button.is-primary type='submit' = icon 'fas', 'search', '検索'
+    button.button.is-primary type='submit' = icon 'search', '検索'
 hr
 = paginate @users
 #user-modal

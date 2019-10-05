@@ -1,5 +1,5 @@
 - @title = '新規作成'
-h3.subtitle.is-3 = icon 'fas', 'sign-in-alt', @title
+h3.subtitle.is-3 = icon 'sign-in-alt', @title
 
 = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
   = render 'devise/shared/error_messages', resource: resource
@@ -31,5 +31,5 @@ h3.subtitle.is-3 = icon 'fas', 'sign-in-alt', @title
       label.label パスワード確認用
       .control = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード(確認用)', class: 'input'
   .field
-    button.button.is-success type='submit' = icon 'fas', 'plus', '登録'
+    button.button.is-success type='submit' = icon 'plus', '登録'
     = render 'devise/shared/links'

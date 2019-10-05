@@ -1,5 +1,5 @@
 - @title = 'パスワードを忘れた場合'
-h3.subtitle.is-3 = icon 'fas', 'key', @title
+h3.subtitle.is-3 = icon 'key', @title
 
 = form_for(resource, as: resource_name, url: user_password_path(resource_name), html: { method: :post }) do |f|
   = render 'devise/shared/error_messages', resource: resource
@@ -7,5 +7,5 @@ h3.subtitle.is-3 = icon 'fas', 'key', @title
     label.label 登録したメールアドレス
     .control = f.email_field :email, autofocus: true, placeholder: 'abilityheet@mail.iidx.app', class: 'input'
   .field
-    button.button.is-danger type='submit' = icon 'fas', 'mail-forward', '再発行'
+    button.button.is-danger type='submit' = icon 'mail-forward', '再発行'
     = render 'devise/shared/links'

@@ -1,10 +1,10 @@
 - @title = '連絡フォーム'
-h3.subtitle.is-3 = icon 'fas', 'phone', @title
+h3.subtitle.is-3 = icon 'phone', @title
 
 section.accordions
   article.accordion.is-info
     .accordion-header
-      p = icon 'fas', 'key', 'パスワードを忘れた方向け'
+      p = icon 'key', 'パスワードを忘れた方向け'
       button.toggle aria-label='toggle'
     .accordion-body
       .accordion-content
@@ -31,7 +31,7 @@ section.accordions
     li 何らかの不具合やバグ報告など
   | 対応は
   = link_to 'http://twitter.com/IIDX_12'
-    = icon 'fab', 'twitter', 'Twitter'
+    = icon 'twitter', 'Twitter', style: 'fab'
   | のほうが迅速なことが多いです。
   br
   font color='red'
@@ -48,5 +48,5 @@ section.accordions
     .control = f.text_area :body, rows: 3, class: 'textarea'
   .field
     .control
-      button.button.is-primary type='submit' = icon 'fas', 'sign-in-alt', '送信'
+      button.button.is-primary type='submit' = icon 'sign-in-alt', '送信'
       = link_to 'キャンセル', new_message_path, class: 'button'
