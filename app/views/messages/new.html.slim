@@ -48,6 +48,5 @@ section.accordions
     .control = f.text_area :body, rows: 3, class: 'textarea'
   .field
     .control
-      button.button.is-primary type='submit'
-        = fa_icon 'sign-in', text: '送信'
+      button.button.is-primary type='submit' = icon 'fas', 'sign-in-alt', '送信'
       = link_to 'キャンセル', new_message_path, class: 'button'

@@ -11,5 +11,5 @@ h3.subtitle.is-3 = icon 'fas', 'key', @title
     label.label 新しいパスワード(確認)
     .control = f.password_field :password_confirmation, autofocus: true, placeholder: "新しいパスワード(確認)", autocomplete: 'off', class: 'input'
   .field
-    button.button.is-danger type='submit' = icon 'fas', 'refresh', 'パスワード変更'
+    button.button.is-danger type='submit' = icon 'fas', 'sync', 'パスワード変更'
     = render 'devise/shared/links'

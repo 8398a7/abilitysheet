@@ -9,7 +9,7 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
   #navbarDesktop.navbar-menu
     .navbar-start
       = link_to users_path, class: 'navbar-item'
-        = icon 'fas', 'refresh', '最近更新したユーザ'
+        = icon 'fas', 'sync', '最近更新したユーザ'
       - if user_signed_in?
         .navbar-item.has-dropdown.is-hoverable
           a.navbar-link = icon 'fas', 'address-card', 'マイページ'

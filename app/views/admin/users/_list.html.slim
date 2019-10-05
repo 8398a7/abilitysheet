@@ -3,7 +3,7 @@ table.table.is-striped
     tr
       th style="width: 150px;"
         = link_to new_admin_user_path, class: 'button is-small is-primary', remote: true do
-          = fa_icon 'plus', text: '作成'
+          = icon 'fas', 'plus', '作成'
       th = sort_link(@q, :id, 'id')
       th = sort_link(@q, :username, 'username')
       th = sort_link(@q, :email, 'email')
