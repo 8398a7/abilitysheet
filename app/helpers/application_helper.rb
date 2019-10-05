@@ -31,7 +31,10 @@ module ApplicationHelper
   end
 
   def icon(style, name, text = nil, html_options = {})
-    text, html_options = nil, text if text.is_a?(Hash)
+    if text.is_a?(Hash)
+      html_options = text
+      text = nil
+    end
 
     content_class = "#{style} fa-#{name}"
     content_class << " #{html_options[:class]}" if html_options.key?(:class)
