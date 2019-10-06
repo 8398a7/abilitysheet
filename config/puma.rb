@@ -19,10 +19,6 @@ if rails_env == 'production' || rails_env == 'staging'
   bind "unix://#{application_path}/tmp/sockets/puma.socket"
 
   before_fork do
-    Dotenv.overload
-  end
-
-  before_fork do
     ActiveRecord::Base.connection_pool.disconnect!
   end
 
