@@ -74,7 +74,7 @@ Rails.application.routes.draw do
   # API
   namespace :api do
     namespace :v1 do
-      resources :abilities, only: :index
+      resources :abilities, only: %i[index create]
       # users
       resources :users, only: [] do
         collection do

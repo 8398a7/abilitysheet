@@ -33,7 +33,7 @@ module User::Ist
     pref = find_pref(user['user_activity']['pref_status'])
     grade = find_grade(user['user_activity']['sp_grade_status'])
     update!(grade: grade, pref: pref)
-    avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png')
+    avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png') if Rails.env.production?
   end
 
   def find_sheet_id(score, sheets)
