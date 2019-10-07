@@ -18,13 +18,14 @@ class Api::V1::AbilitiesController < Api::V1::BaseController
     params[:sheets].each do |s|
       sheet = Sheet.find_by(title: s[:title])
       next unless sheet
+
       sheet.ability.update!(
         fc: s[:fc] || 99.99,
         exh: s[:exh] || 99.99,
         h: s[:h] || 99.99,
         c: s[:c] || 99.99,
         e: s[:e] || 99.99,
-        aaa: s[:aaa] || 99.99,
+        aaa: s[:aaa] || 99.99
       )
     end
     render json: { status: :created }
