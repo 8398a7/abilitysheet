@@ -1,56 +1,56 @@
 # ネストが深すぎる
-BlockNesting:
+Metrics/BlockNesting:
   Max: 5
 
 # クラスの行数が多すぎる
-ClassLength:
+Metrics/ClassLength:
   Enabled: false
 
 # 循環的複雑度が高すぎる(ifやforなどを1メソッド内で使いすぎている)
-CyclomaticComplexity:
+Metrics/CyclomaticComplexity:
   Enabled: false
 
 # 例外を抑制している
-HandleExceptions:
+Lint/HandleExceptions:
   Enabled: false
 
 # 行が長すぎる
-LineLength:
+Metrics/LineLength:
   Enabled: false
 
 # メソッドの行数が多すぎる
-MethodLength:
+Metrics/MethodLength:
   Enabled: false
 
 # 引数の数が多すぎる
-ParameterLists:
+Metrics/ParameterLists:
   Max: 12
 
 Metrics/ModuleLength:
   Max: 200
 
-AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
 
 Metrics/AbcSize:
   Max: 40
 
-PerceivedComplexity:
+Metrics/PerceivedComplexity:
   Max: 10
 
-BlockLength:
+Metrics/BlockLength:
   Enabled: false
 
 # 日本語でのコメントを許可
-AsciiComments:
+Style/AsciiComments:
   Enabled: false
 
 # モジュール名::クラス名の定義を許可
-ClassAndModuleChildren:
+Style/ClassAndModuleChildren:
   Enabled: false
 
 # クラスにコメントを残さない
-Documentation:
+Style/Documentation:
   Enabled: false
 
 Style/MixinGrouping:
