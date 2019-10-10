@@ -4,7 +4,7 @@
 #
 # Table name: users
 #
-#  id                     :bigint           not null, primary key
+#  id                     :bigint(8)        not null, primary key
 #  email                  :string           default(""), not null
 #  username               :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
@@ -27,6 +27,13 @@
 #  locked_at              :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_iidxid                (iidxid) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_unlock_token          (unlock_token) UNIQUE
+#  index_users_on_username              (username) UNIQUE
 #
 
 class User < ApplicationRecord

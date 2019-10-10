@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_28_173620) do
+ActiveRecord::Schema.define(version: 2019_10_10_113324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_04_28_173620) do
     t.datetime "updated_at", null: false
     t.index ["sheet_id"], name: "index_scores_on_sheet_id"
     t.index ["updated_at"], name: "index_scores_on_updated_at"
+    t.index ["user_id", "version", "updated_at"], name: "index_scores_on_user_id_and_version_and_updated_at"
     t.index ["user_id"], name: "index_scores_on_user_id"
     t.index ["version", "sheet_id", "user_id"], name: "index_scores_on_version_and_sheet_id_and_user_id", unique: true
   end

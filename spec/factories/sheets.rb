@@ -4,7 +4,7 @@
 #
 # Table name: sheets
 #
-#  id          :bigint           not null, primary key
+#  id          :bigint(8)        not null, primary key
 #  title       :string
 #  n_ability   :integer
 #  h_ability   :integer
