@@ -4,15 +4,23 @@
 #
 # Table name: scores
 #
-#  id         :bigint           not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  state      :integer          default(7), not null
 #  score      :integer
 #  bp         :integer
-#  sheet_id   :bigint           not null
-#  user_id    :bigint           not null
+#  sheet_id   :bigint(8)        not null
+#  user_id    :bigint(8)        not null
 #  version    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_scores_on_sheet_id                            (sheet_id)
+#  index_scores_on_updated_at                          (updated_at)
+#  index_scores_on_user_id                             (user_id)
+#  index_scores_on_user_id_and_version_and_updated_at  (user_id,version,updated_at)
+#  index_scores_on_version_and_sheet_id_and_user_id    (version,sheet_id,user_id) UNIQUE
 #
 
 class Score < ApplicationRecord
@@ -52,8 +60,8 @@ class Score < ApplicationRecord
     end
   end
 
-  def self.last_updated
-    order(updated_at: :desc).where.not(state: 7).first
+  def self.last_updated(version = Abilitysheet::Application.config.iidx_version)
+    order(updated_at: :desc).where.not(state: 7).where(version: version).first
   end
 
   def lamp_string
