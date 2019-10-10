@@ -52,8 +52,8 @@ class Score < ApplicationRecord
     end
   end
 
-  def self.last_updated
-    order(updated_at: :desc).where.not(state: 7).first
+  def self.last_updated(version = Abilitysheet::Application.config.iidx_version)
+    order(updated_at: :desc).where.not(state: 7).where(version: version).first
   end
 
   def lamp_string
