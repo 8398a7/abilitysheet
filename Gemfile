@@ -50,6 +50,9 @@ gem 'uglifier'
 gem 'webpacker'
 # }}}
 
+# refs: https://github.com/rails/sprockets/pull/630/files
+gem 'sprockets', '3.7.2'
+
 group :development do
   gem 'annotate'
   gem 'better_errors'
