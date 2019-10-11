@@ -11,8 +11,8 @@ class IstClient
     JSON.parse(body.to_s)
   end
 
-  def get_sheets(params)
-    endpoint = @url + '/api/v1/sheets?' + params.to_query
+  def get_musics(params)
+    endpoint = @url + '/api/v1/musics?' + params.to_query
     body = HTTP.get(endpoint).body
     JSON.parse(body.to_s)
   end
