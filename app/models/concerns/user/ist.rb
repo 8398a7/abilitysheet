@@ -11,8 +11,8 @@ module User::Ist
   }.freeze
   SEARCH_PARAMS = {
     q: {
-      music_score_level_eq: 12,
-      music_score_play_type_status_eq: 0,
+      chart_level_eq: 12,
+      chart_play_type_status_eq: 0,
       version_eq: Abilitysheet::Application.config.iidx_version
     }
   }.freeze
