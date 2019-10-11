@@ -7,10 +7,10 @@ class SyncSheetsJob < ApplicationJob
 
   def perform(date = Date.today - 2.days)
     client = IstClient.new
-    sheets = client.get_sheets(
+    sheets = client.get_musics(
       q: {
-        music_scores_play_type_status_eq: 0,
-        music_scores_level_eq: 12,
+        charts_play_type_status_eq: 0,
+        charts_level_eq: 12,
         created_at_gteq: date
       }
     )
