@@ -41,7 +41,7 @@ const ToggleView: SFC<{
   }
   return (
     <button className="button is-success" onClick={handleToggleView}>
-      <i className="fa fa-refresh" />
+      <i className="fas fa-cog" />
       {mobile === true ? 'PCサイト版' : 'モバイル版'}
     </button>
   );
