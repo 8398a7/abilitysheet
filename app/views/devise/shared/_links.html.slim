@@ -6,7 +6,7 @@
     = icon 'plus', '登録'
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
   = link_to new_user_password_path(resource_name), class: 'button is-danger'
-    = icon 'mail-forward', '再発行'
+    = icon 'envelope', '再発行'
 - if devise_mapping.omniauthable?
   - resource_class.omniauth_providers.each do |provider|
     = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)

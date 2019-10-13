@@ -8,7 +8,8 @@ html
     meta name="viewport" content='width=device-width, initial-scale=1'
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
     = stylesheet_pack_tag 'application'
-    script defer=true src="https://use.fontawesome.com/releases/v5.11.2/js/all.js"
+    script defer=true src='https://use.fontawesome.com/releases/v5.11.2/js/all.js' crossorigin='anonymous'
+    script async=true src='https://kit.fontawesome.com/0867f4a0c8.js' crossorigin='anonymous'
     - if Rails.env.production?
       script src='https://cdn.polyfill.io/v2/polyfill.min.js'
     = javascript_pack_tag 'sentry'

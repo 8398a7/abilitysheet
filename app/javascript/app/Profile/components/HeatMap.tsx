@@ -21,7 +21,7 @@ const Detail: SFC<{ user: User; date: string; items: number }> = ({
 
   return (
     <div className="center">
-      <i className="fa fa-refresh" />
+      <i className="fas fa-sync" />
       <a href={logsPath(user.iidxid, text)}>{text}</a>の更新数は{items}個です
     </div>
   );
