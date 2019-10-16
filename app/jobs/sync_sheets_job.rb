@@ -3,7 +3,7 @@
 require 'ist_client'
 
 class SyncSheetsJob < ApplicationJob
-  queue_as :sync
+  queue_as :system
 
   def perform(date = Date.today - 2.days)
     client = IstClient.new
