@@ -69,14 +69,18 @@ class User < ApplicationRecord
   def version_up!
     update_column(:grade, GRADE.size - 1)
     current_version = Abilitysheet::Application.config.iidx_version
-    new_scores = []
-    scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
-      new_score = scores.find { |s| s.version == current_version && s.sheet_id == score.sheet_id }
-      next if new_score
+    return if scores.where(version: current_version).count == scores.where(version: current_version - 1).count
 
-      new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
+    ApplicationRecord.transaction do
+      new_scores = []
+      scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
+        new_score = scores.find { |s| s.version == current_version && s.sheet_id == score.sheet_id }
+        next if new_score
+
+        new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
+      end
+      scores.import(new_scores)
     end
-    scores.import(new_scores)
   end
 
   def pref_name
@@ -97,7 +101,15 @@ class User < ApplicationRecord
     end
 
     def version_up!
-      all.find_each(&:version_up!)
+      users_count = count
+      logger.info("start: #{Time.now}, users: #{users_count}")
+      completed_count = 0
+      all.find_each do |user|
+        user.version_up!
+        completed_count += 1
+        logger.info("completed count: #{completed_count}") if (completed_count % 100).zero?
+      end
+      logger.info("done: #{Time.now}, users: #{users_count}")
     end
   end
 end
