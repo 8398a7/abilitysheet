@@ -25,7 +25,7 @@ describe Scrape::Manager do
       user = create(:user, iidxid: '2222-2222')
       expect(Scrape::Manager.new(user).sync).to be_truthy
       (0..6).each do |state|
-        expect(user.scores.where(state: state).count).to eq 2
+        expect(user.scores.where(state: state).count).to eq 1
       end
     end
     it '12フォルダが存在すればnokogiriのクラスを返す' do

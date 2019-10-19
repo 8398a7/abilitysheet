@@ -43,12 +43,6 @@ describe User::Ist, type: :model do
         pre_bp: nil,
         new_bp: 53
       )
-      expect(scores.find_by(sheet: Sheet.find_by(title: 'Go Beyond!!'))).to have_attributes(
-        version: Abilitysheet::Application.config.iidx_version,
-        state: 2,
-        score: 0,
-        bp: 0
-      )
     end
     it '存在しないユーザはfalseが返ること' do
       user.update!(iidxid: '1234-5678')
