@@ -62,6 +62,7 @@ module User::Ist
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
         next if score['score'].zero?
+
         sheet_id = find_sheet_id(score, sheets)
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
