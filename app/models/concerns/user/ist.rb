@@ -41,6 +41,8 @@ module User::Ist
       sheets[score['title'] + difficulty_type]
     elsif FROM_IST_TO_AB.key?(score['title'])
       sheets[FROM_IST_TO_AB[score['title']]]
+    elsif score['difficulty_type_status'] == 'LEGGENDARIA'
+      sheets[score['title'] + '†']
     else
       sheets[score['title']]
     end
