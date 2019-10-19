@@ -62,8 +62,6 @@ Rails.application.routes.draw do
   resources :logs, only: %i(edit update destroy) do
     get :list, on: :member
     get :sheet, on: :member
-    post :manager, on: :member
-    post :iidxme, on: :member
     post :ist, on: :member
   end
   get '/logs/:id/:date' => 'logs#show', as: :logs
@@ -100,7 +98,6 @@ Rails.application.routes.draw do
       resources :scores, only: :show, param: :iidxid
       get '/scores/:iidxid/:sheet_id' => 'scores#detail'
       put '/scores/:iidxid/:sheet_id/:state' => 'scores#update'
-      post '/scores/sync/iidxme/:iidxid' => 'scores#sync_iidxme'
 
       post '/maintenance', to: 'maintenance#change'
       resources :health_check, only: :index

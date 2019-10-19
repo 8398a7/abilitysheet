@@ -25,11 +25,6 @@ class Api::V1::ScoresController < Api::V1::BaseController
     render json: score.schema
   end
 
-  def sync_iidxme
-    IidxmeJob.perform_later(@user.id)
-    render json: { result: :ok, date: Date.today }
-  end
-
   private
 
   def load_user

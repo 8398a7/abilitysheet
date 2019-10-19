@@ -27,24 +27,6 @@ class LogsController < ApplicationController
     @total_pages = (logs.count / per_num.to_f).ceil
   end
 
-  def manager
-    ManagerJob.perform_later(current_user.id)
-    flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-    flash[:alert] = %(反映されていない場合はマネージャに該当IIDXIDが存在しないと思われます。(登録しているけどIIDXIDを設定していないなど))
-    render :reload
-  end
-
-  def iidxme
-    if ENV['iidxme'] != 'true'
-      flash[:alert] = %(現在動作確認を行っていないため停止中です)
-    else
-      IidxmeJob.perform_later(current_user.id)
-      flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
-      flash[:alert] = %(反映されていない場合はIIDXMEに該当IIDXIDが存在しないと思われます。(登録していないなど))
-    end
-    render :reload
-  end
-
   def ist
     IstSyncJob.perform_later(current_user)
     flash[:notice] = %(同期処理を承りました。逐次反映を行います。)
