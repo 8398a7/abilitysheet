@@ -6,8 +6,7 @@ module User::Ist
   extend ActiveSupport::Concern
   FROM_IST_TO_AB = {
     '旋律のドグマ～Miserables～' => '旋律のドグマ ～Misérables～',
-    '火影' => '焱影',
-    '炎影' => '焱影'
+    '火影' => '焱影'
   }.freeze
   SEARCH_PARAMS = {
     q: {
@@ -42,6 +41,8 @@ module User::Ist
       sheets[score['title'] + difficulty_type]
     elsif FROM_IST_TO_AB.key?(score['title'])
       sheets[FROM_IST_TO_AB[score['title']]]
+    elsif score['difficulty_type_status'] == 'LEGGENDARIA'
+      sheets[score['title'] + '†']
     else
       sheets[score['title']]
     end
@@ -60,6 +61,8 @@ module User::Ist
 
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
+        next if score['score'].zero?
+
         sheet_id = find_sheet_id(score, sheets)
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
