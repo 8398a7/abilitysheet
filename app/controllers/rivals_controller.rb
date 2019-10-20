@@ -36,12 +36,12 @@ class RivalsController < ApplicationController
   end
 
   def register
-    current_user.follow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を追加しました" : flash[:alert] = '既に登録済みのライバルです'
+    current_user.follow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を追加しました" : flash[:danger] = '既に登録済みのライバルです'
     render :reload
   end
 
   def remove
-    current_user.unfollow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を削除しました" : flash[:alert] = 'ライバルに登録されていません'
+    current_user.unfollow(params[:id]) ? flash[:notice] = "ライバル(#{params[:id]})を削除しました" : flash[:danger] = 'ライバルに登録されていません'
     render :reload
   end
 
