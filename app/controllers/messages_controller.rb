@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
       Slack::MessageDispatcher.send(message.id)
       flash[:notice] = '承りました。対応はしばしお待ちください。'
     else
-      flash[:alert] = '何らかの不具合で送信できていません。Twitterなどにご連絡下さい。'
+      flash[:danger] = '何らかの不具合で送信できていません。Twitterなどにご連絡下さい。'
     end
     redirect_to root_path
   end

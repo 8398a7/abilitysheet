@@ -45,28 +45,28 @@ class ApplicationController < ActionController::Base
   def admin_user!
     return true if current_user.admin?
 
-    flash[:alert] = '許可されていないページです'
+    flash[:danger] = '許可されていないページです'
     redirect_to root_path
   end
 
   def special_user!
     return if current_user.special?
 
-    flash[:alert] = '不正な操作です．'
+    flash[:danger] = '不正な操作です．'
     redirect_to list_log_path
   end
 
   def owner_user!
     return if current_user.owner?
 
-    flash[:alert] = '許可されていないページです'
+    flash[:danger] = '許可されていないページです'
     redirect_to root_path
   end
 
   def member_user!
     return if current_user.member?
 
-    flash[:alert] = '許可されていないページです'
+    flash[:danger] = '許可されていないページです'
     redirect_to root_path
   end
 
@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
     super
   rescue ActionController::InvalidAuthenticityToken => e
     Raven.capture_exception(e)
-    flash[:alert] = 'ページの有効期限が切れています，再度お試し下さい'
+    flash[:danger] = 'ページの有効期限が切れています，再度お試し下さい'
     redirect_to root_path
   end
 
