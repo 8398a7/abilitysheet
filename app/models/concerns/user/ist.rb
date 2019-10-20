@@ -49,7 +49,7 @@ module User::Ist
   end
 
   included do
-    def check_user
+    def check_ist_user
       ist_client.get_user(iidxid)
     end
 
