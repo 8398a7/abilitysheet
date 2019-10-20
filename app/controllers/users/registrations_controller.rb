@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'slack/user_dispatcher'
+require 'ist_client'
 
 class Users::RegistrationsController < Devise::RegistrationsController
   def create
@@ -23,6 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     return unless user
 
     Slack::UserDispatcher.new_register_notify(user.id)
+
+    user.check_ist_user
     IstSyncJob.perform_later(user)
+  rescue IstClient::NotFoundUser
   end
 end

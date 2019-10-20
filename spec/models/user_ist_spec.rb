@@ -11,6 +11,8 @@
 #  updated_at     :datetime         not null
 #
 
+require 'ist_client'
+
 describe User::Ist, type: :model do
   describe '#update_ist' do
     let(:user) { create(:user, grade: 18, iidxid: '8594-9652', djname: 'HOGE', pref: 0) }
@@ -28,26 +30,26 @@ describe User::Ist, type: :model do
       expect(user.grade).to eq 4
       expect(user.pref).to eq 37
       scores = user.scores.is_current_version
-      expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
+      expect(scores.find_by(sheet: Sheet.find_by(title: 'AA'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,
-        state: 2,
-        score: 2344,
-        bp: 53
+        state: 0,
+        score: 3045,
+        bp: 6
       )
-      expect(user.logs.find_by(sheet_id: Sheet.find_by(title: '東京神話'))).to have_attributes(
+      expect(user.logs.find_by(sheet_id: Sheet.find_by(title: 'AA'))).to have_attributes(
         version: Abilitysheet::Application.config.iidx_version,
         pre_state: 7,
-        new_state: 2,
+        new_state: 0,
         pre_score: nil,
-        new_score: 2344,
+        new_score: 3045,
         pre_bp: nil,
-        new_bp: 53
+        new_bp: 6
       )
     end
-    it '存在しないユーザはfalseが返ること' do
+    it '存在しないユーザはraiseすること' do
       user.update!(iidxid: '1234-5678')
       VCR.use_cassette('not_found_ist') do
-        expect(user.update_ist).to eq false
+        expect { user.update_ist }.to raise_error IstClient::NotFoundUser
       end
     end
   end

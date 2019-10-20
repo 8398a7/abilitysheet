@@ -41,6 +41,6 @@ feature 'sign up', type: :system do
     end.to change { User.count }.by(1)
     user = User.find_by(iidxid: iidxid)
     expect(user.present?).to be_truthy
-    expect(user.scores.is_current_version.find_by(sheet: Sheet.find_by!(title: 'AA')).score).to eq 3172
+    expect(user.scores.is_current_version.find_by(sheet: Sheet.find_by!(title: 'AA')).score).to eq 3045
   end
 end
