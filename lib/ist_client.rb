@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class IstClient
+  class NotFoundUser < StandardError; end
+
   def initialize(url = 'https://score.iidx.app')
     @url = url
   end
@@ -19,8 +21,10 @@ class IstClient
 
   def get_user(iidxid)
     endpoint = @url + "/api/v1/users/#{iidxid}"
-    body = HTTP.get(endpoint).body
-    hash = JSON.parse(body.to_s)
+    resp = HTTP.get(endpoint)
+    raise NotFoundUser if resp.status == 404
+
+    hash = JSON.parse(resp.body.to_s)
     return hash unless hash.dig('image_path')
 
     hash['image_path'] = @url + hash['image_path']

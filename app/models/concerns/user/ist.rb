@@ -49,9 +49,12 @@ module User::Ist
   end
 
   included do
+    def check_user
+      ist_client.get_user(iidxid)
+    end
+
     def update_ist
       user = ist_client.get_user(iidxid)
-      return false if user.dig('error') == 'Not Found'
       return false if user['iidxid'] != iidxid
 
       result = ist_client.get_scores(iidxid, SEARCH_PARAMS)
