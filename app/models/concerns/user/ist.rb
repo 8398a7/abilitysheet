@@ -64,18 +64,23 @@ module User::Ist
 
       sheets = Sheet.active.pluck(:title, :id).to_h
       result['scores'].each do |score|
-        next if score['score'].zero?
-
         sheet_id = find_sheet_id(score, sheets)
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
+
+        s = scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
+        next if s.nil? && score['score'].zero?
+
+        state = ::Static::LAMP_OFFICIAL.index(score['clear_type_status'])
+        next if state == 7
+        next if s&.state == state
 
         scores.find_or_create_by!(
           sheet_id: sheet_id,
           version: Abilitysheet::Application.config.iidx_version
         ).update_with_logs(
           sheet_id: sheet_id,
-          state: ::Static::LAMP_OFFICIAL.index(score['clear_type_status']),
+          state: state,
           score: score['score'],
           bp: score['miss_count']
         )
