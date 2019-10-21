@@ -21,9 +21,13 @@
         .column
           label.label ハード地力
           .control = f.select :h_ability, Static::POWER, { selected: sheet.h_ability ? sheet.h_ability : 19 }, { class: 'input searchable' }
-      .field
-        label.label バージョン
-        .control = f.select :version, Static::VERSION, { selected: sheet.version ? sheet.version : Abilitysheet::Application.config.iidx_version }, { class: 'input searchable' }
+      .columns
+        .column
+          label.label エクハ地力
+          .control = f.select :exh_ability, Static::EXH_POWER, { selected: sheet.exh_ability ? sheet.exh_ability : -1 }, { class: 'input searchable' }
+        .column
+          label.label バージョン
+          .control = f.select :version, Static::VERSION, { selected: sheet.version ? sheet.version : Abilitysheet::Application.config.iidx_version }, { class: 'input searchable' }
       .field
         label.label textage
         .control = f.text_field :textage, placeholder: 'textage link', class: 'input'
