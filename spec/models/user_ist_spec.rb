@@ -16,11 +16,20 @@ require 'ist_client'
 describe User::Ist, type: :model do
   describe '#update_ist' do
     let(:user) { create(:user, grade: 18, iidxid: '8594-9652', djname: 'HOGE', pref: 0) }
+    let(:version) { Abilitysheet::Application.config.iidx_version }
     it '同期できる' do
       VCR.use_cassette('sync_sheet') do
         RedisHelper.load_sheets_data
         sync_sheet
       end
+      # クリアランプだけ変わるケースの確認用
+      user.scores.create!(
+        sheet_id: Sheet.find_by(title: '東京神話').id,
+        state: 4,
+        score: nil,
+        bp: nil,
+        version: version
+      )
       expect(user.avatar.attached?).to be_falsey
       VCR.use_cassette('ist') do
         user.update_ist
@@ -30,14 +39,16 @@ describe User::Ist, type: :model do
       expect(user.grade).to eq 4
       expect(user.pref).to eq 37
       scores = user.scores.is_current_version
+      # スコアレコードが更新されている
       expect(scores.find_by(sheet: Sheet.find_by(title: 'AA'))).to have_attributes(
-        version: Abilitysheet::Application.config.iidx_version,
+        version: version,
         state: 0,
         score: 3045,
         bp: 6
       )
+      # ログが作られている
       expect(user.logs.find_by(sheet_id: Sheet.find_by(title: 'AA'))).to have_attributes(
-        version: Abilitysheet::Application.config.iidx_version,
+        version: version,
         pre_state: 7,
         new_state: 0,
         pre_score: nil,
@@ -45,6 +56,26 @@ describe User::Ist, type: :model do
         pre_bp: nil,
         new_bp: 6
       )
+      # クリアランプの変更だけでもスコアレコードが更新されている
+      expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
+        version: version,
+        state: 2,
+        score: 0,
+        bp: 0
+      )
+      # クリアランプの変更だけでもログが作られている
+      expect(user.logs.find_by(sheet_id: Sheet.find_by(title: '東京神話'))).to have_attributes(
+        version: version,
+        pre_state: 4,
+        new_state: 2,
+        pre_score: nil,
+        new_score: 0,
+        pre_bp: nil,
+        new_bp: 0
+      )
+      # 何も変わっていないレコードは何もしない
+      expect(scores.find_by(sheet: Sheet.find_by(title: 'A'))).to eq nil
+      expect(user.logs.find_by(sheet_id: Sheet.find_by(title: 'A'))).to eq nil
     end
     it '存在しないユーザはraiseすること' do
       user.update!(iidxid: '1234-5678')
