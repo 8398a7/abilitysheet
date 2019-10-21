@@ -15,17 +15,21 @@ class SyncSheetsJob < ApplicationJob
       }
     )
     sheets.each do |sheet|
-      s = Sheet.find_by(title: sheet['title'])
-      next if s
+      sheet['charts'].each do |chart|
+        title = sheet['title']
+        title += '†' if chart['difficulty_type_status'] == 'LEGGENDARIA'
+        s = Sheet.find_by(title: title)
+        next if s
 
-      Sheet.create!(
-        title: sheet['title'],
-        version: sheet['version_status_before_type_cast'],
-        n_ability: Static::POWER.last[1],
-        h_ability: Static::POWER.last[1],
-        exh_ability: Static::EXH_POWER.last[1],
-        textage: ''
-      )
+        Sheet.create!(
+          title: title,
+          version: sheet['version_status_before_type_cast'],
+          n_ability: Static::POWER.last[1],
+          h_ability: Static::POWER.last[1],
+          exh_ability: Static::EXH_POWER.last[1],
+          textage: ''
+        )
+      end
     end
     Sheet.apply_exh
   end
