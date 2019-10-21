@@ -39,7 +39,7 @@
           label.label パスワード確認用
           .control = f.password_field :password_confirmation, autocomplete: 'off', placeholder: 'パスワード(確認用)', class: 'input'
       .field
-        button.button.is-primary = icon 'floppy-o', submit
+        button.button.is-primary = icon 'sync', submit
         = link_to admin_user_path(user.id), class: 'button is-danger', data: { confirm: '本当に削除してよろしいですか？' }, method: :delete, remote: true
           = icon 'trash', '削除'
     button.modal-close.is-large aria-label='close' onclick='handleCloseUserModal()'
