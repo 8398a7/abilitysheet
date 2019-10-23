@@ -41,7 +41,8 @@ class Log < ApplicationRecord
   end
 
   def self.attributes(score_params, owner)
-    score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
+    return score_attributes(score_params, owner) if score_params['score'] && score_params['bp']
+
     log = find_by(sheet_id: score_params['sheet_id'], created_date: Date.today)
     if log
       log.update!(new_state: score_params['state'])
