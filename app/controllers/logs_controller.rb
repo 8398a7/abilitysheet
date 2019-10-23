@@ -3,7 +3,8 @@
 require 'ist_client'
 
 class LogsController < ApplicationController
-  before_action :load_user, only: %w[sheet list show]
+  before_action :load_user, only: %i[sheet list show]
+  before_action :authenticate_user!, only: %i[edit update ist destroy]
 
   def edit
     @log = current_user.logs.find(params[:id])
