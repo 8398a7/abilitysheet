@@ -73,7 +73,7 @@ module User::Ist
 
         state = ::Static::LAMP_OFFICIAL.index(score['clear_type_status'])
         next if state == 7
-        next if s&.state == state
+        next if s&.state == state && score['score'].zero?
 
         scores.find_or_create_by!(
           sheet_id: sheet_id,
