@@ -37,7 +37,7 @@
 #
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
+  devise :database_authenticatable, :registerable, :omniauthable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
   has_one_attached :avatar
 
@@ -56,6 +56,7 @@ class User < ApplicationRecord
   has_many :follow_users, through: :follows, source: :to_user
   has_many :follower_users, through: :followers, source: :from_user
   has_many :messages, dependent: :delete_all
+  has_many :socials, dependent: :delete_all
 
   validates :email, uniqueness: true, presence: true, format: { with: Devise.email_regexp, message: 'が正しくありません。' }
 
@@ -101,6 +102,31 @@ class User < ApplicationRecord
   end
 
   class << self
+    def find_for_oauth(auth, user)
+      social = Social.find_by(uid: auth.uid, provider: auth.provider)
+      if social
+        social.update!(
+          uid: auth.uid,
+          provider: auth.provider,
+          token: auth.credentials.token,
+          secret: auth.credentials.secret,
+          raw: JSON.parse(auth.to_json)
+        )
+        return social.user
+      end
+      return unless user
+
+      user.socials.create!(
+        uid: auth.uid,
+        provider: auth.provider,
+        token: auth.credentials.token,
+        secret: auth.credentials.secret,
+        raw: JSON.parse(auth.to_json)
+      )
+
+      user
+    end
+
     def dan
       array = []
       Static::GRADE.each.with_index(0) { |d, i| array.push([d, i]) if Abilitysheet::Application.config.iidx_grade <= i }

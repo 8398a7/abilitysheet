@@ -18,6 +18,7 @@ gem 'nokogiri'
 # }}}
 # o,p,q,r,s,t,u {{{
 gem 'oauth2'
+gem 'omniauth-google-oauth2'
 gem 'peek'
 gem 'peek-gc'
 gem 'ts_routes'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_113324) do
+ActiveRecord::Schema.define(version: 2019_11_03_084533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,18 @@ ActiveRecord::Schema.define(version: 2019_10_10_113324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "exh_ability"
+  end
+
+  create_table "socials", force: :cascade do |t|
+    t.string "provider"
+    t.json "raw"
+    t.string "secret"
+    t.string "token"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "provider"], name: "index_socials_on_user_id_and_provider", unique: true
   end
 
   create_table "users", force: :cascade do |t|
