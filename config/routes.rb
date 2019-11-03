@@ -2,8 +2,10 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  resources :google, only: :destroy, param: :iidxid
 
   # all visitor
   root 'welcomes#index'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
     collection do
       get :support
       get :ist
+      get :oauth
     end
   end
 
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :dashboards, only: :index
+    resources :socials, only: %i[index show]
     post '/sheets/diff', to: 'sheets#diff'
     resources :sheets do
       post :active, on: :member

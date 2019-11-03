@@ -1,0 +1,28 @@
+- @title = 'ソーシャル詳細'
+
+h3.subtitle.is-3 = icon 'google', @title, style: 'fab'
+
+table.table.is-striped.is-hoverable.is-fullwidth
+  tbody
+    tr
+      th id
+      td = @social.id
+    tr
+      th provider
+      td = @social.provider
+    tr
+      th uid
+      td = @social.uid
+    tr
+      th user_id
+      td = @social.user_id
+    tr
+      th iidxid
+      td = link_to @social.user.iidxid, user_path(@social.user.iidxid)
+    tr
+      th raw
+      td
+        pre
+          code = JSON.pretty_generate(@social.raw)
+
+= link_to 'back', :back, class: 'button is-info'

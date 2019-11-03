@@ -1,0 +1,39 @@
+- @title = 'ソーシャル管理'
+
+h3.subtitle.is-3 = icon 'google', @title, style: 'fab'
+
+= search_form_for [:admin, @q] do |f|
+  = icon 'search', '絞込検索'
+  .columns
+    .column
+      label.label Provider
+      .control = f.search_field :provider_eq, class: 'input'
+    .column
+      label.label UID
+      .control = f.search_field :uid_eq, class: 'input'
+    .column
+      label.label IIDXID
+      .control = f.search_field :user_iidxid_eq, class: 'input'
+    .column
+      label.label User ID
+      .control = f.search_field :user_id_eq, class: 'input'
+  .field
+    button.button.is-primary type='submit' = icon 'search', '検索'
+hr
+= paginate @socials
+table.table.is-striped.is-hoverable.is-fullwidth
+  thead
+    tr
+      th = sort_link(@q, :id, 'id')
+      th = sort_link(@q, :provider, 'provider')
+      th = sort_link(@q, :uid, 'uid')
+      th = sort_link(@q, :user_id, 'User ID')
+  tbody
+    - @socials.each do |social|
+      tr
+        td = link_to social.id, admin_social_path(social.id)
+        td = social.provider
+        td = social.uid
+        td = social.user_id
+
+= paginate @socials
