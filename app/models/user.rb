@@ -73,13 +73,26 @@ class User < ApplicationRecord
 
     ApplicationRecord.transaction do
       new_scores = []
+      now = Time.now
       scores.select(:sheet_id, :state, :version).where(version: current_version - 1).each do |score|
         new_score = scores.find { |s| s.version == current_version && s.sheet_id == score.sheet_id }
         next if new_score
 
-        new_scores.push(scores.new(state: score.state, version: current_version, sheet_id: score.sheet_id))
+        new_scores.push(
+          state: score.state,
+          sheet_id: score.sheet_id,
+          user_id: id,
+          version: current_version,
+          created_at: now,
+          updated_at: now
+        )
+
+        if (new_scores.count % 1000).zero?
+          Score.insert_all!(new_scores)
+          new_scores = []
+        end
       end
-      scores.import(new_scores)
+      Score.insert_all!(new_scores) unless new_scores.count.zero?
     end
   end
 
