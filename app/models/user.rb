@@ -37,7 +37,7 @@
 #
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable, :rememberable, :recoverable, :trackable, :validatable, :lockable
+  devise :database_authenticatable, :registerable, :omniauthable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
   has_one_attached :avatar
 
