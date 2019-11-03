@@ -1,4 +1,8 @@
 import { init } from '@sentry/browser';
 
 const dsn = '<%= ENV['SENTRY_JS_DSN'] %>';
-init({ dsn });
+init({
+  dsn,
+  environment: process.env.NODE_ENV,
+  release: process.env.RELEASE,
+});
