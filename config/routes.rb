@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :dashboards, only: :index
+    resources :socials, only: %i[index show]
     post '/sheets/diff', to: 'sheets#diff'
     resources :sheets do
       post :active, on: :member

@@ -43,6 +43,7 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
               = link_to '楽曲管理', admin_sheets_path, class: 'navbar-item'
             - if current_user.admin?
               = link_to 'ユーザ管理', admin_users_path, class: 'navbar-item'
+              = link_to 'ソーシャル管理', admin_socials_path, class: 'navbar-item'
               = link_to 'メッセージ管理', admin_messages_path, class: 'navbar-item'
               = link_to '問い合わせ返信', new_admin_mail_path, class: 'navbar-item'
               = link_to 'sidekiq', sidekiq_admin_path, class: 'navbar-item'
