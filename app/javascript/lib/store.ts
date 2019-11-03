@@ -1,5 +1,4 @@
-import createRavenMiddleware from 'raven-for-redux';
-import Raven from 'raven-js';
+import * as Sentry from '@sentry/browser';
 import {
   applyMiddleware,
   compose,
@@ -10,6 +9,8 @@ import {
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
 import { ForkEffect } from 'redux-saga/effects';
+// @ts-ignore
+import createSentryMiddleware from 'redux-sentry-middleware';
 
 export default function storeCreator<S>(
   props: AbilitysheetContext,
@@ -39,18 +40,13 @@ export default function storeCreator<S>(
 
   const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 
-  const options: Raven.RavenOptions = {
-    environment: process.env.NODE_ENV,
-    release: process.env.RELEASE,
-  };
-  Raven.config(props.context.sentry_dsn, options).install();
   const store = createStore(
     rootReducer,
     initialState,
     compose(
       applyMiddleware(
         sagaMiddleware,
-        createRavenMiddleware(Raven, {}),
+        createSentryMiddleware(Sentry, {}),
         ...middlewares,
       ),
       devtools,
