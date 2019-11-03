@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # a,b,c,d,e,f,g {{{
-gem 'activerecord-import'
 gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'devise'
