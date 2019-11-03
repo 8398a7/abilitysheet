@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+  resources :google, only: :destroy, param: :iidxid
 
   # all visitor
   root 'welcomes#index'
