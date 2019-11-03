@@ -30,8 +30,11 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
         = icon 'layer-group', '地力値表'
       = link_to new_message_path, class: 'navbar-item'
         = icon 'phone', '連絡フォーム'
-      = link_to ist_helps_path, class: 'navbar-item'
-        = icon 'question', 'ISTとの同期'
+      .navbar-item.has-dropdown.is-hoverable
+        a.navbar-link = icon 'question', 'ヘルプ'
+        .navbar-dropdown
+          = link_to 'ISTとの同期', ist_helps_path, class: 'navbar-item'
+          = link_to 'OAuth連携', oauth_helps_path, class: 'navbar-item'
       - if user_signed_in? && current_user.member?
         .navbar-item.has-dropdown.is-hoverable.admin-parent
           a.navbar-link = icon 'cogs', '管理'

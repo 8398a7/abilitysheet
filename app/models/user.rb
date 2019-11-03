@@ -102,6 +102,31 @@ class User < ApplicationRecord
   end
 
   class << self
+    def find_for_oauth(auth, user)
+      social = Social.find_by(uid: auth.uid, provider: auth.provider)
+      if social
+        social.update!(
+          uid: auth.uid,
+          provider: auth.provider,
+          token: auth.credentials.token,
+          secret: auth.credentials.secret,
+          raw: JSON.parse(auth.to_json)
+        )
+        return social.user
+      end
+      return unless user
+
+      user.socials.create!(
+        uid: auth.uid,
+        provider: auth.provider,
+        token: auth.credentials.token,
+        secret: auth.credentials.secret,
+        raw: JSON.parse(auth.to_json)
+      )
+
+      user
+    end
+
     def dan
       array = []
       Static::GRADE.each.with_index(0) { |d, i| array.push([d, i]) if Abilitysheet::Application.config.iidx_grade <= i }

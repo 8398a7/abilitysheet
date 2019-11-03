@@ -1,0 +1,18 @@
+- @title = '連携アプリについて'
+article.message.is-info
+  .message-header
+    p = @title
+  .message-body.content
+    p 対応している連携ログインアプリは以下です。
+    .content
+      ul
+        li Google
+    p 連携ログインアプリを利用するためには予め登録し、連携を行っていただく必要があります。
+    p
+      | 新規登録は
+      = link_to 'こちら', new_user_registration_path
+      | から行うことができます。
+    p
+      | 登録後に右上の
+      = link_to 'ユーザ編集ページ', edit_user_registration_path
+      | から連携を行っていただくことで次回以降、連携ログインが利用できます。

@@ -2,7 +2,8 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   # all visitor
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
     collection do
       get :support
       get :ist
+      get :oauth
     end
   end
 
