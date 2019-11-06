@@ -43,10 +43,10 @@ h2.subtitle.is-2 = icon 'edit', @title
 
   - google = current_user.socials.find { |social| social.provider == 'google_oauth2' }
   - if google.present?
-    = link_to user_google_oauth2_omniauth_authorize_path, class: 'button is-link'
+    = link_to user_google_oauth2_omniauth_authorize_path, class: 'button is-link', method: :post
       = icon 'sync', 'Google連携更新'
     = link_to google_path(current_user.iidxid), class: 'button is-danger', data: { confirm: 'Google連携を解除します' }, method: :delete
       = icon 'trash', "Google連携解除(#{google.raw['info']['email']})"
   - else
-    = link_to user_google_oauth2_omniauth_authorize_path, class: 'button is-link'
+    = link_to user_google_oauth2_omniauth_authorize_path, class: 'button is-link', method: :post
       = icon 'google', 'Google連携', style: 'fab'
