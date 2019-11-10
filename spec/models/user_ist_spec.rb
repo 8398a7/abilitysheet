@@ -72,11 +72,11 @@ describe User::Ist, type: :model do
         bp: nil,
         version: version
       )
-      expect {
+      expect do
         VCR.use_cassette('ist') do
           user.update_ist
         end
-      }.to change { Log.count }.by(261)
+      end.to change { Log.count }.by(261)
       scores = user.scores.is_current_version
       # クリアランプの変更だけでもスコアレコードが更新されている
       expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
@@ -110,11 +110,11 @@ describe User::Ist, type: :model do
         bp: 0,
         version: version
       )
-      expect {
+      expect do
         VCR.use_cassette('ist') do
           user.update_ist
         end
-      }.to change { Log.count }.by(260)
+      end.to change { Log.count }.by(260)
     end
     it '存在しないユーザはraiseすること' do
       user.update!(iidxid: '1234-5678')
