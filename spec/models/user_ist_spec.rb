@@ -72,9 +72,11 @@ describe User::Ist, type: :model do
         bp: nil,
         version: version
       )
-      VCR.use_cassette('ist') do
-        user.update_ist
-      end
+      expect {
+        VCR.use_cassette('ist') do
+          user.update_ist
+        end
+      }.to change { Log.count }.by(261)
       scores = user.scores.is_current_version
       # クリアランプの変更だけでもスコアレコードが更新されている
       expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
@@ -94,18 +96,25 @@ describe User::Ist, type: :model do
         new_bp: 0
       )
     end
-    it '何も更新されない場合' do
+    it '既に同じデータがある場合はログが作られない' do
       VCR.use_cassette('sync_sheet') do
         RedisHelper.load_sheets_data
         sync_sheet
       end
-      VCR.use_cassette('ist') do
-        user.update_ist
-      end
-      scores = user.scores.is_current_version
-      # 何も変わっていないレコードは何もしない
-      expect(scores.find_by(sheet: Sheet.find_by(title: 'A'))).to eq nil
-      expect(user.logs.find_by(sheet_id: Sheet.find_by(title: 'A'))).to eq nil
+      # 同じデータがない場合は261件ログが増える
+      # 同じデータを意図的に作ってログのデータが減ることを確認する
+      user.scores.create!(
+        sheet_id: Sheet.find_by(title: '東京神話').id,
+        state: 2,
+        score: 0,
+        bp: 0,
+        version: version
+      )
+      expect {
+        VCR.use_cassette('ist') do
+          user.update_ist
+        end
+      }.to change { Log.count }.by(260)
     end
     it '存在しないユーザはraiseすること' do
       user.update!(iidxid: '1234-5678')
