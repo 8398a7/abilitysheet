@@ -68,12 +68,13 @@ module User::Ist
         # 削除曲だけunlessになる可能性がある
         next unless sheet_id
 
-        s = scores.find_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
-        next if s.nil? && score['score'].zero?
+        s = scores.find_or_initialize_by(sheet_id: sheet_id, version: Abilitysheet::Application.config.iidx_version)
 
         state = ::Static::LAMP_OFFICIAL.index(score['clear_type_status'])
+        # NO PLAYのものは更新しない
         next if state == 7
-        next if s&.state == state && score['score'].zero?
+        # ランプに変動がある、あるいはスコアが変動しているパターンでは更新する
+        next if s.state == state && score['score'].zero?
 
         scores.find_or_create_by!(
           sheet_id: sheet_id,
