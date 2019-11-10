@@ -624,6 +624,7 @@ DEPENDENCIES
   slim-rails
   spring
   spring-commands-rspec
+  sprockets (= 3.7.2)
   ts_routes
   turbolinks
   twitter
