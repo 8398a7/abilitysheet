@@ -17,7 +17,9 @@ export default class SheetList extends Record(defaultValue) {
 
   public toggleVersion(version: number) {
     const newList = this.list.map(sheet => {
-      if (sheet.version !== version) { return sheet; }
+      if (sheet.version !== version) {
+        return sheet;
+      }
       return sheet.set('hide', !sheet.hide);
     });
     return this.set('list', newList);
@@ -32,18 +34,25 @@ export default class SheetList extends Record(defaultValue) {
   }
 
   public whereAbility(ability: number, type: RootState['$$sheet']['type']) {
-    return this.list.map(sheet => {
-      if (sheet[type] !== ability) { return; }
-      if (sheet.hide) { return; }
-      return sheet;
-    }).filter(sheet => sheet !== undefined).sortBy((sheet) => {
-      if (sheet === undefined || sheet.title === undefined) { return; }
-      return sheet.title.toLocaleLowerCase();
-    });
+    return this.list
+      .map(sheet => {
+        if (sheet[type] !== ability || sheet.hide) {
+          return;
+        }
+        return sheet;
+      })
+      .filter(sheet => sheet !== undefined)
+      .sortBy(sheet => {
+        if (sheet?.title === undefined) {
+          return;
+        }
+        return sheet.title.toLocaleLowerCase();
+      });
   }
 
   public chunk(list: Map<number, Sheet | undefined>, chunkSize = 5) {
-    return Range(0, list.count(), chunkSize)
-      .map(chunkStart => list.slice(chunkStart, chunkStart + chunkSize));
+    return Range(0, list.count(), chunkSize).map(chunkStart =>
+      list.slice(chunkStart, chunkStart + chunkSize),
+    );
   }
 }
