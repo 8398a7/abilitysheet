@@ -29,13 +29,9 @@ const LampSelect: React.SFC<IProps> = props => {
           onChange={updateLamp(sheet_id)}
           style={{
             backgroundColor:
-              score && score.state !== undefined
-                ? $$env.color[score.state]
-                : '',
+              score?.state !== undefined ? $$env.color[score.state] : '',
           }}
-          value={
-            score && score.state !== undefined ? score.state : $$env.NOPLAY
-          }
+          value={score?.state ?? $$env.NOPLAY}
         >
           <option value={$$env.FC}>FC</option>
           <option value={$$env.EXH}>EXH</option>
