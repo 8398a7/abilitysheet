@@ -22,8 +22,10 @@ export default class ScoreList extends Record(defaultValue) {
 
   public toggleLamp(lamp: number, status?: boolean) {
     const newList = this.list.map(score => {
-      if (score.state !== lamp) { return score; }
-      const hide = status !== undefined ? status : !score.hide;
+      if (score.state !== lamp) {
+        return score;
+      }
+      const hide = status ?? !score.hide;
       return score.set('hide', hide);
     });
     return this.set('list', newList);
@@ -49,7 +51,9 @@ export default class ScoreList extends Record(defaultValue) {
   }
 
   public findBySheetId(id: number | undefined) {
-    if (id === undefined) { return; }
+    if (id === undefined) {
+      return;
+    }
     return this.list.find(score => score.sheet_id === id);
   }
 
@@ -57,12 +61,12 @@ export default class ScoreList extends Record(defaultValue) {
     const stat: { [n: number]: number } = {};
     this.list.forEach(score => {
       if (score.state === undefined) {
-        if (stat[7] === undefined) { stat[7] = 0; }
+        stat[7] = stat[7] ?? 0;
         stat[7] += 1;
         return;
       }
 
-      if (stat[score.state] === undefined) { stat[score.state] = 0; }
+      stat[score.state] = stat[score.state] ?? 0;
       stat[score.state] += 1;
     });
 
@@ -73,8 +77,14 @@ export default class ScoreList extends Record(defaultValue) {
     let count = 0;
     const { FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED } = this.env;
     this.list.forEach(score => {
-      if (score.state === undefined) { return; }
-      if ([FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED].indexOf(score.state) !== -1) { count += 1; }
+      if (score.state === undefined) {
+        return;
+      }
+      if (
+        [FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED].indexOf(score.state) !== -1
+      ) {
+        count += 1;
+      }
     });
     return sheetCount - count;
   }
@@ -99,8 +109,12 @@ export default class ScoreList extends Record(defaultValue) {
 
     let count = 0;
     this.list.forEach(score => {
-      if (score.state === undefined) { return; }
-      if (pattern.indexOf(score.state) !== -1) { count += 1; }
+      if (score.state === undefined) {
+        return;
+      }
+      if (pattern.indexOf(score.state) !== -1) {
+        count += 1;
+      }
     });
     return sheetCount - count;
   }

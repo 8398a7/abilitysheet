@@ -7,17 +7,11 @@ import LampSelect from './LampSelect';
 
 const BpMark: React.SFC<{ bp: number; score?: Score }> = props => {
   const { bp, score } = props;
-  if (Number.isNaN(bp) || bp === 0) {
+  if (Number.isNaN(bp)) {
     return null;
   }
-  if (score === undefined) {
-    return null;
-  }
-  if (score.bp === null || score.bp === undefined) {
-    return null;
-  }
-
-  if (score.bp < bp) {
+  const scoreBp = score?.bp ?? -1;
+  if (scoreBp < bp) {
     return null;
   }
   return <span> ★</span>;
@@ -55,17 +49,16 @@ const LampTd: React.SFC<IProps> = props => {
   } = props;
   const { color } = $$env;
   let backgroundColor = color[color.length - 1];
-  if (score && score.state !== undefined) {
+  if (score?.state !== undefined) {
     backgroundColor = color[score.state];
   }
   let display = '';
-  if (sheet.hide || (score && score.hide)) {
+  if (sheet.hide || score?.hide) {
     display = 'none';
   }
   if (
     filterName !== '' &&
-    sheet.title !== undefined &&
-    !sheet.title.toLowerCase().includes(filterName.toLowerCase())
+    !sheet?.title?.toLowerCase().includes(filterName.toLowerCase())
   ) {
     display = 'none';
   }

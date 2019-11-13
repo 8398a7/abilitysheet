@@ -99,14 +99,7 @@ const SheetList: SFC = props => {
           })
           .toArray();
 
-        const ids = sheets
-          .map(sheet => {
-            if (sheet === undefined) {
-              return;
-            }
-            return sheet.id;
-          })
-          .join('-');
+        const ids = sheets.map(sheet => sheet?.id).join('-');
         dom.push(<tr key={`sheet-${ids}`}>{tdDom}</tr>);
       });
     });
