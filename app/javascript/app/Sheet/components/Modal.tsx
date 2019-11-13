@@ -27,12 +27,7 @@ const Content: SFC<IProps> = ({ modal, color }) => {
 };
 
 const Textage = ({ modal }: { modal: IProps['modal'] }) => {
-  if (modal === undefined) {
-    return null;
-  }
-  if (!modal.textage) {
-    return null;
-  }
+  if (modal?.textage === undefined) { return null; }
   return (
     <>
       <a
