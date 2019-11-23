@@ -19,7 +19,7 @@
     "@fullcalendar/core": "^4.3.1",
     "@fullcalendar/daygrid": "^4.3.0",
     "@fullcalendar/react": "^4.3.0",
-    "@rails/webpacker": "^4.0.7",
+    "@rails/webpacker": "^4.2.0",
     "@sentry/browser": "^5.6.2",
     "@types/cal-heatmap": "^3.5.34",
     "@types/highcharts": "^5.0.44",
