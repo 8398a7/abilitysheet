@@ -11,7 +11,7 @@ const BpMark: React.SFC<{ bp: number; score?: Score }> = props => {
     return null;
   }
   const scoreBp = score?.bp ?? -1;
-  if (scoreBp < bp) {
+  if (scoreBp === -1 || scoreBp <= bp) {
     return null;
   }
   return <span> ★</span>;
