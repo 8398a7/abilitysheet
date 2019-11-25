@@ -154,7 +154,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
     this.setState({ options }, this.renderChart);
   };
 
-  public componentWillMount() {
+  public UNSAFE_componentWillMount() {
     if (this.props.initialRender) {
       return null;
     }

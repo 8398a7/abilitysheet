@@ -58,6 +58,8 @@ export const initialState = new initialRecord();
 const { reducer, createAction } = ActionReducer(initialState);
 export default reducer;
 
+const client = new MyClient();
+
 const GET_USER_REQUESTED = 'sheet/getUserRequested';
 const UPDATE_SCORE_REQUESTED = 'sheet/updateScoreRequested';
 const GET_MODAL_REQUESTED = 'sheet/getModalRequested';
@@ -157,7 +159,6 @@ const getModalFailed = createAction(
   ($$state, error: Error) => $$state.asImmutable(),
 );
 
-const client = new MyClient();
 function* getUserRequested(action: PayloadAction<typeof actions.getUser>) {
   try {
     const { iidxid, type } = action.payload;

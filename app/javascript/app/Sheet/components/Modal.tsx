@@ -36,6 +36,7 @@ const Textage = ({ modal }: { modal: IProps['modal'] }) => {
         key="textage-1p"
         href={modal.textage + '?1AC00'}
         target="_blank"
+        rel="noopener noreferrer"
         className="button is-danger"
       >
         textage(1P)
@@ -44,6 +45,7 @@ const Textage = ({ modal }: { modal: IProps['modal'] }) => {
         key="textage-2p"
         href={modal.textage + '?2AC00'}
         target="_blank"
+        rel="noopener noreferrer"
         className="button is-info"
       >
         textage(2P)

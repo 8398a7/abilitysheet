@@ -18,7 +18,7 @@ interface ISheetProps {
   versions: ISheetDefaultValue['versions'];
   lamp: ISheetDefaultValue['lamp'];
 }
-export default (props: ISheetProps & AbilitysheetContext) => {
+const SheetApp = (props: ISheetProps & AbilitysheetContext) => {
   const { recent, type, versions, lamp, user } = props;
   const initialState = {
     $$sheet: sheetInitialState
@@ -42,3 +42,5 @@ export default (props: ISheetProps & AbilitysheetContext) => {
     </Provider>
   );
 };
+
+export default SheetApp;
