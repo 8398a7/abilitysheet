@@ -20,24 +20,6 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
   const [client] = useState(new MyClient());
   const [events, setEvents] = useState<IEvent[]>([]);
 
-  const handleClickPrevNext = useCallback(
-    (args: { view: View; el: HTMLElement }) => {
-      let dates: string[];
-      dates = args.view.title
-        .replace(/年/g, ' ')
-        .replace('月', ' ')
-        .split(' ');
-      if (dates[0] === viewDate[0] && dates[1] === viewDate[1]) {
-        return;
-      }
-      viewDate = dates;
-      client
-        .getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
-        .then(res => changeEvents(res.logs));
-    },
-    [],
-  );
-
   const changeEvents = useCallback(
     (logs: ILog[]) => {
       const obj: { [s: string]: ILog[] } = {};
@@ -59,6 +41,23 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
       setEvents(newEvents);
     },
     [events],
+  );
+
+  const handleClickPrevNext = useCallback(
+    (args: { view: View; el: HTMLElement }) => {
+      const dates = args.view.title
+        .replace(/年/g, ' ')
+        .replace('月', ' ')
+        .split(' ');
+      if (dates[0] === viewDate[0] && dates[1] === viewDate[1]) {
+        return;
+      }
+      viewDate = dates;
+      client
+        .getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
+        .then(res => changeEvents(res.logs));
+    },
+    [],
   );
 
   const handleEventRender = useCallback(

@@ -6,7 +6,9 @@ import storeCreator from '../../lib/store';
 import LogCalendar from './components';
 
 export default (props: { iidxid: string } & AbilitysheetContext) => {
-  const store = storeCreator<RootState>(props, rootReducer, rootSaga, { $$meta: initialState });
+  const store = storeCreator<RootState>(props, rootReducer, rootSaga, {
+    $$meta: initialState,
+  });
   store.dispatch(actions.userMeRequested());
   const { iidxid } = props;
   return (

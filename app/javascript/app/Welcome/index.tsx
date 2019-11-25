@@ -6,7 +6,9 @@ import storeCreator from '../../lib/store';
 import Welcome from './components';
 
 export default (props: AbilitysheetContext) => {
-  const store = storeCreator<RootState>(props, rootReducer, rootSaga, { $$meta: initialState });
+  const store = storeCreator<RootState>(props, rootReducer, rootSaga, {
+    $$meta: initialState,
+  });
   store.dispatch(actions.userMeRequested());
   return (
     <Provider {...{ store }}>
