@@ -152,9 +152,9 @@ export default class SplineGraph extends React.Component<IProps, any> {
     options = this.updateColumn(options, graph);
     options = this.updateSpline(options, graph);
     this.setState({ options }, this.renderChart);
-  }
+  };
 
-  public componentWillMount() {
+  public UNSAFE_componentWillMount() {
     if (this.props.initialRender) {
       return null;
     }
@@ -193,7 +193,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
       month -= 1;
     }
     this.setState({ year, month }, this.getGraph);
-  }
+  };
 
   public handleClickNext = () => {
     let [year, month] = [this.state.year, this.state.month];
@@ -204,7 +204,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
       month += 1;
     }
     this.setState({ year, month }, this.getGraph);
-  }
+  };
 
   public render() {
     return (

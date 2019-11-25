@@ -12,6 +12,27 @@ const VersionCheckbox: SFC = () => {
 
   const [reverse, setReverse] = useState(false);
 
+  const handleChangeReverse = useCallback(() => {
+    const query = queryString.parse(location.search);
+    const url = location.origin + location.pathname;
+    if (reverse === false && query.reverse_sheet === undefined) {
+      history.replaceState(
+        '',
+        '',
+        `${url}?${queryString.stringify({ ...query, reverse_sheet: true })}`,
+      );
+    } else if (reverse === true && query.reverse_sheet) {
+      delete query.reverse_sheet;
+      history.replaceState(
+        '',
+        '',
+        `${url}?${queryString.stringify({ ...query })}`,
+      );
+    }
+    setReverse(!reverse);
+    dispatch(actions.reverseAbilities());
+  }, [reverse]);
+
   useEffect(() => {
     const query = queryString.parse(location.search);
     if (query.reverse_sheet === 'true') {
@@ -37,27 +58,6 @@ const VersionCheckbox: SFC = () => {
     },
     [],
   );
-
-  const handleChangeReverse = useCallback(() => {
-    const query = queryString.parse(location.search);
-    const url = location.origin + location.pathname;
-    if (reverse === false && query.reverse_sheet === undefined) {
-      history.replaceState(
-        '',
-        '',
-        `${url}?${queryString.stringify({ ...query, reverse_sheet: true })}`,
-      );
-    } else if (reverse === true && query.reverse_sheet) {
-      delete query.reverse_sheet;
-      history.replaceState(
-        '',
-        '',
-        `${url}?${queryString.stringify({ ...query })}`,
-      );
-    }
-    setReverse(!reverse);
-    dispatch(actions.reverseAbilities());
-  }, [reverse]);
 
   return (
     <Presentation

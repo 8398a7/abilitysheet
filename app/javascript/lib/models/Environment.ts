@@ -3,15 +3,14 @@ import queryString from 'query-string';
 
 function implicitMobile() {
   const u = window.navigator.userAgent.toLowerCase();
-  return u.indexOf('windows') !== -1 &&
-    u.indexOf('phone') !== -1 ||
+  return (
+    (u.indexOf('windows') !== -1 && u.indexOf('phone') !== -1) ||
     u.indexOf('iphone') !== -1 ||
     u.indexOf('ipod') !== -1 ||
-    u.indexOf('android') !== -1 &&
-    u.indexOf('mobile') !== -1 ||
-    u.indexOf('firefox') !== -1 &&
-    u.indexOf('mobile') !== -1 ||
-    u.indexOf('blackberry') !== -1;
+    (u.indexOf('android') !== -1 && u.indexOf('mobile') !== -1) ||
+    (u.indexOf('firefox') !== -1 && u.indexOf('mobile') !== -1) ||
+    u.indexOf('blackberry') !== -1
+  );
 }
 const defaultValue = {
   FC: 0,
@@ -42,13 +41,17 @@ const defaultValue = {
 
 export default class Environment extends Record(defaultValue) {
   public mobileView() {
-    if (this.explicitDesktop) { return false; }
+    if (this.explicitDesktop) {
+      return false;
+    }
     return this.implicitMobile;
   }
 
   public considerQueryString() {
     const query = queryString.parse(location.search);
-    if (!query.device) { return this; }
+    if (!query.device) {
+      return this;
+    }
     return this.set('explicitDesktop', query.device === 'pc');
   }
 
@@ -56,10 +59,18 @@ export default class Environment extends Record(defaultValue) {
     const url = location.origin + location.pathname;
     const query = queryString.parse(location.search);
     if (this.explicitDesktop) {
-      delete(query.device);
-      history.replaceState('', '', `${url}?${queryString.stringify({ ...query })}`);
+      delete query.device;
+      history.replaceState(
+        '',
+        '',
+        `${url}?${queryString.stringify({ ...query })}`,
+      );
     } else {
-      history.replaceState('', '', `${url}?${queryString.stringify({ ...query, device: 'pc' })}`);
+      history.replaceState(
+        '',
+        '',
+        `${url}?${queryString.stringify({ ...query, device: 'pc' })}`,
+      );
     }
     return this.set('explicitDesktop', !this.explicitDesktop);
   }

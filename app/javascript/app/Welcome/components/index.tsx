@@ -17,7 +17,11 @@ const Welcome: React.SFC = () => {
       <Adsenses slot={1} />
       <div>
         SP ☆12以外を管理したい人向け:{' '}
-        <a href="https://score.iidx.app" target="_blank">
+        <a
+          href="https://score.iidx.app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           IIDX Score Table
         </a>
         <br />

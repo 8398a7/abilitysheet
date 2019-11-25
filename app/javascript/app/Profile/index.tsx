@@ -7,12 +7,14 @@ import storeCreator from '../../lib/store';
 import Profile from './components/Profile';
 
 export default (props: { user: IUser } & AbilitysheetContext) => {
-  const store = storeCreator<RootState>(props, rootReducer, rootSaga, { $$meta: initialState });
+  const store = storeCreator<RootState>(props, rootReducer, rootSaga, {
+    $$meta: initialState,
+  });
   store.dispatch(actions.considerQueryString());
   const user = new User(props.user);
   return (
     <Provider {...{ store }}>
-      <Profile {...{ user }}/>
+      <Profile {...{ user }} />
     </Provider>
   );
 };
