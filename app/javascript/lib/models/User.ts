@@ -32,8 +32,12 @@ export default class User extends Record(defaultValue) {
   }
 
   public renderAds() {
-    if (this.role === undefined) { return true; }
-    if (this.role >= 25) { return false; }
+    if (this.role === undefined) {
+      return true;
+    }
+    if (this.role >= 25) {
+      return false;
+    }
     return true;
   }
 

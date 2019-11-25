@@ -6,7 +6,10 @@ import User, { IUser } from '../../lib/models/User';
 import storeCreator from '../../lib/store';
 import Sheet from './components';
 import rootReducer, { rootSaga, RootState } from './ducks';
-import { initialState as sheetInitialState, ISheetDefaultValue } from './ducks/Sheet';
+import {
+  initialState as sheetInitialState,
+  ISheetDefaultValue,
+} from './ducks/Sheet';
 
 interface ISheetProps {
   recent: ISheetDefaultValue['recent'];
@@ -26,7 +29,12 @@ export default (props: ISheetProps & AbilitysheetContext) => {
       .set('recent', recent),
     $$meta: metaInitialState,
   };
-  const store = storeCreator<RootState>(props, rootReducer, rootSaga, initialState);
+  const store = storeCreator<RootState>(
+    props,
+    rootReducer,
+    rootSaga,
+    initialState,
+  );
   store.dispatch(actions.considerQueryString());
   return (
     <Provider {...{ store }}>
