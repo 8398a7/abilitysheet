@@ -15,9 +15,8 @@
 
 ## Join to Development
 
-### [共同開発者随時募集中](http://twitter.com/IIDX_12)
-
-お気軽にツイッターや Discord で声をかけて下さい、とても喜びます。
+メインの課題管理は JIRA で行っています。  
+不具合報告や要望等は GitHub の issue に投稿していただいて大丈夫です。
 
 [Discord](https://discord.gg/6pkkBgx)
 
