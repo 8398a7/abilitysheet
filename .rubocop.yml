@@ -11,11 +11,11 @@ Metrics/CyclomaticComplexity:
   Enabled: false
 
 # 例外を抑制している
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 # 行が長すぎる
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: false
 
 # メソッドの行数が多すぎる
@@ -62,15 +62,15 @@ Style/FormatStringToken:
 AllCops:
   TargetRubyVersion: 2.5
   Exclude:
-    - 'Gemfile'
-    - 'db/**/*'
-    - 'bin/*'
-    - 'Capfile'
-    - 'config/**/*'
-    - 'script/**/*'
-    - 'vendor/bundle/**/*'
-    - 'node_modules/**/*'
+    - "Gemfile"
+    - "db/**/*"
+    - "bin/*"
+    - "Capfile"
+    - "config/**/*"
+    - "script/**/*"
+    - "vendor/bundle/**/*"
+    - "node_modules/**/*"
   Include:
-    - 'app/**/*.rb'
-    - 'lib/**/*.rb'
-    - 'spec/**/*.rb'
+    - "app/**/*.rb"
+    - "lib/**/*.rb"
+    - "spec/**/*.rb"
