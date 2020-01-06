@@ -7,11 +7,10 @@ import LampSelect from './LampSelect';
 
 const BpMark: React.SFC<{ bp: number; score?: Score }> = props => {
   const { bp, score } = props;
-  if (Number.isNaN(bp)) {
+  if (Number.isNaN(bp) || bp === 0) {
     return null;
   }
-  const scoreBp = score?.bp ?? -1;
-  if (scoreBp === -1 || scoreBp <= bp) {
+  if (score?.bp == null || score.bp < bp) {
     return null;
   }
   return <span> ★</span>;

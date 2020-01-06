@@ -8,7 +8,7 @@ const BpForm: React.SFC<IProps> = props => {
   const { bp, handleChangeBp } = props;
   return (
     <>
-      <label className="label">指定したBPより大きい曲に★マーク</label>
+      <label className="label">指定したBP以上の曲に★マーク</label>
       <div className="control has-text-centered">
         <input
           className="input"
