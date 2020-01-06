@@ -18,6 +18,7 @@ export interface ISheetDefaultValue {
   scoreList: ScoreList;
   abilities: OrderedMap<number, string>;
   bp: string;
+  belowBp: string;
   filterName: string;
   selectDisplay: boolean;
   type: 'n_clear' | 'hard' | 'exh';
@@ -43,6 +44,7 @@ const defaultValue: ISheetDefaultValue = {
   scoreList: new ScoreList(),
   abilities: OrderedMap(),
   bp: localStorage.bp || '0',
+  belowBp: localStorage.belowBp || '0',
   filterName: '',
   selectDisplay:
     localStorage.getItem('selectDisplay') === 'false' ? false : true,
@@ -92,6 +94,13 @@ export const actions = {
     localStorage.bp = payload;
     return $$state.set('bp', payload);
   }),
+  updateBelowBp: createAction(
+    'sheet/updateBelowBp',
+    ($$state, payload: string) => {
+      localStorage.belowBp = payload;
+      return $$state.set('belowBp', payload);
+    },
+  ),
   updateFilterName: createAction(
     'sheet/updateFilterName',
     ($$state, payload: string) => $$state.set('filterName', payload),
