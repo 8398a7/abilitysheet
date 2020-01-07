@@ -56,7 +56,6 @@ const Sheet: SFC = () => {
   const $$scoreList = useSelector(
     (state: RootState) => state.$$sheet.scoreList,
   );
-  const bp = useSelector((state: RootState) => state.$$sheet.bp);
   const filterName = useSelector(
     (state: RootState) => state.$$sheet.filterName,
   );
@@ -73,12 +72,6 @@ const Sheet: SFC = () => {
     dispatch(actions.getUser({ iidxid, type }));
   }, []);
 
-  const handleChangeBp = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(actions.updateBp(e.target.value));
-    },
-    [],
-  );
   const handleChangeName = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(actions.updateFilterName(e.target.value));
@@ -112,7 +105,7 @@ const Sheet: SFC = () => {
         <div style={{ marginTop: '10px' }} />
         <Statistics />
         <h3 />
-        <BpForm {...{ bp, handleChangeBp }} />
+        <BpForm />
         <FilterNameForm {...{ name: filterName, handleChangeName }} />
         <br />
         <SheetList />

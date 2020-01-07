@@ -1,21 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { RootState } from '../../ducks';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';
 import LampSelect from './LampSelect';
-
-const BpMark: React.SFC<{ bp: number; score?: Score }> = props => {
-  const { bp, score } = props;
-  if (Number.isNaN(bp)) {
-    return null;
-  }
-  const scoreBp = score?.bp ?? -1;
-  if (scoreBp === -1 || scoreBp <= bp) {
-    return null;
-  }
-  return <span> ★</span>;
-};
+import { BelowBpMark, UpperBpMark } from './BpMark';
 
 interface IProps {
   sheet: Sheet;
@@ -31,7 +21,6 @@ interface IProps {
 
 const LampTd: React.SFC<IProps> = props => {
   const $$env = useSelector((state: RootState) => state.$$meta.env);
-  const bp = useSelector((state: RootState) => parseInt(state.$$sheet.bp, 10));
   const selectDisplay = useSelector(
     (state: RootState) => state.$$sheet.selectDisplay,
   );
@@ -73,7 +62,8 @@ const LampTd: React.SFC<IProps> = props => {
         onClick={handleSheetClick(sheet.id)}
       >
         {sheet.title}
-        <BpMark {...{ bp, score }} />
+        <UpperBpMark {...{ score }} />
+        <BelowBpMark {...{ score }} />
       </a>
       <LampSelect
         {...{

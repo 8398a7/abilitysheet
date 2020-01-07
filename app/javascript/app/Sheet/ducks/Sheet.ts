@@ -17,7 +17,8 @@ export interface ISheetDefaultValue {
   sheetList: SheetList;
   scoreList: ScoreList;
   abilities: OrderedMap<number, string>;
-  bp: string;
+  upperBp: string;
+  belowBp: string;
   filterName: string;
   selectDisplay: boolean;
   type: 'n_clear' | 'hard' | 'exh';
@@ -42,7 +43,8 @@ const defaultValue: ISheetDefaultValue = {
   sheetList: new SheetList(),
   scoreList: new ScoreList(),
   abilities: OrderedMap(),
-  bp: localStorage.bp || '0',
+  upperBp: localStorage.upperBp || '0',
+  belowBp: localStorage.belowBp || '0',
   filterName: '',
   selectDisplay:
     localStorage.getItem('selectDisplay') === 'false' ? false : true,
@@ -88,10 +90,20 @@ export const actions = {
   reverseAbilities: createAction('sheet/reverseAbilities', $$state =>
     $$state.update('abilities', abilities => abilities.reverse()),
   ),
-  updateBp: createAction('sheet/updateBp', ($$state, payload: string) => {
-    localStorage.bp = payload;
-    return $$state.set('bp', payload);
-  }),
+  updateUpperBp: createAction(
+    'sheet/updateUpperBp',
+    ($$state, payload: string) => {
+      localStorage.upperBp = payload;
+      return $$state.set('upperBp', payload);
+    },
+  ),
+  updateBelowBp: createAction(
+    'sheet/updateBelowBp',
+    ($$state, payload: string) => {
+      localStorage.belowBp = payload;
+      return $$state.set('belowBp', payload);
+    },
+  ),
   updateFilterName: createAction(
     'sheet/updateFilterName',
     ($$state, payload: string) => $$state.set('filterName', payload),
