@@ -5,7 +5,7 @@ import { RootState } from '../../ducks';
 import Score from '../../models/Score';
 import Sheet from '../../models/Sheet';
 import LampSelect from './LampSelect';
-import { BelowBpMark, BpMark } from './BpMark';
+import { BelowBpMark, UpperBpMark } from './BpMark';
 
 interface IProps {
   sheet: Sheet;
@@ -62,7 +62,7 @@ const LampTd: React.SFC<IProps> = props => {
         onClick={handleSheetClick(sheet.id)}
       >
         {sheet.title}
-        <BpMark {...{ score }} />
+        <UpperBpMark {...{ score }} />
         <BelowBpMark {...{ score }} />
       </a>
       <LampSelect

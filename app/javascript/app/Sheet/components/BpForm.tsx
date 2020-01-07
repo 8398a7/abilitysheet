@@ -5,13 +5,13 @@ import { RootState } from '../ducks';
 import { actions } from '../ducks/Sheet';
 
 const BpForm: React.SFC = () => {
-  const bp = useSelector((state: RootState) => state.$$sheet.bp);
+  const upperBp = useSelector((state: RootState) => state.$$sheet.upperBp);
   const belowBp = useSelector((state: RootState) => state.$$sheet.belowBp);
 
   const dispatch = useDispatch();
-  const handleChangeBp = useCallback(
+  const handleChangeUpperBp = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      dispatch(actions.updateBp(e.target.value));
+      dispatch(actions.updateUpperBp(e.target.value));
     },
     [],
   );
@@ -29,8 +29,8 @@ const BpForm: React.SFC = () => {
         <input
           className="input"
           type="text"
-          value={bp}
-          onChange={handleChangeBp}
+          value={upperBp}
+          onChange={handleChangeUpperBp}
           style={{ width: '50%' }}
         />
       </div>
