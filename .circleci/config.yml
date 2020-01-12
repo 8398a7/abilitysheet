@@ -4,7 +4,7 @@ jobs:
     test-job:
         working_directory: /tmp/abilitysheet
         docker:
-            - image: circleci/ruby:2.6.5-node-browsers
+            - image: circleci/ruby:2.7.0-node-browsers
               environment:
                   RAILS_ENV: test
                   DATABASE_URL: postgres://postgres:@localhost
