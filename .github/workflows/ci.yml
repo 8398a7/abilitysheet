@@ -12,14 +12,7 @@ jobs:
         run: echo $REGISTRY_TOKEN | docker login docker.pkg.github.com -u 8398a7 --password-stdin
         env:
           REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
-      - name: pull abilitysheet-base
-        run: docker pull docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
-      - name: build abilitysheet-base
-        run: docker build -t docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest --cache-from docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest -f build/base.Dockerfile .
-      - name: push abilitysheet-base
-        run: docker push docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest
-      - name: build gcr.io/iidx-app/abilitysheet
-        run: docker build -t gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10) -f build/Dockerfile .
+      - run: make pull build
       - name: initialize gcloud sdk
         run: |
           echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
@@ -29,8 +22,7 @@ jobs:
           gcloud auth configure-docker --quiet --project iidx-app
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
-      - name: push gcr.io/iidx-app/abilitysheet
-        run: docker push gcr.io/iidx-app/abilitysheet:$(git describe --tags --abbrev=10)
+      - run: make push
       - uses: 8398a7/action-slack@v2
         with:
           status: ${{ job.status }}
