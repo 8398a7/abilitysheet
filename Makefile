@@ -1,14 +1,24 @@
-TAG := $(shell git describe --tags --abbrev=10)
-BASE_IMAGE := docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base
-IMAGE := gcr.io/iidx-app/abilitysheet
+PUMA_POD = $(shell kubectl get po -n abilitysheet -l app.kubernetes.io/component=puma -o name | cut -c5-)
 
-.PHONY: pull
-	docker pull $(BASE_IMAGE):latest
-.PHONY: build
-build:
-	docker build --cache-from $(BASE_IMAGE):latest -t $(BASE_IMAGE):latest -f build/base.Dockerfile .
-	docker build -t $(IMAGE):$(TAG) -f build/Dockerfile .
-.PHONY: push
-push:
-	docker push $(BASE_IMAGE):latest
-	docker push $(IMAGE):$(TAG)
+open-dashboard:
+	$(shell open https://dashboard-127-0-0-1.nip.io)
+open-app:
+	$(shell open https://app-127-0-0-1.nip.io)
+helm-demo-deploy:
+	helm init --wait
+	$(MAKE) helm-demo-upgrade open-dashboard open-app
+helm-demo-preview:
+	helm install --dry-run --debug ./deployments/abilitysheet -n preview --namespace abilitysheet
+helm-demo-upgrade:
+	helm upgrade prod ./deployments/abilitysheet --install --wait --namespace abilitysheet
+helm-deploy:
+	helm init --wait
+	$(MAKE) helm-upgrade open-dashboard open-app
+helm-preview:
+	helm secrets install --dry-run --debug ./deployments/abilitysheet -n preview --namespace abilitysheet -f ./deployments/abilitysheet/secrets.yaml
+helm-upgrade:
+	helm secrets upgrade prod ./deployments/abilitysheet --install --wait --namespace abilitysheet -f ./deployments/abilitysheet/secrets.yaml
+helm-delete:
+	helm del --purge prod
+pod-exec:
+	kubectl exec -it $(PUMA_POD) -n abilitysheet /bin/sh

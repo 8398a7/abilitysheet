@@ -1,71 +1,69 @@
 version: 2.1
 
 jobs:
-  test-job:
-    working_directory: /tmp/abilitysheet
-    docker:
-      - image: circleci/ruby:2.7.0-node-browsers
-        environment:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:@localhost
-          TZ: /usr/share/zoneinfo/Asia/Tokyo
-      - image: postgres:11.5-alpine
-      - image: redis:5.0.5-alpine
-    steps:
-      - checkout
-      - restore_cache:
-          key: yarn-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: yarn install
-          command: yarn install
-      - save_cache:
-          key: yarn-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ./node_modules
-      - restore_cache:
-          name: Restore bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            bundle config set path 'vendor/bundle'
-            bundle install -j4
-      - save_cache:
-          name: Save bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-      - run:
-          name: Setup Application Environment
-          command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
-      - run:
-          name: Create DB
-          command: bundle exec rails db:create db:schema:load --trace
-      - run:
-          name: Exec Rubocop
-          command: bundle exec bin/rubocop_parallel
-      - run:
-          name: Exec Eslint And Prettier
-          command: yarn lint
-      - run:
-          name: Generate routes.ts
-          command: bundle exec rails ts:routes
-      - run:
-          name: Exec RSpec
-          command: bundle exec rspec
-      - run:
-          name: Report Codeclimate
-          command: bundle exec codeclimate-test-reporter
-      - run:
-          name: Run Puma
-          command: mkdir -p tmp/sockets && RAILS_ENV=production bundle exec pumactl start
-      - store_artifacts:
-          path: ./log/test.log
-      - store_artifacts:
-          path: ./tmp/screenshots
+    test-job:
+        working_directory: /tmp/abilitysheet
+        docker:
+            - image: circleci/ruby:2.6.5-node-browsers
+              environment:
+                  RAILS_ENV: test
+                  DATABASE_URL: postgres://postgres:@localhost
+                  TZ: /usr/share/zoneinfo/Asia/Tokyo
+            - image: postgres:11.5-alpine
+            - image: redis:5.0.5-alpine
+        steps:
+            - checkout
+            - restore_cache:
+                  key: yarn-cache-{{ checksum "yarn.lock" }}
+            - run:
+                  name: yarn install
+                  command: yarn install
+            - save_cache:
+                  key: yarn-cache-{{ checksum "yarn.lock" }}
+                  paths:
+                      - ./node_modules
+            - restore_cache:
+                  name: Restore bundler cache
+                  key: bundle-{{ checksum "Gemfile.lock" }}
+            - run:
+                  name: Install Ruby Dependencies
+                  command: bundle install -j4 --path vendor/bundle
+            - save_cache:
+                  name: Save bundler cache
+                  key: bundle-{{ checksum "Gemfile.lock" }}
+                  paths:
+                      - ./vendor/bundle
+            - run:
+                  name: Setup Application Environment
+                  command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
+            - run:
+                  name: Create DB
+                  command: bundle exec rails db:create db:schema:load --trace
+            - run:
+                  name: Exec Rubocop
+                  command: bundle exec bin/rubocop_parallel
+            - run:
+                  name: Exec Eslint And Prettier
+                  command: yarn lint
+            - run:
+                  name: Generate routes.ts
+                  command: bundle exec rails ts:routes
+            - run:
+                  name: Exec RSpec
+                  command: bundle exec rspec
+            - run:
+                  name: Report Codeclimate
+                  command: bundle exec codeclimate-test-reporter
+            - run:
+                  name: Run Puma
+                  command: mkdir -p tmp/sockets && RAILS_ENV=production bundle exec pumactl start
+            - store_artifacts:
+                  path: ./log/test.log
+            - store_artifacts:
+                  path: ./tmp/screenshots
 
 workflows:
-  version: 2
-  test-build-deploy:
-    jobs:
-      - test-job
+    version: 2
+    test-build-deploy:
+        jobs:
+            - test-job

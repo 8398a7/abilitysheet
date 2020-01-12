@@ -1,4 +1,4 @@
-FROM ruby:2.7.0-alpine3.10
+FROM ruby:2.6.5-alpine3.10
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
@@ -16,6 +16,7 @@ RUN \
   build-base \
   git \
   postgresql-dev \
+  ruby-dev \
   libxml2-dev \
   libxslt-dev \
   postgresql-client \
@@ -23,9 +24,7 @@ RUN \
   yarn
 
 COPY Gemfile* $HOME/
-RUN \
-  bundle config set without 'development test deployment' && \
-  bundle install -j4
+RUN bundle install -j4 --without development test deployment
 
 COPY package.json yarn.lock $HOME/
 RUN yarn install
