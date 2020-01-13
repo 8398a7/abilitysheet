@@ -9,22 +9,22 @@ class IstClient
 
   def get_scores(iidxid, params)
     endpoint = @url + "/api/v1/scores/#{iidxid}?" + params.to_query
-    body = HTTP.get(endpoint).body
-    JSON.parse(body.to_s)
+    body = Net::HTTP.get(URI.parse(endpoint))
+    JSON.parse(body)
   end
 
   def get_musics(params)
     endpoint = @url + '/api/v1/musics?' + params.to_query
-    body = HTTP.get(endpoint).body
-    JSON.parse(body.to_s)
+    body = Net::HTTP.get(URI.parse(endpoint))
+    JSON.parse(body)
   end
 
   def get_user(iidxid)
     endpoint = @url + "/api/v1/users/#{iidxid}"
-    resp = HTTP.get(endpoint)
-    raise NotFoundUser if resp.status == 404
+    resp = Net::HTTP.get_response(URI.parse(endpoint))
+    raise NotFoundUser if resp.code == '404'
 
-    hash = JSON.parse(resp.body.to_s)
+    hash = JSON.parse(resp.body)
     return hash unless hash.dig('image_path')
 
     hash['image_path'] = @url + hash['image_path']
