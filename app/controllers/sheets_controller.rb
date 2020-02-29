@@ -21,7 +21,7 @@ class SheetsController < ApplicationController
       'hard' => :hard,
       'exh' => :exh
     }
-    raise ActionController::RoutingError unless @action_routes[params[:type]]
+    raise ActionController::RoutingError, "No route matches #{request.path.inspect}" unless @action_routes[params[:type]]
   end
 
   def power
