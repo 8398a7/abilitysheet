@@ -26,9 +26,6 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - restore_cache:
-          name: Restore bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
       - ruby-orbs/bundle-install
       - run:
           name: Setup Application Environment
