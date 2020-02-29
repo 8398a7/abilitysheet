@@ -78,6 +78,7 @@ group :test do
   gem 'rspec-its'
   gem 'rspec-rails'
   gem 'rspec-retry'
+  gem 'rspec_junit_formatter'
   gem 'rubocop'
   gem 'selenium-webdriver'
   gem 'simplecov'
