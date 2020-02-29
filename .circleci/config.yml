@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  codeclimate: sue445/codeclimate@0.1.0
+  ruby-orbs: sue445/ruby-orbs@1.6.0
+
 jobs:
   test-job:
     working_directory: /tmp/abilitysheet
@@ -22,19 +26,7 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - restore_cache:
-          name: Restore bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-      - run:
-          name: Install Ruby Dependencies
-          command: |
-            bundle config set path 'vendor/bundle'
-            bundle install -j4
-      - save_cache:
-          name: Save bundler cache
-          key: bundle-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
+      - ruby-orbs/bundle-install
       - run:
           name: Setup Application Environment
           command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
@@ -51,18 +43,20 @@ jobs:
           name: Generate routes.ts
           command: bundle exec rails ts:routes
       - run:
-          name: Exec RSpec
-          command: bundle exec rspec
-      - run:
-          name: Report Codeclimate
-          command: bundle exec codeclimate-test-reporter
+          name: Create test-results dir
+          command: mkdir -p tmp/test-results
+      - codeclimate/with-cc-test-reporter:
+          after_build_args: "--coverage-input-type simplecov"
+          steps:
+            - run: bundle exec rspec
       - run:
           name: Run Puma
           command: mkdir -p tmp/sockets && RAILS_ENV=production bundle exec pumactl start
+      - store_test_results:
+          path: ./tmp/test-results
       - store_artifacts:
-          path: ./log/test.log
-      - store_artifacts:
-          path: ./tmp/screenshots
+          path: ./tmp/test-results
+          destination: test-results
 
 workflows:
   version: 2
