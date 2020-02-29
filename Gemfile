@@ -72,7 +72,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'codeclimate-test-reporter'
   gem 'factory_bot_rails'
   gem 'json_expressions'
   gem 'rails-controller-testing'
