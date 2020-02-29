@@ -72,16 +72,16 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'codeclimate-test-reporter'
   gem 'factory_bot_rails'
   gem 'json_expressions'
   gem 'rails-controller-testing'
   gem 'rspec-its'
   gem 'rspec-rails'
   gem 'rspec-retry'
+  gem 'rspec_junit_formatter'
   gem 'rubocop'
   gem 'selenium-webdriver'
-  gem 'simplecov'
+  gem 'simplecov', '< 0.18.0'
   gem 'spring-commands-rspec'
   gem 'vcr'
   gem 'webdrivers'

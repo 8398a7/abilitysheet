@@ -1,4 +1,6 @@
+--format documentation
 --color
 --require rails_helper
---format documentation
 --profile 10
+--format RspecJunitFormatter
+--out tmp/test-results/rspec.xml
