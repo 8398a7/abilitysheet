@@ -81,7 +81,7 @@ group :test do
   gem 'rspec_junit_formatter'
   gem 'rubocop'
   gem 'selenium-webdriver'
-  gem 'simplecov'
+  gem 'simplecov', '< 0.18.0'
   gem 'spring-commands-rspec'
   gem 'vcr'
   gem 'webdrivers'
