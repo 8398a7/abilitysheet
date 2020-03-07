@@ -18,6 +18,6 @@ class SheetDecorator < Draper::Decorator
   def updated_at
     return '' unless object.updated_at
 
-    object.updated_at.to_date.strftime('%Y/%m/%d %H:%M')
+    object.updated_at.strftime('%Y/%m/%d %H:%M')
   end
 end
