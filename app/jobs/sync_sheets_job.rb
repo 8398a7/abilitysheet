@@ -11,7 +11,7 @@ class SyncSheetsJob < ApplicationJob
       q: {
         charts_play_type_status_eq: 0,
         charts_level_eq: 12,
-        created_at_gteq: date
+        charts_updated_at_gteq: date
       }
     )
     sheets.each do |sheet|
