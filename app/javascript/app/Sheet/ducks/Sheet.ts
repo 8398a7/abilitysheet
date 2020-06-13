@@ -6,7 +6,6 @@ import { actions as metaActions } from '../../../lib/ducks/Meta';
 import User from '../../../lib/models/User';
 import { IModal } from '../../../lib/MyClient';
 import MyClient from '../../../lib/MyClient';
-import { PayloadAction } from '../../../types/action-reducer/index';
 import { IScore } from '../models/Score';
 import ScoreList from '../models/ScoreList';
 import { ISheet } from '../models/Sheet';
@@ -171,9 +170,9 @@ const getModalFailed = createAction(
   ($$state, error: Error) => $$state.asImmutable(),
 );
 
-function* getUserRequested(action: PayloadAction<typeof actions.getUser>) {
+function* getUserRequested(action: ReturnType<typeof actions.getUser>) {
   try {
-    const { iidxid, type } = action.payload;
+    const { iidxid, type } = action.payload[0];
     const {
       abilitiesRes,
       sheetsRes,
@@ -198,10 +197,10 @@ function* getUserRequested(action: PayloadAction<typeof actions.getUser>) {
 }
 
 function* updateScoreRequested(
-  action: PayloadAction<typeof actions.updateScoreRequested>,
+  action: ReturnType<typeof actions.updateScoreRequested>,
 ) {
   try {
-    const { iidxid, sheetId, state } = action.payload;
+    const { iidxid, sheetId, state } = action.payload[0];
     const newScore: SagaCall<typeof client.updateScore> = yield call(
       client.updateScore,
       iidxid,
@@ -215,10 +214,10 @@ function* updateScoreRequested(
 }
 
 function* getModalRequested(
-  action: PayloadAction<typeof actions.getModalRequested>,
+  action: ReturnType<typeof actions.getModalRequested>,
 ) {
   try {
-    const { iidxid, sheetId } = action.payload;
+    const { iidxid, sheetId } = action.payload[0];
     const res: SagaCall<typeof client.getModal> = yield call(
       client.getModal,
       iidxid,

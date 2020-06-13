@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "strict": true,
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -10,8 +9,7 @@
     "sourceMap": true,
     "target": "es5",
     "jsx": "react",
-    "noUnusedLocals": true,
-    "esModuleInterop": true
+    "noEmit": true
   },
   "exclude": [
     "**/*.spec.ts",
