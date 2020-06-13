@@ -19,7 +19,7 @@ interface IProps {
   handleSheetClick: (sheetId?: number) => (e: React.MouseEvent) => void;
 }
 
-const LampTd: React.SFC<IProps> = props => {
+const LampTd: React.SFC<IProps> = (props) => {
   const $$env = useSelector((state: RootState) => state.$$meta.env);
   const selectDisplay = useSelector(
     (state: RootState) => state.$$sheet.selectDisplay,

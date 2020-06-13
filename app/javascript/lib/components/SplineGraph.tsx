@@ -131,7 +131,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
 
   public updateColumn(options: any, graph: any) {
     [0, 1, 2, 3, 4].forEach(
-      index => (options.series[index].data = graph.column[index]),
+      (index) => (options.series[index].data = graph.column[index]),
     );
     options.yAxis[0].max = graph.column_max;
     return options;
@@ -139,7 +139,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
 
   public updateSpline(options: any, graph: any) {
     [5, 6, 7, 8].forEach(
-      index => (options.series[index].data = graph.spline[index - 5]),
+      (index) => (options.series[index].data = graph.spline[index - 5]),
     );
     options.yAxis[1].max = graph.spline_max;
     return options;
@@ -170,7 +170,7 @@ export default class SplineGraph extends React.Component<IProps, any> {
     const { year, month } = this.state;
     client
       .getGraph(iidxid, year, month)
-      .then(graph => this.handleChange(graph));
+      .then((graph) => this.handleChange(graph));
   }
 
   public componentDidMount() {

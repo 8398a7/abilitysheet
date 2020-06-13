@@ -75,19 +75,19 @@ export const actions = {
   toggleVersion: createAction(
     'sheet/toggleVersion',
     ($$state, payload: number) =>
-      $$state.update('sheetList', sheetList =>
+      $$state.update('sheetList', (sheetList) =>
         sheetList.toggleVersion(payload),
       ),
   ),
   toggleLamp: createAction(
     'sheet/toggleLamp',
     ($$state, payload: { state: number; status?: boolean }) =>
-      $$state.update('scoreList', scoreList =>
+      $$state.update('scoreList', (scoreList) =>
         scoreList.toggleLamp(payload.state, payload.status),
       ),
   ),
-  reverseAbilities: createAction('sheet/reverseAbilities', $$state =>
-    $$state.update('abilities', abilities => abilities.reverse()),
+  reverseAbilities: createAction('sheet/reverseAbilities', ($$state) =>
+    $$state.update('abilities', (abilities) => abilities.reverse()),
   ),
   updateUpperBp: createAction(
     'sheet/updateUpperBp',
@@ -120,10 +120,10 @@ export const actions = {
     ($$state, payload: { iidxid: string; sheetId: number }) =>
       $$state.set('modalClass', 'modal is-active'),
   ),
-  closeModal: createAction('sheet/closeModal', $$state =>
+  closeModal: createAction('sheet/closeModal', ($$state) =>
     $$state.set('modalClass', 'modal'),
   ),
-  toggleDisplaySelect: createAction('sheet/toggleDisplaySelect', $$state => {
+  toggleDisplaySelect: createAction('sheet/toggleDisplaySelect', ($$state) => {
     localStorage.selectDisplay = !$$state.selectDisplay;
     return $$state.set('selectDisplay', !$$state.selectDisplay);
   }),
@@ -135,19 +135,20 @@ const getUserFailed = createAction(
 const updateSheetList = createAction(
   'sheet/updateSheetList',
   ($$state, payload: ISheet[]) =>
-    $$state.update('sheetList', sheetList => sheetList.updateList(payload)),
+    $$state.update('sheetList', (sheetList) => sheetList.updateList(payload)),
 );
 const updateScoreList = createAction(
   'sheet/updateScoreList',
   ($$state, payload: IScore[]) =>
-    $$state.update('scoreList', scoreList => scoreList.updateList(payload)),
+    $$state.update('scoreList', (scoreList) => scoreList.updateList(payload)),
 );
 const updateAbilities = createAction(
   'sheet/updateAbilities',
   ($$state, payload: SagaCall<typeof client.getAbilities>['abilities']) => {
     let newAbilities = OrderedMap<number, string>();
     payload.forEach(
-      ability => (newAbilities = newAbilities.set(ability.key, ability.value)),
+      (ability) =>
+        (newAbilities = newAbilities.set(ability.key, ability.value)),
     );
     return $$state.set('abilities', newAbilities);
   },
@@ -155,7 +156,7 @@ const updateAbilities = createAction(
 const updateScoreSucceeded = createAction(
   'sheet/updateScoreSucceeded',
   ($$state, payload: IScore) =>
-    $$state.update('scoreList', scoreList => scoreList.updateScore(payload)),
+    $$state.update('scoreList', (scoreList) => scoreList.updateScore(payload)),
 );
 const updateScoreFailed = createAction(
   'sheet/updateScoreFailed',

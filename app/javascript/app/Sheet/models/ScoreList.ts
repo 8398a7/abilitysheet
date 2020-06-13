@@ -21,7 +21,7 @@ export default class ScoreList extends Record(defaultValue) {
   }
 
   public toggleLamp(lamp: number, status?: boolean) {
-    const newList = this.list.map(score => {
+    const newList = this.list.map((score) => {
       if (score.state !== lamp) {
         return score;
       }
@@ -33,7 +33,7 @@ export default class ScoreList extends Record(defaultValue) {
 
   public updateList(params: IScore[]) {
     let newList = Map<number, Score>();
-    params.forEach(score => {
+    params.forEach((score) => {
       newList = newList.set(score.sheet_id, new Score(score));
     });
     return this.set('list', newList).set('fetched', true);
@@ -41,7 +41,7 @@ export default class ScoreList extends Record(defaultValue) {
 
   public updateScore(score: IScore) {
     let newScore = new Score(score);
-    this.list.forEach(s => {
+    this.list.forEach((s) => {
       if (s.state === newScore.state) {
         newScore = newScore.set('hide', s.hide);
         return;
@@ -54,12 +54,12 @@ export default class ScoreList extends Record(defaultValue) {
     if (id === undefined) {
       return;
     }
-    return this.list.find(score => score.sheet_id === id);
+    return this.list.find((score) => score.sheet_id === id);
   }
 
   public statistics() {
     const stat: { [n: number]: number } = {};
-    this.list.forEach(score => {
+    this.list.forEach((score) => {
       if (score.state === undefined) {
         stat[7] = stat[7] ?? 0;
         stat[7] += 1;
@@ -76,7 +76,7 @@ export default class ScoreList extends Record(defaultValue) {
   public noPlayCount(sheetCount: number) {
     let count = 0;
     const { FC, EXH, HARD, CLEAR, EASY, ASSIST, FAILED } = this.env;
-    this.list.forEach(score => {
+    this.list.forEach((score) => {
       if (score.state === undefined) {
         return;
       }
@@ -108,7 +108,7 @@ export default class ScoreList extends Record(defaultValue) {
     }
 
     let count = 0;
-    this.list.forEach(score => {
+    this.list.forEach((score) => {
       if (score.state === undefined) {
         return;
       }
@@ -125,19 +125,19 @@ export default class ScoreList extends Record(defaultValue) {
     const stat = this.statistics();
     switch (type) {
       case 'n_clear': {
-        [FC, EXH, HARD, CLEAR, EASY].forEach(num => {
+        [FC, EXH, HARD, CLEAR, EASY].forEach((num) => {
           count += stat[num] || 0;
         });
         break;
       }
       case 'hard': {
-        [FC, EXH, HARD].forEach(num => {
+        [FC, EXH, HARD].forEach((num) => {
           count += stat[num] || 0;
         });
         break;
       }
       case 'exh': {
-        [FC, EXH].forEach(num => {
+        [FC, EXH].forEach((num) => {
           count += stat[num] || 0;
         });
         break;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatisticsProps } from './index';
 
-const Desktop: React.SFC<StatisticsProps> = props => {
+const Desktop: React.SFC<StatisticsProps> = (props) => {
   const { $$scoreList, count, type, color } = props;
   const stat = $$scoreList.statistics();
   return (

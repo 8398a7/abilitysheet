@@ -6,7 +6,7 @@ interface IProps {
   handleToggleVersion: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChangeReverse: () => void;
 }
-const Presentation: SFC<IProps> = props => {
+const Presentation: SFC<IProps> = (props) => {
   const { versions, reverse, handleToggleVersion, handleChangeReverse } = props;
   const domList = useMemo(
     () =>

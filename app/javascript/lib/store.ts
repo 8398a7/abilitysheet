@@ -22,7 +22,7 @@ export default function storeCreator<S>(
   if (process.env.NODE_ENV !== 'production') {
     middlewares.push(
       createLogger({
-        stateTransformer: state => {
+        stateTransformer: (state) => {
           const newState: any = {};
           for (const i of Object.keys(state)) {
             newState[i] = state[i].toJS();

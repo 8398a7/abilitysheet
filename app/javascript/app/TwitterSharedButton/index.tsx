@@ -4,7 +4,7 @@ import { Mention, Share } from 'react-twitter-widgets';
 export interface ITwitterSharedButton {
   text: string;
 }
-const TwitterSharedButton: React.SFC<ITwitterSharedButton> = props => {
+const TwitterSharedButton: React.SFC<ITwitterSharedButton> = (props) => {
   const options = {
     lang: 'ja',
     text: props.text,

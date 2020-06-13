@@ -20,7 +20,7 @@ interface IProps {
   type: RootState['$$sheet']['type'];
   iidxid: string;
 }
-const OtherLinks: React.SFC<IProps> = props => {
+const OtherLinks: React.SFC<IProps> = (props) => {
   const { type, iidxid } = props;
   return (
     <div>

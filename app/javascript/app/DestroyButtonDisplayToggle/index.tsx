@@ -7,7 +7,7 @@ const DestroyButtonDisplayToggle: FC = () => {
     (type: boolean) => () => {
       document
         .querySelectorAll<HTMLButtonElement>('.destroy-button')
-        .forEach(elem => (elem.style.display = type ? 'none' : ''));
+        .forEach((elem) => (elem.style.display = type ? 'none' : ''));
       setDisplay(type);
     },
     [display],

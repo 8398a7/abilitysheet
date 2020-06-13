@@ -23,19 +23,19 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
   const changeEvents = useCallback(
     (logs: ILog[]) => {
       const obj: { [s: string]: ILog[] } = {};
-      logs.forEach(log => {
+      logs.forEach((log) => {
         if (obj[log.created_date] === undefined) {
           obj[log.created_date] = [];
         }
         obj[log.created_date].push(log);
       });
-      const newEvents = Object.keys(obj).map(date => {
+      const newEvents = Object.keys(obj).map((date) => {
         return {
           title: obj[date].length + '個の更新',
           start: date,
           allDay: true,
           url: logsPath(iidxid, date),
-          description: obj[date].map(e => e.title).join('<br>'),
+          description: obj[date].map((e) => e.title).join('<br>'),
         };
       });
       setEvents(newEvents);
@@ -55,7 +55,7 @@ const LogCalendar: FC<{ iidxid: string }> = ({ iidxid }) => {
       viewDate = dates;
       client
         .getLogs(iidxid, parseInt(dates[0], 10), parseInt(dates[1], 10))
-        .then(res => changeEvents(res.logs));
+        .then((res) => changeEvents(res.logs));
     },
     [],
   );
