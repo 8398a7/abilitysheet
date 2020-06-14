@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "strict": true,
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -11,11 +12,8 @@
     "jsx": "react",
     "noEmit": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
+  "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],
+  "noUnusedLocals": true,
+  "esModuleInterop": true,
   "compileOnSave": false
 }
