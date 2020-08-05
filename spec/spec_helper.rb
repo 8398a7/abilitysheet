@@ -2,9 +2,8 @@
 
 require 'simplecov'
 SimpleCov.start
-require 'capybara'
+require 'capybara/rspec'
 require 'sidekiq/testing'
-require 'tilt/coffee'
 require 'rspec/retry'
 
 RSpec.configure do |config|
@@ -13,11 +12,6 @@ RSpec.configure do |config|
   end
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
-  end
-
-  Capybara.raise_server_errors = false
-  Capybara.register_driver :selenium_chrome_headless do |app|
-    Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
 
   # rspec retry setting
@@ -29,16 +23,11 @@ RSpec.configure do |config|
 
   config.before(:each, type: :system) do |example|
     if example.metadata[:js]
-      if example.metadata[:iphone6]
-        display_size = [375, 667]
-        args = %w[--headless --disable-gpu --user-agent=iPhone]
+      if ENV['NO_HEADLESS']
+        driven_by :selenium
       else
-        display_size = [1920, 1080]
-        args = %w[--headless --disable-gpu]
+        driven_by :selenium, using: :headless_chrome, screen_size: [1920, 1080]
       end
-      args.shift if ENV['NO_HEADLESS']
-      caps = Selenium::WebDriver::Remote::Capabilities.chrome(chromeOptions: { args: args })
-      driven_by :selenium, screen_size: display_size, options: { desired_capabilities: caps }
     else
       driven_by :rack_test
     end
