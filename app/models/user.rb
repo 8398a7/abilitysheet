@@ -62,7 +62,7 @@ class User < ApplicationRecord
 
   validates :iidxid, format: { with: /\A\d{4}-\d{4}\z/, message: 'が正しくありません。' }, length: { is: 9 }, uniqueness: true, presence: true
   validates :grade, numericality: { only_integer: true }, inclusion: { in: Abilitysheet::Application.config.iidx_grade..19, message: 'のパラメタが異常です。' }, presence: true
-  validates :pref, numericality: { only_integer: true }, inclusion: { in: 0..47, message: 'のパラメタが異常です。' }, presence: true
+  validates :pref, numericality: { only_integer: true }, inclusion: { in: 0..User::Static::PREF.size, message: 'のパラメタが異常です。' }, presence: true
   validates :djname, length: { maximum: 6 }, format: { with: /\A[A-Z0-9\-\_.*!#&$]+\z/, message: 'は半角大文字英字で記入して下さい' }, presence: true
   validates :username, length: { maximum: 15 }, format: { with: /\A[a-z_0-9]+\z/, message: 'は半角小文字英数字で記入して下さい' }, uniqueness: true, presence: true
 
