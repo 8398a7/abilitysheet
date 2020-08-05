@@ -16,9 +16,8 @@ module User::Ist
     }
   }.freeze
 
-  # FIXME: 米国などの見つからなかったやつは海外に全部まとめている
   def find_pref(pref)
-    User::Static::PREF.index(pref) || 0
+    User::Static::PREF.index(pref)
   end
 
   # NOTE: 見つからなかったやつは無段位
