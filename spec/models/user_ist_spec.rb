@@ -131,7 +131,7 @@ describe User::Ist, type: :model do
       it('北海道なら1を返すこと') { expect(instance.find_pref('北海道')).to eq 1 }
       it('香川県なら37を返すこと') { expect(instance.find_pref('香川県')).to eq 37 }
       it('沖縄県なら47を返すこと') { expect(instance.find_pref('沖縄県')).to eq 47 }
-      it('香港なら0を返すこと') { expect(instance.find_pref('香港')).to eq 0 }
+      it('香港なら48を返すこと') { expect(instance.find_pref('香港')).to eq 48 }
     end
     describe '#find_grade' do
       it('SP --なら19を返すこと') { expect(instance.find_grade('SP --')).to eq 19 }
