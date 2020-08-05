@@ -21,7 +21,7 @@ interface IProps {
   $$scoreList: ScoreList;
   count: number;
 }
-const Title: React.SFC<IProps> = props => {
+const Title: React.SFC<IProps> = (props) => {
   const { type, $$scoreList, count } = props;
   return (
     <h4 className="subtitle is-4">

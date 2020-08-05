@@ -19,6 +19,7 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
   config.include FactoryBot::Syntax::Methods
   config.include SheetsHelper
+  config.include ActiveJob::TestHelper
 end
 
 VCR.configure do |c|

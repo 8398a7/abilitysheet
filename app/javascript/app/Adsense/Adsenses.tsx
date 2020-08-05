@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import { RootState } from '../../lib/ducks';
 
-const Adsenses: React.SFC<{ slot: 1 | 2 }> = props => {
+const Adsenses: React.SFC<{ slot: 1 | 2 }> = (props) => {
   const { client, slots } = useSelector(
     (state: RootState) => state.$$meta.env.adsense,
   );

@@ -8,7 +8,7 @@ interface IProps {
   handleClearChangeLamp: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleHardChangeLamp: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
-const Presentation: SFC<IProps> = props => {
+const Presentation: SFC<IProps> = (props) => {
   const {
     lamp,
     clear,

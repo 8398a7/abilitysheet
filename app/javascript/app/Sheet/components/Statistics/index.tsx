@@ -14,7 +14,7 @@ function mapStateToProps(state: RootState) {
   };
 }
 export type StatisticsProps = ReturnType<typeof mapStateToProps>;
-const Statistics: React.SFC<StatisticsProps> = props => (
+const Statistics: React.SFC<StatisticsProps> = (props) => (
   <>
     <table className="table is-fullwidth">
       {props.mobile ? <Mobile {...props} /> : <Desktop {...props} />}
