@@ -43,7 +43,7 @@ const VersionCheckbox: SFC = () => {
   const handleToggleVersion = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.value === '0') {
-        versions.forEach(version => {
+        versions.forEach((version) => {
           const targetInput = document.querySelector<HTMLInputElement>(
             `input[name="version-check"][value="${version[1]}"]`,
           );

@@ -21,14 +21,14 @@ const USER_ME_REQUESTED = 'meta/userMeRequested';
 
 const client = new MyClient();
 export const actions = {
-  userMeRequested: createAction(USER_ME_REQUESTED, $$state =>
+  userMeRequested: createAction(USER_ME_REQUESTED, ($$state) =>
     $$state.asImmutable(),
   ),
-  considerQueryString: createAction('meta/considerQueryString', $$state =>
-    $$state.update('env', env => env.considerQueryString()),
+  considerQueryString: createAction('meta/considerQueryString', ($$state) =>
+    $$state.update('env', (env) => env.considerQueryString()),
   ),
-  toggleViewport: createAction('meta/toggleViewport', $$state =>
-    $$state.update('env', env => env.toggleViewport()),
+  toggleViewport: createAction('meta/toggleViewport', ($$state) =>
+    $$state.update('env', (env) => env.toggleViewport()),
   ),
 };
 const userMeSucceeded = createAction(

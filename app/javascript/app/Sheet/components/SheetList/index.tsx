@@ -5,7 +5,7 @@ import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 import LampTd from './LampTd';
 
-const SheetList: SFC = props => {
+const SheetList: SFC = (props) => {
   const dispatch = useDispatch();
   const $$sheetList = useSelector(
     (state: RootState) => state.$$sheet.sheetList,
@@ -74,34 +74,36 @@ const SheetList: SFC = props => {
           </th>
         </tr>,
       );
-      $$sheetList.chunk($$sheetList.whereAbility(key, type)).forEach(sheets => {
-        const tdDom = sheets
-          .toList()
-          .map(sheet => {
-            if (sheet === undefined) {
-              return;
-            }
-            const score = $$scoreList.findBySheetId(sheet.id);
-            return (
-              <LampTd
-                key={`sheet-${sheet.id}`}
-                {...{
-                  owner: owner(),
-                  updateLamp,
-                  handleSheetClick,
-                  sheet,
-                  score,
-                  width: 150,
-                  height: 50,
-                }}
-              />
-            );
-          })
-          .toArray();
+      $$sheetList
+        .chunk($$sheetList.whereAbility(key, type))
+        .forEach((sheets) => {
+          const tdDom = sheets
+            .toList()
+            .map((sheet) => {
+              if (sheet === undefined) {
+                return;
+              }
+              const score = $$scoreList.findBySheetId(sheet.id);
+              return (
+                <LampTd
+                  key={`sheet-${sheet.id}`}
+                  {...{
+                    owner: owner(),
+                    updateLamp,
+                    handleSheetClick,
+                    sheet,
+                    score,
+                    width: 150,
+                    height: 50,
+                  }}
+                />
+              );
+            })
+            .toArray();
 
-        const ids = sheets.map(sheet => sheet?.id).join('-');
-        dom.push(<tr key={`sheet-${ids}`}>{tdDom}</tr>);
-      });
+          const ids = sheets.map((sheet) => sheet?.id).join('-');
+          dom.push(<tr key={`sheet-${ids}`}>{tdDom}</tr>);
+        });
     });
     return dom;
   };
@@ -116,7 +118,7 @@ const SheetList: SFC = props => {
           </th>
         </tr>,
       );
-      $$sheetList.whereAbility(key, type).forEach(sheet => {
+      $$sheetList.whereAbility(key, type).forEach((sheet) => {
         if (sheet === undefined) {
           return;
         }

@@ -12,7 +12,7 @@ interface IProps {
   score?: Score;
   sheet_id?: number;
 }
-const LampSelect: React.SFC<IProps> = props => {
+const LampSelect: React.SFC<IProps> = (props) => {
   const { sheet_id, updateLamp, selectDisplay, owner, $$env, score } = props;
   if (!owner) {
     return null;

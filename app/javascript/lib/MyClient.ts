@@ -8,12 +8,12 @@ import {
 } from './routes';
 
 axios.interceptors.request.use(
-  config => {
+  (config) => {
     const newConfig = { ...config };
     newConfig.headers = authenticityHeaders();
     return newConfig;
   },
-  error => Promise.reject(error),
+  (error) => Promise.reject(error),
 );
 
 interface IScore {
@@ -102,7 +102,7 @@ export default class MyClient {
   ): Promise<{ logs: ILog[] }> =>
     this.sendGet(`/api/v1/logs/${iidxid}/${year}/${month}`);
   private sendGet = (url: string) =>
-    axios.get(this.ENDPOINT + url).then(response => response.data);
+    axios.get(this.ENDPOINT + url).then((response) => response.data);
   private sendPut = (url: string) =>
-    axios.put(this.ENDPOINT + url).then(response => response.data);
+    axios.put(this.ENDPOINT + url).then((response) => response.data);
 }

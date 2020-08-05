@@ -22,7 +22,7 @@ const LampCheckbox: SFC = () => {
   const handleClearChangeLamp = useCallback(() => {
     const { FC, EXH, HARD, CLEAR, EASY } = $$env;
     setClear(!clear);
-    [FC, EXH, HARD, CLEAR, EASY].forEach(state => {
+    [FC, EXH, HARD, CLEAR, EASY].forEach((state) => {
       const d = document.querySelector<HTMLInputElement>(
         `input#state-${state}`,
       );
@@ -36,7 +36,7 @@ const LampCheckbox: SFC = () => {
   const handleHardChangeLamp = useCallback(() => {
     const { FC, EXH, HARD } = $$env;
     setHard(!hard);
-    [FC, EXH, HARD].forEach(state => {
+    [FC, EXH, HARD].forEach((state) => {
       const d = document.querySelector<HTMLInputElement>(
         `input#state-${state}`,
       );

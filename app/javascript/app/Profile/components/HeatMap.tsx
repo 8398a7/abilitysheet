@@ -57,7 +57,7 @@ const HeatMap: FC<{ user: User }> = ({ user }) => {
       afterLoadData(timestamps: { [s: string]: number }) {
         const offset = (540 + new Date().getTimezoneOffset()) * 60;
         const results: { [key: number]: number } = {};
-        Object.keys(timestamps).forEach(timestamp => {
+        Object.keys(timestamps).forEach((timestamp) => {
           const commitCount = timestamps[timestamp];
           results[parseInt(timestamp, 10) + offset] = commitCount;
         });

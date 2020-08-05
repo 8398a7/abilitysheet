@@ -16,7 +16,7 @@ export default class SheetList extends Record(defaultValue) {
   }
 
   public toggleVersion(version: number) {
-    const newList = this.list.map(sheet => {
+    const newList = this.list.map((sheet) => {
       if (sheet.version !== version) {
         return sheet;
       }
@@ -27,7 +27,7 @@ export default class SheetList extends Record(defaultValue) {
 
   public updateList(params: ISheet[]) {
     let newList = Map<number, Sheet>();
-    params.forEach(sheet => {
+    params.forEach((sheet) => {
       newList = newList.set(sheet.id, new Sheet(sheet));
     });
     return this.set('list', newList);
@@ -35,14 +35,14 @@ export default class SheetList extends Record(defaultValue) {
 
   public whereAbility(ability: number, type: RootState['$$sheet']['type']) {
     return this.list
-      .map(sheet => {
+      .map((sheet) => {
         if (sheet[type] !== ability || sheet.hide) {
           return;
         }
         return sheet;
       })
-      .filter(sheet => sheet !== undefined)
-      .sortBy(sheet => {
+      .filter((sheet) => sheet !== undefined)
+      .sortBy((sheet) => {
         if (sheet?.title === undefined) {
           return;
         }
@@ -51,7 +51,7 @@ export default class SheetList extends Record(defaultValue) {
   }
 
   public chunk(list: Map<number, Sheet | undefined>, chunkSize = 5) {
-    return Range(0, list.count(), chunkSize).map(chunkStart =>
+    return Range(0, list.count(), chunkSize).map((chunkStart) =>
       list.slice(chunkStart, chunkStart + chunkSize),
     );
   }

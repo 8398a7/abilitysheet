@@ -23,8 +23,9 @@ jobs:
         env:
           GCLOUD_SERVICE_KEY: ${{ secrets.GCLOUD_SERVICE_KEY }}
       - run: make push
-      - uses: 8398a7/action-slack@v2
+      - uses: 8398a7/action-slack@v3
         with:
+          fields: repo,job
           status: ${{ job.status }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

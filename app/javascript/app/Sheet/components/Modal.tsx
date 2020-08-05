@@ -12,7 +12,7 @@ const Content: SFC<IProps> = ({ modal, color }) => {
   if (modal === undefined) {
     return null;
   }
-  const contents = modal.scores.map(score => {
+  const contents = modal.scores.map((score) => {
     return (
       <tr key={score.version}>
         <td style={{ backgroundColor: color[score.state || 7] }} />
