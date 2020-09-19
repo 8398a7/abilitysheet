@@ -41,7 +41,7 @@ COPY ./app/assets $HOME/app/assets
 COPY ./app/models/user.rb ./app/models/application_record.rb $HOME/app/models/
 COPY ./app/models/concerns/user $HOME/app/models/concerns/user
 COPY ./lib/tasks/ts_routes.rake $HOME/lib/tasks/ts_routes.rake
-COPY ./lib/ist_client.rb $HOME/lib/
+COPY ./lib/ist_client.rb ./lib/rails_log_silencer.rb $HOME/lib/
 COPY ./app/javascript $HOME/app/javascript
 COPY ./app/controllers/application_controller.rb $HOME/app/controllers/application_controller.rb
 COPY ./config $HOME/config
