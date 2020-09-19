@@ -49,6 +49,7 @@ feature 'ログの詳細画面', type: :system, js: true do
         click_button '表示'
         click_link '削除', match: :first
         page.driver.browser.switch_to.alert.accept
+        sleep 5
         expect(page).to have_content('更新履歴')
       end
     end
