@@ -46,7 +46,7 @@ jobs:
           name: Create test-results dir
           command: mkdir -p tmp/test-results
       - codeclimate/with-cc-test-reporter:
-          after_build_args: "--coverage-input-type simplecov"
+          after_build_args: '--coverage-input-type simplecov'
           steps:
             - run: bundle exec rspec
       - run:
