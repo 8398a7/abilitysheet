@@ -4,7 +4,7 @@ class Api::V1::LogsController < Api::V1::BaseController
   before_action :load_user!
 
   def full_calendar
-    start_date = (params[:year].to_s + '-' + params[:month].to_s + '-01').to_date
+    start_date = "#{params[:year]}-#{params[:month]}-01".to_date
     end_date = start_date + 1.month
     logs = @user.logs.where(created_date: start_date..end_date)
     render json: { logs: logs.preload(:sheet).map(&:schema) }

@@ -31,7 +31,7 @@ module User::Ist
     pref = find_pref(user['user_activity']['pref_status'])
     grade = find_grade(user['user_activity']['sp_grade_status'])
     update!(grade: grade, pref: pref)
-    avatar.attach(io: URI.open(user['image_path']), filename: 'avatar.png') unless Rails.env.development?
+    avatar.attach(io: URI.parse(user['image_path']).open, filename: 'avatar.png') unless Rails.env.development?
   end
 
   def find_sheet_id(score, sheets)
@@ -41,7 +41,7 @@ module User::Ist
     elsif FROM_IST_TO_AB.key?(score['title'])
       sheets[FROM_IST_TO_AB[score['title']]]
     elsif score['difficulty_type_status'] == 'LEGGENDARIA'
-      sheets[score['title'] + '†']
+      sheets["#{score['title']}†"]
     else
       sheets[score['title']]
     end
@@ -57,7 +57,7 @@ module User::Ist
       return false if user['iidxid'] != iidxid
 
       result = ist_client.get_scores(iidxid, SEARCH_PARAMS)
-      return false if result.dig('error') == 'Not Found'
+      return false if result['error'] == 'Not Found'
 
       update_user(user)
 
