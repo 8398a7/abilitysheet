@@ -20,7 +20,7 @@ class UserDecorator < Draper::Decorator
   end
 
   def joined_on
-    'Joined on ' + object.created_at.to_s.split.first.tr('-', '/')
+    "Joined on #{object.created_at.to_s.split.first.tr('-', '/')}"
   end
 
   def dan_color

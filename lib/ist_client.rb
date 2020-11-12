@@ -14,7 +14,7 @@ class IstClient
   end
 
   def get_musics(params)
-    endpoint = @url + '/api/v1/musics?' + params.to_query
+    endpoint = "#{@url}/api/v1/musics?#{params.to_query}"
     body = Net::HTTP.get(URI.parse(endpoint))
     JSON.parse(body)
   end
@@ -25,7 +25,7 @@ class IstClient
     raise NotFoundUser if resp.code == '404'
 
     hash = JSON.parse(resp.body)
-    return hash unless hash.dig('image_path')
+    return hash unless hash['image_path']
 
     hash['image_path'] = @url + hash['image_path']
     hash

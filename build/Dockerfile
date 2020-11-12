@@ -20,5 +20,4 @@ COPY --from=base-dependencies $HOME/public/ $HOME/public/
 COPY . $HOME
 RUN \
   mv config/database.k8s.yml config/database.yml && \
-  mv config/puma.k8s.rb config/puma.rb && \
   mkdir log && mkdir -p tmp/pids
