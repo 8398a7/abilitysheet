@@ -2,6 +2,7 @@
 
 class ClearingTransitionTableService < ApplicationService
   def initialize(user)
+    super()
     @user_id = user.id
   end
 

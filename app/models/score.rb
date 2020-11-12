@@ -48,7 +48,7 @@ class Score < ApplicationRecord
   end
 
   def update_with_logs(score_params)
-    score_params.stringify_keys! unless score_params.class == ActionController::Parameters
+    score_params.stringify_keys! unless score_params.instance_of?(ActionController::Parameters)
     # 何も変更がない状態は反映しない
     duplicate = check_duplicate(score_params)
     return false if duplicate
@@ -114,7 +114,7 @@ class Score < ApplicationRecord
     score_params.each do |k, v|
       next if k == 'updated_at'
 
-      v = v.to_i unless v.class == NilClass
+      v = v.to_i unless v.instance_of?(NilClass)
       return false if k == 'state' && try(k).nil? && v.to_i == 7
       return false if try(k) != v
     end

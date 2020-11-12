@@ -15,15 +15,16 @@ module ApiHelper
 
   shared_context 'api' do
     subject do
-      if method == 'get'
+      case method
+      when 'get'
         get(url, parameters, rack_env)
-      elsif method == 'post'
+      when 'post'
         post(url, parameters, rack_env)
-      elsif method == 'put'
+      when 'put'
         put(url, parameters, rack_env)
-      elsif method == 'delete'
+      when 'delete'
         delete(url, parameters, rack_env)
-      elsif method == 'patch'
+      when 'patch'
         patch(url, parameters, rack_env)
       end
     end

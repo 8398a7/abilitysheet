@@ -45,15 +45,15 @@ class Sheet < ApplicationRecord
   end
 
   def n_ability_name
-    Static::POWER.find { |_, index| n_ability == index }.dig(0)
+    Static::POWER.find { |_, index| n_ability == index }[0]
   end
 
   def h_ability_name
-    Static::POWER.find { |_, index| h_ability == index }.dig(0)
+    Static::POWER.find { |_, index| h_ability == index }[0]
   end
 
   def exh_ability_name
-    Static::EXH_POWER.find { |_, index| exh_ability == index }.dig(0)
+    Static::EXH_POWER.find { |_, index| exh_ability == index }[0]
   end
 
   def self.apply_exh
