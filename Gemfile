@@ -63,6 +63,7 @@ group :development do
   gem 'rack-dev-mark'
   gem 'rails-erd'
   gem 'spring'
+  gem 'listen'
 end
 
 group :development, :test do
