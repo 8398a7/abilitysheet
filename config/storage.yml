@@ -32,3 +32,9 @@ local:
 #   service: Mirror
 #   primary: local
 #   mirrors: [ amazon, google, microsoft ]
+
+google:
+  service: GCS
+  project: iidx-app
+  credentials: <%= ENV.fetch('GCLOUD_SERVICE_KEY') { Rails.root.join('abilitysheet-service-account.json') } %>
+  bucket: abilitysheet

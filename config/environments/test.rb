@@ -56,4 +56,7 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.active_support.test_order = :random
+  routes.default_url_options = { host: 'localhost' }
 end
