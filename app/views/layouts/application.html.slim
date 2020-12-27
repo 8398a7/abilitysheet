@@ -30,8 +30,6 @@ html
     = favicon_link_tag 'favicon.ico'
 
   body
-    - unless Rails.env.test?
-      = render 'peek/bar'
     - if current_user && current_user.logs.exists?
       - recent = current_user.logs.order(:created_date).last.created_date
     = render partial: 'layouts/nav', locals: { recent: recent }

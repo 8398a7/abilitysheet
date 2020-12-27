@@ -2,9 +2,6 @@
  *= require_tree .
  *= require jquery-ui/themes/base/theme
  *= require jquery-ui/themes/base/datepicker
- *= require peek
- *= require peek/views/performance_bar
- *= require peek/views/rblineprof
  *= require datatables-bulma/css/dataTables.bulma.min
  *= require bulma/css/bulma
  *= require bulma-extensions/bulma-accordion/dist/css/bulma-accordion.min

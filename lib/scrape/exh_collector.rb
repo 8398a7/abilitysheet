@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'open-uri'
+
 module Scrape
   class ExhCollector
     def initialize
@@ -7,7 +9,7 @@ module Scrape
     end
 
     def get_sheet
-      text = open(@url).read # rubocop:disable all
+      text = URI.open(@url).read # rubocop:disable all
       html = Nokogiri::HTML.parse(text)
       parse(html)
     end

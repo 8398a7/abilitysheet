@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def peek_enabled?
-    Rails.env.development? ? true : current_user.try(:owner?)
-  end
-
   def detect_device_variant
     return if params[:device] == 'pc'
 
