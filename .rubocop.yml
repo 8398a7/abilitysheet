@@ -64,7 +64,7 @@ Naming/VariableNumber:
 
 AllCops:
   NewCops: disable
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.0
   Exclude:
     - 'Gemfile'
     - 'db/**/*'
