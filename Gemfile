@@ -69,3 +69,7 @@ group :test do
   gem 'webdrivers'
   gem 'webmock'
 end
+
+group :development, :test do
+  gem 'byebug'
+end
