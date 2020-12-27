@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class UnauthorizedError < RuntimeError; end
+
 class Forbidden < RuntimeError; end
+
 class BadRequest < RuntimeError; end
+
 class ServiceUnavailable < RuntimeError; end
+
 class Api::ApiController < ActionController::API
   rescue_from ServiceUnavailable, with: :render_503
   rescue_from ActionController::RoutingError, ActiveRecord::RecordNotFound, with: :render_404
