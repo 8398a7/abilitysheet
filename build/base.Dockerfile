@@ -1,26 +1,24 @@
-FROM ruby:2.7.2-alpine3.12
+FROM ruby:2.7.2-slim-buster
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
   HOME=/app \
-  # https://github.com/sass/sassc-ruby/issues/141
-  BUNDLE_FORCE_RUBY_PLATFORM=true \
+  DEBIAN_FRONTEND=noninteractive \
   RAILS_ENV=production \
   SECRET_KEY_BASE=wip
 
 WORKDIR $HOME
 
 RUN \
-  apk upgrade --no-cache && \
-  apk add --update --no-cache \
-  build-base \
-  git \
-  postgresql-dev \
-  libxml2-dev \
-  libxslt-dev \
-  postgresql-client \
-  tzdata \
-  yarn
+  apt-get update -qq && apt-get install -y \
+  build-essential \
+  libpq-dev
+RUN \
+  apt-get install -y curl && \
+  curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
+  apt-get update -qq && apt-get install -y yarn
 
 COPY Gemfile* $HOME/
 RUN \
