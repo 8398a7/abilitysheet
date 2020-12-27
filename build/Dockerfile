@@ -1,7 +1,7 @@
 FROM docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest AS base-dependencies
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
-FROM ruby:2.7.2-slim-buster
+FROM ruby:3.0.0-rc1-slim-buster
 
 ENV \
   HOME=/app \

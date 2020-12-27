@@ -12,7 +12,6 @@ gem 'google-cloud-storage'
 # }}}
 # h,i,j,k,l,m,n {{{
 gem 'kaminari'
-gem 'mechanize'
 gem 'mini_magick'
 gem 'nokogiri'
 # }}}
@@ -54,20 +53,13 @@ gem 'webpacker'
 
 group :development do
   gem 'annotate'
-  gem 'better_errors'
-  gem 'binding_of_caller'
   gem 'bullet'
   gem 'peek-git'
-  gem 'pry-stack_explorer'
   gem 'rack-dev-mark'
   gem 'rails-erd', github: 'guapolo/rails-erd'
   gem 'spring'
   gem 'listen'
-end
-
-group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem 'web-console'
 end
 
 group :test do
