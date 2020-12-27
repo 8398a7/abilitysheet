@@ -53,18 +53,13 @@ gem 'webpacker'
 
 group :development do
   gem 'annotate'
-  gem 'better_errors'
   gem 'bullet'
   gem 'peek-git'
   gem 'rack-dev-mark'
   gem 'rails-erd', github: 'guapolo/rails-erd'
   gem 'spring'
   gem 'listen'
-end
-
-group :development, :test do
-  gem 'pry-rails'
-  gem 'pry-byebug'
+  gem 'web-console'
 end
 
 group :test do
