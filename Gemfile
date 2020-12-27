@@ -61,7 +61,7 @@ group :development do
   gem 'peek-git'
   gem 'pry-stack_explorer'
   gem 'rack-dev-mark'
-  gem 'rails-erd'
+  gem 'rails-erd', github: 'guapolo/rails-erd'
   gem 'spring'
   gem 'listen'
 end
