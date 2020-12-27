@@ -1,7 +1,7 @@
 FROM docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base:latest AS base-dependencies
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
-FROM ruby:2.7.2-alpine3.10
+FROM ruby:2.7.2-alpine3.12
 
 ENV \
   HOME=/app \
