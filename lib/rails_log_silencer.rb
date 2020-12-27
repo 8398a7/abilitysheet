@@ -7,7 +7,7 @@ class RailsLogSilencer
   end
 
   def call(env)
-    if @paths.any? { |path| path == env['PATH_INFO'] }
+    if @paths.include?(env['PATH_INFO'])
       ::Rails.logger.silence { @app.call(env) }
     else
       @app.call(env)
