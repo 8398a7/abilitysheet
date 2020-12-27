@@ -20,6 +20,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include SheetsHelper
   config.include ActiveJob::TestHelper
+  config.include ActiveSupport::Testing::Assertions
 end
 
 VCR.configure do |c|
