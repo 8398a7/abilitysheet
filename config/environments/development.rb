@@ -86,9 +86,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  # better_errors
-  BetterErrors::Middleware.allow_ip! '192.168.10.185'
-
   # bullet
   config.after_initialize do
     Bullet.enable = true
