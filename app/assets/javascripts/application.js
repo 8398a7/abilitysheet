@@ -3,9 +3,6 @@
 //= require activestorage
 //= require jquery-ui/ui/widgets/datepicker
 //= require jquery-ui/ui/i18n/datepicker-ja
-//= require peek
-//= require peek/views/performance_bar
-//= require peek/views/rblineprof
 //= require datatables/media/js/jquery.dataTables.min
 //= require datatables-bulma/js/dataTables.bulma.min
 //= require bulma-extensions/bulma-accordion/dist/js/bulma-accordion.min
