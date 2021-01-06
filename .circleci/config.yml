@@ -2,13 +2,12 @@ version: 2.1
 
 orbs:
   codeclimate: sue445/codeclimate@0.1.0
-  ruby-orbs: sue445/ruby-orbs@1.6.0
 
 jobs:
   test-job:
     working_directory: /tmp/abilitysheet
     docker:
-      - image: circleci/ruby:3.0.0-rc1-node-browsers
+      - image: circleci/ruby:3.0.0-buster-node-browsers
         environment:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:@localhost
@@ -26,7 +25,19 @@ jobs:
           key: yarn-cache-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
-      - ruby-orbs/bundle-install
+      - restore_cache:
+          name: Restore bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: Install Ruby Dependencies
+          command: |
+            bundle config set path 'vendor/bundle'
+            bundle install -j4
+      - save_cache:
+          name: Save bundler cache
+          key: bundle-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
       - run:
           name: Setup Application Environment
           command: mv .env.sample .env && mv config/database.circleci.yml config/database.yml
