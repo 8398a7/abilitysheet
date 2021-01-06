@@ -1,4 +1,4 @@
-FROM ruby:3.0.0-rc1-slim-buster
+FROM ruby:3.0.0-slim-buster
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
