@@ -112,8 +112,8 @@ const SheetList: SFC = (props) => {
     const dom: JSX.Element[] = [];
     $$abilities.forEach((value, key) => {
       dom.push(
-        <tr key={`ability-${type}-${key}`}>
-          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>
+        <tr key={`ability-${type}-${key}`} className="levelttl">
+          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3'}}>
             {value}
           </th>
         </tr>,
@@ -124,7 +124,7 @@ const SheetList: SFC = (props) => {
         }
         const score = $$scoreList.findBySheetId(sheet.id);
         dom.push(
-          <tr key={`sheet-${sheet.id}`}>
+          <tr key={`sheet-${sheet.id}`} className="lamp">
             <LampTd
               {...{
                 owner: owner(),

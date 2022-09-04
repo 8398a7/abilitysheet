@@ -93,3 +93,16 @@ form.devise {
 .scroll-top:hover {
   cursor: pointer;
 }
+
+/*モバイル版シート複数行表示*/
+@media screen and(max-width:768px){
+  .levelttl{
+    display: revert;
+    width:100%;
+  }
+  .lamp{
+    width: calc(100%/3);
+    display: inline-block;
+    vertical-align: bottom;
+  }
+}
