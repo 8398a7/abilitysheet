@@ -113,7 +113,7 @@ const SheetList: SFC = (props) => {
     $$abilities.forEach((value, key) => {
       dom.push(
         <tr key={`ability-${type}-${key}`} className="levelttl">
-          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3'}}>
+          <th style={{ textAlign: 'center', backgroundColor: '#f5deb3' }}>
             {value}
           </th>
         </tr>,
