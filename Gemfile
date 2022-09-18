@@ -13,6 +13,9 @@ gem 'google-cloud-storage'
 # h,i,j,k,l,m,n {{{
 gem 'kaminari'
 gem 'mini_magick'
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 gem 'nokogiri'
 # }}}
 # o,p,q,r,s,t,u {{{
