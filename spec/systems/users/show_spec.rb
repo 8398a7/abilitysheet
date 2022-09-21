@@ -2,9 +2,10 @@
 
 feature 'プロフィールページ', type: :system, js: true do
   given(:user) { create(:user, id: 1, djname: 'PROF', iidxid: '1111-1111', pref: 0, grade: 4, created_at: '2016-03-06') }
+  given(:sheet) { create(:sheet) }
   context '非ログイン時' do
     background do
-      create(:score, user_id: 1, sheet_id: 1)
+      create(:score, user_id: user.id, sheet_id: sheet.id)
       visit user_path(user.iidxid)
     end
     scenario 'DJNAMEが存在する' do

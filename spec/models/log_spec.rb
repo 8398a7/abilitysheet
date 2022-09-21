@@ -61,9 +61,9 @@ describe Log, type: :model do
     end
 
     context '違う日に同じ楽曲を更新する場合' do
-      before { create(:log, user_id: 1, sheet_id: 1, created_date: Date.today - 1, pre_state: 7, new_state: 6) }
+      before { create(:log, user_id: user.id, sheet_id: 1, created_date: Date.today - 1, pre_state: 7, new_state: 6) }
       it 'ログデータが作られる' do
-        create(:score, user_id: 1, sheet_id: 1, state: 6)
+        create(:score, user_id: user.id, sheet_id: 1, state: 6)
         expect { user.logs.attributes(parameter, user) }.to change(Log, :count).by(1)
         expect(user.logs.exists?(sheet_id: 1, pre_state: 7, new_state: 6)).to eq true
         expect(user.logs.exists?(sheet_id: 1, pre_state: 6, new_state: 5)).to eq true
@@ -72,21 +72,24 @@ describe Log, type: :model do
   end
 
   describe '.prev_next' do
+    let(:sheet) { create(:sheet) }
+    let(:user) { create(:user) }
+    let(:user2) { create(:user, username: 'user2', iidxid: '9999-9999') }
     before do
-      create(:log, created_date: '2015/09/30', user_id: 1)
-      create(:log, created_date: '2015/08/30', user_id: 2)
-      create(:log, created_date: '2015/07/30', user_id: 1)
-      create(:log, created_date: '2015/07/20', user_id: 2)
-      create(:log, created_date: '2015/06/30', user_id: 1)
+      create(:log, created_date: '2015/09/30', user_id: user.id, sheet_id: sheet.id)
+      create(:log, created_date: '2015/08/30', user_id: user2.id, sheet_id: sheet.id)
+      create(:log, created_date: '2015/07/30', user_id: user.id, sheet_id: sheet.id)
+      create(:log, created_date: '2015/07/20', user_id: user2.id, sheet_id: sheet.id)
+      create(:log, created_date: '2015/06/30', user_id: user.id, sheet_id: sheet.id)
     end
     it '間に他のユーザのデータが有ってもログの前後関係が正しい' do
-      expect(Log.prev_next(1, '2015/07/30')).to eq ['2015/06/30'.to_date, '2015/09/30'.to_date]
+      expect(Log.prev_next(user.id, '2015/07/30')).to eq ['2015/06/30'.to_date, '2015/09/30'.to_date]
     end
     it '先頭のデータの場合，prevにnilを返す' do
-      expect(Log.prev_next(1, '2015/06/30')).to eq [nil, '2015/07/30'.to_date]
+      expect(Log.prev_next(user.id, '2015/06/30')).to eq [nil, '2015/07/30'.to_date]
     end
     it '末尾のデータの場合，nextにnilを返す' do
-      expect(Log.prev_next(1, '2015/09/30')).to eq ['2015/07/30'.to_date, nil]
+      expect(Log.prev_next(user.id, '2015/09/30')).to eq ['2015/07/30'.to_date, nil]
     end
   end
 end

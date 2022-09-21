@@ -26,7 +26,7 @@ feature '推移ログ', type: :system, js: true do
   context 'ログが存在する場合' do
     background do
       create(:sheet, id: 1, title: 'graph', active: true)
-      create(:log, sheet_id: 1, user_id: 1, pre_state: 6, new_state: 6)
+      create(:log, sheet_id: 1, user_id: user.id, pre_state: 6, new_state: 6)
     end
 
     context 'ログイン時' do

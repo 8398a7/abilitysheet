@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 feature '地力値表', type: :system, js: true do
-  given(:user) { create(:user, id: 1) }
+  given(:user) { create(:user) }
+  given(:sheet) { create(:sheet) }
   background do
-    create(:score, user_id: 1, sheet_id: 1)
+    create(:score, user_id: user.id, sheet_id: sheet.id)
     visit recommends_path
   end
 
