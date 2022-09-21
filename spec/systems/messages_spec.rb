@@ -2,8 +2,9 @@
 
 feature '連絡フォーム', type: :system do
   given(:user) { create(:user, id: 1) }
+  given(:sheet) { create(:sheet) }
   background do
-    create(:score, user_id: 1, sheet_id: 1)
+    create(:score, user_id: user.id, sheet_id: sheet.id)
     visit new_message_path
   end
 

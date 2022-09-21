@@ -24,7 +24,7 @@ feature '管理用メッセージページ', type: :system do
   end
 
   describe '#active' do
-    let!(:message) { create(:message) }
+    let!(:message) { create(:message, user_id: 1) }
     background do
       visit admin_messages_path
     end
@@ -39,7 +39,7 @@ feature '管理用メッセージページ', type: :system do
   end
 
   describe '#inactive' do
-    let!(:message) { create(:message, state: true) }
+    let!(:message) { create(:message, state: true, user_id: 1) }
     background do
       visit admin_messages_path
     end
