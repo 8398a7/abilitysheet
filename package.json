@@ -21,7 +21,7 @@
     "@fullcalendar/core": "4.4.2",
     "@fullcalendar/daygrid": "4.4.2",
     "@fullcalendar/react": "4.4.2",
-    "@rails/webpacker": "5.1.1",
+    "@rails/webpacker": "5.2.2",
     "@sentry/browser": "^5.20.1",
     "@types/cal-heatmap": "^3.5.35",
     "@types/jquery": "^3.5.1",
