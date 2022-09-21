@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_09_21_122558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,8 +22,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.float "c"
     t.float "e"
     t.float "aaa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["sheet_id"], name: "index_abilities_on_sheet_id"
   end
 
@@ -33,7 +32,7 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -44,8 +43,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.string "content_type"
     t.text "metadata"
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -59,8 +58,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
   create_table "follows", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "target_user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id", "target_user_id"], name: "index_follows_on_user_id_and_target_user_id", unique: true
   end
 
@@ -86,8 +85,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.inet "ip", null: false
     t.bigint "user_id"
     t.boolean "state", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -98,8 +97,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.bigint "sheet_id", null: false
     t.bigint "user_id", null: false
     t.integer "version", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["sheet_id"], name: "index_scores_on_sheet_id"
     t.index ["updated_at"], name: "index_scores_on_updated_at"
     t.index ["user_id", "version", "updated_at"], name: "index_scores_on_user_id_and_version_and_updated_at"
@@ -114,8 +113,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.integer "version"
     t.boolean "active", default: true, null: false
     t.string "textage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "exh_ability"
   end
 
@@ -126,8 +125,8 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.string "token"
     t.string "uid"
     t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id", "provider"], name: "index_socials_on_user_id_and_provider", unique: true
   end
 
@@ -136,11 +135,11 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.string "username", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
     t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
+    t.datetime "current_sign_in_at", precision: nil
+    t.datetime "last_sign_in_at", precision: nil
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
     t.string "iidxid", null: false
@@ -151,9 +150,9 @@ ActiveRecord::Schema[6.1].define(version: 2020_12_26_130258) do
     t.integer "role", default: 0, null: false
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
-    t.datetime "locked_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "locked_at", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["iidxid"], name: "index_users_on_iidxid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
