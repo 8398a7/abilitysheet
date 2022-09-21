@@ -2,11 +2,7 @@
 
 ## Status
 
-<p align="left">
-  <a href="https://github.com/8398a7/abilitysheet"><img alt="GitHub Actions status" src="https://github.com/8398a7/abilitysheet/workflows/CI/badge.svg"></a>
-</p>
-
-[![Circle CI](https://circleci.com/gh/8398a7/abilitysheet.svg?style=shield)](https://circleci.com/gh/8398a7/abilitysheet)
+[![CI](https://github.com/8398a7/abilitysheet/actions/workflows/ci.yml/badge.svg)](https://github.com/8398a7/abilitysheet/actions/workflows/ci.yml)
 [![Code Climate](https://codeclimate.com/github/8398a7/abilitysheet/badges/gpa.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 [![Test Coverage](https://codeclimate.com/github/8398a7/abilitysheet/badges/coverage.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 [![Issue Count](https://codeclimate.com/github/8398a7/abilitysheet/badges/issue_count.svg)](https://codeclimate.com/github/8398a7/abilitysheet)

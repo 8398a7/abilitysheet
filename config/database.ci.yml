@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+  host: localhost
+  database: abilitysheet_test
