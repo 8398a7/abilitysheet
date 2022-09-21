@@ -57,7 +57,7 @@ jobs:
         run: bundle exec rails db:create db:migrate
       - name: Run Rubocop
         run: bundle exec bin/rubocop_parallel
-      - name: Publish code coverage
+      - name: Run rspec and Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
