@@ -12,3 +12,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+# refs: https://github.com/8398a7/iidx_score_table/issues/273
+Rails.application.config.assets.configure do |env|
+  env.export_concurrent = false
+end
