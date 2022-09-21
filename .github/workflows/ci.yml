@@ -9,7 +9,7 @@ jobs:
       RAILS_ENV: test
       TZ: /usr/share/zoneinfo/Asia/Tokyo
       SECRET_KEY_BASE: 359471d5e4c02070d08ca9f880c110e197fdf8a60222da9dce663813fdd80f0d3eeeacd9098174aaad2008614b917896856fac275e31993283672288b0520731
-      RSPEC_RETRY: 3
+      RETRY_RSPEC: 3
       IIDX_VERSION: 27
 
     services:
@@ -57,7 +57,7 @@ jobs:
         run: bundle exec rails db:create db:migrate
       - name: Run Rubocop
         run: bundle exec bin/rubocop_parallel
-      - name: Publish code coverage
+      - name: Run rspec and Publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
