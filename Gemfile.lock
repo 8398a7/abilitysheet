@@ -140,7 +140,7 @@ GEM
       ruby2_keywords
     equalizer (0.0.11)
     erubi (1.11.0)
-    et-orbi (1.2.5)
+    et-orbi (1.2.7)
       tzinfo
     execjs (2.8.1)
     factory_bot (6.2.0)
@@ -171,8 +171,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    fugit (1.5.2)
-      et-orbi (~> 1.1, >= 1.1.8)
+    fugit (1.7.1)
+      et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -469,8 +469,8 @@ GEM
       connection_pool (>= 2.2.5)
       rack (~> 2.0)
       redis (>= 4.5.0, < 5)
-    sidekiq-cron (1.2.0)
-      fugit (~> 1.1)
+    sidekiq-cron (1.7.0)
+      fugit (~> 1)
       sidekiq (>= 4.2.1)
     sidekiq-history (0.0.13)
       sidekiq (>= 6.5.0)
