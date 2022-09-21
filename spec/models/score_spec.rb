@@ -106,16 +106,17 @@ describe Score, type: :model do
 
   context 'validate' do
     context '一つのバージョンでユーザは同じ楽曲を複数持たない' do
+      let(:user2) { create(:user, username: 'user2', iidxid: '2222-2222') }
       it 'rails側のvalidationに引っかかること' do
         expect do
-          Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
-          Score.create(id: 100, user_id: 99, sheet_id: 1, version: 1)
+          Score.create(id: 99, user_id: user2.id, sheet_id: 1, version: 1)
+          Score.create(id: 100, user_id: user2.id, sheet_id: 1, version: 1)
         end.to change(Score, :count).by(1)
       end
       it 'rdb側のvalidationに引っかかること' do
         expect do
-          Score.create(id: 99, user_id: 99, sheet_id: 1, version: 1)
-          score = Score.new(id: 100, user_id: 99, sheet_id: 1, version: 1)
+          Score.create(id: 99, user_id: user2.id, sheet_id: 1, version: 1)
+          score = Score.new(id: 100, user_id: user2.id, sheet_id: 1, version: 1)
           begin
             score.save(validate: false)
           rescue ActiveRecord::RecordNotUnique => e

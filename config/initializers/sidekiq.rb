@@ -8,7 +8,7 @@ Sidekiq.configure_client do |config|
   config.redis = redis_params
 end
 
-Sidekiq.default_worker_options = { retry: 0 }
+Sidekiq.default_job_options = { retry: 0 }
 
 schedule_file = 'config/schedule.yml'
 if File.exist?(schedule_file) && Sidekiq.server?
