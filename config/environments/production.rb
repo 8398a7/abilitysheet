@@ -38,7 +38,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # config.active_storage.service = :local
+  config.active_storage.service = :google
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -50,7 +51,8 @@ Rails.application.configure do
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :info
+  # config.log_level = :info
+  config.log_level = ENV.fetch('LOG_LEVEL') { 'info' }
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -90,4 +92,17 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV['EMAIL_ADDRESS'],
+    port: ENV['EMAIL_PORT'],
+    domain: 'mail.iidx.app',
+    authenticate: :plain,
+    user_name: ENV['EMAIL_USER'],
+    password: ENV['EMAIL_PASS'],
+    enable_starttls_auto: true
+  }
+
+  routes.default_url_options = { host: ENV.fetch('RAILS_HOST') { 'sp12.iidx.app' } }
 end
