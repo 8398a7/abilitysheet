@@ -46,5 +46,7 @@ module Abilitysheet
     SLACK_URI = URI.parse(ENV['NOTIFY_SLACK_URL']) if ENV['NOTIFY_SLACK_URL']
 
     config.middleware.insert_before(Rails::Rack::Logger, RailsLogSilencer, %w[/api/v1/health_check])
+
+    config.active_record.use_yaml_unsafe_load = true
   end
 end
