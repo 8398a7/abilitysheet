@@ -114,7 +114,7 @@ describe User, type: :model do
       expect(user.errors[:pref]).to include('を入力してください。')
     end
     it 'prefが0..47であれば有効な状態であること' do
-      (0..47).each { |pref| expect(build(:user, pref: pref)).to be_valid }
+      47.times { |pref| expect(build(:user, pref: pref)).to be_valid }
     end
     it 'gradeがなければ無効な状態であること' do
       user = User.new(grade: nil)
