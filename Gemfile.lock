@@ -569,9 +569,6 @@ DEPENDENCIES
   kaminari
   listen
   mini_magick
-  net-imap
-  net-pop
-  net-smtp
   nokogiri
   oauth2
   omniauth-google-oauth2
