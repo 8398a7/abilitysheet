@@ -37,3 +37,4 @@ app/javascript/lib/routes.ts
 yarn-debug.log*
 .yarn-integrity
 abilitysheet-service-account.json
+.byebug_history

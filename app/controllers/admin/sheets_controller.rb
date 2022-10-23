@@ -6,7 +6,7 @@ class Admin::SheetsController < ApplicationController
   before_action :load_sheet, except: %i[index new create]
 
   def index
-    @q = Sheet.search(params[:q])
+    @q = Sheet.ransack(params[:q])
     @q.sorts = ['id desc'] if @q.sorts.empty?
     @sheets = @q.result.page(params[:page])
   end
