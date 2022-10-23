@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :set_raven_context
+  before_action :set_sentry_context
   # protect_from_forgery with: :exception
   # refs: https://github.com/rails/rails/issues/24257
   # refs: https://github.com/plataformatec/devise/pull/4033/files
@@ -69,16 +69,16 @@ class ApplicationController < ActionController::Base
   def handle_unverified_request
     super
   rescue ActionController::InvalidAuthenticityToken => e
-    Raven.capture_exception(e)
+    Sentry.capture_exception(e)
     flash[:danger] = 'ページの有効期限が切れています，再度お試し下さい'
     redirect_to root_path
   end
 
   private
 
-  def set_raven_context
-    Raven.user_context(user: current_user.attributes) if current_user
-    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
+  def set_sentry_context
+    Sentry.set_user(id: current_user.id) if current_user
+    Sentry.set_extras(params: params.to_unsafe_h, url: request.url)
   end
 
   def add_response_header_user_id
