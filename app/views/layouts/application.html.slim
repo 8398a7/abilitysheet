@@ -11,7 +11,7 @@ html
     script defer=true src='https://use.fontawesome.com/releases/v5.11.2/js/all.js' crossorigin='anonymous'
     script async=true src='https://kit.fontawesome.com/0867f4a0c8.js' crossorigin='anonymous'
     - if Rails.env.production?
-      script src='https://cdn.polyfill.io/v2/polyfill.min.js'
+      script src='https://cdnjs.cloudflare.com/polyfill/v3/polyfill.js'
     = javascript_pack_tag 'sentry'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'react'
