@@ -81,7 +81,8 @@ module Static
     ['BIS', 28],
     ['CH', 29],
     ['RES', 30],
-    ['EPO', 31]
+    ['EPO', 31],
+    ['Pin', 32]
   ].freeze
 
   COLOR = %w[
