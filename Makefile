@@ -6,8 +6,8 @@ IMAGE := gcr.io/iidx-app/abilitysheet
 	docker pull $(BASE_IMAGE):latest
 .PHONY: build
 build:
-	docker build --cache-from $(BASE_IMAGE):latest -t $(BASE_IMAGE):latest -f build/base.Dockerfile .
-	docker build -t $(IMAGE):$(TAG) -f build/Dockerfile .
+	docker build --platform linux/amd64 --cache-from $(BASE_IMAGE):latest -t $(BASE_IMAGE):latest -f build/base.Dockerfile .
+	docker build --platform linux/amd64 -t $(IMAGE):$(TAG) -f build/Dockerfile .
 .PHONY: push
 push:
 	docker push $(BASE_IMAGE):latest
