@@ -147,7 +147,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.0)
-    ffi (1.15.5)
+    ffi (1.17.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -261,7 +261,7 @@ GEM
       digest
       net-protocol
       timeout
-    nio4r (2.5.8)
+    nio4r (2.5.9)
     nokogiri (1.15.4)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
