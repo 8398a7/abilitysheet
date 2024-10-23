@@ -3,6 +3,7 @@ LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
   HOME=/app \
+  NODE_OPTIONS='--openssl-legacy-provider' \
   DEBIAN_FRONTEND=noninteractive \
   RAILS_ENV=production \
   SECRET_KEY_BASE=wip
@@ -13,10 +14,10 @@ RUN \
   apt-get update -qq && apt-get install -y \
   git \
   build-essential \
-  libpq-dev
-RUN \
-  apt-get install -y curl && \
-  curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+  libpq-dev \
+  tzdata \
+  curl && \
+  curl -sL https://deb.nodesource.com/setup_22.x | bash - && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update -qq && apt-get install -y --no-install-recommends nodejs yarn
@@ -47,3 +48,8 @@ COPY ./config $HOME/config
 COPY config/database.k8s.yml $HOME/config/database.yml
 ENV SENTRY_JS_DSN https://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx@sentry.io/y
 RUN mkdir log && rails ts:routes assets:precompile
+
+COPY . $HOME
+RUN \
+  mv config/database.k8s.yml config/database.yml && \
+  mkdir -p tmp/pids

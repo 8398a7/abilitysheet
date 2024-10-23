@@ -1,14 +1,9 @@
 TAG := $(shell git describe --tags --abbrev=10)
-BASE_IMAGE := docker.pkg.github.com/8398a7/abilitysheet/abilitysheet-base
-IMAGE := gcr.io/iidx-app/abilitysheet
+IMAGE := ghcr.io/8398a7/abilitysheet/app
 
-.PHONY: pull
-	docker pull $(BASE_IMAGE):latest
 .PHONY: build
 build:
-	docker build --platform linux/amd64 --cache-from $(BASE_IMAGE):latest -t $(BASE_IMAGE):latest -f build/base.Dockerfile .
-	docker build --platform linux/amd64 -t $(IMAGE):$(TAG) -f build/Dockerfile .
+	docker build --platform linux/amd64 -t $(IMAGE):$(TAG) .
 .PHONY: push
 push:
-	docker push $(BASE_IMAGE):latest
 	docker push $(IMAGE):$(TAG)
