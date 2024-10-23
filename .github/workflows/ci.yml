@@ -101,3 +101,11 @@ jobs:
     needs: [build]
     steps:
       - uses: actions/checkout@v1
+      - name: deploy abilitysheet
+        run: |
+          curl -X POST \
+            https://api.github.com/repos/8398a7/iidx-app-cluster/actions/workflows/deploy.yml/dispatches \
+            -H 'Accept: application/vnd.github.v3+json' \
+            -H "Authorization: Basic ${{ secrets.DEPLOY_TOKEN }}" \
+            -H 'Content-Type: application/json' \
+            -d "{\"ref\": \"master\", \"inputs\": {\"role\": \"abilitysheet\", \"image_tag\": \"$(git describe --tags --abbrev=10)\"}}"
