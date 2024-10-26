@@ -1,4 +1,4 @@
-FROM ruby:3.1.2-slim-bullseye
+FROM ruby:3.3.5-slim-bookworm
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
