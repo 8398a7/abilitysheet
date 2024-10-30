@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:17.0
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: abilitysheet
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./tmp/pgdata:/var/lib/postgresql/data
+  cache:
+    image: redis:7.4.1
+    ports:
+      - 16379:6379
+    volumes:
+      - ./tmp/redisdata:/var/lib/redis/data

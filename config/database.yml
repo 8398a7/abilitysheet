@@ -2,6 +2,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
+  host: 127.0.0.1
+  port: 15432
+  username: abilitysheet
 
 development:
   <<: *default
