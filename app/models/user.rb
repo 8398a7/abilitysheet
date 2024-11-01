@@ -105,8 +105,8 @@ class User < ApplicationRecord
     has_role?(:admin)
   end
 
-  def ad_skip?
-    admin? || has_role?(:ad_skip)
+  def skip_ad?
+    admin? || has_role?(:skip_ad)
   end
 
   class << self
