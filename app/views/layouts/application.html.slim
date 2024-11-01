@@ -25,7 +25,7 @@ html
 
         gtag('config', 'UA-56797171-1');
         gtag('set', { user_id: '#{current_user ? current_user.id : -1}' });
-      - if render_ads?
+      - if !current_user&.skip_ad?
         script async=true crossorigin='anonymous' src='//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5751776715932993'
 
     = favicon_link_tag 'favicon.ico'
