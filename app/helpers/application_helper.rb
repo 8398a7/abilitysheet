@@ -12,12 +12,6 @@ module ApplicationHelper
     react_component component, props
   end
 
-  def render_ads?
-    return true unless current_user
-
-    !(current_user.admin? || current_user.skip_ad?)
-  end
-
   def recent_link(iidxid)
     user = User.find_by_iidxid(iidxid)
     return false unless user
