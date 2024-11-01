@@ -20,9 +20,9 @@ class Api::ApiController < ActionController::API
     raise UnauthorizedError unless current_user
   end
 
-  def authenticate_member!
+  def authenticate_admin!
     raise UnauthorizedError unless current_user
-    raise UnauthorizedError if current_user.role < User::Role::MEMBER
+    raise UnauthorizedError unless current_user.admin?
   end
 
   def authenticate_slack!

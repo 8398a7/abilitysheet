@@ -1,9 +1,6 @@
 - @title = "#{User.find_by(iidxid: params[:iidxid]).djname} - 参考表"
 h3.right サンプルデータはiidx.meより
 hr
-- unless user_signed_in? && current_user.special?
-  = adsense
-  hr
 table.table.is-fullwidth.datatable
   thead
     tr

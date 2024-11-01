@@ -2,8 +2,9 @@
 
 feature 'ダッシュボードの閲覧', type: :system do
   background do
-    create(:user, id: 1, role: 100)
-    login(User.find(1))
+    user = create(:user, id: 1)
+    user.add_role(:admin)
+    login(user)
     visit admin_dashboards_path
   end
 

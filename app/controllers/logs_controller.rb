@@ -54,7 +54,7 @@ class LogsController < ApplicationController
   end
 
   def destroy
-    log = current_user.owner? ? Log.find(params[:id]) : current_user.logs.find(params[:id])
+    log = current_user.admin? ? Log.find(params[:id]) : current_user.logs.find(params[:id])
     if log
       flash[:notice] = "#{log.title}のログを削除し，状態を戻しました"
       log.destroy

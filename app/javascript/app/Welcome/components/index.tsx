@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import SplineGraph from '../../../lib/components/SplineGraph';
 import { RootState } from '../../../lib/ducks';
-import Adsenses from '../../Adsense/Adsenses';
 import TopPanel from './TopPanel';
 import TwitterContents from './TwitterContents';
 
@@ -14,7 +13,6 @@ const Welcome: React.SFC = () => {
   return (
     <>
       <TopPanel {...{ user, mobile }} />
-      <Adsenses slot={1} />
       <div>
         SP ☆12以外を管理したい人向け:{' '}
         <a

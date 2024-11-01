@@ -2,7 +2,7 @@
 
 class Admin::DashboardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :owner_user!
+  before_action :admin_user!
 
   def index
     @email = User.where.not(email: '').count

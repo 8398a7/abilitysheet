@@ -23,7 +23,6 @@ describe Api::V1::UsersController, type: :request do
               id: Integer,
               iidxid: String,
               djname: String,
-              role: Integer,
               follows: Array,
               grade: Integer,
               pref: Integer,

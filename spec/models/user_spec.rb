@@ -21,7 +21,6 @@
 #  djname                 :string           not null
 #  grade                  :integer
 #  pref                   :integer          not null
-#  role                   :integer          default(0), not null
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime

@@ -33,10 +33,6 @@ const defaultValue = {
   ],
   implicitMobile: implicitMobile(),
   explicitDesktop: false,
-  adsense: {
-    client: 'ca-pub-5751776715932993',
-    slots: ['3154093489', '6067784017'],
-  },
 };
 
 export default class Environment extends Record(defaultValue) {

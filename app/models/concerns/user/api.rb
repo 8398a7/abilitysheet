@@ -23,7 +23,6 @@ module User::Api
       {
         id: id,
         iidxid: iidxid,
-        role: role,
         djname: djname,
         grade: grade,
         pref: pref,

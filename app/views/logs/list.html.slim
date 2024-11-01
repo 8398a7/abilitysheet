@@ -11,9 +11,6 @@ h2.subtitle.is-3 = icon 'sync', '更新履歴'
         li = link_to 'ISTとの同期', ist_log_path, data: { disable_with: '同期中', confirm: 'ISTに登録していないと同期できません。同期しますか?' }, method: :post, remote: true
 
 hr
-- unless user_signed_in? && current_user.special?
-  = adsense
-  hr
 section.accordions
   article.accordion.is-primary
     .accordion-header

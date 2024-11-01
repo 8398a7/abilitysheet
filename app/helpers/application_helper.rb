@@ -5,10 +5,6 @@ module ApplicationHelper
     params[:action] == 'clear' ? @sheets[cnt].n_ability : @sheets[cnt].h_ability
   end
 
-  def adsense(slot = 2)
-    react_component_wrapper 'Adsense', slot: slot
-  end
-
   def react_component_wrapper(component, props = {})
     props[:context] = {
       sentry_dsn: ENV['SENTRY_JS_DSN']
@@ -19,7 +15,7 @@ module ApplicationHelper
   def render_ads?
     return true unless current_user
 
-    !(current_user.special? || current_user.owner?)
+    !(current_user.admin? || current_user.skip_ad?)
   end
 
   def recent_link(iidxid)

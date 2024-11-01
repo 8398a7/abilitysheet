@@ -45,27 +45,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def special_user!
-    return if current_user.special?
-
-    flash[:danger] = '不正な操作です．'
-    redirect_to list_log_path
-  end
-
-  def owner_user!
-    return if current_user.owner?
-
-    flash[:danger] = '許可されていないページです'
-    redirect_to root_path
-  end
-
-  def member_user!
-    return if current_user.member?
-
-    flash[:danger] = '許可されていないページです'
-    redirect_to root_path
-  end
-
   def handle_unverified_request
     super
   rescue ActionController::InvalidAuthenticityToken => e

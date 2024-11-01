@@ -2,7 +2,7 @@
 
 feature 'ログの詳細画面', type: :system, js: true do
   background do
-    @user = create(:user, id: 1, iidxid: '1234-5678', role: User::Role::GENERAL)
+    @user = create(:user, id: 1, iidxid: '1234-5678')
     create(:sheet, id: 1, title: 'log spec1')
     create(:sheet, id: 2, title: 'log spec2')
     create(:score, sheet_id: 1, state: 6, user_id: 1)
@@ -55,7 +55,7 @@ feature 'ログの詳細画面', type: :system, js: true do
     end
     context '他人のログページの場合' do
       background do
-        @user2 = create(:user, id: 2, username: 'user2', iidxid: '2234-5678', role: User::Role::GENERAL)
+        @user2 = create(:user, id: 2, username: 'user2', iidxid: '2234-5678')
         create(:score, sheet_id: 1, state: 6, user_id: 2)
         create(:score, sheet_id: 2, state: 6, user_id: 2)
         create(:log, sheet_id: 1, user_id: 2, created_date: Date.today, pre_state: 7, new_state: 6)
@@ -65,14 +65,14 @@ feature 'ログの詳細画面', type: :system, js: true do
       scenario 'ログ編集ボタンのリンクが存在しない' do
         expect(page).to have_no_link('log spec1')
       end
-      context 'User::Role::GENERALの場合' do
+      context 'ロールなしの場合' do
         scenario '削除ボタンが存在しない' do
           expect(page).to have_no_content('削除')
         end
       end
-      context 'User::Role::OWNERの場合' do
+      context 'adminの場合' do
         background do
-          @user.update!(role: User::Role::OWNER)
+          @user.add_role(:admin)
           visit logs_path(@user2.iidxid, Date.today.to_s)
         end
         scenario '削除ボタンが存在する' do
