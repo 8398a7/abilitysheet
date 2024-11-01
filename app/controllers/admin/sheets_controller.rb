@@ -2,7 +2,7 @@
 
 class Admin::SheetsController < ApplicationController
   before_action :authenticate_user!
-  before_action :member_user!
+  before_action :admin_user!
   before_action :load_sheet, except: %i[index new create]
 
   def index

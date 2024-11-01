@@ -8,7 +8,6 @@ gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'devise'
 gem 'draper'
-gem 'google-cloud-storage'
 # }}}
 # h,i,j,k,l,m,n {{{
 gem 'kaminari'
@@ -26,6 +25,7 @@ gem 'rails'
 gem 'rails_admin'
 gem 'ransack'
 gem 'react-rails'
+gem 'rolify'
 gem 'sassc-rails'
 gem 'sentry-rails'
 gem 'sentry-ruby'
@@ -38,7 +38,6 @@ gem 'sinatra'
 gem 'slim-rails'
 gem 'ts_routes'
 gem 'turbolinks'
-gem 'twitter'
 # }}}
 # v,w,x,y,z {{{
 gem 'webpacker'

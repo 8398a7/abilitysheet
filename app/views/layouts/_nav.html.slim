@@ -35,11 +35,11 @@ nav.navbar.is-light aria-label='navigation' role='navigation'
         .navbar-dropdown
           = link_to 'ISTとの同期', ist_helps_path, class: 'navbar-item'
           = link_to 'OAuth連携', oauth_helps_path, class: 'navbar-item'
-      - if user_signed_in? && current_user.member?
+      - if user_signed_in? && current_user.admin?
         .navbar-item.has-dropdown.is-hoverable.admin-parent
           a.navbar-link = icon 'cogs', '管理'
           .navbar-dropdown
-            - if current_user.member?
+            - if current_user.admin?
               = link_to '楽曲管理', admin_sheets_path, class: 'navbar-item'
             - if current_user.admin?
               = link_to 'ユーザ管理', admin_users_path, class: 'navbar-item'

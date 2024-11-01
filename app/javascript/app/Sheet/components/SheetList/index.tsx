@@ -1,6 +1,5 @@
 import React, { SFC, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Adsenses from '../../../Adsense/Adsenses';
 import { RootState } from '../../ducks';
 import { actions } from '../../ducks/Sheet';
 import LampTd from './LampTd';
@@ -143,7 +142,6 @@ const SheetList: SFC = (props) => {
 
   return (
     <>
-      <Adsenses slot={1} />
       {owner() ? (
         <button
           onClick={handleToggleDisplaySelect}

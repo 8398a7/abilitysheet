@@ -21,7 +21,6 @@
 #  djname                 :string           not null
 #  grade                  :integer
 #  pref                   :integer          not null
-#  role                   :integer          default(0), not null
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
@@ -38,13 +37,12 @@
 
 FactoryBot.define do
   factory :user do
-    sequence(:email) { |n| "user#{n}@iidx.tk" }
+    sequence(:email) { |n| "user#{n}@iidx.app" }
     djname { 'TEST' }
     iidxid { '1234-5678' }
     grade { Abilitysheet::Application.config.iidx_grade }
     pref { 0 }
     username { 'test' }
     password { 'hogehoge' }
-    role { 100 }
   end
 end

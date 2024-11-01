@@ -21,7 +21,6 @@
 #  djname                 :string           not null
 #  grade                  :integer
 #  pref                   :integer          not null
-#  role                   :integer          default(0), not null
 #  failed_attempts        :integer          default(0), not null
 #  unlock_token           :string
 #  locked_at              :datetime
@@ -37,6 +36,7 @@
 #
 
 class User < ApplicationRecord
+  rolify
   devise :database_authenticatable, :registerable, :omniauthable, :rememberable, :recoverable, :trackable, :validatable, :lockable
   attr_accessor :login
 
@@ -46,7 +46,6 @@ class User < ApplicationRecord
   include User::DeviseMethods
   include User::FollowMethods
   include User::List
-  include User::Role
   include User::Static
   include User::Ist
 
@@ -100,6 +99,14 @@ class User < ApplicationRecord
 
   def pref_name
     User::Static::PREF[pref]
+  end
+
+  def admin?
+    has_role?(:admin)
+  end
+
+  def ad_skip?
+    admin? || has_role?(:ad_skip)
   end
 
   class << self

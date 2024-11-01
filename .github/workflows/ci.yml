@@ -87,6 +87,11 @@ jobs:
             ghcr.io/8398a7/abilitysheet/app:${{ env.SHA_TAG }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - uses: actions/delete-package-versions@v5
+        with:
+          package-name: abilitysheet/app
+          package-type: container
+          min-versions-to-keep: 9
       - uses: 8398a7/action-slack@v3
         with:
           fields: repo,job

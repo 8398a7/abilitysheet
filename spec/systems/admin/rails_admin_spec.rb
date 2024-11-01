@@ -6,7 +6,7 @@ feature RailsAdmin, type: :system do
 
   context '管理者の場合' do
     background do
-      user.update!(role: 100)
+      user.add_role(:admin)
       visit rails_admin_path
     end
 
