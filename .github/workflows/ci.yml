@@ -63,9 +63,22 @@ jobs:
           path: ./tmp/test-results
   build:
     if: contains(github.ref, 'master')
-    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            platform: linux/amd64
+          - os: ubuntu-24.04-arm
+            platform: linux/arm64
+    runs-on: ${{ matrix.os }}
     needs: [test]
     steps:
+      - name: Prepare
+        run: |
+          platform=${{ matrix.platform }}
+          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
+          echo "REGISTRY_IMAGE=`echo ghcr.io/${{github.repository}} | tr '[:upper:]' '[:lower:]'`" >> ${GITHUB_ENV}
       - uses: actions/checkout@v1
       - name: Get short SHA
         id: vars
@@ -85,8 +98,9 @@ jobs:
           push: true
           tags: |
             ghcr.io/8398a7/abilitysheet/app:${{ env.SHA_TAG }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=platform-${{ env.PLATFORM_PAIR }}
+          cache-to: type=gha,mode=max,scope=platform-${{ env.PLATFORM_PAIR }}
+          platforms: ${{ matrix.platform }}
       - uses: actions/delete-package-versions@v5
         with:
           package-name: abilitysheet/app
