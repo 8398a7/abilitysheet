@@ -34,12 +34,12 @@ jobs:
       - run: yarn install --frozen-lockfile
       - name: Run Eslint and Prettier
         run: yarn lint
+      - name: Install PostgreSQL
+        run: sudo apt-get -yqq install libpq-dev
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3.5
           bundler-cache: true
-      - name: Install PostgreSQL
-        run: sudo apt-get -yqq install libpq-dev
       - name: Setup Application Environment
         run: |
           mv .env.sample .env
@@ -51,7 +51,7 @@ jobs:
       - name: Run Rubocop
         run: bundle exec bin/rubocop_parallel
       - name: Run rspec and Publish code coverage
-        uses: paambaati/codeclimate-action@v3.0.0
+        uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
           NODE_OPTIONS: --openssl-legacy-provider
@@ -63,22 +63,9 @@ jobs:
           path: ./tmp/test-results
   build:
     if: contains(github.ref, 'master')
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: ubuntu-latest
-            platform: linux/amd64
-          - os: ubuntu-24.04-arm
-            platform: linux/arm64
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-24.04-arm
     needs: [test]
     steps:
-      - name: Prepare
-        run: |
-          platform=${{ matrix.platform }}
-          echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
-          echo "REGISTRY_IMAGE=`echo ghcr.io/${{github.repository}} | tr '[:upper:]' '[:lower:]'`" >> ${GITHUB_ENV}
       - uses: actions/checkout@v1
       - name: Get short SHA
         id: vars
@@ -98,9 +85,8 @@ jobs:
           push: true
           tags: |
             ghcr.io/8398a7/abilitysheet/app:${{ env.SHA_TAG }}
-          cache-from: type=gha,scope=platform-${{ env.PLATFORM_PAIR }}
-          cache-to: type=gha,mode=max,scope=platform-${{ env.PLATFORM_PAIR }}
-          platforms: ${{ matrix.platform }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - uses: actions/delete-package-versions@v5
         with:
           package-name: abilitysheet/app
@@ -116,15 +102,14 @@ jobs:
         if: always()
   deploy:
     if: contains(github.ref, 'master')
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     needs: [build]
     steps:
-      - uses: actions/checkout@v1
       - name: deploy abilitysheet
         run: |
           curl -X POST \
-            https://api.github.com/repos/8398a7/iidx-app-cluster/actions/workflows/deploy.yml/dispatches \
+            https://api.github.com/repos/8398a7/setup-server/actions/workflows/deploy-iidx.yml/dispatches \
             -H 'Accept: application/vnd.github.v3+json' \
             -H "Authorization: Basic ${{ secrets.DEPLOY_TOKEN }}" \
             -H 'Content-Type: application/json' \
-            -d "{\"ref\": \"master\", \"inputs\": {\"role\": \"abilitysheet\", \"image_tag\": \"$(git describe --tags --abbrev=10)\"}}"
+            -d "{\"ref\": \"master\"}"
