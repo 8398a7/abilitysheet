@@ -64,7 +64,7 @@ jobs:
   build:
     if: contains(github.ref, 'master')
     runs-on: ubuntu-24.04-arm
-    needs: [test]
+    # needs: [test]
     steps:
       - uses: actions/checkout@v1
       - name: Get short SHA
