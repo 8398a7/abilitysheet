@@ -8,6 +8,12 @@ Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+module RSpecTaggedLoggerHelper
+  def tagged_logger
+    Rails.logger if defined?(Rails)
+  end
+end
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
@@ -21,6 +27,7 @@ RSpec.configure do |config|
   config.include SheetsHelper
   config.include ActiveJob::TestHelper
   config.include ActiveSupport::Testing::Assertions
+  config.include RSpecTaggedLoggerHelper
 end
 
 VCR.configure do |c|

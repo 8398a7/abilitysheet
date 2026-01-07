@@ -12,8 +12,33 @@
 #
 
 require 'ist_client'
+require 'yaml'
 
 describe User::Ist, type: :model do
+  def ist_scores_from_cassette
+    cassette_path = Rails.root.join('spec/cassettes/ist.yml')
+    cassette = YAML.safe_load(File.read(cassette_path))
+    interaction = cassette['http_interactions'].find do |i|
+      i.dig('request', 'uri')&.include?('/api/v1/scores/')
+    end
+    JSON.parse(interaction.dig('response', 'body', 'string'))['scores']
+  end
+
+  def expected_log_delta(user, skip_identical: false)
+    sheets = Sheet.active.pluck(:title, :id).to_h
+    tokyo_sheet_id = Sheet.find_by(title: '東京神話')&.id
+    ist_scores_from_cassette.count do |score|
+      sheet_id = user.find_sheet_id(score, sheets)
+      next false unless sheet_id
+
+      state = Static::LAMP_OFFICIAL.index(score['clear_type_status'])
+      next false if state == 7
+      next false if skip_identical && sheet_id == tokyo_sheet_id && state == 2 && score['score'].zero?
+
+      true
+    end
+  end
+
   describe '#update_ist' do
     let(:user) { create(:user, grade: 18, iidxid: '8594-9652', djname: 'HOGE', pref: 0) }
     let(:version) { Abilitysheet::Application.config.iidx_version }
@@ -72,11 +97,12 @@ describe User::Ist, type: :model do
         bp: nil,
         version: version
       )
+      expected_delta = expected_log_delta(user)
       expect do
         VCR.use_cassette('ist') do
           user.update_ist
         end
-      end.to change { Log.count }.by(261)
+      end.to change { Log.count }.by(expected_delta)
       scores = user.scores.is_current_version
       # クリアランプの変更だけでもスコアレコードが更新されている
       expect(scores.find_by(sheet: Sheet.find_by(title: '東京神話'))).to have_attributes(
@@ -110,11 +136,12 @@ describe User::Ist, type: :model do
         bp: 0,
         version: version
       )
+      expected_delta = expected_log_delta(user, skip_identical: true)
       expect do
         VCR.use_cassette('ist') do
           user.update_ist
         end
-      end.to change { Log.count }.by(260)
+      end.to change { Log.count }.by(expected_delta)
     end
     it '存在しないユーザはraiseすること' do
       user.update!(iidxid: '1234-5678')
