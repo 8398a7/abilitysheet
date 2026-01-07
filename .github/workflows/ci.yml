@@ -96,7 +96,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: always()
   deploy:
-    if: contains(github.ref, 'master')
+    if: contains(github.ref, 'noop')
     runs-on: ubuntu-24.04-arm
     needs: [build]
     steps:
