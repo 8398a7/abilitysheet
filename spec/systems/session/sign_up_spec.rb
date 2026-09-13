@@ -1,46 +1,38 @@
 # frozen_string_literal: true
 
-feature 'sign up', type: :system do
-  background do
+feature '新規登録の受付終了', type: :system do
+  scenario '以前の新規登録ページからデラレコを案内する' do
     visit new_user_registration_path
-    sync_sheet
-    allow(Slack::UserDispatcher).to receive(:new_register_notify).and_return(true)
-  end
-  def input_sign_up_form(iidxid)
-    fill_in 'user_email', with: 'sign_up_spec@mail.iidx.app'
-    fill_in 'user_username', with: 'signup'
-    fill_in 'user_djname', with: 'SIGNUP'
-    fill_in 'user_iidxid', with: iidxid
-    fill_in 'user_password', with: 'hogehoge'
-    fill_in 'user_password_confirmation', with: 'hogehoge'
-    select '京都府', from: 'user_pref'
-    select '八段', from: 'user_grade'
-    click_button '登録'
+
+    expect(page).to have_content('新規登録の受付は終了しました。')
+    expect(page).to have_link('デラレコで新規登録', href: 'https://record.iidx.app/')
+    expect(page).to have_link('ログイン', href: new_user_session_path)
+    expect(page).to have_no_selector('form[action="/users"]')
+    expect(page).to have_no_field('user_password')
   end
 
-  scenario 'ISTに存在しないユーザの場合でも登録できる' do
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_falsey
-    expect do
-      perform_enqueued_jobs do
-        VCR.use_cassette('not_found_ist') do
-          input_sign_up_form('1234-5678')
-        end
-      end
-    end.to change { User.count }.by(1)
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_truthy
+  scenario 'ログインページから新規利用者をデラレコに案内する' do
+    visit new_user_session_path
+
+    expect(page).to have_link('デラレコで新規登録', href: 'https://record.iidx.app/')
+    expect(page).to have_no_link(href: new_user_registration_path)
+    expect(page).to have_field('user_login')
+    expect(page).to have_link('再発行', href: new_user_password_path)
   end
-  scenario 'ISTに存在するユーザなら同期して登録できる' do
-    expect(User.exists?(email: 'sign_up_spec@mail.iidx.app')).to be_falsey
-    iidxid = '8594-9652'
-    expect do
-      perform_enqueued_jobs do
-        VCR.use_cassette('ist') do
-          input_sign_up_form(iidxid)
-        end
-      end
-    end.to change { User.count }.by(1)
-    user = User.find_by(iidxid: iidxid)
-    expect(user.present?).to be_truthy
-    expect(user.scores.is_current_version.find_by(sheet: Sheet.find_by!(title: 'AA')).score).to eq 3045
+
+  scenario 'パスワード再発行ページから新規利用者をデラレコに案内する' do
+    visit new_user_password_path
+
+    expect(page).to have_link('デラレコで新規登録', href: 'https://record.iidx.app/')
+    expect(page).to have_no_link(href: new_user_registration_path)
+    expect(page).to have_field('user_email')
+  end
+
+  scenario 'OAuth連携のヘルプからデラレコを案内する' do
+    visit oauth_helps_path
+
+    expect(page).to have_link(href: 'https://record.iidx.app/')
+    expect(page).to have_no_link(href: new_user_registration_path)
+    expect(page).to have_link('ユーザ編集ページ', href: edit_user_registration_path)
   end
 end
