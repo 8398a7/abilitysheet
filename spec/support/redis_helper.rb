@@ -3,11 +3,8 @@
 module RedisHelper
   def self.load_sheets_data
     redis = Redis.new
-    uri = URI.parse('https://sp12.iidx.app/api/v1/sheets/list')
-    sheets = JSON.parse(Net::HTTP.get(uri))
+    sheets_path = File.expand_path('sheets.json', __dir__)
+    sheets = JSON.parse(File.read(sheets_path))
     redis.set('sheets', sheets.to_json)
-  rescue Errno::ECONNREFUSED
-    puts '本番サーバが稼働していません'
-    redis.set('sheets', '{"sheets":[]}')
   end
 end

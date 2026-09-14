@@ -1,6 +1,5 @@
 import React from 'react';
 import User from '../../../lib/models/User';
-import { newUserRegistrationPath } from '../../../lib/routes';
 
 interface IProps {
   user?: User;
@@ -11,8 +10,11 @@ const Register: React.SFC<IProps> = ({ user }) => {
   }
   return (
     <div className="has-text-centered" style={{ marginTop: '50px' }}>
-      <a href={newUserRegistrationPath()} className="button is-link is-large">
-        登録
+      <p className="mb-4">
+        ☆12参考表の新規登録の受付は終了しました。新規登録はデラレコをご利用ください。
+      </p>
+      <a href="https://record.iidx.app/" className="button is-link is-large">
+        デラレコで新規登録
       </a>
     </div>
   );

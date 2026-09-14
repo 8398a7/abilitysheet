@@ -50,21 +50,16 @@ jobs:
         run: bundle exec rails db:create db:migrate
       - name: Run Rubocop
         run: bundle exec bin/rubocop_parallel
-      - name: Run rspec and Publish code coverage
-        uses: paambaati/codeclimate-action@v9.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          NODE_OPTIONS: --openssl-legacy-provider
-        with:
-          coverageCommand: bundle exec rspec
+      - name: Run Rspec
+        run: bundle exec rspec
       - name: Archive artifacts
         uses: actions/upload-artifact@v4
         with:
           path: ./tmp/test-results
   build:
     if: contains(github.ref, 'master')
-    runs-on: ubuntu-24.04
-    # needs: [test]
+    runs-on: ubuntu-24.04-arm
+    needs: [test]
     steps:
       - uses: actions/checkout@v1
       - name: Get short SHA
@@ -101,7 +96,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: always()
   deploy:
-    if: contains(github.ref, 'master')
+    if: contains(github.ref, 'noop')
     runs-on: ubuntu-24.04-arm
     needs: [build]
     steps:

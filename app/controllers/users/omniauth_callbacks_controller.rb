@@ -33,7 +33,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     # NOTE: 新規ユーザの場合
     # .find_for_oauthで@userが見つからないので @user.nil? => true
-    flash[:danger] = '最初に登録が必要です。'
+    flash[:danger] = '新規登録の受付は終了しました。新規登録はデラレコをご利用ください。'
     redirect_to new_user_registration_url
   end
 

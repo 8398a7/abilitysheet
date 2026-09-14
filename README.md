@@ -3,9 +3,6 @@
 ## Status
 
 [![CI](https://github.com/8398a7/abilitysheet/actions/workflows/ci.yml/badge.svg)](https://github.com/8398a7/abilitysheet/actions/workflows/ci.yml)
-[![Code Climate](https://codeclimate.com/github/8398a7/abilitysheet/badges/gpa.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
-[![Test Coverage](https://codeclimate.com/github/8398a7/abilitysheet/badges/coverage.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
-[![Issue Count](https://codeclimate.com/github/8398a7/abilitysheet/badges/issue_count.svg)](https://codeclimate.com/github/8398a7/abilitysheet)
 [![security](https://hakiri.io/github/8398a7/abilitysheet/master.svg)](https://hakiri.io/github/8398a7/abilitysheet/master)
 [![License](https://img.shields.io/github/license/8398a7/abilitysheet.svg)](https://github.com/8398a7/abilitysheet/blob/master/LICENSE.txt)
 
