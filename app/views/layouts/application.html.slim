@@ -36,6 +36,8 @@ html
     = render partial: 'layouts/nav', locals: { recent: recent }
     section.section
       .container
+        - if user_signed_in?
+          = render partial: 'layouts/delareco_notice'
         = render partial: 'layouts/notification'
         = yield
     button.scroll-top#scroll-top
