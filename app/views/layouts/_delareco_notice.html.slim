@@ -1,0 +1,15 @@
+details.message.is-warning.delareco-notice#delareco-notice open=true data-user-id=current_user.id
+  summary.message-header.delareco-notice-summary
+    span 参考表の今後のサポートとデラレコへの移行について
+    span.delareco-notice-toggle
+      span.delareco-notice-collapse 1日非表示にする
+      span.delareco-notice-expand お知らせを表示
+  .message-body
+    p 参考表は、beatmania IIDX 34もサポートする予定ですが、楽曲の追加・更新などはあまり行わない予定です。
+    p 2026年9月12日以降に参考表で登録・更新されたデータは、デラレコに取り込まれていません。
+    p デラレコへの早めの移行をおすすめします。
+    p
+      = link_to 'デラレコへ', 'https://record.iidx.app', class: 'button is-link', target: '_blank', rel: 'noopener noreferrer'
+    p
+      = link_to '移行されたアカウントについて（FAQ）', 'https://record.iidx.app/migration-faq', target: '_blank', rel: 'noopener noreferrer'
+    p.is-size-7 「1日非表示にする」を押すと24時間折りたたまれます。見出しを押すと、いつでもお知らせを表示できます。

@@ -8,3 +8,33 @@
  *= require bulma-extensions/bulma-checkradio/dist/css/bulma-checkradio.min
  *= require_self
  */
+
+.delareco-notice-summary {
+  cursor: pointer;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  list-style: none;
+}
+.delareco-notice-summary::-webkit-details-marker {
+  display: none;
+}
+.delareco-notice-summary:focus-visible {
+  outline: 2px solid #485fc7;
+  outline-offset: 2px;
+}
+.delareco-notice-toggle {
+  margin-left: auto;
+  font-size: 0.875rem;
+  text-decoration: underline;
+}
+.delareco-notice:not([open]) .message-header {
+  border-radius: 4px;
+}
+.delareco-notice[open] .delareco-notice-expand,
+.delareco-notice:not([open]) .delareco-notice-collapse {
+  display: none;
+}
+.delareco-notice .message-body p + p {
+  margin-top: 0.75rem;
+}
