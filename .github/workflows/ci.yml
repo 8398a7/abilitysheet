@@ -59,6 +59,10 @@ jobs:
   build:
     if: contains(github.ref, 'master')
     runs-on: ubuntu-24.04-arm
+    permissions:
+      actions: read
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v1
       - name: Get short SHA
@@ -87,8 +91,8 @@ jobs:
           package-name: abilitysheet/app
           package-type: container
           min-versions-to-keep: 9
-          # Deletion needs package admin access, using the publishing token.
-          token: ${{ secrets.REGISTRY_TOKEN }}
+          # Grant this repository Admin in the package's Manage Actions access settings.
+          token: ${{ github.token }}
       - uses: 8398a7/action-slack@v3
         with:
           fields: repo,job
