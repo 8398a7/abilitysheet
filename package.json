@@ -21,8 +21,8 @@
     "@fullcalendar/core": "4.4.2",
     "@fullcalendar/daygrid": "4.4.2",
     "@fullcalendar/react": "4.4.2",
-    "@rails/webpacker": "5.2.2",
-    "@sentry/browser": "^5.20.1",
+    "@rails/webpacker": "5.4.4",
+    "@sentry/browser": "^7.120.4",
     "@types/cal-heatmap": "^3.5.35",
     "@types/jquery": "^3.5.1",
     "@types/node": "^14.0.27",
@@ -33,7 +33,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",
     "action-reducer": "^0.3.1",
-    "axios": "^0.21.1",
+    "axios": "^0.34.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "babel-preset-react": "^6.24.1",
     "bulma": "^0.9.0",
@@ -42,10 +42,10 @@
     "core-js": "^3.6.5",
     "datatables": "^1.10.18",
     "datatables-bulma": "^1.0.1",
-    "highcharts": "8.2.2",
-    "immutable": "^4.0.0-rc.12",
+    "highcharts": "^9.3.3",
+    "immutable": "^4.3.9",
     "jquery": "^3.5.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.14.2",
     "nprogress": "^0.2.0",
     "postcss-nested": "^4.2.3",
     "prop-types": "^15.7.2",
@@ -67,7 +67,11 @@
     "typescript": "^3.9.7"
   },
   "devDependencies": {
-    "prettier": "^2.0.5",
+    "prettier": "2.0.5",
     "webpack-dev-server": "^3.11.0"
+  },
+  "resolutions": {
+    "tar": "^7.5.22",
+    "serialize-javascript": "^7.1.2"
   }
 }

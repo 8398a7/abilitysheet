@@ -20,5 +20,13 @@
 #
 
 class Social < ApplicationRecord
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id provider uid user_id]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[user]
+  end
+
   belongs_to :user
 end

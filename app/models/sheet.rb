@@ -19,6 +19,14 @@
 require 'scrape/exh_collector'
 
 class Sheet < ApplicationRecord
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[id textage title n_ability h_ability exh_ability updated_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    []
+  end
+
   has_many :scores
   has_many :logs
   has_one :ability
