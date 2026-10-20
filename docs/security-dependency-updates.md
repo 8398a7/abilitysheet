@@ -16,6 +16,8 @@ Rails 7.2 に対応する Ransack と RSpec に更新し、管理画面の既存
 
 JavaScript は axios 0.34 系、Highcharts 9.3 系、Sentry 7.120 系、jQuery UI 1.14 系、Immutable 4.3 系と、既存の指定範囲内で更新可能な間接依存を更新した。`tar` と `serialize-javascript` は `resolutions` で修正版を指定した。Node.js 22 での本番アセット生成を検証した。
 
+Select2 は Node.js 22 に対応する 4.0.13 に固定した。4.1.0 は Node.js 24 以上を要求するため、CI と本番環境の Node.js 22 ではインストールできない。
+
 ## 残っている依存関係
 
 Yarn の最終結果は low 3、moderate 56、high 39、critical 0（依存経路ごとの集計）。次の 15 パッケージに 42 種類の advisory が残る。
