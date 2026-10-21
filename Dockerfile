@@ -53,3 +53,9 @@ COPY . $HOME
 RUN \
   mv config/database.k8s.yml config/database.yml && \
   mkdir -p tmp/pids
+
+# homelab#638 / DSA-6572-1: refresh Ruby/OpenSSL's runtime trust store.
+RUN apt-get update -qq && apt-get install -y --no-install-recommends ca-certificates \
+    && sed -i -e 's|^mozilla/emSign_ECC_Root_CA_-_G3.crt|!&|' \
+              -e 's|^mozilla/Comodo_AAA_Services_root.crt|!&|' /etc/ca-certificates.conf \
+    && update-ca-certificates --fresh && rm -rf /var/lib/apt/lists/*
