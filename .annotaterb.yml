@@ -1,0 +1,4 @@
+position: before
+classified_sort: false
+hide_limit_column_types: integer,boolean
+hide_default_column_types: json,jsonb,hstore
