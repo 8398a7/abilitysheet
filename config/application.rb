@@ -25,6 +25,9 @@ module Abilitysheet
     config.active_storage.queues.purge = :active_storage
     config.active_storage.queues.analysis = :active_storage
 
+    # Action Cable is unused; keep its subscription endpoint unavailable.
+    config.action_cable.mount_path = nil
+
     config.i18n.default_locale = :ja
 
     config.generators.template_engine = :slim
