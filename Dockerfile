@@ -1,4 +1,4 @@
-FROM rubylang/ruby:3.3.13-noble
+FROM rubylang/ruby:3.3.14-noble
 LABEL maintainer '8398a7 <8398a7@gmail.com>'
 
 ENV \
